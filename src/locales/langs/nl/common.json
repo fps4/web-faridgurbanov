@@ -1,0 +1,9 @@
+{
+  "CookiesPreferences": {
+    "header": "We gebruiken cookies om uw ervaring op onze website te verbeteren.",
+    "technicalCookies": "<b>Technische Cookies:</b> zijn noodzakelijke cookies voor de correcte werking van de website en kunnen niet worden uitgeschakeld. Voorbeelden zijn gebruikersvoorkeur voor taal en keuze voor cookie-instemming. Deze cookies slaan geen persoonlijk identificeerbare informatie op.",
+    "functionalCookies": "<b>Functionele Cookies:</b> zijn nodig om verbeterde functionaliteit en personalisatie te bieden, specifiek via AI Agent aangedreven Chatbot. Als u deze cookies niet toestaat, kunnen sommige of alle van deze diensten mogelijk niet goed functioneren.",
+    "accept": "Accepteren",
+    "decline": "Weigeren"
+  }
+}

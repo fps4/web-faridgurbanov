@@ -1,0 +1,9 @@
+{
+  "CookiesPreferences": {
+    "header": "Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern.",
+    "technicalCookies": "<b>Technische Cookies:</b> sind notwendige Cookies, damit die Website korrekt funktioniert und können nicht deaktiviert werden. Beispiele sind die Sprachpräferenz des Benutzers und die Auswahl der Cookie-Zustimmung. Diese Cookies speichern keine persönlich identifizierbaren Informationen.",
+    "functionalCookies": "<b>Funktionale Cookies:</b> sind erforderlich, um erweiterte Funktionen und Personalisierungen bereitzustellen, insbesondere über den von KI-Agenten betriebenen Chatbot. Wenn Sie diese Cookies nicht zulassen, funktionieren einige oder alle dieser Dienste möglicherweise nicht richtig.",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  }
+}
