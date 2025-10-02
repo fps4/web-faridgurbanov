@@ -22,7 +22,7 @@ Recognized for bridging the gap between **enterprise architecture and product en
 
 // todo
 // situation, complication, resolution  
-e.g., “Clickstream analytics pipeline (Kafka + Node collector + Grafana dashboards)”
+e.g., “IoT / Clickstream analytics pipeline (Kafka + Node collector + Grafana dashboards)”
 
 // todo
 // situation, complication, resolution  
