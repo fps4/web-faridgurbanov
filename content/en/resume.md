@@ -20,24 +20,16 @@ Recognized for bridging the gap between **enterprise architecture and product en
 
 ## Showcase Projects
 
-// todo
-// situation, complication, resolution  
-e.g., “IoT / Clickstream analytics pipeline (Kafka + Node collector + Grafana dashboards)”
+**Unified Behavioral Telemetry**
+// todo: situation, complication, resolution  
 
-// todo
-// situation, complication, resolution  
-Cloud-native integration platform
+**Pluggable Forms & Event Booking**
+// todo: situation, complication, resolution  
 
-// todo
-// situation, complication, resolution  
-e.g., “Event booking platform with configurable forms & AI agent backend (MERN + RabbitMQ)”
+**Lightweight Enterprise Service Bus & Integration Framework**
+// todo: situation, complication, resolution  
 
-// todo
-// situation, complication, resolution  
-Website Content Management with Automated Translations
-- Built a content management solution with automated translations integrated into CI/CD.  
-- Enabled new languages to be added in minutes with high-quality translations via LLM APIs.  
-- Reduced manual translation cycles and ensured consistent multilingual experience across web assets.  
+
 
 
 ---

@@ -1,5 +1,5 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect | Full-Stack, Cloud & Data Engineering
-title: Solutions Architect | Full-Stack, Cloud & Data Engineering
-subtitle: to be added
+pagetitle: Farid Gurbanov - AI-First Solutions Architect | Cloud & Full-Stack Development
+title: AI-First Solutions Architect | Cloud & Full-Stack Development
+subtitle: AI-first Solutions Architect & Full-Stack Engineer with extensive experience across cloud, integration, and data platforms. Skilled at designing and delivering large-scale multi-cloud architectures (AWS, Azure), event-driven integration frameworks, and cost-optimized FinOps practices. Equally hands-on in full-stack engineering (React/Node.js, Python, Terraform, CI/CD), building applications and developer platforms that deliver measurable business outcomes.  
 ---
