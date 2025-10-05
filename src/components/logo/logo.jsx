@@ -18,7 +18,7 @@ export function Logo({ sx, disabled, className, href = '/', isSingle = true, ...
   const singleLogo = (
     <img
       alt={`${CONFIG.appName}`}
-      src={`${CONFIG.assetsDir}/logo/fps4-logo.svg`}
+      src={`${CONFIG.assetsDir}/icons/workspaces/logo-2.webp`}
     />
   );
 
