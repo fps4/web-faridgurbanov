@@ -122,7 +122,7 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
           </Typography>
 
           <Typography
-            variant="subtitle1"
+            variant="h5"
             sx={{ mx: "auto", my: 3, maxWidth: 640, color: "text.secondary" }}
           >
             {subtitleText}

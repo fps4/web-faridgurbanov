@@ -116,7 +116,6 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
             [theme.breakpoints.up(layoutQuery)]: { justifyContent: 'center' },
           })}
         >
-          <Logo />
           <Box sx={{ mt: 1, typography: 'caption' }}>
             { t('copyright') }
           </Box>

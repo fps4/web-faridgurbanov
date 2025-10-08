@@ -8,6 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
@@ -151,26 +152,29 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
       ]}
       {...other}
     >
-      {heading ? (
-        <Typography
-          component="h2"
-          variant="h4"
-          sx={{ textAlign: 'center', mb: 3, fontWeight: 600 }}
-        >
-          {heading}
-        </Typography>
-      ) : null}
+      <Container maxWidth="md">
+        {heading ? (
+          <Typography
+            component="h2"
+            variant="h4"
+            sx={{ textAlign: 'center', mb: 3, fontWeight: 600 }}
+          >
+            {heading}
+          </Typography>
+        ) : null}
+      </Container>
 
-      <Box
-        sx={{
-          position: 'relative',
-          width: '100%',
-        }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
-      >
+      <Container maxWidth="md" sx={{ position: 'relative' }}>
+        <Box
+          sx={{
+            position: 'relative',
+            width: '100%',
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+        >
         <Fade
           key={getItemKey(currentSlide, activeIndex)}
           in
@@ -179,44 +183,63 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
           <Paper
             elevation={3}
             sx={{
-              px: { xs: 2, md: 6 },
-              py: { xs: 4, md: 6 },
+              position: 'relative',
+              width: '100%',
+              px: { xs: 4, md: 10 },
+              py: { xs: 8, md: 10 },
               display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'center',
-              gap: { xs: 3, md: 6 },
-              minHeight: { md: 320 },
+              minHeight: { xs: 360, md: 420 },
+              overflow: 'hidden',
+              color: resolvedImage ? 'common.white' : 'text.primary',
+              backgroundColor: resolvedImage ? 'grey.900' : 'background.paper',
+              backgroundImage: resolvedImage ? `url(${resolvedImage})` : undefined,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              '&::after': resolvedImage
+                ? {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                      'linear-gradient(135deg, rgba(17,24,39,0.7) 0%, rgba(17,24,39,0.45) 40%, rgba(17,24,39,0.2) 100%)',
+                  }
+                : undefined,
             }}
           >
-            {resolvedImage ? (
-              <Box
-                component="img"
-                src={resolvedImage}
-                alt={title ? `${title} visual` : 'Carousel visual'}
-                sx={{
-                  width: { xs: '100%', md: '40%' },
-                  maxWidth: 380,
-                  borderRadius: 2,
-                  objectFit: 'cover',
-                }}
-              />
-            ) : null}
-
-            <Stack spacing={2} sx={{ flex: 1, textAlign: { xs: 'center', md: 'left' }, px: { md: 2 } }}>
+            <Stack
+              spacing={2}
+              sx={{
+                position: 'relative',
+                zIndex: 1,
+                maxWidth: '100%',
+                textAlign: { xs: 'center', md: 'left' },
+                mx: { xs: 'auto', md: 0 },
+                px: { xs: 1.5, md: 3 },
+              }}
+            >
               {eyebrow ? (
-                <Typography variant="overline" color="text.secondary">
+                <Typography
+                  variant="overline"
+                  color={resolvedImage ? 'grey.300' : 'text.secondary'}
+                  sx={{ letterSpacing: 2, textTransform: 'uppercase' }}
+                >
                   {eyebrow}
                 </Typography>
               ) : null}
 
               {title ? (
-                <Typography variant="h5" sx={{ fontWeight: 600 }}>
+                <Typography variant="h4" sx={{ fontWeight: 700 }}>
                   {title}
                 </Typography>
               ) : null}
 
               {description ? (
-                <Typography variant="body1" color="text.secondary">
+                <Typography
+                  variant="body1"
+                  color={resolvedImage ? 'grey.100' : 'text.secondary'}
+                  sx={{ opacity: resolvedImage ? 0.92 : 1 }}
+                >
                   {description}
                 </Typography>
               ) : null}
@@ -231,7 +254,6 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
                     component={NextLink}
                     href={resolvedHref}
                     variant="contained"
-                    color="primary"
                   >
                     {resolvedCtaLabel}
                   </Button>
@@ -251,10 +273,10 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
                 top: '50%',
                 left: { xs: 8, md: 16 },
                 transform: 'translateY(-50%)',
-                bgcolor: 'rgba(0,0,0,0.6)',
+                bgcolor: 'rgba(255,255,255,0.2)',
                 color: 'common.white',
                 '&:hover': {
-                  bgcolor: 'rgba(0,0,0,0.8)',
+                  bgcolor: 'rgba(255,255,255,0.35)',
                 },
               }}
             >
@@ -269,10 +291,10 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
                 top: '50%',
                 right: { xs: 8, md: 16 },
                 transform: 'translateY(-50%)',
-                bgcolor: 'rgba(0,0,0,0.6)',
+                bgcolor: 'rgba(255,255,255,0.2)',
                 color: 'common.white',
                 '&:hover': {
-                  bgcolor: 'rgba(0,0,0,0.8)',
+                  bgcolor: 'rgba(255,255,255,0.35)',
                 },
               }}
             >
@@ -280,28 +302,29 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
             </IconButton>
           </>
         ) : null}
-      </Box>
+        </Box>
 
-      {slideCount > 1 ? (
-        <Stack direction="row" justifyContent="center" spacing={1.5} sx={{ mt: 2 }}>
-          {slides.map((item, index) => (
-            <IconButton
-              key={getItemKey(item, index)}
-              aria-label={`Go to slide ${index + 1}`}
-              size="small"
-              onClick={() => handleSelect(index)}
-              sx={{
-                color: index === activeIndex ? 'text.primary' : 'text.disabled',
-                '&:hover': {
-                  color: 'text.primary',
-                },
-              }}
-            >
-              <FiberManualRecordIcon sx={{ fontSize: index === activeIndex ? 12 : 9 }} />
-            </IconButton>
-          ))}
-        </Stack>
-      ) : null}
+        {slideCount > 1 ? (
+          <Stack direction="row" justifyContent="center" spacing={1.5} sx={{ mt: 2 }}>
+            {slides.map((item, index) => (
+              <IconButton
+                key={getItemKey(item, index)}
+                aria-label={`Go to slide ${index + 1}`}
+                size="small"
+                onClick={() => handleSelect(index)}
+                sx={{
+                  color: index === activeIndex ? 'text.primary' : 'text.disabled',
+                  '&:hover': {
+                    color: 'text.primary',
+                  },
+                }}
+              >
+                <FiberManualRecordIcon sx={{ fontSize: index === activeIndex ? 12 : 9 }} />
+              </IconButton>
+            ))}
+          </Stack>
+        ) : null}
+      </Container>
     </Box>
   );
 }

@@ -6,7 +6,6 @@ import {
 } from 'src/lib/loadMarkdown';
 
 import { PagesView } from 'src/sections/pages/view';
-import ContentCarousel from 'src/sections/pages/components/content-carousel';
 
 // ----------------------------------------------------------------------
 
@@ -35,20 +34,9 @@ export default async function Page({ params }) {
     });
     const contentWithLang = prefixInternalLinks(content, lang);
 
-    const carouselItems = extractCarouselItems(frontMatter);
-    const carouselHeading =
-      frontMatter?.carouselHeading ||
-      frontMatter?.carouselTitle ||
-      (typeof frontMatter?.carousel === 'object' && !Array.isArray(frontMatter.carousel)
-        ? frontMatter?.carousel?.heading
-        : undefined);
     return (
       <>
         <PagesView mdContent={contentWithLang} frontMatter={frontMatter} />
-        <ContentCarousel
-          heading={carouselHeading}
-          items={carouselItems}
-        />
       </>
     );
   } catch {
@@ -58,49 +46,6 @@ export default async function Page({ params }) {
       </div>
     );
   }
-}
-
-function extractCarouselItems(frontMatter) {
-  if (!frontMatter) {
-    return [];
-  }
-
-  const directArray = Array.isArray(frontMatter.carousel)
-    ? frontMatter.carousel
-    : Array.isArray(frontMatter.carouselItems)
-      ? frontMatter.carouselItems
-      : null;
-
-  if (directArray) {
-    return directArray.filter(Boolean);
-  }
-
-  const numberedKeys = Object.keys(frontMatter).filter((key) => /^carousel-\d+$/i.test(key));
-
-  if (!numberedKeys.length) {
-    return [];
-  }
-
-  return numberedKeys
-    .sort()
-    .map((key) => {
-      const value = frontMatter[key];
-
-      if (!value) {
-        return null;
-      }
-
-      if (typeof value === 'string') {
-        return { description: value };
-      }
-
-      if (typeof value === 'object') {
-        return value;
-      }
-
-      return null;
-    })
-    .filter(Boolean);
 }
 
 // ----------------------------------------------------------------------
