@@ -30,7 +30,7 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
       headline: t('overview'),
       children: [
         { name: t('about-me'), href: p.about },
-        { name: t('contact-me'), href: '#contact' },
+        { name: t('contact-me'), href: p.contact },
       ],
     },
     {
