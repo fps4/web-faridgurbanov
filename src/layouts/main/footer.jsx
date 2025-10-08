@@ -30,12 +30,25 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
       headline: t('overview'),
       children: [
         { name: t('about-me'), href: p.about },
+        { name: t('contact-me'), href: '#contact' },
+      ],
+    },
+    {
+      headline: t('products'),
+      children: [
+        { name: t('sentiment-analysis-and-response'), href: `${p.openProjects}/sentiment-analysis-and-response` },
       ],
     },
     {
       headline: t('projects'),
       children: [
-        { name: t('ai-powered-sentiment-analysis-and-responder'), href: `${p.projects}/ai-powered-sentiment-analysis-and-responder` },
+        { name: t('sentiment-analysis-and-response'), href: `${p.projects}/sentiment-analysis-and-response` },
+      ],
+    },
+    {
+      headline: t('blog'),
+      children: [
+        { name: t('blog'), href: p.blog },
       ],
     },
     {
