@@ -17,6 +17,7 @@ import { fallbackLng } from 'src/locales/locales-config';
 
 import { MotionViewport } from 'src/components/animate';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+import { ContentTiles } from './components/content-tiles';
 
 // YouTube reference mapping: content/youtube.json (reference -> { lang: videoId } | videoId)
 // Supports either per-language objects or a single default videoId string.
@@ -102,6 +103,10 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
   const lang = React.useMemo(() => pathname?.split('/').filter(Boolean)[0] ?? 'en', [pathname]);
   const headingText = frontMatter?.heading ?? frontMatter?.title ?? '';
   const subtitleText = frontMatter?.subtitle ?? '';
+  const { heading: tilesHeading, items: tileItems } = React.useMemo(
+    () => resolveTiles(frontMatter),
+    [frontMatter]
+  );
 
   return (
     <Box
@@ -218,6 +223,70 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
           </Typography>
         </m.div>
       </Container>
+
+      {tileItems.length ? (
+        <ContentTiles heading={tilesHeading} items={tileItems} />
+      ) : null}
     </Box>
   );
+}
+
+function resolveTiles(frontMatter) {
+  if (!frontMatter) {
+    return { heading: undefined, items: [] };
+  }
+
+  const result = {
+    heading:
+      frontMatter.tilesHeading ||
+      frontMatter.tilesTitle ||
+      undefined,
+    items: [],
+  };
+
+  const tilesField = frontMatter.tiles;
+
+  if (Array.isArray(tilesField)) {
+    result.items = tilesField.filter(Boolean);
+  } else if (tilesField && typeof tilesField === 'object') {
+    if (Array.isArray(tilesField.items)) {
+      result.items = tilesField.items.filter(Boolean);
+    }
+    if (!result.heading) {
+      result.heading = tilesField.heading || tilesField.title || result.heading;
+    }
+  }
+
+  if (!result.items.length && Array.isArray(frontMatter.tileItems)) {
+    result.items = frontMatter.tileItems.filter(Boolean);
+  }
+
+  if (!result.items.length) {
+    const numberedKeys = Object.keys(frontMatter).filter((key) => /^tile-\d+$/i.test(key));
+
+    if (numberedKeys.length) {
+      result.items = numberedKeys
+        .sort()
+        .map((key) => {
+          const value = frontMatter[key];
+
+          if (!value) {
+            return null;
+          }
+
+          if (typeof value === 'string') {
+            return { description: value };
+          }
+
+          if (typeof value === 'object') {
+            return value;
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+    }
+  }
+
+  return result;
 }

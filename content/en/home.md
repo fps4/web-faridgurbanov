@@ -2,6 +2,13 @@
 pagetitle: Farid Gurbanov - AI-First Solutions Architect | Cloud & Full-Stack Engineer
 title: AI-First Solutions Architect, Cloud & Full-Stack Engineer
 subtitle: I'm an AI-first Solutions Architect & Full-Stack Engineer with extensive experience across cloud, integration, and data platforms. Skilled at designing and delivering hybrid cloud solution architectures (AWS, Azure, on-prem), event-driven integration frameworks. Equally hands-on in full-stack engineering (React/Node.js, Python, Terraform, CI/CD), building applications and developer platforms that deliver measurable business outcomes.  
+links:
+  - icon: "/assets/images/linkedin.png"
+    ctaLabel: LinkedIn
+    ctaHref: "https://linkedin.com"
+  - icon: "/assets/images/github.png"
+    ctaLabel: GitHub
+    ctaHref: "https://github.com/fgurbanov"
 carousel:
   - title: Unified Behavioral Telemetry
     eyebrow: Featured Initiatives
