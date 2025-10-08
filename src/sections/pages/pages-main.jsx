@@ -17,11 +17,11 @@ import { fallbackLng } from 'src/locales/locales-config';
 
 import { MotionViewport } from 'src/components/animate';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
-import { ContentTiles } from './components/content-tiles';
 
 // YouTube reference mapping: content/youtube.json (reference -> { lang: videoId } | videoId)
 // Supports either per-language objects or a single default videoId string.
 import YOUTUBE_MAP from '../../../content/youtube.json';
+import { ContentTiles } from './components/content-tiles';
 
 
 // Utility to flatten paths().js for lookup
@@ -213,7 +213,12 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
                   }
                   // Fallback to normal image
                   return (
-                    <Box component="img" alt={alt} src={src} />
+                    <Box
+                      component="img"
+                      alt={alt}
+                      src={src}
+                      sx={{ display: 'block', width: '100%', height: 'auto', my: 3 }}
+                    />
                   );
                 },
               }}

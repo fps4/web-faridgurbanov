@@ -4,14 +4,14 @@ import NextLink from 'next/link';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { MotionViewport, varFade } from 'src/components/animate';
+import { varFade, MotionViewport } from 'src/components/animate';
 
 const fadeInUp = varFade('inUp', { distance: 24 });
 
@@ -130,27 +130,27 @@ function TileCard({ tile }) {
         const fallbackColor = theme.vars?.palette.background.paper ?? theme.palette.background.paper;
 
         return {
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '100%',
-        minHeight: { xs: 280, md: 320 },
-        px: { xs: 3, md: 4 },
-        py: { xs: 3.5, md: 5 },
-        overflow: 'hidden',
-        borderRadius: 3,
-        color: resolvedImage ? 'common.white' : 'text.primary',
-        backgroundColor: resolvedImage ? 'grey.900' : resolvedColor || fallbackColor,
-        backgroundImage: resolvedImage ? `url(${resolvedImage})` : 'none',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        transition: theme.transitions.create(['transform', 'box-shadow']),
-        boxShadow: theme.vars.customShadows?.z16 || theme.shadows[6],
-        '&:hover': {
-          transform: 'translateY(-6px)',
-          boxShadow: theme.vars.customShadows?.z20 || theme.shadows[8],
-        },
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
+          minHeight: { xs: 280, md: 320 },
+          px: { xs: 3, md: 4 },
+          py: { xs: 3.5, md: 5 },
+          overflow: 'hidden',
+          borderRadius: 3,
+          color: resolvedImage ? 'common.white' : 'text.primary',
+          backgroundColor: resolvedImage ? 'grey.900' : resolvedColor || fallbackColor,
+          backgroundImage: resolvedImage ? `url(${resolvedImage})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transition: theme.transitions.create(['transform', 'box-shadow']),
+          boxShadow: theme.vars.customShadows?.z16 || theme.shadows[6],
+          '&:hover': {
+            transform: 'translateY(-6px)',
+            boxShadow: theme.vars.customShadows?.z20 || theme.shadows[8],
+          },
         };
       }}
     >

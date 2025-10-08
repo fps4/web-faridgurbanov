@@ -2,7 +2,7 @@ export const paths = (lang = 'en') => ({
   home: `/${lang}`,
   blog: `/${lang}/blog`,
   projects: `/${lang}/projects`,
-  openProjects: `/${lang}/featured-projects`,
+  products: `/${lang}/products`,
   bookshelf: `/${lang}/bookshelf`,
   about: `/${lang}/about`,
   contact: `/${lang}/contact`,

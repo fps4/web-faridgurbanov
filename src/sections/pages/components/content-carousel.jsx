@@ -1,19 +1,19 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import NextLink from 'next/link';
+import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
 
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Fade from '@mui/material/Fade';
-import IconButton from '@mui/material/IconButton';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 
 const AUTO_PLAY_INTERVAL = 6000;
 const SWIPE_THRESHOLD = 50;

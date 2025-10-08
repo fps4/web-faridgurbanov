@@ -36,13 +36,13 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
     {
       headline: t('products'),
       children: [
-        { name: t('sentiment-analysis-and-response'), href: `${p.openProjects}/sentiment-analysis-and-response` },
+        { name: t('sentiment-analysis-and-response'), href: `${p.products}/sentiment-analysis-and-response` },
       ],
     },
     {
       headline: t('projects'),
       children: [
-        { name: t('sentiment-analysis-and-response'), href: `${p.projects}/sentiment-analysis-and-response` },
+        { name: t('unified-behavioral-telemetry'), href: `${p.products}/unified-behavioral-telemetry` },
       ],
     },
     {

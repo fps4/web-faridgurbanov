@@ -118,8 +118,8 @@ export function HomeHero({ mdContent, frontMatter, sx, ...other }) {
             <Grid item key={project.key} xs={12} sm={6} md={4}>
               <Stack spacing={2} alignItems="center" sx={{ textAlign: 'center', px: 2 }}>
                 <Box
-                  sx={(theme) => {
-                    const primary = theme.vars.palette.primary;
+                  sx={(muiTheme) => {
+                    const primary = muiTheme.vars.palette.primary;
 
                     return {
                       width: 72,
