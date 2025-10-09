@@ -24,6 +24,9 @@ Recognized for bridging the gap between **enterprise architecture and product en
 
 **Technical Credentials**  
 *(Note: Most credentials expired after 2025, retained here as reference to breadth of expertise)*  
+
+// todo add badges as tiles
+
 - Databricks Certified Data Engineer Professional  
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
