@@ -6,6 +6,11 @@ subtitle:
 text here
 
 ```mermaid
+---
+title: Hello Title
+config:
+  look: handDrawn
+---
 graph LR
     A[Enter Chart Definition] --> B(Preview)
     B --> C{decide}

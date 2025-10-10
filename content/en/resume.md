@@ -39,23 +39,24 @@ Recognized for bridging the gap between **enterprise architecture and product en
 ### **02-2021 – Present | Jumbo Supermarkten B.V. (Netherlands)**  
 **Solutions Engineer & Architect, Technology & Data**
 
-**Generic Integration Adapter (GIA) – Event-Driven Data Integration**  
+**Cloud Integration Adapter – Event-Driven Data Integration**  
 - Designed and implemented a **config-driven integration framework** simplifying record-level transformations between APIs and downstream systems.  
 - Built on **AWS managed services** (SNS/SQS, Lambda, S3, DynamoDB, CloudWatch), supporting JSONata-based mappings, pluggable transformation modules, and automated schema validation.  
 - Contributed **Node.js modules** for schema validation and transformation logic, accelerating development and enabling teams to extend the adapter.  
 - Delivered **end-to-end observability** via DataDog dashboards and full IaC provisioning with Terraform.  
 
-**Multi-Cloud Gateway (MCG) – API Platform Modernization**  
+**Cloud Gateway – API Platform Modernization**  
 - Led the design and rollout of a **federated, cross-cloud self-service API gateway** spanning **Azure and AWS**, consolidating 20+ fragmented gateways and replacing IBM API Connect.  
 - Built a **cloud-native IaC platform** with unified security (OAuth2/JWT via Okta/Auth0), centralized observability (DataDog dashboards), and automated onboarding via Terraform modules.  
 - Developed **internal React/Node.js tools** to prototype API onboarding flows, improving developer experience.  
 - Delivered **€250–300k annual cost savings**, reduced API onboarding lead time from days to minutes, and standardized governance across clouds.  
 
-**FinOps & Cloud Cost Optimization**  
+// TODO refactor FinOps part
+<!-- **FinOps & Cloud Cost Optimization**  
 - Drove multi-cloud FinOps initiatives across **Azure, AWS, and Databricks**, reducing cloud spend by **€1.2M annually**.  
 - Designed and maintained **PowerBI cost management dashboards**, integrating Azure/AWS cost exports, Databricks APIs, and MongoDB Atlas.  
 - Built **automation scripts in Python** for data collection and reporting pipelines.  
-- Established **capacity reservation strategies**, KPI tracking, and savings plan governance, while engaging with the FinOps Foundation and Dutch FinOps meetups.  
+- Established **capacity reservation strategies**, KPI tracking, and savings plan governance, while engaging with the FinOps Foundation and Dutch FinOps meetups.   -->
 
 ---
 
@@ -75,7 +76,7 @@ Recognized for bridging the gap between **enterprise architecture and product en
 - Delivered complex **data engineering and modernization projects**, building both infra and applications.  
 
 **Key Projects**:  
-- **Germany**: Built a **cloud-native analytics environment** with Snowflake, AWS EMR, AWS Glue (PySpark), and Terraform. Delivered near-real-time SAP ERP data ingestion.  
+- **Germany**: Built a **cloud-native SAP-to-Snowflake analytics pipeline** with AWS EMR, AWS Glue (PySpark), and Terraform. Delivered an MVP for a large manufacturing client.  
 - **UK**: Developed a **Security Monitoring Data Lake** using Kafka, NiFi, Hive, Hadoop, and Elastic Stack to handle high-volume security logs.  
 - **UK**: Upgraded and scaled an **on-prem Big Data platform**, integrating Hive LLAP and Spark 3 for higher performance.  
 
