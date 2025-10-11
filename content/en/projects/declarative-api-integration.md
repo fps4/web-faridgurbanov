@@ -4,18 +4,18 @@ subtitle: Configuration-first integrations for multi-cloud event flows
 ---
 
 ### Project Snapshot
-Delivered a reusable integration backbone so product teams can publish and subscribe to business events without queueing behind a central middleware group. Led the initiative as a solution architect and hands-on engineer—defining the target integration experience, authoring the core adapter runtime, building the operator console, and coaching domain teams through the first launches.
+Delivered a reusable integration backbone so product teams can publish and subscribe to business events without waiting for a central middleware group. I acted as solution architect and hands-on engineer: I defined the target experience, wrote the core adapter runtime, built the operator console, and coached domain teams through the first launches.
 
 ### Problem Context
-Multiple teams needed to connect SaaS products, heritage systems, and modern services, yet every integration had to queue behind specialist engineers. Even with an enterprise data model and event-driven principles in place, teams lacking deep integration expertise could not independently launch or maintain adapters.
+Many teams had to connect SaaS products, legacy systems, and new services, but every integration sat in a long queue for specialist engineers. Even with an enterprise data model and event-driven plan, teams without deep integration skills could not launch or maintain adapters alone.
 
 ### Key Technical Challenges
-- Legacy tooling required custom JVM components, bespoke DSLs, and release pipelines that only the integration team could operate.
-- Integration logic was duplicated across teams, increasing drift from the canonical data model and raising maintenance costs.
-- Operating across AWS and Azure introduced inconsistent observability, identity, and deployment flows.
+- Legacy tooling needed custom JVM pieces, custom DSLs, and release pipelines that only the integration team knew.
+- Integration logic was copied between teams, creating drift from the main data model and higher maintenance cost.
+- Running on both AWS and Azure gave uneven observability, identity, and deployment flows.
 
 ### Solution Architecture
-Delivered a configuration-first platform that provisions entire integration pipelines from a single declarative manifest. The platform standardizes ingress, schema validation, filtering & mapping, and delivery across cloud providers while exposing extension points for custom logic. Shared modules handle telemetry, retries, and lifecycle management so domain teams focus on mapping source payloads to the canonical model.
+Built a configuration-first platform that creates full integration pipelines from one declarative manifest. The platform standardizes ingress, schema checks, filtering, mapping, and delivery across clouds while still exposing hooks for custom logic. Shared modules handle telemetry, retries, and lifecycle so domain teams only worry about mapping source payloads to the main data model.
 
 ```mermaid
 ---
@@ -32,7 +32,7 @@ config:
 
     subgraph CIP[Declarative API Integration Platform]
         Queue[(Event Queue)]
-        Runtime[Runtime adapters: Eenrichment, Validation, Filtering & Mapping]
+    Runtime[Runtime adapters: enrichment, validation, filtering & mapping]
         Console[Operations console]
         RunTracking[Run Tracking & Alerting]
         Governance[Governance Rules Engine]
@@ -58,16 +58,15 @@ config:
 ```
 
 ### Technology Highlights
-- Cloud-native, serverless runtimes on AWS and Azure that auto-scale with throughput.
-- Unified monitoring, tracing, and alerting wired into shared observability and incident management tooling.
-- Operations console that exposes flow health, audit trails, and message replay controls.
-- Schema validation, record filters with transformations, and reusable domain-specific functions.
+- Serverless runtimes on AWS and Azure that auto scale with throughput.
+- Unified monitoring, tracing, and alerting connected to shared observability and incident tools.
+- Operator console that shows flow health, audit trails, and message replay controls.
+- Schema validation, record filters with transformations, and reusable domain functions.
 - Infrastructure-as-code pipelines that deploy adapter instances and observability dashboards across clouds.
 
 
 ### Outcomes
-- Accelerated developer self-service across domains and partner-facing teams.
-- Enabled event-driven integrations with portable patterns across AWS and Azure services.
-- Cut lead time for new integrations from weeks to days through automated scaffolding and guardrails.
-- Reduced duplicated adapter code and enforced conformance with the enterprise data model.
-
+- Gave developers self-service integrations across domains and partner teams.
+- Enabled event-driven integrations with patterns that travel between AWS and Azure.
+- Cut lead time for new integrations from weeks to days with automated scaffolding and guardrails.
+- Reduced duplicate adapter code and kept everything aligned with the enterprise data model.
