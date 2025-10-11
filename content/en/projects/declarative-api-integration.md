@@ -15,7 +15,7 @@ Multiple teams needed to connect SaaS products, heritage systems, and modern ser
 - Operating across AWS and Azure introduced inconsistent observability, identity, and deployment flows.
 
 ### Solution Architecture
-Delivered a configuration-first platform that provisions entire integration pipelines from a single declarative manifest. The platform standardizes ingress, schema validation, transformation, and delivery across cloud providers while exposing extension points for custom logic. Shared modules handle telemetry, retries, and lifecycle management so domain teams focus on mapping source payloads to the canonical model.
+Delivered a configuration-first platform that provisions entire integration pipelines from a single declarative manifest. The platform standardizes ingress, schema validation, filtering & mapping, and delivery across cloud providers while exposing extension points for custom logic. Shared modules handle telemetry, retries, and lifecycle management so domain teams focus on mapping source payloads to the canonical model.
 
 ```mermaid
 ---
