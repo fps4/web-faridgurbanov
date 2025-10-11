@@ -283,6 +283,7 @@ function TileCard({ tile }) {
   const resolvedColor = backgroundColor || tile?.color || tile?.bgColor || null;
   const resolvedHref = href || link || ctaHref || ctaLink || null;
   const resolvedCtaLabel = ctaLabel || ctaText || (resolvedHref ? 'Learn more' : null);
+  const isClickable = Boolean(resolvedHref);
 
   const paletteFallback = theme.palette.background.paper;
   const varsFallback = theme.vars?.palette?.background?.paper;
@@ -306,7 +307,9 @@ function TileCard({ tile }) {
   return (
     <Paper
       elevation={resolvedImage ? 6 : 3}
-      component="article"
+      component={isClickable ? NextLink : 'article'}
+      role={isClickable ? 'article' : undefined}
+      {...(isClickable ? { href: resolvedHref } : {})}
       sx={(theme) => {
         const fallbackColor = resolvedBackground;
         return {
@@ -327,10 +330,18 @@ function TileCard({ tile }) {
           backgroundPosition: 'center',
           transition: theme.transitions.create(['transform', 'box-shadow']),
           boxShadow: theme.vars.customShadows?.z16 || theme.shadows[6],
+          cursor: isClickable ? 'pointer' : 'default',
+          textDecoration: 'none',
           '&:hover': {
             transform: 'translateY(-6px)',
             boxShadow: theme.vars.customShadows?.z20 || theme.shadows[8],
           },
+          '&:focus-visible': isClickable
+            ? {
+                outline: `3px solid ${theme.vars.palette?.primary?.main || theme.palette.primary.main}`,
+                outlineOffset: 4,
+              }
+            : undefined,
         };
       }}
     >
@@ -387,20 +398,18 @@ function TileCard({ tile }) {
         ) : null}
       </Stack>
 
-      {resolvedHref && resolvedCtaLabel ? (
-        <Stack
-          direction="row"
-          spacing={1.5}
+      {resolvedCtaLabel ? (
+        <Typography
+          variant="secondaryText"
           sx={{
-            position: 'relative',
-            zIndex: 1,
             mt: 3,
+            fontWeight: 600,
+            color: secondaryTextColor,
+            opacity: hasDarkBackground ? 0.9 : 1,
           }}
         >
-          <Button component={NextLink} href={resolvedHref} variant="contained" color="primary">
-            {resolvedCtaLabel}
-          </Button>
-        </Stack>
+          {`>`}
+        </Typography>
       ) : null}
     </Paper>
   );
