@@ -14,19 +14,19 @@ pagelinks:
     ctaHref: "https://github.com/fgurbanov"
 carousel:
   - title: Unified Behavioral Telemetry
-    eyebrow: Featured Products
+    eyebrow: Featured Projects
     description: Centralized streaming telemetry across SaaS and bespoke platforms, unlocking real-time behavioral insights for revenue teams. Centralized streaming telemetry across SaaS and bespoke platforms, unlocking real-time behavioral insights for revenue teams. Centralized streaming telemetry across SaaS and bespoke platforms, unlocking real-time behavioral insights for revenue teams.
     # image: "/assets/images/img01.jpg"
     ctaLabel: View architecture
-    ctaHref: "/en/projects/unified-behavioral-telemetry"
+    ctaHref: "/en/projects/iot-clickstream-behavioral-telemetry"
   - title: Pluggable Forms & Event Booking
-    eyebrow: Featured Products
+    eyebrow: Featured Projects
     description: Modular forms engine with serverless workflow automation powering multi-brand booking experiences in weeks instead of months.
     # image: "/assets/images/img02.jpg"
     ctaLabel: Explore workflow
     ctaHref: "/en/projects/pluggable-forms"
   - title: Lightweight Enterprise Service Bus
-    eyebrow: Featured Products
+    eyebrow: Featured Projects
     description: Cloud-native ESB patterns delivering 30+ event-driven integrations with FinOps guardrails and zero-downtime deployments.
     # image: "/assets/background/background-3-blur.webp"
     ctaLabel: Read integration story

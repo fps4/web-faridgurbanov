@@ -1,5 +1,5 @@
 ---
-title: Cloud Integration Platform
+title: Declarative API Integration Platform
 subtitle: Configuration-first integrations for multi-cloud event flows
 ---
 
@@ -19,40 +19,42 @@ Delivered a configuration-first platform that provisions entire integration pipe
 
 ```mermaid
 ---
-title: Cloud Integration Platform
+title: Context Diagram
 config:
+  theme: forest
   look: handDrawn
 ---
-  flowchart LR
-    subgraph Sources
-        A[Domain source systems]
+  flowchart TB
+
+    subgraph S[Source Systems]
+        Sources[Source Application API Endpoints]
     end
 
-    B[(Event broker / queue mesh)]
-
-    subgraph CIP[Cloud Integration Platform]
-        Runtime[Runtime adapters]
+    subgraph CIP[Declarative API Integration Platform]
+        Queue[(Event Queue)]
+        Runtime[Runtime adapters: Eenrichment, Validation, Filtering & Mapping]
         Console[Operations console]
-        RunTracking[(Run Tracking)]
+        RunTracking[Run Tracking & Alerting]
+        Governance[Governance Rules Engine]
+        Config[Configuration repo]
     end
 
-    subgraph Targets
-        D[Consumer applications]
+    subgraph T[Target Systems]
+        Targets[Consumer Application API Endpoints]
     end
 
-    Config[Configuration repo]
     Observability[Shared Observability]
     Incident[Incident Management]
 
-    A --> B
-    Runtime -- enrich --> A
-    B -- notify --> Runtime
+    Runtime -- enrich --> Sources
+    Runtime -- publish --> Targets
+    Runtime -- fetch --> Queue
+    Sources -- notify --> Queue
     Config -. manifests .-> Runtime
-    Runtime -- publish --> D
-    Runtime --> RunTracking
-    Console --> Runtime
+    Config -. manifests .-> Governance
     Console --> Observability
     RunTracking -- alert --> Incident
+    Governance -- alert --> RunTracking
 ```
 
 ### Technology Highlights

@@ -34,21 +34,17 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
       ],
     },
     {
-      headline: t('products'),
-      children: [
-        { name: t('sentiment-analysis-and-response'), href: `${p.products}/sentiment-analysis-and-response` },
-      ],
-    },
-    {
       headline: t('projects'),
       children: [
-        { name: t('unified-behavioral-telemetry'), href: `${p.products}/unified-behavioral-telemetry` },
+        { name: t('ai-devops-agent'), href: `${p.projects}/ai-devops-agent` },
+        { name: t('declarative-api-integration'), href: `${p.projects}/declarative-api-integration` },
+        { name: t('iot-clickstream-behavioral-telemetry'), href: `${p.projects}/iot-clickstream-behavioral-telemetry` },
       ],
     },
     {
       headline: t('blog'),
       children: [
-        { name: t('blog'), href: p.blog },
+        { name: t('top-10-books-for-2025'), href: p.blog },
       ],
     },
     {

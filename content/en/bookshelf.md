@@ -1,6 +1,6 @@
 ---
 title: Bookshelf
-subtitle: to be added
+subtitle: My top 10 picks
 ---
 
-Welcome to My Bookshelf
+// add tiles with book image as background (experiment with UX) and button icon, e.g. amazon icon
