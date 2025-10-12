@@ -1,7 +1,7 @@
 'use client';
 
 import NextLink from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -11,9 +11,7 @@ import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { varFade, MotionViewport } from 'src/components/animate';
-
-const fadeInUp = varFade('inUp', { distance: 24 });
+import { MotionViewport } from 'src/components/animate';
 
 function getTileKey(item, index) {
   if (item?.id) return String(item.id);
@@ -380,7 +378,7 @@ function TileCard({ tile }) {
         ) : null}
 
         {title ? (
-          <Typography variant="h5" sx={{ fontWeight: 600, color: primaryTextColor }}>
+          <Typography variant="h4" sx={{ fontWeight: 700, color: primaryTextColor }}>
             {title}
           </Typography>
         ) : null}
@@ -389,6 +387,7 @@ function TileCard({ tile }) {
           <Typography
             variant="body2"
             sx={{
+              fontWeight: 700, 
               color: secondaryTextColor,
               opacity: hasDarkBackground ? 0.92 : 1,
             }}
@@ -403,7 +402,7 @@ function TileCard({ tile }) {
           variant="secondaryText"
           sx={{
             mt: 3,
-            fontWeight: 600,
+            fontWeight: 700,
             color: secondaryTextColor,
             opacity: hasDarkBackground ? 0.9 : 1,
           }}

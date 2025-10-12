@@ -32,16 +32,17 @@ tiles:
     ctaLabel: Read the story
     ctaHref: "/en/projects/declarative-api-integration/"
   # ---------------------------------------------------------------
-  - title: Grocery Price Optimization Backend
+  - title: Grocery Dynamic Pricing Backend
     eyebrow: Agentic AI & ML
-    description: tbd / ML
+    description: Personal project delivering store-ready price optimization for growing assortments.
+    backgroundImage: "/en/images/grocery-dynamic-pricing.jpg"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story
-    ctaHref: "/en/projects/grocery-price-optimization/"    
+    ctaHref: "/en/projects/grocery-dynamic-pricing/"
   # ---------------------------------------------------------------
   - title: Multilingual Website Framework
     eyebrow: Web Development
-    description: A lightweight multilingual website framework built with React and Markdown. Add new content and translate in any language in minutes.
+    description: React and Markdown starter that auto translates content with LLM support
     backgroundColor: '#fef3c7'
     ctaLabel: Read the story
     ctaHref: "/en/projects/multilanguage-website-framework/"    
