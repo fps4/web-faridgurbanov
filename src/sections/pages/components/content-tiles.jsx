@@ -206,7 +206,6 @@ export function ContentTiles({ heading, items, sx, ...other }) {
                 onClick={() => setActiveFilter(null)}
                 variant={activeFilter === null ? 'contained' : 'outlined'}
                 size="small"
-                color="primary"
               >
                 All
               </Button>
@@ -220,7 +219,6 @@ export function ContentTiles({ heading, items, sx, ...other }) {
                   }
                   variant={activeFilter === option.value ? 'contained' : 'outlined'}
                   size="small"
-                  color="primary"
                 >
                   {option.label}
                 </Button>
@@ -320,7 +318,7 @@ function TileCard({ tile }) {
           px: { xs: 3, md: 4 },
           py: { xs: 3.5, md: 5 },
           overflow: 'hidden',
-          borderRadius: 3,
+          borderRadius: 1.5,
           color: primaryTextColor,
           backgroundColor: resolvedImage ? 'grey.900' : fallbackColor,
           backgroundImage: resolvedImage ? `url(${resolvedImage})` : 'none',
