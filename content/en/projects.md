@@ -3,13 +3,13 @@ title: Featured Projects
 subtitle: Reference to some of my most interesting projects
 tiles:
   # ---------------------------------------------------------------
-  - title: IoT & Clickstream Behavioral Telemetry Platform
+  - title: Unified Behavioral Telemetry Platform
     eyebrow: Cloud Platform
     description: Centralized streaming telemetry across SaaS and bespoke platforms, unlocking real-time behavioral insights for revenue teams. 
     backgroundImage: "/assets/images/iot-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story
-    ctaHref: "/en/projects/iot-clickstream-behavioral-telemetry"
+    ctaHref: "/en/projects/unified-behavioral-telemetry"
   # ---------------------------------------------------------------
   - title: Pluggable Website Forms & Event Booking System
     eyebrow: Web Development
