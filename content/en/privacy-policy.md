@@ -1,75 +1,66 @@
 ---
 title: Privacy Policy
-subtitle: This Privacy Policy explains how we collect, use, and protect your personal data when you interact with our website and services. By using our services, you agree to the practices described herein.
+subtitle: This Privacy Policy explains how I collect, use, and protect your personal data when you interact with my website and content. By using this site, you agree to the practices described below.
 ---
 
-Welcome to Fusion Platform Services (FPS). We respect your privacy and are committed to protecting the personal data you share with us. This Privacy Policy outlines how we collect, use, and safeguard your information in compliance with applicable data protection regulations, including the General Data Protection Regulation (GDPR).
+Welcome, and thank you for visiting my personal website. I respect your privacy and take the protection of your personal information seriously. This Privacy Policy outlines how I handle your data in accordance with applicable data protection laws, including the General Data Protection Regulation (GDPR).
 
-1. Information We Collect
-    We may collect the following categories of personal data:
+1. Information I Collect  
+   I may collect the following types of personal data:  
+   - **Contact details** (e.g., name, email address) when you contact me directly or subscribe to updates.  
+   - **Technical information** (e.g., IP address, browser type, device details) collected automatically through cookies or analytics tools.  
+   - **Usage data** about how you interact with my website or its features (e.g., contact form or chatbot).  
 
-    - Contact details (e.g., name, email address) when you fill out forms or communicate with us.
-    - Technical data (e.g., IP address, browser type, device information) collected via cookies and similar technologies.
-    - Usage data about how you interact with our website and AI-powered services (e.g., chatbot).
+2. Purpose of Data Collection  
+   I use your data for the following purposes:  
+   - To respond to your messages or inquiries.  
+   - To improve the performance and usability of this website.  
+   - To understand general website traffic and engagement.  
+   - To comply with applicable legal obligations.  
 
-2. Purpose of Data Collection
-    We collect and use your data for the following purposes:
+3. Legal Basis for Processing  
+   Your personal data is processed on the following legal bases:  
+   - **Consent**: when you choose to contact me or accept cookies.  
+   - **Legitimate interest**: to operate, maintain, and secure my website.  
+   - **Legal obligation**: when necessary to comply with the law.  
 
-    - To provide and maintain our services, including AI-powered features such as the chatbot.
-    - To respond to inquiries and fulfill service requests.
-    - To understand website usage and improve our offerings.
-    - To comply with legal and regulatory obligations.
+4. Use of Cookies  
+   This website uses cookies to improve your browsing experience:  
+   - **Essential cookies** help the site function correctly (e.g., remembering preferences).  
+   - **Functional cookies** may support optional features such as analytics or AI-based components (e.g., chatbot).  
 
-3. Legal Basis for Processing
-    We process your personal data based on one or more of the following legal grounds:
+   You can manage or disable cookies in your browser settings at any time.  
 
-    - Performance of a contract: to deliver services you’ve requested.
-    - Legitimate interest: to operate, secure, and improve our services.
-    - Consent: for the use of functional cookies and chatbot services.
-    - Legal obligation: to comply with applicable laws.
+5. Data Sharing  
+   I do not sell or rent your personal data. Data may be shared only with trusted service providers (e.g., web hosting or analytics) who are bound by data protection agreements.  
 
-4. Use of Cookies and Tracking Technologies
-    We use cookies to enhance your experience on our website. These include:
+6. Data Retention  
+   I retain your personal data only as long as needed to fulfill the purposes described above or as required by law. After that, the data is deleted or anonymized.  
 
-    Technical Cookies: Necessary for core site functionality, such as remembering language preferences or cookie consent choices. These do not store personally identifiable information and cannot be disabled.
+7. Data Security  
+   I use appropriate technical and organizational measures to protect your data, including secure hosting and limited access to stored information.  
 
-    Functional Cookies: Enable enhanced features like our AI Agent-powered chatbot. These cookies support personalisation and may collect limited usage data. If you disable them, some services may not function as intended.
+8. Your Rights under GDPR  
+   If you are located in the EEA, you have the right to:  
+   - Access and request a copy of your data.  
+   - Request correction or deletion of your data.  
+   - Restrict or object to data processing.  
+   - Withdraw consent at any time.  
 
-    You can manage your cookie preferences through your browser settings or via our cookie consent banner (where available).
+   To exercise your rights, please contact me directly.  
 
-5. Data Sharing
-    We do not sell or rent your personal data. We may share data with:
-    - Trusted third-party service providers for hosting, analytics, or functionality (e.g., chatbot service providers).
-    - Legal or regulatory authorities when required by law.
+9. International Data Transfers  
+   When data is processed outside the EEA, I ensure that adequate safeguards are in place, such as standard contractual clauses.  
 
-6. Data Retention
-    We retain your data only for as long as necessary to fulfill the purposes outlined in this policy or to meet legal requirements. After that, your data is securely deleted or anonymized.
+10. Contact  
+   For any privacy-related questions, please contact me at:  
+   - **Email:** farid@gurbanov.net  
+   - **LinkedIn:** [linkedin.com/in/fgurbanov](https://www.linkedin.com/in/fgurbanov/)  
+   - **Location:** Eindhoven, The Netherlands  
 
-7. Data Security
-    We employ industry-standard measures to protect your data against loss, misuse, or unauthorized access, including secure hosting, access controls, and encryption.
-
-8. Your Rights under GDPR
-    If you are located in the EEA, you have the right to:
-    - Access your personal data.
-    - Correct or update inaccurate data.
-    - Request deletion of your data.
-    - Restrict or object to processing.
-    - Request data portability.
-    - Withdraw consent at any time where applicable.
-
-    To exercise your rights, please contact us at the details below.
-
-9. International Data Transfers
-    Where applicable, we implement appropriate safeguards (e.g., standard contractual clauses) to ensure personal data transferred outside the EEA remains protected.
-
-10. Contact Us
-    If you have questions or concerns about this Privacy Policy or our data practices, please contact us at:
-    - Email: legal (at) fps4.com
-    - Postal Address: [Insert your registered business address in The Netherlands]
-
-11. Changes to this Policy
-    We may update this Privacy Policy from time to time. Updates will be posted on our website with the revised effective date. Your continued use of our services after changes are posted constitutes your acceptance of the revised policy.
+11. Changes to this Policy  
+   I may update this Privacy Policy from time to time. Updates will be published on this page with a revised effective date. Continued use of this website after changes means you accept the updated policy.  
 
 ---
 
-Last Updated: 2025-07-24
+**Last Updated:** 2025-10-15

@@ -1,11 +1,11 @@
 ---
-pagetitle: Farid Gurbanov - AI-First Solutions Architect | Cloud & Full-Stack Engineer
+pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
 title: Solutions Architect, Cloud & Full-Stack Engineer
 subtitle: I'm a Solutions Architect & Full-Stack Engineer with extensive experience across cloud, integration, and data platforms. Skilled at designing and delivering hybrid cloud solution architectures (AWS, Azure, on-prem), event-driven integration frameworks. Equally hands-on in full-stack engineering (React/Node.js, Python, Terraform, CI/CD), building applications and developer platforms that deliver measurable business outcomes.  
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
-    ctaHref: "https://linkedin.com"
+    ctaHref: "https://www.linkedin.com/in/fgurbanov/"
   - icon: "/assets/images/github-01.png"
     ctaLabel: GitHub
     ctaHref: "https://github.com/fps4"
@@ -13,12 +13,12 @@ pagelinks:
     ctaLabel: Copy URL
     ctaHref: "#"    
 carousel:
-  # - title: Unified Behavioral Telemetry
-  #   eyebrow: Featured Projects
-  #   description: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
-  #   image: "/assets/images/iot-01.png"
-  #   ctaLabel: View architecture
-  #   ctaHref: "/en/projects/iot-clickstream-behavioral-telemetry"
+  - title: Unified Behavioral Telemetry
+    eyebrow: Featured Projects
+    description: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
+    image: "/assets/images/iot-01.png"
+    ctaLabel: View architecture
+    ctaHref: "/en/projects/iot-clickstream-behavioral-telemetry"
   - title: Pluggable Website Forms & Event Booking System
     eyebrow: Featured Projects
     description: Modular forms engine with serverless workflow automation powering multi-brand booking experience.  

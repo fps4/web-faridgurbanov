@@ -36,15 +36,15 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
     {
       headline: t('projects'),
       children: [
-        { name: t('ai-devops-agent'), href: `${p.projects}/ai-devops-agent` },
-        { name: t('declarative-api-integration'), href: `${p.projects}/declarative-api-integration` },
-        { name: t('iot-clickstream-behavioral-telemetry'), href: `${p.projects}/iot-clickstream-behavioral-telemetry` },
+        { name: t('pluggable-website-forms-and-event-booking'), href: `${p.projects}/pluggable-website-forms-and-event-booking` },
+        { name: t('multilanguage-website-framework'), href: `${p.projects}/multilanguage-website-framework` },
+        { name: t('unified-behavioral-telemetry'), href: `${p.projects}/unified-behavioral-telemetry` },
       ],
     },
     {
       headline: t('blog'),
       children: [
-        { name: t('top-10-books-for-2025'), href: p.blog },
+        { name: t('my-bookshelf'), href: p.bookshelf },
       ],
     },
     {
