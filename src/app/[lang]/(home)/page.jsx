@@ -5,7 +5,6 @@ import {
   resolvePageDescription,
 } from 'src/lib/loadMarkdown';
 
-import { HomeView } from 'src/sections/home/view';
 import { PagesView } from 'src/sections/pages/view';
 import ContentCarousel from 'src/sections/pages/components/content-carousel';
 
@@ -41,7 +40,6 @@ export default async function Page({ params }) {
         heading={carouselHeading}
         items={carouselItems}
       />
-      {/* <HomeView mdContent={contentWithLang} frontMatter={frontMatter} /> */}
     </>
   );
 }

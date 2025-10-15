@@ -1,12 +1,22 @@
 ---
 title: Pluggable Website Forms and Event Booking
-subtitle: Multi-tenant intake flows with automated confirmations, calendars, and follow-ups
+subtitle: Modular, configurable forms engine with serverless workflow automation powering multi-brand booking experience.
+pagelinks:
+  - icon: "/assets/images/linkedin-icon.png"
+    ctaLabel: LinkedIn
+    ctaHref: "https://www.linkedin.com/in/fgurbanov/"
+  - icon: "/assets/images/github-01.png"
+    ctaLabel: Source Code
+    ctaHref: "https://github.com/fps4"
+  - icon: "/assets/images/share-icon.png"
+    ctaLabel: Copy URL
+    ctaHref: "#"   
 ---
 
 ### Project Snapshot
-Built a SaaS intake platform so marketing and operations teams can drop branded forms on any site, collect structured answers, and book meetings without asking engineers each time. I led the API, the queue workers, and the widget bundles, and documented how confirmations, calendar hooks, and admin alerts stay aligned across tenants. This website already runs the service for the "Let's talk" button: every field, language version, and availability slot comes from tenant settings and links straight into the requester calendar. A simple conversation assistant is still work in progress, and we have not solved yet how to watch its quality.
+Built a SaaS forms platform so marketing and operations teams can drop branded forms on any site, collect structured answers, and book meetings without asking engineers each time. This website already runs the service for the "Let's talk" button: every field, language version, and availability slot comes from tenant settings and links straight into the requester calendar. A simple conversation assistant is still work in progress, and I have not solved yet how to watch its quality.
 
-![Pluggable Website Forms](/images/pluggable-form-examples.png)
+![Pluggable Website Forms](/images/forms-02.jpg)
 
 ### Problem Context
 Business units wanted reliable funnels—newsletter opt-ins, consultation booking, workshop sign-ups—across many websites. Ad-hoc forms broke ownership rules, calendar hand-offs stayed manual, and compliance reviews delayed every small experiment. Teams also asked to try an AI concierge, but there was no shared layer that mixed normal forms with conversation input while keeping the audit trail.
@@ -56,7 +66,11 @@ flowchart LR
 - Early Guided Intake Assistant reusing the same orchestration stack; monitoring and scoring pipelines are still unsolved.
 
 ### Outcomes
+
+![Pluggable Website Forms](/images/pluggable-form-examples.png)
+
 - Delivered plug-and-play forms with consistent branding and validation across tenant sites, shrinking launch time from weeks to days.
 - Automated booking confirmations, calendar creation, and stakeholder notifications, removing manual hand-offs.
 - Kept one shared data model powering analytics, retention policies, and compliance reviews without rework.
 - Prepared the path for conversational intake while clearly warning that quality monitoring and guardrails must be solved before general release.
+

@@ -1,6 +1,16 @@
 ---
 title: Multilingual Website Framework
 subtitle: React and Markdown starter that auto translates content with LLM support
+pagelinks:
+  - icon: "/assets/images/linkedin-icon.png"
+    ctaLabel: LinkedIn
+    ctaHref: "https://linkedin.com"
+  - icon: "/assets/images/github-01.png"
+    ctaLabel: Source Code
+    ctaHref: "https://github.com/fps4"
+  - icon: "/assets/images/share-icon.png"
+    ctaLabel: Copy URL
+    ctaHref: "#"   
 ---
 
 ### Project Snapshot

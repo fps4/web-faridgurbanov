@@ -6,6 +6,7 @@ import {
 } from 'src/lib/loadMarkdown';
 
 import { PagesView } from 'src/sections/pages/view';
+import PageLinks from 'src/sections/pages/components/page-links';
 
 
 // ----------------------------------------------------------------------
@@ -36,7 +37,12 @@ export default async function Page({ params }) {
     });
     const contentWithLang = prefixInternalLinks(content, lang);
 
-    return <PagesView mdContent={contentWithLang} frontMatter={frontMatter} />;
+    return (
+      <>
+        <PagesView mdContent={contentWithLang} frontMatter={frontMatter} />
+        <PageLinks items={frontMatter?.pagelinks} />
+      </>
+    );
   } catch {
     return (
       <div style={{ padding: 32, textAlign: 'center', color: 'red' }}>

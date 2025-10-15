@@ -22,6 +22,7 @@ import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 // Supports either per-language objects or a single default videoId string.
 import YOUTUBE_MAP from '../../../content/youtube.json';
 import { ContentTiles } from './components/content-tiles';
+import PageLinks from './components/page-links';
 
 
 // Utility to flatten paths().js for lookup
@@ -133,6 +134,9 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
             {subtitleText}
           </Typography>
         </m.div>
+
+        {/* Social/page links under subtitle */}
+        <PageLinks items={frontMatter?.pagelinks} />
 
         {/* Render content with ReactMarkdown */}
         {/* <m.div variants={varFade("inUp")}> */}

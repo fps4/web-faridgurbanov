@@ -9,6 +9,8 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import { useTranslate } from 'src/locales';
+
 import { varFade, MotionContainer } from 'src/components/animate';
 
 import { HeroBackground } from './components/hero-background';
@@ -25,6 +27,8 @@ const motionProps = {
 
 export function HomeHero({ mdContent, frontMatter, sx, ...other }) {
   const scrollProgress = useScrollPercent();
+
+  const { t } = useTranslate('navbar');
 
   const theme = useTheme();
   const mdUp = useMediaQuery(theme.breakpoints.up(mdKey));

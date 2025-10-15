@@ -3,45 +3,45 @@ title: Featured Projects
 subtitle: Reference to some of my most interesting projects
 tiles:
   # ---------------------------------------------------------------
-  - title: Unified Behavioral Telemetry Platform
-    eyebrow: Cloud Platform
-    description: Centralized streaming telemetry across SaaS and bespoke platforms, unlocking real-time behavioral insights for revenue teams. 
-    backgroundImage: "/assets/images/iot-01.png"
-    backgroundColor: '#f3e8ff'
-    ctaLabel: Read the story
-    ctaHref: "/en/projects/unified-behavioral-telemetry"
+  # - title: Unified Behavioral Telemetry
+  #   eyebrow: Cloud Platform
+  #   description: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
+  #   backgroundImage: "/assets/images/iot-01.png"
+  #   backgroundColor: '#f3e8ff'
+  #   ctaLabel: Read the story
+  #   ctaHref: "/en/projects/unified-behavioral-telemetry"
   # ---------------------------------------------------------------
   - title: Pluggable Website Forms & Event Booking System
     eyebrow: Web Development
-    description: Modular forms engine with serverless workflow automation powering multi-brand booking experiences in weeks instead of months.
+    description: Modular forms engine with serverless workflow automation powering multi-brand booking experience.
     backgroundImage: "/assets/images/forms-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story
     ctaHref: "/en/projects/pluggable-website-forms-and-event-booking"
   # ---------------------------------------------------------------
-  - title: AI DevOps Agent
-    eyebrow: Agentic AI & ML
-    description: Autonomous issue triage and pull request automation for repo maintenance
-    backgroundImage: "/assets/images/devops-01.png"
-    backgroundColor: '#f3e8ff'
-    ctaLabel: Read the story
-    ctaHref: "/en/projects/ai-devops-agent"
+  # - title: AI DevOps Agent
+  #   eyebrow: Agentic AI & ML
+  #   description: Autonomous issue triage and pull request automation for repo maintenance
+  #   backgroundImage: "/assets/images/devops-01.png"
+  #   backgroundColor: '#f3e8ff'
+  #   ctaLabel: Read the story
+  #   ctaHref: "/en/projects/ai-devops-agent"
+  # # ---------------------------------------------------------------
+  # - title: Declarative API Integration Platform
+  #   eyebrow: Cloud Platform
+  #   description: Cloud-native ESB patterns delivering 30+ eventp-driven integrations with FinOps guardrails and zero-downtime deployments.
+  #   backgroundImage: "/assets/images/integration-01.jpg"
+  #   backgroundColor: '#f3e8ff'
+  #   ctaLabel: Read the story
+  #   ctaHref: "/en/projects/declarative-api-integration/"
   # ---------------------------------------------------------------
-  - title: Declarative API Integration Platform
-    eyebrow: Cloud Platform
-    description: Cloud-native ESB patterns delivering 30+ eventp-driven integrations with FinOps guardrails and zero-downtime deployments.
-    backgroundImage: "/assets/images/integration-01.jpg"
-    backgroundColor: '#f3e8ff'
-    ctaLabel: Read the story
-    ctaHref: "/en/projects/declarative-api-integration/"
-  # ---------------------------------------------------------------
-  - title: Grocery Dynamic Pricing Backend
-    eyebrow: Agentic AI & ML
-    description: Personal project delivering store-ready price optimization for growing assortments.
-    backgroundImage: "/assets/images/grocery-01.jpg"
-    backgroundColor: '#f3e8ff'
-    ctaLabel: Read the story
-    ctaHref: "/en/projects/grocery-dynamic-pricing/"
+  # - title: Grocery Dynamic Pricing Backend
+  #   eyebrow: Agentic AI & ML
+  #   description: Personal project delivering store-ready price optimization for growing assortments.
+  #   backgroundImage: "/assets/images/grocery-01.jpg"
+  #   backgroundColor: '#f3e8ff'
+  #   ctaLabel: Read the story
+  #   ctaHref: "/en/projects/grocery-dynamic-pricing/"
   # ---------------------------------------------------------------
   - title: Multilingual Website Framework
     eyebrow: Web Development
@@ -51,11 +51,11 @@ tiles:
     ctaLabel: Read the story
     ctaHref: "/en/projects/multilanguage-website-framework/"    
   # ---------------------------------------------------------------
-  - title: Sentiment Analysis & Response Agent
-    eyebrow: Agentic AI & ML
-    description: A managed service for hospitality operators to triage guest feedback at scale.
-    backgroundImage: "/assets/images/social-01.jpg"
-    backgroundColor: '#f3e8ff'
-    ctaLabel: Read the story
-    ctaHref: "/en/projects/sentiment-analysis-and-response/"  
+  # - title: Sentiment Analysis & Response Agent
+  #   eyebrow: Agentic AI & ML
+  #   description: A managed service for hospitality operators to triage guest feedback at scale.
+  #   backgroundImage: "/assets/images/social-01.jpg"
+  #   backgroundColor: '#f3e8ff'
+  #   ctaLabel: Read the story
+  #   ctaHref: "/en/projects/sentiment-analysis-and-response/"  
 ---

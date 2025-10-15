@@ -1,6 +1,6 @@
 ---
 title: Unified Behavioral Telemetry
-subtitle: Opinionated event analytics across web, mobile, and devices
+subtitle: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
 ---
 
 Status: Active development (MVP in progress). The notes below explain the design and targets; not everything is shipped yet.

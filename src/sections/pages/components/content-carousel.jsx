@@ -229,14 +229,14 @@ export function ContentCarousel({ heading, items = [], sx, ...other }) {
               ) : null}
 
               {title ? (
-                <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                <Typography variant="h3" sx={{ fontWeight: 700 }}>
                   {title}
                 </Typography>
               ) : null}
 
               {description ? (
                 <Typography
-                  variant="body1"
+                  variant="h5"
                   color={resolvedImage ? 'grey.100' : 'text.secondary'}
                   sx={{ opacity: resolvedImage ? 0.92 : 1 }}
                 >
