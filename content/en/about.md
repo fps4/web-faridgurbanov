@@ -19,6 +19,10 @@ Recognized for bridging the gap between enterprise architecture and product engi
 - **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, Observability (DataDog, Grafana)  
 - **Leadership & Delivery**: Agile Delivery, Team Leadership, Mentoring, Stakeholder Communication, Technical Pre-Sales  
 
+**Ongoing Learning & AI Certifications**
+- DeepLearning.AI – Agentic AI
+- Databricks AI/ML Practitioner (planned)
+
 **Technical Credentials**  
 *(Some credentials expired after 2025, but retained here to show the breadth of expertise)*  
 
@@ -33,6 +37,4 @@ Recognized for bridging the gap between enterprise architecture and product engi
 - TOGAF 9 Certified (Enterprise Architecture)  
 - ITIL 4 Foundation (Service Management)  
 
-**Ongoing Learning & AI Certifications**
-- DeepLearning.AI – Agentic AI
-- Databricks AI/ML Practitioner (planned)
+![Technical Credentials](/images/badges-01.jpg)
