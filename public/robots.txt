@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://fps4.com
+Host: https://faridgurbanov.com
 
 # Sitemaps
-Sitemap: https://fps4.com/sitemap.xml
+Sitemap: https://faridgurbanov.com/sitemap.xml

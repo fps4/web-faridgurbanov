@@ -21,6 +21,8 @@ import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 // YouTube reference mapping: content/youtube.json (reference -> { lang: videoId } | videoId)
 // Supports either per-language objects or a single default videoId string.
 import YOUTUBE_MAP from '../../../content/youtube.json';
+import { ContentTiles } from './components/content-tiles';
+import PageLinks from './components/page-links';
 
 
 // Utility to flatten paths().js for lookup
@@ -102,6 +104,10 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
   const lang = React.useMemo(() => pathname?.split('/').filter(Boolean)[0] ?? 'en', [pathname]);
   const headingText = frontMatter?.heading ?? frontMatter?.title ?? '';
   const subtitleText = frontMatter?.subtitle ?? '';
+  const { heading: tilesHeading, items: tileItems } = React.useMemo(
+    () => resolveTiles(frontMatter),
+    [frontMatter]
+  );
 
   return (
     <Box
@@ -122,12 +128,15 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
           </Typography>
 
           <Typography
-            variant="subtitle1"
+            variant="h5"
             sx={{ mx: "auto", my: 3, maxWidth: 640, color: "text.secondary" }}
           >
             {subtitleText}
           </Typography>
         </m.div>
+
+        {/* Social/page links under subtitle */}
+        <PageLinks items={frontMatter?.pagelinks} />
 
         {/* Render content with ReactMarkdown */}
         {/* <m.div variants={varFade("inUp")}> */}
@@ -208,7 +217,12 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
                   }
                   // Fallback to normal image
                   return (
-                    <Box component="img" alt={alt} src={src} />
+                    <Box
+                      component="img"
+                      alt={alt}
+                      src={src}
+                      sx={{ display: 'block', width: '100%', height: 'auto', my: 3 }}
+                    />
                   );
                 },
               }}
@@ -218,6 +232,70 @@ export function PagesMain({ mdContent, frontMatter, sx, ...other }) {
           </Typography>
         </m.div>
       </Container>
+
+      {tileItems.length ? (
+        <ContentTiles heading={tilesHeading} items={tileItems} />
+      ) : null}
     </Box>
   );
+}
+
+function resolveTiles(frontMatter) {
+  if (!frontMatter) {
+    return { heading: undefined, items: [] };
+  }
+
+  const result = {
+    heading:
+      frontMatter.tilesHeading ||
+      frontMatter.tilesTitle ||
+      undefined,
+    items: [],
+  };
+
+  const tilesField = frontMatter.tiles;
+
+  if (Array.isArray(tilesField)) {
+    result.items = tilesField.filter(Boolean);
+  } else if (tilesField && typeof tilesField === 'object') {
+    if (Array.isArray(tilesField.items)) {
+      result.items = tilesField.items.filter(Boolean);
+    }
+    if (!result.heading) {
+      result.heading = tilesField.heading || tilesField.title || result.heading;
+    }
+  }
+
+  if (!result.items.length && Array.isArray(frontMatter.tileItems)) {
+    result.items = frontMatter.tileItems.filter(Boolean);
+  }
+
+  if (!result.items.length) {
+    const numberedKeys = Object.keys(frontMatter).filter((key) => /^tile-\d+$/i.test(key));
+
+    if (numberedKeys.length) {
+      result.items = numberedKeys
+        .sort()
+        .map((key) => {
+          const value = frontMatter[key];
+
+          if (!value) {
+            return null;
+          }
+
+          if (typeof value === 'string') {
+            return { description: value };
+          }
+
+          if (typeof value === 'object') {
+            return value;
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+    }
+  }
+
+  return result;
 }

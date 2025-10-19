@@ -10,7 +10,7 @@ export const CONFIG = {
   appVersion: packageJson.version,
   baseURL: process.env.NEXT_PUBLIC_SERVER_URL ?? '',
   chatbotUrl: process.env.NEXT_PUBLIC_CHATBOT_URL ?? '',
-  assetsDir: process.env.NEXT_PUBLIC_ASSETS_DIR ?? '',
+  assetsDir: process.env.NEXT_PUBLIC_ASSETS_DIR ?? '/assets',
   chatbotTenantId: process.env.NEXT_PUBLIC_CHATBOT_TENANT_ID ?? '',
   chatbotApiBaseUrl: process.env.NEXT_PUBLIC_CHATBOT_API_BASE_URL ?? '',
   isStaticExport: JSON.parse(`${process.env.BUILD_STATIC_EXPORT}`),

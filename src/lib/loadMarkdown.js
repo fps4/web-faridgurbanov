@@ -4,6 +4,8 @@ import matter from 'gray-matter';
 
 import { CONFIG } from 'src/global-config';
 
+import { renderMermaidBlocks } from './mermaid';
+
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 
 export async function loadMarkdown({ lang, slugSegments = [] }) {
@@ -15,8 +17,12 @@ export async function loadMarkdown({ lang, slugSegments = [] }) {
   const filePath = path.join(CONTENT_ROOT, lang, ...segments);
   const raw = await fs.readFile(filePath, 'utf8');
   const { data, content } = matter(raw);
+  const processedContent = await renderMermaidBlocks(content, {
+    lang,
+    slugSegments: segments,
+  });
 
-  return { content, frontMatter: data ?? {}, filePath };
+  return { content: processedContent, frontMatter: data ?? {}, filePath };
 }
 
 export function resolvePageTitle(frontMatter) {

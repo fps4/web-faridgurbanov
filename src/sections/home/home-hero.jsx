@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { m, useScroll, useSpring, useTransform, useMotionValueEvent } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Link from "@mui/material/Link";
+import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
@@ -45,6 +45,20 @@ export function HomeHero({ mdContent, frontMatter, sx, ...other }) {
   );
 
   const headingText = frontMatter?.heading ?? frontMatter?.title ?? '';
+
+  const projects = [1, 2, 3].map((index) => {
+    const title = frontMatter?.[`project-${index}-title`] ?? `Project ${index}`;
+    const description =
+      frontMatter?.[`project-${index}-description`] ?? 'Project description coming soon.';
+    const icon = frontMatter?.[`project-${index}-icon`] ?? '';
+
+    return {
+      key: `project-${index}`,
+      title,
+      description,
+      icon,
+    };
+  });
 
   const renderHeading = () => (
     <m.div {...motionProps}>
@@ -90,7 +104,7 @@ export function HomeHero({ mdContent, frontMatter, sx, ...other }) {
     </m.div>
   );
 
-  const renderLinks = () => (
+  const renderProjects = () => (
     <>
       <m.div {...motionProps}>
         <Typography variant="subtitle1" sx={{ mx: "auto", my: 3, mt: 6, maxWidth: 640, color: "text.secondary" }}>
@@ -98,15 +112,53 @@ export function HomeHero({ mdContent, frontMatter, sx, ...other }) {
         </Typography>
       </m.div>
       <m.div {...motionProps}>
-        <Typography variant="h5" sx={{ mx: "auto", my: 3, maxWidth: 640, color: "text.secondary" }}>
-          <Link href="products">
-            {t('products')}
-          </Link> • <Link href="engagement-process">
-            {t('how-a-project-works')}
-          </Link> • <Link href="about-us#what-makes-us-different">
-            {t('what-makes-us-different')}
-          </Link> 
-        </Typography>
+        <Grid
+          container
+          spacing={4}
+          justifyContent="center"
+          sx={{ mx: "auto", mt: 1, maxWidth: 960 }}
+        >
+          {projects.map((project, index) => (
+            <Grid item key={project.key} xs={12} sm={6} md={4}>
+              <Stack spacing={2} alignItems="center" sx={{ textAlign: 'center', px: 2 }}>
+                <Box
+                  sx={(muiTheme) => {
+                    const primary = muiTheme.vars.palette.primary;
+
+                    return {
+                      width: 72,
+                      height: 72,
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      bgcolor: primary?.lighter || primary?.main,
+                      border: `1px solid ${primary?.main}`,
+                      color: primary?.darker || primary?.contrastText || primary?.main,
+                    };
+                  }}
+                >
+                  {project.icon ? (
+                    <Box
+                      component="img"
+                      src={project.icon}
+                      alt={`${project.title} icon`}
+                      sx={{ width: 40, height: 40, objectFit: 'contain' }}
+                    />
+                  ) : (
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                      {index + 1}
+                    </Typography>
+                  )}
+                </Box>
+                <Typography variant="h6">{project.title}</Typography>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  {project.description}
+                </Typography>
+              </Stack>
+            </Grid>
+          ))}
+        </Grid>
       </m.div>
     </>
   );
@@ -162,7 +214,7 @@ export function HomeHero({ mdContent, frontMatter, sx, ...other }) {
         >
           <Stack spacing={3} sx={{ textAlign: 'center' }}>
             <m.div style={{ y: y1 }}>{renderHeading()}</m.div>
-            <m.div style={{ y: y2 }}>{renderLinks()}</m.div>
+            <m.div style={{ y: y2 }}>{renderProjects()}</m.div>
           </Stack>
 
         </Container>

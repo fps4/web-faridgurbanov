@@ -9,5 +9,6 @@ export const navData = (lang = 'en') => [
   { title: 'home', path: paths(lang).home, icon: <Iconify width={22} icon="solar:home-2-linear" /> },
   { title: 'projects', path: paths(lang).projects, icon: <Iconify width={22} icon="solar:document-text-outline" /> },
   { title: 'blog', path: paths(lang).blog, icon: <Iconify width={22} icon="solar:home-2-bold-duotone" /> },
+  { title: 'bookshelf', path: paths(lang).bookshelf, icon: <Iconify width={22} icon="solar:book-open-bookmark-bold-duotone" /> },
   { title: 'about', path: paths(lang).about, icon: <Iconify width={22} icon="solar:info-circle-line-duotone" /> },
 ];

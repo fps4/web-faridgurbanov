@@ -1,8 +1,8 @@
 {
   "CookiesPreferences": {
-    "header": "We use cookies to enhance your experience on our website.",
-    "technicalCookies": "<b>Technical Cookies:</b> are nesessary cookies for the website to function correctly and cannot be switched off. Examples are user language preference and cookie concent choice. These cookies do not store any personally identifiable information.",
-    "functionalCookies": "<b>Functional Cookies:</b> are needed to provide enhanced functionality and personalisation specifically via AI Agent powered Chatbot. If you do not allow these cookies then some or all of these services may not function properly.",
+    "header": "I use cookies to make this website work smoothly and improve your experience.",
+    "technicalCookies": "<b>Technical Cookies:</b> are essential for the website to function properly and cannot be turned off. They remember things like your language preference and cookie consent choice. These cookies do not store any personally identifiable information.",
+    "functionalCookies": "<b>Functional Cookies:</b> help provide extra features and personalisation, for example through the AI-powered chatbot. If you choose not to allow these cookies, some parts of the site may not work as intended.",
     "accept": "Accept",
     "decline": "Decline"
   }

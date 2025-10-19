@@ -1,0 +1,31 @@
+services:
+
+  # ----------------------------------------
+  # Web Application
+  # ----------------------------------------
+  # NOTE: Please note that translation to other languages
+  # is done by manually running "node ./scripts/translate-content.js"
+  frontend:
+    container_name: personal-website
+    build:
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SESSION_MANAGER_URL: ${NEXT_PUBLIC_SESSION_MANAGER_URL}
+        NEXT_PUBLIC_COLLECTOR_URL: ${NEXT_PUBLIC_COLLECTOR_URL}
+        NEXT_PUBLIC_CHATBOT_URL: ${NEXT_PUBLIC_CHATBOT_URL}
+        NODE_ENV: ${NODE_ENV}
+        NEXT_PUBLIC_GTM_ID: ${NEXT_PUBLIC_GTM_ID}
+        GITHUB_PACKAGES_TOKEN: ${GITHUB_PACKAGES_TOKEN}
+        NEXT_PUBLIC_CHATBOT_TENANT_ID: ${NEXT_PUBLIC_CHATBOT_TENANT_ID}
+        NEXT_PUBLIC_CHATBOT_API_BASE_URL: ${NEXT_PUBLIC_CHATBOT_API_BASE_URL}
+    restart: unless-stopped
+    ports:
+      - "3034:3033"
+    env_file:
+      - .env
+    networks:
+      - fps-delivery-hub
+
+networks:
+  fps-delivery-hub:
+    external: true

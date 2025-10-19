@@ -34,7 +34,11 @@ export default async function Page({ params }) {
     });
     const contentWithLang = prefixInternalLinks(content, lang);
 
-    return <PagesView mdContent={contentWithLang} frontMatter={frontMatter} />;
+    return (
+      <>
+        <PagesView mdContent={contentWithLang} frontMatter={frontMatter} />
+      </>
+    );
   } catch {
     return (
       <div style={{ padding: 32, textAlign: 'center', color: 'red' }}>

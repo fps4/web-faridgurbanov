@@ -30,12 +30,21 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
       headline: t('overview'),
       children: [
         { name: t('about-me'), href: p.about },
+        { name: t('contact-me'), href: p.contact },
       ],
     },
     {
       headline: t('projects'),
       children: [
-        { name: t('ai-powered-sentiment-analysis-and-responder'), href: `${p.projects}/ai-powered-sentiment-analysis-and-responder` },
+        { name: t('pluggable-website-forms-and-event-booking'), href: `${p.projects}/pluggable-website-forms-and-event-booking` },
+        { name: t('multilanguage-website-framework'), href: `${p.projects}/multilanguage-website-framework` },
+        { name: t('unified-behavioral-telemetry'), href: `${p.projects}/unified-behavioral-telemetry` },
+      ],
+    },
+    {
+      headline: t('blog'),
+      children: [
+        { name: t('my-bookshelf'), href: p.bookshelf },
       ],
     },
     {
@@ -116,7 +125,6 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
             [theme.breakpoints.up(layoutQuery)]: { justifyContent: 'center' },
           })}
         >
-          <Logo />
           <Box sx={{ mt: 1, typography: 'caption' }}>
             { t('copyright') }
           </Box>

@@ -25,6 +25,7 @@ import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';
 import { HeaderSection } from '../core/header-section';
 import { navData as mainNavData } from '../nav-config-main';
+import { DarkModeButton } from '../components/dark-mode-button';
 import { LanguagePopover } from '../components/language-popover';
 
 
@@ -214,8 +215,10 @@ function MainLayoutContent({ sx, cssVars, children, slotProps, layoutQuery }) {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 1.5 } }}>
             <LanguagePopover data={allLangs} />
 
-            {/** @slot Chatbot */}
+            {/** @slot Dark mode button */}
+            <DarkModeButton />
 
+            {/** @slot Chatbot */}
             <ChatbotWidget
               options={{
                 tenantId: CONFIG.chatbotTenantId, 
