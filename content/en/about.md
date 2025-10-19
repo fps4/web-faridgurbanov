@@ -37,4 +37,4 @@ Recognized for bridging the gap between enterprise architecture and product engi
 - TOGAF 9 Certified (Enterprise Architecture)  
 - ITIL 4 Foundation (Service Management)  
 
-![Technical Credentials](/images/badges-01.jpg)
+![Technical Credentials](/images/badges-02.png)
