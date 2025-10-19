@@ -22,42 +22,7 @@ Teams repeatedly rebuild telemetry for apps and devices, ending up with fragment
 ### Solution Architecture
 Event‑driven pipeline with opinionated defaults (schemas, topic naming, materialized views, dashboards) and space‑level configuration files (`/config/<space>.space.json`). Collectors batch events to an API behind an edge; the API validates short‑lived tokens and publishes to Kafka topics per space with Schema Registry enforcement and DLQs. A Runner service executes enrichment (PII masking, geo/device joins), storage writer (ClickHouse inserts with partitioning/TTL), and the AI Narrator (weekly summaries/voice briefs). Grafana dashboards sit on curated ClickHouse views; replay/export endpoints support ad‑hoc analysis and backfills.
 
-```mermaid
----
-title: Context Diagram
-config:
-  theme: forest
-  look: handDrawn
----
-flowchart TB
-
-  subgraph CL[Clients]
-    Web[Web SDK]
-    Mobile[Mobile SDK]
-    Device[Firmware/IoT Events]
-  end
-
-  subgraph UBT[Unified Behavioral Telemetry]
-    API[API Service (ingest, export/replay)]
-    Broker[Kafka + Schema Registry + DLQ]
-    Runner[Runner Jobs: Enrich, Writer, Narrator]
-    Store[ClickHouse (views + TTL)]
-    Dash[Grafana Dashboards + Alerts]
-    Config[Space Config & Governance]
-  end
-
-  Web --> API
-  Mobile --> API
-  Device --> API
-  API --> Broker
-  Broker --> Runner
-  Runner --> Store
-  Store --> Dash
-  Config -. contracts .- API
-  Config -. contracts .- Runner
-  Config -. budgets/ops .- Broker
-  Config -. budgets/ops .- Dash
-```
+![System Context Diagram](/structurizr/structurizr-3-SystemContext-001.png)
 
 ### Technology Highlights (Planned/Alpha)
 - Instrumentation kit: JS/mobile guidance + firmware event template; schema contracts + validation.
