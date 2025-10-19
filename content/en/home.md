@@ -18,7 +18,7 @@ carousel:
     description: An open, opinionated blueprint for behavioral data pipelines. It unifies ingestion, enrichment, storage, and visualization across web, mobile, and IoT—designed to be AI‑ready and cost‑efficient from day one.
     image: "/assets/images/iot-01.png"
     ctaLabel: View architecture
-    ctaHref: "/en/projects/iot-clickstream-behavioral-telemetry"
+    ctaHref: "/en/projects/unified-behavioral-telemetry"
   - title: Pluggable Website Forms & Event Booking System
     eyebrow: Featured Projects
     description: Modular forms engine with serverless workflow automation powering multi-brand booking experience.  
