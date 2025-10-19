@@ -3,9 +3,9 @@ title: Featured Projects
 subtitle: Reference to some of my most interesting projects
 tiles:
   # ---------------------------------------------------------------
-  - title: "IoT, Clickstream: Unified Behavioral Telemetry"
+  - title: "Unified Behavioral Telemetry"
     eyebrow: Cloud Platform
-    description: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
+    description: An open, opinionated blueprint for behavioral data pipelines. It unifies ingestion, enrichment, storage, and visualization across web, mobile, and IoT—designed to be AI‑ready and cost‑efficient from day one.
     backgroundImage: "/assets/images/iot-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story

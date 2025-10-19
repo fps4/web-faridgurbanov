@@ -59,15 +59,22 @@ export default function PageLinks({ heading, items, sx, ...other }) {
                   : external
                   ? { href, rel: 'noopener noreferrer', target: '_blank' }
                   : { href })}
-                sx={{
+                sx={(theme) => ({
                   width: 48,
                   height: 48,
-                  borderRadius: 1,
+                  borderRadius: '50%',
                   p: 0,
-                  bgcolor: 'transparent',
+                  bgcolor: theme.palette.common.white,
                   boxShadow: 'none',
-                  '&:hover': { transform: 'translateY(-2px)', backgroundColor: 'transparent' },
-                }}
+                  transition: theme.transitions.create(['transform', 'box-shadow'], {
+                    duration: theme.transitions.duration.shortest,
+                  }),
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    backgroundColor: theme.palette.common.white,
+                    boxShadow: theme.customShadows?.z8 ?? '0px 8px 16px rgba(145, 158, 171, 0.24)',
+                  },
+                })}
               >
                 {icon ? (
                   <Box

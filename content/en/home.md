@@ -1,7 +1,7 @@
 ---
 pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
-title: Solutions Architect, Cloud & Full-Stack Engineer
-subtitle: I'm a Solutions Architect & Full-Stack Engineer with extensive experience across cloud, integration, and data platforms. Skilled at designing and delivering hybrid cloud solution architectures (AWS, Azure, on-prem), event-driven integration frameworks. Equally hands-on in full-stack engineering (React/Node.js, Python, Terraform, CI/CD), building applications and developer platforms that deliver measurable business outcomes.  
+title: Solutions Architect & Full-Stack Engineer
+subtitle: I'm a Solutions Architect and Full-Stack Engineer with broad experience in cloud, integration, and data platforms. I specialize in designing and delivering end-to-end solutions that create real business value. I work confidently across AWS, Azure, Docker, and event-driven integration frameworks. I’m also hands-on in full-stack development with React, Node.js, Python, Terraform, and CI/CD, building reliable applications, data pipelines, and developer platforms. 
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -15,7 +15,7 @@ pagelinks:
 carousel:
   - title: Unified Behavioral Telemetry
     eyebrow: Featured Projects
-    description: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
+    description: An open, opinionated blueprint for behavioral data pipelines. It unifies ingestion, enrichment, storage, and visualization across web, mobile, and IoT—designed to be AI‑ready and cost‑efficient from day one.
     image: "/assets/images/iot-01.png"
     ctaLabel: View architecture
     ctaHref: "/en/projects/iot-clickstream-behavioral-telemetry"

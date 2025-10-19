@@ -3,7 +3,7 @@ title: About Me
 subtitle: Farid F. Gurbanov
 ---
 
-**Solutions Architect & Full-Stack Engineer with broad experience across cloud infrastructure, data platforms, and system integration. I design and deliver hybrid and multi-cloud architectures (AWS, Azure, on-premise) and event-driven, streaming integration frameworks that help organizations modernize faster and scale with confidence.**
+**Solutions Architect & Engineer with broad experience across cloud infrastructure, data platforms, and system integration. I design and deliver hybrid and multi-cloud architectures (AWS, Azure, on-premise) and event-driven, streaming integration frameworks that help organizations modernize faster and scale with confidence.**
 
 Hands-on and practical, I enjoy building developer platforms and full-stack applications (React/Node.js, Python, Terraform, CI/CD) that connect technology with real business impact. My focus is always on combining AI-powered automation, modern engineering practices, and solid architecture to create efficient, maintainable, and data-driven systems.  
 

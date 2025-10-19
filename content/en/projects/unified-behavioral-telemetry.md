@@ -3,24 +3,24 @@ title: Unified Behavioral Telemetry
 subtitle: Centralized streaming event collection, curation and analytics across web, mobile, and devices.
 ---
 
-Status: Active development (MVP in progress). The notes below explain the design and targets; not everything is shipped yet.
+Status: Active development (MVP in progress). This page reflects the current blueprint, MVP scope, and targets; some items are in-flight.
 
 ### Project Snapshot
-I am building a self-hosted (DIY) system that allows capturing behavioral telemetry at the required granularity. Timely and detailed data allow experimenting with streaming ML/AI models to build a highly personalized UX. Third party collectors are sharing aggregated data due to regulatory and cost conserns. For the tech stack I've choosen Node.js for collectors and session services, Kafka for durable streaming, ClickHouse for real-time aggregates, and Grafana for visualisation. 
+Unified Behavioral Telemetry (UBT) is an open, opinionated blueprint for behavioral data pipelines. It unifies ingestion, enrichment, storage, and visualization across web, mobile, and IoT—designed to be AI‑ready and cost‑efficient from day one. One deployment supports multiple independent “spaces” (e.g., clickstream, IoT, ML feedback) with shared infrastructure but isolated schemas, access, and dashboards. Baseline stack: Node.js collectors and services, Kafka + Schema Registry (+ DLQ), ClickHouse for real‑time aggregates, and Grafana for visualization. Target infra cost is <$4 per 1M events with sub‑2‑minute ingestion‑to‑dashboard latency.
 
 ### Problem Context
-Many teams collect data from web, mobile, and firmware with different tools. Events are inconsistent; dashboards are slow or missing; and the total cost grows without clear guardrails. Making a single view of customer journey and device behavior is hard, and new questions require more ad-hoc pipelines.
+Teams repeatedly rebuild telemetry for apps and devices, ending up with fragmented tools, inconsistent event contracts, vendor lock‑in, and rising cost. Even worse, data is often not AI‑ready—locked in products, under‑modeled, or too slow/expensive to use for summarization and anomaly notes. UBT addresses this with open components, consistent contracts, space isolation, and curated models that make behavioral data ready for dashboards and AI use cases.
 
 ### Key Technical Challenges
-- Consistent instrumentation across JavaScript, mobile apps, and firmware with versioned schemas.
-- Session stitching and identity resolution while keeping privacy controls simple to operate.
-- Near real-time aggregates (<2 minutes) without an expensive warehouse bill.
-- Dual deployment (DIY and AWS) that stays interoperable (same schemas and dashboards).
-- Data quality rules, dead-letter handling, and exactly-once semantics for streaming.
-- PII-safe event shapes and audit-friendly lineage for compliance.
+- Consistent instrumentation (JS/mobile/firmware) with versioned, validated schemas and CI checks.
+- Space isolation and governance: namespaces, ACLs, retention, quotas, and dashboard scoping.
+- Short‑lived auth (ES256/RS256 JWT) with per‑space keys and simple edge protections.
+- Sub‑2‑minute aggregates at predictable cost; replay and DLQ workflows that are safe to operate.
+- PII minimization/masking, lineage, and auditability without heavy operational overhead.
+- Interoperable tracks: DIY Docker and an AWS‑native option while keeping schemas and dashboards shared.
 
 ### Solution Architecture
-I am building an event-driven pipeline with a shared event taxonomy. Collectors accept batched events, apply light transforms, and publish to a streaming backbone. Enrichment services add geo and device metadata and scrub PII. Curated streams land in ClickHouse where materialised views power product funnels, retention, and device boards. Grafana reads these views for fast dashboards. Cost guardrails and deployment modules keep operations simple in both Docker and AWS tracks.
+Event‑driven pipeline with opinionated defaults (schemas, topic naming, materialized views, dashboards) and space‑level configuration files (`/config/<space>.space.json`). Collectors batch events to an API behind an edge; the API validates short‑lived tokens and publishes to Kafka topics per space with Schema Registry enforcement and DLQs. A Runner service executes enrichment (PII masking, geo/device joins), storage writer (ClickHouse inserts with partitioning/TTL), and the AI Narrator (weekly summaries/voice briefs). Grafana dashboards sit on curated ClickHouse views; replay/export endpoints support ad‑hoc analysis and backfills.
 
 ```mermaid
 ---
@@ -38,42 +38,55 @@ flowchart TB
   end
 
   subgraph UBT[Unified Behavioral Telemetry]
-    Collect[Node.js Collectors & Session Manager]
-    Stream[Kafka/MSK Streams]
-    Enrich[Enrichment & PII Scrub]
-    Store[ClickHouse Aggregates]
-    Dash[Grafana Dashboards]
-    Gov[Schema Registry & Governance]
-    Cost[Cost & Deployment Guardrails]
+    API[API Service (ingest, export/replay)]
+    Broker[Kafka + Schema Registry + DLQ]
+    Runner[Runner Jobs: Enrich, Writer, Narrator]
+    Store[ClickHouse (views + TTL)]
+    Dash[Grafana Dashboards + Alerts]
+    Config[Space Config & Governance]
   end
 
-  Web --> Collect
-  Mobile --> Collect
-  Device --> Collect
-  Collect --> Stream
-  Stream --> Enrich
-  Enrich --> Store
+  Web --> API
+  Mobile --> API
+  Device --> API
+  API --> Broker
+  Broker --> Runner
+  Runner --> Store
   Store --> Dash
-  Gov -. contracts .- Collect
-  Gov -. contracts .- Enrich
-  Cost -. budgets/ops .- Stream
-  Cost -. budgets/ops .- Dash
+  Config -. contracts .- API
+  Config -. contracts .- Runner
+  Config -. budgets/ops .- Broker
+  Config -. budgets/ops .- Dash
 ```
 
 ### Technology Highlights (Planned/Alpha)
-- Instrumentation kit: JavaScript/mobile guidance and a firmware event template with validation tools.
-- Node.js session services with batching, backpressure, and edge buffering.
-- Streaming backbone with raw/clean/enriched topics, schema registry, and dead-letter queues.
-- Enrichment workers (Lambda in AWS, Node.js worker in DIY) for geo/device joins and PII scrubbing.
-- ClickHouse materialised views for sessions, funnels, retention cohorts, and device status.
-- Grafana dashboard packs with alert routes (email, chat, on-call tools) and <5s query latency on curated views.
-- IaC modules: Docker Compose/Terraform for DIY; CloudFormation/Terraform for AWS-native, both sharing the same schemas and dashboards.
-- Privacy and governance: role-based access, audit logs for schema changes, opt-in privacy filters.
+- Instrumentation kit: JS/mobile guidance + firmware event template; schema contracts + validation.
+- API Service + collectors with batching, backpressure, and short‑lived JWT auth (per space).
+- Kafka backbone with Schema Registry, topic conventions, DLQ, and replay tools.
+- Runner jobs: enrichment (PII masking, geo/device joins), storage writer (ClickHouse), AI Narrator.
+- ClickHouse materialized views for sessions, funnels, retention cohorts, and device health.
+- Grafana dashboard packs with alerts; curated views target <5s panel latency.
+- IaC modules for DIY (Docker/Terraform) and AWS‑native tracks; shared schemas/dashboards across both.
+- Governance: space isolation, ACLs, retention, audit logs, and schema compatibility gates in CI.
 
 ### Target Outcomes
-- First useful dashboards within two weeks from kick-off.
-- Ingest-to-visualise latency under two minutes for top aggregates.
-- Processing cost per million events in a predictable range using ClickHouse + tiered storage.
-- Reduced drift in event schemas with versioning, checks, and clear playbooks.
-- Path to autonomy: teams can operate the DIY track after the Run phase if they prefer.
+- First useful dashboards within two weeks from kick‑off (clickstream and IoT spaces).
+- Ingestion‑to‑dashboard p50 < 2 minutes for top aggregates.
+- Infra cost baseline under $4 per 1M events (storage + compute), with tuning guidance.
+- >95% schema‑validated events; clear DLQ/replay playbooks and CI compatibility checks.
+- Space isolation by default: namespaces, ACLs, per‑space retention and dashboards.
+- AI Narrator “Exec Brief” available weekly (text + optional voice note) per stakeholder.
 
+### MVP Scope (Phase‑1)
+- One deployment serving multiple spaces (clickstream, IoT, ML feedback).
+- Short‑lived JWT auth per space (ES256/RS256) + JWKS; edge protections.
+- Kafka + Schema Registry + DLQ; ClickHouse storage with partitioning/TTL; Grafana dashboards.
+- Opinionated defaults: topic naming, schemas, materialized views, dashboards and alert templates.
+- Export/replay endpoints; backfill runbooks; CI checks for schema compatibility.
+
+### KPIs & Measurement
+- Latency (ingestion → dashboard): p50/p95.
+- Cost per 1M events (infra proxy); vendor spend share trending down.
+- Schema validation pass rate; DLQ rate; replay success.
+- Pipeline availability (ingestion + storage) and query performance.
+- AI readiness and usage: Narrator adoption and summary accuracy.
