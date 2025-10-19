@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const siteUrl = process.env.SITE_URL || 'https://fps4.com';
+const siteUrl = process.env.SITE_URL || 'https://faridgurbanov.com';
 
 // detect available locales from content/ folder
 function loadLocales() {

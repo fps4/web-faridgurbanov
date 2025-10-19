@@ -9,6 +9,6 @@ tiles:
     backgroundColor: '#1d90c5ff'
     backgroundImage: "/assets/images/online-course.jpg"
     ctaLabel: ...
-    ctaHref: "/blog/..."
+    ctaHref: "#"
 ---
 

@@ -1,8 +1,8 @@
 {
   "CookiesPreferences": {
-    "header": "Nous utilisons des cookies pour améliorer votre expérience sur notre site web.",
-    "technicalCookies": "<b>Cookies Techniques :</b> sont des cookies nécessaires au bon fonctionnement du site web et ne peuvent pas être désactivés. Des exemples incluent la préférence de langue de l'utilisateur et le choix de consentement aux cookies. Ces cookies ne stockent aucune information personnellement identifiable.",
-    "functionalCookies": "<b>Cookies Fonctionnels :</b> sont nécessaires pour offrir des fonctionnalités améliorées et une personnalisation spécifique via un chatbot alimenté par un agent IA. Si vous n'autorisez pas ces cookies, certains ou tous ces services peuvent ne pas fonctionner correctement.",
+    "header": "J'utilise des cookies pour que ce site web fonctionne correctement et pour améliorer votre expérience.",
+    "technicalCookies": "<b>Cookies techniques :</b> sont essentiels pour que le site web fonctionne correctement et ne peuvent pas être désactivés. Ils mémorisent des éléments tels que votre préférence de langue et votre choix de consentement aux cookies. Ces cookies ne stockent aucune information personnellement identifiable.",
+    "functionalCookies": "<b>Cookies fonctionnels :</b> aident à fournir des fonctionnalités supplémentaires et une personnalisation, par exemple via le chatbot alimenté par l'IA. Si vous choisissez de ne pas autoriser ces cookies, certaines parties du site peuvent ne pas fonctionner comme prévu.",
     "accept": "Accepter",
     "decline": "Refuser"
   }
