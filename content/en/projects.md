@@ -9,7 +9,7 @@ tiles:
     backgroundImage: "/assets/images/iot-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story
-    ctaHref: "/en/projects/unified-behavioral-telemetry"
+    ctaHref: "unified-behavioral-telemetry"
   # ---------------------------------------------------------------
   - title: Pluggable Website Forms & Event Booking System
     eyebrow: Web Development
@@ -17,7 +17,7 @@ tiles:
     backgroundImage: "/assets/images/forms-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story
-    ctaHref: "/en/projects/pluggable-website-forms-and-event-booking"
+    ctaHref: "pluggable-website-forms-and-event-booking"
   # ---------------------------------------------------------------
   # - title: AI DevOps Agent
   #   eyebrow: Agentic AI & ML
@@ -25,7 +25,7 @@ tiles:
   #   backgroundImage: "/assets/images/devops-01.png"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Read the story
-  #   ctaHref: "/en/projects/ai-devops-agent"
+  #   ctaHref: "ai-devops-agent"
   # # ---------------------------------------------------------------
   # - title: Declarative API Integration Platform
   #   eyebrow: Cloud Platform
@@ -33,7 +33,7 @@ tiles:
   #   backgroundImage: "/assets/images/integration-01.jpg"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Read the story
-  #   ctaHref: "/en/projects/declarative-api-integration/"
+  #   ctaHref: "declarative-api-integration/"
   # ---------------------------------------------------------------
   # - title: Grocery Dynamic Pricing Backend
   #   eyebrow: Agentic AI & ML
@@ -41,7 +41,7 @@ tiles:
   #   backgroundImage: "/assets/images/grocery-01.jpg"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Read the story
-  #   ctaHref: "/en/projects/grocery-dynamic-pricing/"
+  #   ctaHref: "grocery-dynamic-pricing/"
   # ---------------------------------------------------------------
   - title: Multilingual Website Framework
     eyebrow: Web Development
@@ -49,7 +49,7 @@ tiles:
     backgroundImage: "/assets/images/website-01.jpg"
     backgroundColor: '#f3e8ff'
     ctaLabel: Read the story
-    ctaHref: "/en/projects/multilanguage-website-framework/"    
+    ctaHref: "multilanguage-website-framework/"    
   # ---------------------------------------------------------------
   # - title: Sentiment Analysis & Response Agent
   #   eyebrow: Agentic AI & ML
@@ -57,5 +57,5 @@ tiles:
   #   backgroundImage: "/assets/images/social-01.jpg"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Read the story
-  #   ctaHref: "/en/projects/sentiment-analysis-and-response/"  
+  #   ctaHref: "sentiment-analysis-and-response/"  
 ---

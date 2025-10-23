@@ -1,10 +1,10 @@
 {
-  "projects.md": "4df3baf25e46e1143f2bc4593eb90f71b355e707e5cae80a9509b332d698a209",
+  "projects.md": "f88fc49d3789723a5045d08a6be4d5d1f7322796eab8288f076866c2dc497b6c",
   "privacy-policy.md": "4f818bdf508eb2cc2f1765994f443d787e85794644ded6aa0ae4dee927b0dd4a",
-  "home.md": "95568b222ece42d526f58fa36453de63b50f2f1843484fcdf939ddfa97266721",
+  "home.md": "2c43d805007c1e0e2146f1de42184103674662fb8dc546f447375006886b9db0",
   "contact.md": "a41763fde89adcb66240d7f77ba98c09afd0c95b0fcaf8db6d28dda706dddef4",
   "bookshelf.md": "d988aad763ca7e6bde554889cb36edd5f209118455c251d6a149420fe7f18115",
-  "blog.md": "86dbda37e90f89f73d71cac35958134e0ca66e7ad700940cec9aefac2e0eb74b",
+  "blog.md": "81518eaf75edf2ffa40edaa59717c35a285b8cebf135716486b7a7ebd029ff64",
   "about.md": "dccde277714a6a6ac9ddda2cedf09b61eadeaf8f444b8e85fcdf9c37e856c779",
   "projects/unified-behavioral-telemetry.md": "d23597c24699529f49e9bca1820102bebb56b97b6dc9d0c09a29eb165d8d19cb",
   "projects/sentiment-analysis-and-response.md": "096bb32c7123cdb43fc216590a2af91a1692eefb0bda0a20f9e34e0e8bd2f48f",
@@ -14,5 +14,6 @@
   "projects/declarative-api-integration.md": "5c038bd80cb29617446c8b51829ce42583fa2c5d8ee2e0602eac575aa12ade4b",
   "projects/c4-example.md": "f2e0a372f0c3ff2a9db483220603d1ef72aaa720d45e0ecb222a2e44b35bfb0f",
   "projects/ai-devops-agent.md": "8e4469415ffb643be35f636b92175f971000401163429a5ea565f555154ae644",
-  "resume.md": "bc28092ed9e26fb3a8149179bbc986e36ec04a2e5f52a1e66becdebe96f5c2e9"
+  "resume.md": "bc28092ed9e26fb3a8149179bbc986e36ec04a2e5f52a1e66becdebe96f5c2e9",
+  "blog/build-before-buy.md": "2c4955215d58c0204fa7dc913a2f542f350e30889301746a9743aae3017d6b2d"
 }

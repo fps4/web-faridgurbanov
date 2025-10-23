@@ -5,11 +5,11 @@ tiles:
   # ---------------------------------------------------------------
   - title: "Einheitliche Verhaltens-Telemetrie"
     eyebrow: Cloud-Plattform
-    description: Ein offenes, meinungsstarkes Blueprint für Verhaltensdaten-Pipelines. Es vereinheitlicht die Erfassung, Anreicherung, Speicherung und Visualisierung über Web, Mobile und IoT hinweg – von Anfang an KI-bereit und kosteneffizient konzipiert.
+    description: Ein offenes, meinungsstarkes Blueprint für Verhaltensdatenpipelines. Es vereint Erfassung, Anreicherung, Speicherung und Visualisierung über Web, Mobilgeräte und IoT hinweg—entworfen, um von Anfang an KI-bereit und kosteneffizient zu sein.
     backgroundImage: "/assets/images/iot-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Geschichte lesen
-    ctaHref: "/en/projects/unified-behavioral-telemetry"
+    ctaHref: "unified-behavioral-telemetry"
   # ---------------------------------------------------------------
   - title: Steckbare Website-Formulare & Event-Buchungssystem
     eyebrow: Webentwicklung
@@ -17,7 +17,7 @@ tiles:
     backgroundImage: "/assets/images/forms-01.png"
     backgroundColor: '#f3e8ff'
     ctaLabel: Geschichte lesen
-    ctaHref: "/en/projects/pluggable-website-forms-and-event-booking"
+    ctaHref: "pluggable-website-forms-and-event-booking"
   # ---------------------------------------------------------------
   # - title: KI DevOps Agent
   #   eyebrow: Agentische KI & ML
@@ -25,7 +25,7 @@ tiles:
   #   backgroundImage: "/assets/images/devops-01.png"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Geschichte lesen
-  #   ctaHref: "/en/projects/ai-devops-agent"
+  #   ctaHref: "ai-devops-agent"
   # # ---------------------------------------------------------------
   # - title: Deklarative API-Integrationsplattform
   #   eyebrow: Cloud-Plattform
@@ -33,29 +33,29 @@ tiles:
   #   backgroundImage: "/assets/images/integration-01.jpg"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Geschichte lesen
-  #   ctaHref: "/en/projects/declarative-api-integration/"
+  #   ctaHref: "declarative-api-integration/"
   # ---------------------------------------------------------------
-  # - title: Dynamische Preisgestaltung im Lebensmittelhandel Backend
+  # - title: Dynamisches Preissetzungs-Backend für Lebensmittel
   #   eyebrow: Agentische KI & ML
   #   description: Persönliches Projekt, das marktreife Preisoptimierung für wachsende Sortimente liefert.
   #   backgroundImage: "/assets/images/grocery-01.jpg"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Geschichte lesen
-  #   ctaHref: "/en/projects/grocery-dynamic-pricing/"
+  #   ctaHref: "grocery-dynamic-pricing/"
   # ---------------------------------------------------------------
   - title: Mehrsprachiges Website-Framework
     eyebrow: Webentwicklung
-    description: React und Markdown Starter, der Inhalte automatisch mit LLM-Unterstützung übersetzt
+    description: React- und Markdown-Starter, der Inhalte automatisch mit LLM-Unterstützung übersetzt
     backgroundImage: "/assets/images/website-01.jpg"
     backgroundColor: '#f3e8ff'
     ctaLabel: Geschichte lesen
-    ctaHref: "/en/projects/multilanguage-website-framework/"    
+    ctaHref: "multilanguage-website-framework/"    
   # ---------------------------------------------------------------
-  # - title: Sentimentanalyse & Antwort-Agent
+  # - title: Sentiment-Analyse & Antwort-Agent
   #   eyebrow: Agentische KI & ML
-  #   description: Ein verwalteter Dienst für Gastgewerbe-Betreiber zur Skalierung der Gästefeedback-Triage.
+  #   description: Ein verwalteter Dienst für Betreiber im Gastgewerbe, um Gästefeedback in großem Maßstab zu triagieren.
   #   backgroundImage: "/assets/images/social-01.jpg"
   #   backgroundColor: '#f3e8ff'
   #   ctaLabel: Geschichte lesen
-  #   ctaHref: "/en/projects/sentiment-analysis-and-response/"  
+  #   ctaHref: "sentiment-analysis-and-response/"  
 ---
