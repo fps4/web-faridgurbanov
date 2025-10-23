@@ -10,14 +10,38 @@ Today, technology engineers with both technical and business understanding can d
 
 ### How AI and Platforms Are Changing "Buy vs Build"
 
-| Key Consideration | Traditional Enterprise Thinking | With AI and Platforms |
-|--------------------|----------------------------------|------------------------|
-| **Cost** | Buying off-the-shelf (OTS) software looks cheaper at first, but customizations and licenses grow expensive over time. | Building can now be cheaper, with no license fees and low maintenance costs. AI helps automate most of the work. |
-| **Time** | Buying used to mean faster time to market. | Building is now almost as fast — AI speeds up design, coding, and testing, making delivery possible in days. |
-| **Strategy** | Build only if it gives a strong competitive advantage. | Building is the strategy itself — you own your data, logic, and brand experience. |
-| **Resources** | Building requires big internal teams and skills. | Small teams with AI copilots and PaaS tools can deliver production-grade apps quickly. |
-| **Ecosystem Integration** | Purchased systems often need complex integration with existing tech. | Built solutions are naturally designed to fit your ecosystem from day one. |
 
+```mermaid
+---
+config:
+  theme: default
+  look: handDrawn
+---
+graph LR
+
+    subgraph Traditional
+        C1["💰 Cost: Cheaper upfront, expensive customizations later"]
+        C2["⏱️ Time: Faster market entry via ready-made tools"]
+        C3["🎯 Strategy: Build only for competitive advantage"]
+        C4["👥 Resources: Needs large internal teams"]
+        C5["🔗 Integration: Harder ecosystem fit"]
+    end
+
+    subgraph Modern
+        D1["💡 Cost: Lower total cost, no license or vendor lock-in"]
+        D2["🚀 Time: AI speeds design & coding — build in days"]
+        D3["🏗️ Strategy: Building itself becomes the advantage"]
+        D4["🤖 Resources: Small team + AI = big results"]
+        D5["🔄 Integration: Designed to fit from day one"]
+    end
+
+    C1 --> D1
+    C2 --> D2
+    C3 --> D3
+    C4 --> D4
+    C5 --> D5
+
+```
 
 ### Real Example: 36-Hour Web App Build
 
