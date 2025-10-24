@@ -1,6 +1,6 @@
 ---
-title: About Me
-subtitle: Farid F. Gurbanov
+title: Farid F. Gurbanov
+subtitle: AI-Driven Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 ---
 
 **Solutions Architect & Engineer with broad experience across cloud infrastructure, data platforms, and system integration. I design and deliver hybrid and multi-cloud architectures (AWS, Azure, on-premise) and event-driven, streaming integration frameworks that help organizations modernize faster and scale with confidence.**

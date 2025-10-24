@@ -1,7 +1,7 @@
 ---
 pagetitle: Farid Gurbanov - Lösungsarchitekt | Cloud- & Full-Stack-Ingenieur
-title: Lösungsarchitekt & Full-Stack-Ingenieur
-subtitle: Ich bin ein Lösungsarchitekt und Full-Stack-Ingenieur mit umfassender Erfahrung in Cloud-, Integrations- und Datenplattformen. Ich spezialisiere mich auf das Design und die Bereitstellung von End-to-End-Lösungen, die echten Geschäftswert schaffen. Ich arbeite souverän mit AWS, Azure, Docker und ereignisgesteuerten Integrationsframeworks. Zudem bin ich in der Full-Stack-Entwicklung mit React, Node.js, Python, Terraform und CI/CD aktiv und entwickle zuverlässige Anwendungen, Datenpipelines und Entwicklerplattformen.
+title: KI-gesteuerter Lösungsarchitekt | Cloud- & Datenplattform-Modernisierung | Multi-Cloud | Ereignisgesteuert | Full-Stack | Azure & AWS
+subtitle: Ich bin ein Lösungsarchitekt & Ingenieur mit umfassender Erfahrung in Cloud-, Integrations- und Datenplattformen. Ich spezialisiere mich auf die Gestaltung und Bereitstellung von End-to-End-Lösungen, die echten Geschäftswert schaffen. Ich arbeite sicher mit AWS, Azure, Docker und ereignisgesteuerten Integrationsframeworks. Zudem bin ich praktisch in der Full-Stack-Entwicklung mit React, Node.js, Python, Terraform und CI/CD tätig und baue zuverlässige Anwendungen, Datenpipelines und Entwicklerplattformen.
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -15,13 +15,13 @@ pagelinks:
 carousel:
   - title: Vereinheitlichte Verhaltens-Telemetrie
     eyebrow: Vorgestellte Projekte
-    description: Ein offenes, meinungsstarkes Blueprint für Verhaltensdatenpipelines. Es vereinheitlicht Erfassung, Anreicherung, Speicherung und Visualisierung über Web, Mobil und IoT hinweg – von Anfang an AI‑bereit und kosteneffizient konzipiert.
+    description: Ein offenes, meinungsstarkes Blueprint für Verhaltensdatenpipelines. Es vereinheitlicht Erfassung, Anreicherung, Speicherung und Visualisierung über Web, Mobile und IoT hinweg – von Anfang an KI-bereit und kosteneffizient konzipiert.
     image: "/assets/images/iot-01.png"
     ctaLabel: Architektur anzeigen
     ctaHref: "projects/unified-behavioral-telemetry"
   - title: Steckbare Website-Formulare & Event-Buchungssystem
     eyebrow: Vorgestellte Projekte
-    description: Modularer Formular-Engine mit serverloser Workflow-Automatisierung, die ein Multi-Brand-Buchungserlebnis ermöglicht.  
+    description: Modulares Formular-Engine mit serverloser Workflow-Automatisierung, die ein Multi-Brand-Buchungserlebnis ermöglicht.
     image: "/assets/images/forms-01.png"
     ctaLabel: Projekt erkunden
     ctaHref: "projects/pluggable-website-forms-and-event-booking"

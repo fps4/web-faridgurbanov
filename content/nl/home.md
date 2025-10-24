@@ -1,7 +1,7 @@
 ---
 pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
-title: Solutions Architect & Full-Stack Engineer
-subtitle: Ik ben een Solutions Architect en Full-Stack Engineer met brede ervaring in cloud, integratie en dataplatformen. Ik ben gespecialiseerd in het ontwerpen en leveren van end-to-end oplossingen die echte bedrijfswaarde creëren. Ik werk vol vertrouwen met AWS, Azure, Docker en event-driven integratiekaders. Ik ben ook hands-on in full-stack ontwikkeling met React, Node.js, Python, Terraform en CI/CD, en bouw betrouwbare applicaties, datapijplijnen en ontwikkelaarsplatforms.
+title: AI-gedreven Solutions Architect | Cloud & Data Platform Modernisatie | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Ik ben een Solutions Architect & Engineer met brede ervaring in cloud, integratie en dataplatforms. Ik ben gespecialiseerd in het ontwerpen en leveren van end-to-end oplossingen die echte bedrijfswaarde creëren. Ik werk vol vertrouwen met AWS, Azure, Docker en event-driven integratiekaders. Ik ben ook praktisch bezig met full-stack ontwikkeling met React, Node.js, Python, Terraform en CI/CD, en bouw betrouwbare applicaties, datapijplijnen en ontwikkelaarsplatforms.
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,15 +13,15 @@ pagelinks:
     ctaLabel: URL kopiëren
     ctaHref: "#"    
 carousel:
-  - title: Unified Behavioral Telemetry
+  - title: Geünificeerde Gedrags-Telemetrie
     eyebrow: Uitgelichte Projecten
-    description: Een open, opiniërend blauwdruk voor gedragsdatapijplijnen. Het verenigt inname, verrijking, opslag en visualisatie over web, mobiel en IoT—ontworpen om AI-klaar en kostenefficiënt te zijn vanaf dag één.
+    description: Een open, geadviseerde blauwdruk voor gedragsdatapijplijnen. Het verenigt opname, verrijking, opslag en visualisatie over web, mobiel en IoT—ontworpen om AI-klaar en kostenefficiënt te zijn vanaf dag één.
     image: "/assets/images/iot-01.png"
     ctaLabel: Bekijk architectuur
     ctaHref: "projects/unified-behavioral-telemetry"
-  - title: Plugbare Website Formulieren & Evenementenboekingssysteem
+  - title: Insteekbare Websiteformulieren & Evenementenboeksysteem
     eyebrow: Uitgelichte Projecten
-    description: Modulaire formulierenmotor met serverloze workflowautomatisering die een multi-merk boekingservaring aandrijft.
+    description: Modulaire formulierenengine met serverloze workflow-automatisering die een multi-merk boekingservaring aandrijft.  
     image: "/assets/images/forms-01.png"
     ctaLabel: Verken het project
     ctaHref: "projects/pluggable-website-forms-and-event-booking"
