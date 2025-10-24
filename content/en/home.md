@@ -1,7 +1,7 @@
 ---
 pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
 title: Solutions Architect & Full-Stack Engineer
-subtitle: I'm a Solutions Architect and Full-Stack Engineer with broad experience in cloud, integration, and data platforms. I specialize in designing and delivering end-to-end solutions that create real business value. I work confidently across AWS, Azure, Docker, and event-driven integration frameworks. I’m also hands-on in full-stack development with React, Node.js, Python, Terraform, and CI/CD, building reliable applications, data pipelines, and developer platforms. 
+subtitle: I'm a Solutions Architect & Engineer with broad experience in cloud, integration, and data platforms. I specialize in designing and delivering end-to-end solutions that create real business value. I work confidently across AWS, Azure, Docker, and event-driven integration frameworks. I’m also hands-on in full-stack development with React, Node.js, Python, Terraform, and CI/CD, building reliable applications, data pipelines, and developer platforms. 
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
