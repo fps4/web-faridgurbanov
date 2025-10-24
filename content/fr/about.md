@@ -1,6 +1,16 @@
 ---
 title: Farid F. Gurbanov
 subtitle: Architecte de Solutions Axées sur l'IA | Modernisation des Plateformes Cloud & Data | Multi-Cloud | Événementiel | Full-Stack | Azure & AWS
+pagelinks:
+  - icon: "/assets/images/linkedin-icon.png"
+    ctaLabel: LinkedIn
+    ctaHref: "https://www.linkedin.com/in/fgurbanov/"
+  - icon: "/assets/images/github-01.png"
+    ctaLabel: GitHub
+    ctaHref: "https://github.com/fps4"
+  - icon: "/assets/images/share-icon.png"
+    ctaLabel: Copy URL
+    ctaHref: "#"   
 ---
 
 **Architecte et Ingénieur de Solutions avec une vaste expérience dans les infrastructures cloud, les plateformes de données et l'intégration de systèmes. Je conçois et livre des architectures hybrides et multi-cloud (AWS, Azure, sur site) et des cadres d'intégration événementiels et de streaming qui aident les organisations à se moderniser plus rapidement et à évoluer en toute confiance.**

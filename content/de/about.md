@@ -1,6 +1,16 @@
 ---
 subtitle: Farid F. Gurbanov
 title: KI-gesteuerter Lösungsarchitekt | Cloud- & Datenplattform-Modernisierung | Multi-Cloud | Ereignisgesteuert | Full-Stack | Azure & AWS
+pagelinks:
+  - icon: "/assets/images/linkedin-icon.png"
+    ctaLabel: LinkedIn
+    ctaHref: "https://www.linkedin.com/in/fgurbanov/"
+  - icon: "/assets/images/github-01.png"
+    ctaLabel: GitHub
+    ctaHref: "https://github.com/fps4"
+  - icon: "/assets/images/share-icon.png"
+    ctaLabel: Copy URL
+    ctaHref: "#"   
 ---
 
 **Lösungsarchitekt & Ingenieur mit umfangreicher Erfahrung in Cloud-Infrastruktur, Datenplattformen und Systemintegration. Ich entwerfe und implementiere hybride und Multi-Cloud-Architekturen (AWS, Azure, On-Premise) sowie ereignisgesteuerte, Streaming-Integrationsframeworks, die Organisationen helfen, schneller zu modernisieren und mit Zuversicht zu skalieren.**
