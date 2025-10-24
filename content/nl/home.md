@@ -1,6 +1,6 @@
 ---
 pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
-title: AI-gedreven Solutions Architect | Cloud & Data Platform Modernisatie | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+title: AI-gedreven Solutions Architect | Cloud & Data Platform Modernisatie
 subtitle: Ik ben een Solutions Architect & Engineer met brede ervaring in cloud, integratie en dataplatforms. Ik ben gespecialiseerd in het ontwerpen en leveren van end-to-end oplossingen die echte bedrijfswaarde creëren. Ik werk vol vertrouwen met AWS, Azure, Docker en event-driven integratiekaders. Ik ben ook praktisch bezig met full-stack ontwikkeling met React, Node.js, Python, Terraform en CI/CD, en bouw betrouwbare applicaties, datapijplijnen en ontwikkelaarsplatforms.
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"

@@ -1,6 +1,6 @@
 ---
 pagetitle: Farid Gurbanov - Lösungsarchitekt | Cloud- & Full-Stack-Ingenieur
-title: KI-gesteuerter Lösungsarchitekt | Cloud- & Datenplattform-Modernisierung | Multi-Cloud | Ereignisgesteuert | Full-Stack | Azure & AWS
+title: KI-gesteuerter Lösungsarchitekt | Cloud- & Datenplattform-Modernisierung
 subtitle: Ich bin ein Lösungsarchitekt & Ingenieur mit umfassender Erfahrung in Cloud-, Integrations- und Datenplattformen. Ich spezialisiere mich auf die Gestaltung und Bereitstellung von End-to-End-Lösungen, die echten Geschäftswert schaffen. Ich arbeite sicher mit AWS, Azure, Docker und ereignisgesteuerten Integrationsframeworks. Zudem bin ich praktisch in der Full-Stack-Entwicklung mit React, Node.js, Python, Terraform und CI/CD tätig und baue zuverlässige Anwendungen, Datenpipelines und Entwicklerplattformen.
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"

@@ -1,6 +1,6 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
-title: AI-Driven Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+pagetitle: Farid Gurbanov - AI-Driven Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+title: AI-Driven Solutions Architect | Cloud & Data Platform Modernization
 subtitle: I'm a Solutions Architect & Engineer with broad experience in cloud, integration, and data platforms. I specialize in designing and delivering end-to-end solutions that create real business value. I work confidently across AWS, Azure, Docker, and event-driven integration frameworks. I’m also hands-on in full-stack development with React, Node.js, Python, Terraform, and CI/CD, building reliable applications, data pipelines, and developer platforms. 
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
