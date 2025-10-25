@@ -35,7 +35,7 @@ async function translateText(text, targetLang, sourceLang = "en") {
     const prompt = `Translate the following Markdown content from ${sourceLang} to ${targetLang}. Don't enclose the resulting content into codeblock. Keep the frontmatter and formatting intact:\n\n${text}`;
 
     const response = await openai.chat.completions.create({
-        model: "gpt-4o",
+        model: "gpt-5-mini",
         messages: [{ role: "user", content: prompt }],
         temperature: 0.4,
     });
