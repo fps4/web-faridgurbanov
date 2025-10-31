@@ -1,6 +1,6 @@
 ---
 title: Farid F. Gurbanov
-subtitle: AI-Driven Solutions Architect | Cloud & Data Platform Modernisatie | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: AI-Driven Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,28 +13,28 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions Architect & Engineer met brede ervaring in cloudinfrastructuur, dataplatforms en systeemintegratie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven, streaming integratiekaders die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
+**Solutions Architect & Engineer met brede ervaring in cloudinfrastructuur, dataplatforms en systeemintegratie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven, streaming integratieframeworks die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
 
-Praktisch en hands-on, ik geniet van het bouwen van ontwikkelaarsplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt altijd op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en solide architectuur om efficiënte, onderhoudbare en datagestuurde systemen te creëren.
+Praktisch en hands-on, ik bouw graag ontwikkelaarsplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt altijd op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en degelijke architectuur om efficiënte, onderhoudbare en datagedreven systemen te creëren.  
 
-Erkend voor het overbruggen van de kloof tussen enterprise architectuur en productengineering, leid ik door voorbeeld—mentoren van ontwikkelaars, afstemmen van belanghebbenden en het vertalen van complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb gewerkt met zowel enterprise als MKB-klanten, waarbij ik teams heb geholpen om van legacy-systemen over te stappen naar agile, cloud-native en AI-klaar omgevingen.
+Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en productengineering, leid ik door het goede voorbeeld — ik begeleid ontwikkelaars, breng stakeholders op één lijn en vertaal complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb zowel met enterprise- als SMB-klanten gewerkt en teams geholpen bij de overgang van legacy-systemen naar agile, cloud-native en AI-ready omgevingen.  
 
-**Vaardigheden & Expertise**
+**Skills & Expertise**
 
-- **AI & ML**: Generatieve AI-integratie, AI-gestuurde procesautomatisering, data-analyse pijplijnen, OpenAI
-- **Architectuur**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybride Cloud, Big Data, C4 Modellering  
-- **Full-Stack Ontwikkeling**: React/MUI, Node.js, REST API's, Chatbots, Real-Time Dashboards, CI/CD Automatisering  
-- **Programmeren**: JavaScript/Node.js, Python, Terraform, SQL, KQL, Shell Scripting  
-- **Cloud & Infra**: AWS, Azure, Cloudflare, Netwerken, IAM, Hybride Connectiviteit, On-Prem Integratie  
-- **DevOps & Automatisering**: IaC (Terraform, ARM), GitHub Actions, Docker, Observability (DataDog, Grafana)  
-- **Leiderschap & Levering**: Agile Levering, Teamleiderschap, Mentoring, Communicatie met Belanghebbenden, Technische Pre-Sales  
+- **AI & ML**: Integratie van generatieve AI, AI-gestuurde procesautomatisering, pijplijnen voor data-analyse, OpenAI
+- **Architecture**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybride Cloud, Big Data, C4-modellering  
+- **Full-Stack Development**: React/MUI, Node.js, REST API's, chatbots, realtime dashboards, CI/CD-automatisering  
+- **Programming**: JavaScript/Node.js, Python, Terraform, SQL, KQL, shell-scripting  
+- **Cloud & Infra**: AWS, Azure, Cloudflare, netwerken, IAM, hybride connectiviteit, on-prem integratie  
+- **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, observability (DataDog, Grafana)  
+- **Leadership & Delivery**: Agile levering, teamleiderschap, mentoring, stakeholdercommunicatie, technische pre-sales  
 
-**Voortdurend Leren & AI Certificeringen**
+**Ongoing Learning & AI Certifications**
 - DeepLearning.AI – Agentic AI
 - Databricks AI/ML Practitioner (gepland)
 
-**Technische Referenties**  
-*(Sommige referenties verlopen na 2025, maar hier behouden om de breedte van expertise te tonen)*  
+**Technical Credentials**  
+*(Sommige certificaten zijn na 2025 verlopen, maar blijven hier vermeld om de reikwijdte van de expertise te tonen)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
@@ -42,9 +42,9 @@ Erkend voor het overbruggen van de kloof tussen enterprise architectuur en produ
 - Databricks Certified Data Engineer Professional  
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
-- Cisco CCNA (Netwerken)  
-- PRINCE2 Practitioner (Projectmanagement)  
-- TOGAF 9 Certified (Enterprise Architectuur)  
-- ITIL 4 Foundation (Servicemanagement)  
+- Cisco CCNA (netwerken)  
+- PRINCE2 Practitioner (projectmanagement)  
+- TOGAF 9 Certified (enterprise-architectuur)  
+- ITIL 4 Foundation (servicemanagement)  
 
-![Technische Referenties](/images/badges-02.png)
+![Technische referenties](/images/badges-02.png)

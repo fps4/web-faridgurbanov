@@ -4,6 +4,7 @@ export const paths = (lang = 'en') => ({
   projects: `/${lang}/projects`,
   products: `/${lang}/products`,
   bookshelf: `/${lang}/bookshelf`,
+  repositories: `/${lang}/repositories`,
   about: `/${lang}/about`,
   contact: `/${lang}/contact`,
   privacy: `/${lang}/privacy-policy`,

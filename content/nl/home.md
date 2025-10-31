@@ -1,7 +1,7 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Full-Stack Engineer
-title: AI-gedreven Solutions Architect | Cloud & Data Platform Modernisatie
-subtitle: Ik ben een Solutions Architect & Engineer met brede ervaring in cloud, integratie en dataplatforms. Ik ben gespecialiseerd in het ontwerpen en leveren van end-to-end oplossingen die echte bedrijfswaarde creëren. Ik werk vol vertrouwen met AWS, Azure, Docker en event-driven integratiekaders. Ik ben ook praktisch bezig met full-stack ontwikkeling met React, Node.js, Python, Terraform en CI/CD, en bouw betrouwbare applicaties, datapijplijnen en ontwikkelaarsplatforms.
+pagetitle: Farid Gurbanov - AI-gedreven oplossingsarchitect | Cloud- & dataplatformmodernisering | Multi-Cloud | Event-gedreven | Full-Stack | Azure & AWS
+title: AI-gestuurde oplossingsarchitect | Modernisering van cloud- en dataplatforms
+subtitle: Ik ben een oplossingsarchitect en engineer met ruime ervaring in cloud-, integratie- en dataplatforms. Ik ben gespecialiseerd in het ontwerpen en leveren van end-to-end oplossingen die echte zakelijke waarde opleveren. Ik werk met vertrouwen met AWS, Azure, Docker en event-gedreven integratiekaders. Daarnaast werk ik hands-on in full-stack ontwikkeling met React, Node.js, Python, Terraform en CI/CD, waarbij ik betrouwbare applicaties, datapijplijnen en ontwikkelaarsplatforms bouw.
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,22 +13,22 @@ pagelinks:
     ctaLabel: URL kopiëren
     ctaHref: "#"    
 carousel:
-  - title: Geünificeerde Gedrags-Telemetrie
-    eyebrow: Uitgelichte Projecten
-    description: Een open, geadviseerde blauwdruk voor gedragsdatapijplijnen. Het verenigt opname, verrijking, opslag en visualisatie over web, mobiel en IoT—ontworpen om AI-klaar en kostenefficiënt te zijn vanaf dag één.
+  - title: Unified Behavioral Telemetry
+    eyebrow: Uitgelichte projecten
+    description: Een open blauwdruk met een duidelijke visie voor gedragsdatapijplijnen. Het verenigt ingestie, verrijking, opslag en visualisatie voor web, mobiel en IoT — ontworpen om vanaf dag één AI-klaar en kostenefficiënt te zijn.
     image: "/assets/images/iot-01.png"
-    ctaLabel: Bekijk architectuur
+    ctaLabel: Architectuur bekijken
     ctaHref: "projects/unified-behavioral-telemetry"
-  - title: Insteekbare Websiteformulieren & Evenementenboeksysteem
-    eyebrow: Uitgelichte Projecten
-    description: Modulaire formulierenengine met serverloze workflow-automatisering die een multi-merk boekingservaring aandrijft.  
+  - title: Modulaire websiteformulieren & evenementenboekingssysteem
+    eyebrow: Uitgelichte projecten
+    description: Modulaire formulieren-engine met serverless workflow-automatisering die een boekingservaring voor meerdere merken mogelijk maakt.
     image: "/assets/images/forms-01.png"
     ctaLabel: Verken het project
     ctaHref: "projects/pluggable-website-forms-and-event-booking"
-  # - title: Declaratief API Integratiesysteem
-  #   eyebrow: Uitgelichte Projecten
-  #   description: Cloud-native ESB-patronen die 30+ event-driven integraties leveren met FinOps-veiligheidsrails en zero-downtime implementaties.
+  # - title: Declarative API Integration System
+  #   eyebrow: Featured Projects
+  #   description: Cloud-native ESB patterns delivering 30+ eventp-driven integrations with FinOps guardrails and zero-downtime deployments.
   #   image: "/assets/images/integration-01.jpg"    
-  #   ctaLabel: Lees integratieverhaal
+  #   ctaLabel: Read integration story
   #   ctaHref: "projects/lightweight-esb"
 ---

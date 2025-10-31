@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: Resume
 subtitle: Farid F. Gurbanov
 ---
 

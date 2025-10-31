@@ -1,7 +1,7 @@
 ---
-pagetitle: Farid Gurbanov - Architecte de Solutions | Ingénieur Cloud & Full-Stack
-title: Architecte de Solutions Axé sur l'IA | Modernisation des Plateformes Cloud & Data
-subtitle: Je suis un Architecte de Solutions & Ingénieur avec une vaste expérience dans le cloud, l'intégration et les plateformes de données. Je me spécialise dans la conception et la livraison de solutions de bout en bout qui créent une véritable valeur commerciale. Je travaille avec confiance sur AWS, Azure, Docker et les cadres d'intégration événementiels. Je suis également pratique dans le développement full-stack avec React, Node.js, Python, Terraform et CI/CD, construisant des applications fiables, des pipelines de données et des plateformes de développement.
+pagetitle: Farid Gurbanov - Architecte de solutions axé sur l'IA | Modernisation des plateformes cloud et données | Multi-Cloud | Orienté événements | Full-Stack | Azure & AWS
+title: Architecte de solutions axé sur l'IA | Modernisation des plateformes cloud et données
+subtitle: Je suis architecte de solutions et ingénieur avec une vaste expérience des clouds, de l'intégration et des plateformes de données. Je me spécialise dans la conception et la livraison de solutions de bout en bout qui créent une réelle valeur métier. Je travaille en toute confiance sur AWS, Azure, Docker et des frameworks d'intégration orientés événements. Je suis également opérationnel en développement full-stack avec React, Node.js, Python, Terraform et CI/CD, construisant des applications fiables, des pipelines de données et des plateformes pour développeurs. 
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,22 +13,22 @@ pagelinks:
     ctaLabel: Copier l'URL
     ctaHref: "#"    
 carousel:
-  - title: Télémétrie Comportementale Unifiée
-    eyebrow: Projets en Vedette
-    description: Un modèle ouvert et opiniâtre pour les pipelines de données comportementales. Il unifie l'ingestion, l'enrichissement, le stockage et la visualisation sur le web, mobile et IoT—conçu pour être prêt pour l'IA et rentable dès le premier jour.
+  - title: Télémétrie comportementale unifiée
+    eyebrow: Projets en vedette
+    description: Un plan directeur ouvert et prescriptif pour les pipelines de données comportementales. Il unifie l'ingestion, l'enrichissement, le stockage et la visualisation pour le web, le mobile et l'IoT — conçu pour être prêt pour l'IA et rentable dès le premier jour.
     image: "/assets/images/iot-01.png"
     ctaLabel: Voir l'architecture
     ctaHref: "projects/unified-behavioral-telemetry"
-  - title: Formulaires de Site Web Plug-and-Play & Système de Réservation d'Événements
-    eyebrow: Projets en Vedette
-    description: Moteur de formulaires modulaire avec automatisation de workflow sans serveur alimentant une expérience de réservation multi-marques.
+  - title: Formulaires de site modulaires & système de réservation d'événements
+    eyebrow: Projets en vedette
+    description: Moteur de formulaires modulaire avec automatisation de workflows serverless alimentant une expérience de réservation multi-marques.  
     image: "/assets/images/forms-01.png"
     ctaLabel: Explorer le projet
     ctaHref: "projects/pluggable-website-forms-and-event-booking"
-  # - title: Système d'Intégration API Déclaratif
-  #   eyebrow: Projets en Vedette
-  #   description: Modèles ESB natifs du cloud offrant plus de 30 intégrations événementielles avec des garde-fous FinOps et des déploiements sans interruption.
+  # - title: Système d'intégration d'API déclaratif
+  #   eyebrow: Projets en vedette
+  #   description: Modèles ESB cloud-natifs fournissant plus de 30 intégrations pilotées par des événements avec des garde-fous FinOps et des déploiements sans temps d'arrêt.
   #   image: "/assets/images/integration-01.jpg"    
-  #   ctaLabel: Lire l'histoire d'intégration
+  #   ctaLabel: Lire le récit d'intégration
   #   ctaHref: "projects/lightweight-esb"
 ---

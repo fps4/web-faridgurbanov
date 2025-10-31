@@ -1,11 +1,11 @@
 {
   "projects.md": "f88fc49d3789723a5045d08a6be4d5d1f7322796eab8288f076866c2dc497b6c",
   "privacy-policy.md": "4f818bdf508eb2cc2f1765994f443d787e85794644ded6aa0ae4dee927b0dd4a",
-  "home.md": "51807566e5985377806d49ecfe5bcf661d899ce0cb21bca978b28e8d8b28dd1b",
+  "home.md": "0b1b7f08f2191aa84e108428ff4cfd730fafc2fbebcbc36d85b1e100557a3dee",
   "contact.md": "a41763fde89adcb66240d7f77ba98c09afd0c95b0fcaf8db6d28dda706dddef4",
   "bookshelf.md": "d988aad763ca7e6bde554889cb36edd5f209118455c251d6a149420fe7f18115",
-  "blog.md": "81518eaf75edf2ffa40edaa59717c35a285b8cebf135716486b7a7ebd029ff64",
-  "about.md": "cf3a065e952ee5f4751dd7e4375d29f4600a7d8e42d569257b95dc0071434424",
+  "blog.md": "7ed0abba457bb83e1529f67de7b9cee65c2b2e7275221ef8dec1811ade0bbb90",
+  "about.md": "f32cecdd8fccbbe6e917de3aa65d26f0f975b32fa02edc747679263b74ac6200",
   "projects/unified-behavioral-telemetry.md": "d23597c24699529f49e9bca1820102bebb56b97b6dc9d0c09a29eb165d8d19cb",
   "projects/sentiment-analysis-and-response.md": "096bb32c7123cdb43fc216590a2af91a1692eefb0bda0a20f9e34e0e8bd2f48f",
   "projects/pluggable-website-forms-and-event-booking.md": "0503fdb396a00a453aa191aa64b712017857d1a2fef7c57d8093c332a76011ce",
@@ -15,5 +15,6 @@
   "projects/c4-example.md": "f2e0a372f0c3ff2a9db483220603d1ef72aaa720d45e0ecb222a2e44b35bfb0f",
   "projects/ai-devops-agent.md": "8e4469415ffb643be35f636b92175f971000401163429a5ea565f555154ae644",
   "resume.md": "bc28092ed9e26fb3a8149179bbc986e36ec04a2e5f52a1e66becdebe96f5c2e9",
-  "blog/build-before-buy.md": "9570bd0f6ab773693ff6cd849f084558e599bc3ec57e968826134b5a1654c155"
+  "blog/build-before-buy.md": "9570bd0f6ab773693ff6cd849f084558e599bc3ec57e968826134b5a1654c155",
+  "repositories.md": "7fcad0a771c5d6f43b59dc33498144da354668ebb444c80bab1430eddba6d1ef"
 }

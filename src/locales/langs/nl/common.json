@@ -1,8 +1,8 @@
 {
   "CookiesPreferences": {
     "header": "Ik gebruik cookies om deze website soepel te laten werken en uw ervaring te verbeteren.",
-    "technicalCookies": "<b>Technische Cookies:</b> zijn essentieel voor het goed functioneren van de website en kunnen niet worden uitgeschakeld. Ze onthouden zaken zoals uw taalvoorkeur en cookie-toestemmingskeuze. Deze cookies slaan geen persoonlijk identificeerbare informatie op.",
-    "functionalCookies": "<b>Functionele Cookies:</b> helpen bij het bieden van extra functies en personalisatie, bijvoorbeeld via de AI-aangedreven chatbot. Als u ervoor kiest deze cookies niet toe te staan, kunnen sommige delen van de site mogelijk niet naar behoren werken.",
+    "technicalCookies": "<b>Technische cookies:</b> zijn essentieel voor het goed functioneren van de website en kunnen niet worden uitgeschakeld. Ze onthouden zaken zoals uw taalvoorkeur en uw keuze voor cookietoestemming. Deze cookies slaan geen persoonlijk identificeerbare informatie op.",
+    "functionalCookies": "<b>Functionele cookies:</b> helpen bij het bieden van extra functies en personalisatie, bijvoorbeeld via de door AI aangedreven chatbot. Als u ervoor kiest deze cookies niet toe te staan, kunnen sommige onderdelen van de site mogelijk niet correct werken.",
     "accept": "Accepteren",
     "decline": "Weigeren"
   }

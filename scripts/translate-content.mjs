@@ -37,7 +37,6 @@ async function translateText(text, targetLang, sourceLang = "en") {
     const response = await openai.chat.completions.create({
         model: "gpt-5-mini",
         messages: [{ role: "user", content: prompt }],
-        temperature: 0.4,
     });
 
     return response.choices[0].message.content;

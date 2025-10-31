@@ -1,7 +1,7 @@
 ---
-pagetitle: Farid Gurbanov - Lösungsarchitekt | Cloud- & Full-Stack-Ingenieur
-title: KI-gesteuerter Lösungsarchitekt | Cloud- & Datenplattform-Modernisierung
-subtitle: Ich bin ein Lösungsarchitekt & Ingenieur mit umfassender Erfahrung in Cloud-, Integrations- und Datenplattformen. Ich spezialisiere mich auf die Gestaltung und Bereitstellung von End-to-End-Lösungen, die echten Geschäftswert schaffen. Ich arbeite sicher mit AWS, Azure, Docker und ereignisgesteuerten Integrationsframeworks. Zudem bin ich praktisch in der Full-Stack-Entwicklung mit React, Node.js, Python, Terraform und CI/CD tätig und baue zuverlässige Anwendungen, Datenpipelines und Entwicklerplattformen.
+pagetitle: Farid Gurbanov - KI-gesteuerter Solutions Architect | Cloud- & Datenplattform-Modernisierung | Multi-Cloud | Ereignisgesteuert | Full-Stack | Azure & AWS
+title: KI-gesteuerter Solutions Architect | Cloud- & Datenplattform-Modernisierung
+subtitle: Ich bin Solutions Architect & Engineer mit umfassender Erfahrung in Cloud-, Integrations- und Datenplattformen. Ich spezialisiere mich auf das Entwerfen und Bereitstellen von End-to-End-Lösungen, die echten geschäftlichen Mehrwert schaffen. Ich arbeite sicher mit AWS, Azure, Docker und ereignisgesteuerten Integrations-Frameworks. Außerdem bin ich praktisch in der Full-Stack-Entwicklung mit React, Node.js, Python, Terraform und CI/CD tätig und baue zuverlässige Anwendungen, Datenpipelines und Entwicklerplattformen. 
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -14,21 +14,21 @@ pagelinks:
     ctaHref: "#"    
 carousel:
   - title: Vereinheitlichte Verhaltens-Telemetrie
-    eyebrow: Vorgestellte Projekte
-    description: Ein offenes, meinungsstarkes Blueprint für Verhaltensdatenpipelines. Es vereinheitlicht Erfassung, Anreicherung, Speicherung und Visualisierung über Web, Mobile und IoT hinweg – von Anfang an KI-bereit und kosteneffizient konzipiert.
+    eyebrow: Ausgewählte Projekte
+    description: Eine offene, meinungsstarke Blaupause für Verhaltensdaten-Pipelines. Sie vereinheitlicht Ingest, Anreicherung, Speicherung und Visualisierung für Web, Mobile und IoT — konzipiert, um von Tag eins an KI-bereit und kosteneffizient zu sein.
     image: "/assets/images/iot-01.png"
     ctaLabel: Architektur anzeigen
     ctaHref: "projects/unified-behavioral-telemetry"
-  - title: Steckbare Website-Formulare & Event-Buchungssystem
-    eyebrow: Vorgestellte Projekte
-    description: Modulares Formular-Engine mit serverloser Workflow-Automatisierung, die ein Multi-Brand-Buchungserlebnis ermöglicht.
+  - title: Modulare Website-Formulare & Event-Buchungssystem
+    eyebrow: Ausgewählte Projekte
+    description: Modulare Formular-Engine mit serverloser Workflow-Automatisierung, die ein markenübergreifendes Buchungserlebnis ermöglicht.  
     image: "/assets/images/forms-01.png"
     ctaLabel: Projekt erkunden
     ctaHref: "projects/pluggable-website-forms-and-event-booking"
   # - title: Deklaratives API-Integrationssystem
-  #   eyebrow: Vorgestellte Projekte
-  #   description: Cloud-native ESB-Muster, die über 30 ereignisgesteuerte Integrationen mit FinOps-Leitplanken und Ausfallzeiten-freien Bereitstellungen liefern.
+  #   eyebrow: Ausgewählte Projekte
+  #   description: Cloud-native ESB-Muster, die 30+ ereignisgesteuerte Integrationen mit FinOps-Sicherheitsmechanismen und Zero-Downtime-Deployments liefern.
   #   image: "/assets/images/integration-01.jpg"    
-  #   ctaLabel: Integrationsgeschichte lesen
+  #   ctaLabel: Integrations-Story lesen
   #   ctaHref: "projects/lightweight-esb"
 ---
