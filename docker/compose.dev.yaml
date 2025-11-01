@@ -4,3 +4,13 @@ services:
       NODE_ENV: development
       LOG_LEVEL: debug
       LOG_PRETTY: 'true'
+      # Backend services
+      NEXT_PUBLIC_SESSION_MANAGER_URL: https://api.fps4.com/session
+      NEXT_PUBLIC_COLLECTOR_URL: https://clickstream.fps4.com/collect
+      NEXT_PUBLIC_CHATBOT_URL: https://chatbot.fps4.com
+      NEXT_PUBLIC_ASSETS_DIR: "/assets"
+      # Chatbot configuration
+      NEXT_PUBLIC_CHATBOT_TENANT_ID: "51b9310c-7ecb-4d20-a954-33a8f25462c7"
+      NEXT_PUBLIC_CHATBOT_API_BASE_URL: "https://chatbot.fps4.com"
+      # Google Tag Manager
+      NEXT_PUBLIC_GTM_ID: "GTM-5DXDHNDZ"

@@ -1,16 +1,23 @@
 name: Deploy with Self-Hosted Runners
-env:
-  ENV_FILE: docker/.env.${{ github.event.inputs.environment || 'dev' }}
+#
+# Required repository secrets:
+# - GH_PACKAGES_TOKEN : GitHub Packages / registry token (used during image build)
+# - OPENAI_API_KEY    : OpenAI API key (used by media generation in build/runtime)
+#
   
 on:
-  # push:
-  #   branches:
-  #     - main
-  #     - '**'
+  push:
+    branches:
+      - main
+      - '**'
   workflow_dispatch:   # allows manual redeploy via GitHub UI
     inputs:
       environment:
         description: "Select environment (dev or prod)"
+        type: choice
+        options:
+          - "prod"
+          - "dev"
         required: true
         default: "dev"
 
@@ -18,6 +25,9 @@ jobs:
   deploy-dev:
     if: (github.event_name == 'push' && github.ref != 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'dev')
     runs-on: [self-hosted, development]
+    env:
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,11 +35,14 @@ jobs:
       - name: Deploy to DEV
         run: |
           echo "Deploying branch ${{ github.ref_name }} to DEV"
-          docker compose --env-file "$ENV_FILE" \ -f docker/compose.yaml -f docker/compose.dev.yaml up -d --build
+          docker compose -f docker/compose.yaml -f docker/compose.dev.yaml up -d --build
 
   deploy-prod:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'prod')
     runs-on: [self-hosted, production]
+    env:
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
