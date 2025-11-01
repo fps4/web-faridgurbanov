@@ -20,9 +20,9 @@ import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 // YouTube reference mapping: content/youtube.json (reference -> { lang: videoId } | videoId)
 // Supports either per-language objects or a single default videoId string.
+import PageLinks from './components/page-links';
 import YOUTUBE_MAP from '../../../content/youtube.json';
 import { ContentTiles } from './components/content-tiles';
-import PageLinks from './components/page-links';
 
 
 // Utility to flatten paths().js for lookup

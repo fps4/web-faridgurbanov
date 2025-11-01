@@ -306,7 +306,7 @@ function TileCard({ tile }) {
       component={isClickable ? NextLink : 'article'}
       role={isClickable ? 'article' : undefined}
       {...(isClickable ? { href: resolvedHref } : {})}
-      sx={(theme) => {
+      sx={(muiTheme) => {
         const fallbackColor = resolvedBackground;
         return {
           position: 'relative',
@@ -324,17 +324,17 @@ function TileCard({ tile }) {
           backgroundImage: resolvedImage ? `url(${resolvedImage})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          transition: theme.transitions.create(['transform', 'box-shadow']),
-          boxShadow: theme.vars.customShadows?.z16 || theme.shadows[6],
+          transition: muiTheme.transitions.create(['transform', 'box-shadow']),
+          boxShadow: muiTheme.vars.customShadows?.z16 || muiTheme.shadows[6],
           cursor: isClickable ? 'pointer' : 'default',
           textDecoration: 'none',
           '&:hover': {
             transform: 'translateY(-6px)',
-            boxShadow: theme.vars.customShadows?.z20 || theme.shadows[8],
+            boxShadow: muiTheme.vars.customShadows?.z20 || muiTheme.shadows[8],
           },
           '&:focus-visible': isClickable
             ? {
-                outline: `3px solid ${theme.vars.palette?.primary?.main || theme.palette.primary.main}`,
+                outline: `3px solid ${muiTheme.vars.palette?.primary?.main || muiTheme.palette.primary.main}`,
                 outlineOffset: 4,
               }
             : undefined,

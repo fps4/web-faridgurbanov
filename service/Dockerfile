@@ -27,7 +27,7 @@ COPY package.json yarn.lock ./
 
 # Install dependencies with token available only for this step
 # Avoid printing the token in build logs by exporting it within the shell
-RUN /bin/sh -lc 'export GH_PACKAGES_TOKEN="$GH_PACKAGES_TOKEN" && yarn install --frozen-lockfile'
+RUN /bin/sh -lc 'export GH_PACKAGES_TOKEN="$GH_PACKAGES_TOKEN" && yarn install --network-timeout=300000'
 
 # Copy the rest of the application code
 COPY . .
