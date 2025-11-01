@@ -22,11 +22,10 @@ services:
     ports:
       - "3034:3033"
     networks:
-      - net-project-faridgurbanov-webapp
+      - default      
       - net-public
 
 networks:
-  net-project-faridgurbanov-webapp:
-    external: false
   net-public:
     external: true
+    name: net-public
