@@ -25,9 +25,18 @@ jobs:
   deploy-dev:
     if: (github.event_name == 'push' && github.ref != 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'dev')
     runs-on: [self-hosted, development]
+    environment: dev
     env:
       GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NEXT_PUBLIC_SESSION_MANAGER_URL: ${{ vars.NEXT_PUBLIC_SESSION_MANAGER_URL }}
+      NEXT_PUBLIC_COLLECTOR_URL: ${{ vars.NEXT_PUBLIC_COLLECTOR_URL }}
+      NEXT_PUBLIC_CHATBOT_URL: ${{ vars.NEXT_PUBLIC_CHATBOT_URL }}
+      NEXT_PUBLIC_CHATBOT_TENANT_ID: ${{ vars.NEXT_PUBLIC_CHATBOT_TENANT_ID }}
+      NEXT_PUBLIC_CHATBOT_API_BASE_URL: ${{ vars.NEXT_PUBLIC_CHATBOT_API_BASE_URL }}
+      NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID }}
+      NEXT_PUBLIC_ENV: ${{ vars.NEXT_PUBLIC_ENV || 'development' }}
+      NODE_ENV: ${{ vars.NODE_ENV || 'development' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,14 +44,23 @@ jobs:
       - name: Deploy to DEV
         run: |
           echo "Deploying branch ${{ github.ref_name }} to DEV"
-          docker compose -f docker/compose.yaml -f docker/compose.dev.yaml up -d --build
+          docker compose -f docker/compose.yaml up -d --build
 
   deploy-prod:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'prod')
     runs-on: [self-hosted, production]
+    environment: prod
     env:
       GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NEXT_PUBLIC_SESSION_MANAGER_URL: ${{ vars.NEXT_PUBLIC_SESSION_MANAGER_URL }}
+      NEXT_PUBLIC_COLLECTOR_URL: ${{ vars.NEXT_PUBLIC_COLLECTOR_URL }}
+      NEXT_PUBLIC_CHATBOT_URL: ${{ vars.NEXT_PUBLIC_CHATBOT_URL }}
+      NEXT_PUBLIC_CHATBOT_TENANT_ID: ${{ vars.NEXT_PUBLIC_CHATBOT_TENANT_ID }}
+      NEXT_PUBLIC_CHATBOT_API_BASE_URL: ${{ vars.NEXT_PUBLIC_CHATBOT_API_BASE_URL }}
+      NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID }}
+      NEXT_PUBLIC_ENV: ${{ vars.NEXT_PUBLIC_ENV || 'production' }}
+      NODE_ENV: ${{ vars.NODE_ENV || 'production' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,4 +68,4 @@ jobs:
       - name: Deploy to PROD
         run: |
           echo "Deploying main branch to PROD"
-          docker compose -f docker/compose.yaml -f docker/compose.prod.yaml up -d --build
+          docker compose -f docker/compose.yaml up -d --build
