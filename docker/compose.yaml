@@ -8,12 +8,12 @@ services:
   frontend:
     container_name: personal-website
     build:
+      context: ../service/
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_SESSION_MANAGER_URL: ${NEXT_PUBLIC_SESSION_MANAGER_URL}
         NEXT_PUBLIC_COLLECTOR_URL: ${NEXT_PUBLIC_COLLECTOR_URL}
         NEXT_PUBLIC_CHATBOT_URL: ${NEXT_PUBLIC_CHATBOT_URL}
-        NODE_ENV: ${NODE_ENV}
         NEXT_PUBLIC_GTM_ID: ${NEXT_PUBLIC_GTM_ID}
         GITHUB_PACKAGES_TOKEN: ${GITHUB_PACKAGES_TOKEN}
         NEXT_PUBLIC_CHATBOT_TENANT_ID: ${NEXT_PUBLIC_CHATBOT_TENANT_ID}
@@ -21,11 +21,12 @@ services:
     restart: unless-stopped
     ports:
       - "3034:3033"
-    env_file:
-      - .env
     networks:
-      - fps-delivery-hub
+      - net-project-faridgurbanov-webapp
+      - net-public
 
 networks:
-  fps-delivery-hub:
+  net-project-faridgurbanov-webapp:
+    external: false
+  net-public:
     external: true

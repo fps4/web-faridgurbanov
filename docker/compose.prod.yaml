@@ -1,0 +1,6 @@
+services:
+  frontend:
+    environment:
+      NODE_ENV: production
+      LOG_LEVEL: info
+      LOG_PRETTY: 'false'

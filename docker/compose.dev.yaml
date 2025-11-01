@@ -1,0 +1,6 @@
+services:
+  frontend:
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: debug
+      LOG_PRETTY: 'true'
