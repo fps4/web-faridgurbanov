@@ -6,10 +6,10 @@ name: Deploy with Self-Hosted Runners
 #
   
 on:
-  push:
-    branches:
-      - main
-      - '**'
+  # push:
+  #   branches:
+  #     - main
+  #     - '**'
   workflow_dispatch:   # allows manual redeploy via GitHub UI
     inputs:
       environment:
@@ -42,7 +42,7 @@ jobs:
       - name: Deploy to DEV
         run: |
           echo "Deploying branch ${{ github.ref_name }} to DEV"
-          docker compose -f docker/compose.yaml up -d --build
+          docker compose -f compose.yaml up -d --build
 
   deploy-prod:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'prod')
@@ -64,4 +64,4 @@ jobs:
       - name: Deploy to PROD
         run: |
           echo "Deploying main branch to PROD"
-          docker compose -f docker/compose.yaml up -d --build
+          docker compose -f compose.yaml up -d --build
