@@ -6,10 +6,10 @@ name: Deploy with Self-Hosted Runners
 #
   
 on:
-  # push:
-  #   branches:
-  #     - main
-  #     - '**'
+  push:
+    branches:
+      - main
+      - '**'
   workflow_dispatch:   # allows manual redeploy via GitHub UI
     inputs:
       environment:
