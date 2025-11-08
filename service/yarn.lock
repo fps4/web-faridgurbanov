@@ -1728,10 +1728,10 @@
   resolved "https://registry.npmjs.org/@fontsource/barlow/-/barlow-5.2.6.tgz"
   integrity sha512-+Pdt0FkBlbwq+byIEPnD6vHs1TS9CuLWEpqG3M2Jw1mA4s5Ia1DVDAInUKdO4MvsjrwvGNJmdsjgA8mQCCh4mQ==
 
-"@fps4/widget-ui@^0.1.2":
-  version "0.1.2"
-  resolved "https://npm.pkg.github.com/download/@fps4/widget-ui/0.1.2/0c1e5870a87c290f909b1bd96fd29eb1dcc85da6"
-  integrity sha512-IkPk+2fNJ3P4Hb625V/6285MeBMVXz29TbFMSuNaMfsXIWzPQJqnRmoz624SvqqUWJk1dj53qqKsPvjg+qOI7g==
+"@fps4/widget-ui@^0.1.3":
+  version "0.1.3"
+  resolved "https://npm.pkg.github.com/download/@fps4/widget-ui/0.1.3/b69b0457c559eb3f3b8d05d638badd578c197331"
+  integrity sha512-0aCGzG9tCLdjBCR6IVLCdF8ozTxfK69s8IoC1XIfTP1F3kHqCJmsxV+kQoV8GgP8fyjRdIyThqKw+DajWFIwDQ==
   dependencies:
     "@mui/icons-material" "^7.3.1"
 
