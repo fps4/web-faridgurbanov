@@ -6,11 +6,10 @@ name: Deploy with Self-Hosted Runners
 #
   
 on:
-  
+
   push:
     branches:
       - main
-      - '**'
     paths:
       - 'service/**'
 
