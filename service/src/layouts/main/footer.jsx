@@ -31,6 +31,7 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
       children: [
         { name: t('about-me'), href: p.about },
         { name: t('contact-me'), href: p.contact },
+        { name: t('my-bookshelf'), href: p.bookshelf },
       ],
     },
     {
@@ -39,12 +40,6 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
         { name: t('pluggable-website-forms-and-event-booking'), href: `${p.projects}/pluggable-website-forms-and-event-booking` },
         { name: t('multilanguage-website-framework'), href: `${p.projects}/multilanguage-website-framework` },
         { name: t('unified-behavioral-telemetry'), href: `${p.projects}/unified-behavioral-telemetry` },
-      ],
-    },
-    {
-      headline: t('blog'),
-      children: [
-        { name: t('my-bookshelf'), href: p.bookshelf },
       ],
     },
     {
