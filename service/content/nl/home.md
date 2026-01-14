@@ -1,6 +1,6 @@
 ---
 title: Farid F. Gurbanov
-subtitle: Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Solutions Architect & Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,11 +13,17 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions Architect & Engineer met brede ervaring in cloudinfrastructuur, dataplatforms en systeemintegratie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven, streaming integratieframeworks die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
+**Solutions Architect & Engineer die end-to-end levert — van architectuur tot uitrol en operatie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven integratieframeworks die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
 
-Praktisch en hands-on, ik bouw graag ontwikkelaarsplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt altijd op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en degelijke architectuur om efficiënte, onderhoudbare en datagedreven systemen te creëren.  
+Praktisch en hands-on, ik bouw graag ontwikkelaarsplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en degelijke architectuur om efficiënte, onderhoudbare en datagedreven systemen te creëren — met duidelijke delivery-eigenaarschap en meetbare resultaten (MTTR, kosten per 1.000 runs, doorlooptijd).  
 
-Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en productengineering, leid ik door het goede voorbeeld — ik begeleid ontwikkelaars, breng stakeholders op één lijn en vertaal complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb zowel met enterprise- als SMB-klanten gewerkt en teams geholpen bij de overgang van legacy-systemen naar agile, cloud-native en AI-ready omgevingen.  
+Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en productengineering, leid ik door het goede voorbeeld — ik begeleid ontwikkelaars, breng stakeholders op één lijn en vertaal complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb platform- en applicatieliveries geleid voor enterprise- en mkb-klanten en teams geholpen van legacy-systemen naar agile, cloud-native en AI-ready omgevingen.  
+
+**Delivery Leadership**
+
+- Eigenaar van de volledige lifecycle: discovery, architectuur, build, rollout en operationele overdracht met runbooks, SLO's en kostengrenzen.
+- Kleine, productieve teams opbouwen en aansturen; engineers coachen; delivery-cadences zetten (backlog, releases, observability-gates).
+- Budgetdoelen vertalen naar delivery-metrics (time-to-first-value, MTTR, replay-tijd, kosten per 1.000 messages) en daarover rapporteren.
 
 **Skills & Expertise**
 

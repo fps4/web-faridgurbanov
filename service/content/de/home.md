@@ -1,6 +1,6 @@
 ---
 title: Farid F. Gurbanov
-subtitle: Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Solutions Architect & Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,11 +13,17 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions-Architekt & Engineer mit umfassender Erfahrung in Cloud-Infrastruktur, Datenplattformen und Systemintegration. Ich entwerfe und liefere hybride und Multi-Cloud-Architekturen (AWS, Azure, On-Premise) sowie ereignisgesteuerte Streaming-Integrations-Frameworks, die Organisationen dabei helfen, schneller zu modernisieren und mit Zuversicht zu skalieren.**
+**Solutions-Architekt & Engineer, der End-to-End liefert — von der Architektur bis zur Inbetriebnahme und dem Betrieb. Ich entwerfe und liefere hybride und Multi-Cloud-Architekturen (AWS, Azure, On-Premise) sowie ereignisgesteuerte Integrations-Frameworks, die Organisationen helfen, schneller zu modernisieren und mit Zuversicht zu skalieren.**
 
-Praktisch orientiert baue ich gerne Entwicklerplattformen und Full-Stack-Anwendungen (React/Node.js, Python, Terraform, CI/CD), die Technologie mit echtem geschäftlichem Mehrwert verbinden. Mein Fokus liegt stets darauf, KI-gestützte Automatisierung, moderne Engineering-Praktiken und solide Architektur zu kombinieren, um effiziente, wartbare und datengetriebene Systeme zu schaffen.  
+Praktisch orientiert baue ich gerne Entwicklerplattformen und Full-Stack-Anwendungen (React/Node.js, Python, Terraform, CI/CD), die Technologie mit echtem geschäftlichem Mehrwert verbinden. Mein Fokus liegt darauf, KI-gestützte Automatisierung, moderne Engineering-Praktiken und solide Architektur zu kombinieren, um effiziente, wartbare und datengetriebene Systeme zu schaffen — mit klarer Delivery-Verantwortung und messbaren Ergebnissen (MTTR, Kosten pro 1.000 Runs, Cycle Time).  
 
-Bekannt dafür, die Kluft zwischen Unternehmensarchitektur und Produktentwicklung zu überbrücken, führe ich mit gutem Beispiel — ich betreue Entwickler, bringe Stakeholder zusammen und übersetze komplexe Ideen in klare und umsetzbare Lösungen. Ich habe sowohl mit großen Unternehmen als auch mit KMU gearbeitet und Teams dabei unterstützt, von Altsystemen zu agilen, cloudnativen und KI-fähigen Umgebungen überzugehen.  
+Bekannt dafür, die Kluft zwischen Unternehmensarchitektur und Produktentwicklung zu überbrücken, führe ich mit gutem Beispiel — ich betreue Entwickler, bringe Stakeholder zusammen und übersetze komplexe Ideen in klare, umsetzbare Lösungen. Ich habe Plattform- und Applikationslieferungen für Enterprise- und KMU-Kunden geführt und Teams von Altsystemen zu agilen, cloudnativen und KI-fähigen Umgebungen begleitet.  
+
+**Delivery Leadership**
+
+- Verantwortung für den gesamten Lifecycle: Discovery, Architektur, Build, Rollout und Betrieb mit Runbooks, SLOs und Kostenleitplanken.
+- Aufbau und Führung kleiner, schlagkräftiger Teams; Mentoring; Setzen von Delivery-Cadences (Backlog, Releases, Observability-Gates).
+- Übersetzen von Budgetzielen in Delivery-Kennzahlen (Time-to-First-Value, MTTR, Replay-Zeit, Kosten pro 1.000 Messages) und transparentes Reporting.
 
 **Fähigkeiten & Expertise**
 

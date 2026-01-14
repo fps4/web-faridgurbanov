@@ -1,6 +1,6 @@
 ---
 title: Farid F. Gurbanov
-subtitle: Architecte de solutions pilotées par l'IA | Modernisation des plateformes Cloud & Data | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Architecte de solutions & responsable delivery technique | Modernisation des plateformes Cloud & Data | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,11 +13,17 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Architecte de solutions et ingénieur avec une vaste expérience en infrastructure cloud, plateformes de données et intégration de systèmes. Je conçois et livre des architectures hybrides et multi-cloud (AWS, Azure, sur site) ainsi que des frameworks d'intégration event-driven et de streaming qui aident les organisations à moderniser plus rapidement et à monter en charge en toute confiance.**
+**Architecte de solutions et ingénieur qui prend la responsabilité de bout en bout — de la conception à la mise en production et à l'exploitation. Je conçois et livre des architectures hybrides et multi-cloud (AWS, Azure, sur site) ainsi que des frameworks d'intégration event-driven qui aident les organisations à moderniser plus rapidement et à monter en charge en toute confiance.**
 
-Pragmatique et orienté terrain, j'aime construire des plates-formes pour développeurs et des applications full-stack (React/Node.js, Python, Terraform, CI/CD) qui relient la technologie à un impact métier réel. Mon objectif est toujours de combiner l'automatisation pilotée par l'IA, des pratiques d'ingénierie modernes et une architecture solide pour créer des systèmes efficients, maintenables et basés sur les données.
+Pragmatique et orienté terrain, j'aime construire des plates-formes pour développeurs et des applications full-stack (React/Node.js, Python, Terraform, CI/CD) qui relient la technologie à un impact métier réel. Mon objectif est de combiner l'automatisation pilotée par l'IA, des pratiques d'ingénierie modernes et une architecture solide pour créer des systèmes efficients, maintenables et basés sur les données — avec un vrai ownership delivery et des résultats mesurables (MTTR, coût par 1 000 runs, lead time).
 
-Reconnu pour faire le lien entre l'architecture d'entreprise et l'ingénierie produit, je montre l'exemple — en mentorant les développeurs, en alignant les parties prenantes et en traduisant des idées complexes en solutions claires et actionnables. J'ai travaillé avec des clients grands comptes et PME, aidant les équipes à passer de systèmes hérités à des environnements agiles, cloud-native et prêts pour l'IA.
+Reconnu pour faire le lien entre l'architecture d'entreprise et l'ingénierie produit, je montre l'exemple — en mentorant les développeurs, en alignant les parties prenantes et en traduisant des idées complexes en solutions claires et actionnables. J'ai dirigé des livraisons de plateformes et d'applications pour grands comptes et PME, aidant les équipes à passer de systèmes hérités à des environnements agiles, cloud-native et prêts pour l'IA.
+
+**Leadership Delivery**
+
+- Responsable du cycle complet : discovery, architecture, build, déploiement, puis transfert opérationnel avec runbooks, SLO et garde-fous de coûts.
+- Constitution et pilotage de petites équipes à haut rendement ; mentorat ; cadences de delivery (backlog, releases, critères d'observabilité).
+- Traduire les objectifs budgétaires en indicateurs de delivery (time-to-first-value, MTTR, temps de replay, coût par 1 000 messages) et les reporter clairement.
 
 **Compétences & Expertise**
 
