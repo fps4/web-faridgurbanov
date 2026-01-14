@@ -10,8 +10,6 @@ import { RouterLink } from 'src/routes/components';
 
 import { useTranslate } from 'src/locales';
 
-import { Logo } from 'src/components/logo';
-
 // ----------------------------------------------------------------------
 
 const FooterRoot = styled('footer')(({ theme }) => ({
@@ -31,17 +29,16 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
       children: [
         { name: t('about-me'), href: p.about },
         { name: t('contact-me'), href: p.contact },
-        { name: t('my-bookshelf'), href: p.bookshelf },
       ],
     },
-    {
-      headline: t('projects'),
-      children: [
-        { name: t('pluggable-website-forms-and-event-booking'), href: `${p.projects}/pluggable-website-forms-and-event-booking` },
-        { name: t('multilanguage-website-framework'), href: `${p.projects}/multilanguage-website-framework` },
-        { name: t('unified-behavioral-telemetry'), href: `${p.projects}/unified-behavioral-telemetry` },
-      ],
-    },
+    // {
+    //   headline: t('projects'),
+    //   children: [
+    //     { name: t('pluggable-website-forms-and-event-booking'), href: `${p.projects}/pluggable-website-forms-and-event-booking` },
+    //     { name: t('multilanguage-website-framework'), href: `${p.projects}/multilanguage-website-framework` },
+    //     { name: t('unified-behavioral-telemetry'), href: `${p.projects}/unified-behavioral-telemetry` },
+    //   ],
+    // },
     {
       headline: t('legal'),
       children: [
