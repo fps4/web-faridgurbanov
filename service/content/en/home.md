@@ -1,7 +1,6 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
-title: Solutions Architect | Cloud & Data Platform Modernization
-subtitle: I'm a Solutions Architect & Engineer with broad experience in cloud, integration, and data platforms. I specialize in designing and delivering end-to-end solutions that create real business value. I work confidently across AWS, Azure, Docker, and event-driven integration frameworks. I’m also hands-on in full-stack development with React, Node.js, Python, Terraform, and CI/CD, building reliable applications, data pipelines, and developer platforms. 
+title: Farid F. Gurbanov
+subtitle: Solutions Architect & Engineer | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -11,24 +10,41 @@ pagelinks:
     ctaHref: "https://github.com/fps4"
   - icon: "/assets/images/share-icon.png"
     ctaLabel: Copy URL
-    ctaHref: "#"    
-carousel:
-  - title: Unified Behavioral Telemetry
-    eyebrow: Featured Projects
-    description: An open, opinionated blueprint for behavioral data pipelines. It unifies ingestion, enrichment, storage, and visualization across web, mobile, and IoT—designed to be AI‑ready and cost‑efficient from day one.
-    image: "/assets/images/iot-01.png"
-    ctaLabel: View architecture
-    ctaHref: "projects/unified-behavioral-telemetry"
-  - title: Pluggable Website Forms & Event Booking System
-    eyebrow: Featured Projects
-    description: Modular forms engine with serverless workflow automation powering multi-brand booking experience.  
-    image: "/assets/images/forms-01.png"
-    ctaLabel: Explore the project
-    ctaHref: "projects/pluggable-website-forms-and-event-booking"
-  # - title: Declarative API Integration System
-  #   eyebrow: Featured Projects
-  #   description: Cloud-native ESB patterns delivering 30+ eventp-driven integrations with FinOps guardrails and zero-downtime deployments.
-  #   image: "/assets/images/integration-01.jpg"    
-  #   ctaLabel: Read integration story
-  #   ctaHref: "projects/lightweight-esb"
+    ctaHref: "#"   
 ---
+
+**Solutions Architect & Engineer with broad experience across cloud infrastructure, data platforms, and system integration. I design and deliver hybrid and multi-cloud architectures (AWS, Azure, on-premise) and event-driven, streaming integration frameworks that help organizations modernize faster and scale with confidence.**
+
+Hands-on and practical, I enjoy building developer platforms and full-stack applications (React/Node.js, Python, Terraform, CI/CD) that connect technology with real business impact. My focus is always on combining AI-powered automation, modern engineering practices, and solid architecture to create efficient, maintainable, and data-driven systems.  
+
+Recognized for bridging the gap between enterprise architecture and product engineering, I lead by example—mentoring developers, aligning stakeholders, and translating complex ideas into clear and actionable solutions. I’ve worked with both enterprise and SMB clients, helping teams move from legacy systems to agile, cloud-native and AI-ready environments.  
+
+**Skills & Expertise**
+
+- **AI & ML**: Generative AI integration, AI-powered process automation, data analytics pipelines, OpenAI
+- **Architecture**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybrid Cloud, Big Data, C4 Modeling  
+- **Full-Stack Development**: React/MUI, Node.js, REST APIs, Chatbots, Real-Time Dashboards, CI/CD Automation  
+- **Programming**: JavaScript/Node.js, Python, Terraform, SQL, KQL, Shell Scripting  
+- **Cloud & Infra**: AWS, Azure, Cloudflare, Networking, IAM, Hybrid Connectivity, On-Prem Integration  
+- **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, Observability (DataDog, Grafana)  
+- **Leadership & Delivery**: Agile Delivery, Team Leadership, Mentoring, Stakeholder Communication, Technical Pre-Sales  
+
+**Ongoing Learning & AI Certifications**
+- DeepLearning.AI – Agentic AI
+- Databricks AI/ML Practitioner (planned)
+
+**Technical Credentials**  
+*(Some credentials expired after 2025, but retained here to show the breadth of expertise)*  
+
+- Microsoft Azure Solutions Architect Expert  
+- AWS Certified Solutions Architect – Professional  
+- AWS Certified Security – Specialty  
+- Databricks Certified Data Engineer Professional  
+- Snowflake Core Certified  
+- Accenture Certified Technology Architect  
+- Cisco CCNA (Networking)  
+- PRINCE2 Practitioner (Project Management)  
+- TOGAF 9 Certified (Enterprise Architecture)  
+- ITIL 4 Foundation (Service Management)  
+
+![Technical Credentials](/images/badges-02.png)

@@ -24,13 +24,13 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
   const lang = currentLang?.value || 'en';
   const p = paths(lang);
   const LINKS = [
-    {
-      headline: t('overview'),
-      children: [
-        { name: t('about-me'), href: p.about },
-        { name: t('contact-me'), href: p.contact },
-      ],
-    },
+    // {
+    //   headline: t('overview'),
+    //   children: [
+    //     { name: t('about-me'), href: p.about },
+    //     { name: t('contact-me'), href: p.contact },
+    //   ],
+    // },
     // {
     //   headline: t('projects'),
     //   children: [

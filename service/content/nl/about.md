@@ -1,6 +1,6 @@
 ---
 title: Farid F. Gurbanov
-subtitle: AI-Driven Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
