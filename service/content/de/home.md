@@ -18,22 +18,6 @@ pagelinks:
 
 Ich leite hybride und Multi-Cloud-Lieferungen (AWS, Azure, on-prem) und kombiniere ereignisgesteuerte Architekturen, Datenplattformen und KI-gestützte Automatisierung. Ich entwerfe und baue persönlich die kritischen Komponenten — Infrastructure-as-Code, CI/CD, Services, Observability — und nutze React/Node.js, Python, Terraform sowie die passenden Cloud-Services, um Architektur pragmatisch und die Lieferung messbar zu halten.
 
-Was Sie als Auftraggeber erhalten:
-
-- Eine verantwortliche Führungskraft für Discovery → Architektur → Entwicklung → Produktion, mit klaren SLOs und Kosten-Grenzwerten.
-- Architekturen, die erklärbar, betreibbar und revisionssicher sind — keine „Black-Box“-Abstraktionen.
-- Lieferkennzahlen, die Sie verfolgen können: Zeit bis zum ersten Nutzen, MTTR, Replay-Zeit, Kosten pro 1.000 Ausführungen/Nachrichten.
-- Kleine, erfahrene Teams, die schnell ausliefern und gleichzeitig Kundeningenieure befähigen, die Plattform zu übernehmen.
-
-Ich schaffe die Verbindung zwischen Unternehmensarchitektur und Produktentwicklung — gleiche Stakeholder ab, übersetze Strategie in Inkremente und halte die Roadmap an messbaren Ergebnissen fest. Nachfolgend beschreibe ich, wie ich Lieferungen leite:
-
-**Lieferleitung**
-
-- Beginne mit einer schnellen Bewertung und einer Architektur-Runway, dann gliedere die Lieferung in messbare Inkremente mit klaren Akzeptanz- und Rollback-Kriterien.
-- Entwerfe und implementiere das Delivery-System (Backlog, Releases, Observability-Gates, Demo-Rhythmus), sodass Stakeholder Fortschritt und Risiken frühzeitig erkennen.
-- Operabilität von Tag eins einbauen: Runbooks, SLOs, Incident-Drills und Kosten-Grenzwerte, bevor der Produktionsbetrieb hochfährt.
-- Führe kleine, erfahrene Teams hands-on — Pairing bei kritischen Services, Coaching der Kundeningenieure und dokumentierte, erklärbare Architekturentscheidungen.
-
 **Fachgebiete**
 
 - **[Cloud-Architektur & Kostenoptimierung](./expertise/cloud-architecture)**: Verringerte Cloud-Ausgaben ohne Funktionsverlust; Schnellere Wiederherstellung nach Vorfällen (niedrigeres MTTR); Klare Verantwortung und Kostentransparenz; Architekturen mit vorhersehbarer Skalierung
@@ -41,6 +25,22 @@ Ich schaffe die Verbindung zwischen Unternehmensarchitektur und Produktentwicklu
 - **[DevOps & Platform Engineering für kleine Teams](./expertise/platform-engineering)**: Schnellere Release-Zyklen; Weniger Produktionsvorfälle; Reduzierte Belastung im Bereitschaftsdienst; Klare Verantwortung vom Commit bis zur Produktion
 - **[KI-gestützte Automatisierung für interne Plattformen](./expertise/ai-automation)**: Verringerter manueller Aufwand; Schnellere Durchlaufzeiten; Weniger menschliche Übergaben; Klarer ROI durch KI-Einführung
 - **[Modernisierung von Legacy zu Cloud-Native](./expertise/legacy-modernization)**: Reduziertes Betriebsrisiko; Klare Modernisierungs-Roadmap; Schnellere Zeit bis zum ersten Nutzen; Teams befähigt, sich unabhängig weiterzuentwickeln
+
+Was Sie als Auftraggeber erhalten:
+
+- Eine verantwortliche Führungskraft für Discovery → Architektur → Entwicklung → Produktion, mit klaren SLOs und Kosten-Grenzwerten.
+- Architekturen, die erklärbar, betreibbar und revisionssicher sind — keine „Black-Box“-Abstraktionen.
+- Lieferkennzahlen, die Sie verfolgen können: Zeit bis zum ersten Nutzen, MTTR, Replay-Zeit, Kosten pro 1.000 Ausführungen/Nachrichten.
+- Kleine, erfahrene Teams, die schnell ausliefern und gleichzeitig Kundeningenieure befähigen, die Plattform zu übernehmen.
+
+Ich schaffe die Verbindung zwischen Unternehmensarchitektur und Produktentwicklung — gleiche Stakeholder ab, übersetze Strategie in Inkremente und halte die Roadmap an messbaren Ergebnissen fest. 
+
+Nachfolgend beschreibe ich, wie ich Lieferungen leite:
+
+- Beginne mit einer schnellen Bewertung und einer Architektur-Runway, dann gliedere die Lieferung in messbare Inkremente mit klaren Akzeptanz- und Rollback-Kriterien.
+- Entwerfe und implementiere das Delivery-System (Backlog, Releases, Observability-Gates, Demo-Rhythmus), sodass Stakeholder Fortschritt und Risiken frühzeitig erkennen.
+- Operabilität von Tag eins einbauen: Runbooks, SLOs, Incident-Drills und Kosten-Grenzwerte, bevor der Produktionsbetrieb hochfährt.
+- Führe kleine, erfahrene Teams hands-on — Pairing bei kritischen Services, Coaching der Kundeningenieure und dokumentierte, erklärbare Architekturentscheidungen.
 
 
 **Technische Qualifikationen**  
