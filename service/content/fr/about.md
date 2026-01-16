@@ -1,6 +1,6 @@
 ---
 title: Farid F. Gurbanov
-subtitle: Architecte de solutions pilotées par l'IA | Modernisation des plateformes Cloud & Data | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Solutions Architect | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -9,31 +9,31 @@ pagelinks:
     ctaLabel: GitHub
     ctaHref: "https://github.com/fps4"
   - icon: "/assets/images/share-icon.png"
-    ctaLabel: Copier l'URL
+    ctaLabel: Copy URL
     ctaHref: "#"   
 ---
 
-**Architecte de solutions et ingénieur avec une vaste expérience en infrastructure cloud, plateformes de données et intégration de systèmes. Je conçois et livre des architectures hybrides et multi-cloud (AWS, Azure, sur site) ainsi que des frameworks d'intégration event-driven et de streaming qui aident les organisations à moderniser plus rapidement et à monter en charge en toute confiance.**
+**Architecte et ingénieur de solutions avec une vaste expérience des infrastructures cloud, des plateformes de données et de l'intégration système. Je conçois et déploie des architectures hybrides et multi-cloud (AWS, Azure, sur site) et des frameworks d'intégration événementielle et de streaming qui aident les organisations à se moderniser plus rapidement et à évoluer avec confiance.**
 
-Pragmatique et orienté terrain, j'aime construire des plates-formes pour développeurs et des applications full-stack (React/Node.js, Python, Terraform, CI/CD) qui relient la technologie à un impact métier réel. Mon objectif est toujours de combiner l'automatisation pilotée par l'IA, des pratiques d'ingénierie modernes et une architecture solide pour créer des systèmes efficients, maintenables et basés sur les données.
+Pragmatique et opérationnel, j'aime construire des plateformes pour développeurs et des applications full-stack (React/Node.js, Python, Terraform, CI/CD) qui relient la technologie à un impact métier tangible. Mon objectif est toujours de combiner automatisation pilotée par l'IA, pratiques d'ingénierie modernes et architecture solide pour créer des systèmes efficaces, maintenables et axés sur les données.
 
-Reconnu pour faire le lien entre l'architecture d'entreprise et l'ingénierie produit, je montre l'exemple — en mentorant les développeurs, en alignant les parties prenantes et en traduisant des idées complexes en solutions claires et actionnables. J'ai travaillé avec des clients grands comptes et PME, aidant les équipes à passer de systèmes hérités à des environnements agiles, cloud-native et prêts pour l'IA.
+Reconnu pour faire le lien entre l'architecture d'entreprise et l'ingénierie produit, je montre l'exemple—mentorat des développeurs, alignement des parties prenantes et traduction d'idées complexes en solutions claires et exploitables. J'ai travaillé avec des clients grands comptes et PME, aidant les équipes à migrer de systèmes hérités vers des environnements agiles, natifs cloud et prêts pour l'IA.
 
 **Compétences & Expertise**
 
 - **IA & ML** : Intégration d'IA générative, automatisation des processus pilotée par l'IA, pipelines d'analyse de données, OpenAI
-- **Architecture** : Multi-Cloud, Sans serveur (Serverless), Piloté par les événements (Event-Driven), Streaming, Cloud hybride, Big Data, Modélisation C4
-- **Développement Full-Stack** : React/MUI, Node.js, API REST, chatbots, tableaux de bord temps réel, automatisation CI/CD
-- **Programmation** : JavaScript/Node.js, Python, Terraform, SQL, KQL, scripts Shell
-- **Cloud & Infrastructure** : AWS, Azure, Cloudflare, mise en réseau, IAM, connectivité hybride, intégration sur site
-- **DevOps & Automatisation** : IaC (Terraform, ARM), GitHub Actions, Docker, observabilité (DataDog, Grafana)
-- **Leadership & Delivery** : Livraison Agile, leadership d'équipe, mentoring, communication avec les parties prenantes, avant-vente technique
+- **Architecture** : Multi-Cloud, Serverless, Piloté par les événements, Streaming, Cloud hybride, Big Data, Modélisation C4  
+- **Développement Full-Stack** : React/MUI, Node.js, API REST, chatbots, tableaux de bord en temps réel, automatisation CI/CD  
+- **Programmation** : JavaScript/Node.js, Python, Terraform, SQL, KQL, scripting Shell  
+- **Cloud & Infrastructure** : AWS, Azure, Cloudflare, réseautique, IAM, connectivité hybride, intégration sur site  
+- **DevOps & automatisation** : IaC (Terraform, ARM), GitHub Actions, Docker, observabilité (DataDog, Grafana)  
+- **Leadership & Livraison** : Livraison agile, leadership d'équipe, mentorat, communication avec les parties prenantes, prévente technique  
 
-**Formation continue & Certifications en IA**
+**Formation continue & Certifications IA**
 - DeepLearning.AI – Agentic AI
 - Databricks AI/ML Practitioner (prévu)
 
-**Qualifications techniques**  
+**Références techniques**  
 *(Certaines certifications ont expiré après 2025, mais sont conservées ici pour montrer l'étendue de l'expertise)*  
 
 - Microsoft Azure Solutions Architect Expert  
@@ -43,8 +43,8 @@ Reconnu pour faire le lien entre l'architecture d'entreprise et l'ingénierie pr
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
 - Cisco CCNA (Networking)  
-- PRINCE2 Practitioner (Gestion de projet)  
-- TOGAF 9 Certified (Architecture d'entreprise)  
-- ITIL 4 Foundation (Gestion des services)  
+- PRINCE2 Practitioner (Project Management)  
+- TOGAF 9 Certified (Enterprise Architecture)  
+- ITIL 4 Foundation (Service Management)  
 
 ![Certifications techniques](/images/badges-02.png)

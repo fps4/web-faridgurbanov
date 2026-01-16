@@ -24,30 +24,27 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
   const lang = currentLang?.value || 'en';
   const p = paths(lang);
   const LINKS = [
-    // {
-    //   headline: t('overview'),
-    //   children: [
-    //     { name: t('about-me'), href: p.about },
-    //     { name: t('contact-me'), href: p.contact },
-    //   ],
-    // },
-    // {
-    //   headline: t('projects'),
-    //   children: [
-    //     { name: t('pluggable-website-forms-and-event-booking'), href: `${p.projects}/pluggable-website-forms-and-event-booking` },
-    //     { name: t('multilanguage-website-framework'), href: `${p.projects}/multilanguage-website-framework` },
-    //     { name: t('unified-behavioral-telemetry'), href: `${p.projects}/unified-behavioral-telemetry` },
-    //   ],
-    // },
     {
-      headline: t('legal'),
+      headline: t('overview'),
       children: [
+        { name: t('about-me'), href: p.home },
+        { name: t('contact-me'), href: p.contact },
         { name: t('privacy-policy'), href: p.privacy }, 
         {
           name: t('cookies-preferences'),
           href: '#',
           onClick: () => setCookiesConsentOpen(true), 
         },
+      ],
+    },
+    {
+      headline: t('expertise'),
+      children: [
+        { name: t('cloud-architecture'), href: `${p.expertise}/cloud-architecture` },
+        { name: t('ai-automation'), href: `${p.expertise}/ai-automation` },
+        { name: t('platform-engineering'), href: `${p.expertise}/platform-engineering` },
+        { name: t('streaming-systems'), href: `${p.expertise}/streaming-systems` },
+        { name: t('legacy-modernization'), href: `${p.expertise}/legacy-modernization` },
       ],
     },
   ];

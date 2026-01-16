@@ -1,4 +1,5 @@
 ---
+pagetitle: Farid Gurbanov - Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 title: Farid F. Gurbanov
 subtitle: Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
@@ -13,31 +14,34 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions Architect & Engineer who leads end-to-end delivery—from shaping the architecture to shipping the platform and running it in production. I design and deliver hybrid and multi-cloud architectures (AWS, Azure, on-premise) and event-driven integration frameworks that help organizations modernize faster and scale with confidence.**
+**End-to-end platform owner and hands-on engineer who turns strategy into shipped systems. I partner with executive sponsors to design, build, and run cloud and data platforms that shorten time-to-value and de-risk transformation.**
 
-Hands-on and practical, I enjoy building developer platforms and full-stack applications (React/Node.js, Python, Terraform, CI/CD) that connect technology with real business impact. My focus is always on combining AI-powered automation, modern engineering practices, and solid architecture to create efficient, maintainable, and data-driven systems—with clear delivery ownership and measurable outcomes (MTTR, cost per 1k runs, cycle time).  
+I lead hybrid and multi-cloud deliveries (AWS, Azure, on-prem) blending event-driven architectures, data platforms, and AI-powered automation. I personally architect and build the critical pieces—infra-as-code, CI/CD, services, observability—using React/Node.js, Python, Terraform, and the right cloud services to keep architecture pragmatic and delivery measurable.
 
-Recognized for bridging the gap between enterprise architecture and product engineering, I lead by example—mentoring developers, aligning stakeholders, and translating complex ideas into clear and actionable solutions. I’ve led platform and application deliveries for enterprise and SMB clients, moving teams from legacy systems to agile, cloud-native and AI-ready environments.
+What you get as a sponsor:
+
+- One accountable lead for discovery → architecture → build → production, with clear SLOs and cost guardrails.
+- Architectures that are explainable, operable, and ready for audits—no “black box” abstractions.
+- Delivery metrics you can track: time-to-first-value, MTTR, replay time, cost per 1k runs/messages.
+- Small, senior teams that ship quickly while mentoring client engineers to own the platform.
+
+I bridge enterprise architecture and product engineering—aligning stakeholders, translating strategy into increments, and keeping the roadmap tied to measurable outcomes. Below is how I lead deliveries:
 
 **Delivery Leadership**
 
-- Own the full lifecycle: discovery, architecture, build, rollout, and operational handover with runbooks, SLOs, and cost guardrails.
-- Build and lead small, high-output teams; mentor engineers; set delivery cadences (backlog, releases, observability gates).
-- Translate budget-holder goals into delivery metrics (time-to-first-value, MTTR, replay time, cost per 1k messages) and report on them.
+- Start with a rapid assessment and architecture runway, then sequence delivery into measurable increments with clear acceptance and rollback criteria.
+- Design and implement the delivery system (backlog, releases, observability gates, demo cadence) so stakeholders see progress and risks early.
+- Bake in operability from day one: runbooks, SLOs, incident drills, and cost guardrails before production traffic ramps up.
+- Lead small, senior teams hands-on—pairing on critical services, coaching client engineers, and keeping architecture decisions documented and explainable.
 
-**Skills & Expertise**
+**Areas of Expertise**
 
-- **AI & ML**: Generative AI integration, AI-powered process automation, data analytics pipelines, OpenAI
-- **Architecture**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybrid Cloud, Big Data, C4 Modeling  
-- **Full-Stack Development**: React/MUI, Node.js, REST APIs, Chatbots, Real-Time Dashboards, CI/CD Automation  
-- **Programming**: JavaScript/Node.js, Python, Terraform, SQL, KQL, Shell Scripting  
-- **Cloud & Infra**: AWS, Azure, Cloudflare, Networking, IAM, Hybrid Connectivity, On-Prem Integration  
-- **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, Observability (DataDog, Grafana)  
-- **Leadership & Delivery**: Agile Delivery, Team Leadership, Mentoring, Stakeholder Communication, Technical Pre-Sales  
+- **[Cloud Architecture & Cost Optimization](./expertise/cloud-architecture)**: Reduced cloud spend with no loss of capability; Faster incident recovery (lower MTTR); Clear ownership and cost visibility; Architectures that scale predictably
+- **[Event-Driven & Streaming Systems Architecture](./expertise/streaming-systems)**: Faster recovery from failures; Predictable message processing; Clear operational runbooks; Systems teams can actually explain and operate
+- **[DevOps & Platform Engineering for Small Teams](./expertise/platform-engineering)**: Faster release cycles; Fewer production incidents; Reduced on-call stress; Clear ownership from commit to production
+- **[AI-Powered Automation for Internal Platforms](./expertise/ai-automation)**: Reduced manual effort; Faster turnaround times; Fewer human handoffs; Clear ROI from AI adoption
+- **[Legacy to Cloud-Native Modernization](./expertise/legacy-modernization)**: Reduced operational risk; Clear modernization roadmap; Faster time to first value; Teams enabled to evolve independently
 
-**Ongoing Learning & AI Certifications**
-- DeepLearning.AI – Agentic AI
-- Databricks AI/ML Practitioner (planned)
 
 **Technical Credentials**  
 *(Some credentials expired after 2025, but retained here to show the breadth of expertise)*  

@@ -44,5 +44,12 @@
   "sign-in": "Sign in",
   "copyright": "© All rights reserved. Farid F. Gurbanov",
   "light-mode": "Switch to light mode",
-  "dark-mode": "Switch to dark mode"
+  "dark-mode": "Switch to dark mode",
+  "areas-of-expertise": "Areas of Expertise",
+  "expertise": "Expertise",
+  "cloud-architecture": "Cloud Architecture & Cost Optimization",
+  "ai-automation": "AI-Powered Automation for Internal Platforms",
+  "streaming-systems": "Event-Driven & Streaming Systems Architecture",
+  "legacy-modernization": "Legacy to Cloud-Native Modernization",
+  "platform-engineering": "DevOps & Platform Engineering for Small Teams"
 }

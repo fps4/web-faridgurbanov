@@ -1,6 +1,7 @@
 ---
+pagetitle: Farid Gurbanov - Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 title: Farid F. Gurbanov
-subtitle: Solutions Architect & Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,34 +14,37 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions-Architekt & Engineer, der End-to-End liefert — von der Architektur bis zur Inbetriebnahme und dem Betrieb. Ich entwerfe und liefere hybride und Multi-Cloud-Architekturen (AWS, Azure, On-Premise) sowie ereignisgesteuerte Integrations-Frameworks, die Organisationen helfen, schneller zu modernisieren und mit Zuversicht zu skalieren.**
+**End-to-End-Plattformverantwortlicher und praktischer Ingenieur, der Strategie in ausgelieferte Systeme verwandelt. Ich arbeite mit Auftraggebern auf Führungsebene zusammen, um Cloud- und Datenplattformen zu entwerfen, zu bauen und zu betreiben, die die Zeit bis zum ersten Nutzen verkürzen und Transformationen risikoärmer machen.**
 
-Praktisch orientiert baue ich gerne Entwicklerplattformen und Full-Stack-Anwendungen (React/Node.js, Python, Terraform, CI/CD), die Technologie mit echtem geschäftlichem Mehrwert verbinden. Mein Fokus liegt darauf, KI-gestützte Automatisierung, moderne Engineering-Praktiken und solide Architektur zu kombinieren, um effiziente, wartbare und datengetriebene Systeme zu schaffen — mit klarer Delivery-Verantwortung und messbaren Ergebnissen (MTTR, Kosten pro 1.000 Runs, Cycle Time).  
+Ich leite hybride und Multi-Cloud-Lieferungen (AWS, Azure, on-prem) und kombiniere ereignisgesteuerte Architekturen, Datenplattformen und KI-gestützte Automatisierung. Ich entwerfe und baue persönlich die kritischen Komponenten — Infrastructure-as-Code, CI/CD, Services, Observability — und nutze React/Node.js, Python, Terraform sowie die passenden Cloud-Services, um Architektur pragmatisch und die Lieferung messbar zu halten.
 
-Bekannt dafür, die Kluft zwischen Unternehmensarchitektur und Produktentwicklung zu überbrücken, führe ich mit gutem Beispiel — ich betreue Entwickler, bringe Stakeholder zusammen und übersetze komplexe Ideen in klare, umsetzbare Lösungen. Ich habe Plattform- und Applikationslieferungen für Enterprise- und KMU-Kunden geführt und Teams von Altsystemen zu agilen, cloudnativen und KI-fähigen Umgebungen begleitet.  
+Was Sie als Auftraggeber erhalten:
 
-**Delivery Leadership**
+- Eine verantwortliche Führungskraft für Discovery → Architektur → Entwicklung → Produktion, mit klaren SLOs und Kosten-Grenzwerten.
+- Architekturen, die erklärbar, betreibbar und revisionssicher sind — keine „Black-Box“-Abstraktionen.
+- Lieferkennzahlen, die Sie verfolgen können: Zeit bis zum ersten Nutzen, MTTR, Replay-Zeit, Kosten pro 1.000 Ausführungen/Nachrichten.
+- Kleine, erfahrene Teams, die schnell ausliefern und gleichzeitig Kundeningenieure befähigen, die Plattform zu übernehmen.
 
-- Verantwortung für den gesamten Lifecycle: Discovery, Architektur, Build, Rollout und Betrieb mit Runbooks, SLOs und Kostenleitplanken.
-- Aufbau und Führung kleiner, schlagkräftiger Teams; Mentoring; Setzen von Delivery-Cadences (Backlog, Releases, Observability-Gates).
-- Übersetzen von Budgetzielen in Delivery-Kennzahlen (Time-to-First-Value, MTTR, Replay-Zeit, Kosten pro 1.000 Messages) und transparentes Reporting.
+Ich schaffe die Verbindung zwischen Unternehmensarchitektur und Produktentwicklung — gleiche Stakeholder ab, übersetze Strategie in Inkremente und halte die Roadmap an messbaren Ergebnissen fest. Nachfolgend beschreibe ich, wie ich Lieferungen leite:
 
-**Fähigkeiten & Expertise**
+**Lieferleitung**
 
-- **KI & ML**: Integration generativer KI, KI-gestützte Prozessautomatisierung, Datenanalyse-Pipelines, OpenAI
-- **Architektur**: Multi-Cloud, Serverless, ereignisgesteuert, Streaming, Hybrid Cloud, Big Data, C4 Modeling  
-- **Full-Stack-Entwicklung**: React/MUI, Node.js, REST-APIs, Chatbots, Echtzeit-Dashboards, CI/CD-Automatisierung  
-- **Programmierung**: JavaScript/Node.js, Python, Terraform, SQL, KQL, Shell-Scripting  
-- **Cloud & Infrastruktur**: AWS, Azure, Cloudflare, Netzwerke, IAM, hybride Konnektivität, On-Prem-Integration  
-- **DevOps & Automatisierung**: IaC (Terraform, ARM), GitHub Actions, Docker, Beobachtbarkeit (DataDog, Grafana)  
-- **Führung & Umsetzung**: Agile Umsetzung, Teamführung, Mentoring, Stakeholder-Kommunikation, Technischer Pre-Sales  
+- Beginne mit einer schnellen Bewertung und einer Architektur-Runway, dann gliedere die Lieferung in messbare Inkremente mit klaren Akzeptanz- und Rollback-Kriterien.
+- Entwerfe und implementiere das Delivery-System (Backlog, Releases, Observability-Gates, Demo-Rhythmus), sodass Stakeholder Fortschritt und Risiken frühzeitig erkennen.
+- Operabilität von Tag eins einbauen: Runbooks, SLOs, Incident-Drills und Kosten-Grenzwerte, bevor der Produktionsbetrieb hochfährt.
+- Führe kleine, erfahrene Teams hands-on — Pairing bei kritischen Services, Coaching der Kundeningenieure und dokumentierte, erklärbare Architekturentscheidungen.
 
-**Fortlaufende Weiterbildung & KI-Zertifizierungen**
-- DeepLearning.AI – Agentic AI
-- Databricks AI/ML Practitioner (geplant)
+**Fachgebiete**
+
+- **[Cloud-Architektur & Kostenoptimierung](./expertise/cloud-architecture)**: Verringerte Cloud-Ausgaben ohne Funktionsverlust; Schnellere Wiederherstellung nach Vorfällen (niedrigeres MTTR); Klare Verantwortung und Kostentransparenz; Architekturen mit vorhersehbarer Skalierung
+- **[Ereignisgesteuerte & Streaming-Systemarchitektur](./expertise/streaming-systems)**: Schnellere Wiederherstellung nach Ausfällen; Vorhersehbare Nachrichtenverarbeitung; Klare operative Runbooks; Systemteams können tatsächlich erklären und betreiben
+- **[DevOps & Platform Engineering für kleine Teams](./expertise/platform-engineering)**: Schnellere Release-Zyklen; Weniger Produktionsvorfälle; Reduzierte Belastung im Bereitschaftsdienst; Klare Verantwortung vom Commit bis zur Produktion
+- **[KI-gestützte Automatisierung für interne Plattformen](./expertise/ai-automation)**: Verringerter manueller Aufwand; Schnellere Durchlaufzeiten; Weniger menschliche Übergaben; Klarer ROI durch KI-Einführung
+- **[Modernisierung von Legacy zu Cloud-Native](./expertise/legacy-modernization)**: Reduziertes Betriebsrisiko; Klare Modernisierungs-Roadmap; Schnellere Zeit bis zum ersten Nutzen; Teams befähigt, sich unabhängig weiterzuentwickeln
+
 
 **Technische Qualifikationen**  
-*(Einige Zertifikate sind nach 2025 abgelaufen, wurden hier jedoch beibehalten, um die Breite der Expertise zu zeigen)*  
+*(Einige Zertifikate sind nach 2025 abgelaufen, wurden hier aber beibehalten, um die Bandbreite der Expertise zu zeigen)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  

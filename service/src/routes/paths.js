@@ -8,4 +8,5 @@ export const paths = (lang = 'en') => ({
   about: `/${lang}/about`,
   contact: `/${lang}/contact`,
   privacy: `/${lang}/privacy-policy`,
+  expertise: `/${lang}/expertise`,
 });

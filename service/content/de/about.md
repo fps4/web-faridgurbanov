@@ -13,28 +13,28 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions-Architekt & Engineer mit umfassender Erfahrung in Cloud-Infrastruktur, Datenplattformen und Systemintegration. Ich entwerfe und liefere hybride und Multi-Cloud-Architekturen (AWS, Azure, On-Premise) sowie ereignisgesteuerte Streaming-Integrations-Frameworks, die Organisationen dabei helfen, schneller zu modernisieren und mit Zuversicht zu skalieren.**
+**Solution Architect und Engineer mit umfassender Erfahrung in Cloud-Infrastruktur, Datenplattformen und Systemintegration. Ich entwerfe und realisiere hybride und Multi-Cloud-Architekturen (AWS, Azure, On-Premise) sowie ereignisgesteuerte Streaming-Integrationsframeworks, die Organisationen helfen, schneller zu modernisieren und mit Zuversicht zu skalieren.**
 
-Praktisch orientiert baue ich gerne Entwicklerplattformen und Full-Stack-Anwendungen (React/Node.js, Python, Terraform, CI/CD), die Technologie mit echtem geschäftlichem Mehrwert verbinden. Mein Fokus liegt stets darauf, KI-gestützte Automatisierung, moderne Engineering-Praktiken und solide Architektur zu kombinieren, um effiziente, wartbare und datengetriebene Systeme zu schaffen.  
+Hands-on und praxisorientiert baue ich gerne Entwicklerplattformen und Full-Stack-Anwendungen (React/Node.js, Python, Terraform, CI/CD), die Technologie mit echtem Geschäftsnutzen verbinden. Mein Fokus liegt stets darauf, KI-gestützte Automatisierung, moderne Engineering-Praktiken und solide Architektur zu kombinieren, um effiziente, wartbare und datengetriebene Systeme zu schaffen.  
 
-Bekannt dafür, die Kluft zwischen Unternehmensarchitektur und Produktentwicklung zu überbrücken, führe ich mit gutem Beispiel — ich betreue Entwickler, bringe Stakeholder zusammen und übersetze komplexe Ideen in klare und umsetzbare Lösungen. Ich habe sowohl mit großen Unternehmen als auch mit KMU gearbeitet und Teams dabei unterstützt, von Altsystemen zu agilen, cloudnativen und KI-fähigen Umgebungen überzugehen.  
+Anerkannt dafür, die Lücke zwischen Enterprise-Architektur und Product-Engineering zu überbrücken, führe ich mit gutem Beispiel — ich mentoriere Entwickler, bringe Stakeholder in Einklang und übersetze komplexe Ideen in klare und umsetzbare Lösungen. Ich habe sowohl mit Enterprise- als auch mit KMU-Kunden gearbeitet und Teams dabei unterstützt, von Legacy-Systemen zu agilen, cloud-nativen und KI-bereiten Umgebungen zu wechseln.  
 
 **Fähigkeiten & Expertise**
 
 - **KI & ML**: Integration generativer KI, KI-gestützte Prozessautomatisierung, Datenanalyse-Pipelines, OpenAI
-- **Architektur**: Multi-Cloud, Serverless, ereignisgesteuert, Streaming, Hybrid Cloud, Big Data, C4 Modeling  
+- **Architektur**: Multi-Cloud, Serverless, ereignisgesteuert, Streaming, Hybrid Cloud, Big Data, C4-Modellierung  
 - **Full-Stack-Entwicklung**: React/MUI, Node.js, REST-APIs, Chatbots, Echtzeit-Dashboards, CI/CD-Automatisierung  
 - **Programmierung**: JavaScript/Node.js, Python, Terraform, SQL, KQL, Shell-Scripting  
-- **Cloud & Infrastruktur**: AWS, Azure, Cloudflare, Netzwerke, IAM, hybride Konnektivität, On-Prem-Integration  
-- **DevOps & Automatisierung**: IaC (Terraform, ARM), GitHub Actions, Docker, Beobachtbarkeit (DataDog, Grafana)  
-- **Führung & Umsetzung**: Agile Umsetzung, Teamführung, Mentoring, Stakeholder-Kommunikation, Technischer Pre-Sales  
+- **Cloud & Infrastruktur**: AWS, Azure, Cloudflare, Netzwerke, IAM, Hybrid-Konnektivität, On-Prem-Integration  
+- **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, Observability (DataDog, Grafana)  
+- **Führung & Delivery**: Agile Delivery, Teamführung, Mentoring, Stakeholder-Kommunikation, Technischer Pre-Sales  
 
-**Fortlaufende Weiterbildung & KI-Zertifizierungen**
+**Fortlaufendes Lernen & KI-Zertifizierungen**
 - DeepLearning.AI – Agentic AI
 - Databricks AI/ML Practitioner (geplant)
 
-**Technische Qualifikationen**  
-*(Einige Zertifikate sind nach 2025 abgelaufen, wurden hier jedoch beibehalten, um die Breite der Expertise zu zeigen)*  
+**Technische Zertifizierungen**  
+*(Einige Zertifikate sind nach 2025 abgelaufen, werden hier aber zur Darstellung der Breite der Expertise aufgeführt)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
@@ -42,9 +42,9 @@ Bekannt dafür, die Kluft zwischen Unternehmensarchitektur und Produktentwicklun
 - Databricks Certified Data Engineer Professional  
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
-- Cisco CCNA (Networking)  
-- PRINCE2 Practitioner (Project Management)  
-- TOGAF 9 Certified (Enterprise Architecture)  
-- ITIL 4 Foundation (Service Management)  
+- Cisco CCNA (Netzwerke)  
+- PRINCE2 Practitioner (Projektmanagement)  
+- TOGAF 9 Certified (Enterprise-Architektur)  
+- ITIL 4 Foundation (Service-Management)  
 
-![Technische Qualifikationen](/images/badges-02.png)
+![Technische Zertifikate](/images/badges-02.png)

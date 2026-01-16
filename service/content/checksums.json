@@ -1,11 +1,11 @@
 {
   "projects.md": "f88fc49d3789723a5045d08a6be4d5d1f7322796eab8288f076866c2dc497b6c",
   "privacy-policy.md": "4f818bdf508eb2cc2f1765994f443d787e85794644ded6aa0ae4dee927b0dd4a",
-  "home.md": "0b1b7f08f2191aa84e108428ff4cfd730fafc2fbebcbc36d85b1e100557a3dee",
+  "home.md": "34b4de252e10a7444990dda23852b87597ec5c10a8b1abbf205d905906b38256",
   "contact.md": "a41763fde89adcb66240d7f77ba98c09afd0c95b0fcaf8db6d28dda706dddef4",
   "bookshelf.md": "d988aad763ca7e6bde554889cb36edd5f209118455c251d6a149420fe7f18115",
   "blog.md": "7ed0abba457bb83e1529f67de7b9cee65c2b2e7275221ef8dec1811ade0bbb90",
-  "about.md": "f32cecdd8fccbbe6e917de3aa65d26f0f975b32fa02edc747679263b74ac6200",
+  "about.md": "d69fcfc72a5a2cd1cc252b7796579218a8984acf9abf5d07fb279295b70a8dfa",
   "projects/unified-behavioral-telemetry.md": "d23597c24699529f49e9bca1820102bebb56b97b6dc9d0c09a29eb165d8d19cb",
   "projects/sentiment-analysis-and-response.md": "096bb32c7123cdb43fc216590a2af91a1692eefb0bda0a20f9e34e0e8bd2f48f",
   "projects/pluggable-website-forms-and-event-booking.md": "0503fdb396a00a453aa191aa64b712017857d1a2fef7c57d8093c332a76011ce",
@@ -16,5 +16,11 @@
   "projects/ai-devops-agent.md": "8e4469415ffb643be35f636b92175f971000401163429a5ea565f555154ae644",
   "resume.md": "bc28092ed9e26fb3a8149179bbc986e36ec04a2e5f52a1e66becdebe96f5c2e9",
   "blog/build-before-buy.md": "9570bd0f6ab773693ff6cd849f084558e599bc3ec57e968826134b5a1654c155",
-  "repositories.md": "d2b75c3f35e3c4ebc171a1ee9bc7684cdb8a9511e35d787e2a78d16edb6a653f"
+  "repositories.md": "d2b75c3f35e3c4ebc171a1ee9bc7684cdb8a9511e35d787e2a78d16edb6a653f",
+  "expertise.md": "f4284533c6261ad5d60ab9b82d98ed15074baec9f051106ff978f968f5d32068",
+  "expertise/streaming-systems.md": "4c8ef69254443fbe3e68415fa9c47d76b8657ea16317b22d0654083a7442e1a0",
+  "expertise/platform-engineering.md": "990ce45cafa67a61b65a49c7d06fb85d3189824325902ff2341f051b1a0926d5",
+  "expertise/legacy-modernization.md": "7d0f71ff9e37f1090585096c3ed7ee655c67fd85b91b26067045b4aa1c962cd4",
+  "expertise/cloud-architecture.md": "756a702ea030397b64ff19be6fde5390e1e77cab435684096995d16f11b2ef4f",
+  "expertise/ai-automation.md": "16fe2ec5158bd18926045f2ff767da34a3a48ff448d251b5ba46e69e19198633"
 }

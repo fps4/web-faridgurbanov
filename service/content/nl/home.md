@@ -1,6 +1,7 @@
 ---
+pagetitle: Farid Gurbanov - Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 title: Farid F. Gurbanov
-subtitle: Solutions Architect & Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -13,34 +14,37 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions Architect & Engineer die end-to-end levert — van architectuur tot uitrol en operatie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven integratieframeworks die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
+**End-to-end platform owner en hands-on engineer die strategie omzet in opgeleverde systemen. Ik werk samen met executive sponsors om cloud- en dataplatformen te ontwerpen, bouwen en beheren die time-to-value verkorten en transformatie risico's verminderen.**
 
-Praktisch en hands-on, ik bouw graag ontwikkelaarsplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en degelijke architectuur om efficiënte, onderhoudbare en datagedreven systemen te creëren — met duidelijke delivery-eigenaarschap en meetbare resultaten (MTTR, kosten per 1.000 runs, doorlooptijd).  
+Ik leid hybride en multi-cloud leveringen (AWS, Azure, on-prem) en combineer event-driven architecturen, dataplatformen en AI-gestuurde automatisering. Ik ontwerp en bouw zelf de kritieke onderdelen—infrastructure-as-code, CI/CD, services, observability—met React/Node.js, Python, Terraform en de juiste cloudservices om architectuur pragmatisch en levering meetbaar te houden.
 
-Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en productengineering, leid ik door het goede voorbeeld — ik begeleid ontwikkelaars, breng stakeholders op één lijn en vertaal complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb platform- en applicatieliveries geleid voor enterprise- en mkb-klanten en teams geholpen van legacy-systemen naar agile, cloud-native en AI-ready omgevingen.  
+Wat u krijgt als sponsor:
 
-**Delivery Leadership**
+- Eén verantwoordelijke lead voor discovery → architectuur → bouw → productie, met duidelijke SLOs en kostenbeperkingen.
+- Architecturen die verklaarbaar, bedienbaar en auditklaar zijn—geen “black box”-abstracties.
+- Leveringsstatistieken die u kunt volgen: tijd-tot-eerste-waarde, MTTR, replay-tijd, kosten per 1k runs/berichten.
+- Kleine, senior teams die snel opleveren en tegelijkertijd klantengineers begeleiden om het platform te adopteren.
 
-- Eigenaar van de volledige lifecycle: discovery, architectuur, build, rollout en operationele overdracht met runbooks, SLO's en kostengrenzen.
-- Kleine, productieve teams opbouwen en aansturen; engineers coachen; delivery-cadences zetten (backlog, releases, observability-gates).
-- Budgetdoelen vertalen naar delivery-metrics (time-to-first-value, MTTR, replay-tijd, kosten per 1.000 messages) en daarover rapporteren.
+Ik sla de brug tussen enterprise-architectuur en productengineering—stakeholders op één lijn brengen, strategie vertalen naar incrementele stappen en de roadmap koppelen aan meetbare resultaten. Hieronder hoe ik leveringen aanstuur:
 
-**Skills & Expertise**
+**Leiderschap bij levering**
 
-- **AI & ML**: Integratie van generatieve AI, AI-gestuurde procesautomatisering, pijplijnen voor data-analyse, OpenAI
-- **Architecture**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybride Cloud, Big Data, C4-modellering  
-- **Full-Stack Development**: React/MUI, Node.js, REST API's, chatbots, realtime dashboards, CI/CD-automatisering  
-- **Programming**: JavaScript/Node.js, Python, Terraform, SQL, KQL, shell-scripting  
-- **Cloud & Infra**: AWS, Azure, Cloudflare, netwerken, IAM, hybride connectiviteit, on-prem integratie  
-- **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, observability (DataDog, Grafana)  
-- **Leadership & Delivery**: Agile levering, teamleiderschap, mentoring, stakeholdercommunicatie, technische pre-sales  
+- Begin met een snelle beoordeling en een architectuur-runway, en verdeel daarna de levering in meetbare incrementele stappen met duidelijke acceptatie- en rollbackcriteria.
+- Ontwerp en implementeer het leveringssysteem (backlog, releases, observability gates, demo-cadans) zodat stakeholders vroegtijdig vooruitgang en risico's zien.
+- Borg operabiliteit vanaf dag één: runbooks, SLOs, incidentoefeningen en kostenbeperkingen voordat het productieverkeer toeneemt.
+- Leid kleine, senior teams hands-on—door samen te werken aan kritieke services, coaching van klantengineers, en het documenteren en verklaarbaar houden van architectuurbeslissingen.
 
-**Ongoing Learning & AI Certifications**
-- DeepLearning.AI – Agentic AI
-- Databricks AI/ML Practitioner (gepland)
+**Expertisegebieden**
 
-**Technical Credentials**  
-*(Sommige certificaten zijn na 2025 verlopen, maar blijven hier vermeld om de reikwijdte van de expertise te tonen)*  
+- **[Cloudarchitectuur & kostenoptimalisatie](./expertise/cloud-architecture)**: Lagere cloudkosten zonder verlies van functionaliteit; Sneller incidentherstel (lager MTTR); Duidelijk eigenaarschap en kosteninzicht; Architecturen die voorspelbaar schalen
+- **[Event-driven & streaming-systeemarchitectuur](./expertise/streaming-systems)**: Sneller herstel na storingen; Voorspelbare berichtverwerking; Duidelijke operationele runbooks; Systeemteams kunnen het daadwerkelijk uitleggen en bedienen
+- **[DevOps & platformengineering voor kleine teams](./expertise/platform-engineering)**: Snellere releasecycli; Minder productie-incidenten; Minder on-call stress; Duidelijke eigenaarschap van commit tot productie
+- **[AI-gestuurde automatisering voor interne platformen](./expertise/ai-automation)**: Minder handmatig werk; Kortere doorlooptijden; Minder menselijke overdrachten; Duidelijke ROI van AI-adoptie
+- **[Modernisering van legacy naar cloud-native](./expertise/legacy-modernization)**: Verminderd operationeel risico; Duidelijke moderniseringsroadmap; Snellere tijd tot eerste waarde; Teams in staat zelfstandig te evolueren
+
+
+**Technische certificeringen**  
+*(Sommige certificeringen zijn na 2025 verlopen, maar hier opgenomen om de breedte van expertise te tonen)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
@@ -48,9 +52,9 @@ Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en produ
 - Databricks Certified Data Engineer Professional  
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
-- Cisco CCNA (netwerken)  
-- PRINCE2 Practitioner (projectmanagement)  
-- TOGAF 9 Certified (enterprise-architectuur)  
-- ITIL 4 Foundation (servicemanagement)  
+- Cisco CCNA (Networking)  
+- PRINCE2 Practitioner (Project Management)  
+- TOGAF 9 Certified (Enterprise Architecture)  
+- ITIL 4 Foundation (Service Management)  
 
-![Technische referenties](/images/badges-02.png)
+![Technische certificeringen](/images/badges-02.png)

@@ -13,28 +13,28 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**Solutions Architect & Engineer met brede ervaring in cloudinfrastructuur, dataplatforms en systeemintegratie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven, streaming integratieframeworks die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
+**Solutions Architect & Engineer met brede ervaring in cloudinfrastructuur, dataplatforms en systeemintegratie. Ik ontwerp en lever hybride en multi-cloud architecturen (AWS, Azure, on-premise) en event-driven streaming-integratiekaders die organisaties helpen sneller te moderniseren en met vertrouwen te schalen.**
 
-Praktisch en hands-on, ik bouw graag ontwikkelaarsplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt altijd op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en degelijke architectuur om efficiënte, onderhoudbare en datagedreven systemen te creëren.  
+Hands-on en praktisch ingesteld, ik bouw graag developerplatforms en full-stack applicaties (React/Node.js, Python, Terraform, CI/CD) die technologie verbinden met echte zakelijke impact. Mijn focus ligt altijd op het combineren van AI-gestuurde automatisering, moderne engineeringpraktijken en degelijke architectuur om efficiënte, onderhoudsvriendelijke en datagedreven systemen te creëren.  
 
-Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en productengineering, leid ik door het goede voorbeeld — ik begeleid ontwikkelaars, breng stakeholders op één lijn en vertaal complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb zowel met enterprise- als SMB-klanten gewerkt en teams geholpen bij de overgang van legacy-systemen naar agile, cloud-native en AI-ready omgevingen.  
+Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en productengineering, leid ik door het goede voorbeeld te geven—ik mentor ontwikkelaars, breng stakeholders op één lijn en vertaal complexe ideeën naar duidelijke en uitvoerbare oplossingen. Ik heb zowel met grote ondernemingen als met MKB-klanten gewerkt en teams geholpen bij de overgang van legacy-systemen naar agile, cloud-native en AI-ready omgevingen.  
 
-**Skills & Expertise**
+**Vaardigheden & Expertise**
 
-- **AI & ML**: Integratie van generatieve AI, AI-gestuurde procesautomatisering, pijplijnen voor data-analyse, OpenAI
-- **Architecture**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybride Cloud, Big Data, C4-modellering  
-- **Full-Stack Development**: React/MUI, Node.js, REST API's, chatbots, realtime dashboards, CI/CD-automatisering  
-- **Programming**: JavaScript/Node.js, Python, Terraform, SQL, KQL, shell-scripting  
+- **AI & ML**: Generatieve AI-integratie, AI-gestuurde procesautomatisering, data-analysepijplijnen, OpenAI
+- **Architectuur**: Multi-Cloud, Serverless, Event-Driven, Streaming, Hybride cloud, Big Data, C4-modellering  
+- **Full-Stack Development**: React/MUI, Node.js, REST-API's, chatbots, realtime dashboards, CI/CD-automatisering  
+- **Programmeren**: JavaScript/Node.js, Python, Terraform, SQL, KQL, shell-scripting  
 - **Cloud & Infra**: AWS, Azure, Cloudflare, netwerken, IAM, hybride connectiviteit, on-prem integratie  
-- **DevOps & Automation**: IaC (Terraform, ARM), GitHub Actions, Docker, observability (DataDog, Grafana)  
-- **Leadership & Delivery**: Agile levering, teamleiderschap, mentoring, stakeholdercommunicatie, technische pre-sales  
+- **DevOps & Automatisering**: IaC (Terraform, ARM), GitHub Actions, Docker, monitoring en observability (DataDog, Grafana)  
+- **Leiderschap & Delivery**: Agile delivery, teamleiderschap, mentoring, stakeholdercommunicatie, technische pre-sales  
 
-**Ongoing Learning & AI Certifications**
+**Voortdurend leren & AI-certificeringen**
 - DeepLearning.AI – Agentic AI
 - Databricks AI/ML Practitioner (gepland)
 
-**Technical Credentials**  
-*(Sommige certificaten zijn na 2025 verlopen, maar blijven hier vermeld om de reikwijdte van de expertise te tonen)*  
+**Technische certificaten**  
+*(Sommige certificaten zijn na 2025 verlopen, maar hier behouden om de breedte van de expertise te tonen)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
@@ -42,9 +42,9 @@ Erkend voor het overbruggen van de kloof tussen enterprise-architectuur en produ
 - Databricks Certified Data Engineer Professional  
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
-- Cisco CCNA (netwerken)  
-- PRINCE2 Practitioner (projectmanagement)  
-- TOGAF 9 Certified (enterprise-architectuur)  
-- ITIL 4 Foundation (servicemanagement)  
+- Cisco CCNA (Networking)  
+- PRINCE2 Practitioner (Project Management)  
+- TOGAF 9 Certified (Enterprise Architecture)  
+- ITIL 4 Foundation (Service Management)  
 
-![Technische referenties](/images/badges-02.png)
+![Technische certificaten](/images/badges-02.png)
