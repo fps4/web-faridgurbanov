@@ -6,7 +6,7 @@ tiles:
   - title: "Cloud-Architektur & Kostenoptimierung"
     description: "Viele Cloud-Plattformen wachsen schnell — aber nicht immer geplant. Die Kosten schleichen sich hoch, Architekturen werden fragil, und Teams verlieren die Sicht darauf, was tatsächlich Ausgaben und Zuverlässigkeitsprobleme verursacht."
     ctaHref: "cloud-architecture"
-  - title: "Ereignisgesteuerte & Streaming-Systemarchitektur"
+  - title: "Ereignisgesteuerte und Streaming-Systeme"
     description: "Ereignisgesteuerte Systeme ermöglichen Skalierung — aber wenn sie ausfallen, gehören sie oft zu den schwierigsten Systemen, die es zu debuggen, nachzuvollziehen und wiederherzustellen gilt."
     ctaHref: "streaming-systems"
   - title: "DevOps & Plattform-Engineering für kleine Teams"

@@ -6,7 +6,7 @@ tiles:
   - title: "Architecture cloud et optimisation des coûts"
     description: "De nombreuses plateformes cloud croissent rapidement — mais pas toujours de manière intentionnelle. Les coûts augmentent insidieusement, les architectures deviennent fragiles et les équipes perdent de la visibilité sur ce qui cause réellement les dépenses et les problèmes de fiabilité"
     ctaHref: "cloud-architecture"
-  - title: "Architecture des systèmes pilotés par événements et de streaming"
+  - title: "Systèmes événementiels et de diffusion en continu"
     description: "Les systèmes pilotés par événements permettent de monter en charge — mais quand ils tombent en panne, ce sont souvent les plus difficiles à déboguer, à comprendre et à remettre en service."
     ctaHref: "streaming-systems"
   - title: "DevOps et ingénierie de plateforme pour les petites équipes"

@@ -6,7 +6,7 @@ tiles:
   - title: "Cloud Architecture & Cost Optimization"
     description: "Many cloud platforms grow fast—but not always intentionally. Costs creep up, architectures become fragile, and teams lose visibility into what’s actually driving spend and reliability issues"
     ctaHref: "cloud-architecture"
-  - title: "Event-Driven & Streaming Systems Architecture"
+  - title: "Event-Driven & Streaming Systems"
     description: "Event-driven systems unlock scale—but when they break, they’re often the hardest systems to debug, reason about, and recover."
     ctaHref: "streaming-systems"
   - title: "DevOps & Platform Engineering for Small Teams"

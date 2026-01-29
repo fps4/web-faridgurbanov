@@ -6,7 +6,7 @@ tiles:
   - title: "Cloudarchitectuur & kostenoptimalisatie"
     description: "Veel cloudplatforms groeien snel — maar niet altijd bewust. Kosten lopen op, architecturen worden fragiel en teams verliezen het zicht op wat precies de uitgaven en betrouwbaarheidsproblemen veroorzaakt"
     ctaHref: "cloud-architecture"
-  - title: "Eventgestuurde & streaming-systeemarchitectuur"
+  - title: "Eventgestuurde en streaming systemen"
     description: "Event-gestuurde systemen maken opschaling mogelijk — maar wanneer ze falen, zijn het vaak de moeilijkste systemen om te debuggen, te doorgronden en te herstellen."
     ctaHref: "streaming-systems"
   - title: "DevOps & platformengineering voor kleine teams"
