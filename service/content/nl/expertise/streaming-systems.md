@@ -1,5 +1,5 @@
 ---
-title: Architectuur voor eventgestuurde en streaming systemen
+title: Eventgestuurde en streaming systemen
 subtitle: Maak uw asynchrone systemen begrijpelijk, betrouwbaar en observeerbaar
 ---
 

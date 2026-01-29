@@ -1,6 +1,6 @@
 ---
-title: Event-Driven & Streaming Systems Architecture
-subtitle: Make Your Asynchronous Systems Understandable, Reliable, and Observable
+title: Systèmes événementiels et de diffusion en continu
+subtitle: Rendez vos systèmes asynchrones compréhensibles, fiables et observables
 ---
 
 Les systèmes pilotés par événements permettent de monter en charge — mais lorsqu'ils tombent en panne, ce sont souvent les plus difficiles à déboguer, à comprendre et à remettre en état.

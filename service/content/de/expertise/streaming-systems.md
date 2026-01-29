@@ -1,5 +1,5 @@
 ---
-title: Event-Driven & Streaming Systems Architecture
+title: Event-Driven & Streaming Systems
 subtitle: Make Your Asynchronous Systems Understandable, Reliable, and Observable
 ---
 
