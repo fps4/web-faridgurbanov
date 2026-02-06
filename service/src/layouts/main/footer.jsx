@@ -47,6 +47,12 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
         { name: t('legacy-modernization'), href: `${p.expertise}/legacy-modernization` },
       ],
     },
+    {
+      headline: t('blog'),
+      children: [
+        { name: t('about-me'), href: p.home },
+      ],
+    },    
   ];
   
   return (

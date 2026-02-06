@@ -1,6 +1,6 @@
 ---
 title: Areas of Expertise
-subtitle: "-"
+subtitle: "Building resilient, cost-efficient cloud systems and developer platforms that scale with confidence"
 # ---------------------------------------------------------------
 tiles:
   - title: "Cloud Architecture & Cost Optimization"
@@ -18,4 +18,15 @@ tiles:
   - title: "Legacy to Cloud-Native Modernization"
     description: "Many organizations are stuck halfway between legacy systems and modern cloud platforms—carrying the cost and risk of both."
     ctaHref: "legacy-modernization"
+# ---------------------------------------------------------------
+pagelinks:
+  - icon: "/assets/images/linkedin-icon.png"
+    ctaLabel: LinkedIn
+    ctaHref: "https://www.linkedin.com/in/fgurbanov/"
+  - icon: "/assets/images/github-01.png"
+    ctaLabel: GitHub
+    ctaHref: "https://github.com/fps4"
+  - icon: "/assets/images/share-icon.png"
+    ctaLabel: Copy URL
+    ctaHref: "#"   
 ---
