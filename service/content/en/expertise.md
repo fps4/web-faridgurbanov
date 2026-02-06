@@ -9,7 +9,7 @@ tiles:
   - title: "Event-Driven & Streaming Systems"
     description: "Event-driven systems unlock scale—but when they break, they’re often the hardest systems to debug, reason about, and recover."
     ctaHref: "streaming-systems"
-  - title: "DevOps & Platform Engineering for Small Teams"
+  - title: "DevOps & Platform Engineering"
     description: "High-performing teams don’t just write code—they rely on developer platforms that remove friction, automate quality, and make production boring."
     ctaHref: "platform-engineering"
   - title: "AI-Powered Automation for Internal Platforms"

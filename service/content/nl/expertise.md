@@ -9,7 +9,7 @@ tiles:
   - title: "Eventgestuurde en streaming systemen"
     description: "Event-gestuurde systemen maken opschaling mogelijk — maar wanneer ze falen, zijn het vaak de moeilijkste systemen om te debuggen, te doorgronden en te herstellen."
     ctaHref: "streaming-systems"
-  - title: "DevOps & platformengineering voor kleine teams"
+  - title: "DevOps & platformengineering"
     description: "Hoogpresterende teams schrijven niet alleen code — ze vertrouwen op ontwikkelplatforms die frictie wegnemen, kwaliteit automatiseren en productie saai maken."
     ctaHref: "platform-engineering"
   - title: "AI-gestuurde automatisering voor interne platformen"

@@ -1,5 +1,5 @@
 ---
-title: DevOps & Platform Engineering for Small Teams
+title: DevOps & Platform Engineering
 subtitle: Build Platforms That Let Teams Ship—Safely and Repeatedly
 ---
 
