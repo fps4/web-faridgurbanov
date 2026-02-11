@@ -22,7 +22,7 @@ Je pilote des livraisons hybrides et multi-cloud (AWS, Azure, on‑prem) en comb
 
 - **[Architecture cloud & optimisation des coûts](./expertise/cloud-architecture)** : Réduction des dépenses cloud sans perte de capacité ; Récupération plus rapide après incident (MTTR réduit) ; Responsabilité claire et visibilité des coûts ; Architectures qui évoluent de façon prévisible
 - **[Systèmes événementiels et de diffusion en continu](./expertise/streaming-systems)** : Rétablissement plus rapide après panne ; Traitement des messages prévisible ; Runbooks opérationnels clairs ; Les équipes systèmes peuvent réellement expliquer et exploiter
-- **[DevOps & Platform Engineering pour petites équipes](./expertise/platform-engineering)** : Cycles de release plus rapides ; Moins d'incidents en production ; Réduction du stress lié à l'astreinte ; Responsabilité claire du commit à la production
+- **[DevOps & Platform Engineering](./expertise/platform-engineering)** : Cycles de release plus rapides ; Moins d'incidents en production ; Réduction du stress lié à l'astreinte ; Responsabilité claire du commit à la production
 - **[Automatisation pilotée par l'IA pour plateformes internes](./expertise/ai-automation)** : Réduction des efforts manuels ; Délais de traitement plus courts ; Moins de transferts manuels ; Retour sur investissement (ROI) clair de l'adoption de l'IA
 - **[Modernisation du legacy vers le cloud‑native](./expertise/legacy-modernization)** : Risque opérationnel réduit ; Feuille de route de modernisation claire ; Temps jusqu'à la première valeur plus court ; Équipes habilitées à évoluer de façon indépendante
 

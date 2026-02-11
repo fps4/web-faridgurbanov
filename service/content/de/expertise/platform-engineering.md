@@ -1,5 +1,5 @@
 ---
-title: DevOps & Plattform-Engineering für kleine Teams
+title: DevOps & Plattform-Engineering
 subtitle: Plattformen bauen, die Teams das Ausliefern ermöglichen — sicher und wiederholt
 ---
 

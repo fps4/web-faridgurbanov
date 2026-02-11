@@ -1,5 +1,5 @@
 ---
-title: DevOps & ingénierie des plateformes pour petites équipes
+title: DevOps & ingénierie des plateformes
 subtitle: Concevez des plateformes qui permettent aux équipes de livrer — en toute sécurité et de manière répétée
 ---
 

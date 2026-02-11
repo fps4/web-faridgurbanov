@@ -22,7 +22,7 @@ I lead hybrid and multi-cloud deliveries (AWS, Azure, on-prem) blending event-dr
 
 - **[Cloud Architecture & Cost Optimization](./expertise/cloud-architecture)**: Reduced cloud spend with no loss of capability; Faster incident recovery (lower MTTR); Clear ownership and cost visibility; Architectures that scale predictably
 - **[Event-Driven & Streaming Systems](./expertise/streaming-systems)**: Faster recovery from failures; Predictable message processing; Clear operational runbooks; Systems teams can actually explain and operate
-- **[DevOps & Platform Engineering for Small Teams](./expertise/platform-engineering)**: Faster release cycles; Fewer production incidents; Reduced on-call stress; Clear ownership from commit to production
+- **[DevOps & Platform Engineering](./expertise/platform-engineering)**: Faster release cycles; Fewer production incidents; Reduced on-call stress; Clear ownership from commit to production
 - **[AI-Powered Automation for Internal Platforms](./expertise/ai-automation)**: Reduced manual effort; Faster turnaround times; Fewer human handoffs; Clear ROI from AI adoption
 - **[Legacy to Cloud-Native Modernization](./expertise/legacy-modernization)**: Reduced operational risk; Clear modernization roadmap; Faster time to first value; Teams enabled to evolve independently
 

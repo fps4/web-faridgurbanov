@@ -22,7 +22,7 @@ Ik leid hybride en multi-cloud leveringen (AWS, Azure, on-prem) en combineer eve
 
 - **[Cloudarchitectuur & kostenoptimalisatie](./expertise/cloud-architecture)**: Lagere cloudkosten zonder verlies van functionaliteit; Sneller incidentherstel (lager MTTR); Duidelijk eigenaarschap en kosteninzicht; Architecturen die voorspelbaar schalen
 - **[Event-driven & streaming-systeem](./expertise/streaming-systems)**: Sneller herstel na storingen; Voorspelbare berichtverwerking; Duidelijke operationele runbooks; Systeemteams kunnen het daadwerkelijk uitleggen en bedienen
-- **[DevOps & platformengineering voor kleine teams](./expertise/platform-engineering)**: Snellere releasecycli; Minder productie-incidenten; Minder on-call stress; Duidelijke eigenaarschap van commit tot productie
+- **[DevOps & platformengineering](./expertise/platform-engineering)**: Snellere releasecycli; Minder productie-incidenten; Minder on-call stress; Duidelijke eigenaarschap van commit tot productie
 - **[AI-gestuurde automatisering voor interne platformen](./expertise/ai-automation)**: Minder handmatig werk; Kortere doorlooptijden; Minder menselijke overdrachten; Duidelijke ROI van AI-adoptie
 - **[Modernisering van legacy naar cloud-native](./expertise/legacy-modernization)**: Verminderd operationeel risico; Duidelijke moderniseringsroadmap; Snellere tijd tot eerste waarde; Teams in staat zelfstandig te evolueren
 

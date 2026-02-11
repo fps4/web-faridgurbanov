@@ -22,7 +22,7 @@ Ich leite hybride und Multi-Cloud-Lieferungen (AWS, Azure, on-prem) und kombinie
 
 - **[Cloud-Architektur & Kostenoptimierung](./expertise/cloud-architecture)**: Verringerte Cloud-Ausgaben ohne Funktionsverlust; Schnellere Wiederherstellung nach Vorfällen (niedrigeres MTTR); Klare Verantwortung und Kostentransparenz; Architekturen mit vorhersehbarer Skalierung
 - **[Ereignisgesteuerte & Streaming-System](./expertise/streaming-systems)**: Schnellere Wiederherstellung nach Ausfällen; Vorhersehbare Nachrichtenverarbeitung; Klare operative Runbooks; Systemteams können tatsächlich erklären und betreiben
-- **[DevOps & Platform Engineering für kleine Teams](./expertise/platform-engineering)**: Schnellere Release-Zyklen; Weniger Produktionsvorfälle; Reduzierte Belastung im Bereitschaftsdienst; Klare Verantwortung vom Commit bis zur Produktion
+- **[DevOps & Platform Engineering](./expertise/platform-engineering)**: Schnellere Release-Zyklen; Weniger Produktionsvorfälle; Reduzierte Belastung im Bereitschaftsdienst; Klare Verantwortung vom Commit bis zur Produktion
 - **[KI-gestützte Automatisierung für interne Plattformen](./expertise/ai-automation)**: Verringerter manueller Aufwand; Schnellere Durchlaufzeiten; Weniger menschliche Übergaben; Klarer ROI durch KI-Einführung
 - **[Modernisierung von Legacy zu Cloud-Native](./expertise/legacy-modernization)**: Reduziertes Betriebsrisiko; Klare Modernisierungs-Roadmap; Schnellere Zeit bis zum ersten Nutzen; Teams befähigt, sich unabhängig weiterzuentwickeln
 
