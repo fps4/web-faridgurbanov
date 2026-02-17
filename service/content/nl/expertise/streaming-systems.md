@@ -1,25 +1,25 @@
 ---
-title: Eventgestuurde en streaming systemen
-subtitle: Maak uw asynchrone systemen begrijpelijk, betrouwbaar en observeerbaar
+title: Event-Driven & Streaming Systems
+subtitle: Make Your Asynchronous Systems Understandable, Reliable, and Observable
 ---
 
-Eventgestuurde systemen maken schaalbaarheid mogelijk — maar wanneer ze falen, zijn ze vaak het moeilijkst te debuggen, te analyseren en te herstellen.
+Eventgestuurde systemen maken schaal mogelijk — maar als ze falen zijn het vaak de moeilijkste systemen om te debuggen, te doorgronden en te herstellen.
 
-Ik ben gespecialiseerd in **het ontwerpen, repareren en robuuster maken van eventgestuurde en streamingplatforms** zodat teams snel kunnen werken zonder vrees.
+Ik specialiseer me in **het ontwerpen, herstellen en robuuster maken van eventgestuurde en streamingplatforms** zodat teams snel en zonder angst kunnen werken.
 
 #### Waar ik mee help
 
 * Kafka, Event Hub, SNS/SQS, pub/sub-architecturen
-* Berichten opnieuw afspelen en herstel na fouten
+* Herhaalbaarheid van berichten en foutherstel
 * Afwegingen tussen exactly-once en at-least-once
 * Observeerbaarheid voor asynchrone systemen
-* Complexiteit verminderen zonder concessies aan veerkracht
+* Complexiteit verminderen zonder in te boeten op veerkracht
 
 #### Resultaten die klanten belangrijk vinden
 
 * Sneller herstel na storingen
 * Voorspelbare berichtverwerking
-* Duidelijke operationele draaiboeken
-* Systeemteams kunnen de systemen daadwerkelijk uitleggen en beheren
+* Duidelijke operationele runbooks
+* Systeemteams kunnen ze daadwerkelijk uitleggen en beheren
 
-Ideaal voor teams die te maken hebben met betrouwbaarheidsproblemen, problemen bij opschaling of toenemend operationeel risico in eventgestuurde platforms.
+Ideaal voor teams die te maken hebben met betrouwbaarheidsproblemen, schaalingspijn of toenemend operationeel risico in eventgestuurde platforms.

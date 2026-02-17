@@ -1,7 +1,7 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+pagetitle: Farid Gurbanov - Principal Engineer · Engineering Lead · Engineering Manager · Platform Lead · Technology Lead · Staff/Principal Architect
 title: Farid F. Gurbanov
-subtitle: Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Principal Engineer · Engineering Lead · Engineering Manager · Platform Lead · Technology Lead · Staff/Principal Architect
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -14,11 +14,23 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**End-to-end platform owner and hands-on engineer who turns strategy into shipped systems. I partner with executive sponsors to design, build, and run cloud and data platforms that shorten time-to-value and de-risk transformation.**
+**Principal Engineer, Architect, and Delivery Lead with a strong leadership focus across cloud infrastructure, data platforms, and large-scale system integration. Proven track record of building platforms, leading technical strategy, and guiding engineering teams through complex transformations. Experienced in operating at the intersection of architecture, product engineering, and delivery leadership.**
 
-I lead hybrid and multi-cloud deliveries (AWS, Azure, on-prem) blending event-driven architectures, data platforms, and AI-powered automation. I personally architect and build the critical pieces—infra-as-code, CI/CD, services, observability—using React/Node.js, Python, Terraform, and the right cloud services to keep architecture pragmatic and delivery measurable.
+I specialize in building high-impact engineering organizations, not just systems — enabling teams to scale, deliver faster, and operate with clarity, ownership, and resilience.
 
-**Areas of Expertise**
+**Areas of Leadership Impact**
+
+-	**Technology Strategy & Platform Leadership**: Platform roadmaps, technical governance, architectural decision frameworks, long-term scalability
+-	**Engineering Leadership**: Team enablement, mentoring, technical coaching, capability building, career development
+-	**Enterprise & Product Architecture**: Translating business strategy into executable engineering platforms
+-	**Cloud & Platform Transformation**: Hybrid and multi-cloud modernization, operating model transformation
+-	**Integration & Platform Engineering**: Event-driven architecture, streaming platforms, API ecosystems
+-	**Delivery Leadership**: Predictable delivery, cross-team coordination, stakeholder alignment
+-	**Cost & Risk Governance**: Cloud cost optimization, platform standardization, operational risk reduction
+-	**AI Enablement**: AI adoption for internal platforms, automation, and developer productivity
+
+
+**Areas of Technical Expertise**
 
 - **[Cloud Architecture & Cost Optimization](./expertise/cloud-architecture)**: Reduced cloud spend with no loss of capability; Faster incident recovery (lower MTTR); Clear ownership and cost visibility; Architectures that scale predictably
 - **[Event-Driven & Streaming Systems](./expertise/streaming-systems)**: Faster recovery from failures; Predictable message processing; Clear operational runbooks; Systems teams can actually explain and operate
@@ -26,21 +38,7 @@ I lead hybrid and multi-cloud deliveries (AWS, Azure, on-prem) blending event-dr
 - **[AI-Powered Automation for Internal Platforms](./expertise/ai-automation)**: Reduced manual effort; Faster turnaround times; Fewer human handoffs; Clear ROI from AI adoption
 - **[Legacy to Cloud-Native Modernization](./expertise/legacy-modernization)**: Reduced operational risk; Clear modernization roadmap; Faster time to first value; Teams enabled to evolve independently
 
-What you get as a sponsor:
 
-- One accountable lead for discovery → architecture → build → production, with clear SLOs and cost guardrails.
-- Architectures that are explainable, operable, and ready for audits—no “black box” abstractions.
-- Delivery metrics you can track: time-to-first-value, MTTR, replay time, cost per 1k runs/messages.
-- Small, senior teams that ship quickly while mentoring client engineers to own the platform.
-
-I bridge enterprise architecture and product engineering—aligning stakeholders, translating strategy into increments, and keeping the roadmap tied to measurable outcomes.
-
-Below is how I lead deliveries:
-
-- Start with a rapid assessment and architecture runway, then sequence delivery into measurable increments with clear acceptance and rollback criteria.
-- Design and implement the delivery system (backlog, releases, observability gates, demo cadence) so stakeholders see progress and risks early.
-- Bake in operability from day one: runbooks, SLOs, incident drills, and cost guardrails before production traffic ramps up.
-- Lead small, senior teams hands-on—pairing on critical services, coaching client engineers, and keeping architecture decisions documented and explainable.
 
 **Technical Credentials**  
 *(Some credentials expired after 2025, but retained here to show the breadth of expertise)*  

@@ -1,7 +1,7 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+pagetitle: Farid Gurbanov - Principal Engineer · Engineering Lead · Engineering Manager · Platform Lead · Technology Lead · Staff/Principal Architect
 title: Farid F. Gurbanov
-subtitle: Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Principal Engineer · Engineering Lead · Engineering Manager · Platform Lead · Technology Lead · Staff/Principal Architect
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -14,37 +14,34 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**End-to-End-Plattformverantwortlicher und praktischer Ingenieur, der Strategie in ausgelieferte Systeme verwandelt. Ich arbeite mit Auftraggebern auf Führungsebene zusammen, um Cloud- und Datenplattformen zu entwerfen, zu bauen und zu betreiben, die die Zeit bis zum ersten Nutzen verkürzen und Transformationen risikoärmer machen.**
+**Principal Engineer, Architekt und Delivery Lead mit starkem Führungsfokus in Cloud-Infrastruktur, Datenplattformen und groß angelegter Systemintegration. Nachweisliche Erfolge beim Aufbau von Plattformen, bei der Festlegung technischer Strategien und bei der Führung von Engineering-Teams durch komplexe Transformationen. Erfahren in der Arbeit an der Schnittstelle von Architektur, Produktentwicklung und Lieferverantwortung.**
 
-Ich leite hybride und Multi-Cloud-Lieferungen (AWS, Azure, on-prem) und kombiniere ereignisgesteuerte Architekturen, Datenplattformen und KI-gestützte Automatisierung. Ich entwerfe und baue persönlich die kritischen Komponenten — Infrastructure-as-Code, CI/CD, Services, Observability — und nutze React/Node.js, Python, Terraform sowie die passenden Cloud-Services, um Architektur pragmatisch und die Lieferung messbar zu halten.
+Ich spezialisiere mich darauf, wirkungsstarke Engineering-Organisationen aufzubauen, nicht nur Systeme — Teams so zu befähigen, dass sie skalieren, schneller liefern und mit Klarheit, Eigenverantwortung und Resilienz arbeiten können.
 
-**Fachgebiete**
+**Führungsschwerpunkte**
 
-- **[Cloud-Architektur & Kostenoptimierung](./expertise/cloud-architecture)**: Verringerte Cloud-Ausgaben ohne Funktionsverlust; Schnellere Wiederherstellung nach Vorfällen (niedrigeres MTTR); Klare Verantwortung und Kostentransparenz; Architekturen mit vorhersehbarer Skalierung
-- **[Ereignisgesteuerte & Streaming-System](./expertise/streaming-systems)**: Schnellere Wiederherstellung nach Ausfällen; Vorhersehbare Nachrichtenverarbeitung; Klare operative Runbooks; Systemteams können tatsächlich erklären und betreiben
-- **[DevOps & Platform Engineering](./expertise/platform-engineering)**: Schnellere Release-Zyklen; Weniger Produktionsvorfälle; Reduzierte Belastung im Bereitschaftsdienst; Klare Verantwortung vom Commit bis zur Produktion
-- **[KI-gestützte Automatisierung für interne Plattformen](./expertise/ai-automation)**: Verringerter manueller Aufwand; Schnellere Durchlaufzeiten; Weniger menschliche Übergaben; Klarer ROI durch KI-Einführung
-- **[Modernisierung von Legacy zu Cloud-Native](./expertise/legacy-modernization)**: Reduziertes Betriebsrisiko; Klare Modernisierungs-Roadmap; Schnellere Zeit bis zum ersten Nutzen; Teams befähigt, sich unabhängig weiterzuentwickeln
+-	**Technologiestrategie & Plattformführung**: Plattform-Roadmaps, technische Governance, Rahmenwerke für Architekturentscheidungen, langfristige Skalierbarkeit
+-	**Engineering-Führung**: Teamentwicklung, Mentoring, technisches Coaching, Kompetenzaufbau, Karriereentwicklung
+-	**Enterprise- & Produktarchitektur**: Übersetzung der Geschäftsstrategie in umsetzbare Engineering-Plattformen
+-	**Cloud- & Plattformtransformation**: Hybrid- und Multi-Cloud-Modernisierung, Transformation von Betriebsmodellen
+-	**Integration & Plattform-Engineering**: Ereignisgesteuerte Architektur, Streaming-Plattformen, API-Ökosysteme
+-	**Delivery-Leadership**: Planbare Lieferfähigkeit, Koordination über Teams hinweg, Ausrichtung von Stakeholdern
+-	**Kosten- & Risikogovernance**: Cloud-Kostenoptimierung, Plattformstandardisierung, Reduzierung operativer Risiken
+-	**KI-Einführung**: Einsatz von KI für interne Plattformen, Automatisierung und Entwicklerproduktivität
 
-Was Sie als Auftraggeber erhalten:
 
-- Eine verantwortliche Führungskraft für Discovery → Architektur → Entwicklung → Produktion, mit klaren SLOs und Kosten-Grenzwerten.
-- Architekturen, die erklärbar, betreibbar und revisionssicher sind — keine „Black-Box“-Abstraktionen.
-- Lieferkennzahlen, die Sie verfolgen können: Zeit bis zum ersten Nutzen, MTTR, Replay-Zeit, Kosten pro 1.000 Ausführungen/Nachrichten.
-- Kleine, erfahrene Teams, die schnell ausliefern und gleichzeitig Kundeningenieure befähigen, die Plattform zu übernehmen.
+**Technische Fachgebiete**
 
-Ich schaffe die Verbindung zwischen Unternehmensarchitektur und Produktentwicklung — gleiche Stakeholder ab, übersetze Strategie in Inkremente und halte die Roadmap an messbaren Ergebnissen fest. 
+- **[Cloud-Architektur & Kostenoptimierung](./expertise/cloud-architecture)**: Reduzierte Cloud-Ausgaben ohne Funktionsverlust; Schnellere Wiederherstellung nach Vorfällen (niedrigerer MTTR); Klare Zuständigkeiten und Kostenübersicht; Architekturen, die vorhersehbar skalieren
+- **[Ereignisgesteuerte & Streaming-Systeme](./expertise/streaming-systems)**: Schnellere Erholung nach Ausfällen; Vorhersehbare Nachrichtenverarbeitung; Klare Betriebs-Runbooks; Systemteams können die Systeme tatsächlich erklären und betreiben
+- **[DevOps & Plattform-Engineering](./expertise/platform-engineering)**: Schnellere Release-Zyklen; Weniger Produktionsvorfälle; Geringerer On-Call-Stress; Klare Zuständigkeit vom Commit bis zur Produktion
+- **[KI-gestützte Automatisierung für interne Plattformen](./expertise/ai-automation)**: Reduzierter manueller Aufwand; Schnellere Durchlaufzeiten; Weniger menschliche Übergaben; Klarer ROI aus KI-Einführung
+- **[Modernisierung von Legacy-Systemen zu Cloud-nativen Lösungen](./expertise/legacy-modernization)**: Reduziertes operatives Risiko; Klare Modernisierungs-Roadmap; Schnellere Time-to-First-Value; Teams befähigt, unabhängig weiterzuentwickeln
 
-Nachfolgend beschreibe ich, wie ich Lieferungen leite:
-
-- Beginne mit einer schnellen Bewertung und einer Architektur-Runway, dann gliedere die Lieferung in messbare Inkremente mit klaren Akzeptanz- und Rollback-Kriterien.
-- Entwerfe und implementiere das Delivery-System (Backlog, Releases, Observability-Gates, Demo-Rhythmus), sodass Stakeholder Fortschritt und Risiken frühzeitig erkennen.
-- Operabilität von Tag eins einbauen: Runbooks, SLOs, Incident-Drills und Kosten-Grenzwerte, bevor der Produktionsbetrieb hochfährt.
-- Führe kleine, erfahrene Teams hands-on — Pairing bei kritischen Services, Coaching der Kundeningenieure und dokumentierte, erklärbare Architekturentscheidungen.
 
 
 **Technische Qualifikationen**  
-*(Einige Zertifikate sind nach 2025 abgelaufen, wurden hier aber beibehalten, um die Bandbreite der Expertise zu zeigen)*  
+*(Einige Zertifikate sind nach 2025 abgelaufen, werden hier jedoch zur Darstellung der Breite der Expertise aufgeführt)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
@@ -52,9 +49,9 @@ Nachfolgend beschreibe ich, wie ich Lieferungen leite:
 - Databricks Certified Data Engineer Professional  
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
-- Cisco CCNA (Networking)  
-- PRINCE2 Practitioner (Project Management)  
-- TOGAF 9 Certified (Enterprise Architecture)  
-- ITIL 4 Foundation (Service Management)  
+- Cisco CCNA (Netzwerke)  
+- PRINCE2 Practitioner (Projektmanagement)  
+- TOGAF 9 Certified (Enterprise-Architektur)  
+- ITIL 4 Foundation (Servicemanagement)  
 
 ![Technische Qualifikationen](/images/badges-02.png)

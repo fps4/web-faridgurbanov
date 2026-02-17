@@ -1,7 +1,7 @@
 ---
-pagetitle: Farid Gurbanov - Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+pagetitle: Farid Gurbanov - Principal Engineer · Engineering Lead · Engineering Manager · Platform Lead · Technology Lead · Staff/Principal Architect
 title: Farid F. Gurbanov
-subtitle: Solutions Architect & Engineer | Technical Delivery Lead | Cloud & Data Platform Modernization | Multi-Cloud | Event-Driven | Full-Stack | Azure & AWS
+subtitle: Principal Engineer · Engineering Lead · Engineering Manager · Platform Lead · Technology Lead · Staff/Principal Architect
 pagelinks:
   - icon: "/assets/images/linkedin-icon.png"
     ctaLabel: LinkedIn
@@ -14,37 +14,34 @@ pagelinks:
     ctaHref: "#"   
 ---
 
-**End-to-end platform owner en hands-on engineer die strategie omzet in opgeleverde systemen. Ik werk samen met executive sponsors om cloud- en dataplatformen te ontwerpen, bouwen en beheren die time-to-value verkorten en transformatie risico's verminderen.**
+**Principal Engineer, architect en leveringsleider met een sterke leiderschapsfocus op cloudinfrastructuur, dataplatformen en grootschalige systeemintegratie. Aangetoond trackrecord in het bouwen van platformen, het leiden van technische strategie en het begeleiden van engineeringteams door complexe transformaties. Ervaren in het opereren op het snijvlak van architectuur, productengineering en delivery-leiderschap.**
 
-Ik leid hybride en multi-cloud leveringen (AWS, Azure, on-prem) en combineer event-driven architecturen, dataplatformen en AI-gestuurde automatisering. Ik ontwerp en bouw zelf de kritieke onderdelen—infrastructure-as-code, CI/CD, services, observability—met React/Node.js, Python, Terraform en de juiste cloudservices om architectuur pragmatisch en levering meetbaar te houden.
+Ik ben gespecialiseerd in het opbouwen van engineeringorganisaties met grote impact, niet alleen systemen — teams in staat stellen te schalen, sneller te leveren en te opereren met duidelijkheid, eigenaarschap en veerkracht.
 
-**Expertisegebieden**
+**Gebieden van leiderschapsimpact**
 
-- **[Cloudarchitectuur & kostenoptimalisatie](./expertise/cloud-architecture)**: Lagere cloudkosten zonder verlies van functionaliteit; Sneller incidentherstel (lager MTTR); Duidelijk eigenaarschap en kosteninzicht; Architecturen die voorspelbaar schalen
-- **[Event-driven & streaming-systeem](./expertise/streaming-systems)**: Sneller herstel na storingen; Voorspelbare berichtverwerking; Duidelijke operationele runbooks; Systeemteams kunnen het daadwerkelijk uitleggen en bedienen
-- **[DevOps & platformengineering](./expertise/platform-engineering)**: Snellere releasecycli; Minder productie-incidenten; Minder on-call stress; Duidelijke eigenaarschap van commit tot productie
-- **[AI-gestuurde automatisering voor interne platformen](./expertise/ai-automation)**: Minder handmatig werk; Kortere doorlooptijden; Minder menselijke overdrachten; Duidelijke ROI van AI-adoptie
-- **[Modernisering van legacy naar cloud-native](./expertise/legacy-modernization)**: Verminderd operationeel risico; Duidelijke moderniseringsroadmap; Snellere tijd tot eerste waarde; Teams in staat zelfstandig te evolueren
-
-Wat u krijgt als sponsor:
-
-- Eén verantwoordelijke lead voor discovery → architectuur → bouw → productie, met duidelijke SLOs en kostenbeperkingen.
-- Architecturen die verklaarbaar, bedienbaar en auditklaar zijn—geen “black box”-abstracties.
-- Leveringsstatistieken die u kunt volgen: tijd-tot-eerste-waarde, MTTR, replay-tijd, kosten per 1k runs/berichten.
-- Kleine, senior teams die snel opleveren en tegelijkertijd klantengineers begeleiden om het platform te adopteren.
-
-Ik sla de brug tussen enterprise-architectuur en productengineering—stakeholders op één lijn brengen, strategie vertalen naar incrementele stappen en de roadmap koppelen aan meetbare resultaten. 
-
-Hieronder hoe ik leveringen aanstuur:
-
-- Begin met een snelle beoordeling en een architectuur-runway, en verdeel daarna de levering in meetbare incrementele stappen met duidelijke acceptatie- en rollbackcriteria.
-- Ontwerp en implementeer het leveringssysteem (backlog, releases, observability gates, demo-cadans) zodat stakeholders vroegtijdig vooruitgang en risico's zien.
-- Borg operabiliteit vanaf dag één: runbooks, SLOs, incidentoefeningen en kostenbeperkingen voordat het productieverkeer toeneemt.
-- Leid kleine, senior teams hands-on—door samen te werken aan kritieke services, coaching van klantengineers, en het documenteren en verklaarbaar houden van architectuurbeslissingen.
+-	**Technologiestrategie & platformleiderschap**: Platformroadmaps, technische governance, raamwerken voor architecturale beslissingen, langetermijnschaalbaarheid
+-	**Engineeringleiderschap**: Teamondersteuning, mentoring, technische coaching, capaciteitsopbouw, loopbaanontwikkeling
+-	**Enterprise- & productarchitectuur**: Het vertalen van bedrijfsstrategie naar uitvoerbare engineeringplatformen
+-	**Cloud- & platformtransformatie**: Hybride en multi-cloud modernisering, transformatie van het operating model
+-	**Integratie & platformengineering**: Gebeurtenisgestuurde architectuur, streamingplatforms, API-ecosystemen
+-	**Delivery-leiderschap**: Voorspelbare oplevering, cross-team coördinatie, afstemming met stakeholders
+-	**Kosten- & risicogovernance**: Cloudkostenoptimalisatie, platformstandaardisatie, vermindering van operationeel risico
+-	**AI-mogelijkheden**: AI-adoptie voor interne platformen, automatisering en ontwikkelaarproductiviteit
 
 
-**Technische certificeringen**  
-*(Sommige certificeringen zijn na 2025 verlopen, maar hier opgenomen om de breedte van expertise te tonen)*  
+**Gebieden van technische expertise**
+
+- **[Cloudarchitectuur & kostenoptimalisatie](./expertise/cloud-architecture)**: Verminderde cloudkosten zonder verlies van capaciteit; Snellere incidentherstel (lagere MTTR); Duidelijk eigenaarschap en zichtbaarheid van kosten; Architecturen die voorspelbaar schalen
+- **[Gebeurtenisgestuurde & streaming-systemen](./expertise/streaming-systems)**: Sneller herstel bij uitval; Voorspelbare berichtverwerking; Duidelijke operationele runbooks; Systeemteams kunnen ze daadwerkelijk uitleggen en bedienen
+- **[DevOps & platformengineering](./expertise/platform-engineering)**: Snellere releasecycli; Minder incidenten in productie; Minder stress bij on-call; Duidelijk eigenaarschap van commit tot productie
+- **[AI-gestuurde automatisering voor interne platformen](./expertise/ai-automation)**: Verminderde handmatige inspanning; Snellere doorlooptijden; Minder menselijke overdrachten; Duidelijke ROI van AI-adoptie
+- **[Modernisering van legacy naar cloud-native](./expertise/legacy-modernization)**: Verminderd operationeel risico; Duidelijke moderniseringsroadmap; Snellere time-to-first-value; Teams in staat zelfstandig te evolueren
+
+
+
+**Technische kwalificaties**  
+*(Sommige certificeringen verlopen na 2025, maar blijven hier opgenomen om de reikwijdte van de expertise te tonen)*  
 
 - Microsoft Azure Solutions Architect Expert  
 - AWS Certified Solutions Architect – Professional  
@@ -52,9 +49,9 @@ Hieronder hoe ik leveringen aanstuur:
 - Databricks Certified Data Engineer Professional  
 - Snowflake Core Certified  
 - Accenture Certified Technology Architect  
-- Cisco CCNA (Networking)  
-- PRINCE2 Practitioner (Project Management)  
-- TOGAF 9 Certified (Enterprise Architecture)  
-- ITIL 4 Foundation (Service Management)  
+- Cisco CCNA (netwerken)  
+- PRINCE2 Practitioner (projectmanagement)  
+- TOGAF 9 Certified (enterprise-architectuur)  
+- ITIL 4 Foundation (servicemanagement)  
 
 ![Technische certificeringen](/images/badges-02.png)

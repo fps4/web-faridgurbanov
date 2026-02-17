@@ -3,15 +3,15 @@ title: DevOps & Platform Engineering
 subtitle: Build Platforms That Let Teams Ship—Safely and Repeatedly
 ---
 
-Hoogpresterende teams schrijven niet alleen code — ze vertrouwen op **ontwikkelaarsplatforms die wrijving wegnemen**, zorgen voor geautomatiseerde kwaliteit en maken productie saai.
+Hoog presterende teams schrijven niet alleen code — ze vertrouwen op **ontwikkelplatforms die frictie wegnemen**, automatiseren kwaliteitsborging en productie voorspelbaar maken.
 
-Ik help teams bij het ontwerpen en leveren van **praktische DevOps- en platformengineeringfundamenten** die meegroeien met het bedrijf.
+Ik help teams bij het ontwerpen en opleveren van **praktische fundamenten voor DevOps en platformengineering** die meeschalen met de organisatie.
 
 #### Waar ik mee help
 
 * CI/CD-pijplijnen (GitHub Actions, cloud-native tooling)
-* Infrastructuur als code (Terraform, ARM)
-* Observeerbaarheid en waarschuwingen (Datadog, Grafana)
+* Infrastructuur als Code (Terraform, ARM)
+* Observability en alerting (Datadog, Grafana)
 * Veilige omgevingen met duidelijke uitrolpaden
 * Productieklaarheid en operationele overdracht
 
@@ -19,7 +19,7 @@ Ik help teams bij het ontwerpen en leveren van **praktische DevOps- en platforme
 
 * Snellere releasecycli
 * Minder incidenten in productie
-* Minder stress door on-call-diensten
-* Duidelijke verantwoordelijkheid van commit tot productie
+* Minder on-call stress
+* Duidelijk eigenaarschap van commit tot productie
 
-Dit werk past bij startups en groeiende teams die **senior platformdenken willen zonder een groot intern DevOps-team op te bouwen**.
+Dit werk past bij startups en groeiende teams die **platformdenken op seniorniveau willen zonder een groot intern DevOps-team op te bouwen**.
