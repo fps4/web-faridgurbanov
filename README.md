@@ -4,9 +4,9 @@ Next.js application for the FPS Delivery Hub. This package contains the customer
 
 What’s here
 
-- `service/src/` app code and UI components
-- `service/public/` static assets
-- `service/content/` website content in text (i18n)
+- `src/src/` app code and UI components
+- `src/public/` static assets
+- `src/content/` website content in text (i18n)
 - `scripts/` helper scripts (translation, etc)
 - Config: `next.config.mjs`, `eslint.config.mjs`, `prettier.config.mjs`, `next-sitemap.config.js`
 - `Dockerfile` for containerized builds
@@ -19,7 +19,7 @@ Requirements
 Quick start
 
 ```bash
-cd service/
+cd src/
 yarn install
 yarn dev   # http://localhost:3033 (Turbopack)
 

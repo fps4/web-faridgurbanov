@@ -8,7 +8,7 @@ services:
   frontend:
     container_name: personal-website
     build:
-      context: service/
+      context: src/
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_CHATBOT_URL: ${NEXT_PUBLIC_CHATBOT_URL}
