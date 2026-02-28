@@ -4,7 +4,7 @@
   "home.md": "8e504b8c8434085d76316cf806d457d52bdfe4144879901beb5fe135b68f16a2",
   "contact.md": "a41763fde89adcb66240d7f77ba98c09afd0c95b0fcaf8db6d28dda706dddef4",
   "bookshelf.md": "d988aad763ca7e6bde554889cb36edd5f209118455c251d6a149420fe7f18115",
-  "blog.md": "092acb2c2cc31543e38637d706e474ba239e3d900b11b1b9ee62e505f5d537ac",
+  "blog.md": "3db1582524a24ddc8f9f83a79e6647d53ccb87b205a68ecfec1bc1e48837a542",
   "about.md": "d69fcfc72a5a2cd1cc252b7796579218a8984acf9abf5d07fb279295b70a8dfa",
   "projects/unified-behavioral-telemetry.md": "d23597c24699529f49e9bca1820102bebb56b97b6dc9d0c09a29eb165d8d19cb",
   "projects/sentiment-analysis-and-response.md": "096bb32c7123cdb43fc216590a2af91a1692eefb0bda0a20f9e34e0e8bd2f48f",
@@ -22,5 +22,6 @@
   "expertise/platform-engineering.md": "63e9d6983b0eb9fbc8222b6ad65050c3a417a5d94323756b051ecb79381b0911",
   "expertise/legacy-modernization.md": "7d0f71ff9e37f1090585096c3ed7ee655c67fd85b91b26067045b4aa1c962cd4",
   "expertise/cloud-architecture.md": "756a702ea030397b64ff19be6fde5390e1e77cab435684096995d16f11b2ef4f",
-  "expertise/ai-automation.md": "16fe2ec5158bd18926045f2ff767da34a3a48ff448d251b5ba46e69e19198633"
+  "expertise/ai-automation.md": "16fe2ec5158bd18926045f2ff767da34a3a48ff448d251b5ba46e69e19198633",
+  "blog/it-org-ai-transformation.md": "9bce9c0d1e75086cdef8908818b7e6f00c6b2928abbb03be6717f59c228ac8e5"
 }

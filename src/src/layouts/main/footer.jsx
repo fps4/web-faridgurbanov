@@ -50,7 +50,7 @@ export function Footer({ sx, layoutQuery = 'md', setCookiesConsentOpen, ...other
     {
       headline: t('blog'),
       children: [
-        { name: t('about-me'), href: p.home },
+        { name: t('it-org-ai-transformation'), href: `${p.blog}/it-org-ai-transformation` },
       ],
     },    
   ];
