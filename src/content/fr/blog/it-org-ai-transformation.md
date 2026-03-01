@@ -1,120 +1,118 @@
 ---
-title: Why Your IT Department Is Not Ready for AI (And What To Do About It)
-subtitle: This post is my attempt to explain what I think needs to actually change. Not the tools. The structure. The mindset. The decisions about what you build yourself and what you let someone else worry about.
+title: Comment les organisations informatiques peuvent piloter la transformation par l'IA
+subtitle: Réflexions pratiques pour les responsables technologiques naviguant un véritable changement
 ---
 
+---
+
+Nous sommes à un moment intéressant. Les modèles d'IA sont devenus suffisamment capables pour accomplir un vrai travail — pas seulement pour y assister, mais pour le réaliser réellement. Pour les responsables informatiques, cela crée une opportunité réelle de remodeler la façon dont la technologie crée de la valeur au sein des organisations. La question n'est pas de savoir s'il faut s'engager dans ce changement, mais comment le faire de manière réfléchie et efficace.
+
+Ce billet est ma tentative de partager un cadre pratique pour réfléchir à cette question : ce qui doit changer organisationnellement, ce qui mérite d'être construit en interne et ce qui peut être confié en toute sécurité à des fournisseurs.
 
 ---
 
-## L'ancien service informatique était une couche de traduction
+## Repenser le rôle de l'informatique
 
-Pendant peut-être trente ans, le rôle de l'informatique se résumait essentiellement à ceci : les métiers ont des besoins, les informaticiens traduisent ces besoins en éléments techniques, puis les informaticiens construisent ou achètent ces éléments techniques et les exploitent. L'informatique était volontairement le goulot d'étranglement. C'était la manière d'empêcher que les choses ne se cassent.
+Pendant des décennies, l'informatique a servi de couche de traduction entre les besoins métiers et l'exécution technique. Les équipes métiers expriment ce qu'elles veulent ; les équipes informatiques traduisent cela en spécifications, construisent ou achètent des systèmes, et les exploitent. Ce modèle a bien servi les organisations quand la complexité technique l'exigeait.
 
-Le problème est que l'IA suffisamment capable de faire du vrai travail commence à dissoudre cette couche de traduction. Une analyste métier peut maintenant décrire ce qu'elle veut en langage courant et obtenir quelque chose d'utile en retour. Elle n'a pas besoin d'un ticket. Elle n'a pas besoin d'un sprint. Elle n'a pas besoin d'attendre.
-
-Ce n'est pas une petite affaire. C'est une crise d'identité pour la plupart des organisations informatiques.
+L'IA, désormais capable d'agir sur une intention exprimée en langage naturel, change la donne. Les utilisateurs métiers peuvent maintenant exprimer leurs besoins directement aux systèmes d'IA et recevoir des résultats utiles — sans ticket, sans sprint, sans attendre. Ce n'est pas une menace pour l'informatique ; c'est une invitation à évoluer vers quelque chose de plus stratégique.
 
 ```mermaid
 flowchart LR
-    A["Besoin métier"] -->|"Ancien Monde"| B["Ticket IT\n& Traduction"]
-    B --> C["Spécification"]
-    C --> D["Développement"]
-    D --> E["Déploiement"]
-    E --> F["Valeur métier"]
+    A["Besoin métier"] -->|"Modèle traditionnel"| B["Traduction IT\n& Spécification"]
+    B --> C["Construire / Acquérir"]
+    C --> D["Déployer & Exploiter"]
+    D --> E["Valeur métier"]
 
-    A -->|"Monde IA"| G["Intention directe\nvers le système IA"]
-    G --> F
+    A -->|"Modèle activé par l'IA"| F["Intention directe\nvers le système d'IA"]
+    F --> E
 
-    style B fill:#f87171,color:#fff
-    style C fill:#f87171,color:#fff
-    style D fill:#f87171,color:#fff
-    style G fill:#4ade80,color:#000
+    style B fill:#94a3b8,color:#fff
+    style C fill:#94a3b8,color:#fff
+    style D fill:#94a3b8,color:#fff
+    style F fill:#3b82f6,color:#fff
 ```
 
-La chaîne d'autrefois avait de la valeur parce que la complexité l'exigeait. L'IA compresse cette chaîne de manière spectaculaire. Ce qui reste, ce sont la gouvernance, le contexte et les décisions architecturales difficiles. C'est autour de cela que l'informatique doit se réorganiser.
+L'opportunité est significative. L'informatique peut passer de la gestion de l'accès à l'habilitation de la rapidité — définir les standards, l'infrastructure partagée et les garde-fous qui permettent au reste de l'organisation d'avancer en confiance. C'est un rôle plus stratégique, avec une plus grande proximité des résultats métier et une influence réelle.
 
 ---
 
-## Ce que vous devez construire en interne
+## Ce qui mérite d'être construit en interne
 
-Il y a une tentation à tout externaliser. Je comprends cette tentation. Ça paraît rapide. Ça paraît moderne. Mais il y a des aspects où l'externalisation est un piège, parce que ce qui rend l'IA utile *pour votre entreprise spécifiquement* est un contexte que vous seul possédez.
+Les investissements les plus précieux sont dans les domaines où le contexte spécifique de votre organisation est la principale source de valeur. Ce sont des choses que l'IA ne peut pas obtenir ailleurs — uniquement de vous.
 
-### 1. Contexte et infrastructure des connaissances
+### Vos connaissances et votre contexte internes
 
-Les modèles d'IA sont intelligents mais ils sont aussi vides. Ils ne savent pas que votre équipe commerciale appelle un certain type d'affaire un « lighthouse account ». Ils ne savent pas pourquoi votre entreprise a pris une certaine décision architecturale en 2019. Ils ne connaissent pas les règles non écrites sur la façon dont votre équipe finance approuve les choses.
+Les modèles d'IA sont capables, mais ils opèrent sur le contexte qu'on leur fournit. Votre organisation a accumulé quelque chose de réellement précieux : des connaissances institutionnelles sur la façon dont les décisions sont prises, pourquoi certains processus fonctionnent comme ils le font, ce que signifient certains termes dans votre domaine spécifique, ce qui importe à vos clients. Ce contexte n'existe dans aucun système externe.
 
-Ce contexte interne — dispersé dans de vieux e-mails, des pages Confluence que personne ne tient à jour, dans les têtes des employés de longue date — est votre véritable actif compétitif. Construire les systèmes qui le capturent, le structurent et le rendent disponible à l'IA est un travail interne. Pas un travail glamour. Mais un travail irremplaçable.
+Investir dans la capture, la structuration et la mise à disposition de ces connaissances pour les systèmes d'IA est l'un des meilleurs retours sur investissement qu'une organisation informatique puisse faire aujourd'hui. Cela signifie construire des systèmes de recherche internes, maintenir des bases de connaissances à jour et créer les processus culturels qui encouragent les contributions. Les organisations qui font cela bien constateront que leurs systèmes d'IA sont nettement plus utiles que ceux s'appuyant uniquement sur un contexte générique.
 
-Cela signifie : construction de graphes de connaissance, systèmes internes de récupération (ce que l'on appelle RAG — retrieval-augmented generation), pipelines qui maintiennent les connaissances à jour, et processus culturels pour réellement amener les gens à contribuer à ces systèmes.
+### Orchestration des workflows et logique métier
 
-### 2. Orchestration des workflows
+La séquence selon laquelle l'IA effectue le travail — ce qui déclenche quoi, quand un humain doit intervenir, comment les exceptions sont gérées, comment l'IA interagit avec vos systèmes existants — encode votre logique métier réelle. Même en utilisant des API de modèles standard, la couche d'orchestration qui relie la capacité d'IA aux processus métier réels est de votre ressort.
 
-Vous pouvez acheter un modèle. Vous ne pouvez pas acheter la logique de fonctionnement de votre entreprise.
-
-Quand vous construisez un agent IA qui aide votre équipe achats, la séquence d'étapes — ce qui déclenche quoi, quand un humain doit approuver, ce qui se passe quand un fournisseur n'est pas dans le système, comment les exceptions sont escaladées — c'est votre logique métier. Elle encode des décennies de savoir-faire processus. Externaliser la couche d'orchestration revient essentiellement à externaliser la conception de vos processus à un fournisseur qui ne comprend pas votre entreprise.
+Cela mérite d'être conçu avec soin et en interne, car cela reflète le fonctionnement réel de votre organisation. Bien fait, cela devient un actif durable.
 
 ```mermaid
 flowchart TD
-    A["Requête entrante"] --> B{"Classification par IA"}
+    A["Requête entrante"] --> B{"Classification IA"}
     B -->|"Routinière"| C["Traitement automatisé"]
-    B -->|"Exception"| D["File de revue humaine"]
-    B -->|"Haute valeur"| E["Approbation d'un responsable"]
+    B -->|"Exception"| D["Revue humaine"]
+    B -->|"Forte valeur"| E["Approbation supérieure"]
     
-    C --> F["Règles métier internes\n⚠️ À développer en interne"]
+    C --> F["Votre logique métier\n& moteur de règles"]
     D --> F
     E --> F
     
-    F --> G["ERP / CRM / Systèmes"]
-    F --> H["Journal d'audit"]
+    F --> G["Systèmes connectés\nERP / CRM / Données"]
+    F --> H["Journal d'audit & conformité"]
     
     style F fill:#1d4ed8,color:#fff
     style H fill:#374151,color:#fff
 ```
 
-### 3. Infrastructure d'évaluation
+### Infrastructure d'évaluation
 
-C'est le domaine où je vois les entreprises les moins préparées.
+Savoir si l'IA fait du bon travail dans votre contexte spécifique est quelque chose que vous seul pouvez évaluer. À quoi ressemble une sortie de haute qualité pour vos cas d'usage ? Quels sont les modes de défaillance qui importent le plus dans votre domaine ?
 
-Comment savez-vous si l'IA fait du bon travail ? « Ça a l'air bien » n'est pas une stratégie. Vous avez besoin d'évaluations spécifiques au domaine — jeux de tests qui reflètent vos cas d'usage réels, pipelines de revue humaine, boucles de rétroaction et surveillance qui détecte quand le comportement du modèle dérive ou se dégrade après qu'un fournisseur a mis à jour son modèle.
+Construire une infrastructure d'évaluation — jeux de tests spécifiques au domaine, pipelines de revue humaine, boucles de rétroaction, monitoring qui détecte la dégradation au fil du temps — est un investissement qui se cumule. Il vous donne confiance dans vos déploiements, vous protège des échecs silencieux et vous fournit des preuves pour étendre l'utilisation de l'IA de manière responsable au fil du temps.
 
-Aucun fournisseur externe ne peut construire cela pour votre domaine. Seul vous savez ce à quoi « bon » ressemble dans votre contexte. Cette infrastructure est peu sexy, coûteuse et absolument nécessaire.
+### Gouvernance et conception des accès
 
-### 4. Couche d'identité, d'accès et de gouvernance
+Définir qui peut commander les systèmes d'IA pour faire quoi, avec quelles données et avec quel degré d'autonomie est un défi de conception unique à votre organisation. Cela nécessite de comprendre votre contexte réglementaire, votre tolérance au risque et vos structures de responsabilité.
 
-Qui peut donner des instructions à une IA pour faire quoi, avec quelles données, et avec quel niveau d'autonomie ? Cela ressemble à une question de sécurité mais c'est en réalité une question de conception organisationnelle.
-
-Un agent IA qui peut lire votre base clients, envoyer des e-mails au nom des commerciaux et créer des enregistrements dans votre CRM est puissant. C'est aussi une surface de risque significative. Les politiques autour de cela — qui autorise les capacités des agents, comment vous auditez ce que l'IA a fait et pourquoi, comment vous révoquez les accès — doivent être construites en fonction de votre contexte réglementaire et de conformité spécifique. Vous pouvez utiliser des composants et des plateformes, mais la conception doit être la vôtre.
+Les organisations qui conçoivent cela de manière réfléchie et tôt — en construisant des politiques claires, des mécanismes d'audit et des voies d'escalade — seront capables d'étendre l'utilisation de l'IA bien plus sereinement que celles qui devront adapter la gouvernance après qu'un problème soit survenu.
 
 ---
 
-## Ce que vous pouvez externaliser en toute sécurité
+## Ce qui peut être externalisé en toute confiance
 
-Tout n'a pas besoin d'être construit en interne. Beaucoup de choses sont déjà des commodités et essayer de les construire vous-même est du gaspillage.
+Tout n'a pas besoin d'être construit en interne. Beaucoup de capacités sont déjà matures, compétitives et bien tarifées sur le marché.
 
-**Les modèles d'IA sous-jacents** — c'est évident, mais ça vaut la peine de le dire. Entraîner des modèles de pointe n'est pas quelque chose qu'une entreprise normale devrait tenter. Utilisez les API. Les coûts de changement sont plus faibles que vous ne le pensez.
+Les modèles d'IA fondamentaux (foundation models) sont l'exemple le plus clair. Former des modèles de pointe n'est pas un investissement raisonnable pour des organisations en dehors de la poignée de laboratoires qui le font. Les API des principaux fournisseurs offrent d'excellentes capacités à un coût accessible, et les coûts de changement sont plus faibles que la plupart ne le pensent.
 
-**Outils de productivité généraux** — assistants de codage, résumés de réunions, rédaction de documents. Ce sont déjà des commodités. L'avantage compétitif ici est à peu près nul, que vous utilisiez le fournisseur A ou le fournisseur B. Standardisez, négociez les tarifs, passez à autre chose.
+Les outils de productivité généraux — assistance au codage, synthèse des réunions, rédaction de documents — sont déjà une commodité. La valeur ici vient de l'adoption et de l'utilisation, pas de la différenciation. Standardisez sur un fournisseur, négociez les tarifs et concentrez votre énergie ailleurs.
 
-**Infrastructure IA** — calcul d'inférence, bases de données vectorielles, infrastructures de fine-tuning. Les fournisseurs cloud se battent fort ici et l'économie de le faire vous-même a peu de sens. Ce n'est pas comme l'ancien débat on-premise vs cloud pour le calcul général. Le rythme de changement de l'infrastructure IA signifie que construire la vôtre sera probablement obsolète avant d'être terminée.
+L'infrastructure IA — calcul d'inférence, bases de données vectorielles, plateformes de fine-tuning — est un domaine où les fournisseurs cloud sont en forte concurrence et où l'économie favorise nettement l'utilisation de services managés. Le rythme d'innovation est suffisamment rapide pour que construire une infrastructure propriétaire ait de fortes chances de prendre du retard rapidement.
 
-**Outils d'observabilité pour systèmes IA** — plateformes de surveillance du comportement des LLM, traçage des workflows agentifs, détection des hallucinations. Ceux-ci mûrissent rapidement. Utilisez-les plutôt que de les construire.
+Les outils d'observabilité et de monitoring pour les systèmes d'IA mûrissent rapidement. De bonnes plateformes existent pour suivre le comportement des modèles, tracer les actions des agents et détecter les anomalies. Il vaut mieux les acheter que les construire.
 
 ```mermaid
 quadrantChart
-    title Cadre de décision Construire vs Acheter
-    x-axis "Générique / Standard" --> "Spécifique à votre entreprise"
-    y-axis "Faible valeur stratégique" --> "Forte valeur stratégique"
+    title Où investir vs. Où acheter
+    x-axis "Standard / Disponible externement" --> "Unique à votre organisation"
+    y-axis "Valeur stratégique inférieure" --> "Valeur stratégique supérieure"
     
-    quadrant-1 Construire & Protéger
+    quadrant-1 Construire & Investir
     quadrant-2 Construire avec précaution
-    quadrant-3 Acheter / Externaliser
+    quadrant-3 Acheter en toute confiance
     quadrant-4 Évaluer au cas par cas
 
     Systèmes de connaissances internes: [0.85, 0.90]
     Orchestration des workflows: [0.75, 0.80]
     Infrastructure d'évaluation: [0.70, 0.75]
-    Couche de gouvernance: [0.65, 0.85]
-    Modèles IA: [0.10, 0.30]
+    Conception de la gouvernance: [0.65, 0.85]
+    Modèles d'IA fondamentaux: [0.10, 0.30]
     Outils de productivité: [0.15, 0.20]
     Infrastructure IA: [0.20, 0.25]
     Outils d'observabilité: [0.35, 0.45]
@@ -122,72 +120,69 @@ quadrantChart
 
 ---
 
-## Comment l'organisation doit changer
+## Comment l'organisation peut évoluer
 
-C'est la partie la plus difficile. Parce que les changements technologiques sont en réalité plus faciles que les changements humains.
+Les décisions technologiques sont en fait la partie la plus facile. L'évolution organisationnelle est là où le vrai travail se joue — et où se trouve la véritable opportunité.
 
-### D'un goulet d'étranglement à une plateforme
+### Devenir une organisation plateforme
 
-L'organisation informatique organisée autour du fait d'être le chemin unique par lequel la technologie est déployée ne peut pas survivre dans cet environnement. Pas parce que les gens ne seront pas nécessaires — ils le seront — mais parce que le modèle du « soumettez un ticket et attendez » sera simplement contourné par quiconque sait utiliser des outils d'IA directement.
+Le passage d'une équipe qui gère des demandes à une équipe qui habilite l'organisation est significatif. Il exige que l'informatique conçoive une infrastructure partagée, définisse des standards que les autres peuvent utiliser en toute confiance et développe des garde-fous qui protègent sans ralentir inutilement.
 
-L'organisation informatique qui réussit devient une organisation plateforme : elle définit des standards, fournit une infrastructure partagée, définit les garde-fous et permet aux autres d'aller vite à l'intérieur de ces garde-fous. Cela exige que l'informatique abandonne un certain contrôle qu'elle détient actuellement et accepte que sa valeur vienne de la capacité à permettre la rapidité plutôt que de gérer l'accès.
+Ce modèle donne plus d'influence à l'informatique, pas moins. L'équipe plateforme façonne la manière dont l'IA est utilisée dans l'ensemble de l'organisation. C'est une position importante à occuper.
 
-C'est un véritable changement culturel. Beaucoup d'organisations informatiques y résisteront. Celles qui ne résisteront pas deviendront obsolètes.
+### Construire de nouvelles compétences
 
-### Compétences qui comptent désormais davantage
+Plusieurs disciplines deviennent centrales pour les organisations informatiques capables d'IA : conception du contexte et des connaissances, ingénierie d'évaluation, architecture des agents et des workflows, et gouvernance de l'IA. Ce sont des domaines en croissance et les personnes qui y développent une véritable expertise seront extrêmement précieuses.
 
-Les personnes qui savaient écrire des spécifications techniques détaillées — traduire le langage métier en exigences système — sont moins nécessaires. Les personnes capables de concevoir des systèmes de contexte, rédiger de bons prompts à l'échelle, construire des pipelines d'évaluation et réfléchir soigneusement aux limites d'autonomie des agents sont urgemment nécessaires.
-
-La plupart des organisations informatiques n'ont pas beaucoup de personnes de ce deuxième type. La reconversion fonctionne pour certains, mais pas pour tout le monde. C'est une conversation difficile que la plupart des organisations repoussent.
+Une approche pratique consiste à identifier un petit nombre de personnes curieuses de ces domaines et à leur donner l'espace pour développer de réelles compétences — via des projets, de l'apprentissage, et le travail sur des déploiements concrets. Cet investissement a tendance à se compenser rapidement.
 
 ```mermaid
 flowchart LR
-    subgraph "Rôles en diminution"
+    subgraph "Rôles en évolution"
         A["Traduction\ndes exigences"]
-        B["Tests manuels\n& QA"]
-        C["Scripts de base\n& automatisation"]
-        D["Support niveau 1"]
+        B["Tests manuels"]
+        C["Scripting basique"]
     end
 
-    subgraph "Rôles en expansion"
-        E["Conception du\ncontexte & des connaissances"]
-        F["Ingénierie\nd'évaluation IA"]
-        G["Architecture des\nagents et workflows"]
-        H["Gouvernance IA\n& risques"]
+    subgraph "En importance croissante"
+        D["Conception du contexte\net des connaissances"]
+        E["Ingénierie\nde l'évaluation IA"]
+        F["Architecture des agents\net des flux de travail"]
+        G["Gouvernance IA\n& conception des risques"]
     end
 
-    style A fill:#fca5a5
-    style B fill:#fca5a5
-    style C fill:#fca5a5
-    style D fill:#fca5a5
-    style E fill:#86efac
-    style F fill:#86efac
-    style G fill:#86efac
-    style H fill:#86efac
+    A -.->|"évolue vers"| D
+    B -.->|"évolue vers"| E
+    C -.->|"évolue vers"| F
+
+    style D fill:#86efac,color:#000
+    style E fill:#86efac,color:#000
+    style F fill:#86efac,color:#000
+    style G fill:#86efac,color:#000
 ```
 
-### La sécurité doit véritablement monter en compétences
+### Élever la sécurité et le risque en fonction stratégique
 
-Ajouter une « politique d'utilisation de l'IA » à la checklist de conformité sécurité existante n'est pas suffisant. La surface d'attaque est réellement nouvelle.
+La fonction sécurité a l'opportunité de devenir un véritable partenaire stratégique dans le déploiement de l'IA plutôt qu'un simple réviseur en aval. Le paysage des menaces autour de l'IA — injection de prompts, exposition de données via le contexte des modèles, responsabilité des agents autonomes — est suffisamment nouveau pour que les organisations qui développent une expertise tôt prennent de l'avance.
 
-L'injection de prompts — où du contenu malveillant dans les données manipule le comportement de l'IA — n'est pas couverte par les cadres de sécurité traditionnels. L'exfiltration de données via les fenêtres de contexte des modèles est un nouveau vecteur d'attaque. Les agents autonomes capables d'agir créent des questions de responsabilité que les cadres de gouvernance existants n'étaient pas conçus pour traiter.
-
-La fonction sécurité qui aborde l'IA avec les mêmes cadres qu'elle utilise pour les applications SaaS manquera les vrais risques et bloquera des choses qui sont en réalité sûres, ce qui est le pire des deux mondes.
+Aborder la sécurité de l'IA comme un défi de conception dès le départ, plutôt que comme une case de conformité à cocher à la fin, produit de meilleurs résultats et accélère les déploiements.
 
 ---
 
-## La synthèse honnête
+## Un point de départ pratique
 
-La plupart des entreprises essaient d'adopter des capacités d'IA tout en conservant la structure organisationnelle que ces capacités rendent en partie obsolète. C'est compréhensible. Se réorganiser est difficile, lent et douloureux. Mais c'est probablement inévitable.
+Pour les responsables informatiques qui se demandent par où commencer, je suggère de se concentrer sur trois choses :
 
-Les entreprises que je pense réussiront sont celles qui acceptent que certains rôles doivent diminuer, que certaines compétences doivent devenir centrales alors qu'elles ne l'étaient pas auparavant, et que le modèle de gouvernance doit changer avant même que vous ayez complètement défini ce que vous gouvernez.
+Commencez par l'infrastructure de contexte. Identifiez les connaissances internes les plus précieuses de votre organisation et construisez les systèmes pour les rendre disponibles aux IA. Même un investissement modeste ici rendra chaque déploiement d'IA sensiblement meilleur.
 
-Ce dernier point est important. Vous n'aurez pas une clarté parfaite avant d'avoir besoin d'agir. Les organisations qui attendent une image complète attendront encore pendant que d'autres apprennent déjà grâce à des déploiements réels.
+Concevez la gouvernance avant d'en avoir besoin. Définissez les politiques autour de l'accès et de l'autonomie des agents IA avant de déployer des agents à grande échelle. Il est bien plus facile de concevoir cela de manière réfléchie quand vous avez le temps, que de le réadapter sous pression.
 
-Construisez l'infrastructure de contexte. Construisez la capacité d'évaluation. Construisez la couche de gouvernance. Externalisez la commodité. Réorganisez-vous vers une plateforme. Acceptez l'inconfort.
+Déployez quelque chose de réel. La clarté sur ce qui fonctionne dans votre organisation vient de l'action, pas de la planification. Choisissez un cas d'usage à forte valeur et à risque faible, construisez-le soigneusement, mesurez-le honnêtement et utilisez ce que vous apprenez pour accélérer le suivant.
 
-Ce n'est pas plus compliqué que cela. C'est juste plus difficile.
+Les organisations qui abordent ce moment avec une curiosité sincère et une volonté d'évoluer constateront que l'IA amplifie ce qu'elles savent déjà bien faire. Les connaissances institutionnelles, la compréhension approfondie du métier, les relations avec les parties prenantes — tout cela devient plus précieux, pas moins, dans une organisation capable d'IA.
+
+C'est un bon moment pour travailler en informatique. Le rôle devient plus stratégique, plus connecté aux résultats métier et véritablement plus intéressant. Les leaders qui adoptent cette évolution façonneront la manière dont leurs organisations fonctionneront pour la décennie à venir.
 
 ---
 
-*Si vous avez trouvé ceci utile ou pensez que je me trompe sur quelque chose, j'aimerais vraiment le savoir. Ce sont des problèmes difficiles et je ne prétends pas avoir toutes les réponses.*
+*J'aimerais beaucoup savoir comment vous réfléchissez à tout cela dans votre organisation. Qu'est-ce qui fonctionne, qu'est-ce qui est difficile, où trouvez-vous le plus de valeur ? La conversation est plus utile que n'importe quel cadre.*

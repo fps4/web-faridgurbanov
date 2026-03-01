@@ -1,10 +1,10 @@
 ---
 title: Blog
-subtitle: Inzichten, verhalen en ideeën over cloud, AI en moderne software-engineering — geschreven om te inspireren en te vereenvoudigen.
+subtitle: "Inzichten, verhalen en ideeën over cloud, AI en moderne softwareontwikkeling — geschreven om te inspireren en te vereenvoudigen."
 # ---------------------------------------------------------------
 tiles:
-  - title: "Waarom uw IT-afdeling niet klaar is voor AI (en wat u eraan kunt doen)"
-    description: "Mijn poging om uit te leggen wat volgens mij echt moet veranderen. Niet de tools. De structuur. De mindset. De beslissingen over wat u zelf bouwt en wat u aan iemand anders overlaat."
+  - title: "Hoe IT-organisaties de AI-transformatie kunnen leiden"
+    description: "Praktische overwegingen voor technologieleiders die een wezenlijke verschuiving doormaken"
     ctaHref: "it-org-ai-transformation"
 # ---------------------------------------------------------------
 pagelinks:
