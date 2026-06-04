@@ -1,0 +1,31 @@
+name: Definition of Done
+
+# The quality gate maestro reads before opening the merge gate (ADR-0016 / onboarding step 3).
+# This Next.js app lives under src/; lint + build must be green on every PR. The existing
+# deploy-service.yml stays push-only — this adds the PR-time checks maestro's DoD poller reads.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-build:
+    name: webapp (lint + build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: src/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
