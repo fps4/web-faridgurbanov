@@ -27,10 +27,10 @@ approach (US-0002) is compatible with `output: 'export'` — spike it here.
 - WHEN the project is built with `npm run build`, THE SYSTEM SHALL emit a fully static export
   (`output: 'export'`) with no server-side runtime or API routes.
 - THE SYSTEM SHALL be based on Next.js 15 (App Router) + React 19 + Tailwind 3 + shadcn/ui, using
-  npm and without Docker.
+  npm (no Docker in the dev/build toolchain; the production image is built at deploy — US-0004).
 - THE SYSTEM SHALL NOT include the maestro-only dependency `react-diff-viewer-continued`.
-- THE static export SHALL deploy to and serve from a CDN preview (Cloudflare Pages) with no
-  backend.
+- THE static export SHALL build into the nginx container image (`infra/docker/web.Dockerfile`) and
+  serve with no application backend; the production deploy to the ds1 Docker host is US-0004.
 - THE scaffold SHALL include a documented decision/spike confirming the chosen i18n library is
   static-export-compatible (feeds US-0002).
 

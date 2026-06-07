@@ -17,8 +17,8 @@ related:
 
 Flip the site to its target positioning: the home leads with the training offer (architect proof
 beneath), and a full Training section + EU AI Act page go live — turning the M0 credibility base
-into the paid front-of-funnel (ADR-0003). Opens after M0 is live **and** there is at least initial
-training validation (per the training strategy's launch sequence).
+into the paid training offer (ADR-0003). Opens after M0 is live **and** there is at least initial
+training validation.
 
 ## Deliverables → specs
 

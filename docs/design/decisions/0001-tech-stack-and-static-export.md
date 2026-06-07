@@ -15,9 +15,9 @@ related:
 
 The site must be a credibility piece (clean, fast, on the open stack the owner recommends to
 clients), cheap and operationally free to run, and authorable as filesystem markdown by both the
-owner and an implementing agent. The old webapp (`../faridgurbanov-webapp/`) is heavier than a
-personal site needs (yarn, Docker/compose, "FPS Delivery Hub" framing). The `../maestro/web/`
-stack is the simpler open base.
+owner and an implementing agent. The previous personal site was heavier than a personal site
+needs (yarn, Docker/compose, heavyweight framing). The `../maestro/web/` stack is the simpler open
+base.
 
 ## Decision
 
@@ -28,21 +28,26 @@ Next.js 15 (App Router) + React 19
 Tailwind 3 + shadcn/ui
 react-markdown + remark-gfm
 @tailwindcss/typography
-output: 'export'   (static files on a CDN)
-npm (not yarn), no Docker
+output: 'export'   (static HTML/CSS/JS, no app server)
+npm (not yarn); packaged as a thin nginx image, run on the ds1 Docker host
 ```
 
 - **Reuse maestro/web's `package.json`** as the base; drop the maestro-only dep
   (`react-diff-viewer-continued`); add the i18n library (ADR-0002).
 - **Content is filesystem markdown** under `/content/{en,nl}/...`, rendered by `react-markdown`.
   No CMS, no database.
-- **`output: 'export'`** → static HTML/CSS/JS on a CDN (Cloudflare Pages preferred). No server,
-  no uptime concern.
+- **`output: 'export'`** → static HTML/CSS/JS with no application server. The export is served by
+  a minimal **nginx** container on the **ds1 Docker host**, built and deployed by the self-hosted
+  GitHub Actions runner (`[self-hosted, ds1]`) on merge to `main` (see
+  `infra/docker/` and `.github/workflows/deploy-ds1.yml`). Docker appears only at the serving
+  edge — the app itself stays a pure static export.
 
 ## Consequences
 
-- Free/near-free hosting; nothing to operate; the stack itself is part of the pitch.
+- Self-hosted on ds1: near-zero marginal hosting cost, with a small ops surface (the nginx
+  container plus the host's reverse proxy / TLS). The clean static stack is still part of the pitch.
 - Constraint: **every feature must work under static export** — no server-side runtime, no API
   routes, no SSR-only features. Contact submission uses a static-friendly third-party mechanism
   (FS-0007). The chosen i18n approach must be static-export-compatible (ADR-0002).
-- Content changes are git + markdown, no deploy pipeline beyond the static build.
+- Content changes are git + markdown; a push to `main` rebuilds the image and redeploys via the
+  runner — no manual server steps.

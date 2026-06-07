@@ -21,5 +21,6 @@ milestones; milestone slicing happens via each story's `milestone:` frontmatter.
 | [EP-01 — Content pages](EP-01-content-pages/README.md) | Home, expertise, case studies, portfolio, writing, contact/privacy | FS-0002…FS-0007 |
 | [EP-02 — Training & EU AI Act](EP-02-training/README.md) | Training CTA stub (M0) → full Training section + EU AI Act page (M1) | FS-0008 |
 
-> **Seed backlog.** A few M0 stories are seeded below to show the breakdown; a spec/design agent
-> can derive the remaining stories from the functional specs.
+> **M0 fully drafted.** All M0 stories are drafted in full (EP-00 US-0001…US-0004, EP-01
+> US-0010…US-0015, EP-02 US-0020). M1 stories (US-0021…US-0023) remain stubs for a spec/design
+> agent to expand from FS-0002 (M1) and FS-0008 (M1).

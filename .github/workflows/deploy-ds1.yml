@@ -1,0 +1,78 @@
+name: deploy-ds1
+
+# Continuous deployment of the static site to the ds1 Docker host.
+#
+# Why this shape:
+# * ds1 is a Docker host reached via the self-hosted runner labelled [self-hosted, ds1] — no SSH,
+#   the job runs ON the host and drives its Docker daemon.
+# * Deploy only AFTER the `dod` gate passes on main: chained via `workflow_run`, the job runs only
+#   when that run concluded `success` for a push to `main` (i.e. a merged PR). `workflow_dispatch`
+#   allows a manual redeploy.
+# * The app is a static export (output: 'export', ADR-0001); the image (infra/docker/web.Dockerfile)
+#   builds it and serves it from nginx. We `docker compose up -d --build` to rebuild and recreate.
+#
+# Optional repo configuration (Settings → Secrets and variables → Actions → Variables):
+#   SITE_HEALTHCHECK_URL   URL to smoke-check after deploy (skipped if unset)
+
+on:
+  workflow_run:
+    workflows: [dod]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ds1
+  cancel-in-progress: false   # queue rather than cancel a deploy mid-flight
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    # Manual dispatch always deploys; the chained path only on a green dod run for a push to main.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.event == 'push')
+    runs-on: [self-hosted, ds1]
+    steps:
+      - name: checkout the deployed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
+
+      - name: tooling present
+        run: |
+          docker version --format '{{.Server.Version}}'
+          docker compose version
+
+      - name: deploy — build the static-site image and recreate the container
+        run: |
+          docker compose -f infra/docker/compose.yml up -d --build --remove-orphans web
+
+      - name: wait for health
+        run: |
+          ok=0
+          for i in $(seq 1 24); do        # up to ~2 min
+            s=$(docker inspect --format '{{.State.Health.Status}}' faridgurbanov-web 2>/dev/null || echo none)
+            echo "faridgurbanov-web health=$s"
+            [ "$s" = "healthy" ] && { ok=1; break; }
+            sleep 5
+          done
+          docker logs --tail 20 faridgurbanov-web 2>&1 | tail -20
+          [ "$ok" = 1 ] || { echo "::error::faridgurbanov-web did not become healthy"; exit 1; }
+
+      - name: smoke check (optional)
+        run: |
+          url="${{ vars.SITE_HEALTHCHECK_URL }}"
+          if [ -z "$url" ]; then
+            echo "SITE_HEALTHCHECK_URL not set — skipping HTTP smoke check"; exit 0
+          fi
+          code=$(curl -fsS -o /dev/null -w '%{http_code}' "$url" || true)
+          echo "GET $url -> $code"
+          [ "$code" = "200" ] || { echo "::error::smoke check failed (HTTP $code)"; exit 1; }
+
+      - name: prune dangling images (always)
+        if: always()
+        run: docker image prune -f || true

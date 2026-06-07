@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-A bilingual (EN/NL), static-exported site live on a CDN that establishes architect credibility —
+A bilingual (EN/NL), static-exported site live on the ds1 Docker host that establishes architect credibility —
 home (credibility hero), expertise, 3–4 case studies, portfolio, contact + minimal privacy, and
 one writing post. **Training appears only as a "book a taster" CTA stub.** This is the proof base
 the training-forward M1 will stand on (ADR-0003).
@@ -36,11 +36,13 @@ the training-forward M1 will stand on (ADR-0003).
 
 ## Cross-cutting / setup
 
-- Register/confirm the `.com`; register & park the `.nl` redirecting to `/training` (ADR-0003).
-- Pick the static host (Cloudflare Pages preferred); wire the static-export build.
+- `faridgurbanov.com` and `faridgurbanov.nl` are owned — point the `.com` DNS at the host and park
+  the `.nl` redirecting to `/training` (ADR-0003).
+- Build the static export into an nginx image and deploy it to the ds1 Docker host via the
+  self-hosted runner (`infra/docker/`, `.github/workflows/deploy-ds1.yml`).
 - Choose a static-export-compatible i18n approach (ADR-0001/0002) — **verify compatibility before
   adopting**; this is the main technical risk in M0.
-- Migrate portable content from `../faridgurbanov-webapp/src/content/en/`; author NL.
+- Migrate portable content from the previous site; author NL.
 
 ## What M0 does NOT ship
 
@@ -52,7 +54,8 @@ the training-forward M1 will stand on (ADR-0003).
 
 ## Definition of "M0 complete"
 
-1. `npm run build` produces a static export serving `/en` and `/nl` from a CDN with no backend.
+1. `npm run build` produces a static export serving `/en` and `/nl` from the ds1 Docker host
+   (nginx) with no application backend.
 2. Home (credibility), five expertise pages, 3–4 case studies, portfolio, contact + privacy, and
    one writing post are live and bilingual (NL may fall back per ADR-0002).
 3. The training CTA stub is reachable from the home page and routes to Contact.

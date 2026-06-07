@@ -26,9 +26,8 @@ maestro:
 ## Why
 
 The home page states the positioning; the expertise pages substantiate it for visitors who want
-depth before contacting. Existing content under `../faridgurbanov-webapp/src/content/en/` is
-on-message and largely portable; this spec restructures it around the current five areas and
-re-authors it bilingually.
+depth before contacting. Existing content from the previous site is on-message and largely
+portable; this spec restructures it around the current five areas and re-authors it bilingually.
 
 ## Scope
 

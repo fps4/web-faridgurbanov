@@ -16,7 +16,7 @@ maestro:
     language switcher that keeps the visitor on the same page in the other language, and a
     content pipeline that turns markdown files under /content/{en,nl} into styled pages — so
     each later page spec only has to supply content, not plumbing. The whole site exports to
-    static files on a CDN with no server.
+    static files served by nginx on the ds1 Docker host with no application server.
 ---
 
 # FS-0001 — Bilingual site shell, navigation & content pipeline
@@ -31,7 +31,7 @@ maestro:
 
 Every content page (FS-0002…FS-0008) needs the same frame — header, navigation, footer,
 language switching, and a markdown→HTML pipeline — and the site must export to static files for
-free CDN hosting. Specifying this once keeps the page specs thin and the structure identical
+low-cost self-hosting on ds1. Specifying this once keeps the page specs thin and the structure identical
 across pages and across languages.
 
 ## Scope
@@ -72,15 +72,15 @@ across pages and across languages.
   with prose typography styling applied.
 - THE SYSTEM SHALL derive each page's title, ordering, and draft status from the markdown file's
   frontmatter, and SHALL exclude `draft: true` content from the production build.
-- THE SYSTEM SHALL produce a fully static export (`output: 'export'`) that runs from a CDN with
-  no server-side runtime or database.
+- THE SYSTEM SHALL produce a fully static export (`output: 'export'`) served by a static file
+  server (nginx on the ds1 Docker host) with no server-side application runtime or database.
 - THE navigation SHALL be milestone-configurable so that the Training entry renders as a CTA
   stub in M0 and as a full navigation item in M1 without code changes to the shell.
 
 ## Definition of done
 
-- `npm run build` produces a static export that serves both `/en` and `/nl` from a CDN preview
-  with no runtime backend.
+- `npm run build` produces a static export that serves both `/en` and `/nl` from the nginx
+  container with no runtime backend.
 - A new markdown file dropped under `/content/{en,nl}/<section>/` appears as a styled page with
   correct nav and language switching, with no code change beyond content/frontmatter.
 - The language switcher round-trips on every page; the fallback path is covered by a check.

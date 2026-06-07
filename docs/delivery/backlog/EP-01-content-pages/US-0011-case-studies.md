@@ -42,4 +42,4 @@ anonymized where confidentiality requires. Depends on EP-00; AI-trio links respe
 
 ## Notes
 
-Source raw material from `wiki/job-search-and-upskilling/applications/` packages.
+Source raw material from the owner's existing portfolio / application packages.

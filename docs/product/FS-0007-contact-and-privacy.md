@@ -25,7 +25,7 @@ maestro:
 
 ## Why
 
-Every CTA on the site funnels here; it must work on a static export (no server) yet still let a
+Every CTA on the site leads here; it must work on a static export (no server) yet still let a
 recruiter, L&D buyer, or client reach the owner with minimal friction — including a "book a
 taster" path. Capturing any contact/lead data on an EU-facing site requires a short, honest
 privacy/GDPR statement, which the earlier "cut privacy entirely" position got wrong for this use.

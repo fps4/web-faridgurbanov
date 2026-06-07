@@ -26,9 +26,9 @@ maestro:
 
 ## Why
 
-Training is the fastest-to-revenue, lowest-commitment leg and the front of the funnel for the
-build service and the contract brand. Per the training strategy it lives on the *same* site as a
-distinct section — two thin sites lose to one strong one. The owner's build-proof is exactly what
+Training is the fastest-to-revenue, lowest-commitment leg and a natural entry point to the
+build service and the contract brand. It lives on the *same* site as a distinct section —
+two thin sites lose to one strong one. The owner's build-proof is exactly what
 makes the training credible, so the section leans on the portfolio (FS-0005).
 
 ## Scope
@@ -56,7 +56,7 @@ makes the training credible, so the section leans on the portfolio (FS-0005).
 - Per-seat checkout / payments and a public course schedule (training Phase 4, standalone `.nl`
   product site — a separate future product).
 - Workshop testimonials / `/cases` write-ups (added as workshops are delivered; later M1+).
-- The standalone `.nl` site IA (lives in `wiki/training-and-consulting/`).
+- The standalone `.nl` site IA.
 
 ## Acceptance criteria (EARS)
 

@@ -20,10 +20,10 @@ Implements FS-0002 through FS-0007. Depends on EP-00 (the shell + pipeline).
 |---|---|---|---|
 | [US-0010](US-0010-home-credibility.md) | Home — credibility hero + taster CTA stub | M0 | FS-0002 |
 | [US-0011](US-0011-case-studies.md) | Selected work — 3–4 case studies + index | M0 | FS-0004 |
-| US-0012 | Expertise pages + index | M0 | FS-0003 |
-| US-0013 | Portfolio — repo cards (links gated, ADR-0004) | M0 | FS-0005 |
-| US-0014 | Writing index + training-wedge post | M0 | FS-0006 |
-| US-0015 | Contact + minimal GDPR/privacy page | M0 | FS-0007 |
+| [US-0012](US-0012-expertise-pages.md) | Expertise pages + index (AI promoted to peer) | M0 | FS-0003 |
+| [US-0013](US-0013-portfolio-repos.md) | Portfolio — repo cards (links gated, ADR-0004) | M0 | FS-0005 |
+| [US-0014](US-0014-writing-index-and-post.md) | Writing index + training-wedge post | M0 | FS-0006 |
+| [US-0015](US-0015-contact-and-privacy.md) | Contact + minimal GDPR/privacy page | M0 | FS-0007 |
 
-(US-0012…US-0015 are stubs for a spec/design agent to expand from their specs; US-0010 and
-US-0011 are seeded in full as examples.)
+(All six EP-01 stories are M0 and drafted in full; each links its spec and design and flows
+`draft -> accepted -> done`.)

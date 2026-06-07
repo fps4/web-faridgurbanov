@@ -22,10 +22,6 @@ owner controls, not a LinkedIn template. The site is itself a portfolio piece: a
 bilingual static site on the same open stack the owner recommends to clients quietly proves the
 pitch.
 
-Source of truth for positioning and rationale:
-`wiki/job-search-and-upskilling/personal-website-strategy.md` (revised 2026-06-07) and
-`wiki/training-and-consulting/`.
-
 ## Audiences (one brand, three journeys)
 
 | Audience | Who | Needs to see | Primary CTA |

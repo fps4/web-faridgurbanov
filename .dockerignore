@@ -1,0 +1,14 @@
+# Keep the image build context lean — only the app sources are needed to produce the static export.
+.git
+node_modules
+.next
+out
+npm-debug.log*
+.env
+.env.*
+docs
+ops
+.github
+.vscode
+.claude
+**/.DS_Store

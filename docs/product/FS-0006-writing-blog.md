@@ -24,9 +24,8 @@ maestro:
 
 ## Why
 
-A couple of evergreen posts signal thought leadership and feed both the content cadence the
-anchor plan calls for and the training funnel — without committing to a schedule that won't be
-kept. The first post is deliberately a training-wedge topic so one piece of work serves two legs.
+A couple of evergreen posts signal thought leadership and support a light content cadence and the
+training offer — without committing to a schedule that won't be kept. The first post is deliberately a training-wedge topic so one piece of work serves two legs.
 
 ## Scope
 

@@ -1,11 +1,12 @@
-name: Definition of Done
+name: dod
 
-# The quality gate maestro reads before opening the merge gate (ADR-0016 / onboarding step 3).
-# This Next.js app lives under src/ and installs from a private GitHub Packages registry with yarn
-# (matching src/Dockerfile + deploy-service.yml). Lint + build must be green on every PR.
+# Definition-of-Done quality gate. Runs on every PR (the test gate) and on push to main (so the
+# deploy can chain off a green run). The site is a static-export Next.js app (output: 'export'),
+# installed with npm from the public registry — no private registry, no Docker, no secrets needed
+# to build.
 #
-# REQUIRES repo secrets (the deploy workflow already uses them — add them under Settings → Secrets →
-# Actions if not present): GH_PACKAGES_TOKEN (private registry install) and OPENAI_API_KEY (build).
+# NOTE: the app is expected at the repo root. If it is scaffolded under web/, set
+# `working-directory: web` on the job below.
 
 on:
   pull_request:
@@ -15,21 +16,43 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: dod-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lint-build:
-    name: webapp (lint + build)
+  build-test:
+    name: lint • test • static build
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: src
-    env:
-      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        working-directory: .
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - run: yarn install --frozen-lockfile --network-timeout=300000
-      - run: yarn lint
-      - run: yarn build
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: lint
+        run: npm run lint --if-present
+
+      - name: unit / component tests
+        run: npm test --if-present
+
+      - name: e2e (merge to main only)
+        if: github.event_name == 'push'
+        run: npm run test:e2e --if-present
+
+      - name: static build
+        run: npm run build
+
+      - name: assert a static export was emitted
+        run: |
+          test -d out || {
+            echo "::error::npm run build did not emit a static export under out/ (output:'export' is required)"
+            exit 1
+          }
