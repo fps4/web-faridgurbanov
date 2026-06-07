@@ -1,7 +1,7 @@
 ---
 title: "US-0001: Scaffold app from maestro/web base with static export"
 persona: architect
-status: draft
+status: done
 complexity: M
 milestone: M0
 last_updated: 2026-06-07
