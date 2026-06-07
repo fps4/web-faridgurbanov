@@ -1,0 +1,35 @@
+name: Definition of Done
+
+# The quality gate maestro reads before opening the merge gate (ADR-0016 / onboarding step 3).
+# This Next.js app lives under src/ and installs from a private GitHub Packages registry with yarn
+# (matching src/Dockerfile + deploy-service.yml). Lint + build must be green on every PR.
+#
+# REQUIRES repo secrets (the deploy workflow already uses them — add them under Settings → Secrets →
+# Actions if not present): GH_PACKAGES_TOKEN (private registry install) and OPENAI_API_KEY (build).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-build:
+    name: webapp (lint + build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+    env:
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: yarn install --frozen-lockfile --network-timeout=300000
+      - run: yarn lint
+      - run: yarn build

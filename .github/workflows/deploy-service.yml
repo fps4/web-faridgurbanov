@@ -1,0 +1,49 @@
+name: Deploy with Self-Hosted Runners
+#
+# Required repository secrets:
+# - GH_PACKAGES_TOKEN : GitHub Packages / registry token (used during image build)
+# - OPENAI_API_KEY    : OpenAI API key (used by media generation in build/runtime)
+#
+  
+on:
+
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+
+  workflow_dispatch:   # allows manual redeploy via GitHub UI
+    inputs:
+      environment:
+        description: "Select environment (dev or prod)"
+        type: choice
+        options:
+          - "prod"
+          - "dev"
+        required: true
+        default: "dev"
+
+jobs:
+
+  deploy-prod:
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'prod')
+    runs-on: [self-hosted, production]
+    environment: prod
+    env:
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NEXT_PUBLIC_CHATBOT_URL: ${{ vars.NEXT_PUBLIC_CHATBOT_URL }}
+      NEXT_PUBLIC_CHATBOT_TENANT_ID: ${{ secrets.NEXT_PUBLIC_CHATBOT_TENANT_ID }}
+      NEXT_PUBLIC_CHATBOT_API_BASE_URL: ${{ vars.NEXT_PUBLIC_CHATBOT_API_BASE_URL }}
+      NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID }}
+      NEXT_PUBLIC_ENV: ${{ vars.NEXT_PUBLIC_ENV || 'production' }}
+      NODE_ENV: ${{ vars.NODE_ENV || 'production' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to PROD
+        run: |
+          echo "Deploying main branch to PROD"
+          docker compose -f compose.yaml up -d --build
