@@ -5,14 +5,14 @@ last_updated: 2026-06-07
 owners: [architect]
 related:
   - docs/overview.md
-  - docs/design/README.md
+  - docs/design/decisions/0001-tech-stack-and-static-export.md
   - docs/delivery/roadmap/README.md
 ---
 
 # Product intent
 
 The **what & why** for faridgurbanov.com. Functional specs (`FS-NNNN-*.md`) decompose this;
-ADRs in [`../design/decisions/`](../design/decisions/README.md) lock the *how*.
+ADRs in [`../design/decisions/`](../design/decisions/) lock the *how*.
 
 ## Why this product exists
 

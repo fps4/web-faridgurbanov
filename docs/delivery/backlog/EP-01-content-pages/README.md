@@ -4,7 +4,7 @@ status: open
 last_updated: 2026-06-07
 owners: [architect]
 related:
-  - docs/delivery/backlog/README.md
+  - docs/delivery/roadmap/README.md
   - docs/product/FS-0002-home.md
   - docs/product/FS-0004-selected-work-case-studies.md
 ---
