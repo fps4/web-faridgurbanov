@@ -4,7 +4,7 @@ status: open
 last_updated: 2026-06-07
 owners: [architect]
 related:
-  - docs/delivery/backlog/README.md
+  - docs/delivery/roadmap/README.md
   - docs/product/FS-0008-training-and-eu-ai-act.md
   - docs/design/decisions/0003-single-site-training-forward-positioning.md
 ---

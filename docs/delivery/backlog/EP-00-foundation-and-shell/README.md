@@ -4,7 +4,7 @@ status: open
 last_updated: 2026-06-07
 owners: [architect]
 related:
-  - docs/delivery/backlog/README.md
+  - docs/delivery/roadmap/README.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
   - docs/design/decisions/0001-tech-stack-and-static-export.md
   - docs/design/decisions/0002-bilingual-en-nl-i18n.md

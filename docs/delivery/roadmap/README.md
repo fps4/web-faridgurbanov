@@ -5,7 +5,7 @@ last_updated: 2026-06-07
 owners: [architect]
 related:
   - docs/overview.md
-  - docs/delivery/backlog/README.md
+  - docs/delivery/backlog/EP-00-foundation-and-shell/README.md
 ---
 
 # Roadmap
@@ -19,4 +19,4 @@ Milestones for the build. Each milestone flows `open -> closed`.
 
 The positioning sequencing (training-forward *target*, credibility-first *first ship*) is locked
 in [ADR-0003](../../design/decisions/0003-single-site-training-forward-positioning.md). Backlog
-epics and stories live under [`../backlog/`](../backlog/README.md).
+epics and stories live under [`../backlog/`](../backlog).
