@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm';
 // GFM for tables/task-lists; styled via Tailwind `prose`.
 export function Markdown({ children }: { children: string }) {
   return (
-    <article className="prose prose-sm prose-neutral max-w-none dark:prose-invert">
+    <article className="prose prose-neutral max-w-none dark:prose-invert prose-headings:tracking-tight prose-a:underline-offset-4">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
     </article>
   );

@@ -1,36 +1,99 @@
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { getDictionary } from '@/lib/dictionaries';
+import { hrefFor } from '@/lib/nav';
+import { HOME_VARIANT } from '@/lib/site';
+import { locales, type Locale } from '@/lib/i18n';
 
-// i18n static-export spike (US-0001, feeds US-0002 / ADR-0002).
-//
-// Proves that App-Router `[locale]` segments are compatible with `output: 'export'`: the two
-// locales are enumerated at build time via generateStaticParams, so `next build` pre-renders
-// /en and /nl to static en.html / nl.html with NO server, NO middleware, NO runtime locale
-// negotiation. This is the lowest-risk, zero-dependency i18n foundation; US-0002 builds the
-// real bilingual shell (header, language switcher, content) on top of this segment.
-
-export const dynamicParams = false; // any locale outside the list → build-time 404, not a server lookup
-
-const LOCALES = ['en', 'nl'] as const;
-type Locale = (typeof LOCALES)[number];
-
+// Home page (FS-0002/US-0010). M0 leads with the credibility hero; the M1 training-forward flip is
+// the single HOME_VARIANT switch (ADR-0003) — the section set and CTAs stay, only the lead changes,
+// so no structural rebuild. Authored fully in EN + NL (highest-traffic page).
+export const dynamicParams = false;
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
 
-const COPY: Record<Locale, { title: string; body: string }> = {
-  en: { title: 'English', body: 'Locale-segmented route, statically exported. Content arrives in US-0002/US-0003.' },
-  nl: { title: 'Nederlands', body: 'Taal-gesegmenteerde route, statisch geëxporteerd. Inhoud volgt in US-0002/US-0003.' },
-};
-
-export default async function LocaleHome({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
-  if (!LOCALES.includes(locale as Locale)) notFound();
-  const copy = COPY[locale as Locale];
+  const t = getDictionary(locale as Locale).home;
+  return { title: 'Farid Gurbanov', description: t.heroLede };
+}
+
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: raw } = await params;
+  const locale = raw as Locale;
+  const t = getDictionary(locale).home;
 
   return (
-    <main className="container flex min-h-screen flex-col items-center justify-center gap-4 py-16 text-center">
-      <h1 className="text-3xl font-semibold tracking-tight">{copy.title}</h1>
-      <p className="max-w-prose text-muted-foreground">{copy.body}</p>
-    </main>
+    <>
+      <section className="container py-16 sm:py-24">
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+            {t.available}
+          </span>
+
+          {/* M0: credibility-led. M1 (HOME_VARIANT='training') leads with the training offer and
+              moves the architect proof beneath it — same page, configured emphasis (FS-0002). */}
+          <p className="mt-6 text-sm font-medium uppercase tracking-wide text-muted-foreground">
+            {HOME_VARIANT === 'training' ? t.tasterHeading : t.heroEyebrow}
+          </p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t.heroTitle}</h1>
+          <p className="mt-6 text-lg text-muted-foreground">{t.heroLede}</p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <Link href={hrefFor(locale, '/work')}>
+                {t.primaryWork}
+                <ArrowRight />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href={hrefFor(locale, '/contact')}>{t.primaryContact}</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-muted/40">
+        <div className="container py-12">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+            {t.proofHeading}
+          </h2>
+          <ul className="mt-6 grid gap-6 sm:grid-cols-3">
+            {t.proofPoints.map((p) => (
+              <li key={p.label}>
+                <Link href={hrefFor(locale, p.href)} className="group block">
+                  <p className="text-2xl font-semibold tracking-tight">{p.metric}</p>
+                  <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground">
+                    {p.label}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="container py-16">
+        <div className="max-w-2xl rounded-lg border border-border p-8">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+            {t.tasterHeading}
+          </h2>
+          <p className="mt-4 text-lg">{t.tasterBody}</p>
+          <div className="mt-6">
+            <Button asChild variant="secondary">
+              <Link href={hrefFor(locale, '/training')}>{t.tasterCta}</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

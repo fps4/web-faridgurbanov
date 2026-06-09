@@ -4,7 +4,7 @@ persona: architect
 status: draft
 complexity: M
 milestone: M0
-last_updated: 2026-06-07
+last_updated: 2026-06-09
 spec: docs/product/FS-0001-site-shell-and-content-pipeline.md
 design: docs/design/decisions/0002-bilingual-en-nl-i18n.md
 ---

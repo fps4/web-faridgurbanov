@@ -4,7 +4,7 @@ persona: architect
 status: draft
 complexity: M
 milestone: M0
-last_updated: 2026-06-07
+last_updated: 2026-06-09
 spec: docs/product/FS-0002-home.md
 design: docs/design/decisions/0003-single-site-training-forward-positioning.md
 ---

@@ -4,7 +4,7 @@ persona: visitor
 status: draft
 complexity: S
 milestone: M0
-last_updated: 2026-06-07
+last_updated: 2026-06-09
 spec: docs/product/FS-0006-writing-blog.md
 design: docs/design/decisions/0001-tech-stack-and-static-export.md
 ---

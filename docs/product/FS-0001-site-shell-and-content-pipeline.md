@@ -1,7 +1,7 @@
 ---
 title: "FS-0001 — Bilingual site shell, navigation & content pipeline"
 status: draft
-last_updated: 2026-06-07
+last_updated: 2026-06-09
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
