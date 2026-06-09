@@ -23,6 +23,7 @@ RUN test -d out
 FROM nginx:1.27-alpine AS runtime
 COPY infra/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/out /usr/share/nginx/html
-EXPOSE 80
+# nginx listens on 3035 (see nginx.conf) — keep EXPOSE and the healthcheck in lock-step.
+EXPOSE 3035
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=5 \
-    CMD wget -qO /dev/null http://127.0.0.1/ || exit 1
+    CMD wget -qO /dev/null http://127.0.0.1:3035/ || exit 1
