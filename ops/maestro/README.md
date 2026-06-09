@@ -1,6 +1,6 @@
 # maestro RCA — managed-product onboarding (sender side)
 
-This folder is how **personal-website-farid** raises a **root-cause investigation** in
+This folder is how **web-faridgurbanov** raises a **root-cause investigation** in
 [maestro](https://github.com/fps4/maestro) when something goes wrong in the deployed site — manually,
 or from a monitor — **without any page or user content leaving the deployment**.
 
@@ -12,8 +12,8 @@ its RCA agent diagnoses, and on architect approval a fix is dispatched through t
 
 This product is registered in maestro as:
 
-- product id **`personal-website`**, repo **`fps4/personal-website-farid`**
-- a **`product_runtime`** principal (`runtime@personal-website-farid.fps4.nl`) authorized to open
+- product id **`personal-website`**, repo **`fps4/web-faridgurbanov`**
+- a **`product_runtime`** principal (`runtime@web-faridgurbanov.fps4.nl`) authorized to open
   investigations for this product **only** — never to start a build or decide a gate.
 
 ## Raise an investigation
