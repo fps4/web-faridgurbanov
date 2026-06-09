@@ -8,8 +8,8 @@
  * investigation, the RCA agent diagnoses, and on architect approval a fix is dispatched through the
  * normal delivery loop.
  *
- * The personal-website-farid app is onboarded to maestro as product `personal-website`, repo
- * `fps4/personal-website-farid`, with a `product_runtime` principal (see maestro config/products.yaml).
+ * The web-faridgurbanov app is onboarded to maestro as product `personal-website`, repo
+ * `fps4/web-faridgurbanov`, with a `product_runtime` principal (see maestro config/products.yaml).
  *
  * Usage:
  *   node ops/maestro/flag-investigation.mjs --reason "checkout 500 on submit" \
@@ -18,8 +18,8 @@
  * Env:
  *   MAESTRO_URL         maestro base URL            (default http://127.0.0.1:8800)
  *   MAESTRO_PRODUCT_ID  the product id              (default personal-website)
- *   MAESTRO_REPO        the repo the RCA targets    (default fps4/personal-website-farid)
- *   MAESTRO_IDENTITY    loopback dev identity       (default runtime@personal-website-farid.fps4.nl)
+ *   MAESTRO_REPO        the repo the RCA targets    (default fps4/web-faridgurbanov)
+ *   MAESTRO_IDENTITY    loopback dev identity       (default runtime@web-faridgurbanov.fps4.nl)
  *                       — sent as X-Maestro-Identity; honoured only off-prod over loopback.
  *   MAESTRO_TOKEN       component-auth JWT          — sent as Authorization: Bearer (prod path).
  *   DEPLOY_BASE_URL     the deployment base URL the bundle is reachable at over the private link
@@ -37,8 +37,8 @@ function arg(name, fallback = undefined) {
 
 const MAESTRO_URL = process.env.MAESTRO_URL || 'http://127.0.0.1:8800';
 const PRODUCT_ID = process.env.MAESTRO_PRODUCT_ID || 'personal-website';
-const REPO = process.env.MAESTRO_REPO || 'fps4/personal-website-farid';
-const IDENTITY = process.env.MAESTRO_IDENTITY || 'runtime@personal-website-farid.fps4.nl';
+const REPO = process.env.MAESTRO_REPO || 'fps4/web-faridgurbanov';
+const IDENTITY = process.env.MAESTRO_IDENTITY || 'runtime@web-faridgurbanov.fps4.nl';
 const TOKEN = process.env.MAESTRO_TOKEN || '';
 const DEPLOY_BASE_URL = process.env.DEPLOY_BASE_URL || 'http://127.0.0.1:3034';
 
@@ -68,7 +68,7 @@ const reference = {
   severity,
   source,
   replay_url: replayUrl,
-  deployment_id: 'personal-website-farid@ds1',
+  deployment_id: 'web-faridgurbanov@ds1',
 };
 
 const headers = { 'Content-Type': 'application/json', 'Idempotency-Key': `rca-${signalFingerprint}` };
