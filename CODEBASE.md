@@ -5,21 +5,26 @@ personal credibility surface that renders filesystem markdown to static HTML at 
 served by nginx on the ds1 Docker host. There is **no application server and no database** — the
 build artifact (`out/`) is the whole product.
 
-> **Status:** the **US-0001 scaffold** has landed — the Next 15 app configured for static export,
-> a Tailwind/shadcn base, a frontmatter-stripping helper, and the `[locale]` static-export spike
-> that proves App-Router locale segments pre-render to `/en` and `/nl` with no server. Still
-> `planned`: the real bilingual shell + language switcher (US-0002), the markdown content
-> pipeline over `content/{en,nl}` (US-0003), and the content pages themselves (EP-01/EP-02).
+> **Status:** the **M0 credibility foundation** has landed. On top of the US-0001 scaffold: the
+> bilingual shell — shared header/nav/footer, language switcher that preserves page identity, and a
+> milestone-aware nav (Training is a CTA stub in M0) over App-Router `[locale]` segments (US-0002);
+> the markdown content pipeline reading `content/{en,nl}/<section>/` with frontmatter parsing and
+> EN-fallback (US-0003); and every M0 page — home credibility hero (US-0010), five expertise pages
+> (US-0012), four case studies (US-0011), portfolio with ADR-0004-gated repo links (US-0013), a
+> writing index + training-wedge post (US-0014), contact + privacy (US-0015), and the training
+> taster stub (US-0020). All pages are authored in EN **and** NL. Repo links stay off until the
+> ADR-0004 prerequisites close (flip `REPO_LINKS_ENABLED` in `lib/site.ts`). Remaining for US-0004:
+> DNS, TLS, and the `.nl → /nl/training` redirect are ds1 **host** config (see `infra/docker/`).
 
 ## Directory map
 
 | Path | Purpose |
 |------|---------|
 | `docs/` | Product intent, ADRs, roadmap, and backlog — the spec-driven source of truth that precedes code (see [`docs/README.md`](docs/README.md)) |
-| `app/` | Next.js App Router. `layout.tsx` + `page.tsx` are the root shell; `app/[locale]/page.tsx` is the static-export locale spike; `globals.css` holds the Tailwind layer |
-| `components/` | React components. `ui/` holds shadcn primitives (`button.tsx`); `markdown.tsx` renders content bodies; `theme-provider.tsx` wraps `next-themes` |
-| `lib/` | Framework-free helpers — `frontmatter.ts` (strip the YAML block before rendering), `utils.ts` (`cn` class merge) |
-| `content/` | *(planned, US-0003)* Filesystem markdown under `content/{en,nl}`; frontmatter drives nav, ordering, and draft state |
+| `app/` | Next.js App Router. Root `layout.tsx` + `page.tsx` (root `/` → default-locale chooser/redirect); `app/[locale]/` holds the bilingual shell `layout.tsx` and every page — home `page.tsx`, `expertise`, `work`, `portfolio`, `writing` (index + `[slug]`), `contact`, `privacy`, `training`; `globals.css` holds the Tailwind layer |
+| `components/` | React components. `ui/` holds shadcn primitives; `site-header`/`site-footer` are the shell chrome; `language-switcher`, `theme-toggle`, `html-lang`, `root-redirect`, `obfuscated-email` are client islands; `markdown.tsx` + `content-article.tsx` render content bodies; `page-intro`, `fallback-notice` are layout helpers |
+| `lib/` | Framework-free helpers — `i18n.ts` (locales/default), `site.ts` (facts + the `REPO_LINKS_ENABLED`/`HOME_VARIANT` gates + repo data), `nav.ts` (milestone-aware nav), `dictionaries.ts` (bilingual UI copy), `content.ts` (build-time markdown loader, server-only), `frontmatter.ts` (parse/strip), `dates.ts`, `utils.ts` |
+| `content/` | Filesystem markdown under `content/{en,nl}/<section>/`; frontmatter (`title`, `summary`, `order`, `draft`, `date`, `hook`, `metric`) drives titles, ordering, and draft exclusion. Sections: `expertise`, `work`, `writing` |
 | `infra/docker/` | The static site packaged for ds1: multi-stage `web.Dockerfile` (export → nginx), `nginx.conf`, `compose.yml` |
 | `ops/` | Operational scripts (e.g. `ops/maestro/`) |
 | `.github/workflows/` | `dod.yml` — the Definition-of-Done quality gate (lint, test, assert `out/` builds); `deploy-ds1.yml` — deploy to the ds1 self-hosted runner on green merge |

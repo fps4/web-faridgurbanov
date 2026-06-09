@@ -1,21 +1,22 @@
 import Link from 'next/link';
+import { RootRedirect } from '@/components/root-redirect';
+import { defaultLocale, localeName, locales } from '@/lib/i18n';
 
-// Placeholder root page. The real home, locale routing, and language switcher arrive in
-// US-0002/US-0003; US-0001 only proves the static export builds and serves.
-export default function Home() {
+// Root `/` (index.html). There is no default-locale content at the root — the site lives under
+// /en and /nl (ADR-0002). Static export can't issue a server redirect, so we send visitors to the
+// default locale client-side and leave a visible, crawlable language chooser as the no-JS path.
+export default function RootPage() {
   return (
     <main className="container flex min-h-screen flex-col items-center justify-center gap-6 py-16 text-center">
-      <h1 className="text-3xl font-semibold tracking-tight">Farid Gurbanov</h1>
-      <p className="max-w-prose text-muted-foreground">
-        Site scaffold (US-0001). Bilingual shell, navigation, and content arrive next.
-      </p>
+      <RootRedirect to={`/${defaultLocale}`} />
+      <h1 className="text-2xl font-semibold tracking-tight">Farid Gurbanov</h1>
+      <p className="text-sm text-muted-foreground">Choose a language / Kies een taal</p>
       <nav className="flex gap-4 text-sm">
-        <Link className="underline underline-offset-4" href="/en">
-          English
-        </Link>
-        <Link className="underline underline-offset-4" href="/nl">
-          Nederlands
-        </Link>
+        {locales.map((l) => (
+          <Link key={l} className="underline underline-offset-4" href={`/${l}`} hrefLang={l}>
+            {localeName[l]}
+          </Link>
+        ))}
       </nav>
     </main>
   );

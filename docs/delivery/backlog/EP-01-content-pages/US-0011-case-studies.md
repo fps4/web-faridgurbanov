@@ -4,7 +4,7 @@ persona: architect
 status: draft
 complexity: L
 milestone: M0
-last_updated: 2026-06-07
+last_updated: 2026-06-09
 spec: docs/product/FS-0004-selected-work-case-studies.md
 design: docs/design/decisions/0004-public-surface-prerequisites.md
 ---

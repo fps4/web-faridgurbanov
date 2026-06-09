@@ -4,7 +4,7 @@ persona: visitor
 status: draft
 complexity: M
 milestone: M0
-last_updated: 2026-06-07
+last_updated: 2026-06-09
 spec: docs/product/FS-0005-portfolio-repos.md
 design: docs/design/decisions/0004-public-surface-prerequisites.md
 ---
