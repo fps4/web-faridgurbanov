@@ -1,12 +1,17 @@
 name: dod
 
-# Definition-of-Done quality gate. Runs on every PR (the test gate) and on push to main (so the
-# deploy can chain off a green run). The site is a static-export Next.js app (output: 'export'),
-# installed with npm from the public registry — no private registry, no Docker, no secrets needed
-# to build.
+# Definition-of-Done quality gate, aligned with the fps4 cross-repo standard (cf. ../maestro and
+# ../sovereign-copilot dod.yml). Runs on every PR (the test gate) and on push to main (so the
+# deploy chains off a green run). The site is a static-export Next.js app (output: 'export'),
+# installed with npm from the public registry — no private registry, no secrets needed to build.
+#
+# Two jobs run in parallel:
+#   * secret-scan — the fps4 security floor (gitleaks). NEVER disabled, across every repo.
+#   * build-test  — lint, unit/component tests, and the static export (asserts out/ is emitted).
+# Both must be green for the deploy (deploy-ds1.yml) to chain off this workflow on main.
 #
 # NOTE: the app is expected at the repo root. If it is scaffolded under web/, set
-# `working-directory: web` on the job below.
+# `working-directory: web` on build-test.
 
 on:
   pull_request:
@@ -16,14 +21,28 @@ on:
 permissions:
   contents: read
 
+# A newer push to the same PR/branch supersedes in-flight runs.
 concurrency:
   group: dod-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  secret-scan: # fps4 security floor — never disabled. Blocks credentials reaching git.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so the scan sees every commit on the ref
+      - name: gitleaks
+        uses: docker://ghcr.io/gitleaks/gitleaks:latest
+        with:
+          args: detect --source=/github/workspace --no-banner --redact
+
   build-test:
     name: lint • test • static build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: .
