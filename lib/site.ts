@@ -10,7 +10,7 @@ export const site = {
   // Contact is mailto-only (no backend, no third-party processor) — see FS-0007 and the privacy
   // page. The address is assembled from parts at render time to resist naive scraping.
   email: { user: 'farid', domain: 'gurbanov.net' },
-  linkedin: 'https://www.linkedin.com/in/faridgurbanov',
+  linkedin: 'https://www.linkedin.com/in/fgurbanov/',
   github: 'https://github.com/fps4',
   location: { en: 'Eindhoven, Netherlands', nl: 'Eindhoven, Nederland' },
 } as const;
