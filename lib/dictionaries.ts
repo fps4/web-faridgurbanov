@@ -20,7 +20,6 @@ export interface Dictionary {
   };
   fallback: { notice: string };
   home: {
-    available: string;
     heroEyebrow: string;
     heroTitle: string;
     heroLede: string;
@@ -87,7 +86,7 @@ const en: Dictionary = {
     nav: { home: 'Home' },
     tasterCta: 'Book a taster',
     themeToggle: 'Toggle theme',
-    footerTagline: 'The architect who builds AI and teaches teams to direct it.',
+    footerTagline: 'Integration architect — I design the backbone and build the AI that runs on it.',
     footerNavHeading: 'Site',
     footerConnectHeading: 'Connect',
     privacy: 'Privacy',
@@ -98,7 +97,6 @@ const en: Dictionary = {
     notice: 'This page is not yet translated — showing the English version.',
   },
   home: {
-    available: 'Available now — ZZP / contract',
     heroEyebrow: 'Integration architect who builds AI',
     heroTitle: 'I design the integration backbone — and build the AI that runs on it.',
     heroLede:
@@ -118,7 +116,7 @@ const en: Dictionary = {
   },
   portfolio: {
     title: 'Portfolio',
-    lede: 'Three sibling repositories told as one story: govern the models, build a trustworthy product on them, deliver software with agents. This is the “I build AI, not just advise” proof — and the teaching spine of the architecture-tier training.',
+    lede: 'Three sibling repositories told as one story: govern the models, build a trustworthy product on them, deliver software with agents. This is the “I build AI, not just advise” proof.',
     narrative: 'Govern → build → deliver',
     maturityWorking: 'Working — runs end-to-end',
     maturityReference: 'Reference architecture',
@@ -131,7 +129,7 @@ const en: Dictionary = {
   },
   contact: {
     title: 'Contact',
-    lede: 'The fastest way to start a conversation — about a contract, a build, or training for your team.',
+    lede: 'The fastest way to start a conversation.',
     emailHeading: 'Email',
     emailHint: 'The best first step. I reply to specifics faster than to “let’s connect”.',
     tasterHeading: 'Book a training taster',
@@ -187,7 +185,7 @@ const nl: Dictionary = {
     nav: { home: 'Home' },
     tasterCta: 'Boek een proefsessie',
     themeToggle: 'Thema wisselen',
-    footerTagline: 'De architect die AI bouwt en teams leert die aan te sturen.',
+    footerTagline: 'Integratiearchitect — ik ontwerp de ruggengraat en bouw de AI die erop draait.',
     footerNavHeading: 'Site',
     footerConnectHeading: 'Contact',
     privacy: 'Privacy',
@@ -198,7 +196,6 @@ const nl: Dictionary = {
     notice: 'Deze pagina is nog niet vertaald — de Engelse versie wordt getoond.',
   },
   home: {
-    available: 'Nu beschikbaar — ZZP / contract',
     heroEyebrow: 'Integratiearchitect die AI bouwt',
     heroTitle: 'Ik ontwerp de integratieruggengraat — en bouw de AI die erop draait.',
     heroLede:
@@ -218,7 +215,7 @@ const nl: Dictionary = {
   },
   portfolio: {
     title: 'Portfolio',
-    lede: 'Drie verwante repositories als één verhaal: beheer de modellen, bouw er een betrouwbaar product op, lever software met agents. Dit is het bewijs van “ik bouw AI, niet alleen advies” — en de ruggengraat van de architectuur-training.',
+    lede: 'Drie verwante repositories als één verhaal: beheer de modellen, bouw er een betrouwbaar product op, lever software met agents. Dit is het bewijs van “ik bouw AI, niet alleen advies”.',
     narrative: 'Govern → build → deliver',
     maturityWorking: 'Werkend — draait end-to-end',
     maturityReference: 'Referentiearchitectuur',
@@ -231,7 +228,7 @@ const nl: Dictionary = {
   },
   contact: {
     title: 'Contact',
-    lede: 'De snelste manier om een gesprek te beginnen — over een opdracht, een build of training voor je team.',
+    lede: 'De snelste manier om een gesprek te beginnen.',
     emailHeading: 'E-mail',
     emailHint: 'De beste eerste stap. Op concrete vragen reageer ik sneller dan op “laten we connecten”.',
     tasterHeading: 'Boek een trainingsproefsessie',

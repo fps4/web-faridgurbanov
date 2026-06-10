@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { HeroBackdrop } from '@/components/hero-backdrop';
 import { getDictionary } from '@/lib/dictionaries';
 import { hrefFor } from '@/lib/nav';
-import { HOME_VARIANT } from '@/lib/site';
+import { HOME_VARIANT, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
 // Home page (FS-0002/US-0010). M0 leads with the credibility hero; the M1 training-forward flip is
@@ -32,31 +33,29 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      <section className="container py-16 sm:py-24">
-        <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
-            {t.available}
-          </span>
+      <section className="relative overflow-hidden">
+        <HeroBackdrop />
+        <div className="container py-16 sm:py-24">
+          <div className="relative max-w-3xl">
+            {/* M0: credibility-led. M1 (HOME_VARIANT='training') leads with the training offer and
+                moves the architect proof beneath it — same page, configured emphasis (FS-0002). */}
+            <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+              {HOME_VARIANT === 'training' ? t.tasterHeading : t.heroEyebrow}
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t.heroTitle}</h1>
+            <p className="mt-6 text-lg text-muted-foreground">{t.heroLede}</p>
 
-          {/* M0: credibility-led. M1 (HOME_VARIANT='training') leads with the training offer and
-              moves the architect proof beneath it — same page, configured emphasis (FS-0002). */}
-          <p className="mt-6 text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {HOME_VARIANT === 'training' ? t.tasterHeading : t.heroEyebrow}
-          </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t.heroTitle}</h1>
-          <p className="mt-6 text-lg text-muted-foreground">{t.heroLede}</p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link href={hrefFor(locale, '/work')}>
-                {t.primaryWork}
-                <ArrowRight />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href={hrefFor(locale, '/contact')}>{t.primaryContact}</Link>
-            </Button>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link href={hrefFor(locale, '/work')}>
+                  {t.primaryWork}
+                  <ArrowRight />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href={hrefFor(locale, '/contact')}>{t.primaryContact}</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -81,19 +80,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      <section className="container py-16">
-        <div className="max-w-2xl rounded-lg border border-border p-8">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {t.tasterHeading}
-          </h2>
-          <p className="mt-4 text-lg">{t.tasterBody}</p>
-          <div className="mt-6">
-            <Button asChild variant="secondary">
-              <Link href={hrefFor(locale, '/training')}>{t.tasterCta}</Link>
-            </Button>
+      {/* Training block — hidden until M1 (TRAINING_PUBLISHED). Copy stays in the dictionary. */}
+      {TRAINING_PUBLISHED && (
+        <section className="container py-16">
+          <div className="max-w-2xl rounded-lg border border-border p-8">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+              {t.tasterHeading}
+            </h2>
+            <p className="mt-4 text-lg">{t.tasterBody}</p>
+            <div className="mt-6">
+              <Button asChild variant="secondary">
+                <Link href={hrefFor(locale, '/training')}>{t.tasterCta}</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

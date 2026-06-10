@@ -33,6 +33,15 @@ export const REPO_LINKS_ENABLED = false;
  */
 export const HOME_VARIANT: 'credibility' | 'training' = 'credibility';
 
+/**
+ * Whether the Training section is published. M0 is a credibility/brand surface only — the training
+ * material and pages are prepared for M1 (FS-0008). WHILE this is `false`, the taster CTA, the
+ * footer Training link, and the home/contact training blocks are hidden, and the `/training` route
+ * emits no pages. The copy stays in the dictionary; flip to `true` in M1 to surface it all with no
+ * rebuild. Pairs with HOME_VARIANT (credibility → training) and TRAINING_IN_NAV (lib/nav.ts).
+ */
+export const TRAINING_PUBLISHED = false;
+
 export type Maturity = 'working' | 'reference';
 
 export interface Repo {

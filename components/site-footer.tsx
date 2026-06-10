@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionaries';
 import { headerNav, hrefFor, trainingNav } from '@/lib/nav';
-import { site } from '@/lib/site';
+import { site, TRAINING_PUBLISHED } from '@/lib/site';
 import type { Locale } from '@/lib/i18n';
 
 // Shared footer (FS-0001/US-0002): tagline, the site nav, the connect links (LinkedIn/GitHub +
@@ -9,7 +9,7 @@ import type { Locale } from '@/lib/i18n';
 export function SiteFooter({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).shell;
   const year = 2026;
-  const navItems = [...headerNav(), trainingNav];
+  const navItems = TRAINING_PUBLISHED ? [...headerNav(), trainingNav] : headerNav();
 
   return (
     <footer className="mt-16 border-t border-border">

@@ -3,11 +3,11 @@ import { PageIntro } from '@/components/page-intro';
 import { ObfuscatedEmail } from '@/components/obfuscated-email';
 import { Button } from '@/components/ui/button';
 import { getDictionary } from '@/lib/dictionaries';
-import { site } from '@/lib/site';
+import { site, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
 // Contact (FS-0007/US-0015). Works on the static export with no backend: an obfuscated mailto, the
-// profile links, location, and the "book a taster" path. No form → no third-party processor → the
+// profile links, location, and (in M1) the "book a taster" path. No form → no third-party processor → the
 // privacy page can honestly say nothing is collected.
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -43,15 +43,20 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </p>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">{t.emailHint}</p>
 
-          <h2 className="mt-10 text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {t.tasterHeading}
-          </h2>
-          <p className="mt-3 max-w-sm text-sm text-muted-foreground">{t.tasterBody}</p>
-          <div className="mt-4">
-            <Button asChild variant="secondary">
-              <ObfuscatedEmail subject="Taster">{t.tasterCta}</ObfuscatedEmail>
-            </Button>
-          </div>
+          {/* Training taster path — hidden until M1 (TRAINING_PUBLISHED). */}
+          {TRAINING_PUBLISHED && (
+            <>
+              <h2 className="mt-10 text-sm font-medium uppercase tracking-wide text-muted-foreground">
+                {t.tasterHeading}
+              </h2>
+              <p className="mt-3 max-w-sm text-sm text-muted-foreground">{t.tasterBody}</p>
+              <div className="mt-4">
+                <Button asChild variant="secondary">
+                  <ObfuscatedEmail subject="Taster">{t.tasterCta}</ObfuscatedEmail>
+                </Button>
+              </div>
+            </>
+          )}
         </section>
 
         <section>
