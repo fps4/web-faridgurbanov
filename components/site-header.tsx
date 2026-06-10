@@ -4,11 +4,11 @@ import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { getDictionary } from '@/lib/dictionaries';
 import { headerNav, hrefFor, trainingNav } from '@/lib/nav';
-import { site } from '@/lib/site';
+import { site, TRAINING_PUBLISHED } from '@/lib/site';
 import type { Locale } from '@/lib/i18n';
 
 // Shared header (FS-0001/US-0002): name → home, primary nav, the Training "book a taster" CTA
-// (M0 stub; promoted into the nav in M1 via TRAINING_IN_NAV), language switcher, theme toggle.
+// (gated by TRAINING_PUBLISHED — hidden in M0, surfaced in M1), language switcher, theme toggle.
 export function SiteHeader({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).shell;
   return (
@@ -35,9 +35,11 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild size="sm">
-            <Link href={hrefFor(locale, trainingNav.href)}>{t.tasterCta}</Link>
-          </Button>
+          {TRAINING_PUBLISHED && (
+            <Button asChild size="sm">
+              <Link href={hrefFor(locale, trainingNav.href)}>{t.tasterCta}</Link>
+            </Button>
+          )}
           <LanguageSwitcher locale={locale} />
           <ThemeToggle label={t.themeToggle} />
         </div>
