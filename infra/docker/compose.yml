@@ -19,9 +19,10 @@ services:
     container_name: faridgurbanov-web
     restart: unless-stopped
     ports:
-      # webapp on 3035 on both the host and inside the container. Bound to loopback by default —
-      # the host reverse proxy fronts it. Override WEB_BIND=0.0.0.0 in the host .env for the LAN.
-      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-3035}:3035"
+      # webapp on 3035 on both the host and inside the container. Published on the LAN by default so
+      # the site is reachable at ds1:3035; set WEB_BIND=127.0.0.1 in the host .env for loopback only
+      # (e.g. when a reverse proxy fronts it).
+      - "${WEB_BIND:-0.0.0.0}:${WEB_PORT:-3035}:3035"
     healthcheck:
       test: ["CMD-SHELL", "wget -qO /dev/null http://127.0.0.1:3035/ || exit 1"]
       interval: 30s
