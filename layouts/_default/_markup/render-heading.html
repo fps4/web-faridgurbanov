@@ -1,0 +1,44 @@
+{{- /*
+  render-heading.html — single-source page-title guard.
+
+  Why this exists
+  ---------------
+  Blog post pages render the front-matter title (and date) from the post
+  template, and some post bodies ALSO open with a top-level heading equal to
+  that title. The two stack, producing the duplicate the spec reports:
+
+      <title>            (template)
+      <date>             (template)
+      <title>            (body — the duplicate)
+      <body text...>
+
+  This markdown heading render hook is the single source of truth for the
+  visible title. It suppresses a *leading* body heading (ordinal 0, level 1)
+  whose normalised plain text equals the page's front-matter title, so the
+  title renders exactly once (AC-1) with the date still directly beneath it
+  (AC-2 — the template ordering is unchanged).
+
+  Everything else renders exactly as Hugo's built-in default heading hook
+  would render it:
+    * non-page kinds (home, section/list, taxonomy) are never touched —
+      the suppression only applies when .Page.Kind == "page" (AC-3);
+    * every non-leading heading, and any leading heading that does NOT match
+      the title, is emitted verbatim with its id and markdown attributes;
+    * the document <head> / <title> / Open Graph path is produced elsewhere
+      from the same front-matter title and is untouched (AC-3).
+
+  The comparison is whitespace- and case-insensitive (design contract), and
+  matches the leading heading only — an in-body heading that happens to repeat
+  the title is left alone. The work is build-time and adds one comparison per
+  heading, so there is no runtime cost (NFR-1) and no new dependency or
+  build-time warning (AC-4).
+*/ -}}
+{{- $title := .Page.Title | plainify | replaceRE `\s+` " " | strings.TrimSpace | lower -}}
+{{- $text := .Text | plainify | replaceRE `\s+` " " | strings.TrimSpace | lower -}}
+{{- $isDuplicateTitle := and (eq .Page.Kind "page") (eq .Ordinal 0) (eq .Level 1) (ne $title "") (eq $text $title) -}}
+{{- if $isDuplicateTitle -}}
+{{- /* Duplicate leading title heading suppressed: the post template already
+       rendered the title (then date) once above the body. */ -}}
+{{- else -}}
+<h{{ .Level }} id="{{ .Anchor }}"{{ range $k, $v := .Attributes }} {{ $k }}="{{ $v }}"{{ end }}>{{ .Text | safeHTML }}</h{{ .Level }}>
+{{- end -}}
