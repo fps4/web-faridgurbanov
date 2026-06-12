@@ -37,6 +37,18 @@ export const title = (data: Frontmatter) => str(data, 'title');
 export const summary = (data: Frontmatter) => str(data, 'summary');
 export const isDraft = (data: Frontmatter) => data.draft === true;
 
+// The detail-page template (ContentArticle) already renders the frontmatter title as the page
+// <h1>. Authored bodies conventionally repeat that title as a leading `# Heading`, which renders
+// a second, duplicate <h1>. Drop a leading level-1 heading when its text matches the frontmatter
+// title so the title appears exactly once. A body whose first heading differs is left untouched.
+function stripDuplicateTitle(body: string, frontTitle: string): string {
+  const m = body.match(/^\s*#\s+(.+?)[ \t]*\r?\n/);
+  if (m && m[1].trim().toLowerCase() === frontTitle.trim().toLowerCase()) {
+    return body.slice(m[0].length).replace(/^\s*\r?\n/, '');
+  }
+  return body;
+}
+
 async function readDir(section: string, locale: Locale): Promise<string[]> {
   try {
     const files = await fs.readdir(path.join(CONTENT_ROOT, locale, section));
@@ -79,7 +91,7 @@ export async function getEntry(
 
   const { data, body } = parseFrontmatter(raw);
   if (isDraft(data)) return null;
-  return { slug, data, body, isFallback };
+  return { slug, data, body: stripDuplicateTitle(body, title(data)), isFallback };
 }
 
 /**
