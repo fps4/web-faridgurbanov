@@ -1,71 +1,66 @@
 ---
-title: "Remove duplicate page title rendering on blog post pages"
+title: "Remove duplicate page titles across all content types"
 status: draft
-last_updated: 2025-01-31
+last_updated: 2025-01-30
 owners: [architect]
-related: []
+related:
+  - docs/product/specs/remove-duplicate-blog-title.md
 maestro:
-  feature: remove-duplicate-page-title
+  feature: remove-duplicate-page-titles
   kind: functional_spec
   task: run-805066cf
   summary: |
-    Blog post pages on faridgurbanov.com currently display the post title twice
-    in succession: once as a heading and once repeated immediately below it,
-    before the date and body text. This makes posts look broken and is
-    confusing to readers. The fix must ensure every blog post page shows the
-    title exactly once, in the correct position, without affecting any other
-    page types or the visual appearance of the title itself.
+    Blog posts and other pages on faridgurbanov.com display their title twice: once rendered by the page template and once embedded in the content body. This creates a poor reading experience and looks unprofessional. The fix must remove the duplicate title from every affected content type — blog posts, project pages, standalone pages, or any other page type that exhibits the same pattern — so each title appears exactly once per page.
 ---
 
-# Remove duplicate page title rendering on blog post pages
+# Remove duplicate page titles across all content types
 
 ## Summary
 
-Blog post pages render the post title twice — once as a top-level heading and again immediately below it, before the publication date and body content. This is a display defect introduced somewhere in the page rendering pipeline. The goal is to eliminate the second occurrence so every post page shows its title exactly once, in the expected position, while leaving the date, body text, and all other page layouts untouched.
+Blog posts on faridgurbanov.com currently show the page title twice: the template renders it as a heading, and the content itself repeats it. The architect has confirmed this issue is not limited to blog posts — other page types exhibit the same duplication. This spec defines the expected behaviour: every page renders its title exactly once, regardless of content type, without changing the visual design or content of any page.
 
 ## Scope
 
 **In scope**
-- Identify the rendering path that outputs the title a second time on blog post pages.
-- Remove the duplicate output so the title appears exactly once per page.
-- Verify the fix applies consistently across all existing published blog posts.
+- Identifying every page type in the site where title duplication occurs (blog posts, project pages, standalone pages, etc.)
+- Ensuring the title appears exactly once on each affected page
+- Preserving the existing visual appearance and position of the title as rendered by the template
 
 **Out of scope**
-- Restyling or repositioning the title (typography, font size, spacing).
-- Changes to any page type other than blog post pages (e.g. home page, about page, project pages).
-- Adding or modifying post metadata fields (author, tags, categories).
-- SEO `<title>` tag or Open Graph title changes — those are separate concerns.
+- Changing title text, typography, or styling
+- Modifying the site's SEO `<title>` tag or metadata
+- Adding new page types or content
+- Changing how titles are authored in future content (that is a content authoring guide concern)
 
 ## User stories
 
-- As a reader visiting a blog post, I want to see the post title once at the top of the page, so that the page looks correct and is easy to read.
-- As the site owner, I want all blog post pages to render without duplicate titles, so that the site presents a professional appearance.
+- As a visitor, I want to see each page's title displayed once, so that the page looks polished and is easy to read.
+- As the site owner, I want all existing pages to be free of duplicate titles, so that the site presents a professional appearance across every content type.
 
 ## Acceptance criteria (EARS)
 
-- **AC-1.** WHEN a visitor navigates to any blog post page THE SYSTEM SHALL render the post title exactly once in the page body.
-  ↳ source: intent · rationale: The defect is a duplicate heading; exactly-once is the correct invariant.
-
-- **AC-2.** WHEN a visitor navigates to any blog post page THE SYSTEM SHALL display the post title before the publication date and before the body text.
-  ↳ rationale: Preserves the expected reading order; the fix must not displace the title, only deduplicate it.
-
-- **AC-3.** WHEN a visitor navigates to a page that is not a blog post (e.g. home, about) THE SYSTEM SHALL render those pages without any change to their current title display behaviour.
-  ↳ rationale: Ensures the fix is scoped and does not introduce regressions on other page types.
-
-- **AC-4.** WHEN the site is built THE SYSTEM SHALL produce no build-time warnings or errors related to title rendering that were not present before this change.
-  ↳ priority: should · verify: inspection · rationale: Guards against masking the problem rather than fixing it.
+- **AC-1.** WHEN a visitor loads any blog post page THE SYSTEM SHALL display the post title exactly once in the page body.
+  ↳ source: intent · rationale: The double title on blog posts is the originally reported defect.
+- **AC-2.** WHEN a visitor loads any project page THE SYSTEM SHALL display the project title exactly once in the page body.
+  ↳ source: feedback_bundle · rationale: Architect confirmed the issue extends beyond blog posts to other page types.
+- **AC-3.** WHEN a visitor loads any standalone or other non-blog, non-project page that has a title THE SYSTEM SHALL display that title exactly once in the page body.
+  ↳ source: feedback_bundle · rationale: All content types must be covered to fully resolve the issue.
+- **AC-4.** WHEN the duplicate title fix is applied THE SYSTEM SHALL preserve the visual position and appearance of the title as it was rendered by the page template before the fix.
+  ↳ rationale: The fix must not alter the design; only the duplication is removed.
+- **AC-5.** WHEN a visitor views the page source of any affected page THE SYSTEM SHALL contain the page title text in the heading position exactly once, with no additional occurrence of the same text as a heading or paragraph immediately following it.
+  ↳ verify: inspection · rationale: Provides a machine-verifiable definition of "exactly once" that a test or audit script can check.
 
 ## Non-functional requirements
 
-- **NFR-1.** WHILE the fix is applied THE SYSTEM SHALL not increase page load time measurably (i.e. no new synchronous rendering work added).
-  ↳ category: performance · verify: inspection · rationale: The change is structural/template only; it must carry no performance cost.
+- **NFR-1.** WHILE the fix is deployed THE SYSTEM SHALL not introduce any visible layout regression on any page type.
+  ↳ category: usability · verify: inspection · rationale: A structural change to templates risks unintended side-effects across page types; regression-free output is required.
 
 ## Assumptions and constraints
 
-- The duplicate title originates in the page template or a content rendering pipeline, not in the markdown source of individual posts — if it is in the source of every post, that changes the fix approach and should be confirmed before implementation.
-- All blog post pages share a single template or layout component; a fix to that one location is expected to resolve the issue site-wide.
-- The site build process can be run locally to verify the fix before deployment.
+- The duplication originates from either the page template injecting the title as a heading and the content body also starting with the same heading, or vice versa — the design agent must determine which layer is authoritative and remove the duplicate from the other.
+- All current page types in the site's content model must be enumerated before the fix is applied; no page type may be skipped.
+- The fix applies to all published and draft pages present in the repository at the time of implementation.
 
 ## Notes
 
-The reported example shows the sequence: title → date → title → body excerpt. The first title is likely emitted by the layout/template, and the second by the page content renderer also emitting the frontmatter `title` field. Identifying which of the two sources is the unintended one is the first step for the implementing agent.
+The original report cited blog posts specifically. The architect's feedback broadens scope to all pages. The design agent should audit every template and content-type layout to produce a definitive list of affected pages before making changes.
