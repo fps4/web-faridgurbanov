@@ -28,7 +28,7 @@ concurrency:
 
 jobs:
   secret-scan: # fps4 security floor — never disabled. Blocks credentials reaching git.
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ds1]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +41,7 @@ jobs:
 
   build-test:
     name: lint • test • static build
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ds1]
     timeout-minutes: 15
     defaults:
       run:
