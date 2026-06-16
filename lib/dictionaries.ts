@@ -116,8 +116,8 @@ const en: Dictionary = {
   },
   portfolio: {
     title: 'Portfolio',
-    lede: 'Three sibling repositories told as one story: govern the models, build a trustworthy product on them, deliver software with agents. This is the “I build AI, not just advise” proof.',
-    narrative: 'Govern → build → deliver',
+    lede: 'Working code behind the positioning, across two areas: AI & automation, and integration, streaming & data. Every card carries an honest maturity label — nothing is dressed up as more than it is.',
+    narrative: 'Build proof, honestly labelled',
     maturityWorking: 'Working — runs end-to-end',
     maturityReference: 'Reference architecture',
     provesHeading: 'What it proves',
@@ -125,7 +125,7 @@ const en: Dictionary = {
     linksGatedNotice:
       'Repository links are not yet public. The repos are being aligned under one name, neutralized and licensed before they carry my name on a public surface — descriptions are honest now; links follow.',
     honesty:
-      'One of these runs end-to-end today; the other two are reference architectures. They are not three production systems, and I will not pretend otherwise.',
+      'Two of these run end-to-end today — the LLM gateway and Tideway. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
   },
   contact: {
     title: 'Contact',
@@ -215,8 +215,8 @@ const nl: Dictionary = {
   },
   portfolio: {
     title: 'Portfolio',
-    lede: 'Drie verwante repositories als één verhaal: beheer de modellen, bouw er een betrouwbaar product op, lever software met agents. Dit is het bewijs van “ik bouw AI, niet alleen advies”.',
-    narrative: 'Govern → build → deliver',
+    lede: 'Werkende code achter de positionering, verdeeld over twee gebieden: AI & automatisering, en integratie, streaming & data. Elke kaart draagt een eerlijk volwassenheidslabel — niets wordt mooier voorgesteld dan het is.',
+    narrative: 'Bouwbewijs, eerlijk gelabeld',
     maturityWorking: 'Werkend — draait end-to-end',
     maturityReference: 'Referentiearchitectuur',
     provesHeading: 'Wat het bewijst',
@@ -224,7 +224,7 @@ const nl: Dictionary = {
     linksGatedNotice:
       'De repository-links zijn nog niet openbaar. De repos worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak — de beschrijvingen zijn nu al eerlijk; de links volgen.',
     honesty:
-      'Eén hiervan draait vandaag end-to-end; de andere twee zijn referentiearchitecturen. Het zijn geen drie productiesystemen, en dat doe ik ook niet zo voorkomen.',
+      'Twee hiervan draaien vandaag end-to-end — de LLM-gateway en Tideway. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
   },
   contact: {
     title: 'Contact',
