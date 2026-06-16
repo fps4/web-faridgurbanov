@@ -17,7 +17,7 @@ This is a peer of the other four areas, not a bolt-on. The same discipline that 
 
 ## The proof
 
-I don't just advise on this — I build it. The [portfolio](/en/portfolio) is three sibling repositories told as one **govern → build → deliver** story. In the interest of honesty: one of them runs end-to-end today; the other two are reference architectures. They are not three production systems, and the cards say so plainly.
+I don't just advise on this — I build it. The AI work in the [portfolio](/en/portfolio) is three sibling repositories told as one **govern → build → deliver** story. In the interest of honesty: one of them runs end-to-end today; the other two are reference architectures. They are not three production systems, and the cards say so plainly.
 
 ## Evidenced by
 

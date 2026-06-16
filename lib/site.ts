@@ -44,10 +44,27 @@ export const TRAINING_PUBLISHED = false;
 
 export type Maturity = 'working' | 'reference';
 
+/** The two areas the build-proof groups under (FS-0005). */
+export type Pillar = 'ai' | 'platform';
+
+export interface PillarMeta {
+  id: Pillar;
+  label: Record<Locale, string>;
+}
+
+// Portfolio groups by pillar in this order. AI & automation (the trio + eval harness) and the
+// platform area (Tideway + the data/API/SAP blueprints). Pure data so adding a pillar or moving a
+// repo between them is a one-line change.
+export const pillars: PillarMeta[] = [
+  { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
+  { id: 'platform', label: { en: 'Integration, streaming & data', nl: 'Integratie, streaming & data' } },
+];
+
 export interface Repo {
   slug: string;
   name: string;
-  /** govern → build → deliver — the one-line role in the stack. */
+  pillar: Pillar;
+  /** The one-line role this repo plays in its pillar. */
   role: Record<Locale, string>;
   maturity: Maturity;
   license: string | null;
@@ -55,12 +72,16 @@ export interface Repo {
   proves: Record<Locale, string>;
 }
 
-// The three sibling repos as one govern→build→deliver story (FS-0005). Only the gateway runs
-// end-to-end; the other two are reference architectures — no "three production systems" claim.
+// Build proof across two areas (FS-0005), each card carrying an honest maturity label — no
+// "production systems" claim. `working` runs end-to-end (`docker compose up`); `reference` is a
+// readable reference architecture. Repos still being built are tracked in
+// docs/notes/portfolio-repos-build-plan.md and added here only once they are real.
 export const repos: Repo[] = [
+  // — AI & automation: the govern → build → deliver trio —
   {
     slug: 'sovereign-llm-gateway',
     name: 'sovereign-llm-gateway',
+    pillar: 'ai',
     role: { en: 'Govern & route the models', nl: 'Beheer & routeer de modellen' },
     maturity: 'working',
     license: null,
@@ -73,6 +94,7 @@ export const repos: Repo[] = [
   {
     slug: 'sovereign-copilot',
     name: 'sovereign-copilot',
+    pillar: 'ai',
     role: { en: 'Build a trustworthy agentic product', nl: 'Bouw een betrouwbaar agentisch product' },
     maturity: 'reference',
     license: null,
@@ -85,6 +107,7 @@ export const repos: Repo[] = [
   {
     slug: 'maestro',
     name: 'maestro',
+    pillar: 'ai',
     role: { en: 'Deliver software with agents', nl: 'Lever software met agents' },
     maturity: 'reference',
     license: 'MIT',
@@ -92,6 +115,20 @@ export const repos: Repo[] = [
     proves: {
       en: 'A reference architecture for spec-driven delivery: agents propose, humans dispose. Functional and technical gates enforced through GitHub branch protection across a multi-repo, multi-participant product.',
       nl: 'Een referentiearchitectuur voor spec-gedreven levering: agents stellen voor, mensen beslissen. Functionele en technische poorten afgedwongen via GitHub branch-protection over een multi-repo, multi-participant product.',
+    },
+  },
+  // — Integration, streaming & data: Tideway as the working spine —
+  {
+    slug: 'tideway',
+    name: 'tideway',
+    pillar: 'platform',
+    role: { en: 'Stream & integrate events at platform scale', nl: 'Stream & integreer events op platformschaal' },
+    maturity: 'working',
+    license: 'MIT',
+    url: 'https://github.com/fps4/tideway',
+    proves: {
+      en: 'A Kafka-native, multi-tenant event-streaming & integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ + replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. Runs locally with `docker compose up`.',
+      nl: 'Een Kafka-native, multi-tenant platform voor event-streaming & integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ + replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Draait lokaal met `docker compose up`.',
     },
   },
 ];

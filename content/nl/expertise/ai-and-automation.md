@@ -17,7 +17,7 @@ Dit is een gelijkwaardige peer van de andere vier gebieden, geen bolt-on. Dezelf
 
 ## Het bewijs
 
-Ik adviseer hier niet alleen over — ik bouw het. De [portfolio](/nl/portfolio) is drie verwante repositories verteld als één **govern → build → deliver**-verhaal. In het belang van eerlijkheid: één daarvan draait vandaag end-to-end; de andere twee zijn referentiearchitecturen. Het zijn geen drie productiesystemen, en de kaarten zeggen dat ronduit.
+Ik adviseer hier niet alleen over — ik bouw het. Het AI-werk in de [portfolio](/nl/portfolio) is drie verwante repositories verteld als één **govern → build → deliver**-verhaal. In het belang van eerlijkheid: één daarvan draait vandaag end-to-end; de andere twee zijn referentiearchitecturen. Het zijn geen drie productiesystemen, en de kaarten zeggen dat ronduit.
 
 ## Aangetoond door
 
