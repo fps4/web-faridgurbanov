@@ -53,7 +53,7 @@ export interface PillarMeta {
 }
 
 // Portfolio groups by pillar in this order. AI & automation (the trio + eval harness), the
-// platform area (Tideway + the data/API/SAP blueprints), and applied ML & data science (the two
+// platform area (the event-integration platform + the data/API/SAP blueprints), and applied ML & data science (the two
 // purpose-built COAV demos, shown as a matched pair). Pure data so adding a pillar or moving a
 // repo between them is a one-line change.
 export const pillars: PillarMeta[] = [
@@ -126,15 +126,15 @@ export const repos: Repo[] = [
       nl: 'Een referentiearchitectuur voor spec-gedreven levering: agents stellen voor, mensen beslissen. Functionele en technische poorten afgedwongen via GitHub branch-protection over een multi-repo, multi-participant product.',
     },
   },
-  // — Integration, streaming & data: Tideway as the working spine —
+  // — Integration, streaming & data: the event-integration platform as the working spine —
   {
-    slug: 'tideway',
-    name: 'tideway',
+    slug: 'event-integration-platform',
+    name: 'event-integration-platform',
     pillar: 'platform',
     role: { en: 'Stream & integrate events at platform scale', nl: 'Stream & integreer events op platformschaal' },
     maturity: 'working',
     license: 'MIT',
-    url: 'https://github.com/fps4/tideway',
+    url: 'https://github.com/fps4/event-integration-platform',
     proves: {
       en: 'A Kafka-native, multi-tenant event-streaming & integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ + replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. Runs locally with `docker compose up`.',
       nl: 'Een Kafka-native, multi-tenant platform voor event-streaming & integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ + replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Draait lokaal met `docker compose up`.',

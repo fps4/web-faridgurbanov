@@ -26,23 +26,23 @@ The portfolio is grouped into two pillars (`lib/site.ts` → `pillars`):
 
 - **AI & automation** — currently `sovereign-llm-gateway` (working), `sovereign-copilot`
   (reference), `maestro` (reference). Gap: nothing yet *measures* the AI claims.
-- **Integration, streaming & data** — currently `tideway` (working). Gap: Tideway produces
+- **Integration, streaming & data** — currently `event-integration-platform` (working). Gap: Event Integration Platform produces
   governed streams but there is no downstream data home, no API edge, and the SAP→Snowflake case
   study (`content/*/work/sap-snowflake.md`) has no runnable proof behind it.
 
-The four below close those gaps and cross-link into one story: **SAP → Tideway → lakehouse →
+The four below close those gaps and cross-link into one story: **SAP → Event Integration Platform → lakehouse →
 APIs**, with the eval harness proving the AI side.
 
 ## Conventions for every repo
 
-Match the house style already set by `sovereign-llm-gateway` and `tideway`:
+Match the house style already set by `sovereign-llm-gateway` and `event-integration-platform`:
 
 - **Runnable**: `docker compose up` brings the whole thing up locally. A `Makefile` with
   `make up` / `make demo` / `make down`. No paid cloud account required to see it work.
 - **Honest README**: what it is, who it's for, architecture-at-a-glance, a quickstart, and an
   explicit "what's real vs reference" line.
 - **License**: MIT, `Copyright (c) 2026 Fusion Platform Services – 4 Dimensions of Success`
-  (matches Tideway's `LICENSE`).
+  (matches Event Integration Platform's `LICENSE`).
 - **Docs**: a `docs/` folder with at least a solution-design note; a `CHANGELOG.md`.
 - **Naming**: lower-kebab, no client names, no "sovereign-*" unless it's an AI-pillar sibling.
 - **ADR-0004 gate**: before the card's link can go live, the repo must satisfy the three
@@ -93,7 +93,7 @@ loudly.
 
 ## R2 — `lakehouse-blueprint`  (pillar: platform · target maturity: working)
 
-**What it proves.** The downstream home for Tideway streams — "land streams as governed data
+**What it proves.** The downstream home for Event Integration Platform streams — "land streams as governed data
 products". Fills the only expertise pillar (`data-and-lakehouse`) with no proof behind it.
 
 **Role line.** en: "Land streams as governed data products" · nl: "Land streams als beheerde
@@ -103,7 +103,7 @@ dataproducten".
 DuckDB query layer; dbt for medallion (bronze/silver/gold) modelling; a catalog — Nessie or
 Polaris — for governance/branching. All local via compose.
 
-**Scope — in.** Ingest a sample stream (ideally from Tideway's HTTP sink or a Kafka topic) into
+**Scope — in.** Ingest a sample stream (ideally from Event Integration Platform's HTTP sink or a Kafka topic) into
 bronze; dbt models to silver/gold; queryable via Trino/DuckDB; catalog showing schema + history;
 a `make demo` that loads sample data and runs a query end-to-end.
 
@@ -113,7 +113,7 @@ a `make demo` that loads sample data and runs a query end-to-end.
 sample query returns gold-layer rows; schema evolution is demonstrably governed by the catalog.
 
 **Dependencies.** Pairs with **R4** (SAP→Snowflake) as the landing target; consumes from
-**Tideway**. Build this before R4.
+**Event Integration Platform**. Build this before R4.
 
 ---
 
@@ -126,7 +126,7 @@ Backs the `apis-and-gateways` expertise.
 
 **Proposed stack.** Contract-first: OpenAPI specs as the source of truth → mock server (Prism) →
 an Envoy or Kong gateway with OIDC auth (Keycloak local) and rate limiting; a small self-service
-developer portal (could reuse the Tideway webapp patterns).
+developer portal (could reuse the Event Integration Platform webapp patterns).
 
 **Scope — in.** One example API defined OpenAPI-first; mock from the spec; gateway enforcing
 auth + rate limits in front of a stub upstream; a dev-portal page listing the API with a "try it".
@@ -137,7 +137,7 @@ auth + rate limits in front of a stub upstream; a dev-portal page listing the AP
 rejected, an authenticated call passes, and rate limiting trips after N calls — shown in
 `make demo`. If only the gateway+spec are wired (no live upstream), label the card `reference`.
 
-**Dependencies.** Independent; can sit in front of Tideway's control-API as the example upstream
+**Dependencies.** Independent; can sit in front of Event Integration Platform's control-API as the example upstream
 for a stronger story.
 
 ---
@@ -146,13 +146,13 @@ for a stronger story.
 
 **What it proves.** Turns the existing SAP→Snowflake case study
 (`content/*/work/sap-snowflake.md`) into runnable proof — "move SAP data to the warehouse,
-governed". Bridges Tideway and the lakehouse blueprint.
+governed". Bridges Event Integration Platform and the lakehouse blueprint.
 
 **Role line.** en: "Move SAP data to the warehouse, governed" · nl: "Breng SAP-data gestuurd naar
 het warehouse".
 
 **Proposed stack.** CDC from an SAP-*like* source (no real SAP — use a Postgres/MySQL seeded to
-mimic SAP table shapes, or a sample IDoc/OData feed) via Debezium → Kafka (reuse Tideway) →
+mimic SAP table shapes, or a sample IDoc/OData feed) via Debezium → Kafka (reuse Event Integration Platform) →
 schema-governed transforms → land in the **lakehouse-blueprint** (or a Snowflake target behind a
 flag for those with an account).
 
@@ -166,7 +166,7 @@ row change at source flowing to the warehouse.
 target. Mark `working` once the Iceberg path runs locally end-to-end; `reference` if it ships as
 wiring + docs only.
 
-**Dependencies.** Depends on **R2** (lakehouse) as the default sink and on **Tideway** for the
+**Dependencies.** Depends on **R2** (lakehouse) as the default sink and on **Event Integration Platform** for the
 Kafka backbone. Build last of the four.
 
 ---
@@ -176,7 +176,7 @@ Kafka backbone. Build last of the four.
 1. **R2 lakehouse-blueprint** — unlocks the data pillar and is R4's sink.
 2. **R1 llm-eval-harness** — independent, strengthens the AI pillar; can run in parallel with R2.
 3. **R4 sap-snowflake-accelerator** — needs R2; converts an existing case study to proof.
-4. **R3 api-platform-blueprint** — independent; strongest once it can front Tideway/the platform.
+4. **R3 api-platform-blueprint** — independent; strongest once it can front Event Integration Platform/the platform.
 
 ## Open questions for the owner
 
@@ -184,5 +184,5 @@ Kafka backbone. Build last of the four.
   make a real Snowflake the default? Default assumption here: Iceberg-local is the demo path,
   Snowflake behind a flag.
 - R3 maturity: is a gateway+spec+mock enough to call it `working`, or does "working" require a
-  live upstream? Default assumption: needs a live upstream (Tideway control-API) to be `working`.
+  live upstream? Default assumption: needs a live upstream (Event Integration Platform control-API) to be `working`.
 - Repo homes: confirm all four live under `github.com/fps4` with MIT + the FPS-4D copyright.
