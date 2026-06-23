@@ -22,6 +22,7 @@ Ik adviseer hier niet alleen over — ik bouw het. Het AI-werk in de [portfolio]
 ## Aangetoond door
 
 - [De AI-trio](/nl/work/ai-trio) — de govern→build→deliver-casestudy achter dit gebied.
+- [Contrail-avoidance](/nl/work/contrail-coav) — een PyTorch U-Net-beeldsegmentatie-app (React → Node BFF → FastAPI), het draaibare neuraal-netwerk-ML-bewijs.
 - [Portfolio](/nl/portfolio) — de repositories zelf, met eerlijke volwassenheidslabels.
 
 Achtergrond: DeepLearning.AI Agentic AI (2025); 20+ jaar bouwen aan data- en ML-systemen.

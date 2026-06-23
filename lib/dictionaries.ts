@@ -116,16 +116,16 @@ const en: Dictionary = {
   },
   portfolio: {
     title: 'Portfolio',
-    lede: 'Working code behind the positioning, across two areas: AI & automation, and integration, streaming & data. Every card carries an honest maturity label — nothing is dressed up as more than it is.',
+    lede: 'Working code behind the positioning, across three areas: AI & automation; integration, streaming & data; and applied ML & data science. Every card carries an honest maturity label — nothing is dressed up as more than it is.',
     narrative: 'Build proof, honestly labelled',
     maturityWorking: 'Working — runs end-to-end',
     maturityReference: 'Reference architecture',
     provesHeading: 'What it proves',
     viewRepo: 'View repository',
     linksGatedNotice:
-      'Repository links are not yet public. The repos are being aligned under one name, neutralized and licensed before they carry my name on a public surface — descriptions are honest now; links follow.',
+      'The two contrail demos are public and link out. The remaining repos are being aligned under one name, neutralized and licensed before they carry my name on a public surface — their descriptions are honest now; links follow.',
     honesty:
-      'Two of these run end-to-end today — the LLM gateway and Tideway. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
+      'Four of these run end-to-end today — the LLM gateway, Tideway, and the two contrail demos. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
   },
   contact: {
     title: 'Contact',
@@ -215,16 +215,16 @@ const nl: Dictionary = {
   },
   portfolio: {
     title: 'Portfolio',
-    lede: 'Werkende code achter de positionering, verdeeld over twee gebieden: AI & automatisering, en integratie, streaming & data. Elke kaart draagt een eerlijk volwassenheidslabel — niets wordt mooier voorgesteld dan het is.',
+    lede: 'Werkende code achter de positionering, verdeeld over drie gebieden: AI & automatisering; integratie, streaming & data; en toegepaste ML & datawetenschap. Elke kaart draagt een eerlijk volwassenheidslabel — niets wordt mooier voorgesteld dan het is.',
     narrative: 'Bouwbewijs, eerlijk gelabeld',
     maturityWorking: 'Werkend — draait end-to-end',
     maturityReference: 'Referentiearchitectuur',
     provesHeading: 'Wat het bewijst',
     viewRepo: 'Bekijk repository',
     linksGatedNotice:
-      'De repository-links zijn nog niet openbaar. De repos worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak — de beschrijvingen zijn nu al eerlijk; de links volgen.',
+      'De twee contrail-demo\'s zijn openbaar en linken door. De overige repos worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak — hun beschrijvingen zijn nu al eerlijk; de links volgen.',
     honesty:
-      'Twee hiervan draaien vandaag end-to-end — de LLM-gateway en Tideway. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
+      'Vier hiervan draaien vandaag end-to-end — de LLM-gateway, Tideway en de twee contrail-demo\'s. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
   },
   contact: {
     title: 'Contact',
