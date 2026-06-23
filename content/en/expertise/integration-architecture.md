@@ -1,7 +1,7 @@
 ---
 title: Integration architecture
 summary: Designing the backbone that lets enterprise systems talk — from legacy ESBs to event-driven, API-led, domain-oriented platforms.
-order: 1
+order: 5
 ---
 
 # Integration architecture

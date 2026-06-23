@@ -1,7 +1,7 @@
 ---
 title: AI & automation
 summary: Integrating generative AI into enterprise systems responsibly — agentic systems, RAG, evaluation as a sign-off gate, and governance you can audit.
-order: 5
+order: 1
 ---
 
 # AI & automation

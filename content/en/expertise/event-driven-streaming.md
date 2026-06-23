@@ -1,7 +1,7 @@
 ---
 title: Event-driven & streaming
 summary: Kafka and cloud-native streaming as the backbone of modern data and integration — schema evolution, stream processing, and systems teams can depend on.
-order: 2
+order: 4
 ---
 
 # Event-driven & streaming

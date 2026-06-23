@@ -1,7 +1,7 @@
 ---
 title: Data & lakehouse
 summary: Cloud-native data platforms for analytics and AI — medallion lakehouses, data contracts at the source seam, and CDC pipelines that stay reliable.
-order: 4
+order: 3
 ---
 
 # Data & lakehouse
