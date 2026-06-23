@@ -54,8 +54,8 @@ export interface PillarMeta {
 
 // Portfolio groups by pillar in this order. AI & automation (the trio + eval harness), the
 // platform area (the event-integration platform + the data/API/SAP blueprints), and applied ML & data science (the two
-// purpose-built COAV demos, shown as a matched pair). Pure data so adding a pillar or moving a
-// repo between them is a one-line change.
+// purpose-built COAV demos plus the retail dynamic-pricing demo). Pure data so adding a pillar or
+// moving a repo between them is a one-line change.
 export const pillars: PillarMeta[] = [
   { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
   { id: 'platform', label: { en: 'Integration, streaming & data', nl: 'Integratie, streaming & data' } },
@@ -140,8 +140,9 @@ export const repos: Repo[] = [
       nl: 'Een Kafka-native, multi-tenant platform voor event-streaming & integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ + replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Draait lokaal met `docker compose up`.',
     },
   },
-  // — Applied ML & data science: the two purpose-built COAV demos, a matched pair. Already public,
-  //   honestly framed and licence-free, so they carry live links (linkLive) ahead of the gate. —
+  // — Applied ML & data science: the two purpose-built COAV demos (a matched pair) and the retail
+  //   dynamic-pricing demo. Already public, honestly framed and licensed, so they carry live links
+  //   (linkLive) ahead of the gate. —
   {
     slug: 'contrail-segmentation-demo',
     name: 'contrail-segmentation-demo',
@@ -168,6 +169,22 @@ export const repos: Repo[] = [
     proves: {
       en: 'A Polars/Pandas pipeline plus a Databricks-style notebook that flag which flights form persistent, climate-warming contrails — using the Schmidt–Appleman Criterion and ice-supersaturated regions — and propose altitude changes, weighing avoided climate forcing (CO₂e) against extra fuel burn. Lakehouse-shaped (Parquet, Delta / Unity-Catalog framing) and runs end-to-end on a laptop, with a documented path to ERA5 reanalysis + OpenSky real flight data.',
       nl: 'Een Polars/Pandas-pipeline plus een Databricks-achtige notebook die bepalen welke vluchten persistente, klimaatopwarmende contrails vormen — via het Schmidt–Appleman-criterium en ijs-oververzadigde regio\'s — en hoogtewijzigingen voorstellen, waarbij vermeden klimaatforcering (CO₂e) wordt afgewogen tegen extra brandstofverbruik. Lakehouse-vormig (Parquet, Delta / Unity-Catalog-framing) en draait end-to-end op een laptop, met een gedocumenteerd pad naar ERA5-reanalyse + OpenSky-vluchtdata.',
+    },
+  },
+  // — Retail dynamic pricing: one lakehouse, two pricing verticals. Public, honestly framed and
+  //   MIT-licensed, so it carries a live link (linkLive) ahead of the gate. —
+  {
+    slug: 'retail-dynamic-pricing',
+    name: 'retail-dynamic-pricing',
+    pillar: 'applied',
+    role: { en: 'Price retail at scale — elasticity to optimization', nl: 'Prijs retail op schaal — van elasticiteit tot optimalisatie' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/retail-dynamic-pricing',
+    proves: {
+      en: 'A retail dynamic-pricing platform on a Databricks lakehouse: one elasticity-to-optimization engine serving two verticals — grocery (elasticity & markdown) and consumer electronics (competitive & lifecycle, MAP-compliant). Log-log demand estimation checked against a known ground truth, a solver-agnostic revenue optimizer (SciPy by default, Gurobi MIQP backend), and Delta Live Tables / Workflow pipelines. Two notebooks run end-to-end on a laptop on synthetic data — +6.4% revenue at flat margin in the grocery run — with the path to production written down.',
+      nl: 'Een dynamic-pricing-platform voor retail op een Databricks-lakehouse: één elasticiteit-naar-optimalisatie-engine die twee verticals bedient — grocery (elasticiteit & afprijzing) en consumentenelektronica (competitief & lifecycle, MAP-conform). Log-log vraagschatting getoetst aan een bekende grondwaarheid, een solver-agnostische omzetoptimalisator (standaard SciPy, Gurobi-MIQP-backend), en Delta Live Tables / Workflow-pipelines. Twee notebooks draaien end-to-end op een laptop op synthetische data — +6,4% omzet bij gelijke marge in de grocery-run — met het pad naar productie opgeschreven.',
     },
   },
 ];
