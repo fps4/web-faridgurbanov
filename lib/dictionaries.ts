@@ -123,9 +123,9 @@ const en: Dictionary = {
     provesHeading: 'What it proves',
     viewRepo: 'View repository',
     linksGatedNotice:
-      'The two contrail demos are public and link out. The remaining repos are being aligned under one name, neutralized and licensed before they carry my name on a public surface — their descriptions are honest now; links follow.',
+      'The applied demos and the event-integration platform are public and link out. The remaining repos — the AI & automation trio — are being aligned under one name, neutralized and licensed before they carry my name on a public surface; their descriptions are honest now, links follow.',
     honesty:
-      'Four of these run end-to-end today — the LLM gateway, the event-integration platform, and the two contrail demos. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
+      'Five of these run end-to-end today — the LLM gateway, the event-integration platform, the retail dynamic-pricing demo and the two contrail demos. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
   },
   contact: {
     title: 'Contact',
@@ -222,9 +222,9 @@ const nl: Dictionary = {
     provesHeading: 'Wat het bewijst',
     viewRepo: 'Bekijk repository',
     linksGatedNotice:
-      'De twee contrail-demo\'s zijn openbaar en linken door. De overige repos worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak — hun beschrijvingen zijn nu al eerlijk; de links volgen.',
+      'De toegepaste demo\'s en het event-integration-platform zijn openbaar en linken door. De overige repos — het AI & automatisering-trio — worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak; hun beschrijvingen zijn nu al eerlijk, de links volgen.',
     honesty:
-      'Vier hiervan draaien vandaag end-to-end — de LLM-gateway, het event-integration-platform en de twee contrail-demo\'s. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
+      'Vijf hiervan draaien vandaag end-to-end — de LLM-gateway, het event-integration-platform, de retail dynamic-pricing-demo en de twee contrail-demo\'s. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
   },
   contact: {
     title: 'Contact',
