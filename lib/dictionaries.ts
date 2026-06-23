@@ -125,7 +125,7 @@ const en: Dictionary = {
     linksGatedNotice:
       'The two contrail demos are public and link out. The remaining repos are being aligned under one name, neutralized and licensed before they carry my name on a public surface — their descriptions are honest now; links follow.',
     honesty:
-      'Four of these run end-to-end today — the LLM gateway, Tideway, and the two contrail demos. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
+      'Four of these run end-to-end today — the LLM gateway, the event-integration platform, and the two contrail demos. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
   },
   contact: {
     title: 'Contact',
@@ -224,7 +224,7 @@ const nl: Dictionary = {
     linksGatedNotice:
       'De twee contrail-demo\'s zijn openbaar en linken door. De overige repos worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak — hun beschrijvingen zijn nu al eerlijk; de links volgen.',
     honesty:
-      'Vier hiervan draaien vandaag end-to-end — de LLM-gateway, Tideway en de twee contrail-demo\'s. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
+      'Vier hiervan draaien vandaag end-to-end — de LLM-gateway, het event-integration-platform en de twee contrail-demo\'s. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
   },
   contact: {
     title: 'Contact',
