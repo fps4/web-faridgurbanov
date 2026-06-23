@@ -22,6 +22,7 @@ I don't just advise on this — I build it. The AI work in the [portfolio](/en/p
 ## Evidenced by
 
 - [The AI trio](/en/work/ai-trio) — the govern→build→deliver case study behind this area.
+- [Contrail avoidance](/en/work/contrail-coav) — a PyTorch U-Net image-segmentation app (React → Node BFF → FastAPI), the runnable neural-network ML proof.
 - [Portfolio](/en/portfolio) — the repositories themselves, with honest maturity labels.
 
 Background: DeepLearning.AI Agentic AI (2025); 20+ years building data and ML systems.

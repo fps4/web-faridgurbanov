@@ -44,20 +44,22 @@ export const TRAINING_PUBLISHED = false;
 
 export type Maturity = 'working' | 'reference';
 
-/** The two areas the build-proof groups under (FS-0005). */
-export type Pillar = 'ai' | 'platform';
+/** The areas the build-proof groups under (FS-0005). */
+export type Pillar = 'ai' | 'platform' | 'applied';
 
 export interface PillarMeta {
   id: Pillar;
   label: Record<Locale, string>;
 }
 
-// Portfolio groups by pillar in this order. AI & automation (the trio + eval harness) and the
-// platform area (Tideway + the data/API/SAP blueprints). Pure data so adding a pillar or moving a
+// Portfolio groups by pillar in this order. AI & automation (the trio + eval harness), the
+// platform area (Tideway + the data/API/SAP blueprints), and applied ML & data science (the two
+// purpose-built COAV demos, shown as a matched pair). Pure data so adding a pillar or moving a
 // repo between them is a one-line change.
 export const pillars: PillarMeta[] = [
   { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
   { id: 'platform', label: { en: 'Integration, streaming & data', nl: 'Integratie, streaming & data' } },
+  { id: 'applied', label: { en: 'Applied ML & data science', nl: 'Toegepaste ML & datawetenschap' } },
 ];
 
 export interface Repo {
@@ -69,6 +71,13 @@ export interface Repo {
   maturity: Maturity;
   license: string | null;
   url: string;
+  /**
+   * Per-repo public-link override on top of the site-wide REPO_LINKS_ENABLED gate (ADR-0004).
+   * WHILE that gate is off, a repo with `linkLive: true` still renders its link — for repos that
+   * are already public, honestly framed and licensed (the two purpose-built COAV demos). Omitted
+   * or `false` = follow the gate.
+   */
+  linkLive?: boolean;
   proves: Record<Locale, string>;
 }
 
@@ -129,6 +138,36 @@ export const repos: Repo[] = [
     proves: {
       en: 'A Kafka-native, multi-tenant event-streaming & integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ + replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. Runs locally with `docker compose up`.',
       nl: 'Een Kafka-native, multi-tenant platform voor event-streaming & integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ + replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Draait lokaal met `docker compose up`.',
+    },
+  },
+  // — Applied ML & data science: the two purpose-built COAV demos, a matched pair. Already public,
+  //   honestly framed and licence-free, so they carry live links (linkLive) ahead of the gate. —
+  {
+    slug: 'contrail-segmentation-demo',
+    name: 'contrail-segmentation-demo',
+    pillar: 'applied',
+    role: { en: 'Detect contrails in sky-camera images', nl: 'Detecteer contrails in sky-camera-beelden' },
+    maturity: 'working',
+    license: null,
+    linkLive: true,
+    url: 'https://github.com/fps4/contrail-segmentation-demo',
+    proves: {
+      en: 'A neural-network image-segmentation app — React + TypeScript front end → Node.js (Express) BFF → Python FastAPI service → a hand-written PyTorch U-Net — that detects contrails in sky-camera images and reports coverage and contrail count. Three services that run end-to-end with `docker compose up`, with CI on GitHub Actions. Trained on a synthetic sky generator so it runs on a laptop in minutes; the README writes down the path to real GVCCS / Sky-Cam imagery.',
+      nl: 'Een neuraal-netwerk-beeldsegmentatie-app — React + TypeScript-frontend → Node.js (Express) BFF → Python FastAPI-service → een zelfgeschreven PyTorch U-Net — die contrails in sky-camera-beelden detecteert en dekking en aantal rapporteert. Drie services die end-to-end draaien met `docker compose up`, met CI op GitHub Actions. Getraind op een synthetische lucht-generator zodat het in minuten op een laptop draait; de README beschrijft het pad naar echte GVCCS / Sky-Cam-beelden.',
+    },
+  },
+  {
+    slug: 'contrail-avoidance-pipeline',
+    name: 'contrail-avoidance-pipeline',
+    pillar: 'applied',
+    role: { en: 'Decide which flights to reroute — and at what cost', nl: 'Bepaal welke vluchten omgeleid worden — en tegen welke kosten' },
+    maturity: 'working',
+    license: null,
+    linkLive: true,
+    url: 'https://github.com/fps4/contrail-avoidance-pipeline',
+    proves: {
+      en: 'A Polars/Pandas pipeline plus a Databricks-style notebook that flag which flights form persistent, climate-warming contrails — using the Schmidt–Appleman Criterion and ice-supersaturated regions — and propose altitude changes, weighing avoided climate forcing (CO₂e) against extra fuel burn. Lakehouse-shaped (Parquet, Delta / Unity-Catalog framing) and runs end-to-end on a laptop, with a documented path to ERA5 reanalysis + OpenSky real flight data.',
+      nl: 'Een Polars/Pandas-pipeline plus een Databricks-achtige notebook die bepalen welke vluchten persistente, klimaatopwarmende contrails vormen — via het Schmidt–Appleman-criterium en ijs-oververzadigde regio\'s — en hoogtewijzigingen voorstellen, waarbij vermeden klimaatforcering (CO₂e) wordt afgewogen tegen extra brandstofverbruik. Lakehouse-vormig (Parquet, Delta / Unity-Catalog-framing) en draait end-to-end op een laptop, met een gedocumenteerd pad naar ERA5-reanalyse + OpenSky-vluchtdata.',
     },
   },
 ];

@@ -83,7 +83,7 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
                     </p>
                     <p className="mt-2 flex-1 text-sm text-muted-foreground">{repo.proves[locale]}</p>
 
-                    {REPO_LINKS_ENABLED ? (
+                    {REPO_LINKS_ENABLED || repo.linkLive ? (
                       <a
                         href={repo.url}
                         rel="noopener"
