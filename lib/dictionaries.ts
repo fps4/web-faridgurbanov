@@ -169,7 +169,7 @@ If that is useful to your team, the best move today is to book a short taster.`,
   },
   indexes: {
     expertiseTitle: 'Expertise',
-    expertiseLede: 'The depth behind the positioning — five areas I work in, with the AI work shown as a peer discipline, not a bolt-on.',
+    expertiseLede: 'The depth behind the positioning — six areas I work in, with the AI and applied-ML work leading, not bolted on.',
     workTitle: 'Selected work',
     workLede: 'A few concrete, quantified things I have built. Clients are named where I may; abstracted where confidentiality requires, with the metrics kept.',
     writingTitle: 'Writing',
@@ -268,7 +268,7 @@ Is dat nuttig voor je team? De beste stap vandaag is een korte proefsessie boeke
   },
   indexes: {
     expertiseTitle: 'Expertise',
-    expertiseLede: 'De diepgang achter de positionering — vijf gebieden waarin ik werk, met het AI-werk als gelijkwaardige discipline, niet als bijzaak.',
+    expertiseLede: 'De diepgang achter de positionering — zes gebieden waarin ik werk, met het AI- en toegepaste-ML-werk voorop, niet als bijzaak.',
     workTitle: 'Geselecteerd werk',
     workLede: 'Een paar concrete, gekwantificeerde dingen die ik heb gebouwd. Klanten worden genoemd waar het mag; geabstraheerd waar vertrouwelijkheid dat vereist, met behoud van de cijfers.',
     writingTitle: 'Blog',

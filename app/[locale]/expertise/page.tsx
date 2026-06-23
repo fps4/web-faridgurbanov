@@ -8,7 +8,7 @@ import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
-// Expertise index (FS-0003/US-0012): the five areas, AI/automation a peer of the rest, each linking
+// Expertise index (FS-0003/US-0012): the six areas, AI & applied-ML leading, each linking
 // to its page. Authored as markdown under content/{locale}/expertise via the FS-0001 pipeline.
 export const dynamicParams = false;
 export function generateStaticParams() {

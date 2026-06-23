@@ -1,7 +1,7 @@
 ---
 title: Data & lakehouse
 summary: Cloud-native dataplatformen voor analytics en AI — medallion-lakehouses, datacontracten op de bronnaad, en CDC-pipelines die betrouwbaar blijven.
-order: 4
+order: 3
 ---
 
 # Data & lakehouse
