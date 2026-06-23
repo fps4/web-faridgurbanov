@@ -1,9 +1,10 @@
 // Decorative hero backdrop (FS-0002/US-0010 visual): an abstract node-edge "integration backbone"
 // motif over a soft gradient — evoking govern → build → deliver without literal imagery. CSS/SVG
 // only, so it adds no image weight on the static export (ADR-0001). Theme-aware via the --foreground
-// token, aria-hidden (purely decorative), and static — no motion, so nothing to gate for
-// prefers-reduced-motion. Kept at very low opacity and offset to the upper-right, clear of the
-// left-aligned hero text, so it never affects text contrast (WCAG).
+// token and aria-hidden (purely decorative). Motion is subtle — nodes twinkle and the whole topology
+// drifts slowly — and is gated behind prefers-reduced-motion in globals.css (.hero-node / .hero-drift),
+// so it falls back to fully static. Kept at very low opacity and offset to the upper-right, clear of
+// the left-aligned hero text, so it never affects text contrast (WCAG).
 export function HeroBackdrop() {
   // Three loose clusters (govern · build · deliver) wired left → right.
   const nodes = [
@@ -30,15 +31,25 @@ export function HeroBackdrop() {
         viewBox="0 0 400 400"
         fill="none"
       >
-        <g stroke="currentColor" strokeWidth={1.25}>
-          {edges.map(([a, b]) => (
-            <line key={`${a}-${b}`} x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]} />
-          ))}
-        </g>
-        <g fill="currentColor">
-          {nodes.map(([cx, cy], i) => (
-            <circle key={i} cx={cx} cy={cy} r={3.5} />
-          ))}
+        <g className="hero-drift">
+          <g stroke="currentColor" strokeWidth={1.25}>
+            {edges.map(([a, b]) => (
+              <line key={`${a}-${b}`} x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]} />
+            ))}
+          </g>
+          <g fill="currentColor">
+            {nodes.map(([cx, cy], i) => (
+              <circle
+                key={i}
+                className="hero-node"
+                cx={cx}
+                cy={cy}
+                r={3.5}
+                // Stagger each node's twinkle so the topology shimmers rather than blinking in unison.
+                style={{ animationDelay: `${(i % 5) * 0.8}s` }}
+              />
+            ))}
+          </g>
         </g>
       </svg>
     </div>
