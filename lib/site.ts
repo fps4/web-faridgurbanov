@@ -134,6 +134,7 @@ export const repos: Repo[] = [
     role: { en: 'Stream & integrate events at platform scale', nl: 'Stream & integreer events op platformschaal' },
     maturity: 'working',
     license: 'MIT',
+    linkLive: true,
     url: 'https://github.com/fps4/event-integration-platform',
     proves: {
       en: 'A Kafka-native, multi-tenant event-streaming & integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ + replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. Runs locally with `docker compose up`.',
