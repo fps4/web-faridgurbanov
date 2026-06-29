@@ -19,7 +19,7 @@ so that I can judge credibility and decide to start a conversation.
 
 Implements FS-0004 — the highest-converting section and the biggest gap. The set mirrors the proof
 points used across the owner's applications: Cloud Gateway, SAP→Snowflake finance migration,
-Confluent Kafka data-product platform, and the AI trio. Each follows a consistent structure and is
+Kafka-on-Cloudera data-product platform, and the AI trio. Each follows a consistent structure and is
 anonymized where confidentiality requires. Depends on EP-00; AI-trio links respect ADR-0004.
 
 ## Acceptance criteria (EARS)

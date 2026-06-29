@@ -17,7 +17,7 @@ Analytics en AI zijn alleen zo goed als het platform dat ze voedt. Ik bouw de cl
 ## Aangetoond door
 
 - [SAP S/4HANA Finance → Snowflake](/nl/work/sap-snowflake) — GL/AR/AP/CO/AA over ~30+ bedrijfscodes, een multi-terabyte backfill plus 10–30 GB dagelijkse delta, met contracten op de SAP↔lakehouse-naad.
-- [Confluent Kafka dataproductplatform](/nl/work/confluent-kafka) — geproductiseerde streams met Hive LLAP en Spark 3 query-acceleratie.
+- [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — geproductiseerde streams met Hive LLAP en Spark 3 query-acceleratie.
 - [Contrail-avoidance](/nl/work/contrail-coav) — een Polars/Pandas + Databricks-achtige pipeline over een Parquet/Delta-lakehouse, die bepaalt welke vluchten worden omgeleid op een afweging van klimaat versus brandstof.
 
 Achtergrond: Databricks Certified Data Engineer Professional; Snowflake Core; Spark/PySpark, Delta Lake, PostgreSQL, Oracle.

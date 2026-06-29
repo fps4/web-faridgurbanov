@@ -10,13 +10,13 @@ Streaming is waar integratie- en data-architectuur samenkomen. Goed gedaan veran
 
 ## Wat ik doe
 
-- **Streaming-ruggengraten op Kafka.** Apache Kafka en Confluent Cloud, AWS MSK, Azure Event Hubs — met Schema Registry die de evolutie governt, zodat producers en consumers onafhankelijk van elkaar kunnen bewegen.
+- **Streaming-ruggengraten op Kafka.** Apache Kafka op Cloudera (CDP), AWS MSK, Azure Event Hubs — met Schema Registry die de evolutie governt, zodat producers en consumers onafhankelijk van elkaar kunnen bewegen.
 - **Stream processing.** Kafka Streams, Spark Streaming en Kinesis voor de transformaties en aggregaties die tussen ruwe events en bruikbare data in zitten.
 - **Event-driven patronen die productie overleven.** Outbox, idempotentie en event sourcing — plus de observability om te weten dat er iets mis is voordat een consumer dat merkt.
 
 ## Aangetoond door
 
-- [Confluent Kafka dataproductplatform](/nl/work/confluent-kafka) — 20+ geproductiseerde datastreams over 30+ bronsystemen, met schema-governance en domeineigenaarschap.
+- [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — 20+ geproductiseerde datastreams over 30+ bronsystemen, met schema-governance en domeineigenaarschap.
 - [Cloud Gateway](/nl/work/cloud-gateway) — event-driven integratie-adapters (SNS/SQS, Lambda-transformaties) binnen een cross-cloud API-platform.
 
 Achtergrond: diepgaande Kafka (Connect, Schema Registry, Streams), plus NiFi, Hive en Spark over 20+ jaar datasystemen.

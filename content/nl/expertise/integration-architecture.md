@@ -17,6 +17,6 @@ Al twintig jaar is het mijn werk om systemen die nooit bedoeld waren om met elka
 ## Aangetoond door
 
 - [Cloud Gateway](/nl/work/cloud-gateway) — twintig-plus gefragmenteerde gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~500M+ requests per maand verwerkt.
-- [Confluent Kafka dataproductplatform](/nl/work/confluent-kafka) — domeingeoriënteerde streaming over 30+ bronsystemen met gegoverneerde schema's.
+- [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — domeingeoriënteerde streaming over 30+ bronsystemen met gegoverneerde schema's.
 
 Achtergrond: 20+ jaar over SOA, ESB-modernisering en API-management; Accenture Certified Technology Architect; TOGAF 9.

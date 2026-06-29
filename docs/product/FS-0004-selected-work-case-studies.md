@@ -14,7 +14,7 @@ maestro:
     The biggest gap and the highest-converting section: 3–4 anonymized case studies that turn a
     visitor into a call. The set mirrors the proof points actually used across the owner's job
     applications — the Cloud Gateway API platform, the SAP→Snowflake finance migration, the
-    Confluent Kafka data-product platform, and the AI trio — each with the problem, what was
+    Kafka-on-Cloudera data-product platform, and the AI trio — each with the problem, what was
     built, and quantified impact. They evidence the home-page positioning and make the training
     credible.
 ---
@@ -40,7 +40,7 @@ conversation, and it is what makes the training offer credible ("taught by someo
      days→minutes. *(The canonical proof point — present in all applications.)*
    - **SAP S/4HANA Finance → Snowflake** — GL/AR/AP/CO/AA; ~30+ company codes; multi-TB backfill
      + 10–30 GB daily delta; data contracts at the SAP↔lakehouse seam.
-   - **Confluent Kafka data-product platform** — 20+ productized streams; 30+ source systems;
+   - **Kafka data-product platform on Cloudera** — 20+ productized streams; 30+ source systems;
      domain-oriented ownership.
    - **The AI trio** (`sovereign-copilot`, `maestro`, `sovereign-llm-gateway`) — the
      govern→build→deliver story; cross-links to the portfolio (FS-0005).

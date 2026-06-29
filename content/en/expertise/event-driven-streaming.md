@@ -10,13 +10,13 @@ Streaming is where integration and data architecture meet. Done well, a Kafka ba
 
 ## What I do
 
-- **Streaming backbones on Kafka.** Apache Kafka and Confluent Cloud, AWS MSK, Azure Event Hubs — with Schema Registry governing evolution so producers and consumers can move independently.
+- **Streaming backbones on Kafka.** Apache Kafka on Cloudera (CDP), AWS MSK, Azure Event Hubs — with Schema Registry governing evolution so producers and consumers can move independently.
 - **Stream processing.** Kafka Streams, Spark Streaming and Kinesis for the transforms and aggregations that sit between raw events and usable data.
 - **Event-driven patterns that survive production.** Outbox, idempotency, and event sourcing — and the observability to know when something is wrong before a consumer does.
 
 ## Evidenced by
 
-- [Confluent Kafka data-product platform](/en/work/confluent-kafka) — 20+ productised data streams across 30+ source systems, with schema governance and domain ownership.
+- [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — 20+ productised data streams across 30+ source systems, with schema governance and domain ownership.
 - [Cloud Gateway](/en/work/cloud-gateway) — event-driven integration adapters (SNS/SQS, Lambda transforms) within a cross-cloud API platform.
 
 Background: deep Kafka (Connect, Schema Registry, Streams), plus NiFi, Hive and Spark across 20+ years of data systems.

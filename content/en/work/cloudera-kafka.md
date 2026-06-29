@@ -1,12 +1,12 @@
 ---
-title: Confluent Kafka data-product platform
-summary: A Kafka-based data-product platform productising 20+ data streams across 30+ source systems, with schema governance and domain-oriented ownership.
+title: Kafka data-product platform on Cloudera
+summary: A Cloudera-based Kafka data-product platform productising 20+ data streams across 30+ source systems, with schema governance and domain-oriented ownership.
 hook: Streaming data productised across domains, with governed schemas.
 metric: 20+ data products
 order: 3
 ---
 
-# Confluent Kafka data-product platform
+# Kafka data-product platform on Cloudera
 
 *A major UK telecom operator. Client abstracted for confidentiality; technical scope as delivered.*
 
@@ -16,7 +16,7 @@ The organisation needed to turn streaming data across **30+ source systems** int
 
 ## What I built
 
-A **Confluent Kafka** data-product platform:
+A Kafka data-product platform on **Cloudera (CDP)**:
 
 - **20+ productised data streams**, each domain-owned rather than centrally bottlenecked.
 - **Schema governance** via Schema Registry, so producers and consumers evolve independently.
@@ -33,6 +33,6 @@ A **Confluent Kafka** data-product platform:
 
 Data engineer and technology architect (Accenture CTA group) — designed the platform and guided cross-border delivery teams.
 
-**Stack:** Apache Kafka (Confluent Cloud), Schema Registry, Hive LLAP, Spark 3, NiFi, Hadoop, Elastic Stack.
+**Stack:** Apache Kafka on Cloudera (CDP), Cloudera Schema Registry, Hive LLAP, Spark 3, NiFi, Hadoop, Elastic Stack.
 
 → See also [Event-driven & streaming](/en/expertise/event-driven-streaming) and [Data & lakehouse](/en/expertise/data-and-lakehouse).

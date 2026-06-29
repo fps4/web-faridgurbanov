@@ -17,6 +17,6 @@ For twenty years my job has been to make systems that were never meant to talk t
 ## Evidenced by
 
 - [Cloud Gateway](/en/work/cloud-gateway) — twenty-plus fragmented gateways consolidated into one federated, cross-cloud, self-service platform handling ~500M+ requests a month.
-- [Confluent Kafka data-product platform](/en/work/confluent-kafka) — domain-oriented streaming across 30+ source systems with governed schemas.
+- [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — domain-oriented streaming across 30+ source systems with governed schemas.
 
 Background: 20+ years across SOA, ESB modernisation and API management; Accenture Certified Technology Architect; TOGAF 9.
