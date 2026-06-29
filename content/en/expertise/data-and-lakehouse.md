@@ -17,7 +17,7 @@ Analytics and AI are only as good as the platform feeding them. I build the clou
 ## Evidenced by
 
 - [SAP S/4HANA Finance → Snowflake](/en/work/sap-snowflake) — GL/AR/AP/CO/AA across ~30+ company codes, multi-terabyte backfill plus 10–30 GB daily delta, with contracts at the SAP↔lakehouse seam.
-- [Confluent Kafka data-product platform](/en/work/confluent-kafka) — productised streams with Hive LLAP and Spark 3 query acceleration.
+- [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — productised streams with Hive LLAP and Spark 3 query acceleration.
 - [Contrail avoidance](/en/work/contrail-coav) — a Polars/Pandas + Databricks-style pipeline over a Parquet/Delta lakehouse, deciding which flights to reroute on a climate-versus-fuel tradeoff.
 
 Background: Databricks Certified Data Engineer Professional; Snowflake Core; Spark/PySpark, Delta Lake, PostgreSQL, Oracle.

@@ -28,7 +28,7 @@ the training-forward M1 will stand on (ADR-0003).
 | Bilingual shell, nav, markdown content pipeline, static export | FS-0001 |
 | Home — credibility hero + "available now" + taster CTA stub | FS-0002 (M0) |
 | Five expertise pages + index (AI/automation promoted to peer) | FS-0003 |
-| 3–4 case studies + index (Cloud Gateway, SAP→Snowflake, Confluent, AI trio) | FS-0004 |
+| 3–4 case studies + index (Cloud Gateway, SAP→Snowflake, Cloudera Kafka, AI trio) | FS-0004 |
 | Portfolio — three repo cards, govern→build→deliver, links gated | FS-0005 + ADR-0004 |
 | Writing index + one training-wedge post | FS-0006 |
 | Contact + minimal GDPR/privacy page | FS-0007 |

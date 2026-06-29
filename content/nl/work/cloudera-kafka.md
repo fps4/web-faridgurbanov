@@ -1,12 +1,12 @@
 ---
-title: Confluent Kafka dataproductplatform
-summary: Een Kafka-gebaseerd dataproductplatform dat 20+ datastreams productiseert over 30+ bronsystemen, met schema-governance en domeingeoriënteerd eigenaarschap.
+title: Kafka-dataproductplatform op Cloudera
+summary: Een Cloudera-gebaseerd Kafka-dataproductplatform dat 20+ datastreams productiseert over 30+ bronsystemen, met schema-governance en domeingeoriënteerd eigenaarschap.
 hook: Streamingdata geproductiseerd over domeinen heen, met gegoverneerde schema's.
 metric: 20+ dataproducten
 order: 3
 ---
 
-# Confluent Kafka dataproductplatform
+# Kafka-dataproductplatform op Cloudera
 
 *Een grote Britse telecomoperator. Klant geabstraheerd voor vertrouwelijkheid; technische scope zoals geleverd.*
 
@@ -16,7 +16,7 @@ De organisatie moest streamingdata over **30+ bronsystemen** omzetten in betrouw
 
 ## Wat ik bouwde
 
-Een **Confluent Kafka** dataproductplatform:
+Een Kafka-dataproductplatform op **Cloudera (CDP)**:
 
 - **20+ geproductiseerde datastreams**, elk domeineigendom in plaats van centraal opgestopt.
 - **Schema-governance** via Schema Registry, zodat producers en consumers onafhankelijk evolueren.
@@ -33,6 +33,6 @@ Een **Confluent Kafka** dataproductplatform:
 
 Data engineer en technology architect (Accenture CTA-groep) — ontwierp het platform en begeleidde grensoverschrijdende deliveryteams.
 
-**Stack:** Apache Kafka (Confluent Cloud), Schema Registry, Hive LLAP, Spark 3, NiFi, Hadoop, Elastic Stack.
+**Stack:** Apache Kafka op Cloudera (CDP), Cloudera Schema Registry, Hive LLAP, Spark 3, NiFi, Hadoop, Elastic Stack.
 
 → Zie ook [Event-driven & streaming](/nl/expertise/event-driven-streaming) en [Data & lakehouse](/nl/expertise/data-and-lakehouse).
