@@ -20,6 +20,19 @@ This is the proof behind the [AI & automation](/en/expertise/ai-and-automation) 
 
 One of these runs end-to-end today; the other two are **reference architectures**. They are **not** three production systems, and I won't present them as such. That honesty is the point — it's the same discipline I bring to a client's AI programme.
 
+## The pattern behind it
+
+![Diagram: three stages — govern (sovereign-llm-gateway: budgets, vendor abstraction, sovereign fallback), build (sovereign-copilot: tool contracts, retrieval, eval gates L1–L4), deliver (maestro: agents propose, humans dispose). Trust lives in the platform, not in meetings.](/diagrams/ai-trio-pattern.svg)
+
+**Separation of powers, applied to AI.** The default shape of an "AI platform" initiative is one project that mixes model access, product logic and delivery automation — which means nothing can be governed, evaluated or swapped independently. The trio splits it along the lines that actually move at different speeds: models churn monthly, products quarterly, delivery practice yearly.
+
+Two decisions carry the pattern:
+
+- **Govern at the choke point, not in a policy doc.** Budgets, vendor abstraction and the sovereignty fallback live in the gateway — the one place every model call passes. Governance you can `docker compose up` beats governance you circulate as a PDF.
+- **Eval gates are the schema registry of AI.** L1–L4 gates with goldens do for agent behaviour what schema compatibility rules did for Kafka producers [in the Cloudera case study](/en/work/cloudera-kafka): they move trust from review meetings into the platform, so change can be fast *and* safe.
+
+The honest part above still applies — one of the three runs end-to-end, two are reference architectures. The pattern is the claim; the labels say how much of it is proven.
+
 ## Why it matters
 
 Together they map onto how I run AI delivery for real: govern the models, build a product you can trust on top of them, and deliver software with agents under human control.

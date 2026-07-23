@@ -70,6 +70,19 @@ realistische compliance-signaal is. De Databricks-pipelines zijn
 referentie-implementaties; het laptop-pad zijn de notebooks. Elk bestand trekt de
 grens tussen demo en productie.
 
+## Het patroon erachter
+
+![Diagram: twee sets beperkingen — grocery (KVI, prijsladder, houdbaarheidsafprijzing) en elektronica (MAP-vloer, lifecycle, prijsmatching) — configureren één gedeelde engine (schat elasticiteit, optimaliseer, leg uit) die prijzen plus onderbouwing oplevert. Beperkingen als data, geen forks.](/diagrams/dynamic-pricing-pattern.svg)
+
+**Eén engine, beperkingen als data.** Het standaardlot van een pricingplatform dat twee verticals bedient is een fork — grocery en elektronica krijgen elk "hun" engine, en binnen een jaar zijn het twee producten die een logo delen. Hier is het verschil tussen de verticals volledig uitgedrukt als sets beperkingen over één solver-agnostische kern: KVI-prijsimago en houdbaarheidsafprijzing voor grocery, MAP-vloeren en lifecyclecurves voor elektronica. De engine weet niet welke retail hij prijst.
+
+Twee beslissingen dragen het patroon:
+
+- **De set beperkingen is het productoppervlak.** De regels van een categorymanager — kostprijsondergrens, ladder, MAP, max-wijziging — komen binnen als gedeclareerde beperkingen, niet als code-vertakkingen. Daar bouwt ook de Mosaic-AI-agentlaag op: natuurlijke-taal-beleid compileert naar beperkingen, juist omdat beperkingen data zijn.
+- **Toets de wetenschap, niet alleen de code.** In de synthetische data is een bekende elasticiteit per SKU ingebouwd, zodat de notebooks kunnen controleren dat het model *de waarheid terugvindt* — een ground-truth-harnas dat de meeste pricingstacks nooit hebben.
+
+De trade-off om vooraf te kennen: generiek blijven is een discipline waarvoor je moet blijven betalen. De derde vertical komt met "slechts één uitzondering" die in de engine wil wonen — zodra dat gebeurt, ben je terug bij een fork met extra stappen. Nee zeggen is deel van de architectuur.
+
 ## Waarom het ertoe doet
 
 Het toont de volledige boog op één plek: de **datawetenschap** die prijshistorie

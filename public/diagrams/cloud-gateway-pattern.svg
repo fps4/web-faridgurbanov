@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="280" y="16" width="200" height="42" rx="8"/>
+    <rect x="160" y="172" width="200" height="46" rx="8"/>
+    <rect x="400" y="172" width="200" height="46" rx="8"/>
+  </g>
+  <rect x="110" y="90" width="540" height="46" rx="8" fill="none" stroke="#7b7b85" stroke-width="2"/>
+  <g stroke="#9a9aa3" stroke-width="1.25" marker-end="url(#ah)">
+    <line x1="380" y1="58" x2="380" y2="86"/>
+    <line x1="300" y1="136" x2="262" y2="168"/>
+    <line x1="460" y1="136" x2="498" y2="168"/>
+  </g>
+  <g fill="#7b7b85" font-size="13" text-anchor="middle">
+    <text x="380" y="42">18–20 product teams</text>
+    <text x="380" y="109" font-size="13.5" font-weight="600">One federated model</text>
+    <text x="380" y="127" font-size="11.5">OAuth2/JWT security · Terraform self-service onboarding · Datadog observability</text>
+    <text x="260" y="199">AWS API Gateway</text>
+    <text x="500" y="199">Azure APIM</text>
+    <text x="380" y="248" font-size="11.5" font-style="italic">federate the model, not the runtime — ~500M+ requests/month</text>
+  </g>
+</svg>

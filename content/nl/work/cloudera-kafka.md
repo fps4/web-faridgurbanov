@@ -31,6 +31,8 @@ Een Kafka-dataproductplatform op **Cloudera (CDP)**:
 
 ## Het patroon erachter
 
+![Diagram: 30+ bronsystemen voeden drie domein-eigen dataproducten, elk met een schemacontract in de registry, richting analytics-consumers — alles op een platform-verharde-weg van Cloudera, Schema Registry en NiFi-templates die de weg bezit, niet het verkeer.](/diagrams/cloudera-kafka-pattern.svg)
+
 **Domeineigendom van dataproducten in plaats van een centraal pipelineteam.** De standaardvorm voor zo'n platform is een centraal ingestion-team dat elk topic bezit — dat werkt bij 5 streams en stort in bij 20. Hier werd elke stream geproductiseerd: het producerende domein bezat zijn schema, zijn SLA's en het migratiepad van zijn consumers.
 
 Twee beslissingen die dat lieten beklijven:
