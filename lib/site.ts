@@ -53,12 +53,13 @@ export interface PillarMeta {
 }
 
 // Portfolio groups by pillar in this order. AI & automation (the trio + eval harness), the
-// platform area (the event-integration platform + the data/API/SAP blueprints), and applied ML & data science (the two
-// purpose-built COAV demos plus the retail dynamic-pricing demo). Pure data so adding a pillar or
-// moving a repo between them is a one-line change.
+// platform area (the event-integration platform + the legacy-modernization lab + the data/API/SAP
+// blueprints), and applied ML & data science (the two purpose-built COAV demos plus the retail
+// dynamic-pricing demo). Pure data so adding a pillar or moving a repo between them is a one-line
+// change.
 export const pillars: PillarMeta[] = [
   { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
-  { id: 'platform', label: { en: 'Integration, streaming & data', nl: 'Integratie, streaming & data' } },
+  { id: 'platform', label: { en: 'Integration, data & modernization', nl: 'Integratie, data & modernisering' } },
   { id: 'applied', label: { en: 'Applied ML & data science', nl: 'Toegepaste ML & datawetenschap' } },
 ];
 
@@ -126,7 +127,7 @@ export const repos: Repo[] = [
       nl: 'Een referentiearchitectuur voor spec-gedreven levering: agents stellen voor, mensen beslissen. Functionele en technische poorten afgedwongen via GitHub branch-protection over een multi-repo, multi-participant product.',
     },
   },
-  // — Integration, streaming & data: the event-integration platform as the working spine —
+  // — Integration, data & modernization: the event-integration platform as the working spine —
   {
     slug: 'event-integration-platform',
     name: 'event-integration-platform',
@@ -139,6 +140,23 @@ export const repos: Repo[] = [
     proves: {
       en: 'A Kafka-native, multi-tenant event-streaming & integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ + replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. Runs locally with `docker compose up`.',
       nl: 'Een Kafka-native, multi-tenant platform voor event-streaming & integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ + replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Draait lokaal met `docker compose up`.',
+    },
+  },
+  // — Legacy modernization: the Oracle→Spring strangler lab. Public, honestly framed (its README
+  //   carries an explicit honesty statement) and MIT-licensed, so it carries a live link
+  //   (linkLive) ahead of the gate. —
+  {
+    slug: 'oracle-to-spring-strangler',
+    name: 'oracle-to-spring-strangler',
+    pillar: 'platform',
+    role: { en: 'Modernize legacy live, wave by wave', nl: 'Moderniseer legacy live, wave voor wave' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/oracle-to-spring-strangler',
+    proves: {
+      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS "legacy" system migrated live to a Spring Boot + PostgreSQL service by the strangler fig pattern. AI-assisted assessment artifacts (business-rule catalog, dependency map), per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — and golden-master parity gates as wave exit criteria. Runs end-to-end with `docker compose up`.',
+      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS "legacy"-systeem live gemigreerd naar een Spring Boot + PostgreSQL-service via het strangler-fig-patroon. AI-ondersteunde assessment-artefacten (business-rule-catalogus, dependency-map), cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — en golden-master-pariteitspoorten als exitcriteria per wave. Draait end-to-end met `docker compose up`.',
     },
   },
   // — Applied ML & data science: the two purpose-built COAV demos (a matched pair) and the retail
