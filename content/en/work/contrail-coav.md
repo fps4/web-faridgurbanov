@@ -19,6 +19,19 @@ This is applied ML for a real domain: aviation's contrail climate problem, as EU
 
 Both run end-to-end on a laptop, because both train and run on **synthetic-but-physically-plausible** data — a synthetic sky generator for the segmentation model, a seeded weather grid and flight tracks for the pipeline. That is a deliberate choice so the whole thing is reproducible in minutes, and each README is explicit about it. The physics (SAC ∩ ISSR) is real and correct in direction; the architecture is the one you'd actually run. Each repo writes down the line between the demo and production — real GVCCS / Sky-Cam imagery and instance tracking on one side, ERA5 reanalysis + OpenSky flight data on the other.
 
+## The pattern behind it
+
+![Diagram: two halves separated by an explicit dashed seam — detect (U-Net segmentation: sky pixels to mask and coverage percentage) and decide (SAC ∩ ISSR physics: weather and tracks to reroute) — each half checkable on its own.](/diagrams/contrail-coav-pattern.svg)
+
+**Perception and decision split at an explicit seam.** The tempting shape is one end-to-end model from camera pixels to reroute advice — impressive in a demo, impossible to validate: when the answer is wrong you can't say whether it saw wrong or reasoned wrong. Here the problem is cut where the domain cuts it: a perception half that turns pixels into a mask and a coverage number, and a decision half that turns weather and trajectories into a reroute — joined by a small, inspectable interface.
+
+Two decisions carry the pattern:
+
+- **The seam is a checkable artifact.** A mask and a coverage % can be scored against ground truth on their own; a reroute can be replayed against the physics (SAC ∩ ISSR) on its own. Each half earns trust separately — which is the only way a safety-adjacent domain will ever accept either.
+- **Synthetic data as an architecture decision, not a shortcut.** Training and running on synthetic-but-physically-plausible data is what makes the whole arc reproducible on a laptop in minutes — and each README draws the exact line where real GVCCS imagery and ERA5/OpenSky data would replace it.
+
+The trade-off is stated in the honest part above: reproducibility was bought at the cost of real-world validity claims — deliberately, and in writing.
+
 ## Why it matters
 
 The two demos prove the full arc of the job in one place: I can build the **full-stack ML product** that turns camera pixels into a contrail reading, *and* the **data-science decision** that turns weather and trajectories into a reroute with a defensible climate-versus-fuel tradeoff — not just one or the other.

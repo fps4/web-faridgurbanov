@@ -31,6 +31,8 @@ A Kafka data-product platform on **Cloudera (CDP)**:
 
 ## The pattern behind it
 
+![Diagram: 30+ source systems feed three domain-owned data products, each with a schema contract in the registry, flowing to analytics consumers — all on a platform paved road of Cloudera, Schema Registry and NiFi templates that owns the road, not the traffic.](/diagrams/cloudera-kafka-pattern.svg)
+
 **Domain-owned data products instead of a central pipeline team.** The default shape for a platform like this is a central ingestion team that owns every topic — it works at 5 streams and collapses at 20. Here, each stream was productised: the producing domain owned its schema, its SLAs, and its consumers' migration path.
 
 Two decisions made that stick:

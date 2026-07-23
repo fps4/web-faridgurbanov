@@ -64,6 +64,19 @@ but are pinned at the MAP floor, which is itself the realistic compliance signal
 The Databricks pipelines are reference implementations; the laptop path is the
 notebooks. Every file draws the line between demo and production.
 
+## The pattern behind it
+
+![Diagram: two constraint sets — grocery (KVI, price ladder, expiry markdown) and electronics (MAP floor, lifecycle, price matching) — configure one shared engine (estimate elasticity, optimize, explain) that emits prices plus rationale. Constraints as data, not forks.](/diagrams/dynamic-pricing-pattern.svg)
+
+**One engine, constraints as data.** The default fate of a pricing platform serving two verticals is a fork — grocery and electronics each get "their" engine, and within a year they're two products sharing a logo. Here the vertical difference is expressed entirely as constraint sets over one solver-agnostic core: KVI price-image and expiry markdown for grocery, MAP floors and lifecycle curves for electronics. The engine doesn't know which retail it's pricing.
+
+Two decisions carry the pattern:
+
+- **The constraint set is the product surface.** A category manager's rules — cost floor, ladder, MAP, max-change — enter as declared constraints, not as code branches. That's also what the Mosaic-AI agentic layer builds on: natural-language policy compiles to constraints precisely because constraints are data.
+- **Test the science, not just the code.** The synthetic data has a known elasticity per SKU baked in, so the notebooks can check that the model *recovers the truth* — a ground-truth harness most pricing stacks never have.
+
+The trade-off to know upfront: generality is a discipline you keep paying for. The third vertical will arrive with "just one special case" that wants to live inside the engine — the moment it does, you're back to a fork with extra steps. Saying no is part of the architecture.
+
 ## Why it matters
 
 It shows the full arc on one surface: the **data science** that turns price

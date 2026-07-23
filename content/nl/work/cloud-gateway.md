@@ -32,6 +32,19 @@ Het verving IBM API Connect en consolideerde de 20+ gateways achter één model.
 - **~€250–300k per jaar** aan kostenbesparing.
 - Onboarding-doorlooptijd teruggebracht van **dagen naar minuten**.
 
+## Het patroon erachter
+
+![Diagram: 18–20 productteams sluiten aan via één gefedereerd model — OAuth2/JWT-security, Terraform-self-service-onboarding, Datadog-observability — draaiend op zowel AWS API Gateway als Azure APIM.](/diagrams/cloud-gateway-pattern.svg)
+
+**Federeer het model, niet de runtime.** De voor de hand liggende oplossing voor 20+ gefragmenteerde gateways is één grote centrale gateway met een centraal team ervoor — wat het ESB-verhaal opnieuw vertelt: elk team wacht op één backlog, en het platform wordt de bottleneck die het moest wegnemen. Hier werd de standaard gecentraliseerd en de runtime niet: AWS API Gateway en Azure APIM bleven beide, achter één securitymodel, één onboardingpad, één observability-laag.
+
+Twee beslissingen die dat lieten beklijven:
+
+- **Het product is het contract, niet de gateway.** OAuth2/JWT (Okta/Auth0), Terraform-onboardingmodules en Datadog-dashboards waren het platform; welke cloud de call afhandelde was een implementatiedetail. Teams hielden hun runtime en verloren hun maatwerk-auth.
+- **Self-service als infrastructure-as-code.** Een nieuwe API onboarden is een gereviewde Terraform-wijziging, geen ticket — dat bracht de doorlooptijd van dagen naar minuten, en het maakte governance afdwingbaar: de module ís het beleid.
+
+De trade-off om vooraf te kennen: een gefedereerd model is een belofte die je twee keer moet nakomen. Elke nieuwe capability moet op zowel AWS als Azure landen, anders sterft het "één platform"-verhaal in stilte — je tekent ervoor om alles voor twee runtimes te ontwerpen, voorgoed. Dat is de prijs van 20 teams níét naar één vendor migreren, en hier was het de juiste prijs.
+
 ## Rol & stack
 
 Leidde het ontwerp en de uitrol — API-standaarden, het securitymodel en governance.

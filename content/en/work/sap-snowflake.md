@@ -29,6 +29,19 @@ A cloud-native **SAP-to-Snowflake** pipeline on AWS:
 - A **multi-terabyte historical backfill** plus **10–30 GB of daily delta** ingest.
 - A reference architecture the client could extend region by region.
 
+## The pattern behind it
+
+![Diagram: SAP Finance ledgers flow through a data-contract gate into EMR, Glue and S3, then the Snowflake lakehouse — a breaking upstream change fails loudly at the gate, not silently in a finance dashboard.](/diagrams/sap-snowflake-pattern.svg)
+
+**A contract at the seam, not tests at the end.** The default shape for SAP-to-cloud analytics is to lift the tables nightly and let downstream dashboards discover the drift — schema changes surface as wrong numbers in a finance report, weeks later, with trust already spent. Here the seam itself was the design surface: data contracts sit where SAP hands off to the lakehouse, so an upstream ledger change fails loudly at ingest instead of silently downstream.
+
+Two decisions made that stick:
+
+- **Fail at the boundary, where the damage is still cheap.** A contract violation at the seam is a pipeline incident with a named upstream cause. The same violation discovered in a dashboard is a trust incident — and finance data lives or dies on trust.
+- **One region as the reference, not a pilot.** The DACH MVP wasn't a throwaway proof — Terraform-provisioned, it *was* the rollout template. "Pilot" and "reference architecture" look identical in a demo and behave completely differently in year two.
+
+The trade-off to know upfront: contracts put friction where SAP teams had none — someone upstream has to own the contract and answer for breaking it. That's a negotiation, not a tool install; the tooling only makes the agreement enforceable after the organisation has made it.
+
 ## Role & stack
 
 Data engineer and technology architect (Accenture CTA group) — delivered the MVP and the reference architecture.

@@ -29,6 +29,19 @@ Een cloud-native **SAP-naar-Snowflake**-pipeline op AWS:
 - Een **multi-terabyte historische backfill** plus **10–30 GB dagelijkse delta**-ingestie.
 - Een referentiearchitectuur die de klant regio voor regio kon uitbreiden.
 
+## Het patroon erachter
+
+![Diagram: SAP Finance-ledgers stromen door een datacontract-gate naar EMR, Glue en S3, daarna het Snowflake-lakehouse — een brekende upstream-wijziging faalt luid bij de gate, niet stil in een financieel dashboard.](/diagrams/sap-snowflake-pattern.svg)
+
+**Een contract op de naad, geen tests aan het einde.** De standaardvorm voor SAP-naar-cloud-analytics is de tabellen 's nachts overzetten en downstream dashboards de drift laten ontdekken — schemawijzigingen duiken weken later op als verkeerde cijfers in een financieel rapport, met het vertrouwen al verspeeld. Hier was de naad zelf het ontwerpvlak: datacontracten zitten waar SAP overdraagt aan het lakehouse, zodat een upstream-ledgerwijziging luid faalt bij ingest in plaats van stil downstream.
+
+Twee beslissingen die dat lieten beklijven:
+
+- **Faal op de grens, waar de schade nog goedkoop is.** Een contractschending op de naad is een pipeline-incident met een benoembare upstream-oorzaak. Dezelfde schending ontdekt in een dashboard is een vertrouwensincident — en financiële data staat of valt met vertrouwen.
+- **Eén regio als referentie, niet als pilot.** De DACH-MVP was geen wegwerpbewijs — Terraform-geprovisioneerd wás die het uitrolsjabloon. "Pilot" en "referentiearchitectuur" zien er in een demo identiek uit en gedragen zich in jaar twee compleet anders.
+
+De trade-off om vooraf te kennen: contracten leggen frictie waar SAP-teams die niet hadden — iemand upstream moet het contract bezitten en verantwoording afleggen bij een breuk. Dat is een onderhandeling, geen tool-installatie; de tooling maakt de afspraak pas afdwingbaar nadat de organisatie haar heeft gemaakt.
+
 ## Rol & stack
 
 Data engineer en technology architect (Accenture CTA-groep) — leverde de MVP en de referentiearchitectuur.
