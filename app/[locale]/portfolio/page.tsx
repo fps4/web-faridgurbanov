@@ -5,8 +5,9 @@ import { getDictionary } from '@/lib/dictionaries';
 import { REPO_LINKS_ENABLED, pillars, repos, site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
-// Portfolio (FS-0005/US-0013). Build proof grouped by pillar — AI & automation, and integration,
-// streaming & data — each card carrying an honest maturity label (working / reference). Live repo
+// Portfolio (FS-0005/US-0013). Build proof grouped by pillar — AI & automation; integration,
+// data & modernization; applied ML — each card carrying an honest maturity label (working /
+// reference). Live repo
 // links are gated on the ADR-0004 prerequisites (REPO_LINKS_ENABLED): until they close, cards
 // render description-only — flipping the flag enables every link with no structural change. No
 // "three production systems" claim. Repos still being built are not listed here yet; they live in
