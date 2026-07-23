@@ -29,6 +29,17 @@ A Kafka data-product platform on **Cloudera (CDP)**:
 - **30+ source systems** integrated under one governed model.
 - Domain-oriented ownership that scaled without a central gatekeeper.
 
+## The pattern behind it
+
+**Domain-owned data products instead of a central pipeline team.** The default shape for a platform like this is a central ingestion team that owns every topic — it works at 5 streams and collapses at 20. Here, each stream was productised: the producing domain owned its schema, its SLAs, and its consumers' migration path.
+
+Two decisions made that stick:
+
+- **Schema evolution as a governance contract, not a serialization detail.** Compatibility rules in the Schema Registry (backward-compatible by default) meant a producer could ship changes without a change board — the registry, not a meeting, was the gatekeeper. Governance moved from process into the platform.
+- **The platform team owns the paved road, not the traffic.** Cloudera, the registry, NiFi ingestion templates and the ownership model were central; the data itself never was. That's what let 30+ source systems onboard without the platform team becoming the bottleneck it replaced.
+
+The trade-off to know upfront: domain ownership is an organisational pattern wearing a technical costume. The registry enforces compatibility; it can't make a domain staff its product. The streams that thrived had a named owner on the producing side — the ones that lagged were the ones treated as "IT's problem".
+
 ## Role & stack
 
 Data engineer and technology architect (Accenture CTA group) — designed the platform and guided cross-border delivery teams.
