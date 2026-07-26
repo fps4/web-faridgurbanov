@@ -206,4 +206,21 @@ export const repos: Repo[] = [
       nl: 'Een dynamic-pricing-platform voor retail op een Databricks-lakehouse: één elasticiteit-naar-optimalisatie-engine die twee verticals bedient — grocery (elasticiteit & afprijzing) en consumentenelektronica (competitief & lifecycle, MAP-conform). Log-log vraagschatting getoetst aan een bekende grondwaarheid, een solver-agnostische omzetoptimalisator (standaard SciPy, Gurobi-MIQP-backend), en Delta Live Tables / Workflow-pipelines. Twee notebooks draaien end-to-end op een laptop op synthetische data — +6,4% omzet bij gelijke marge in de grocery-run — met het pad naar productie opgeschreven.',
     },
   },
+  // — Marketplace ranking: a reference AI Application Platform — the ML-platform layer
+  //   (feature store → serving → experimentation → eval gate) around a ranking model. Public,
+  //   honestly framed (README honesty statement) and MIT-licensed, so it carries a live link. —
+  {
+    slug: 'marketplace-intel-platform',
+    name: 'marketplace-intel-platform',
+    pillar: 'applied',
+    role: { en: 'Rank a marketplace — feature store to eval gate', nl: 'Rangschik een marktplaats — feature store tot eval-gate' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/marketplace-intel-platform',
+    proves: {
+      en: 'A reference AI Application Platform for travel-marketplace ranking: a LightGBM learning-to-rank model and a GenAI explanation overlay registered behind one typed capability contract, fed by a real Feast feature store with point-in-time-correct training and online serving (no train/serve skew). A FastAPI serving API, a deterministic online-experiment framework (CUPED variance reduction plus an honest marketplace-interference caveat), and an evaluation harness — ranking quality and GenAI-explanation faithfulness — wired as a CI deploy gate that blocks a regression. Runs end-to-end on a laptop with `make demo` on synthetic data (+12.7% NDCG@10 over a popularity baseline), CI green on GitHub Actions.',
+      nl: 'Een referentie-AI-applicatieplatform voor het rangschikken van reiservaringen op een marktplaats: een LightGBM learning-to-rank-model en een GenAI-uitleg-overlay geregistreerd achter één getypeerd capability-contract, gevoed door een echte Feast-feature-store met point-in-time-correcte training en online serving (geen train/serve-skew). Een FastAPI-serving-API, een deterministisch online-experimentraamwerk (CUPED-variantiereductie plus een eerlijk voorbehoud over marktplaats-interferentie), en een evaluatieharnas — rangschikkingskwaliteit én GenAI-uitleg-getrouwheid — als CI-deploypoort die een regressie blokkeert. Draait end-to-end op een laptop met `make demo` op synthetische data (+12,7% NDCG@10 t.o.v. een populariteitsbasislijn), CI groen op GitHub Actions.',
+    },
+  },
 ];
