@@ -123,9 +123,9 @@ const en: Dictionary = {
     provesHeading: 'What it proves',
     viewRepo: 'View repository',
     linksGatedNotice:
-      'The applied demos, the event-integration platform and the Oracle→Spring strangler lab are public and link out. The remaining repos — the AI & automation trio — are being aligned under one name, neutralized and licensed before they carry my name on a public surface; their descriptions are honest now, links follow.',
+      'Everything here is public and links out except the two sovereign-* repos — they are being aligned under one name, neutralized and licensed before they carry my name on a public surface; their descriptions are honest now, links follow.',
     honesty:
-      'Six of these run end-to-end today — the LLM gateway, the event-integration platform, the Oracle→Spring strangler lab, the retail dynamic-pricing demo and the two contrail demos. The other two are reference architectures, and each card says which it is. No production-system claim I can’t back.',
+      'Nine of these run end-to-end today — the LLM gateway, the training runtime, the event-integration platform, the Oracle→Spring strangler lab, the identity service, the marketplace ranking platform, the retail dynamic-pricing demo and the two contrail demos. The remaining one, the copilot, is a reference architecture, and each card says which it is. No production-system claim I can’t back.',
   },
   contact: {
     title: 'Contact',
@@ -222,9 +222,9 @@ const nl: Dictionary = {
     provesHeading: 'Wat het bewijst',
     viewRepo: 'Bekijk repository',
     linksGatedNotice:
-      'De toegepaste demo\'s, het event-integration-platform en het Oracle→Spring-strangler-lab zijn openbaar en linken door. De overige repos — het AI & automatisering-trio — worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak; hun beschrijvingen zijn nu al eerlijk, de links volgen.',
+      'Alles hier is openbaar en linkt door, behalve de twee sovereign-*-repos — die worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak; hun beschrijvingen zijn nu al eerlijk, de links volgen.',
     honesty:
-      'Zes hiervan draaien vandaag end-to-end — de LLM-gateway, het event-integration-platform, het Oracle→Spring-strangler-lab, de retail dynamic-pricing-demo en de twee contrail-demo\'s. De andere twee zijn referentiearchitecturen, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
+      'Negen hiervan draaien vandaag end-to-end — de LLM-gateway, de trainingsruntime, het event-integration-platform, het Oracle→Spring-strangler-lab, de identity-service, het marketplace-ranking-platform, de retail dynamic-pricing-demo en de twee contrail-demo\'s. De overige, de copilot, is een referentiearchitectuur, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
   },
   contact: {
     title: 'Contact',
