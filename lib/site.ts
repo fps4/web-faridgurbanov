@@ -98,8 +98,8 @@ export const repos: Repo[] = [
     license: null,
     url: 'https://github.com/fps4/sovereign-llm-gateway',
     proves: {
-      en: 'A working LLM gateway: per-agent cost and budget enforcement, vendor abstraction (LiteLLM), a local-model fallback (Ollama) for sovereignty, and Prometheus observability. Runs end-to-end with `docker compose up`.',
-      nl: 'Een werkende LLM-gateway: kosten- en budgetbewaking per agent, vendor-abstractie (LiteLLM), een lokaal-model-fallback (Ollama) voor soevereiniteit, en Prometheus-observability. Draait end-to-end met `docker compose up`.',
+      en: 'A working LLM gateway: per-agent cost and budget enforcement, vendor abstraction (LiteLLM), a local-model fallback (Ollama) for sovereignty, and Prometheus observability. Every model call passes one choke point, so governance is enforced in code rather than circulated as a policy document. Runs end-to-end with `docker compose up`.',
+      nl: 'Een werkende LLM-gateway: kosten- en budgetbewaking per agent, vendor-abstractie (LiteLLM), een lokaal-model-fallback (Ollama) voor soevereiniteit, en Prometheus-observability. Elke modelaanroep passeert één punt, zodat governance in code wordt afgedwongen in plaats van rondgestuurd als beleidsdocument. Draait end-to-end met `docker compose up`.',
     },
   },
   {
@@ -111,8 +111,8 @@ export const repos: Repo[] = [
     license: null,
     url: 'https://github.com/fps4/sovereign-copilot',
     proves: {
-      en: 'A reference architecture for a trustworthy copilot: deterministic tool contracts (MCP), retrieval grounded in your data (BGE-M3 + reranker), L1–L4 evaluation gates with goldens, and answers that trace to a recorded call chain.',
-      nl: 'Een referentiearchitectuur voor een betrouwbare copilot: deterministische tool-contracten (MCP), retrieval geaard in je eigen data (BGE-M3 + reranker), L1–L4 evaluatiepoorten met goldens, en antwoorden die herleidbaar zijn tot een vastgelegde aanroepketen.',
+      en: 'A reference architecture for a trustworthy copilot: deterministic tool contracts (MCP), retrieval grounded in your own data (BGE-M3 + reranker), L1–L4 evaluation gates with goldens, and answers that trace back to a recorded call chain. Readable end to end — a reference architecture, not a running system, and the card says so.',
+      nl: 'Een referentiearchitectuur voor een betrouwbare copilot: deterministische tool-contracten (MCP), retrieval geaard in je eigen data (BGE-M3 + reranker), L1–L4 evaluatiepoorten met goldens, en antwoorden die herleidbaar zijn tot een vastgelegde aanroepketen. Van begin tot eind leesbaar — een referentiearchitectuur, geen draaiend systeem.',
     },
   },
   // — Skills Coach: public, honestly framed and MIT-licensed, so it carries a live link (linkLive)
@@ -127,8 +127,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/skills-coach',
     proves: {
-      en: 'A working, pack-driven training platform that draws the line agentic products usually blur: the runtime owns the packs, deterministic rule-based grading, spaced-repetition gating and a durable model of what a learner keeps getting wrong — and ships no model client at all. Generation and free-form correction sit behind a versioned coach API (`/coach/v1`), so the caller can be a person driving an LLM CLI today and a model API later without the contract moving. Fastify + Next.js on MongoDB, authentication delegated to identity-service, training content deliberately kept out of the repo. Runs end-to-end with `make up`.',
-      nl: 'Een werkend, pack-gedreven trainingsplatform dat de grens trekt die agentische producten meestal vervagen: de runtime bezit de packs, deterministische regelgebaseerde beoordeling, spaced-repetition-poorten en een duurzaam model van wat een lerende blijft fout doen — en bevat zelf geen enkele model-client. Generatie en vrije-tekstcorrectie zitten achter een geversioneerde coach-API (`/coach/v1`), zodat de aanroeper vandaag een mens met een LLM-CLI kan zijn en later een model-API, zonder dat het contract verschuift. Fastify + Next.js op MongoDB, authenticatie gedelegeerd aan identity-service, trainingsinhoud bewust buiten de repo gehouden. Draait end-to-end met `make up`.',
+      en: 'A working, pack-driven training platform that ships no model client at all: the runtime owns the packs, deterministic grading, spaced-repetition gating and a durable model of what a learner keeps getting wrong. Generation and correction sit behind a versioned coach API, so the caller can be a person with an LLM CLI today and a model API later. Runs end-to-end with `make up`.',
+      nl: 'Een werkend, pack-gedreven trainingsplatform dat zelf geen enkele model-client bevat: de runtime bezit de packs, deterministische beoordeling, spaced-repetition-poorten en een duurzaam model van wat een lerende blijft fout doen. Generatie en correctie zitten achter een geversioneerde coach-API, dus de aanroeper kan vandaag een mens met een LLM-CLI zijn en later een model-API. Draait end-to-end met `make up`.',
     },
   },
   // — Integration, data & modernization: the event-integration platform as the working spine —
@@ -142,8 +142,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/event-integration-platform',
     proves: {
-      en: 'A Kafka-native, multi-tenant event-streaming & integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ + replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. Runs locally with `docker compose up`.',
-      nl: 'Een Kafka-native, multi-tenant platform voor event-streaming & integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ + replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Draait lokaal met `docker compose up`.',
+      en: 'A Kafka-native, multi-tenant event-streaming and integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ and replay, Kafka Connect HTTP/S3 sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. The self-service spine an integration team actually operates. Runs locally with `docker compose up`.',
+      nl: 'Een Kafka-native, multi-tenant platform voor event-streaming en integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ en replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. De selfservice-ruggengraat die een integratieteam echt bedient. Draait lokaal met `docker compose up`.',
     },
   },
   // — Legacy modernization: the Oracle→Spring strangler lab. Public, honestly framed (its README
@@ -159,8 +159,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/oracle-to-spring-strangler',
     proves: {
-      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS "legacy" system migrated live to a Spring Boot + PostgreSQL service by the strangler fig pattern. AI-assisted assessment artifacts (business-rule catalog, dependency map), per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — and golden-master parity gates as wave exit criteria. Runs end-to-end with `docker compose up`.',
-      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS "legacy"-systeem live gemigreerd naar een Spring Boot + PostgreSQL-service via het strangler-fig-patroon. AI-ondersteunde assessment-artefacten (business-rule-catalogus, dependency-map), cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — en golden-master-pariteitspoorten als exitcriteria per wave. Draait end-to-end met `docker compose up`.',
+      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS system migrated live to Spring Boot + PostgreSQL by the strangler fig pattern. AI-assisted assessment artifacts, per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — and golden-master parity gates as wave exit criteria. Runs end-to-end with `docker compose up`.',
+      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS-systeem live gemigreerd naar Spring Boot + PostgreSQL via het strangler-fig-patroon. AI-ondersteunde assessment-artefacten, cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — en golden-master-pariteitspoorten als exitcriteria. Draait end-to-end met `docker compose up`.',
     },
   },
   // — Identity: the self-hosted IdP the other products authenticate against. Public, honestly
@@ -175,8 +175,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/identity-service',
     proves: {
-      en: 'A working self-hosted identity provider: OAuth 2.0 + OIDC token issuance (RS256, published JWKS), one deployment = one realm over a shared user pool, a headless TypeScript SDK, an opt-in drop-in React `<Login/>`, and an authenticated management plane for applications, credentials, users, entitlements and signing keys — network-restricted, scoped per actor, append-only audited, and exposed both as HTTP `/admin/v1` and as an MCP server so agents can operate it under the same contract. It owns authentication only; consuming products keep their own authorization. Runs end-to-end with `docker compose up`.',
-      nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), één deployment = één realm over een gedeelde gebruikerspool, een headless TypeScript-SDK, een opt-in drop-in React `<Login/>`, en een geauthenticeerd beheervlak voor applicaties, credentials, gebruikers, rechten en ondertekeningssleutels — netwerkbeperkt, per actor gescoped, append-only geauditeerd, en ontsloten zowel als HTTP `/admin/v1` als via een MCP-server zodat agents het onder hetzelfde contract kunnen bedienen. Het bezit alleen authenticatie; afnemende producten houden hun eigen autorisatie. Draait end-to-end met `docker compose up`.',
+      en: 'A working self-hosted identity provider: OAuth 2.0 + OIDC token issuance (RS256, published JWKS), a headless TypeScript SDK and a drop-in React `<Login/>`. Its audited management plane speaks both HTTP `/admin/v1` and MCP, so agents operate it under the same contract as people. Authentication only — products keep their own authorization. Runs end-to-end with `docker compose up`.',
+      nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), een headless TypeScript-SDK en een drop-in React `<Login/>`. Het geauditeerde beheervlak spreekt zowel HTTP `/admin/v1` als MCP, zodat agents het onder hetzelfde contract bedienen als mensen. Alleen authenticatie — producten houden hun eigen autorisatie. Draait end-to-end met `docker compose up`.',
     },
   },
   // — Applied ML & data science: the two purpose-built COAV demos (a matched pair) and the retail
@@ -192,8 +192,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/contrail-segmentation-demo',
     proves: {
-      en: 'A neural-network image-segmentation app — React + TypeScript front end → Node.js (Express) BFF → Python FastAPI service → a hand-written PyTorch U-Net — that detects contrails in sky-camera images and reports coverage and contrail count. Three services that run end-to-end with `docker compose up`, with CI on GitHub Actions. Trained on a synthetic sky generator so it runs on a laptop in minutes; the README writes down the path to real GVCCS / Sky-Cam imagery.',
-      nl: 'Een neuraal-netwerk-beeldsegmentatie-app — React + TypeScript-frontend → Node.js (Express) BFF → Python FastAPI-service → een zelfgeschreven PyTorch U-Net — die contrails in sky-camera-beelden detecteert en dekking en aantal rapporteert. Drie services die end-to-end draaien met `docker compose up`, met CI op GitHub Actions. Getraind op een synthetische lucht-generator zodat het in minuten op een laptop draait; de README beschrijft het pad naar echte GVCCS / Sky-Cam-beelden.',
+      en: 'A neural-network image-segmentation app — React front end → Node.js (Express) BFF → Python FastAPI service → a hand-written PyTorch U-Net — that detects contrails in sky-camera images and reports coverage and count. Three services, `docker compose up`, CI on GitHub Actions. Trained on a synthetic sky generator so it runs on a laptop in minutes; the README writes down the path to real GVCCS imagery.',
+      nl: 'Een neuraal-netwerk-beeldsegmentatie-app — React-frontend → Node.js (Express) BFF → Python FastAPI-service → een zelfgeschreven PyTorch U-Net — die contrails in sky-camera-beelden detecteert en dekking en aantal rapporteert. Drie services, `docker compose up`, CI op GitHub Actions. Getraind op een synthetische lucht-generator zodat het in minuten op een laptop draait; de README beschrijft het pad naar echte GVCCS-beelden.',
     },
   },
   {
@@ -206,8 +206,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/contrail-avoidance-pipeline',
     proves: {
-      en: 'A Polars/Pandas pipeline plus a Databricks-style notebook that flag which flights form persistent, climate-warming contrails — using the Schmidt–Appleman Criterion and ice-supersaturated regions — and propose altitude changes, weighing avoided climate forcing (CO₂e) against extra fuel burn. Lakehouse-shaped (Parquet, Delta / Unity-Catalog framing) and runs end-to-end on a laptop, with a documented path to ERA5 reanalysis + OpenSky real flight data.',
-      nl: 'Een Polars/Pandas-pipeline plus een Databricks-achtige notebook die bepalen welke vluchten persistente, klimaatopwarmende contrails vormen — via het Schmidt–Appleman-criterium en ijs-oververzadigde regio\'s — en hoogtewijzigingen voorstellen, waarbij vermeden klimaatforcering (CO₂e) wordt afgewogen tegen extra brandstofverbruik. Lakehouse-vormig (Parquet, Delta / Unity-Catalog-framing) en draait end-to-end op een laptop, met een gedocumenteerd pad naar ERA5-reanalyse + OpenSky-vluchtdata.',
+      en: 'A Polars/Pandas pipeline plus a Databricks-style notebook that flag which flights form persistent, climate-warming contrails — via the Schmidt–Appleman Criterion and ice-supersaturated regions — and propose altitude changes, weighing avoided climate forcing (CO₂e) against extra fuel burn. Lakehouse-shaped and laptop-runnable, with a documented path to ERA5 and OpenSky data.',
+      nl: 'Een Polars/Pandas-pipeline plus een Databricks-achtige notebook die bepalen welke vluchten persistente, klimaatopwarmende contrails vormen — via het Schmidt–Appleman-criterium en ijs-oververzadigde regio\'s — en hoogtewijzigingen voorstellen, waarbij vermeden klimaatforcering (CO₂e) wordt afgewogen tegen extra brandstofverbruik. Lakehouse-vormig en laptop-draaibaar, met een gedocumenteerd pad naar ERA5- en OpenSky-data.',
     },
   },
   // — Retail dynamic pricing: one lakehouse, two pricing verticals. Public, honestly framed and
@@ -222,8 +222,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/retail-dynamic-pricing',
     proves: {
-      en: 'A retail dynamic-pricing platform on a Databricks lakehouse: one elasticity-to-optimization engine serving two verticals — grocery (elasticity & markdown) and consumer electronics (competitive & lifecycle, MAP-compliant). Log-log demand estimation checked against a known ground truth, a solver-agnostic revenue optimizer (SciPy by default, Gurobi MIQP backend), and Delta Live Tables / Workflow pipelines. Two notebooks run end-to-end on a laptop on synthetic data — +6.4% revenue at flat margin in the grocery run — with the path to production written down.',
-      nl: 'Een dynamic-pricing-platform voor retail op een Databricks-lakehouse: één elasticiteit-naar-optimalisatie-engine die twee verticals bedient — grocery (elasticiteit & afprijzing) en consumentenelektronica (competitief & lifecycle, MAP-conform). Log-log vraagschatting getoetst aan een bekende grondwaarheid, een solver-agnostische omzetoptimalisator (standaard SciPy, Gurobi-MIQP-backend), en Delta Live Tables / Workflow-pipelines. Twee notebooks draaien end-to-end op een laptop op synthetische data — +6,4% omzet bij gelijke marge in de grocery-run — met het pad naar productie opgeschreven.',
+      en: 'A retail dynamic-pricing platform on a Databricks lakehouse: one elasticity-to-optimization engine serving two verticals — grocery (markdown) and consumer electronics (MAP-compliant lifecycle). Log-log demand estimation checked against a known ground truth, plus a solver-agnostic revenue optimizer. Two notebooks run end-to-end on a laptop on synthetic data — +6.4% revenue at flat margin.',
+      nl: 'Een dynamic-pricing-platform voor retail op een Databricks-lakehouse: één elasticiteit-naar-optimalisatie-engine die twee verticals bedient — grocery (afprijzing) en consumentenelektronica (MAP-conforme lifecycle). Log-log vraagschatting getoetst aan een bekende grondwaarheid, plus een solver-agnostische omzetoptimalisator. Twee notebooks draaien end-to-end op een laptop op synthetische data — +6,4% omzet bij gelijke marge.',
     },
   },
   // — Marketplace ranking: a reference AI Application Platform — the ML-platform layer
@@ -239,8 +239,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/marketplace-intel-platform',
     proves: {
-      en: 'A reference AI Application Platform for travel-marketplace ranking: a LightGBM learning-to-rank model and a GenAI explanation overlay registered behind one typed capability contract, fed by a real Feast feature store with point-in-time-correct training and online serving (no train/serve skew). A FastAPI serving API, a deterministic online-experiment framework (CUPED variance reduction plus an honest marketplace-interference caveat), and an evaluation harness — ranking quality and GenAI-explanation faithfulness — wired as a CI deploy gate that blocks a regression. Runs end-to-end on a laptop with `make demo` on synthetic data (+12.7% NDCG@10 over a popularity baseline), CI green on GitHub Actions.',
-      nl: 'Een referentie-AI-applicatieplatform voor het rangschikken van reiservaringen op een marktplaats: een LightGBM learning-to-rank-model en een GenAI-uitleg-overlay geregistreerd achter één getypeerd capability-contract, gevoed door een echte Feast-feature-store met point-in-time-correcte training en online serving (geen train/serve-skew). Een FastAPI-serving-API, een deterministisch online-experimentraamwerk (CUPED-variantiereductie plus een eerlijk voorbehoud over marktplaats-interferentie), en een evaluatieharnas — rangschikkingskwaliteit én GenAI-uitleg-getrouwheid — als CI-deploypoort die een regressie blokkeert. Draait end-to-end op een laptop met `make demo` op synthetische data (+12,7% NDCG@10 t.o.v. een populariteitsbasislijn), CI groen op GitHub Actions.',
+      en: 'A reference AI application platform for marketplace ranking: a LightGBM learning-to-rank model and a GenAI explanation overlay behind one typed capability contract, fed by a Feast feature store with point-in-time-correct training and serving. An eval harness — ranking quality and explanation faithfulness — is wired as a CI deploy gate that blocks a regression. `make demo` runs it end-to-end: +12.7% NDCG@10.',
+      nl: 'Een referentie-AI-applicatieplatform voor het rangschikken op een marktplaats: een LightGBM learning-to-rank-model en een GenAI-uitleg-overlay achter één getypeerd capability-contract, gevoed door een Feast-feature-store met point-in-time-correcte training en serving. Een evaluatieharnas — rangschikkingskwaliteit én uitleg-getrouwheid — is een CI-deploypoort die een regressie blokkeert. `make demo` draait het end-to-end: +12,7% NDCG@10.',
     },
   },
 ];
