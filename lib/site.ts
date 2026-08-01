@@ -52,11 +52,11 @@ export interface PillarMeta {
   label: Record<Locale, string>;
 }
 
-// Portfolio groups by pillar in this order. AI & automation (the trio + eval harness), the
-// platform area (the event-integration platform + the legacy-modernization lab + the data/API/SAP
-// blueprints), and applied ML & data science (the two purpose-built COAV demos plus the retail
-// dynamic-pricing demo). Pure data so adding a pillar or moving a repo between them is a one-line
-// change.
+// Portfolio groups by pillar in this order. AI & automation (the two sovereign-* repos + the
+// training runtime), the platform area (the event-integration platform + the legacy-modernization
+// lab + the identity service), and applied ML & data science (the two purpose-built COAV demos,
+// the retail dynamic-pricing demo and the marketplace ranking platform). Pure data so adding a
+// pillar or moving a repo between them is a one-line change.
 export const pillars: PillarMeta[] = [
   { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
   { id: 'platform', label: { en: 'Integration, data & modernization', nl: 'Integratie, data & modernisering' } },
@@ -87,7 +87,8 @@ export interface Repo {
 // readable reference architecture. Repos still being built are tracked in
 // docs/notes/portfolio-repos-build-plan.md and added here only once they are real.
 export const repos: Repo[] = [
-  // — AI & automation: the govern → build → deliver trio —
+  // — AI & automation: govern the models, build a trustworthy agentic product, and run a product
+  //   that keeps the model outside its own runtime —
   {
     slug: 'sovereign-llm-gateway',
     name: 'sovereign-llm-gateway',
@@ -114,17 +115,20 @@ export const repos: Repo[] = [
       nl: 'Een referentiearchitectuur voor een betrouwbare copilot: deterministische tool-contracten (MCP), retrieval geaard in je eigen data (BGE-M3 + reranker), L1–L4 evaluatiepoorten met goldens, en antwoorden die herleidbaar zijn tot een vastgelegde aanroepketen.',
     },
   },
+  // — Skills Coach: public, honestly framed and MIT-licensed, so it carries a live link (linkLive)
+  //   ahead of the gate. —
   {
-    slug: 'maestro',
-    name: 'maestro',
+    slug: 'skills-coach',
+    name: 'skills-coach',
     pillar: 'ai',
-    role: { en: 'Deliver software with agents', nl: 'Lever software met agents' },
-    maturity: 'reference',
+    role: { en: 'Keep the model outside the runtime', nl: 'Houd het model buiten de runtime' },
+    maturity: 'working',
     license: 'MIT',
-    url: 'https://github.com/fps4/maestro',
+    linkLive: true,
+    url: 'https://github.com/fps4/skills-coach',
     proves: {
-      en: 'A reference architecture for spec-driven delivery: agents propose, humans dispose. Functional and technical gates enforced through GitHub branch protection across a multi-repo, multi-participant product.',
-      nl: 'Een referentiearchitectuur voor spec-gedreven levering: agents stellen voor, mensen beslissen. Functionele en technische poorten afgedwongen via GitHub branch-protection over een multi-repo, multi-participant product.',
+      en: 'A working, pack-driven training platform that draws the line agentic products usually blur: the runtime owns the packs, deterministic rule-based grading, spaced-repetition gating and a durable model of what a learner keeps getting wrong — and ships no model client at all. Generation and free-form correction sit behind a versioned coach API (`/coach/v1`), so the caller can be a person driving an LLM CLI today and a model API later without the contract moving. Fastify + Next.js on MongoDB, authentication delegated to identity-service, training content deliberately kept out of the repo. Runs end-to-end with `make up`.',
+      nl: 'Een werkend, pack-gedreven trainingsplatform dat de grens trekt die agentische producten meestal vervagen: de runtime bezit de packs, deterministische regelgebaseerde beoordeling, spaced-repetition-poorten en een duurzaam model van wat een lerende blijft fout doen — en bevat zelf geen enkele model-client. Generatie en vrije-tekstcorrectie zitten achter een geversioneerde coach-API (`/coach/v1`), zodat de aanroeper vandaag een mens met een LLM-CLI kan zijn en later een model-API, zonder dat het contract verschuift. Fastify + Next.js op MongoDB, authenticatie gedelegeerd aan identity-service, trainingsinhoud bewust buiten de repo gehouden. Draait end-to-end met `make up`.',
     },
   },
   // — Integration, data & modernization: the event-integration platform as the working spine —
@@ -157,6 +161,22 @@ export const repos: Repo[] = [
     proves: {
       en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS "legacy" system migrated live to a Spring Boot + PostgreSQL service by the strangler fig pattern. AI-assisted assessment artifacts (business-rule catalog, dependency map), per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — and golden-master parity gates as wave exit criteria. Runs end-to-end with `docker compose up`.',
       nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS "legacy"-systeem live gemigreerd naar een Spring Boot + PostgreSQL-service via het strangler-fig-patroon. AI-ondersteunde assessment-artefacten (business-rule-catalogus, dependency-map), cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — en golden-master-pariteitspoorten als exitcriteria per wave. Draait end-to-end met `docker compose up`.',
+    },
+  },
+  // — Identity: the self-hosted IdP the other products authenticate against. Public, honestly
+  //   framed and MIT-licensed, so it carries a live link (linkLive) ahead of the gate. —
+  {
+    slug: 'identity-service',
+    name: 'identity-service',
+    pillar: 'platform',
+    role: { en: 'Own identity across products', nl: 'Beheer identiteit over producten heen' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/identity-service',
+    proves: {
+      en: 'A working self-hosted identity provider: OAuth 2.0 + OIDC token issuance (RS256, published JWKS), one deployment = one realm over a shared user pool, a headless TypeScript SDK, an opt-in drop-in React `<Login/>`, and an authenticated management plane for applications, credentials, users, entitlements and signing keys — network-restricted, scoped per actor, append-only audited, and exposed both as HTTP `/admin/v1` and as an MCP server so agents can operate it under the same contract. It owns authentication only; consuming products keep their own authorization. Runs end-to-end with `docker compose up`.',
+      nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), één deployment = één realm over een gedeelde gebruikerspool, een headless TypeScript-SDK, een opt-in drop-in React `<Login/>`, en een geauthenticeerd beheervlak voor applicaties, credentials, gebruikers, rechten en ondertekeningssleutels — netwerkbeperkt, per actor gescoped, append-only geauditeerd, en ontsloten zowel als HTTP `/admin/v1` als via een MCP-server zodat agents het onder hetzelfde contract kunnen bedienen. Het bezit alleen authenticatie; afnemende producten houden hun eigen autorisatie. Draait end-to-end met `docker compose up`.',
     },
   },
   // — Applied ML & data science: the two purpose-built COAV demos (a matched pair) and the retail
