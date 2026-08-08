@@ -54,9 +54,9 @@ export interface PillarMeta {
 
 // Portfolio groups by pillar in this order. AI & automation (the two sovereign-* repos + the
 // training runtime), the platform area (the event-integration platform + the legacy-modernization
-// lab + the identity service), and applied ML & data science (the two purpose-built COAV demos,
-// the retail dynamic-pricing demo and the marketplace ranking platform). Pure data so adding a
-// pillar or moving a repo between them is a one-line change.
+// lab + the identity service + the SAP↔Snowflake seam blueprint), and applied ML & data science
+// (the two purpose-built COAV demos, the retail dynamic-pricing demo and the marketplace ranking
+// platform). Pure data so adding a pillar or moving a repo between them is a one-line change.
 export const pillars: PillarMeta[] = [
   { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
   { id: 'platform', label: { en: 'Integration, data & modernization', nl: 'Integratie, data & modernisering' } },
@@ -177,6 +177,23 @@ export const repos: Repo[] = [
     proves: {
       en: 'A working self-hosted identity provider: OAuth 2.0 + OIDC token issuance (RS256, published JWKS), a headless TypeScript SDK and a drop-in React `<Login/>`. Its audited management plane speaks both HTTP `/admin/v1` and MCP, so agents operate it under the same contract as people. Authentication only — products keep their own authorization. Runs end-to-end with `docker compose up`.',
       nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), een headless TypeScript-SDK en een drop-in React `<Login/>`. Het geauditeerde beheervlak spreekt zowel HTTP `/admin/v1` als MCP, zodat agents het onder hetzelfde contract bedienen als mensen. Alleen authenticatie — producten houden hun eigen autorisatie. Draait end-to-end met `docker compose up`.',
+    },
+  },
+  // — The SAP↔cloud seam: the runnable counterpart to the sap-snowflake case study. Public,
+  //   honestly framed (its README carries an explicit honesty statement) and MIT-licensed, so it
+  //   carries a live link (linkLive) ahead of the gate. —
+  {
+    slug: 'sap-bdc-snowflake-blueprint',
+    name: 'sap-bdc-snowflake-blueprint',
+    pillar: 'platform',
+    role: { en: 'Decide what crosses the SAP↔cloud seam', nl: 'Bepaal wat de SAP↔cloud-naad oversteekt' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/sap-bdc-snowflake-blueprint',
+    proves: {
+      en: 'A one-page SAP → Business Data Cloud/Datasphere → Snowflake reference architecture with the decision attached: nine ordered rules assign each of 24 objects a mode — share zero-copy, replicate, federate, split, or keep it in SAP — where residency and SLOs eliminate and cost only chooses among what survives. A transparent cost model gives the crossover frequency at which replication overtakes federation, and a local DuckDB simulation runs all three modes so the claim is measured. Runs end-to-end with `make demo`; the diagram is the artifact, the engine is what makes it arguable.',
+      nl: 'Een SAP → Business Data Cloud/Datasphere → Snowflake-referentiearchitectuur van één pagina, met de beslissing erbij: negen geordende regels wijzen elk van 24 objecten een modus toe — zero-copy delen, repliceren, federeren, splitsen, of in SAP houden — waarbij dataresidentie en SLO\'s elimineren en kosten alleen kiezen uit wat overblijft. Een transparant kostenmodel geeft de omslagfrequentie waarboven repliceren goedkoper wordt dan federeren, en een lokale DuckDB-simulatie draait alle drie de modi zodat de claim gemeten is. Draait end-to-end met `make demo`; het diagram is het artefact, de engine maakt het bespreekbaar.',
     },
   },
   // — Applied ML & data science: the two purpose-built COAV demos (a matched pair) and the retail
