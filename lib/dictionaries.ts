@@ -125,7 +125,7 @@ const en: Dictionary = {
     linksGatedNotice:
       'Everything here is public and links out except the two sovereign-* repos — they are being aligned under one name, neutralized and licensed before they carry my name on a public surface; their descriptions are honest now, links follow.',
     honesty:
-      'Nine of these run end-to-end today — the LLM gateway, the training runtime, the event-integration platform, the Oracle→Spring strangler lab, the identity service, the marketplace ranking platform, the retail dynamic-pricing demo and the two contrail demos. The remaining one, the copilot, is a reference architecture, and each card says which it is. No production-system claim I can’t back.',
+      'Ten of these run end-to-end today — the LLM gateway, the training runtime, the event-integration platform, the Oracle→Spring strangler lab, the identity service, the SAP↔Snowflake seam blueprint, the marketplace ranking platform, the retail dynamic-pricing demo and the two contrail demos. The blueprint is the one to read carefully: its architecture is a document, and what runs is the decision engine, the cost model and the simulation behind it. The remaining one, the copilot, is a reference architecture, and each card says which it is. No production-system claim I can’t back.',
   },
   contact: {
     title: 'Contact',
@@ -224,7 +224,7 @@ const nl: Dictionary = {
     linksGatedNotice:
       'Alles hier is openbaar en linkt door, behalve de twee sovereign-*-repos — die worden onder één naam uitgelijnd, geneutraliseerd en gelicentieerd voordat ze mijn naam dragen op een openbaar oppervlak; hun beschrijvingen zijn nu al eerlijk, de links volgen.',
     honesty:
-      'Negen hiervan draaien vandaag end-to-end — de LLM-gateway, de trainingsruntime, het event-integration-platform, het Oracle→Spring-strangler-lab, de identity-service, het marketplace-ranking-platform, de retail dynamic-pricing-demo en de twee contrail-demo\'s. De overige, de copilot, is een referentiearchitectuur, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
+      'Tien hiervan draaien vandaag end-to-end — de LLM-gateway, de trainingsruntime, het event-integration-platform, het Oracle→Spring-strangler-lab, de identity-service, de SAP↔Snowflake-naad-blueprint, het marketplace-ranking-platform, de retail dynamic-pricing-demo en de twee contrail-demo\'s. De blueprint verdient een nauwkeurige lezing: de architectuur zelf is een document, en wat draait is de beslissingsengine, het kostenmodel en de simulatie erachter. De overige, de copilot, is een referentiearchitectuur, en elke kaart zegt welke. Geen productieclaim die ik niet kan onderbouwen.',
   },
   contact: {
     title: 'Contact',
