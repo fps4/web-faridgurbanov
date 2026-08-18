@@ -2,6 +2,7 @@
 title: APIs & gateways
 summary: API platforms that scale across dozens of teams — gateway strategy, security governance, lifecycle, and the developer experience that makes them adopted.
 order: 6
+group: domain
 ---
 
 # APIs & gateways

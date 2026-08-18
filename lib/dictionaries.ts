@@ -71,6 +71,7 @@ export interface Dictionary {
   indexes: {
     expertiseTitle: string;
     expertiseLede: string;
+    expertiseGroups: { domain: { heading: string; lede: string }; practice: { heading: string; lede: string } };
     workTitle: string;
     workLede: string;
     writingTitle: string;
@@ -106,8 +107,8 @@ const en: Dictionary = {
     proofHeading: 'Proof, not adjectives',
     proofPoints: [
       { metric: '~500M+ req/month', label: 'Federated cross-cloud API platform (Cloud Gateway)', href: '/work/cloud-gateway' },
-      { metric: '~€250–300k/yr saved', label: '20+ gateways consolidated into one self-service platform', href: '/work/cloud-gateway' },
-      { metric: 'govern → build → deliver', label: 'Three sibling repos behind the AI work', href: '/portfolio' },
+      { metric: '18–20 teams, no mandate', label: 'Gateways consolidated by making the paved road cheaper — ~€250–300k/yr saved', href: '/work/cloud-gateway' },
+      { metric: '~30+ company codes', label: 'SAP Finance ledgers into Snowflake, with contracts at the seam', href: '/work/sap-snowflake' },
     ],
     tasterHeading: 'Training',
     tasterBody:
@@ -169,7 +170,17 @@ If that is useful to your team, the best move today is to book a short taster.`,
   },
   indexes: {
     expertiseTitle: 'Expertise',
-    expertiseLede: 'The depth behind the positioning — six areas I work in, with the AI and applied-ML work leading, not bolted on.',
+    expertiseLede: 'The depth behind the positioning — what I build, and how I get it decided and adopted.',
+    expertiseGroups: {
+      domain: {
+        heading: 'What I build',
+        lede: 'The six technical areas I work in, with the AI and applied-ML work leading, not bolted on.',
+      },
+      practice: {
+        heading: 'How I work',
+        lede: 'The part of an architect\u2019s job that is not the diagram \u2014 deciding, recording, and getting people to come along.',
+      },
+    },
     workTitle: 'Selected work',
     workLede: 'A few concrete, quantified things I have built. Clients are named where I may; abstracted where confidentiality requires, with the metrics kept.',
     writingTitle: 'Writing',
@@ -205,8 +216,8 @@ const nl: Dictionary = {
     proofHeading: 'Bewijs, geen bijvoeglijke naamwoorden',
     proofPoints: [
       { metric: '~500M+ req/maand', label: 'Federatief cross-cloud API-platform (Cloud Gateway)', href: '/work/cloud-gateway' },
-      { metric: '~€250–300k/jaar bespaard', label: '20+ gateways samengevoegd tot één selfservice-platform', href: '/work/cloud-gateway' },
-      { metric: 'govern → build → deliver', label: 'Drie verwante repos achter het AI-werk', href: '/portfolio' },
+      { metric: '18–20 teams, zonder verplichting', label: 'Gateways samengevoegd door de gebaande weg goedkoper te maken — ~€250–300k/jaar bespaard', href: '/work/cloud-gateway' },
+      { metric: '~30+ company codes', label: 'SAP Finance-grootboeken naar Snowflake, met contracten op de naad', href: '/work/sap-snowflake' },
     ],
     tasterHeading: 'Training',
     tasterBody:
@@ -268,7 +279,17 @@ Is dat nuttig voor je team? De beste stap vandaag is een korte proefsessie boeke
   },
   indexes: {
     expertiseTitle: 'Expertise',
-    expertiseLede: 'De diepgang achter de positionering — zes gebieden waarin ik werk, met het AI- en toegepaste-ML-werk voorop, niet als bijzaak.',
+    expertiseLede: 'De diepgang achter de positionering — wat ik bouw, en hoe ik het besloten en gedragen krijg.',
+    expertiseGroups: {
+      domain: {
+        heading: 'Wat ik bouw',
+        lede: 'De zes technische gebieden waarin ik werk, met het AI- en toegepaste-ML-werk voorop, niet als bijzaak.',
+      },
+      practice: {
+        heading: 'Hoe ik werk',
+        lede: 'Het deel van het architectenvak dat niet het diagram is \u2014 beslissen, vastleggen, en mensen meekrijgen.',
+      },
+    },
     workTitle: 'Geselecteerd werk',
     workLede: 'Een paar concrete, gekwantificeerde dingen die ik heb gebouwd. Klanten worden genoemd waar het mag; geabstraheerd waar vertrouwelijkheid dat vereist, met behoud van de cijfers.',
     writingTitle: 'Blog',

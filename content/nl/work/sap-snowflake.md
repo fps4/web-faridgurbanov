@@ -42,6 +42,16 @@ Twee beslissingen die dat lieten beklijven:
 
 De trade-off om vooraf te kennen: contracten leggen frictie waar SAP-teams die niet hadden — iemand upstream moet het contract bezitten en verantwoording afleggen bij een breuk. Dat is een onderhandeling, geen tool-installatie; de tooling maakt de afspraak pas afdwingbaar nadat de organisatie haar heeft gemaakt.
 
+## Wie ja moest zeggen
+
+**Stakeholders:** de Finance-organisatie die haar rapportage op het nieuwe warehouse zou moeten baseren; de SAP-architecten die het bronsysteem en de belasting ervan bezaten; en de regioteams die achter de DACH-MVP wachtten op hun eigen uitrol.
+
+**Het meningsverschil:** een contract op de naad verplaatst werk stroomopwaarts. Het SAP-team had vóór dit ontwerp geen verplichtingen richting analytics en zou nu een schemabelofte bezitten en aanspreekbaar zijn als die brak — een echt verzoek, geen formaliteit. Finance had op zijn beurt geen reden om een nieuwe getallenbron meer te vertrouwen dan het grootboek dat het al gebruikte.
+
+**Wat het oploste:** reconciliatie, geen overtuigingskracht. Het afstemmen van de geladen data tegen het bronboek gaf Finance een controle die het zelf kon uitvoeren, en dát leverde de adoptie op. Met de SAP-architecten liep de route via source-to-target mapping die we samen deden in plaats van overdroegen — de extractiestrategie moest de belasting van hún systeem ontzien, en het was hun randvoorwaarde die het ontwerp vormde.
+
+**Wat het kostte:** wrijving stroomopwaarts waar die er niet was, en een benoemde eigenaar achter elk contract. Dat eigenaarschap moest afgesproken zijn voordat er ook maar iets in code afdwingbaar werd.
+
 ## Rol & stack
 
 Data engineer en technology architect (Accenture CTA-groep) — leverde de MVP en de referentiearchitectuur.

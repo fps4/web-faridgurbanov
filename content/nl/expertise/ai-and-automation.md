@@ -2,6 +2,7 @@
 title: AI & automatisering
 summary: Generatieve AI verantwoord integreren in enterprisesystemen — agentic systemen, RAG, evaluatie als sign-off-gate, en governance die je kunt auditen.
 order: 1
+group: domain
 ---
 
 # AI & automatisering
