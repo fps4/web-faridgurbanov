@@ -2,6 +2,7 @@
 title: Toegepaste ML & datawetenschap
 summary: ML en datawetenschap die draait — vraagelasticiteit en geconditioneerde optimalisatie, beeldsegmentatie, beslispijplijnen — gebouwd om te draaien, getoetst aan grondwaarheid, en eerlijk over de grens tussen demo en productie.
 order: 2
+group: domain
 ---
 
 # Toegepaste ML & datawetenschap

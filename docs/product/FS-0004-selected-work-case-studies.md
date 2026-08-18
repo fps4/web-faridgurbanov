@@ -1,7 +1,7 @@
 ---
 title: "FS-0004 — Selected work / case studies"
 status: draft
-last_updated: 2026-06-09
+last_updated: 2026-08-18
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -45,7 +45,8 @@ conversation, and it is what makes the training offer credible ("taught by someo
    - **The AI trio** (`sovereign-copilot`, `maestro`, `sovereign-llm-gateway`) — the
      govern→build→deliver story; cross-links to the portfolio (FS-0005).
 3. **Consistent structure** per study: context / problem → what was built → quantified impact →
-   role & stack.
+   the pattern behind it (the decision and its trade-off) → who had to say yes (the stakeholders,
+   the disagreement, what resolved it, what it cost) → role & stack.
 4. **Anonymization** — client names omitted/abstracted where confidentiality requires; metrics
    kept.
 5. **Bilingual** — EN now; NL may lag (ADR-0002).
@@ -60,7 +61,10 @@ conversation, and it is what makes the training offer credible ("taught by someo
 - THE SYSTEM SHALL present a case-study index linking to between three and four case-study detail
   pages, each with a one-line hook and a headline impact metric.
 - EACH case-study detail page SHALL follow a consistent structure: context/problem, what was
-  built, quantified impact, and the owner's role + stack.
+  built, quantified impact, the pattern behind it, and the owner's role + stack.
+- WHERE a case study evidences a practice area (FS-0003), IT SHALL carry a "who had to say yes"
+  section naming the stakeholders, the disagreement, what resolved it, and what it cost — stated
+  at the same level of honesty as the technical trade-off, including the price of the decision.
 - THE case-study set SHALL include the Cloud Gateway API platform with its scale and cost-saving
   metrics.
 - WHERE a case study references the owner's repositories, IT SHALL link to the portfolio section
@@ -74,5 +78,6 @@ conversation, and it is what makes the training offer credible ("taught by someo
 
 - Three to four case studies + an index live via the content pipeline, each with a quantified
   impact metric and consistent structure.
+- The case studies evidencing the practice areas carry their stakeholder section in EN and NL.
 - The Cloud Gateway study is present and accurate to the application proof points.
 - AI-trio study cross-links the portfolio and carries no "three production systems" claim.

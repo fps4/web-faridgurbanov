@@ -42,6 +42,16 @@ Two decisions made that stick:
 
 The trade-off to know upfront: contracts put friction where SAP teams had none — someone upstream has to own the contract and answer for breaking it. That's a negotiation, not a tool install; the tooling only makes the agreement enforceable after the organisation has made it.
 
+## Who had to say yes
+
+**Stakeholders:** the Finance organisation that would have to run its reporting off the new warehouse; the SAP-side architects who owned the source system and its load; and the regional teams waiting behind the DACH MVP for their own rollout.
+
+**The disagreement:** a contract at the seam moves work upstream. The SAP team had no obligations toward analytics before this design and would now own a schema promise and answer for breaking it — a genuine ask, not a formality. Finance, meanwhile, had no reason to trust a new number source over the ledger it already used.
+
+**What resolved it:** reconciliation, not persuasion. Balancing the loaded data against the source ledger gave Finance a check it could run itself, which is what actually earned adoption. With the SAP architects the route was source-to-target mapping done together rather than handed over — the extraction strategy had to protect their system's load, and it was their constraint that shaped it.
+
+**What it cost:** friction upstream where there had been none, and a named owner behind every contract. That ownership had to be agreed before any of it could be enforced in code.
+
 ## Role & stack
 
 Data engineer and technology architect (Accenture CTA group) — delivered the MVP and the reference architecture.

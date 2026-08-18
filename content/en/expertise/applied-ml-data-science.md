@@ -2,6 +2,7 @@
 title: Applied ML & data science
 summary: ML and data science that ships — demand elasticity and constrained optimization, image segmentation, decision pipelines — built to run, validated against ground truth, and honest about the line between demo and production.
 order: 2
+group: domain
 ---
 
 # Applied ML & data science

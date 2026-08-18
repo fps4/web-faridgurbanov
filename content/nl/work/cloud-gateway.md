@@ -45,6 +45,16 @@ Twee beslissingen die dat lieten beklijven:
 
 De trade-off om vooraf te kennen: een gefedereerd model is een belofte die je twee keer moet nakomen. Elke nieuwe capability moet op zowel AWS als Azure landen, anders sterft het "één platform"-verhaal in stilte — je tekent ervoor om alles voor twee runtimes te ontwerpen, voorgoed. Dat is de prijs van 20 teams níét naar één vendor migreren, en hier was het de juiste prijs.
 
+## Wie ja moest zeggen
+
+**Stakeholders:** 18–20 productteams die elk al een werkende gateway bezaten; een platformteam dat moest gaan beheren wat ervoor in de plaats kwam; een securityafdeling die één authenticatiemodel over twee clouds moest accepteren; en de budgethouder achter het IBM API Connect-contract.
+
+**Het meningsverschil:** niemand wilde een gateway die hij zelf beheerde inruilen voor een afhankelijkheid van een centraal team — en niemand had de bevoegdheid om een migratie op te leggen. Een verplichting had twintig uitzonderingen en één zeer trage backlog opgeleverd.
+
+**Wat het oploste:** de gebaande weg goedkoper maken dan blijven zitten. Terraform-onboarding in minuten, één OAuth2/JWT-model dat teams niet langer zelf hoefden te bouwen, en Datadog-dashboards die ze niet zelf hoefden aan te sluiten. Security kreeg één model om te reviewen in plaats van twintig; finance kreeg een uitfaseringsbedrag dat het programma betaalde.
+
+**Wat het kostte:** een blijvende verplichting om elke nieuwe functionaliteit twee keer op te leveren, op AWS én Azure. Dat was de prijs van twintig teams níét naar één leverancier dwingen, en die was het waard — maar het is een belofte, geen eenmalige actie.
+
 ## Rol & stack
 
 Leidde het ontwerp en de uitrol — API-standaarden, het securitymodel en governance.
