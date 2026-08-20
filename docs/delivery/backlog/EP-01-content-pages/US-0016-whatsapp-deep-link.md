@@ -1,10 +1,10 @@
 ---
 title: "US-0016: WhatsApp click-to-chat contact channel"
 persona: visitor
-status: draft
+status: done
 complexity: S
 milestone: M1
-last_updated: 2026-06-10
+last_updated: 2026-08-20
 spec: docs/product/FS-0007-contact-and-privacy.md
 design: docs/design/decisions/0001-tech-stack-and-static-export.md
 ---
@@ -66,3 +66,28 @@ Keep the affordance consistent with the existing obfuscated-email pattern (a cli
 the email section), not a heavyweight form. The privacy line must reflect the real data flow — the
 moment of value (the owner getting a verified number to reply to) is exactly the moment Meta becomes
 a processor; say so plainly rather than as boilerplate.
+
+---
+
+## Scope extension and delivery (2026-08-20, ADR-0007)
+
+Delivered, with one deliberate change: the owner asked for the affordance to be reachable from **any
+page**, not only Contact. `components/whatsapp-launcher.tsx` adds a fixed launcher in the locale
+layout alongside the contact-page affordance in `components/whatsapp-contact.tsx`.
+
+This does **not** cross the "no widget/embed" line in *Out of scope*: both are plain anchors to
+`wa.me`, with no SDK, no iframe and nothing loaded from Meta until the visitor activates the link.
+The privacy analysis is unchanged in kind; only its reach grows, and the privacy page states it.
+
+Two implementation notes:
+
+- The number is assembled in the browser from `whatsapp` in `lib/site.ts`, matching the
+  obfuscated-email pattern, so the full number is not sitting in the exported HTML.
+- The configured number is the **Rinkel business number** (+31 30 207 2959), confirmed by the owner
+  2026-08-20 — which is what this story assumed all along. The personal mobile stays on the CV and
+  off the public surface. Setting `whatsapp` to `null` removes the channel from the whole site.
+- **Registration verified 2026-08-20.** `https://wa.me/31302072959` resolves to the WhatsApp
+  Business profile **"Fusion Platform Services"**, so the click-to-chat link works and a visitor sees
+  a business name rather than a bare number. This check matters because `wa.me` renders a
+  working-looking link for an unregistered number and then lands on *"the phone number shared via url
+  is invalid"* — worse than having no button. Re-run it if the number ever changes.

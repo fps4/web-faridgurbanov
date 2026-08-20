@@ -1,7 +1,7 @@
 ---
 title: Integratiearchitectuur
 summary: Het ontwerpen van de ruggengraat die ervoor zorgt dat enterprisesystemen met elkaar praten — van legacy-ESB's naar event-driven, API-led en domeingeoriënteerde platformen.
-order: 5
+order: 2
 group: domain
 ---
 

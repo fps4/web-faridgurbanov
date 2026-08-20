@@ -46,3 +46,13 @@ disabled / "coming soon"**:
 - The prerequisite work itself happens in the respective repos, not this product; this ADR only
   binds *publishing* to their completion.
 - Protects the owner from an avoidable optics/credibility liability on a name-bearing surface.
+
+---
+
+## Gate discharged (2026-08-20, ADR-0006)
+
+This ADR's reasoning stands, but its trigger condition is no longer met. The prerequisites were
+never satisfied for `sovereign-copilot` and `sovereign-llm-gateway`; ADR-0006 removed both from the
+public surface instead. Every repository now listed is public, licensed and honestly framed, so
+`REPO_LINKS_ENABLED` is `true`. The flag and this ADR remain in force for any future repository that
+is not yet fit to link.

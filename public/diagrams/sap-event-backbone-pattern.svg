@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 210" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="20" y="40" width="150" height="62" rx="8"/>
+    <rect x="216" y="40" width="140" height="62" rx="8"/>
+    <rect x="590" y="40" width="150" height="62" rx="8"/>
+    <rect x="216" y="140" width="140" height="46" rx="8" stroke-dasharray="5 4"/>
+  </g>
+  <rect x="402" y="33" width="142" height="76" rx="8" fill="none" stroke="#7b7b85" stroke-width="2"/>
+  <g stroke="#9a9aa3" stroke-width="1.25" marker-end="url(#ah)">
+    <line x1="170" y1="71" x2="212" y2="71"/>
+    <line x1="356" y1="71" x2="398" y2="71"/>
+    <line x1="544" y1="71" x2="586" y2="71"/>
+    <line x1="286" y1="136" x2="286" y2="106"/>
+  </g>
+  <g fill="#7b7b85" font-size="12.5" text-anchor="middle">
+    <text x="95" y="66" font-weight="600">SAP S/4HANA · BTP</text>
+    <text x="95" y="84" font-size="11.5">publishes business events</text>
+    <text x="286" y="66" font-weight="600">Advanced Event Mesh</text>
+    <text x="286" y="84" font-size="11.5">Solace broker</text>
+    <text x="473" y="60" font-weight="600">envelope +</text>
+    <text x="473" y="77" font-weight="600">subscription</text>
+    <text x="473" y="94" font-weight="600">contract</text>
+    <text x="665" y="60" font-size="11.5" font-weight="600">AWS integration platform</text>
+    <text x="665" y="78" font-size="11.5">AMQP 1.0 consumers</text>
+    <text x="665" y="94" font-size="11.5">retry · back-off · DLQ</text>
+    <text x="286" y="160" font-size="11.5" font-style="italic">legacy IBM ESB</text>
+    <text x="286" y="176" font-size="11.5" font-style="italic">decommissioned wave by wave</text>
+    <text x="473" y="132" font-size="11.5" font-style="italic">three teams build against one contract —</text>
+    <text x="473" y="148" font-size="11.5" font-style="italic">no team works inside another's estate</text>
+  </g>
+</svg>

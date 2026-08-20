@@ -8,10 +8,12 @@ import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
-// Expertise index (FS-0003/US-0012): the areas in two groups — the technical domains ("what I
-// build") and the architecture practice ("how I work"), the latter carrying the stakeholder and
-// decision-making work a domain page can't. Grouping is frontmatter (`group:`), so adding an area
-// stays a markdown-only change. An entry without a group falls into the domain group.
+// Expertise index (FS-0003/US-0012): the areas in two groups — the architecture practice ("how I
+// work"), carrying the stakeholder and decision-making work a domain page can't, and the technical
+// domains ("what I build"). Practice leads (ADR-0005): the technical depth is rarely what a buyer
+// doubts, so it is not what the page should have to prove first. Grouping is frontmatter
+// (`group:`), so adding an area stays a markdown-only change. An entry without a group falls into
+// the domain group.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -58,16 +60,8 @@ export default async function ExpertiseIndex({ params }: { params: Promise<{ loc
     <div className="container py-16">
       <PageIntro title={t.expertiseTitle} lede={t.expertiseLede} />
 
-      <section className="mt-12">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-          {t.expertiseGroups.domain.heading}
-        </h2>
-        <p className="mt-2 max-w-2xl text-muted-foreground">{t.expertiseGroups.domain.lede}</p>
-        <AreaGrid locale={locale} entries={domain} />
-      </section>
-
       {practice.length > 0 && (
-        <section className="mt-14">
+        <section className="mt-12">
           <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
             {t.expertiseGroups.practice.heading}
           </h2>
@@ -75,6 +69,14 @@ export default async function ExpertiseIndex({ params }: { params: Promise<{ loc
           <AreaGrid locale={locale} entries={practice} />
         </section>
       )}
+
+      <section className={practice.length > 0 ? 'mt-14' : 'mt-12'}>
+        <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+          {t.expertiseGroups.domain.heading}
+        </h2>
+        <p className="mt-2 max-w-2xl text-muted-foreground">{t.expertiseGroups.domain.lede}</p>
+        <AreaGrid locale={locale} entries={domain} />
+      </section>
     </div>
   );
 }

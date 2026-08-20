@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import { PageIntro } from '@/components/page-intro';
 import { ObfuscatedEmail } from '@/components/obfuscated-email';
+import { WhatsAppContact } from '@/components/whatsapp-contact';
 import { Button } from '@/components/ui/button';
 import { getDictionary } from '@/lib/dictionaries';
 import { site, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
-// Contact (FS-0007/US-0015). Works on the static export with no backend: an obfuscated mailto, the
-// profile links, location, and (in M1) the "book a taster" path. No form → no third-party processor → the
-// privacy page can honestly say nothing is collected.
+// Contact (FS-0007/US-0015, US-0016). Works on the static export with no backend: an obfuscated
+// mailto, a WhatsApp click-to-chat affordance, the profile links, location, and (in M1) the "book a
+// taster" path. Still no form and no backend — the WhatsApp textarea only pre-fills a wa.me link in
+// the visitor's own browser, so the privacy page can keep saying nothing is collected here, while
+// disclosing that choosing WhatsApp makes Meta a processor.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -42,6 +45,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <ObfuscatedEmail className="text-lg font-medium underline underline-offset-4 hover:text-foreground" />
           </p>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">{t.emailHint}</p>
+
+          <WhatsAppContact
+            heading={t.whatsappHeading}
+            hint={t.whatsappHint}
+            placeholder={t.whatsappPlaceholder}
+            cta={t.whatsappCta}
+            defaultText={t.whatsappDefault}
+          />
 
           {/* Training taster path — hidden until M1 (TRAINING_PUBLISHED). */}
           {TRAINING_PUBLISHED && (

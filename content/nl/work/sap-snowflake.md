@@ -3,7 +3,7 @@ title: SAP S/4HANA Finance → Snowflake
 summary: Een cloud-native pipeline die SAP Finance-grootboeken naar een Snowflake-lakehouse verplaatst, met datacontracten op de naad — multi-TB backfill plus 10–30 GB dagelijkse delta over ~30+ bedrijfscodes.
 hook: Een legacy SAP Finance-landschap omgevormd tot een cloud-native analytics-ruggengraat.
 metric: ~30+ bedrijfscodes
-order: 2
+order: 3
 ---
 
 # SAP S/4HANA Finance → Snowflake
@@ -48,9 +48,9 @@ De trade-off om vooraf te kennen: contracten leggen frictie waar SAP-teams die n
 
 **Het meningsverschil:** een contract op de naad verplaatst werk stroomopwaarts. Het SAP-team had vóór dit ontwerp geen verplichtingen richting analytics en zou nu een schemabelofte bezitten en aanspreekbaar zijn als die brak — een echt verzoek, geen formaliteit. Finance had op zijn beurt geen reden om een nieuwe getallenbron meer te vertrouwen dan het grootboek dat het al gebruikte.
 
-**Wat het oploste:** reconciliatie, geen overtuigingskracht. Het afstemmen van de geladen data tegen het bronboek gaf Finance een controle die het zelf kon uitvoeren, en dát leverde de adoptie op. Met de SAP-architecten liep de route via source-to-target mapping die we samen deden in plaats van overdroegen — de extractiestrategie moest de belasting van hún systeem ontzien, en het was hun randvoorwaarde die het ontwerp vormde.
+**Wat het oploste:** een controle in plaats van een discussie. Het afstemmen van de geladen data tegen het bronboek gaf Finance iets dat ze zelf konden draaien, en dat leverde de adoptie op. Met de SAP-architecten was de route om de source-to-target-mapping samen te doen in plaats van hem over te dragen. De extractiestrategie moest de belasting van hun systeem ontzien, en hun randvoorwaarde vormde het ontwerp — wat mij ook de benoemde eigenaar achter het contract opleverde.
 
-**Wat het kostte:** wrijving stroomopwaarts waar die er niet was, en een benoemde eigenaar achter elk contract. Dat eigenaarschap moest afgesproken zijn voordat er ook maar iets in code afdwingbaar werd.
+**Wat het kostte:** extra werk stroomopwaarts waar dat er niet was, en een benoemde eigenaar achter elk contract. Dat eigenaarschap moest afgesproken zijn voordat er ook maar iets in code afdwingbaar werd.
 
 ## Rol & stack
 

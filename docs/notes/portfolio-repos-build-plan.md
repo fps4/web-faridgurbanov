@@ -1,188 +1,183 @@
 ---
 title: "Notes — Portfolio repos build plan"
 status: notes
-last_updated: 2026-06-16
+last_updated: 2026-08-20
 owners: [architect]
 related:
   - docs/product/FS-0005-portfolio-repos.md
-  - docs/design/decisions/0004-public-surface-prerequisites.md
+  - docs/design/decisions/0006-portfolio-restructure-data-architecture.md
   - lib/site.ts
 ---
 
-# Portfolio repos — build plan (remediation notes)
+# Portfolio repos — build plan
 
-Working notes, not a spec. Captures four repos we intend to build so they can join the
-[portfolio](../../lib/site.ts) (`repos[]`) as real, honestly-labelled build proof. **These are not
-on the live site yet** — a card is added to `repos[]` *only once the repo is real* (see
-"Definition of done" per item). Until then this file is the single source of truth for the work.
+Working notes, not a spec. **A card is added to `repos[]` in `lib/site.ts` only once the repo is
+real** — until then it lives here. Each item is self-contained so an agent can pick it up cold.
 
-Each item is self-contained so an agent can pick it up cold. Pick one, read its section, build the
-repo in its own repository under `github.com/fps4`, then do the small follow-up PR here (the DoD)
-to surface it.
+## Where the portfolio stands after ADR-0007
 
-## Why these four
+Three pillars, seven repos, named after what a client engages an architect to do:
 
-The portfolio is grouped into two pillars (`lib/site.ts` → `pillars`):
+| Pillar | Repos |
+|---|---|
+| **Data architecture & modelling** | `enterprise-data-model-lab` ✅ *(built 2026-08-20)* · `sap-bdc-snowflake-blueprint` |
+| **Modernization & migration** | `legacy-dwh-migration` ✅ *(built 2026-08-20)* · `oracle-to-spring-strangler` |
+| **Integration & platform services** | `event-integration-platform` · `identity-service` · `skills-coach` |
 
-- **AI & automation** — currently `sovereign-llm-gateway` (working), `sovereign-copilot`
-  (reference), `maestro` (reference). Gap: nothing yet *measures* the AI claims.
-- **Integration, streaming & data** — currently `event-integration-platform` (working). Gap: Event Integration Platform produces
-  governed streams but there is no downstream data home, no API edge, and the SAP→Snowflake case
-  study (`content/*/work/sap-snowflake.md`) has no runnable proof behind it.
+Removed from the public surface across ADR-0006 and ADR-0007: `sovereign-llm-gateway` and
+`sovereign-copilot` (never cleared the ADR-0004 prerequisites), the two contrail demos, and
+`retail-dynamic-pricing` + `marketplace-intel-platform` (good work, but applied data science invited
+the wrong conversation for a data/integration architect). All still exist on GitHub; none are part
+of the pitch.
 
-The four below close those gaps and cross-link into one story: **SAP → Event Integration Platform → lakehouse →
-APIs**, with the eval harness proving the AI side.
+## ⚠ R1 and R2 are built but not pushed
+
+Both repositories exist locally under `~/Repositories/fps4/`, are committed, and pass
+`make lint && make test && make demo`. They are listed in `lib/site.ts` with **`linkLive: false`**,
+so their cards render without a link rather than with a dead one.
+
+**To finish:** create `github.com/fps4/enterprise-data-model-lab` and
+`github.com/fps4/legacy-dwh-migration`, push, then remove `linkLive: false` from both entries. That
+is the only remaining step.
+
+## The gap these two closed
+
+The seven repos prove **pipelines, platforms and serving**. For a data-architect or lead-architect
+conversation two things are still missing, and they are exactly what a client interviews for:
+
+1. **Modelling craft.** Nothing on the surface shows conceptual → logical → physical modelling, a
+   dimensional design, slowly-changing dimensions, or a business glossary. `sap-bdc-snowflake-blueprint`
+   decides *what moves*; nothing shows *what the target looks like when it lands*.
+2. **The shape of a transformation programme.** `oracle-to-spring-strangler` does this for
+   applications — assessment, waves, parity gates, rollback. There is no data-side equivalent, and
+   the data-side version is what a legacy-DWH migration client is actually buying.
+
+**Both are now built** — what follows is the specification they were built to, kept as the design
+record. R3 remains optional.
 
 ## Conventions for every repo
 
-Match the house style already set by `sovereign-llm-gateway` and `event-integration-platform`:
-
-- **Runnable**: `docker compose up` brings the whole thing up locally. A `Makefile` with
-  `make up` / `make demo` / `make down`. No paid cloud account required to see it work.
-- **Honest README**: what it is, who it's for, architecture-at-a-glance, a quickstart, and an
-  explicit "what's real vs reference" line.
-- **License**: MIT, `Copyright (c) 2026 Fusion Platform Services – 4 Dimensions of Success`
-  (matches Event Integration Platform's `LICENSE`).
+- **Runnable**: `docker compose up` or `make demo` brings it up locally. No paid cloud account
+  required to see it work. Synthetic data with a known ground truth wherever a claim is measured.
+- **Honest README**: what it is, who it is for, architecture at a glance, quickstart, and an
+  explicit "what is real vs what is synthetic" line, plus where real data would go instead.
+- **License**: MIT, `Copyright (c) 2026 Fusion Platform Services – 4 Dimensions of Success`.
 - **Docs**: a `docs/` folder with at least a solution-design note; a `CHANGELOG.md`.
-- **Naming**: lower-kebab, no client names, no "sovereign-*" unless it's an AI-pillar sibling.
-- **ADR-0004 gate**: before the card's link can go live, the repo must satisfy the three
-  public-surface prerequisites (one umbrella name, neutralized + licensed, honest framing). The
-  global `REPO_LINKS_ENABLED` flag stays `false` until *all* linked repos clear this — so a new
-  repo that isn't clean yet does not block others, but also must not flip the flag prematurely.
+- **Naming**: lower-kebab, no client names.
 
 ## Definition of done (per repo — the follow-up PR in *this* repo)
 
-When the repo is real and runnable:
-
-1. Add one entry to `repos[]` in `lib/site.ts` with the right `pillar`, `maturity`
-   (`working` if it runs end-to-end, `reference` if it's a readable architecture only),
-   `license`, `url`, and `proves` copy in **both** `en` and `nl`.
-2. If the new card changes the "two run end-to-end" count, update the `honesty` string in
-   `lib/dictionaries.ts` (both locales) to keep the count exact.
-3. Run `npx tsc --noEmit`, `npm run lint`, `npx vitest run`, `npm run build` — all green.
-4. Leave `REPO_LINKS_ENABLED` as-is unless every linked repo has cleared ADR-0004.
+1. Add one entry to `repos[]` in `lib/site.ts` with the right `pillar`, `maturity`, `license`,
+   `url`, and `proves` copy in **both** `en` and `nl`.
+2. Update the `honesty` string in `lib/dictionaries.ts` (both locales) so the repo count stays exact.
+3. `npx tsc --noEmit`, `npm run lint`, `npx vitest run`, `npm run build` — all green.
+4. If the repo is not yet fit to link publicly, set `linkLive: false` on its card and flip
+   `REPO_LINKS_ENABLED` to `false` rather than shipping a broken promise.
 
 ---
 
-## R1 — `llm-eval-harness`  (pillar: ai · target maturity: working)
+## R1 — `enterprise-data-model-lab` ✅ BUILT (pillar: data · maturity: working)
 
-**What it proves.** The measurement layer behind the "trustworthy" claim on the AI pillar. Lifts
-the L1–L4 evaluation gates that `sovereign-copilot` describes out of slideware into a tool you can
-run.
+**The gap it closes:** modelling craft. This is the single most useful addition for a data-architect
+pitch, because modelling is the one thing every data-architect interview probes and the current
+portfolio is silent on it.
 
-**Role line (for the card).** en: "Prove the models behave" · nl: "Bewijs dat de modellen zich
-gedragen".
+**The idea.** One retail domain (orders, customers, products, stores, promotions) taken through the
+full modelling stack in one repository, so a reader can see the same business fact expressed four
+ways and understand why each layer exists:
 
-**Proposed stack.** Python (pytest-style runner) or TS; golden datasets as fixtures; an eval CLI;
-OpenTelemetry tracing of agent call chains; a small report (HTML/markdown) of pass/fail per level.
-Pluggable model backend via the `sovereign-llm-gateway` (so the two demo together).
+- **Business glossary** — terms, definitions, owners, and the metric definitions that follow from
+  them. Machine-readable (YAML), rendered to a page. This is the artifact that makes "one version
+  of the truth" concrete instead of a slogan.
+- **Conceptual model** — entities and relationships, no keys, no types. The version a business
+  stakeholder can correct.
+- **Logical model** — normalised 3NF with keys, cardinalities and constraints, generated as ERDs.
+- **Physical models — two, deliberately.** A **dimensional / Kimball** layer (conformed dimensions,
+  fact grain stated explicitly, **SCD Type 2** on customer and product, a date dimension, a bridge
+  for a many-to-many) and a **Data Vault 2.0** raw vault (hubs, links, satellites) with a business
+  vault on top. Both fed from the same source, so the repo can show *when each is the right answer*
+  and what each costs — which is the actual architectural decision, not the modelling technique.
+- **The transformation code** — dbt (or SQLMesh) on **DuckDB** so it runs on a laptop in seconds,
+  with tests: uniqueness, referential integrity, SCD2 correctness (no overlapping validity windows,
+  exactly one current row), and grain assertions on every fact.
+- **Lineage** — generated from the dbt graph, column-level where the tooling allows.
 
-**Scope — in.** L1 (unit/contract on tool calls), L2 (component), L3 (scenario/golden), L4
-(end-to-end) gates; CI wiring (GitHub Actions) that fails the build on regression; a seeded golden
-set; a `make demo` that runs all four levels and prints a report.
+**What it proves:** that the architect can model, not just pipe. And the Kimball-vs-Data-Vault
+comparison in one repo is a genuinely strong interview artifact — it turns a religious argument into
+a costed one.
 
-**Scope — out.** A hosted dashboard; human-labelling UI; vendor-specific eval SaaS.
-
-**Acceptance / "runs end-to-end".** `docker compose up` + `make demo` produces a report showing
-each level passing on the seed goldens, and a deliberately-broken golden makes the gate fail
-loudly.
-
-**Dependencies.** Reads cleanest if pointed at `sovereign-llm-gateway`; otherwise mock backend.
-
----
-
-## R2 — `lakehouse-blueprint`  (pillar: platform · target maturity: working)
-
-**What it proves.** The downstream home for Event Integration Platform streams — "land streams as governed data
-products". Fills the only expertise pillar (`data-and-lakehouse`) with no proof behind it.
-
-**Role line.** en: "Land streams as governed data products" · nl: "Land streams als beheerde
-dataproducten".
-
-**Proposed stack.** Apache Iceberg tables on MinIO (S3-compatible) object storage; Trino and/or
-DuckDB query layer; dbt for medallion (bronze/silver/gold) modelling; a catalog — Nessie or
-Polaris — for governance/branching. All local via compose.
-
-**Scope — in.** Ingest a sample stream (ideally from Event Integration Platform's HTTP sink or a Kafka topic) into
-bronze; dbt models to silver/gold; queryable via Trino/DuckDB; catalog showing schema + history;
-a `make demo` that loads sample data and runs a query end-to-end.
-
-**Scope — out.** Real cloud warehouse; petabyte-scale tuning; BI tool integration.
-
-**Acceptance.** `docker compose up` + `make demo` ingests sample events, runs the dbt build, and a
-sample query returns gold-layer rows; schema evolution is demonstrably governed by the catalog.
-
-**Dependencies.** Pairs with **R4** (SAP→Snowflake) as the landing target; consumes from
-**Event Integration Platform**. Build this before R4.
+**Scope discipline:** one domain, done properly. The temptation is five domains done shallowly, and
+that proves less.
 
 ---
 
-## R3 — `api-platform-blueprint`  (pillar: platform · target maturity: working or reference)
+## R2 — `legacy-dwh-migration` ✅ BUILT (pillar: modernization · maturity: working)
 
-**What it proves.** The public edge in front of the platform — "expose products as governed APIs".
-Backs the `apis-and-gateways` expertise.
+**The gap it closes:** the shape of a transformation programme, on the data side. Sibling to
+`oracle-to-spring-strangler`, and deliberately the same narrative arc so the two read as one method
+applied twice.
 
-**Role line.** en: "Expose products as governed APIs" · nl: "Ontsluit producten als beheerde APIs".
+**The idea.** A legacy Oracle / SAP BW–style warehouse migrated to a lakehouse, wave by wave, with
+the programme artifacts as first-class code rather than slideware:
 
-**Proposed stack.** Contract-first: OpenAPI specs as the source of truth → mock server (Prism) →
-an Envoy or Kong gateway with OIDC auth (Keycloak local) and rate limiting; a small self-service
-developer portal (could reuse the Event Integration Platform webapp patterns).
+- **As-is assessment, generated not written.** Crawl the legacy warehouse: object inventory, row
+  counts, storage, job dependencies, and — the part people skip — **usage telemetry**, so the repo
+  can show that 40% of the estate has not been queried in a year. Nothing changes a migration
+  business case faster than that number.
+- **A scored wave plan.** Each object scored on business value, query frequency, upstream
+  dependency depth and migration effort, producing an ordered wave plan you can argue with. The
+  scoring weights are config, so a client can change the weights and watch the plan change — which
+  is what makes it a conversation instead of a recommendation.
+- **A parity harness.** Old-versus-new reconciliation: row counts, control totals, measure-level
+  comparison per grain, with a tolerance policy and a signed-off report per wave. This is the
+  artifact that actually earns sign-off, and it is the data-side equivalent of the golden-master
+  gate in `oracle-to-spring-strangler`.
+- **A cutover and rollback runbook** per wave, with a routing layer so consumers move one report at
+  a time and a rollback is a config change.
+- **A decommission ledger.** What was retired, when, what it cost to run, what is now saved.
+  Running total. Nobody ever builds this, and it is what makes a decommissioning programme
+  defensible to a CFO two years in.
+- **A business case model** — the legacy run cost, the migration cost, the target run cost, and the
+  break-even month, as a transparent model rather than a spreadsheet screenshot.
 
-**Scope — in.** One example API defined OpenAPI-first; mock from the spec; gateway enforcing
-auth + rate limits in front of a stub upstream; a dev-portal page listing the API with a "try it".
+**What it proves:** that the architect can run a transformation, not just design a target state.
+Assessment → sequencing → parity → cutover → decommission → benefit realisation is the whole arc,
+and most portfolios show none of it.
 
-**Scope — out.** Full API monetization/billing; multi-region; production identity provider.
-
-**Acceptance.** `docker compose up` brings up gateway + IdP + portal; an unauthenticated call is
-rejected, an authenticated call passes, and rate limiting trips after N calls — shown in
-`make demo`. If only the gateway+spec are wired (no live upstream), label the card `reference`.
-
-**Dependencies.** Independent; can sit in front of Event Integration Platform's control-API as the example upstream
-for a stronger story.
-
----
-
-## R4 — `sap-snowflake-accelerator`  (pillar: platform · target maturity: reference, then working)
-
-**What it proves.** Turns the existing SAP→Snowflake case study
-(`content/*/work/sap-snowflake.md`) into runnable proof — "move SAP data to the warehouse,
-governed". Bridges Event Integration Platform and the lakehouse blueprint.
-
-**Role line.** en: "Move SAP data to the warehouse, governed" · nl: "Breng SAP-data gestuurd naar
-het warehouse".
-
-**Proposed stack.** CDC from an SAP-*like* source (no real SAP — use a Postgres/MySQL seeded to
-mimic SAP table shapes, or a sample IDoc/OData feed) via Debezium → Kafka (reuse Event Integration Platform) →
-schema-governed transforms → land in the **lakehouse-blueprint** (or a Snowflake target behind a
-flag for those with an account).
-
-**Scope — in.** Seeded SAP-shaped source; Debezium CDC → Kafka; a transform enforcing a target
-schema; landing into Iceberg (default) with a Snowflake option documented; `make demo` showing a
-row change at source flowing to the warehouse.
-
-**Scope — out.** A real SAP connector / SAP licensing; production Snowflake setup as the default.
-
-**Acceptance.** `make demo` mutates a source row and the change appears, governed, in the lakehouse
-target. Mark `working` once the Iceberg path runs locally end-to-end; `reference` if it ships as
-wiring + docs only.
-
-**Dependencies.** Depends on **R2** (lakehouse) as the default sink and on **Event Integration Platform** for the
-Kafka backbone. Build last of the four.
+**Cross-link:** this is the repo to point at when a client asks "how would you approach our
+migration?" — which is the first question in almost every data-architect interview.
 
 ---
 
-## Suggested build order
+## R3 — `data-contracts-and-governance` (pillar: platform · target: working) — optional
 
-1. **R2 lakehouse-blueprint** — unlocks the data pillar and is R4's sink.
-2. **R1 llm-eval-harness** — independent, strengthens the AI pillar; can run in parallel with R2.
-3. **R4 sap-snowflake-accelerator** — needs R2; converts an existing case study to proof.
-4. **R3 api-platform-blueprint** — independent; strongest once it can front Event Integration Platform/the platform.
+Only worth building after R1 and R2. Would close the governance gap: data contracts as versioned
+code with compatibility rules, a quality gate in CI, ownership and stewardship metadata aligned to
+DAMA-DMBOK, and a privacy/classification layer (PII tagging driving masking policies). It has
+strong overlap with what `event-integration-platform` and `sap-bdc-snowflake-blueprint` already show,
+so the marginal value is lower — but it is the direct evidence behind the "contracts at the seam"
+claim that runs through the SAP→Snowflake case study and the stakeholder material.
 
-## Open questions for the owner
+---
 
-- Snowflake in R4: keep it as a documented-but-optional target (no account needed to demo), or
-  make a real Snowflake the default? Default assumption here: Iceberg-local is the demo path,
-  Snowflake behind a flag.
-- R3 maturity: is a gateway+spec+mock enough to call it `working`, or does "working" require a
-  live upstream? Default assumption: needs a live upstream (Event Integration Platform control-API) to be `working`.
-- Repo homes: confirm all four live under `github.com/fps4` with MIT + the FPS-4D copyright.
+## What was actually built, versus the spec
+
+Both repos match the specification above with three deliberate simplifications, each recorded as an
+ADR in the repo itself rather than left implicit:
+
+| Spec said | Built | Why |
+|---|---|---|
+| dbt or SQLMesh | Numbered plain-SQL files run in order | A reader sees the modelling, not the tool — the SCD2 window logic and the point-in-time join are on screen rather than behind a macro (`edml` ADR-0002). Migration to dbt is mechanical. |
+| Column-level lineage | Object-level, declared | Parsing PL/SQL or BW transformations is its own project, and object-level is enough to sequence waves (`ldm` ADR-0002). Named as the largest piece of missing work. |
+| — | One parity defect injected on purpose | Not in the spec, added during the build: a gate that has never failed is not evidence that the gate works (`ldm` ADR-0003). |
+
+**Assumptions taken, all defaulted as proposed and open to correction:** DuckDB local with Snowflake
+as a documented path rather than the default; an Oracle-shaped legacy source in R2 with the README
+noting SAP BW is the same method and different extractors; one domain in R1 with two subject areas
+so conformed dimensions are visible without doubling the build.
+
+## Next
+
+1. **Push R1 and R2**, then drop `linkLive: false` from both cards.
+2. **R3 `data-contracts-and-governance`** only if there is still appetite — the marginal value is
+   lower now that R1 carries the glossary and R2 carries the parity policy.
