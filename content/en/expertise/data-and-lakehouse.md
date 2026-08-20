@@ -1,7 +1,7 @@
 ---
 title: Data & lakehouse
 summary: Cloud-native data platforms for analytics and AI — medallion lakehouses, data contracts at the source seam, and CDC pipelines that stay reliable.
-order: 3
+order: 1
 group: domain
 ---
 
@@ -19,6 +19,6 @@ Analytics and AI are only as good as the platform feeding them. I build the clou
 
 - [SAP S/4HANA Finance → Snowflake](/en/work/sap-snowflake) — GL/AR/AP/CO/AA across ~30+ company codes, multi-terabyte backfill plus 10–30 GB daily delta, with contracts at the SAP↔lakehouse seam.
 - [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — productised streams with Hive LLAP and Spark 3 query acceleration.
-- [Contrail avoidance](/en/work/contrail-coav) — a Polars/Pandas + Databricks-style pipeline over a Parquet/Delta lakehouse, deciding which flights to reroute on a climate-versus-fuel tradeoff.
+- [Portfolio](/en/portfolio) — `sap-bdc-snowflake-blueprint` takes the same seam question and answers it per object: nine ordered rules assign each of 24 objects a mode — share zero-copy, replicate, federate, split, or keep it in SAP — with a cost model that gives the crossover frequency and a local simulation behind it.
 
 Background: Databricks Certified Data Engineer Professional; Snowflake Core; Spark/PySpark, Delta Lake, PostgreSQL, Oracle.

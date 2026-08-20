@@ -50,6 +50,9 @@ No designs yet; the decisions are locked as ADRs under [`design/decisions/`](./d
 | [0002](./design/decisions/0002-bilingual-en-nl-i18n.md) | Bilingual EN/NL i18n |
 | [0003](./design/decisions/0003-single-site-training-forward-positioning.md) | Single site, training-forward positioning (credibility-first first ship) |
 | [0004](./design/decisions/0004-public-surface-prerequisites.md) | Public-surface prerequisites (gating the portfolio) |
+| [0005](./design/decisions/0005-stakeholder-forward-positioning.md) | Stakeholder-forward positioning (lead with adoption, not only with build) |
+| [0006](./design/decisions/0006-portfolio-restructure-data-architecture.md) | Portfolio restructured for the data-architect / lead-architect target |
+| [0007](./design/decisions/0007-front-page-three-bands-and-portfolio-focus.md) | Front page as three bands; portfolio narrowed to five repos in three areas |
 
 ## Reference
 

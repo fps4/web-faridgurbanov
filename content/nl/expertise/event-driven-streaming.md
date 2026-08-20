@@ -1,7 +1,7 @@
 ---
 title: Event-driven & streaming
 summary: Kafka en cloud-native streaming als de ruggengraat van moderne data en integratie — schema-evolutie, stream processing, en systemen waar teams op kunnen vertrouwen.
-order: 4
+order: 3
 group: domain
 ---
 

@@ -3,7 +3,7 @@ title: Kafka-dataproductplatform op Cloudera
 summary: Een Cloudera-gebaseerd Kafka-dataproductplatform dat 20+ datastreams productiseert over 30+ bronsystemen, met schema-governance en domeingeoriënteerd eigenaarschap.
 hook: Streamingdata geproductiseerd over domeinen heen, met gegoverneerde schema's.
 metric: 20+ dataproducten
-order: 3
+order: 4
 ---
 
 # Kafka-dataproductplatform op Cloudera
@@ -41,6 +41,16 @@ Twee beslissingen die dat lieten beklijven:
 - **Het platformteam bezit de verharde weg, niet het verkeer.** Cloudera, de registry, NiFi-ingestiontemplates en het eigenaarschapsmodel waren centraal; de data zelf nooit. Daardoor konden 30+ bronsystemen aansluiten zonder dat het platformteam de bottleneck werd die het verving.
 
 De trade-off om vooraf te kennen: domeineigendom is een organisatiepatroon in een technisch jasje. De registry dwingt compatibiliteit af; ze kan een domein niet dwingen zijn product te bemensen. De streams die floreerden hadden een benoemde eigenaar aan de producerende kant — de streams die achterbleven waren degene die als "een IT-probleem" werden behandeld.
+
+## Wie ja moest zeggen
+
+**Stakeholders:** de domeinteams die de data produceerden en nu een schema en een SLA schuldig waren; een centraal ingestieteam wiens rol dit ontwerp bewust verkleint; de analytics-afnemers die betrouwbare streams wilden en geen middel hadden om die af te dwingen; en de cross-border deliveryteams die het bouwden.
+
+**De onenigheid:** een stream productiseren betekent dat het producerende domein afnemers accepteert waar het niet om gevraagd heeft. Meerdere domeinen lazen dat als werk dat op hun bord kwam om andermans probleem op te lossen — en dat was niet onterecht. Het centrale team werd ondertussen gevraagd de poortwachtersrol op te geven die zijn bezetting rechtvaardigde.
+
+**Wat het oploste:** duidelijk zijn over wat elke kant er werkelijk aan overhield. Domeinen kregen compatibiliteitsregels in de Schema Registry, waarmee ze een wijziging konden uitrollen zonder change board. Voor een producerend team was het niet meer hoeven bijwonen van dat overleg meer waard dan de schemabelofte hun kostte. Het centrale team werd geherpositioneerd rond de gebaande weg — Cloudera, de registry, NiFi-templates, het eigenaarschapsmodel — in plaats van rond het verkeer, en dat is een betere baan dan de wachtrij van iedereen zijn. Waar een domein geen eigenaar wilde vrijmaken, heb ik dat opgeschreven in plaats van een stream op te leveren waar niemand achter stond. Dat zijn de streams die later achterbleven, en het vroeg vastleggen is waarom dat een bekend risico was in plaats van een verrassing.
+
+**Wat het kostte:** een blijvende schema- en supportverplichting voor elk producerend domein. Domeineigenaarschap is een organisatiepatroon in een technisch kostuum; de registry dwingt compatibiliteit af, maar kan een domein niet dwingen zijn product te bemensen.
 
 ## Rol & stack
 

@@ -1,7 +1,7 @@
 ---
 title: API's & gateways
 summary: API-platformen die opschalen over tientallen teams — gatewaystrategie, security-governance, lifecycle, en de developer experience die ervoor zorgt dat ze worden geadopteerd.
-order: 6
+order: 4
 group: domain
 ---
 

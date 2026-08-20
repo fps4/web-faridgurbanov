@@ -49,11 +49,11 @@ The trade-off to know upfront: a federated model is a promise you have to keep t
 
 **Stakeholders:** 18–20 product teams who each already owned a working gateway; a platform group that would have to run whatever replaced them; a security function that had to accept one auth model spanning two clouds; and the budget owner behind the IBM API Connect contract.
 
-**The disagreement:** nobody wanted to trade a gateway they controlled for a dependency on a central team — and no one had the authority to order a migration. A mandate would have produced twenty exceptions and one very slow backlog.
+**The disagreement:** nobody wanted to give up a gateway they controlled in exchange for a dependency on a central team, and no one had the authority to order a migration. Asking for a mandate would have produced twenty exceptions and one very slow backlog.
 
-**What resolved it:** making the paved road cheaper than staying put. Terraform onboarding in minutes, one OAuth2/JWT model teams stopped having to build themselves, and Datadog dashboards they didn't have to wire up. Security got a single model to review instead of twenty; finance got a decommissioning number that paid for the programme.
+**What resolved it:** making the paved road cheaper than staying put. Terraform onboarding in minutes, one OAuth2/JWT model teams no longer had to build themselves, and Datadog dashboards they did not have to wire up. Security got a single model to review instead of twenty, and finance got a decommissioning number that paid for the programme. The migration order also mattered: the first teams to move were the ones with the worst existing setup, so they became the reference other teams asked.
 
-**What it cost:** a standing commitment to ship every new capability twice, on AWS and Azure. That was the price of not forcing twenty teams onto one vendor, and it was worth paying — but it is a promise, not a one-off.
+**What it cost:** a standing commitment to ship every new capability twice, on AWS and on Azure. That was the price of not forcing twenty teams onto one vendor. I think it was worth paying, but it is a permanent promise and not a one-off.
 
 ## Role & stack
 

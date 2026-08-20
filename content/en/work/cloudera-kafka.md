@@ -3,7 +3,7 @@ title: Kafka data-product platform on Cloudera
 summary: A Cloudera-based Kafka data-product platform productising 20+ data streams across 30+ source systems, with schema governance and domain-oriented ownership.
 hook: Streaming data productised across domains, with governed schemas.
 metric: 20+ data products
-order: 3
+order: 4
 ---
 
 # Kafka data-product platform on Cloudera
@@ -41,6 +41,16 @@ Two decisions made that stick:
 - **The platform team owns the paved road, not the traffic.** Cloudera, the registry, NiFi ingestion templates and the ownership model were central; the data itself never was. That's what let 30+ source systems onboard without the platform team becoming the bottleneck it replaced.
 
 The trade-off to know upfront: domain ownership is an organisational pattern wearing a technical costume. The registry enforces compatibility; it can't make a domain staff its product. The streams that thrived had a named owner on the producing side — the ones that lagged were the ones treated as "IT's problem".
+
+## Who had to say yes
+
+**Stakeholders:** the domain teams that produced the data and would now owe a schema and an SLA; a central ingestion team whose role this design deliberately shrinks; the analytics consumers who wanted reliable streams and had no leverage to demand them; and cross-border delivery teams building it.
+
+**The disagreement:** productising a stream means the producing domain accepts consumers it did not ask for. Several domains read that as work moving onto their plate to solve somebody else's problem — and they were not wrong. The central team, meanwhile, was being asked to give up the gatekeeper role that justified its headcount.
+
+**What resolved it:** being clear about what each side actually got. Domains got compatibility rules in the Schema Registry, which meant they could ship a change without going through a change board. For a producing team, not having that meeting any more was worth more than the schema promise cost them. The central team was repositioned around the paved road — Cloudera, the registry, NiFi templates, the ownership model — instead of the traffic, which is a better job than being everyone's queue. Where a domain would not commit an owner, I wrote that down instead of shipping a stream with nobody behind it. Those are the streams that lagged later, and recording it early is why that was a known risk rather than a surprise.
+
+**What it cost:** a schema and support obligation on every producing domain, permanently. Domain ownership is an organisational pattern wearing a technical costume; the registry enforces compatibility, it cannot make a domain staff its product.
 
 ## Role & stack
 

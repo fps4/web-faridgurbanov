@@ -1,12 +1,13 @@
 ---
 title: "FS-0004 — Selected work / case studies"
 status: draft
-last_updated: 2026-08-18
+last_updated: 2026-08-20
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
   - docs/product/FS-0005-portfolio-repos.md
+  - docs/design/decisions/0005-stakeholder-forward-positioning.md
 maestro:
   feature: selected-work-case-studies
   kind: functional_spec
@@ -34,7 +35,12 @@ conversation, and it is what makes the training offer credible ("taught by someo
 ## Scope
 
 1. **A case-study index** listing the studies with a one-line hook and impact metric each.
-2. **3–4 case-study detail pages**, anonymized where required by client confidentiality:
+2. **Case-study detail pages**, anonymized where required by client confidentiality:
+   - **SAP event backbone → cloud integration layer** — SAP Advanced Event Mesh (Solace) over
+     AMQP 1.0 into the AWS-native platform; three teams and three estates (cloud, legacy IBM ESB,
+     SAP) with no shared tooling; the envelope and subscription contract agreed before either
+     side wrote code. *(Added under ADR-0005 as the strongest available evidence of working
+     across an organisation.)*
    - **Cloud Gateway** — federated cross-cloud API platform; replaced IBM API Connect;
      consolidated 20+ gateways; ~500M+ req/month; 18–20 teams; ~€250–300k/yr saved; onboarding
      days→minutes. *(The canonical proof point — present in all applications.)*
@@ -58,13 +64,16 @@ conversation, and it is what makes the training offer credible ("taught by someo
 
 ## Acceptance criteria (EARS)
 
-- THE SYSTEM SHALL present a case-study index linking to between three and four case-study detail
-  pages, each with a one-line hook and a headline impact metric.
+- THE SYSTEM SHALL present a case-study index linking to the case-study detail pages, each with a
+  one-line hook and a headline impact metric.
 - EACH case-study detail page SHALL follow a consistent structure: context/problem, what was
   built, quantified impact, the pattern behind it, and the owner's role + stack.
-- WHERE a case study evidences a practice area (FS-0003), IT SHALL carry a "who had to say yes"
-  section naming the stakeholders, the disagreement, what resolved it, and what it cost — stated
-  at the same level of honesty as the technical trade-off, including the price of the decision.
+- WHERE a case study describes client work, IT SHALL carry a "who had to say yes" section naming
+  the stakeholders, the disagreement, what resolved it, and what it cost — stated at the same
+  level of honesty as the technical trade-off, including the price of the decision.
+- WHERE a case study describes a self-built demo or portfolio repository rather than client work,
+  IT SHALL NOT carry a "who had to say yes" section, because it has no client stakeholders and a
+  fabricated one would breach the honesty rule.
 - THE case-study set SHALL include the Cloud Gateway API platform with its scale and cost-saving
   metrics.
 - WHERE a case study references the owner's repositories, IT SHALL link to the portfolio section
@@ -76,8 +85,9 @@ conversation, and it is what makes the training offer credible ("taught by someo
 
 ## Definition of done
 
-- Three to four case studies + an index live via the content pipeline, each with a quantified
-  impact metric and consistent structure.
-- The case studies evidencing the practice areas carry their stakeholder section in EN and NL.
+- The case studies + an index live via the content pipeline, each with a quantified impact metric
+  and consistent structure.
+- Every client-work case study carries its stakeholder section in EN and NL; demo studies
+  deliberately carry none.
 - The Cloud Gateway study is present and accurate to the application proof points.
 - AI-trio study cross-links the portfolio and carries no "three production systems" claim.

@@ -1,29 +1,25 @@
 ---
 title: AI & automation
-summary: Integrating generative AI into enterprise systems responsibly — agentic systems, RAG, evaluation as a sign-off gate, and governance you can audit.
-order: 1
+summary: Integrating AI into enterprise systems the way anything else gets integrated — behind a contract, with an evaluation gate before release, and with the model kept outside the runtime so it can be replaced.
+order: 5
 group: domain
 ---
 
 # AI & automation
 
-This is a peer of the other four areas, not a bolt-on. The same discipline that makes an integration platform trustworthy — contracts, observability, governance — is exactly what most AI projects are missing. I build agentic systems the way I build any production system: with cost controls, evaluation gates, and an audit trail.
+This area is listed last on purpose. It is real work and I do it, but it is not what I am selling, and a page that leads with AI usually means the rest of the estate has not been thought about. My position is a fairly boring one: an AI capability is integrated like any other supplier system — behind a contract, with a gate before release, and with the vendor kept replaceable.
 
 ## What I do
 
-- **Agentic systems with guardrails.** Model routing, per-agent cost and budget enforcement, vendor abstraction, and a local-model fallback for sovereignty — with Prometheus observability so spend and behaviour are visible.
-- **Retrieval that's grounded.** RAG with proper embeddings and reranking so answers come from your data, not the model's imagination.
-- **Evaluation as a gate.** L1–L4 test layers, LLM-as-judge, and golden datasets so a regression is caught before it ships — the AI equivalent of acceptance criteria.
-- **Governance you can audit.** Deterministic tool contracts (MCP), answers that trace to a recorded call chain, and an "agents propose, humans dispose" model enforced in the delivery pipeline.
-
-## The proof
-
-I don't just advise on this — I build it. The AI work in the [portfolio](/en/portfolio) is three sibling repositories told as one **govern → build → deliver** story. In the interest of honesty: one of them runs end-to-end today; the other two are reference architectures. They are not three production systems, and the cards say so plainly.
+- **Put the model behind a contract.** A typed capability the caller talks to, so the model, the prompt and the vendor can all change without the caller noticing. Most AI work that becomes unmaintainable skipped this step.
+- **Make evaluation a release gate, not a report.** Golden sets and scored checks wired into CI, so a behaviour regression blocks a deploy the way a failing test does. This is the same move as schema-compatibility rules in a registry: trust moves out of a review meeting and into the platform.
+- **Keep the model outside the runtime.** Generation behind a versioned API rather than a model client compiled into the product, so today's caller can be a person and tomorrow's can be an API.
+- **Treat agent access as authorization.** An agent operating a management plane should use the same audited contract a person uses, not a side door.
 
 ## Evidenced by
 
-- [The AI trio](/en/work/ai-trio) — the govern→build→deliver case study behind this area.
-- [Contrail avoidance](/en/work/contrail-coav) — a PyTorch U-Net image-segmentation app (React → Node BFF → FastAPI), the runnable neural-network ML proof.
-- [Portfolio](/en/portfolio) — the repositories themselves, with honest maturity labels.
+- [Portfolio](/en/portfolio) — `skills-coach` ships **no model client at all**: the runtime owns the packs, the deterministic grading, the spaced-repetition gating and a durable model of what a learner keeps getting wrong. Generation and correction sit behind a versioned API, so the caller can be a person with an LLM CLI today and a model API later, and nothing else moves. That is the whole argument on this page, in one repository.
+- [Portfolio](/en/portfolio) — `identity-service` exposes the same audited management plane over HTTP and over MCP, so an agent operates it under exactly the same contract as a person. Agent access is an authorization question, not a new category of software.
+- [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — schema compatibility rules moved trust from a review meeting into the platform. Evaluation gates do the same job for model behaviour, and the reason I reach for them is that I have watched the pattern work on schemas first.
 
 Background: DeepLearning.AI Agentic AI (2025); 20+ years building data and ML systems.

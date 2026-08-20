@@ -20,12 +20,62 @@ export function emailAddress(): string {
 }
 
 /**
- * ADR-0004 gate. WHILE any public-surface prerequisite is unmet (one umbrella name, neutralized +
- * licensed forks, honest runnable-vs-reference framing), repo links stay OFF: portfolio/expertise
- * render descriptions and honest maturity labels only. Flip to `true` once all three close — a
- * single content/config change enables every link with no structural rebuild (FS-0005).
+ * WhatsApp click-to-chat (FS-0007/US-0016). Stored split so the full number never appears as one
+ * string in the exported HTML — same reasoning as the obfuscated email: the affordance is for
+ * visitors, not for scrapers. Assembled in the browser by `whatsappHref()`.
+ *
+ * International format, digits only, no `+` and no spaces. `cc` is the country code.
+ *
+ * This is the **Rinkel business number** (+31 30 207 2959), not the personal mobile, so the public
+ * surface and the CV contact number stay separate. Set to `null` to remove the WhatsApp affordance
+ * from the whole site.
+ *
+ * Verified 2026-08-20: https://wa.me/31302072959 resolves to the WhatsApp Business profile
+ * "Fusion Platform Services", so visitors see a business name rather than a bare number. Re-check
+ * this if the number ever changes — wa.me only resolves for a number registered on WhatsApp, and an
+ * unregistered one renders a working link that lands on "the phone number shared via url is
+ * invalid", which is a worse failure than having no button.
  */
-export const REPO_LINKS_ENABLED = false;
+export const whatsapp: { cc: string; rest: string } | null = { cc: '31', rest: '302072959' };
+
+/** Build a wa.me click-to-chat URL. Call from the browser only (see the note on `whatsapp`). */
+export function whatsappHref(message?: string): string | undefined {
+  if (!whatsapp) return undefined;
+  const query = message?.trim() ? `?text=${encodeURIComponent(message.trim())}` : '';
+  return `https://wa.me/${whatsapp.cc}${whatsapp.rest}${query}`;
+}
+
+/**
+ * Optional self-hosted intro video for the home page (FS-0002). WHILE this is `null` the home page
+ * renders no video section at all — an empty player is worse than none. Set it once the file is
+ * recorded and encoded into `public/media/`; see docs/guides/intro-video.md for what to record, how
+ * to encode it, and the caption requirement.
+ *
+ * Self-hosted deliberately: an embedded YouTube or Vimeo player would put a third-party processor
+ * and its cookies on the highest-traffic page, and the privacy page's "nothing is collected" claim
+ * would stop being true (FS-0007).
+ */
+export interface IntroVideo {
+  /** Path under public/, e.g. '/media/intro.mp4'. H.264/AAC in an MP4 container. */
+  src: string;
+  /** Poster frame shown before playback, e.g. '/media/intro-poster.jpg'. Required. */
+  poster: string;
+  /** WebVTT caption track per locale. Required — an uncaptioned intro excludes people. */
+  captions: Record<Locale, string>;
+  /** Human-readable running time, e.g. '1:50'. Shown next to the heading so nobody is ambushed. */
+  duration: string;
+}
+
+export const INTRO_VIDEO: IntroVideo | null = null;
+
+/**
+ * ADR-0004 gate — now discharged (ADR-0006). The gate existed for the two `sovereign-*` repos,
+ * whose naming, neutralization and licensing prerequisites were never met; those repos were
+ * removed from the public surface instead, so every remaining card is already public, honestly
+ * framed and licensed. Kept as a flag rather than deleted: a future repo that is not yet fit to
+ * link flips this off again without a structural change (FS-0005).
+ */
+export const REPO_LINKS_ENABLED = true;
 
 /**
  * The home-page emphasis. M0 ships `credibility`; M1 flips to `training` (FS-0002, ADR-0003). The
@@ -45,22 +95,46 @@ export const TRAINING_PUBLISHED = false;
 export type Maturity = 'working' | 'reference';
 
 /** The areas the build-proof groups under (FS-0005). */
-export type Pillar = 'ai' | 'platform' | 'applied';
+export type Pillar = 'data' | 'modernization' | 'platform';
 
 export interface PillarMeta {
   id: Pillar;
   label: Record<Locale, string>;
+  /** One line saying what the group is evidence *of* — the buyer's words, not the stack's. */
+  lede: Record<Locale, string>;
 }
 
-// Portfolio groups by pillar in this order. AI & automation (the two sovereign-* repos + the
-// training runtime), the platform area (the event-integration platform + the legacy-modernization
-// lab + the identity service + the SAP↔Snowflake seam blueprint), and applied ML & data science
-// (the two purpose-built COAV demos, the retail dynamic-pricing demo and the marketplace ranking
-// platform). Pure data so adding a pillar or moving a repo between them is a one-line change.
+// Portfolio groups by pillar in this order (ADR-0007). The three groups are named after the three
+// things a data or integration architect is actually engaged to do — decide and model the target,
+// move an estate onto it, and run the platform underneath — rather than after technology families.
+// The earlier "AI & applied ML" group was dissolved: after the pricing and ranking demos came off
+// the surface it held one repo, and AI was pulling attention away from the positioning rather than
+// supporting it. Pure data, so regrouping stays a one-line change.
 export const pillars: PillarMeta[] = [
-  { id: 'ai', label: { en: 'AI & automation', nl: 'AI & automatisering' } },
-  { id: 'platform', label: { en: 'Integration, data & modernization', nl: 'Integratie, data & modernisering' } },
-  { id: 'applied', label: { en: 'Applied ML & data science', nl: 'Toegepaste ML & datawetenschap' } },
+  {
+    id: 'data',
+    label: { en: 'Data architecture & modelling', nl: 'Data-architectuur & modellering' },
+    lede: {
+      en: 'Deciding what the target looks like, and what crosses the seam to get there.',
+      nl: 'Bepalen hoe het doelmodel eruitziet, en wat de naad oversteekt om er te komen.',
+    },
+  },
+  {
+    id: 'modernization',
+    label: { en: 'Modernization & migration', nl: 'Modernisering & migratie' },
+    lede: {
+      en: 'Moving a live estate wave by wave, with parity gates instead of a big-bang weekend.',
+      nl: 'Een draaiend landschap wave voor wave verplaatsen, met pariteitspoorten in plaats van een big-bang-weekend.',
+    },
+  },
+  {
+    id: 'platform',
+    label: { en: 'Integration & platform services', nl: 'Integratie & platformdiensten' },
+    lede: {
+      en: 'The self-service spine the teams downstream actually operate.',
+      nl: 'De selfservice-ruggengraat die de teams stroomafwaarts echt bedienen.',
+    },
+  },
 ];
 
 export interface Repo {
@@ -73,65 +147,80 @@ export interface Repo {
   license: string | null;
   url: string;
   /**
-   * Per-repo public-link override on top of the site-wide REPO_LINKS_ENABLED gate (ADR-0004).
-   * WHILE that gate is off, a repo with `linkLive: true` still renders its link — for repos that
-   * are already public, honestly framed and licensed (the two purpose-built COAV demos). Omitted
-   * or `false` = follow the gate.
+   * Per-repo public-link override on the site-wide REPO_LINKS_ENABLED gate. Omitted = follow the
+   * gate. `true` forces a link on while the gate is off; **`false` forces it off while the gate is
+   * on** — which is the case that matters now that the gate is open: a repo that exists locally but
+   * has not been pushed yet must render its card without a dead link.
    */
   linkLive?: boolean;
   proves: Record<Locale, string>;
 }
 
-// Build proof across two areas (FS-0005), each card carrying an honest maturity label — no
-// "production systems" claim. `working` runs end-to-end (`docker compose up`); `reference` is a
-// readable reference architecture. Repos still being built are tracked in
-// docs/notes/portfolio-repos-build-plan.md and added here only once they are real.
+// Build proof across three areas (FS-0005), each card carrying an honest maturity label. Every repo
+// listed here is public, licensed, honestly framed, and runs end-to-end (`working`) — the `reference`
+// label stays in the type because a future card may need it, not because anything uses it today.
+// Repos still being built are tracked in docs/notes/portfolio-repos-build-plan.md and added here
+// only once they are real.
 export const repos: Repo[] = [
-  // — AI & automation: govern the models, build a trustworthy agentic product, and run a product
-  //   that keeps the model outside its own runtime —
+  // — Data architecture & modelling —
   {
-    slug: 'sovereign-llm-gateway',
-    name: 'sovereign-llm-gateway',
-    pillar: 'ai',
-    role: { en: 'Govern & route the models', nl: 'Beheer & routeer de modellen' },
+    slug: 'enterprise-data-model-lab',
+    name: 'enterprise-data-model-lab',
+    pillar: 'data',
+    role: { en: 'Model one domain four ways', nl: 'Modelleer één domein op vier manieren' },
     maturity: 'working',
-    license: null,
-    url: 'https://github.com/fps4/sovereign-llm-gateway',
+    license: 'MIT',
+    linkLive: false, // built, not yet pushed — flip to true (or remove) once it is public
+    url: 'https://github.com/fps4/enterprise-data-model-lab',
     proves: {
-      en: 'A working LLM gateway: per-agent cost and budget enforcement, vendor abstraction (LiteLLM), a local-model fallback (Ollama) for sovereignty, and Prometheus observability. Every model call passes one choke point, so governance is enforced in code rather than circulated as a policy document. Runs end-to-end with `docker compose up`.',
-      nl: 'Een werkende LLM-gateway: kosten- en budgetbewaking per agent, vendor-abstractie (LiteLLM), een lokaal-model-fallback (Ollama) voor soevereiniteit, en Prometheus-observability. Elke modelaanroep passeert één punt, zodat governance in code wordt afgedwongen in plaats van rondgestuurd als beleidsdocument. Draait end-to-end met `docker compose up`.',
+      en: 'One retail domain taken through a business glossary, a conceptual model, a normalised logical model, and two physical targets built from identical staging: Kimball dimensional (SCD Type 2, one stated fact grain) and a Data Vault 2.0 raw vault. Fourteen assertions run on every build — overlapping validity windows, exactly one current row, no-op versions, fact grain, point-in-time joins, satellite keys, and reconciliation between both models and the source. Then the trade-off is measured rather than argued: same question, 1 join and 0.79 ms in Kimball against 3 joins and 302 ms in the vault, at 3× the rows stored. Runs with `make demo`.',
+      nl: 'Eén retaildomein doorlopen via een business-glossary, een conceptueel model, een genormaliseerd logisch model, en twee fysieke doelen uit identieke staging: Kimball-dimensioneel (SCD Type 2, één vastgelegde feitengranulariteit) en een Data Vault 2.0 raw vault. Veertien assertions draaien bij elke build — overlappende geldigheidsvensters, precies één actuele rij, no-op-versies, feitengranulariteit, point-in-time-joins, satellietsleutels, en aansluiting tussen beide modellen én de bron. Daarna wordt de afweging gemeten in plaats van beweerd: dezelfde vraag kost 1 join en 0,79 ms in Kimball tegen 3 joins en 302 ms in de vault, bij 3× zoveel opgeslagen rijen. Draait met `make demo`.',
     },
   },
   {
-    slug: 'sovereign-copilot',
-    name: 'sovereign-copilot',
-    pillar: 'ai',
-    role: { en: 'Build a trustworthy agentic product', nl: 'Bouw een betrouwbaar agentisch product' },
-    maturity: 'reference',
-    license: null,
-    url: 'https://github.com/fps4/sovereign-copilot',
-    proves: {
-      en: 'A reference architecture for a trustworthy copilot: deterministic tool contracts (MCP), retrieval grounded in your own data (BGE-M3 + reranker), L1–L4 evaluation gates with goldens, and answers that trace back to a recorded call chain. Readable end to end — a reference architecture, not a running system, and the card says so.',
-      nl: 'Een referentiearchitectuur voor een betrouwbare copilot: deterministische tool-contracten (MCP), retrieval geaard in je eigen data (BGE-M3 + reranker), L1–L4 evaluatiepoorten met goldens, en antwoorden die herleidbaar zijn tot een vastgelegde aanroepketen. Van begin tot eind leesbaar — een referentiearchitectuur, geen draaiend systeem.',
-    },
-  },
-  // — Skills Coach: public, honestly framed and MIT-licensed, so it carries a live link (linkLive)
-  //   ahead of the gate. —
-  {
-    slug: 'skills-coach',
-    name: 'skills-coach',
-    pillar: 'ai',
-    role: { en: 'Keep the model outside the runtime', nl: 'Houd het model buiten de runtime' },
+    slug: 'sap-bdc-snowflake-blueprint',
+    name: 'sap-bdc-snowflake-blueprint',
+    pillar: 'data',
+    role: { en: 'Decide what crosses the SAP↔cloud seam', nl: 'Bepaal wat de SAP↔cloud-naad oversteekt' },
     maturity: 'working',
     license: 'MIT',
     linkLive: true,
-    url: 'https://github.com/fps4/skills-coach',
+    url: 'https://github.com/fps4/sap-bdc-snowflake-blueprint',
     proves: {
-      en: 'A working, pack-driven training platform that ships no model client at all: the runtime owns the packs, deterministic grading, spaced-repetition gating and a durable model of what a learner keeps getting wrong. Generation and correction sit behind a versioned coach API, so the caller can be a person with an LLM CLI today and a model API later. Runs end-to-end with `make up`.',
-      nl: 'Een werkend, pack-gedreven trainingsplatform dat zelf geen enkele model-client bevat: de runtime bezit de packs, deterministische beoordeling, spaced-repetition-poorten en een duurzaam model van wat een lerende blijft fout doen. Generatie en correctie zitten achter een geversioneerde coach-API, dus de aanroeper kan vandaag een mens met een LLM-CLI zijn en later een model-API. Draait end-to-end met `make up`.',
+      en: 'A one-page SAP → Business Data Cloud/Datasphere → Snowflake reference architecture with the decision attached: nine ordered rules assign each of 24 objects a mode — share zero-copy, replicate, federate, split, or keep it in SAP — where residency and SLOs eliminate and cost only chooses among what survives. A transparent cost model gives the crossover frequency at which replication overtakes federation, and a local DuckDB simulation runs all three modes so the claim is measured. Runs end-to-end with `make demo`; the diagram is the artifact, the engine is what makes it arguable.',
+      nl: 'Een SAP → Business Data Cloud/Datasphere → Snowflake-referentiearchitectuur van één pagina, met de beslissing erbij: negen geordende regels wijzen elk van 24 objecten een modus toe — zero-copy delen, repliceren, federeren, splitsen, of in SAP houden — waarbij dataresidentie en SLO\'s elimineren en kosten alleen kiezen uit wat overblijft. Een transparant kostenmodel geeft de omslagfrequentie waarboven repliceren goedkoper wordt dan federeren, en een lokale DuckDB-simulatie draait alle drie de modi zodat de claim gemeten is. Draait end-to-end met `make demo`; het diagram is het artefact, de engine maakt het bespreekbaar.',
     },
   },
-  // — Integration, data & modernization: the event-integration platform as the working spine —
+  // — Modernization & migration —
+  {
+    slug: 'legacy-dwh-migration',
+    name: 'legacy-dwh-migration',
+    pillar: 'modernization',
+    role: { en: 'Move a warehouse wave by wave', nl: 'Verhuis een warehouse wave voor wave' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: false, // built, not yet pushed — flip to true (or remove) once it is public
+    url: 'https://github.com/fps4/legacy-dwh-migration',
+    proves: {
+      en: 'A legacy warehouse migrated wave by wave, with the programme artefacts as code. The assessment is crawled from the estate — catalog, lineage and a year of query telemetry — not read from an inventory, and it finds that 36% of objects were never queried while separating the ones that are genuinely retirable from the ones that are dormant but load-bearing. The wave plan is a scored model whose weights are config, sequenced under lineage as a hard constraint. Cutover is gated by a three-check parity harness with a tolerance policy written up front, and one defect is injected on purpose so the gate is demonstrably a gate. Ends with a decommission ledger and a business case with a break-even month. Runs with `make demo`.',
+      nl: 'Een legacy warehouse dat wave voor wave wordt gemigreerd, met de programma-artefacten als code. De assessment wordt uit het landschap zelf gehaald — catalogus, lineage en een jaar aan query-telemetrie — niet uit een inventarislijst, en vindt dat 36% van de objecten nooit is bevraagd, waarbij onderscheid wordt gemaakt tussen wat echt uitgefaseerd kan worden en wat slapend maar dragend is. Het waveplan is een gescoord model waarvan de wegingen configuratie zijn, gesequenced met lineage als harde randvoorwaarde. Cutover wordt bewaakt door een pariteitsharnas met drie controles en een vooraf vastgelegd tolerantiebeleid, en er wordt bewust één defect geïnjecteerd zodat aantoonbaar is dat de poort werkt. Sluit af met een decommission-ledger en een business case met omslagmaand. Draait met `make demo`.',
+    },
+  },
+  {
+    slug: 'oracle-to-spring-strangler',
+    name: 'oracle-to-spring-strangler',
+    pillar: 'modernization',
+    role: { en: 'Modernize legacy live, wave by wave', nl: 'Moderniseer legacy live, wave voor wave' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/oracle-to-spring-strangler',
+    proves: {
+      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS system migrated live to Spring Boot + PostgreSQL by the strangler fig pattern. AI-assisted assessment artifacts, per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — and golden-master parity gates as wave exit criteria. Runs end-to-end with `docker compose up`.',
+      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS-systeem live gemigreerd naar Spring Boot + PostgreSQL via het strangler-fig-patroon. AI-ondersteunde assessment-artefacten, cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — en golden-master-pariteitspoorten als exitcriteria. Draait end-to-end met `docker compose up`.',
+    },
+  },
+  // — Integration & platform services —
   {
     slug: 'event-integration-platform',
     name: 'event-integration-platform',
@@ -146,25 +235,6 @@ export const repos: Repo[] = [
       nl: 'Een Kafka-native, multi-tenant platform voor event-streaming en integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ en replay, Kafka Connect HTTP/S3-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. De selfservice-ruggengraat die een integratieteam echt bedient. Draait lokaal met `docker compose up`.',
     },
   },
-  // — Legacy modernization: the Oracle→Spring strangler lab. Public, honestly framed (its README
-  //   carries an explicit honesty statement) and MIT-licensed, so it carries a live link
-  //   (linkLive) ahead of the gate. —
-  {
-    slug: 'oracle-to-spring-strangler',
-    name: 'oracle-to-spring-strangler',
-    pillar: 'platform',
-    role: { en: 'Modernize legacy live, wave by wave', nl: 'Moderniseer legacy live, wave voor wave' },
-    maturity: 'working',
-    license: 'MIT',
-    linkLive: true,
-    url: 'https://github.com/fps4/oracle-to-spring-strangler',
-    proves: {
-      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS system migrated live to Spring Boot + PostgreSQL by the strangler fig pattern. AI-assisted assessment artifacts, per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — and golden-master parity gates as wave exit criteria. Runs end-to-end with `docker compose up`.',
-      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS-systeem live gemigreerd naar Spring Boot + PostgreSQL via het strangler-fig-patroon. AI-ondersteunde assessment-artefacten, cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — en golden-master-pariteitspoorten als exitcriteria. Draait end-to-end met `docker compose up`.',
-    },
-  },
-  // — Identity: the self-hosted IdP the other products authenticate against. Public, honestly
-  //   framed and MIT-licensed, so it carries a live link (linkLive) ahead of the gate. —
   {
     slug: 'identity-service',
     name: 'identity-service',
@@ -179,85 +249,18 @@ export const repos: Repo[] = [
       nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), een headless TypeScript-SDK en een drop-in React `<Login/>`. Het geauditeerde beheervlak spreekt zowel HTTP `/admin/v1` als MCP, zodat agents het onder hetzelfde contract bedienen als mensen. Alleen authenticatie — producten houden hun eigen autorisatie. Draait end-to-end met `docker compose up`.',
     },
   },
-  // — The SAP↔cloud seam: the runnable counterpart to the sap-snowflake case study. Public,
-  //   honestly framed (its README carries an explicit honesty statement) and MIT-licensed, so it
-  //   carries a live link (linkLive) ahead of the gate. —
   {
-    slug: 'sap-bdc-snowflake-blueprint',
-    name: 'sap-bdc-snowflake-blueprint',
+    slug: 'skills-coach',
+    name: 'skills-coach',
     pillar: 'platform',
-    role: { en: 'Decide what crosses the SAP↔cloud seam', nl: 'Bepaal wat de SAP↔cloud-naad oversteekt' },
+    role: { en: 'Keep the model outside the runtime', nl: 'Houd het model buiten de runtime' },
     maturity: 'working',
     license: 'MIT',
     linkLive: true,
-    url: 'https://github.com/fps4/sap-bdc-snowflake-blueprint',
+    url: 'https://github.com/fps4/skills-coach',
     proves: {
-      en: 'A one-page SAP → Business Data Cloud/Datasphere → Snowflake reference architecture with the decision attached: nine ordered rules assign each of 24 objects a mode — share zero-copy, replicate, federate, split, or keep it in SAP — where residency and SLOs eliminate and cost only chooses among what survives. A transparent cost model gives the crossover frequency at which replication overtakes federation, and a local DuckDB simulation runs all three modes so the claim is measured. Runs end-to-end with `make demo`; the diagram is the artifact, the engine is what makes it arguable.',
-      nl: 'Een SAP → Business Data Cloud/Datasphere → Snowflake-referentiearchitectuur van één pagina, met de beslissing erbij: negen geordende regels wijzen elk van 24 objecten een modus toe — zero-copy delen, repliceren, federeren, splitsen, of in SAP houden — waarbij dataresidentie en SLO\'s elimineren en kosten alleen kiezen uit wat overblijft. Een transparant kostenmodel geeft de omslagfrequentie waarboven repliceren goedkoper wordt dan federeren, en een lokale DuckDB-simulatie draait alle drie de modi zodat de claim gemeten is. Draait end-to-end met `make demo`; het diagram is het artefact, de engine maakt het bespreekbaar.',
-    },
-  },
-  // — Applied ML & data science: the two purpose-built COAV demos (a matched pair) and the retail
-  //   dynamic-pricing demo. Already public, honestly framed and licensed, so they carry live links
-  //   (linkLive) ahead of the gate. —
-  {
-    slug: 'contrail-segmentation-demo',
-    name: 'contrail-segmentation-demo',
-    pillar: 'applied',
-    role: { en: 'Detect contrails in sky-camera images', nl: 'Detecteer contrails in sky-camera-beelden' },
-    maturity: 'working',
-    license: null,
-    linkLive: true,
-    url: 'https://github.com/fps4/contrail-segmentation-demo',
-    proves: {
-      en: 'A neural-network image-segmentation app — React front end → Node.js (Express) BFF → Python FastAPI service → a hand-written PyTorch U-Net — that detects contrails in sky-camera images and reports coverage and count. Three services, `docker compose up`, CI on GitHub Actions. Trained on a synthetic sky generator so it runs on a laptop in minutes; the README writes down the path to real GVCCS imagery.',
-      nl: 'Een neuraal-netwerk-beeldsegmentatie-app — React-frontend → Node.js (Express) BFF → Python FastAPI-service → een zelfgeschreven PyTorch U-Net — die contrails in sky-camera-beelden detecteert en dekking en aantal rapporteert. Drie services, `docker compose up`, CI op GitHub Actions. Getraind op een synthetische lucht-generator zodat het in minuten op een laptop draait; de README beschrijft het pad naar echte GVCCS-beelden.',
-    },
-  },
-  {
-    slug: 'contrail-avoidance-pipeline',
-    name: 'contrail-avoidance-pipeline',
-    pillar: 'applied',
-    role: { en: 'Decide which flights to reroute — and at what cost', nl: 'Bepaal welke vluchten omgeleid worden — en tegen welke kosten' },
-    maturity: 'working',
-    license: null,
-    linkLive: true,
-    url: 'https://github.com/fps4/contrail-avoidance-pipeline',
-    proves: {
-      en: 'A Polars/Pandas pipeline plus a Databricks-style notebook that flag which flights form persistent, climate-warming contrails — via the Schmidt–Appleman Criterion and ice-supersaturated regions — and propose altitude changes, weighing avoided climate forcing (CO₂e) against extra fuel burn. Lakehouse-shaped and laptop-runnable, with a documented path to ERA5 and OpenSky data.',
-      nl: 'Een Polars/Pandas-pipeline plus een Databricks-achtige notebook die bepalen welke vluchten persistente, klimaatopwarmende contrails vormen — via het Schmidt–Appleman-criterium en ijs-oververzadigde regio\'s — en hoogtewijzigingen voorstellen, waarbij vermeden klimaatforcering (CO₂e) wordt afgewogen tegen extra brandstofverbruik. Lakehouse-vormig en laptop-draaibaar, met een gedocumenteerd pad naar ERA5- en OpenSky-data.',
-    },
-  },
-  // — Retail dynamic pricing: one lakehouse, two pricing verticals. Public, honestly framed and
-  //   MIT-licensed, so it carries a live link (linkLive) ahead of the gate. —
-  {
-    slug: 'retail-dynamic-pricing',
-    name: 'retail-dynamic-pricing',
-    pillar: 'applied',
-    role: { en: 'Price retail at scale — elasticity to optimization', nl: 'Prijs retail op schaal — van elasticiteit tot optimalisatie' },
-    maturity: 'working',
-    license: 'MIT',
-    linkLive: true,
-    url: 'https://github.com/fps4/retail-dynamic-pricing',
-    proves: {
-      en: 'A retail dynamic-pricing platform on a Databricks lakehouse: one elasticity-to-optimization engine serving two verticals — grocery (markdown) and consumer electronics (MAP-compliant lifecycle). Log-log demand estimation checked against a known ground truth, plus a solver-agnostic revenue optimizer. Two notebooks run end-to-end on a laptop on synthetic data — +6.4% revenue at flat margin.',
-      nl: 'Een dynamic-pricing-platform voor retail op een Databricks-lakehouse: één elasticiteit-naar-optimalisatie-engine die twee verticals bedient — grocery (afprijzing) en consumentenelektronica (MAP-conforme lifecycle). Log-log vraagschatting getoetst aan een bekende grondwaarheid, plus een solver-agnostische omzetoptimalisator. Twee notebooks draaien end-to-end op een laptop op synthetische data — +6,4% omzet bij gelijke marge.',
-    },
-  },
-  // — Marketplace ranking: a reference AI Application Platform — the ML-platform layer
-  //   (feature store → serving → experimentation → eval gate) around a ranking model. Public,
-  //   honestly framed (README honesty statement) and MIT-licensed, so it carries a live link. —
-  {
-    slug: 'marketplace-intel-platform',
-    name: 'marketplace-intel-platform',
-    pillar: 'applied',
-    role: { en: 'Rank a marketplace — feature store to eval gate', nl: 'Rangschik een marktplaats — feature store tot eval-gate' },
-    maturity: 'working',
-    license: 'MIT',
-    linkLive: true,
-    url: 'https://github.com/fps4/marketplace-intel-platform',
-    proves: {
-      en: 'A reference AI application platform for marketplace ranking: a LightGBM learning-to-rank model and a GenAI explanation overlay behind one typed capability contract, fed by a Feast feature store with point-in-time-correct training and serving. An eval harness — ranking quality and explanation faithfulness — is wired as a CI deploy gate that blocks a regression. `make demo` runs it end-to-end: +12.7% NDCG@10.',
-      nl: 'Een referentie-AI-applicatieplatform voor het rangschikken op een marktplaats: een LightGBM learning-to-rank-model en een GenAI-uitleg-overlay achter één getypeerd capability-contract, gevoed door een Feast-feature-store met point-in-time-correcte training en serving. Een evaluatieharnas — rangschikkingskwaliteit én uitleg-getrouwheid — is een CI-deploypoort die een regressie blokkeert. `make demo` draait het end-to-end: +12,7% NDCG@10.',
+      en: 'A working, pack-driven training platform that ships no model client at all: the runtime owns the packs, deterministic grading, spaced-repetition gating and a durable model of what a learner keeps getting wrong. Generation and correction sit behind a versioned coach API, so the caller can be a person with an LLM CLI today and a model API later. Runs end-to-end with `make up`.',
+      nl: 'Een werkend, pack-gedreven trainingsplatform dat zelf geen enkele model-client bevat: de runtime bezit de packs, deterministische beoordeling, spaced-repetition-poorten en een duurzaam model van wat een lerende blijft fout doen. Generatie en correctie zitten achter een geversioneerde coach-API, dus de aanroeper kan vandaag een mens met een LLM-CLI zijn en later een model-API. Draait end-to-end met `make up`.',
     },
   },
 ];

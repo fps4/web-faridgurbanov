@@ -3,7 +3,7 @@ title: SAP S/4HANA Finance → Snowflake
 summary: A cloud-native pipeline moving SAP Finance ledgers into a Snowflake lakehouse, with data contracts at the seam — multi-TB backfill plus 10–30 GB daily delta across ~30+ company codes.
 hook: A legacy SAP Finance estate turned into a cloud-native analytics backbone.
 metric: ~30+ company codes
-order: 2
+order: 3
 ---
 
 # SAP S/4HANA Finance → Snowflake
@@ -48,9 +48,9 @@ The trade-off to know upfront: contracts put friction where SAP teams had none �
 
 **The disagreement:** a contract at the seam moves work upstream. The SAP team had no obligations toward analytics before this design and would now own a schema promise and answer for breaking it — a genuine ask, not a formality. Finance, meanwhile, had no reason to trust a new number source over the ledger it already used.
 
-**What resolved it:** reconciliation, not persuasion. Balancing the loaded data against the source ledger gave Finance a check it could run itself, which is what actually earned adoption. With the SAP architects the route was source-to-target mapping done together rather than handed over — the extraction strategy had to protect their system's load, and it was their constraint that shaped it.
+**What resolved it:** a check rather than an argument. Balancing the loaded data against the source ledger gave Finance something they could run themselves, and that is what earned adoption. With the SAP architects, the route was to do the source-to-target mapping together instead of handing it over. The extraction strategy had to protect the load on their system, and their constraint shaped the design — which is also what got me a named owner behind the contract.
 
-**What it cost:** friction upstream where there had been none, and a named owner behind every contract. That ownership had to be agreed before any of it could be enforced in code.
+**What it cost:** extra work upstream where there had been none, and a named owner behind every contract. That ownership had to be agreed before any of it could be enforced in code.
 
 ## Role & stack
 

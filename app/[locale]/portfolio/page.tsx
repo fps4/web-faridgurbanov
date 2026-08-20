@@ -5,13 +5,12 @@ import { getDictionary } from '@/lib/dictionaries';
 import { REPO_LINKS_ENABLED, pillars, repos, site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
-// Portfolio (FS-0005/US-0013). Build proof grouped by pillar — AI & automation; integration,
-// data & modernization; applied ML — each card carrying an honest maturity label (working /
-// reference). Live repo
-// links are gated on the ADR-0004 prerequisites (REPO_LINKS_ENABLED): until they close, cards
-// render description-only — flipping the flag enables every link with no structural change. No
-// "three production systems" claim. Repos still being built are not listed here yet; they live in
-// docs/notes/portfolio-repos-build-plan.md until they are real.
+// Portfolio (FS-0005/US-0013, restructured by ADR-0006). Build proof grouped by pillar —
+// integration, data & modernization first, then AI & applied ML — each card carrying an honest
+// maturity label. The ADR-0004 link gate is discharged (every listed repo is public, licensed and
+// honestly framed) but REPO_LINKS_ENABLED stays in the code so a future not-yet-linkable repo can
+// flip it back without a structural change. No "production systems" claim. Repos still being built
+// are not listed here; they live in docs/notes/portfolio-repos-build-plan.md until they are real.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -47,7 +46,8 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
             <h2 className="text-sm font-medium uppercase tracking-wide text-foreground">
               {pillar.label[locale]}
             </h2>
-            <ol className="mt-4 grid gap-6 lg:grid-cols-3">
+            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{pillar.lede[locale]}</p>
+            <ol className="mt-5 grid gap-6 lg:grid-cols-3">
               {items.map((repo, i) => {
                 const maturityLabel =
                   repo.maturity === 'working' ? t.maturityWorking : t.maturityReference;
@@ -84,7 +84,10 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
                     </p>
                     <p className="mt-2 flex-1 text-sm text-muted-foreground">{repo.proves[locale]}</p>
 
-                    {REPO_LINKS_ENABLED || repo.linkLive ? (
+                    {/* Per-repo override wins in both directions; `linkLive: false` suppresses a
+                        link for a repo that exists but is not public yet, so no card ever carries
+                        a dead link. */}
+                    {repo.linkLive ?? REPO_LINKS_ENABLED ? (
                       <a
                         href={repo.url}
                         rel="noopener"

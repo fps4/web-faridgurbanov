@@ -1,7 +1,7 @@
 ---
 title: "FS-0005 — Portfolio / repositories"
 status: draft
-last_updated: 2026-06-09
+last_updated: 2026-08-20
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -52,6 +52,24 @@ liabilities before links go live.
 - Closing the prerequisites themselves — that work happens in the respective repos (this spec
   only gates *publishing* on their completion).
 
+## Restructure (ADR-0006, 2026-08-20)
+
+The set was cut from eleven repos in three pillars to **seven in two**, for the data-architect /
+lead-architect target: the two `sovereign-*` repos (never cleared ADR-0004) and the two contrail
+demos (role-specific) came off the surface; the AI and applied-ML pillars merged into **AI & applied
+ML**; **Integration, data & modernization** now leads. Every remaining card is public, licensed,
+runnable and linked, so the ADR-0004 link gate is discharged — `REPO_LINKS_ENABLED` is `true` and
+stays in the code only for a future repo that is not yet fit to link.
+
+### Narrowed again (ADR-0007, 2026-08-20)
+
+Cut from seven repos in two pillars to **five in three**: `retail-dynamic-pricing` and
+`marketplace-intel-platform` came off (good work, wrong conversation for a data/integration architect),
+and the pillars were renamed after what a client engages an architect to do — **Data architecture &
+modelling**, **Modernization & migration**, **Integration & platform services** — each with a one-line
+lede in the buyer's words. Two repos in the build plan (`enterprise-data-model-lab`,
+`legacy-dwh-migration`) take the set back to seven.
+
 ## Acceptance criteria (EARS)
 
 - THE SYSTEM SHALL present the three repositories as one govern→build→deliver narrative, each as a
@@ -65,6 +83,13 @@ liabilities before links go live.
   repository links.
 - THE portfolio SHALL render via the FS-0001 content pipeline in English, with Dutch provided or
   falling back per ADR-0002.
+
+- THE portfolio SHALL present the pillars with **Integration, data & modernization** first
+  (ADR-0006).
+- EVERY repository listed on the portfolio SHALL be public, licensed and honestly framed; WHERE a
+  repository is not, IT SHALL NOT be listed rather than listed without a link.
+- THE honesty statement SHALL state that the repositories run on synthetic data and SHALL NOT make
+  a production-system claim.
 
 ## Definition of done
 

@@ -1,11 +1,12 @@
 ---
 title: "FS-0003 — Expertise pages"
 status: draft
-last_updated: 2026-08-18
+last_updated: 2026-08-20
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
+  - docs/design/decisions/0005-stakeholder-forward-positioning.md
 maestro:
   feature: expertise-pages
   kind: functional_spec
@@ -40,10 +41,12 @@ and makes it navigable; the case studies (FS-0004) carry the per-engagement deta
 1. **Domain areas**, each a markdown page: integration architecture; event-driven / streaming;
    APIs & gateways; data & lakehouse; applied ML & data science; **AI & automation** (promoted to
    a peer area).
-2. **Practice areas**, each a markdown page: **stakeholder alignment** (influence without
-   authority, adoption, and the operating model for a part-time architect seat) and
+2. **Practice areas**, each a markdown page: **working across an organisation** (influence
+   without authority, adoption, and the operating model for a part-time architect seat) and
    **architecture decisions** (target state with a road to it, decision records that name the
-   cost, C4 at the right altitude, build/buy/exit).
+   cost, C4 at the right altitude, build/buy/exit). Per ADR-0005 the cross-organisation page
+   carries **named situations** — the disagreement, the mechanism that resolved it, and where
+   relevant what the owner got wrong — not a list of collaborative adjectives.
 3. **AI/automation peer promotion** — the AI area is presented at the same level as
    event-driven, backed by `sovereign-copilot` / `sovereign-llm-gateway` / `maestro` (subject to
    the public-surface prerequisites, ADR-0004).
@@ -68,7 +71,10 @@ and makes it navigable; the case studies (FS-0004) carry the per-engagement deta
   page reachable from an expertise index.
 - THE SYSTEM SHALL present the practice areas (stakeholder alignment, architecture decisions),
   each as its own page reachable from the same index.
-- THE expertise index SHALL present the domain and practice areas as two labelled groups.
+- THE expertise index SHALL present the domain and practice areas as two labelled groups, AND
+  SHALL present the practice group before the domain group (ADR-0005).
+- THE cross-organisation practice page SHALL present at least three named situations, EACH
+  stating the disagreement and the mechanism that resolved it.
 - WHERE an expertise page declares no `group`, THE index SHALL render it in the domain group.
 - WHILE the practice group has no entries, THE index SHALL omit the practice group entirely
   rather than render an empty heading.
@@ -86,5 +92,6 @@ and makes it navigable; the case studies (FS-0004) carry the per-engagement deta
 - Each page cross-links at least one case study where one exists.
 - Each practice page's claims are evidenced by a named engagement — no capability asserted
   without a case study, repo or credential behind it.
+- The practice group renders above the domain group on the index in EN and NL.
 - The AI & automation page reads as a peer area and is consistent with the honesty rule
   (runnable vs reference).

@@ -49,11 +49,11 @@ De trade-off om vooraf te kennen: een gefedereerd model is een belofte die je tw
 
 **Stakeholders:** 18–20 productteams die elk al een werkende gateway bezaten; een platformteam dat moest gaan beheren wat ervoor in de plaats kwam; een securityafdeling die één authenticatiemodel over twee clouds moest accepteren; en de budgethouder achter het IBM API Connect-contract.
 
-**Het meningsverschil:** niemand wilde een gateway die hij zelf beheerde inruilen voor een afhankelijkheid van een centraal team — en niemand had de bevoegdheid om een migratie op te leggen. Een verplichting had twintig uitzonderingen en één zeer trage backlog opgeleverd.
+**Het meningsverschil:** niemand wilde een gateway die hij zelf beheerde opgeven in ruil voor een afhankelijkheid van een centraal team, en niemand had de bevoegdheid om een migratie op te leggen. Om een verplichting vragen had twintig uitzonderingen en één zeer trage backlog opgeleverd.
 
-**Wat het oploste:** de gebaande weg goedkoper maken dan blijven zitten. Terraform-onboarding in minuten, één OAuth2/JWT-model dat teams niet langer zelf hoefden te bouwen, en Datadog-dashboards die ze niet zelf hoefden aan te sluiten. Security kreeg één model om te reviewen in plaats van twintig; finance kreeg een uitfaseringsbedrag dat het programma betaalde.
+**Wat het oploste:** de gebaande weg goedkoper maken dan blijven zitten. Terraform-onboarding in minuten, één OAuth2/JWT-model dat teams niet langer zelf hoefden te bouwen, en Datadog-dashboards die ze niet zelf hoefden aan te sluiten. Security kreeg één model om te reviewen in plaats van twintig, en finance kreeg een uitfaseringsbedrag dat het programma betaalde. De migratievolgorde deed er ook toe: de eerste teams die overgingen waren die met de slechtste bestaande situatie, zodat zij de referentie werden waar andere teams naar vroegen.
 
-**Wat het kostte:** een blijvende verplichting om elke nieuwe functionaliteit twee keer op te leveren, op AWS én Azure. Dat was de prijs van twintig teams níét naar één leverancier dwingen, en die was het waard — maar het is een belofte, geen eenmalige actie.
+**Wat het kostte:** een blijvende verplichting om elke nieuwe functionaliteit twee keer op te leveren, op AWS én Azure. Dat was de prijs van twintig teams niet naar één leverancier dwingen. Ik denk dat het het waard was, maar het is een permanente belofte en geen eenmalige actie.
 
 ## Rol & stack
 
