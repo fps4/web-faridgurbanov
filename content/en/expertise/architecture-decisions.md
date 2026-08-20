@@ -1,6 +1,7 @@
 ---
 title: Architecture decisions
 summary: Making the call and writing it down — target-state with a road to it, decision records that state what a choice costs, and C4 at the altitude the audience actually needs.
+evidence: [sap-snowflake, cloud-gateway, portfolio]
 order: 8
 group: practice
 ---

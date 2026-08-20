@@ -1,6 +1,7 @@
 ---
 title: Event-driven & streaming
 summary: Kafka en cloud-native streaming als de ruggengraat van moderne data en integratie — schema-evolutie, stream processing, en systemen waar teams op kunnen vertrouwen.
+evidence: [sap-event-backbone, cloudera-kafka, cloud-gateway]
 order: 3
 group: domain
 ---
@@ -17,6 +18,7 @@ Streaming is waar integratie- en data-architectuur samenkomen. Goed gedaan veran
 
 ## Aangetoond door
 
+- [SAP-event-backbone](/nl/work/sap-event-backbone) — een broker-gebaseerde backbone (SAP Advanced Event Mesh over AMQP 1.0) waarbij subscriptiemodel, afleveringsgarantie en dead-letter-gedrag als contract zijn afgesproken voordat een van beide kanten code schreef.
 - [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — 20+ geproductiseerde datastreams over 30+ bronsystemen, met schema-governance en domeineigenaarschap.
 - [Cloud Gateway](/nl/work/cloud-gateway) — event-driven integratie-adapters (SNS/SQS, Lambda-transformaties) binnen een cross-cloud API-platform.
 

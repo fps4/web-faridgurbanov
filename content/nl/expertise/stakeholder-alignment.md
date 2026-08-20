@@ -1,6 +1,7 @@
 ---
 title: Werken door de organisatie heen
 summary: Het deel van het vak dat bepaalt of een architectuur er komt — teams die elders rapporteren, afdelingen die een getal moeten vertrouwen, en een leverancierscontract dat vier jaar geleden getekend is. Invloed zonder bevoegdheid, met de situaties uitgeschreven.
+evidence: [cloud-gateway, sap-event-backbone, sap-snowflake, cloudera-kafka]
 order: 7
 group: practice
 ---

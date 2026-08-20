@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { HtmlLang } from '@/components/html-lang';
-import { WhatsAppLauncher } from '@/components/whatsapp-launcher';
 import { getDictionary } from '@/lib/dictionaries';
 import { isLocale, locales, type Locale } from '@/lib/i18n';
 
@@ -42,9 +41,6 @@ export default async function LocaleLayout({
         </main>
         <SiteFooter locale={locale as Locale} />
       </div>
-      {/* Click-to-chat launcher (US-0016). A link, not a widget — no Meta SDK, no iframe, nothing
-          loaded from a third party until the visitor chooses this channel. */}
-      <WhatsAppLauncher label={t.whatsappLauncher} prefill={t.whatsappPrefill} />
     </>
   );
 }

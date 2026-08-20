@@ -3,6 +3,11 @@ title: Kafka-dataproductplatform op Cloudera
 summary: Een Cloudera-gebaseerd Kafka-dataproductplatform dat 20+ datastreams productiseert over 30+ bronsystemen, met schema-governance en domeingeoriënteerd eigenaarschap.
 hook: Streamingdata geproductiseerd over domeinen heen, met gegoverneerde schema's.
 metric: 20+ dataproducten
+short: Kafka-dataproducten
+client: Een grote Britse telecomoperator
+disagreement: Een stream productiseren betekent dat het producerende domein afnemers accepteert waar het nooit om vroeg, plus een schemabelofte en een SLA.
+role: Data engineer en technology architect — platform ontworpen en cross-border teams begeleid.
+stack: [Apache Kafka, Cloudera CDP, Schema Registry, Hive LLAP, Spark 3]
 order: 4
 ---
 

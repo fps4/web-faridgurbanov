@@ -3,6 +3,11 @@ title: SAP S/4HANA Finance → Snowflake
 summary: Een cloud-native pipeline die SAP Finance-grootboeken naar een Snowflake-lakehouse verplaatst, met datacontracten op de naad — multi-TB backfill plus 10–30 GB dagelijkse delta over ~30+ bedrijfscodes.
 hook: Een legacy SAP Finance-landschap omgevormd tot een cloud-native analytics-ruggengraat.
 metric: ~30+ bedrijfscodes
+short: SAP Finance → Snowflake
+client: Een wereldwijde productieklant (DACH-regio)
+disagreement: Finance had al een grootboek dat het vertrouwde, en het contract op de naad verplaatste werk naar een SAP-team dat eerder geen verplichtingen richting analytics had.
+role: Data engineer en technology architect — MVP en referentiearchitectuur opgeleverd.
+stack: [AWS EMR, AWS Glue, PySpark, Snowflake, Terraform]
 order: 3
 ---
 

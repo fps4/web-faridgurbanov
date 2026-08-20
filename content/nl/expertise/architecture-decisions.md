@@ -1,6 +1,7 @@
 ---
 title: Architectuurbeslissingen
 summary: De keuze maken én vastleggen — een doelarchitectuur met een route ernaartoe, decision records die benoemen wat een keuze kost, en C4 op de hoogte die het publiek echt nodig heeft.
+evidence: [sap-snowflake, cloud-gateway, portfolio]
 order: 8
 group: practice
 ---

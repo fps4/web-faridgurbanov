@@ -1,6 +1,7 @@
 ---
 title: APIs & gateways
 summary: API platforms that scale across dozens of teams — gateway strategy, security governance, lifecycle, and the developer experience that makes them adopted.
+evidence: [cloud-gateway]
 order: 4
 group: domain
 ---

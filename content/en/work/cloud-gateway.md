@@ -3,6 +3,11 @@ title: Cloud Gateway — federated cross-cloud API platform
 summary: Consolidated 20+ fragmented API gateways into one federated, cross-cloud, self-service platform handling ~500M+ requests a month and saving ~€250–300k a year.
 hook: 20+ fragmented gateways unified into one self-service platform across AWS and Azure.
 metric: ~500M+ req/month
+short: Cloud Gateway
+client: A major Dutch grocery retailer
+disagreement: Nobody wanted to give up a gateway they controlled for a dependency on a central team, and no one had the authority to order a migration.
+role: Led the design and rollout — API standards, the security model, and governance.
+stack: [AWS API Gateway, Azure APIM, Terraform, OAuth2/OIDC, Datadog]
 order: 1
 ---
 

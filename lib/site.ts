@@ -170,7 +170,6 @@ export const repos: Repo[] = [
     role: { en: 'Model one domain four ways', nl: 'Modelleer één domein op vier manieren' },
     maturity: 'working',
     license: 'MIT',
-    linkLive: false, // built, not yet pushed — flip to true (or remove) once it is public
     url: 'https://github.com/fps4/enterprise-data-model-lab',
     proves: {
       en: 'One retail domain taken through a business glossary, a conceptual model, a normalised logical model, and two physical targets built from identical staging: Kimball dimensional (SCD Type 2, one stated fact grain) and a Data Vault 2.0 raw vault. Fourteen assertions run on every build — overlapping validity windows, exactly one current row, no-op versions, fact grain, point-in-time joins, satellite keys, and reconciliation between both models and the source. Then the trade-off is measured rather than argued: same question, 1 join and 0.79 ms in Kimball against 3 joins and 302 ms in the vault, at 3× the rows stored. Runs with `make demo`.',
@@ -199,7 +198,6 @@ export const repos: Repo[] = [
     role: { en: 'Move a warehouse wave by wave', nl: 'Verhuis een warehouse wave voor wave' },
     maturity: 'working',
     license: 'MIT',
-    linkLive: false, // built, not yet pushed — flip to true (or remove) once it is public
     url: 'https://github.com/fps4/legacy-dwh-migration',
     proves: {
       en: 'A legacy warehouse migrated wave by wave, with the programme artefacts as code. The assessment is crawled from the estate — catalog, lineage and a year of query telemetry — not read from an inventory, and it finds that 36% of objects were never queried while separating the ones that are genuinely retirable from the ones that are dormant but load-bearing. The wave plan is a scored model whose weights are config, sequenced under lineage as a hard constraint. Cutover is gated by a three-check parity harness with a tolerance policy written up front, and one defect is injected on purpose so the gate is demonstrably a gate. Ends with a decommission ledger and a business case with a break-even month. Runs with `make demo`.',

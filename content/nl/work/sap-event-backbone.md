@@ -3,6 +3,11 @@ title: SAP-event-backbone — drie landschappen, één contract
 summary: Een integratielaag die een enterprise SAP-event-backbone (SAP Advanced Event Mesh / Solace) verbindt met een AWS-native integratieplatform — ontworpen over drie teams heen die geen tooling, geen vocabulaire en geen backlog delen.
 hook: Drie platformteams, drie landschappen, één event-contract dat niemand eerder bezat.
 metric: 3 landschappen, 1 contract
+short: SAP-event-backbone
+client: Een grote Nederlandse supermarktketen · lopend, 2026
+disagreement: Drie teams met drie definities van de grens — en elke vraag die er werkelijk toe doet zat in het gat ertussen.
+role: Leidend in het technisch ontwerp en de afspraak tussen de teams; eigenaar van de AWS-kant.
+stack: [SAP Advanced Event Mesh, AMQP 1.0, S/4HANA, AWS Lambda, Terraform]
 order: 2
 ---
 

@@ -53,6 +53,7 @@ No designs yet; the decisions are locked as ADRs under [`design/decisions/`](./d
 | [0005](./design/decisions/0005-stakeholder-forward-positioning.md) | Stakeholder-forward positioning (lead with adoption, not only with build) |
 | [0006](./design/decisions/0006-portfolio-restructure-data-architecture.md) | Portfolio restructured for the data-architect / lead-architect target |
 | [0007](./design/decisions/0007-front-page-three-bands-and-portfolio-focus.md) | Front page as three bands; portfolio narrowed to five repos in three areas |
+| [0008](./design/decisions/0008-work-and-expertise-index-redesign.md) | Selected work and Expertise indexes redesigned; WhatsApp scoped back to Contact |
 
 ## Reference
 

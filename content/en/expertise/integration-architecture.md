@@ -1,6 +1,7 @@
 ---
 title: Integration architecture
 summary: Designing the backbone that lets enterprise systems talk — from legacy ESBs to event-driven, API-led, domain-oriented platforms.
+evidence: [sap-event-backbone, cloud-gateway, cloudera-kafka]
 order: 2
 group: domain
 ---
@@ -17,6 +18,7 @@ For twenty years my job has been to make systems that were never meant to talk t
 
 ## Evidenced by
 
+- [SAP event backbone](/en/work/sap-event-backbone) — an SAP estate, a legacy IBM ESB and an AWS-native platform brought onto one event contract, so domain teams subscribe to governed business events instead of commissioning another point-to-point interface.
 - [Cloud Gateway](/en/work/cloud-gateway) — twenty-plus fragmented gateways consolidated into one federated, cross-cloud, self-service platform handling ~500M+ requests a month.
 - [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — domain-oriented streaming across 30+ source systems with governed schemas.
 

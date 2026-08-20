@@ -69,15 +69,15 @@ a processor; say so plainly rather than as boilerplate.
 
 ---
 
-## Scope extension and delivery (2026-08-20, ADR-0007)
+## Delivery (2026-08-20, ADR-0007)
 
-Delivered, with one deliberate change: the owner asked for the affordance to be reachable from **any
-page**, not only Contact. `components/whatsapp-launcher.tsx` adds a fixed launcher in the locale
-layout alongside the contact-page affordance in `components/whatsapp-contact.tsx`.
+Delivered **as scoped** — a contact-page affordance only (`components/whatsapp-contact.tsx`).
 
-This does **not** cross the "no widget/embed" line in *Out of scope*: both are plain anchors to
-`wa.me`, with no SDK, no iframe and nothing loaded from Meta until the visitor activates the link.
-The privacy analysis is unchanged in kind; only its reach grows, and the privacy page states it.
+A site-wide floating launcher was built and then removed the same day at the owner's request. It was
+never a widget in the *Out of scope* sense — a plain `wa.me` anchor, no SDK, no iframe, nothing
+loaded from Meta until activation — but it was still scope this story did not ask for, and a
+persistent launcher on every page is a heavier ask of a visitor than a channel offered where they
+are already looking for one. Contact-page-only is the correct reading of the story.
 
 Two implementation notes:
 
