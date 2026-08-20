@@ -1,6 +1,7 @@
 ---
 title: AI & automation
 summary: Integrating AI into enterprise systems the way anything else gets integrated — behind a contract, with an evaluation gate before release, and with the model kept outside the runtime so it can be replaced.
+evidence: [portfolio, cloudera-kafka]
 order: 5
 group: domain
 ---

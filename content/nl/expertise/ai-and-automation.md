@@ -1,6 +1,7 @@
 ---
 title: AI & automatisering
 summary: AI in enterprisesystemen integreren zoals al het andere geïntegreerd wordt — achter een contract, met een evaluatiepoort vóór release, en met het model buiten de runtime zodat het vervangbaar blijft.
+evidence: [portfolio, cloudera-kafka]
 order: 5
 group: domain
 ---

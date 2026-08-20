@@ -73,6 +73,11 @@ and makes it navigable; the case studies (FS-0004) carry the per-engagement deta
   each as its own page reachable from the same index.
 - THE expertise index SHALL present the domain and practice areas as two labelled groups, AND
   SHALL present the practice group before the domain group (ADR-0005).
+- THE expertise index SHALL give the practice group a visually distinct, more prominent treatment
+  than the domain group, so the hierarchy does not rely on ordering alone (ADR-0008).
+- WHERE an expertise page declares `evidence`, THE index SHALL render the referenced case studies as
+  labels resolved from those studies' own titles, AND SHALL silently omit any slug that does not
+  resolve rather than rendering a broken reference.
 - THE cross-organisation practice page SHALL present at least three named situations, EACH
   stating the disagreement and the mechanism that resolved it.
 - WHERE an expertise page declares no `group`, THE index SHALL render it in the domain group.

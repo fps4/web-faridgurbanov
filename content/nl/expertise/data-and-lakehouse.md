@@ -1,6 +1,7 @@
 ---
 title: Data & lakehouse
 summary: Cloud-native dataplatformen voor analytics en AI — medallion-lakehouses, datacontracten op de bronnaad, en CDC-pipelines die betrouwbaar blijven.
+evidence: [sap-snowflake, cloudera-kafka, portfolio]
 order: 1
 group: domain
 ---

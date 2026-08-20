@@ -11,8 +11,6 @@ export interface Dictionary {
     nav: { home: string };
     tasterCta: string;
     themeToggle: string;
-    whatsappLauncher: string;
-    whatsappPrefill: string;
     footerTagline: string;
     footerNavHeading: string;
     footerConnectHeading: string;
@@ -94,6 +92,10 @@ export interface Dictionary {
     expertiseGroups: { domain: { heading: string; lede: string }; practice: { heading: string; lede: string } };
     workTitle: string;
     workLede: string;
+    workHonesty: string;
+    disagreementLabel: string;
+    evidenceLabel: string;
+    portfolioLabel: string;
     writingTitle: string;
     writingLede: string;
     readMore: string;
@@ -107,8 +109,6 @@ const en: Dictionary = {
     nav: { home: 'Home' },
     tasterCta: 'Book a taster',
     themeToggle: 'Toggle theme',
-    whatsappLauncher: 'Message me on WhatsApp',
-    whatsappPrefill: 'Hi Farid — I found you via faridgurbanov.com.',
     footerTagline: 'Senior Solution Architect — Data & Integration. I design the backbone, build what runs on it, and get the organisation to adopt both.',
     footerNavHeading: 'Site',
     footerConnectHeading: 'Connect',
@@ -273,7 +273,11 @@ If that is useful to your team, the best move today is to book a short taster.`,
       },
     },
     workTitle: 'Selected work',
-    workLede: 'A few concrete, quantified things I have built. Clients are named where I may; abstracted where confidentiality requires, with the metrics kept.',
+    workLede: 'Four client engagements, quantified. Clients are abstracted where confidentiality requires and the metrics are kept as delivered. Each one carries the disagreement it had to survive, because that is usually the part that decided whether it shipped.',
+    workHonesty: 'Four rather than a dozen, on purpose. These are the engagements I can describe accurately and defend under questioning — including what each one cost the teams it landed on. Self-built demos live on the portfolio instead, labelled as demos.',
+    disagreementLabel: 'The disagreement',
+    evidenceLabel: 'Evidenced by',
+    portfolioLabel: 'Portfolio',
     writingTitle: 'Writing',
     writingLede: 'A low cadence of evergreen pieces — no treadmill, no newsletter. On architecture decisions, delivery economics, and directing AI in real work.',
     readMore: 'Read more',
@@ -287,8 +291,6 @@ const nl: Dictionary = {
     nav: { home: 'Home' },
     tasterCta: 'Boek een proefsessie',
     themeToggle: 'Thema wisselen',
-    whatsappLauncher: 'Stuur me een WhatsApp',
-    whatsappPrefill: 'Hoi Farid — ik kom via faridgurbanov.com.',
     footerTagline: 'Senior Solution Architect — Data & Integratie. Ik ontwerp de ruggengraat, bouw wat erop draait, en krijg de organisatie zover dat ze beide adopteert.',
     footerNavHeading: 'Site',
     footerConnectHeading: 'Contact',
@@ -453,7 +455,11 @@ Is dat nuttig voor je team? De beste stap vandaag is een korte proefsessie boeke
       },
     },
     workTitle: 'Geselecteerd werk',
-    workLede: 'Een paar concrete, gekwantificeerde dingen die ik heb gebouwd. Klanten worden genoemd waar het mag; geabstraheerd waar vertrouwelijkheid dat vereist, met behoud van de cijfers.',
+    workLede: 'Vier klantopdrachten, gekwantificeerd. Klanten zijn geabstraheerd waar vertrouwelijkheid dat vereist en de cijfers zijn zoals geleverd. Bij elke opdracht staat de onenigheid die hij moest overleven, want dat is meestal het deel dat bepaalde of hij er kwam.',
+    workHonesty: 'Vier in plaats van een dozijn, bewust. Dit zijn de opdrachten die ik accuraat kan beschrijven en onder doorvragen kan verdedigen — inclusief wat elke opdracht kostte voor de teams waar hij landde. Zelfgebouwde demo\'s staan op de portfolio, gelabeld als demo.',
+    disagreementLabel: 'De onenigheid',
+    evidenceLabel: 'Aangetoond door',
+    portfolioLabel: 'Portfolio',
     writingTitle: 'Blog',
     writingLede: 'Een laag tempo van blijvende stukken — geen tredmolen, geen nieuwsbrief. Over architectuurbeslissingen, leveringseconomie en het aansturen van AI in echt werk.',
     readMore: 'Lees meer',

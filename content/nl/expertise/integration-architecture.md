@@ -1,6 +1,7 @@
 ---
 title: Integratiearchitectuur
 summary: Het ontwerpen van de ruggengraat die ervoor zorgt dat enterprisesystemen met elkaar praten — van legacy-ESB's naar event-driven, API-led en domeingeoriënteerde platformen.
+evidence: [sap-event-backbone, cloud-gateway, cloudera-kafka]
 order: 2
 group: domain
 ---
@@ -17,6 +18,7 @@ Al twintig jaar is het mijn werk om systemen die nooit bedoeld waren om met elka
 
 ## Aangetoond door
 
+- [SAP-event-backbone](/nl/work/sap-event-backbone) — een SAP-landschap, een legacy IBM ESB en een AWS-native platform op één event-contract, zodat domeinteams zich abonneren op gecontroleerde business-events in plaats van weer een point-to-point-koppeling te laten bouwen.
 - [Cloud Gateway](/nl/work/cloud-gateway) — twintig-plus gefragmenteerde gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~500M+ requests per maand verwerkt.
 - [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — domeingeoriënteerde streaming over 30+ bronsystemen met gegoverneerde schema's.
 

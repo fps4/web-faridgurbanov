@@ -3,6 +3,11 @@ title: SAP event backbone — three estates, one contract
 summary: An integration layer connecting an enterprise SAP event backbone (SAP Advanced Event Mesh / Solace) to an AWS-native integration platform — designed across three teams that share no tooling, no vocabulary and no backlog.
 hook: Three platform teams, three estates, one event contract nobody owned before.
 metric: 3 estates, 1 contract
+short: SAP event backbone
+client: A major Dutch grocery retailer · current, 2026
+disagreement: Three teams with three definitions of the boundary — and every question that actually matters sat in the gap between them.
+role: Leading the technical design and the cross-team agreement; owning the AWS-side consumer runtime.
+stack: [SAP Advanced Event Mesh, AMQP 1.0, S/4HANA, AWS Lambda, Terraform]
 order: 2
 ---
 

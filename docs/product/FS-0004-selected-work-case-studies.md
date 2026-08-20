@@ -66,6 +66,9 @@ conversation, and it is what makes the training offer credible ("taught by someo
 
 - THE SYSTEM SHALL present a case-study index linking to the case-study detail pages, each with a
   one-line hook and a headline impact metric.
+- EACH index entry SHALL display its headline metric as the most prominent element of the row, the
+  abstracted client identity, and one line stating the disagreement the engagement had to survive
+  (ADR-0008), all sourced from frontmatter.
 - EACH case-study detail page SHALL follow a consistent structure: context/problem, what was
   built, quantified impact, the pattern behind it, and the owner's role + stack.
 - WHERE a case study describes client work, IT SHALL carry a "who had to say yes" section naming

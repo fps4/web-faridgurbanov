@@ -3,6 +3,11 @@ title: Kafka data-product platform on Cloudera
 summary: A Cloudera-based Kafka data-product platform productising 20+ data streams across 30+ source systems, with schema governance and domain-oriented ownership.
 hook: Streaming data productised across domains, with governed schemas.
 metric: 20+ data products
+short: Kafka data products
+client: A major UK telecom operator
+disagreement: Productising a stream means the producing domain accepts consumers it never asked for, plus a schema promise and an SLA.
+role: Data engineer and technology architect — designed the platform and guided cross-border delivery teams.
+stack: [Apache Kafka, Cloudera CDP, Schema Registry, Hive LLAP, Spark 3]
 order: 4
 ---
 

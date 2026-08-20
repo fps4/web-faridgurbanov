@@ -1,6 +1,7 @@
 ---
 title: Working across an organisation
 summary: The part of the job that decides whether an architecture ships — teams that report elsewhere, functions that have to trust a number, and vendors somebody signed four years ago. Influence without authority, with the situations written out.
+evidence: [cloud-gateway, sap-event-backbone, sap-snowflake, cloudera-kafka]
 order: 7
 group: practice
 ---

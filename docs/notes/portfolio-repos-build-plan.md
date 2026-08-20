@@ -30,15 +30,13 @@ Removed from the public surface across ADR-0006 and ADR-0007: `sovereign-llm-gat
 the wrong conversation for a data/integration architect). All still exist on GitHub; none are part
 of the pitch.
 
-## ⚠ R1 and R2 are built but not pushed
+## R1 and R2 are built, pushed and linked
 
-Both repositories exist locally under `~/Repositories/fps4/`, are committed, and pass
-`make lint && make test && make demo`. They are listed in `lib/site.ts` with **`linkLive: false`**,
-so their cards render without a link rather than with a dead one.
+- **https://github.com/fps4/enterprise-data-model-lab** — public, MIT, `main`
+- **https://github.com/fps4/legacy-dwh-migration** — public, MIT, `main`
 
-**To finish:** create `github.com/fps4/enterprise-data-model-lab` and
-`github.com/fps4/legacy-dwh-migration`, push, then remove `linkLive: false` from both entries. That
-is the only remaining step.
+Both pass `make lint && make test && make demo`. `linkLive: false` has been removed from both cards,
+so every repository on the portfolio now links out.
 
 ## The gap these two closed
 
@@ -178,6 +176,8 @@ so conformed dimensions are visible without doubling the build.
 
 ## Next
 
-1. **Push R1 and R2**, then drop `linkLive: false` from both cards.
+1. **Add CI to both repos.** Neither has a `dod.yml` yet, so `make lint && make test && make demo`
+   is only enforced locally. The fps4 cross-repo standard (secret-scan, dependency-scan, build-test)
+   should apply here as it does everywhere else.
 2. **R3 `data-contracts-and-governance`** only if there is still appetite — the marginal value is
    lower now that R1 carries the glossary and R2 carries the parity policy.
