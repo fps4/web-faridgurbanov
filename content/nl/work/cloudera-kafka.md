@@ -8,7 +8,7 @@ client: Een grote Britse telecomoperator
 disagreement: Een stream productiseren betekent dat het producerende domein afnemers accepteert waar het nooit om vroeg, plus een schemabelofte en een SLA.
 role: Data engineer en technology architect — platform ontworpen en cross-border teams begeleid.
 stack: [Apache Kafka, Cloudera CDP, Schema Registry, Hive LLAP, Spark 3]
-order: 4
+order: 5
 ---
 
 # Kafka-dataproductplatform op Cloudera

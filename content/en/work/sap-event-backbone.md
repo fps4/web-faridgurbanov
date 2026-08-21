@@ -66,4 +66,4 @@ Leading the technical design and the cross-team agreement; owning the AWS-side c
 
 **Stack:** SAP Advanced Event Mesh (Solace), AMQP 1.0, SAP S/4HANA and BTP business events, AWS (Lambda, SNS/SQS, DynamoDB), Terraform, Datadog.
 
-→ See also [Integration architecture](/en/expertise/integration-architecture), [Event-driven & streaming](/en/expertise/event-driven-streaming) and [Stakeholder alignment](/en/expertise/stakeholder-alignment).
+→ The AWS-native platform this publishes into is its own case study: [the integration platform](/en/work/integration-platform) — one runtime serving twelve interfaces, where an interface is a config change rather than a codebase. See also [Integration architecture](/en/expertise/integration-architecture), [Event-driven & streaming](/en/expertise/event-driven-streaming) and [Working across an organisation](/en/expertise/stakeholder-alignment).

@@ -45,8 +45,9 @@ away the technical credibility, which is the thing that is working.
    what the owner got wrong. Claims of collaboration are worthless; specific accounts including
    mistakes are not.
 6. **Every client case study carries "Who had to say yes"** — stakeholders, the disagreement, what
-   resolved it, what it cost. Demo/portfolio studies (AI trio, contrail, dynamic pricing) are
-   exempt: they have no client stakeholders and a fabricated section would be dishonest.
+   resolved it, what it cost. Demo/portfolio studies are exempt: they have no client stakeholders and
+   a fabricated section would be dishonest. *(As of ADR-0007 there are no demo case studies left —
+   every study on the site is client work, and every one carries the section.)*
 7. **The current SAP event-backbone initiative becomes a case study**, because it is the strongest
    available evidence of working across an organisation: three teams, three estates, no shared
    tooling, and a contract that had to be negotiated before code.

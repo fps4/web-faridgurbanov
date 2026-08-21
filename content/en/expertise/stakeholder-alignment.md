@@ -1,7 +1,7 @@
 ---
 title: Working across an organisation
 summary: The part of the job that decides whether an architecture ships — teams that report elsewhere, functions that have to trust a number, and vendors somebody signed four years ago. Influence without authority, with the situations written out.
-evidence: [cloud-gateway, sap-event-backbone, sap-snowflake, cloudera-kafka]
+evidence: [cloud-gateway, integration-platform, sap-event-backbone, sap-snowflake, cloudera-kafka]
 order: 7
 group: practice
 ---
@@ -72,6 +72,7 @@ Set up that way, a part-time seat is not a diluted architect. It produces an arc
 ## Evidenced by
 
 - [Cloud Gateway](/en/work/cloud-gateway) — 18–20 product teams onto one federated model and an IBM API Connect exit, with onboarding cut from days to minutes. Adoption bought with developer experience rather than authority.
+- [Integration platform](/en/work/integration-platform) — domain teams gave up integration code they controlled, and adopted the platform because it gave them more operational control than they had before, not less.
 - [SAP event backbone](/en/work/sap-event-backbone) — three platform teams and three estates brought onto one event contract, with the seam written down before either side wrote code.
 - [SAP S/4HANA Finance → Snowflake](/en/work/sap-snowflake) — reconciliation against the source ledger so Finance would trust the numbers, and source-to-target mapping agreed with the SAP-side architects.
 - [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — 20+ productised streams across 30+ source systems, which meant negotiating domain ownership with the teams that produced the data.

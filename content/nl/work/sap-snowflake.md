@@ -8,7 +8,7 @@ client: Een wereldwijde productieklant (DACH-regio)
 disagreement: Finance had al een grootboek dat het vertrouwde, en het contract op de naad verplaatste werk naar een SAP-team dat eerder geen verplichtingen richting analytics had.
 role: Data engineer en technology architect — MVP en referentiearchitectuur opgeleverd.
 stack: [AWS EMR, AWS Glue, PySpark, Snowflake, Terraform]
-order: 3
+order: 4
 ---
 
 # SAP S/4HANA Finance → Snowflake

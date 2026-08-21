@@ -8,7 +8,7 @@ client: A major UK telecom operator
 disagreement: Productising a stream means the producing domain accepts consumers it never asked for, plus a schema promise and an SLA.
 role: Data engineer and technology architect — designed the platform and guided cross-border delivery teams.
 stack: [Apache Kafka, Cloudera CDP, Schema Registry, Hive LLAP, Spark 3]
-order: 4
+order: 5
 ---
 
 # Kafka data-product platform on Cloudera
