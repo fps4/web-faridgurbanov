@@ -66,4 +66,4 @@ Leidend in het technisch ontwerp en de afspraak tussen de teams; eigenaar van de
 
 **Stack:** SAP Advanced Event Mesh (Solace), AMQP 1.0, SAP S/4HANA- en BTP-business-events, AWS (Lambda, SNS/SQS, DynamoDB), Terraform, Datadog.
 
-→ Zie ook [Integratiearchitectuur](/nl/expertise/integration-architecture), [Event-driven & streaming](/nl/expertise/event-driven-streaming) en [Stakeholderafstemming](/nl/expertise/stakeholder-alignment).
+→ Het AWS-native platform waar dit naartoe publiceert is een eigen casus: [het integratieplatform](/nl/work/integration-platform) — één runtime die twaalf koppelingen bedient, waar een koppeling een configuratiewijziging is in plaats van een codebase. Zie ook [Integratiearchitectuur](/nl/expertise/integration-architecture), [Event-driven & streaming](/nl/expertise/event-driven-streaming) en [Werken door de organisatie heen](/nl/expertise/stakeholder-alignment).

@@ -1,7 +1,7 @@
 ---
 title: API's & gateways
 summary: API-platformen die opschalen over tientallen teams — gatewaystrategie, security-governance, lifecycle, en de developer experience die ervoor zorgt dat ze worden geadopteerd.
-evidence: [cloud-gateway]
+evidence: [integration-platform, cloud-gateway]
 order: 4
 group: domain
 ---
@@ -18,6 +18,7 @@ Een API-platform staat of valt met adoptie. Het lastige is niet het opzetten van
 
 ## Aangetoond door
 
+- [Integratieplatform](/nl/work/integration-platform) — een beheer-API achter JWT die de eigenaarsteams replay, pauze en inzage geeft zonder consoletoegang, en dat is wat een gedeelde runtime überhaupt adopteerbaar maakte.
 - [Cloud Gateway](/nl/work/cloud-gateway) — een federatief AWS + Azure API-platform dat 18–20 teams bedient, met Terraform-gedreven onboarding die de doorlooptijd terugbracht van dagen naar minuten en ~€250–300k per jaar bespaarde.
 
 Achtergrond: hands-on over alle vier de grote gateways; AWS Security – Specialty.

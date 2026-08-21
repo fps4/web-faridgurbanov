@@ -1,7 +1,7 @@
 ---
 title: APIs & gateways
 summary: API platforms that scale across dozens of teams — gateway strategy, security governance, lifecycle, and the developer experience that makes them adopted.
-evidence: [cloud-gateway]
+evidence: [integration-platform, cloud-gateway]
 order: 4
 group: domain
 ---
@@ -18,6 +18,7 @@ An API platform lives or dies on adoption. The hard part isn't standing up a gat
 
 ## Evidenced by
 
+- [Integration platform](/en/work/integration-platform) — an operations API behind JWT that gives the owning teams replay, pause and inspect without console access, which is what made a shared runtime adoptable at all.
 - [Cloud Gateway](/en/work/cloud-gateway) — a federated AWS + Azure API platform serving 18–20 teams, with Terraform-driven onboarding that cut lead time from days to minutes and saved ~€250–300k a year.
 
 Background: hands-on across all four major gateways; AWS Security – Specialty.

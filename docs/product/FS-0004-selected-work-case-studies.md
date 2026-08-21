@@ -1,7 +1,7 @@
 ---
 title: "FS-0004 — Selected work / case studies"
 status: draft
-last_updated: 2026-08-20
+last_updated: 2026-08-21
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -36,6 +36,11 @@ conversation, and it is what makes the training offer credible ("taught by someo
 
 1. **A case-study index** listing the studies with a one-line hook and impact metric each.
 2. **Case-study detail pages**, anonymized where required by client confidentiality:
+   - **Integration platform** — a configuration-driven integration platform on AWS: one Lambda
+     runtime serving twelve interfaces that differ only in a Terraform block, a mapping file and a
+     schema; a self-service operations API (replay, pause, inspect) behind JWT; and a measured
+     runtime-fitness study that established serverless was sufficient. Pairs with the SAP event
+     backbone, which publishes into it. *(Added 2026-08-21.)*
    - **SAP event backbone → cloud integration layer** — SAP Advanced Event Mesh (Solace) over
      AMQP 1.0 into the AWS-native platform; three teams and three estates (cloud, legacy IBM ESB,
      SAP) with no shared tooling; the envelope and subscription contract agreed before either

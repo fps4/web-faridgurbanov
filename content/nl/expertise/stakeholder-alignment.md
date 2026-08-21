@@ -1,7 +1,7 @@
 ---
 title: Werken door de organisatie heen
 summary: Het deel van het vak dat bepaalt of een architectuur er komt — teams die elders rapporteren, afdelingen die een getal moeten vertrouwen, en een leverancierscontract dat vier jaar geleden getekend is. Invloed zonder bevoegdheid, met de situaties uitgeschreven.
-evidence: [cloud-gateway, sap-event-backbone, sap-snowflake, cloudera-kafka]
+evidence: [cloud-gateway, integration-platform, sap-event-backbone, sap-snowflake, cloudera-kafka]
 order: 7
 group: practice
 ---
@@ -72,6 +72,7 @@ Zo ingericht is een parttime plek geen verdunde architect. Het is een architectu
 ## Onderbouwd door
 
 - [Cloud Gateway](/nl/work/cloud-gateway) — 18–20 productteams op één federatief model en een exit uit IBM API Connect, met onboarding van dagen naar minuten. Adoptie gekocht met developer experience in plaats van met bevoegdheid.
+- [Integratieplatform](/nl/work/integration-platform) — domeinteams gaven integratiecode op die ze zelf beheerden, en adopteerden het platform omdat het ze méér operationele controle gaf dan ze hadden, niet minder.
 - [SAP-event-backbone](/nl/work/sap-event-backbone) — drie platformteams en drie landschappen op één event-contract, met de naad vastgelegd voordat een van beide kanten code schreef.
 - [SAP S/4HANA Finance → Snowflake](/nl/work/sap-snowflake) — aansluiting op het bronregister zodat Finance de cijfers zou vertrouwen, en source-to-target-mapping afgestemd met de SAP-architecten.
 - [Kafka-data-productplatform op Cloudera](/nl/work/cloudera-kafka) — 20+ geproductiseerde streams over 30+ bronsystemen, wat betekende dat domeineigenaarschap onderhandeld moest worden met de teams die de data produceerden.

@@ -8,7 +8,7 @@ client: A global manufacturing client (DACH region)
 disagreement: Finance already had a ledger it trusted, and the contract at the seam moved work onto a SAP team that had no obligations toward analytics before.
 role: Data engineer and technology architect — delivered the MVP and the reference architecture.
 stack: [AWS EMR, AWS Glue, PySpark, Snowflake, Terraform]
-order: 3
+order: 4
 ---
 
 # SAP S/4HANA Finance → Snowflake
