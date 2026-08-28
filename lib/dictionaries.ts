@@ -192,7 +192,7 @@ const en: Dictionary = {
     ],
     buildCta: 'See the code behind it',
     buildCtaBody:
-      'Public repositories you can clone and run — the seam decision, the modernization lab, the streaming platform and the identity service.',
+      'Public repositories you can clone and run — the seam decision, the Fabric-or-Databricks decision, the modernization lab, the streaming platform and the identity service.',
     tasterHeading: 'Training',
     tasterBody:
       'I also teach architecture and product teams to direct AI agents — taught by someone who ships, not just advises. The full programme is coming; for now, book a taster.',
@@ -209,7 +209,7 @@ const en: Dictionary = {
     linksGatedNotice:
       'A repository is listed here only once it is public, licensed and honestly framed. Anything still being built is not on this page.',
     honesty:
-      'All of these run end to end — you can clone any of them and bring it up. Two things to be clear about. They run on synthetic data, so the architecture and the mechanics are the claim, not the numbers; every README says exactly where real data would go instead. And the two blueprint-style repositories are documents first — what runs is the decision engine, the cost model and the simulation that make the document arguable. These are not production systems and I do not present them as such.',
+      'All of these run end to end — you can clone any of them and bring it up. Two things to be clear about. They run on synthetic data, so the architecture and the mechanics are the claim, not the numbers; every README says exactly where real data would go instead. And the three blueprint-style repositories are documents first — what runs is the decision engine, the cost model and the simulation that make the document arguable. These are not production systems and I do not present them as such.',
   },
   contact: {
     title: 'Contact',
@@ -374,7 +374,7 @@ const nl: Dictionary = {
     ],
     buildCta: 'Bekijk de code erachter',
     buildCtaBody:
-      'Openbare repositories die je kunt klonen en draaien — de naadbeslissing, het moderniseringslab, het streamingplatform en de identity-service.',
+      'Openbare repositories die je kunt klonen en draaien — de naadbeslissing, de Fabric-of-Databricks-beslissing, het moderniseringslab, het streamingplatform en de identity-service.',
     tasterHeading: 'Training',
     tasterBody:
       'Ik leer architectuur- en productteams ook om AI-agents aan te sturen — gegeven door iemand die bouwt, niet alleen adviseert. Het volledige programma komt eraan; boek voor nu een proefsessie.',
@@ -391,7 +391,7 @@ const nl: Dictionary = {
     linksGatedNotice:
       'Een repository staat hier pas als die openbaar, gelicentieerd en eerlijk beschreven is. Wat nog in aanbouw is, staat niet op deze pagina.',
     honesty:
-      'Deze draaien allemaal end-to-end — je kunt elke repo klonen en opstarten. Twee dingen om duidelijk over te zijn. Ze draaien op synthetische data, dus de architectuur en de werking zijn de claim, niet de cijfers; elke README zegt precies waar echte data in de plaats zou komen. En de twee blueprint-achtige repositories zijn in de eerste plaats documenten — wat draait is de beslissingsengine, het kostenmodel en de simulatie die het document bespreekbaar maken. Dit zijn geen productiesystemen en ik presenteer ze ook niet zo.',
+      'Deze draaien allemaal end-to-end — je kunt elke repo klonen en opstarten. Twee dingen om duidelijk over te zijn. Ze draaien op synthetische data, dus de architectuur en de werking zijn de claim, niet de cijfers; elke README zegt precies waar echte data in de plaats zou komen. En de drie blueprint-achtige repositories zijn in de eerste plaats documenten — wat draait is de beslissingsengine, het kostenmodel en de simulatie die het document bespreekbaar maken. Dit zijn geen productiesystemen en ik presenteer ze ook niet zo.',
   },
   contact: {
     title: 'Contact',
