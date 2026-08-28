@@ -190,6 +190,20 @@ export const repos: Repo[] = [
       nl: 'Een SAP → Business Data Cloud/Datasphere → Snowflake-referentiearchitectuur van één pagina, met de beslissing erbij: negen geordende regels wijzen elk van 24 objecten een modus toe — zero-copy delen, repliceren, federeren, splitsen, of in SAP houden — waarbij dataresidentie en SLO\'s elimineren en kosten alleen kiezen uit wat overblijft. Een transparant kostenmodel geeft de omslagfrequentie waarboven repliceren goedkoper wordt dan federeren, en een lokale DuckDB-simulatie draait alle drie de modi zodat de claim gemeten is. Draait end-to-end met `make demo`; het diagram is het artefact, de engine maakt het bespreekbaar.',
     },
   },
+  {
+    slug: 'azure-lakehouse-decision',
+    name: 'azure-lakehouse-decision',
+    pillar: 'data',
+    role: { en: 'Decide where a Synapse estate goes', nl: 'Bepaal waar een Synapse-landschap heen gaat' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/azure-lakehouse-decision',
+    proves: {
+      en: 'Microsoft Fabric or Databricks-on-Azure for a 20-workload Synapse estate, decided per workload rather than per feature. Nine ordered rules where residency, T-SQL surface, streaming semantics and ML lifecycle eliminate, and cost only chooses among what survives. The structural point is that a Fabric workload has no standalone price: one pre-paid F-SKU carries the estate, so one more workload costs nothing until the capacity saturates and then costs a whole rung — which is why two notebooks end up metered on Databricks solely because they would have stepped F32 to F64, and why unused headroom turns out to be the cheapest compute in the estate. Two eliminations are executed rather than asserted: the same payment stream finishes 3.49% out per window on an ingestion-time engine and exactly right on an event-time one, and a load killed between its two writes leaves 893 torn rows once its multi-table transaction is taken away. One workload has no home at all, and the register says which single fact has to change. Runs with `make demo` — no Azure subscription, no capacity, no Docker.',
+      nl: 'Microsoft Fabric of Databricks-op-Azure voor een Synapse-landschap van 20 workloads, beslist per workload in plaats van per feature. Negen geordende regels waarbij dataresidentie, T-SQL-oppervlak, streamingsemantiek en ML-levenscyclus elimineren, en kosten alleen kiezen uit wat overblijft. Het structurele punt: een Fabric-workload heeft geen eigen prijs. Eén vooruitbetaalde F-SKU draagt het hele landschap, dus een extra workload kost niets tot de capaciteit vol is en daarna een hele trede — en dat is waarom twee notebooks op Databricks gemeterd eindigen, puur omdat ze F32 naar F64 zouden duwen, en waarom ongebruikte ruimte de goedkoopste rekenkracht in het landschap blijkt. Twee eliminaties worden uitgevoerd in plaats van beweerd: dezelfde betaalstroom komt op een ingestion-time-engine 3,49% per venster verkeerd uit en op een event-time-engine precies goed, en een load die tussen zijn twee schrijfacties wordt afgebroken laat 893 inconsistente rijen achter zodra je de multi-table-transactie weghaalt. Eén workload heeft helemaal geen bestemming, en het register benoemt welk enkele feit daarvoor moet veranderen. Draait met `make demo` — geen Azure-abonnement, geen capaciteit, geen Docker.',
+    },
+  },
   // — Modernization & migration —
   {
     slug: 'legacy-dwh-migration',
