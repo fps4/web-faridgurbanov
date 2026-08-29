@@ -12,7 +12,7 @@ Analytics and AI are only as good as the platform feeding them. I build the clou
 
 ## What I do
 
-- **Medallion lakehouses.** Raw → bronze → silver → gold on Snowflake, Databricks/Delta and AWS (EMR, Glue, S3), with the modelling to make each tier earn its place — and, where the estate is Azure-native, the Fabric-or-Databricks question answered per workload rather than per feature.
+- **Medallion lakehouses.** Raw → bronze → silver → gold on Snowflake, Databricks/Delta and AWS (EMR, Glue, S3), with the modelling to make each tier earn its place — and, where the estate is Azure-native, the Fabric-or-Databricks-or-Snowflake question answered per workload rather than per feature.
 - **Contracts at the source seam.** Data contracts where operational systems meet the lakehouse — for example SAP Finance ledgers landing in Snowflake — so upstream changes are caught, not absorbed silently.
 - **Reliable ingestion.** Change-data-capture and delta pipelines tuned for near-real-time sync, with lineage and quality monitoring rather than hope.
 
@@ -20,6 +20,6 @@ Analytics and AI are only as good as the platform feeding them. I build the clou
 
 - [SAP S/4HANA Finance → Snowflake](/en/work/sap-snowflake) — GL/AR/AP/CO/AA across ~30+ company codes, multi-terabyte backfill plus 10–30 GB daily delta, with contracts at the SAP↔lakehouse seam.
 - [Kafka data-product platform on Cloudera](/en/work/cloudera-kafka) — productised streams with Hive LLAP and Spark 3 query acceleration.
-- [Portfolio](/en/portfolio) — `sap-bdc-snowflake-blueprint` takes the same seam question and answers it per object: nine ordered rules assign each of 24 objects a mode — share zero-copy, replicate, federate, split, or keep it in SAP — with a cost model that gives the crossover frequency and a local simulation behind it. `azure-lakehouse-decision` asks the platform question the same way: Fabric or Databricks for a 20-workload Synapse estate, priced against Fabric's pre-paid capacity rather than a per-workload rate — so a workload's cost depends on what else is on the capacity, and the two batch jobs that would have stepped F32 to F64 end up metered instead.
+- [Portfolio](/en/portfolio) — `sap-bdc-snowflake-blueprint` takes the same seam question and answers it per object: nine ordered rules assign each of 24 objects a mode — share zero-copy, replicate, federate, split, or keep it in SAP — with a cost model that gives the crossover frequency and a local simulation behind it. `azure-lakehouse-decision` asks the platform question the same way: Fabric, Databricks or Snowflake for a 20-workload Synapse estate, priced against Fabric's pre-paid capacity rather than a per-workload rate — so a workload's cost depends on what else is on the capacity, and the two batch jobs that would have stepped F32 to F64 end up metered instead. Its sharpest output is the platform that won nothing: cheapest meter on a quarter of the estate, and eliminated by the T-SQL rule from almost every workload it priced best on.
 
 Background: Databricks Certified Data Engineer Professional; Snowflake Core; Spark/PySpark, Delta Lake, PostgreSQL, Oracle.
