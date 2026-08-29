@@ -21,6 +21,7 @@ A diagram has a short half-life. The reasoning behind it should have a long one 
 ## Evidenced by
 
 - [The SAP ↔ Snowflake seam decision](/en/writing/sap-snowflake-seam-decision) — a decision record written in public: what crosses the seam, what stays, and the rules that decide.
+- [Deciding where a Synapse estate goes](/en/writing/synapse-platform-decision) — the same discipline one layer up, with an end date attached: ten ordered rules across Fabric, Databricks and Snowflake, and a platform that priced best on the workloads it was not allowed to have.
 - [Cloud Gateway](/en/work/cloud-gateway) — "federate the model, not the runtime": one standard across two clouds, and the standing cost of that promise stated upfront.
 - [SAP S/4HANA Finance → Snowflake](/en/work/sap-snowflake) — a contract at the seam rather than tests at the end, and one region built as the reference architecture rather than a pilot.
 - [Portfolio](/en/portfolio) — `sap-bdc-snowflake-blueprint` turns the same seam question into nine ordered rules and a cost model you can run.
