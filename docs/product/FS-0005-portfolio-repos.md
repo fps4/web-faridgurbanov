@@ -1,7 +1,7 @@
 ---
 title: "FS-0005 — Portfolio / repositories"
 status: draft
-last_updated: 2026-08-20
+last_updated: 2026-09-02
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -69,6 +69,31 @@ and the pillars were renamed after what a client engages an architect to do — 
 modelling**, **Modernization & migration**, **Integration & platform services** — each with a one-line
 lede in the buyer's words. Two repos in the build plan (`enterprise-data-model-lab`,
 `legacy-dwh-migration`) take the set back to seven.
+
+### Added: `ai-first-bi-platform` (2026-09-02)
+
+A ninth card, in **Data architecture & modelling**, taking the set to nine repos in three pillars.
+Public, MIT, runnable end to end (`make demo`), so it is listed with a live link on the same terms
+as every other card.
+
+It earns a place next to the two blueprint-style decision repos by asking the question that sits
+underneath them — *what does the number mean* — and answering it with an implementation rather than
+a document: three defensible definitions of "active customer" built in a real dbt project over five
+source shapes, returning three different numbers, with the trade between a governed and an
+ungoverned answer measured in both directions.
+
+Two framing points that the honesty statement already covers and that this card must not
+contradict:
+
+- It is **not** a blueprint-style repo. The existing "the three blueprint-style repositories are
+  documents first" sentence in the portfolio honesty note stays at three and stays accurate.
+- Its evaluation numbers are **not** a claim about any language model. The ungoverned path is a
+  deterministic stand-in; the repo's own ADR-0002 says so and the card does not present it
+  otherwise.
+
+It is also referenced from two expertise pages — `data-and-lakehouse` (the definitional point is a
+modelling point) and `ai-and-automation` (grounding, refusal, and evaluation as a gate are that
+page's whole argument, applied to analytics).
 
 ## Acceptance criteria (EARS)
 
