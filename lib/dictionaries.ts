@@ -192,7 +192,7 @@ const en: Dictionary = {
     ],
     buildCta: 'See the code behind it',
     buildCtaBody:
-      'Public repositories you can clone and run — the seam decision, the Fabric-or-Databricks decision, the modernization lab, the streaming platform and the identity service.',
+      'Public repositories you can clone and run — the “active customer” question, the seam decision, the Fabric-or-Databricks decision, the modernization lab, the streaming platform and the identity service.',
     tasterHeading: 'Training',
     tasterBody:
       'I also teach architecture and product teams to direct AI agents — taught by someone who ships, not just advises. The full programme is coming; for now, book a taster.',
@@ -374,7 +374,7 @@ const nl: Dictionary = {
     ],
     buildCta: 'Bekijk de code erachter',
     buildCtaBody:
-      'Openbare repositories die je kunt klonen en draaien — de naadbeslissing, de Fabric-of-Databricks-beslissing, het moderniseringslab, het streamingplatform en de identity-service.',
+      'Openbare repositories die je kunt klonen en draaien — de “actieve klant”-vraag, de naadbeslissing, de Fabric-of-Databricks-beslissing, het moderniseringslab, het streamingplatform en de identity-service.',
     tasterHeading: 'Training',
     tasterBody:
       'Ik leer architectuur- en productteams ook om AI-agents aan te sturen — gegeven door iemand die bouwt, niet alleen adviseert. Het volledige programma komt eraan; boek voor nu een proefsessie.',
