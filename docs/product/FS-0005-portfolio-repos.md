@@ -1,7 +1,7 @@
 ---
 title: "FS-0005 — Portfolio / repositories"
 status: draft
-last_updated: 2026-09-02
+last_updated: 2026-09-04
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -115,6 +115,20 @@ page's whole argument, applied to analytics).
   repository is not, IT SHALL NOT be listed rather than listed without a link.
 - THE honesty statement SHALL state that the repositories run on synthetic data and SHALL NOT make
   a production-system claim.
+- EVERY repo card body ("what it proves") SHALL be 40-70 words in each locale, and THE longest card
+  SHALL NOT exceed twice the length of the shortest — the cards render side by side, so an
+  over-long one starves its neighbours of attention. Enforced by `lib/site.test.ts`.
+
+### Card copy cut to a budget (2026-09-04)
+
+The nine card bodies had drifted from 46 to 222 words as each new repo was added with its full
+findings attached, which made the three-column grid unreadable: the reader met a wall of text on
+one tile and skipped the row. All nine were rewritten to 44-72 words in both locales — what the
+repo is, the single strongest measured finding, the run command — with the rest of the evidence
+left where it belongs, in each repo's own README. The budget is now an acceptance criterion above
+and a failing test in `lib/site.test.ts`, so the next card added cannot quietly reopen the gap.
+
+No claim was dropped in the process; the cut removed enumeration, not substance.
 
 ## Definition of done
 
