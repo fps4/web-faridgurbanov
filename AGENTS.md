@@ -43,6 +43,21 @@ npm run test     # vitest run
 - Content is filesystem markdown with frontmatter (title, summary, order, draft) under
   `content/{en,nl}`; never dump the frontmatter block into rendered prose (`lib/frontmatter.ts`).
 
+## Tile copy
+
+Anything that renders as a **card in a grid** — the portfolio `proves` bodies in `lib/site.ts`
+above all, but the same applies to any tile added later — is written to a length budget, in every
+locale:
+
+- **40-70 words** (~250-450 characters) per card. `lib/site.test.ts` fails the build outside
+  35-75 words, and fails again if the longest card is more than twice the shortest.
+- **Three sentences at most:** what it is, the single strongest concrete finding (one measured
+  number, not an inventory of them), then the run command.
+- Cards sit **side by side**. Length is relative: an essay in one tile makes its neighbours look
+  thin and gets none of them read. Match the neighbours, don't outdo them.
+- Detail that does not fit goes in the linked repo's README or the case study. The card is the
+  hook, not the summary — the reader is deciding whether to click, not being briefed.
+
 ## Pre-submit checks
 
 Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):
