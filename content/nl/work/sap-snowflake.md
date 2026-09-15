@@ -1,65 +1,62 @@
 ---
 title: SAP S/4HANA Finance → Snowflake
-summary: Een cloud-native pipeline die SAP Finance-grootboeken naar een Snowflake-lakehouse verplaatst, met datacontracten op de naad — multi-TB backfill plus 10–30 GB dagelijkse delta over ~30+ bedrijfscodes.
-hook: Een legacy SAP Finance-landschap omgevormd tot een cloud-native analytics-ruggengraat.
+summary: Een cloud-native pipeline die SAP Finance-grootboeken naar een Snowflake-lakehouse brengt, met datacontracten op de overdracht. Multi-TB backfill plus 10–30 GB dagelijkse delta over ~30+ bedrijfscodes.
+hook: Een legacy SAP Finance-landschap omgevormd tot een cloud-native analyticsfundament.
 metric: ~30+ bedrijfscodes
 short: SAP Finance → Snowflake
 client: Een wereldwijde productieklant (DACH-regio)
-disagreement: Finance had al een grootboek dat het vertrouwde, en het contract op de naad verplaatste werk naar een SAP-team dat eerder geen verplichtingen richting analytics had.
-role: Data engineer en technology architect — MVP en referentiearchitectuur opgeleverd.
+disagreement: Finance had al een grootboek dat het vertrouwde, en het contract op de overdracht verplaatste werk naar een SAP-team dat eerder geen verplichtingen richting analytics had.
+role: Data engineer en technology architect. Leverde de MVP en de referentiearchitectuur op.
 stack: [AWS EMR, AWS Glue, PySpark, Snowflake, Terraform]
 order: 4
 ---
 
 # SAP S/4HANA Finance → Snowflake
 
-*Een wereldwijde productieklant (DACH-regio). Klant geabstraheerd voor vertrouwelijkheid; metrics en scope zoals geleverd.*
+*Een wereldwijde productieklant (DACH-regio), in mijn Accenture-jaren, 2018–2020. Klant geabstraheerd om vertrouwelijkheidsredenen; cijfers en scope zoals geleverd.*
 
 ## Context
 
-Een groot SAP Finance-landschap — GL-, AR-, AP-, CO- en AA-grootboeken over **~30+ bedrijfscodes** — had een cloud-native analytics-ruggengraat nodig. De uitdaging was niet alleen volume; het was de financiële data betrouwbaar houden terwijl die van SAP naar een lakehouse overging, zodat analytics erop kon vertrouwen.
+Een groot SAP Finance-landschap, de GL-, AR-, AP-, CO- en AA-grootboeken over **~30+ bedrijfscodes**, had een analyticsplatform in de cloud nodig. Volume was een deel van het werk. Het moeilijkere deel was de financiële data betrouwbaar houden op weg van SAP naar een lakehouse, want Finance zou alleen cijfers gebruiken die het zelf kon controleren.
 
 ## Wat ik bouwde
 
-Een cloud-native **SAP-naar-Snowflake**-pipeline op AWS:
+Een **SAP-naar-Snowflake**-pipeline op AWS:
 
-- Ingestie en transformatie met **AWS EMR, Glue/PySpark en S3**, geprovisioneerd via Terraform.
-- Een **Snowflake**-lakehouse als de analytics-catalogus.
-- **Datacontracten op de SAP↔lakehouse-naad**, zodat een wijziging in een bovenstrooms grootboek wordt opgevangen in plaats van stilletjes de downstream-analytics te corrumperen.
-- Een MVP afgebakend op de DACH-regio als referentie voor bredere uitrol.
+- Ingestie en transformatie op **AWS EMR, Glue/PySpark en S3**, uitgerold met Terraform.
+- Een **Snowflake**-lakehouse als analyticscatalogus.
+- **Datacontracten op het punt waar SAP overdraagt aan het lakehouse**, zodat een wijziging in een bovenliggend grootboek de load laat falen in plaats van weken later stilletjes een rapport te vervuilen.
+- Een MVP afgebakend op de DACH-regio en gebouwd als sjabloon voor de andere regio's.
 
 ## Impact
 
-- **~30+ bedrijfscodes** in scope over de belangrijkste financiële grootboeken.
-- Een **multi-terabyte historische backfill** plus **10–30 GB dagelijkse delta**-ingestie.
+- **~30+ bedrijfscodes** in scope over de belangrijkste finance-grootboeken.
+- Een **historische backfill van meerdere terabytes** plus **10–30 GB dagelijkse delta**.
 - Een referentiearchitectuur die de klant regio voor regio kon uitbreiden.
 
 ## Het patroon erachter
 
-![Diagram: SAP Finance-ledgers stromen door een datacontract-gate naar EMR, Glue en S3, daarna het Snowflake-lakehouse — een brekende upstream-wijziging faalt luid bij de gate, niet stil in een financieel dashboard.](/diagrams/sap-snowflake-pattern.svg)
+![Diagram: SAP Finance-grootboeken stromen door een datacontractpoort naar EMR, Glue en S3, en vervolgens naar het Snowflake-lakehouse. Een brekende wijziging bovenstrooms faalt hoorbaar bij de poort in plaats van stilletjes in een finance-dashboard.](/diagrams/sap-snowflake-pattern.svg)
 
-**Een contract op de naad, geen tests aan het einde.** De standaardvorm voor SAP-naar-cloud-analytics is de tabellen 's nachts overzetten en downstream dashboards de drift laten ontdekken — schemawijzigingen duiken weken later op als verkeerde cijfers in een financieel rapport, met het vertrouwen al verspeeld. Hier was de naad zelf het ontwerpvlak: datacontracten zitten waar SAP overdraagt aan het lakehouse, zodat een upstream-ledgerwijziging luid faalt bij ingest in plaats van stil downstream.
+Het meeste SAP-naar-cloud-analyticswerk tilt de tabellen 's nachts over en laat de dashboards de afwijkingen ontdekken. Een schemawijziging in SAP duikt weken later op als een verkeerd getal in een financieel rapport, en tegen die tijd is het vertrouwen al weg. Hier was de overdracht zelf het ding dat we ontwierpen. De datacontracten zitten op het punt waar SAP overdraagt aan het lakehouse, en een grootboekwijziging die er een breekt, faalt bij ingestie, als een pipeline-incident met een benoemde oorzaak bovenstrooms. Dezelfde wijziging ontdekt in een dashboard is een vertrouwensincident, en financiële data overleeft daar niet veel van.
 
-Twee beslissingen die dat lieten beklijven:
+De andere keuze die ertoe deed was waar de DACH-MVP voor was. Het is nooit een wegwerpbewijs geweest. Vanaf het begin met Terraform uitgerold, wás het het uitrolsjabloon, en de regio's erachter namen het over zoals het gebouwd was. Een pilot en een referentiearchitectuur zien er in een demo hetzelfde uit en gedragen zich in jaar twee heel anders.
 
-- **Faal op de grens, waar de schade nog goedkoop is.** Een contractschending op de naad is een pipeline-incident met een benoembare upstream-oorzaak. Dezelfde schending ontdekt in een dashboard is een vertrouwensincident — en financiële data staat of valt met vertrouwen.
-- **Eén regio als referentie, niet als pilot.** De DACH-MVP was geen wegwerpbewijs — Terraform-geprovisioneerd wás die het uitrolsjabloon. "Pilot" en "referentiearchitectuur" zien er in een demo identiek uit en gedragen zich in jaar twee compleet anders.
-
-De trade-off om vooraf te kennen: contracten leggen frictie waar SAP-teams die niet hadden — iemand upstream moet het contract bezitten en verantwoording afleggen bij een breuk. Dat is een onderhandeling, geen tool-installatie; de tooling maakt de afspraak pas afdwingbaar nadat de organisatie haar heeft gemaakt.
+Contracten hebben een prijs, en die valt bovenstrooms. Iemand aan de SAP-kant moet eigenaar worden van het contract en verantwoording afleggen als het breekt, waar die eerder geen enkele verplichting richting analytics had. Dat is eerst een onderhandeling en dan pas een tool. De tooling dwingt alleen een afspraak af die de organisatie al gemaakt heeft.
 
 ## Wie ja moest zeggen
 
-**Stakeholders:** de Finance-organisatie die haar rapportage op het nieuwe warehouse zou moeten baseren; de SAP-architecten die het bronsysteem en de belasting ervan bezaten; en de regioteams die achter de DACH-MVP wachtten op hun eigen uitrol.
+**Stakeholders:** de Finance-organisatie die haar rapportage op het nieuwe warehouse zou gaan draaien; de SAP-architecten die eigenaar waren van het bronsysteem en de belasting ervan; en de regionale teams die achter de DACH-MVP wachtten op hun eigen uitrol.
 
-**Het meningsverschil:** een contract op de naad verplaatst werk stroomopwaarts. Het SAP-team had vóór dit ontwerp geen verplichtingen richting analytics en zou nu een schemabelofte bezitten en aanspreekbaar zijn als die brak — een echt verzoek, geen formaliteit. Finance had op zijn beurt geen reden om een nieuwe getallenbron meer te vertrouwen dan het grootboek dat het al gebruikte.
+**De onenigheid:** een contract op de overdracht verplaatst werk naar boven. Het SAP-team had voor dit ontwerp geen verplichtingen richting analytics en zou nu eigenaar worden van een schemabelofte. Finance had intussen een grootboek dat het al vertrouwde en geen reden om een tweede bron van cijfers te verkiezen.
 
-**Wat het oploste:** een controle in plaats van een discussie. Het afstemmen van de geladen data tegen het bronboek gaf Finance iets dat ze zelf konden draaien, en dat leverde de adoptie op. Met de SAP-architecten was de route om de source-to-target-mapping samen te doen in plaats van hem over te dragen. De extractiestrategie moest de belasting van hun systeem ontzien, en hun randvoorwaarde vormde het ontwerp — wat mij ook de benoemde eigenaar achter het contract opleverde.
+**Wat het oploste:** een controle die Finance zelf kon draaien. De geladen data aansluiten op het brongrootboek gaf ze iets om te verifiëren in plaats van iets om te geloven, en de adoptie volgde op die controle. Met de SAP-architecten deden we de bron-naar-doel-mapping samen in plaats van hem over de schutting te gooien. Hun randvoorwaarde, de belasting op hun productiesysteem beschermen, bepaalde de extractiestrategie, en binnen die randvoorwaarde werken is ook wat mij een benoemde eigenaar achter het contract opleverde.
 
-**Wat het kostte:** extra werk stroomopwaarts waar dat er niet was, en een benoemde eigenaar achter elk contract. Dat eigenaarschap moest afgesproken zijn voordat er ook maar iets in code afdwingbaar werd.
+**Wat het kostte:** werk bovenstrooms waar er eerder geen was, en een benoemde eigenaar achter elk contract. Dat eigenaarschap moest afgesproken zijn voordat er iets van in code afgedwongen kon worden.
 
 ## Rol & stack
 
-Data engineer en technology architect (Accenture CTA-groep) — leverde de MVP en de referentiearchitectuur.
+Data engineer en technology architect (Accenture CTA-groep). Leverde de MVP en de referentiearchitectuur op.
 
 **Stack:** AWS (EMR, Glue, S3), PySpark, Snowflake, Terraform, Python.
 
