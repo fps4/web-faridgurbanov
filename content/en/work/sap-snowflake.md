@@ -50,7 +50,7 @@ Contracts have a cost, and it lands upstream. Somebody on the SAP side has to ow
 
 **The disagreement:** a contract at the handover moves work upstream. The SAP team had no obligations towards analytics before this design and would now own a schema promise. Finance, meanwhile, had a ledger it already trusted and no reason to prefer a second source of numbers.
 
-**What resolved it:** a check Finance could run themselves. Balancing the loaded data against the source ledger gave them something to verify rather than something to believe, and adoption followed the check. With the SAP architects we did the source-to-target mapping together instead of handing it over. Their constraint, protecting the load on their production system, shaped the extraction strategy, and working inside that constraint is also what got me a named owner behind the contract.
+**What resolved it:** a check Finance could run themselves. Balancing the loaded data against the source ledger gave them something to verify, and adoption followed the check. With the SAP architects we did the source-to-target mapping together instead of handing it over. Their constraint, protecting the load on their production system, shaped the extraction strategy, and working inside that constraint is also what got me a named owner behind the contract.
 
 **What it cost:** work upstream where there had been none, and a named owner behind every contract. That ownership had to be agreed before any of it could be enforced in code.
 

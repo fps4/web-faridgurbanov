@@ -1,7 +1,7 @@
 ---
 title: "FS-0006 — Writing / blog"
 status: draft
-last_updated: 2026-06-09
+last_updated: 2026-09-15
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -49,6 +49,10 @@ training offer — without committing to a schedule that won't be kept. The firs
 - THE M0 build SHALL include at least one published post on the training wedge.
 - THE writing section SHALL NOT include a comment system or require a publishing schedule.
 - POSTS SHALL render in English, with Dutch provided or falling back per ADR-0002.
+- EACH post SHALL read as the owner's own prose per the Voice section of `AGENTS.md`, and SHALL
+  pass `npm run voice -- --strict` or state in its PR why a budget is exceeded. WHERE a Dutch
+  version exists, IT SHALL be written from the meaning of the English, not calqued from its
+  sentences. *(Added 2026-09-15.)*
 
 ## Definition of done
 

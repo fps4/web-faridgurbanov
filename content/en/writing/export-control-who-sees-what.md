@@ -7,7 +7,7 @@ order: 1
 
 # Deciding who may see what, and from where
 
-The same row can lawfully be shown to one engineer in Veldhoven and not to the engineer at the next desk. To the first engineer from the office and not from a hotel in a third country. And to nobody at all once it has been joined to the wrong table. Data governance under export control is the discipline of giving those three answers on purpose, on a platform designed to give one.
+The same row can lawfully be shown to one engineer in Veldhoven and not to the engineer at the next desk. To the first engineer from the office and not from a hotel in a third country. And to nobody at all once it has been joined to the wrong table. Data governance under export control is the discipline of giving those three answers by design, on a platform built to give one.
 
 The setting I have in mind is a European maker of export-controlled equipment with machines in customers' plants in every major market, each sending telemetry home; defence, aerospace and medical devices have the same shape. I built [`export-controlled-lakehouse`](https://github.com/fps4/export-controlled-lakehouse) to work the problem in the open: one export-control policy, written as data, **compiled to Databricks Unity Catalog and to Microsoft Fabric**, with the join between them left visible. It runs on a laptop with no subscription behind it.
 
