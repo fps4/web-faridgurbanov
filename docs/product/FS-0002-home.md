@@ -1,7 +1,7 @@
 ---
 title: "FS-0002 — Home page"
 status: draft
-last_updated: 2026-08-20
+last_updated: 2026-09-15
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -41,8 +41,10 @@ between them.
    "Book a taster" training CTA** linking to the Training stub (FS-0008).
 2. **M0 — proof strip.** A compact set of headline proof points linking into case studies and
    the portfolio. Rebalanced under ADR-0005: three points about adoption and trust (teams moved
-   without a mandate, estates brought onto one contract, a function that had to trust the output)
-   and one about scale. The scale metric stays — it is what makes the adoption claims credible.
+   without a mandate, producing domains that accepted consumers they never asked for, a function
+   that had to trust the output) and one about scale. The scale metric stays — it is what makes
+   the adoption claims credible. The event-backbone point moved out of the strip on 2026-09-15
+   so a data-platform number is on the home page; it keeps its card in the adoption band.
 2a. **M0 — three bands, in order (ADR-0007).** Under the hero: **Track record** (experience — the
    metrics), **How I get it adopted** (stakeholder management — the situations), then **What I
    build** (technical expertise — the five areas plus a portfolio tile). The technical band is last
