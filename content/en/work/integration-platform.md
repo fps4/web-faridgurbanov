@@ -36,6 +36,7 @@ A configuration-driven integration platform on AWS, where **an interface is a co
 ## Impact
 
 - **Twelve interfaces in production on one runtime**, spanning warehouse, supply-chain, master-data and CRM flows.
+- **~6.7M runs a month, a dozen function errors in 30 days** (September 2026) — the retry, dead-letter and idempotency handling is shared, so it is also tested by every interface at once.
 - **Time to a new interface in production: under a working day**, from authoring the mapping — against the multi-week bespoke project it replaced.
 - Failure handling, observability and replay arrive with the platform rather than being rebuilt per integration.
 - Operators diagnose and replay without console access or a ticket to the platform team.

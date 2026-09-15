@@ -36,6 +36,7 @@ Een configuratie-gedreven integratieplatform op AWS, waarbij **een koppeling een
 ## Impact
 
 - **Twaalf koppelingen in productie op één runtime**, over magazijn-, supply-chain-, stamgegevens- en CRM-stromen.
+- **~6,7 mln runs per maand, een dozijn functiefouten in 30 dagen** (september 2026) — de retry-, dead-letter- en idempotentie-afhandeling wordt gedeeld, en wordt dus ook door elke koppeling tegelijk getest.
 - **Doorlooptijd naar een nieuwe koppeling in productie: minder dan een werkdag**, vanaf het schrijven van de mapping — tegenover het maatwerkproject van meerdere weken dat het verving.
 - Foutafhandeling, observability en replay komen mee met het platform in plaats van per koppeling opnieuw gebouwd te worden.
 - Beheerders diagnosticeren en herstarten zonder consoletoegang of een ticket bij het platformteam.

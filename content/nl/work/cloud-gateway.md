@@ -1,8 +1,8 @@
 ---
 title: Cloud Gateway — federatief cross-cloud API-platform
-summary: 20+ gefragmenteerde API-gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~500M+ requests per maand verwerkt en ~€250–300k per jaar bespaart.
+summary: 20+ gefragmenteerde API-gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~1,5 mld+ requests per maand verwerkt en ~€250–300k per jaar bespaart.
 hook: 20+ gefragmenteerde gateways verenigd tot één selfservice-platform over AWS en Azure.
-metric: ~500M+ req/maand
+metric: ~1,5 mld+ req/maand
 short: Cloud Gateway
 client: Een grote Nederlandse supermarktketen
 disagreement: Niemand wilde een gateway die hij zelf beheerde opgeven voor een afhankelijkheid van een centraal team, en niemand had de bevoegdheid om een migratie op te leggen.
@@ -32,7 +32,7 @@ Het verving IBM API Connect en consolideerde de 20+ gateways achter één model.
 
 ## Impact
 
-- **~500M+ API-requests per maand** gefederaliseerd over het platform.
+- **~1,5 mld+ API-requests per maand** over het platform (september 2026), met server-side fouten onder **0,03%** van begin tot eind.
 - **18–20 productteams** bediend op één selfservice-model.
 - **~€250–300k per jaar** aan kostenbesparing.
 - Onboarding-doorlooptijd teruggebracht van **dagen naar minuten**.
