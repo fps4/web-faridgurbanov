@@ -135,7 +135,7 @@ const en: Dictionary = {
       'Four numbers from work that shipped. Each one links to the case study behind it, including the part that was argued about.',
     proofPoints: [
       { metric: '18–20 teams, no mandate', label: 'Product teams consolidated onto one API platform by making the paved road cheaper than staying put — ~€250–300k/yr saved', href: '/work/cloud-gateway' },
-      { metric: '3 estates, 1 contract', label: 'SAP, legacy ESB and cloud teams brought onto one event contract — agreed before either side wrote code', href: '/work/sap-event-backbone' },
+      { metric: '20+ data products, 30+ sources', label: 'Streaming data from 30+ source systems turned into 20+ domain-owned data products on Kafka — schema rules let producers ship without a change board', href: '/work/cloudera-kafka' },
       { metric: '~30+ company codes', label: 'SAP Finance ledgers into Snowflake — adopted because Finance could reconcile the numbers itself', href: '/work/sap-snowflake' },
       { metric: '~1.5B+ req/month', label: 'Federated cross-cloud API platform across AWS and Azure (Cloud Gateway), server-side errors under 0.03%', href: '/work/cloud-gateway' },
     ],
@@ -317,7 +317,7 @@ const nl: Dictionary = {
       'Vier cijfers uit werk dat daadwerkelijk live is gegaan. Elk cijfer linkt naar de casus erachter, inclusief het deel waarover discussie was.',
     proofPoints: [
       { metric: '18–20 teams, zonder verplichting', label: 'Productteams samengebracht op één API-platform door de gebaande weg goedkoper te maken dan blijven zitten — ~€250–300k/jaar bespaard', href: '/work/cloud-gateway' },
-      { metric: '3 landschappen, 1 contract', label: 'SAP-, legacy-ESB- en cloudteams op één event-contract — afgesproken voordat een van beide kanten code schreef', href: '/work/sap-event-backbone' },
+      { metric: '20+ dataproducten, 30+ bronnen', label: 'Streamingdata uit 30+ bronsystemen omgezet in 20+ domeingestuurde dataproducten op Kafka — schemaregels laten producenten uitrollen zonder change board', href: '/work/cloudera-kafka' },
       { metric: '~30+ company codes', label: 'SAP Finance-grootboeken naar Snowflake — geadopteerd omdat Finance de cijfers zelf kon aansluiten', href: '/work/sap-snowflake' },
       { metric: '~1,5 mld+ req/maand', label: 'Federatief cross-cloud API-platform over AWS en Azure (Cloud Gateway), server-side fouten onder 0,03%', href: '/work/cloud-gateway' },
     ],
