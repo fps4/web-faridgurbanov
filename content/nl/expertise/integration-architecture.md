@@ -1,6 +1,6 @@
 ---
 title: Integratiearchitectuur
-summary: Het ontwerpen van de ruggengraat die ervoor zorgt dat enterprisesystemen met elkaar praten — van legacy-ESB's naar event-driven, API-led en domeingeoriënteerde platformen.
+summary: Het ontwerpen van de laag waarmee bedrijfssystemen met elkaar praten, van legacy-ESB's naar event-driven, API-led platformen in eigendom van de domeinen.
 evidence: [integration-platform, sap-event-backbone, cloud-gateway, cloudera-kafka]
 order: 2
 group: domain
@@ -8,19 +8,19 @@ group: domain
 
 # Integratiearchitectuur
 
-Al twintig jaar is het mijn werk om systemen die nooit bedoeld waren om met elkaar te praten als één geheel te laten functioneren. Dat betekent de oude wereld kennen — IBM Integration Bus, API Connect, point-to-point ETL — goed genoeg om die veilig uit te faseren, en de nieuwe wereld — event-driven, API-led, domeingeoriënteerd — goed genoeg om die in productie te brengen.
+Twintig jaar lang is mijn werk geweest om systemen die nooit bedoeld waren om met elkaar te praten als één geheel te laten werken. Dat betekent de oude wereld (IBM Integration Bus, API Connect, punt-tot-punt-ETL) goed genoeg kennen om hem veilig uit te faseren, en de nieuwe (event-driven, API-led, domeingericht) goed genoeg om hem in productie te draaien.
 
 ## Wat ik doe
 
-- **Moderniseringstrajecten die de business niet stilleggen.** Stapsgewijs van batch- en point-to-point-integratie naar streaming en API's, terwijl het legacy-landschap blijft draaien.
-- **Standaarden die opschalen over teams heen.** REST-ontwerp, API-lifecycle en versionering, OpenAPI-contracten, en de governance om ze te laten beklijven als er twintig teams bij betrokken zijn.
-- **Contracten op de naden.** Schema-governance en datacontracten daar waar domeinen samenkomen, zodat een wijziging aan de ene kant de andere niet stilletjes breekt.
+- **Moderniseringsroutes die de business laten doordraaien.** Van batch en punt-tot-punt-integratie naar streaming en API's, stapsgewijs, terwijl het legacy-landschap nog live is.
+- **Standaarden die overeind blijven over teams heen.** REST-ontwerp, API-lifecycle en versionering, OpenAPI-contracten, en de governance om ze te laten standhouden als er twintig teams bij betrokken zijn.
+- **Contracten op de grenzen.** Schema-governance en datacontracten waar domeinen elkaar raken, zodat een wijziging aan de ene kant de andere niet stilletjes breekt.
 
 ## Aangetoond door
 
-- [Integratieplatform](/nl/work/integration-platform) — één configuratie-gedreven runtime die twaalf koppelingen bedient, waarbij er een toevoegen een mappingbestand en een Terraform-blok is in plaats van weer een maatwerkproject.
-- [SAP-event-backbone](/nl/work/sap-event-backbone) — een SAP-landschap, een legacy IBM ESB en een AWS-native platform op één event-contract, zodat domeinteams zich abonneren op gecontroleerde business-events in plaats van weer een point-to-point-koppeling te laten bouwen.
-- [Cloud Gateway](/nl/work/cloud-gateway) — twintig-plus gefragmenteerde gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~1,5 mld+ requests per maand verwerkt.
-- [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — domeingeoriënteerde streaming over 30+ bronsystemen met gegoverneerde schema's.
+- [Integratieplatform](/nl/work/integration-platform): één configuratiegedreven runtime voor twaalf koppelingen, waar er een toevoegen een mappingbestand en een Terraform-blok is.
+- [SAP-event-backbone](/nl/work/sap-event-backbone): een SAP-landschap, een legacy IBM ESB en een AWS-native platform op één event-contract gebracht, zodat domeinteams zich abonneren op beheerde business events waar ze eerst weer een punt-tot-punt-koppeling lieten bouwen.
+- [Cloud Gateway](/nl/work/cloud-gateway): ruim twintig versnipperde gateways samengebracht in één federatief, cross-cloud selfserviceplatform dat ~1,5 mld+ requests per maand verwerkt.
+- [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka): domeingerichte streaming over 30+ bronsystemen met beheerde schema's.
 
-Achtergrond: 20+ jaar over SOA, ESB-modernisering en API-management; Accenture Certified Technology Architect; TOGAF 9.
+Achtergrond: 20+ jaar SOA, ESB-modernisering en API-management; Accenture Certified Technology Architect; TOGAF 9.

@@ -58,6 +58,31 @@ locale:
 - Detail that does not fit goes in the linked repo's README or the case study. The card is the
   hook, not the summary — the reader is deciding whether to click, not being briefed.
 
+## Voice
+
+All copy (`content/`, `lib/dictionaries.ts`, `lib/site.ts`) is written to read as one person's prose,
+not generated text. The tells that get a rewrite sent back, in order of how loudly they read:
+
+- **Antithesis as a reflex.** "X, not Y", "rather than", "instead of". At most one or two per page,
+  and only where the contrast *is* the point. Say the rest straight.
+- **Templated scaffolding.** Case studies keep the section order FS-0004 fixes, but the prose inside
+  is not a mould: no shared paragraph openers ("The obvious shape is…"), no fixed "two decisions",
+  no shared closer. Let each one have its own shape.
+- **Em-dash density.** Budget roughly one per 300 words of body text; the rest become full stops,
+  commas, colons or parentheses. Headings and labels ("D1 — …", "Working — runs end-to-end") are
+  exempt.
+- **Aphoristic bolds and punchline closers.** One short-sentence payoff per page, not one per
+  paragraph. Bold leads in "What I do" lists are catalogue entries, not slogans.
+- **Sincerity words.** "honest(ly)", "genuine(ly)", "deliberate(ly)", "on purpose", "actually".
+  The specifics carry the honesty; the adverbs assert it. Cut them.
+- **Copy that explains its own move.** "AI is last, and that is deliberate", "written as situations,
+  not adjectives". Delete the framing sentence; the ordering speaks for itself.
+- **Dutch is written from the meaning, not the sentence.** No calques: *koppelvlak/grens/overgang*
+  rather than *naad*, *het platform goedkoper maken* rather than *de gebaande weg*, *in golven*
+  rather than *wave voor wave*. If a Dutch reader would not say it, it does not go in.
+- **Facts stay facts.** Years, team words ("we") and admissions come from the resume or the
+  engagement, never invented to add texture.
+
 ## Pre-submit checks
 
 Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):

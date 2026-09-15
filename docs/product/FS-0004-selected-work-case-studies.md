@@ -58,7 +58,9 @@ conversation, and it is what makes the training offer credible ("taught by someo
      govern→build→deliver story; cross-links to the portfolio (FS-0005).
 3. **Consistent structure** per study: context / problem → what was built → quantified impact →
    the pattern behind it (the decision and its trade-off) → who had to say yes (the stakeholders,
-   the disagreement, what resolved it, what it cost) → role & stack.
+   the disagreement, what resolved it, what it cost) → role & stack. The section order is fixed;
+   the prose inside each section is not templated (no shared openers, no fixed "two decisions",
+   no shared closer). See the Voice section of `AGENTS.md`. *(Clarified 2026-09-15.)*
 4. **Anonymization** — client names omitted/abstracted where confidentiality requires; metrics
    kept.
 5. **Bilingual** — EN now; NL may lag (ADR-0002).
