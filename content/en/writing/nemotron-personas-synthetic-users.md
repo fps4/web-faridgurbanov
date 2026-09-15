@@ -42,7 +42,7 @@ Grounded synthetic data is a sharp tool, and the failure mode is treating it as 
 
 ## How it fits the way I build
 
-This slots into the loop I run everywhere: clear inputs in, evaluated outputs out, a human at the gate. Synthetic personas are *fixtures*. They make the harness richer and the experiments more honest, the same way a good held-out eval set does. What they don't do is move the gate. The personas seed the test; real evals and a human still decide whether the thing ships.
+This slots into the loop I run everywhere: clear inputs in, evaluated outputs out, a human at the gate. Synthetic personas are *fixtures*. They make the harness richer and the experiments harder to fool, the same way a good held-out eval set does. What they don't do is move the gate. The personas seed the test; real evals and a human still decide whether the thing ships.
 
 Used that way, as believable, regulation-friendly fixtures, Nemotron-Personas is one of the more useful releases for anyone building AI under EU constraints. Just keep one hand on the caveat: the people are fictional, and the moment your decisions assume they aren't, the tool starts lying to you.
 

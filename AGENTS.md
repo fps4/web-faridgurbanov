@@ -83,6 +83,12 @@ not generated text. The tells that get a rewrite sent back, in order of how loud
 - **Facts stay facts.** Years, team words ("we") and admissions come from the resume or the
   engagement, never invented to add texture.
 
+`npm run voice` measures five of these per file (antithesis, mould phrases, em-dashes, sincerity
+words, Dutch calques) against a budget (em-dashes ≤ 3.5 per
+1,000 words of body text, antithesis ≤ 5 per 1,000, sincerity words / mould phrases / Dutch calques
+= 0) and prints one row per copy surface. Run it on anything you wrote before opening the PR. A
+number over budget is not automatically wrong, but it needs a sentence in the PR saying why.
+
 ## Pre-submit checks
 
 Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):
@@ -90,6 +96,7 @@ Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):
 1. `npm run lint`
 2. `npm run test`
 3. `npm run build` succeeds and produces `out/`.
+4. `npm run voice -- --strict` exits 0, or the PR explains each file it flags (copy changes only).
 
 ## Docs as Definition of Done
 

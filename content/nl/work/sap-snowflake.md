@@ -50,7 +50,7 @@ Contracten hebben een prijs, en die valt bovenstrooms. Iemand aan de SAP-kant mo
 
 **De onenigheid:** een contract op de overdracht verplaatst werk naar boven. Het SAP-team had voor dit ontwerp geen verplichtingen richting analytics en zou nu eigenaar worden van een schemabelofte. Finance had intussen een grootboek dat het al vertrouwde en geen reden om een tweede bron van cijfers te verkiezen.
 
-**Wat het oploste:** een controle die Finance zelf kon draaien. De geladen data aansluiten op het brongrootboek gaf ze iets om te verifiëren in plaats van iets om te geloven, en de adoptie volgde op die controle. Met de SAP-architecten deden we de bron-naar-doel-mapping samen in plaats van hem over de schutting te gooien. Hun randvoorwaarde, de belasting op hun productiesysteem beschermen, bepaalde de extractiestrategie, en binnen die randvoorwaarde werken is ook wat mij een benoemde eigenaar achter het contract opleverde.
+**Wat het oploste:** een controle die Finance zelf kon draaien. De geladen data aansluiten op het brongrootboek gaf ze iets om te verifiëren, en de adoptie volgde op die controle. Met de SAP-architecten deden we de bron-naar-doel-mapping samen in plaats van hem over de schutting te gooien. Hun randvoorwaarde, de belasting op hun productiesysteem beschermen, bepaalde de extractiestrategie, en binnen die randvoorwaarde werken is ook wat mij een benoemde eigenaar achter het contract opleverde.
 
 **Wat het kostte:** werk bovenstrooms waar er eerder geen was, en een benoemde eigenaar achter elk contract. Dat eigenaarschap moest afgesproken zijn voordat er iets van in code afgedwongen kon worden.
 
