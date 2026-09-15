@@ -1,7 +1,7 @@
 ---
 title: "FS-0004 — Selected work / case studies"
 status: draft
-last_updated: 2026-08-21
+last_updated: 2026-09-15
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -47,7 +47,8 @@ conversation, and it is what makes the training offer credible ("taught by someo
      side wrote code. *(Added under ADR-0005 as the strongest available evidence of working
      across an organisation.)*
    - **Cloud Gateway** — federated cross-cloud API platform; replaced IBM API Connect;
-     consolidated 20+ gateways; ~500M+ req/month; 18–20 teams; ~€250–300k/yr saved; onboarding
+     consolidated 20+ gateways; ~1.5B+ req/month with server-side errors under 0.03% (Datadog,
+     September 2026 — refreshed from ~500M+); 18–20 teams; ~€250–300k/yr saved; onboarding
      days→minutes. *(The canonical proof point — present in all applications.)*
    - **SAP S/4HANA Finance → Snowflake** — GL/AR/AP/CO/AA; ~30+ company codes; multi-TB backfill
      + 10–30 GB daily delta; data contracts at the SAP↔lakehouse seam.

@@ -20,7 +20,7 @@ Al twintig jaar is het mijn werk om systemen die nooit bedoeld waren om met elka
 
 - [Integratieplatform](/nl/work/integration-platform) — één configuratie-gedreven runtime die twaalf koppelingen bedient, waarbij er een toevoegen een mappingbestand en een Terraform-blok is in plaats van weer een maatwerkproject.
 - [SAP-event-backbone](/nl/work/sap-event-backbone) — een SAP-landschap, een legacy IBM ESB en een AWS-native platform op één event-contract, zodat domeinteams zich abonneren op gecontroleerde business-events in plaats van weer een point-to-point-koppeling te laten bouwen.
-- [Cloud Gateway](/nl/work/cloud-gateway) — twintig-plus gefragmenteerde gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~500M+ requests per maand verwerkt.
+- [Cloud Gateway](/nl/work/cloud-gateway) — twintig-plus gefragmenteerde gateways geconsolideerd tot één federatief, cross-cloud, selfservice-platform dat ~1,5 mld+ requests per maand verwerkt.
 - [Kafka-dataproductplatform op Cloudera](/nl/work/cloudera-kafka) — domeingeoriënteerde streaming over 30+ bronsystemen met gegoverneerde schema's.
 
 Achtergrond: 20+ jaar over SOA, ESB-modernisering en API-management; Accenture Certified Technology Architect; TOGAF 9.
