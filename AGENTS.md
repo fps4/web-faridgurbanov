@@ -42,6 +42,10 @@ npm run test     # vitest run
   framework-free and unit-tested.
 - Content is filesystem markdown with frontmatter (title, summary, order, draft) under
   `content/{en,nl}`; never dump the frontmatter block into rendered prose (`lib/frontmatter.ts`).
+- References live in `content/references/` (locale-less, one person per file, the quote as the
+  body, verbatim). Add or update one by editing the file; see `docs/guides/references.md` for the
+  fields and what the build checks. Never change a person's words, never update their role to a
+  current title (it records the engagement), never fetch anything from LinkedIn.
 
 ## Tile copy
 
@@ -82,6 +86,10 @@ not generated text. The tells that get a rewrite sent back, in order of how loud
   rather than *wave voor wave*. If a Dutch reader would not say it, it does not go in.
 - **Facts stay facts.** Years, team words ("we") and admissions come from the resume or the
   engagement, never invented to add texture.
+
+Quotes in `content/references/` are exempt from all of this: they are other people's words and
+the voice check skips the folder. The tile budget still applies to the two `featured` ones, which
+sit side by side on the home page (`lib/references.test.ts` enforces it).
 
 `npm run voice` measures five of these per file (antithesis, mould phrases, em-dashes, sincerity
 words, Dutch calques) against a budget (em-dashes ≤ 3.5 per

@@ -11,6 +11,9 @@ export const site = {
   // page. The address is assembled from parts at render time to resist naive scraping.
   email: { user: 'farid', domain: 'gurbanov.net' },
   linkedin: 'https://www.linkedin.com/in/fgurbanov/',
+  // The recommendations tab of the same profile. A reference marked `verified` links here so a
+  // reader can check the words at the source (FS-0009).
+  linkedinRecommendations: 'https://www.linkedin.com/in/fgurbanov/details/recommendations/',
   github: 'https://github.com/fps4',
   location: { en: 'Eindhoven, Netherlands', nl: 'Eindhoven, Nederland' },
 } as const;

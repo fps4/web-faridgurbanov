@@ -1,13 +1,14 @@
 ---
 title: "FS-0002 — Home page"
 status: draft
-last_updated: 2026-09-15
+last_updated: 2026-09-17
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
   - docs/product/FS-0004-selected-work-case-studies.md
   - docs/product/FS-0008-training-and-eu-ai-act.md
+  - docs/product/FS-0009-references.md
   - docs/design/decisions/0005-stakeholder-forward-positioning.md
 maestro:
   feature: home-page
@@ -55,6 +56,10 @@ between them.
    cannot: whether the owner can carry an organisation. Three cards, each naming a real
    disagreement and what resolved it, each linking to the case study that carries the full
    "Who had to say yes" section, plus a link to the practice page (FS-0003).
+2d. **References band (FS-0009).** Between the adoption band and the technical band: the
+   references marked `featured` (at most two, side by side), each linking to its case study, with a
+   link to the references page. The adoption band is the owner's account of the stakeholders; this
+   is stakeholders speaking. Renders nothing WHILE no reference is featured. *(Added 2026-09-17.)*
 3. **M1 — training-forward flip.** The hero leads with the training offer ("AI training for
    product & architecture teams — taught by an architect who ships"); the architect credibility
    moves to a supporting proof block; CTAs lead to the Training section and taster booking.
@@ -84,6 +89,9 @@ between them.
   cross-organisation situation and linking to the case study or practice page that evidences it.
 - THE home page SHALL present its bands in the order track record, adoption, then technical areas
   (ADR-0007).
+- WHERE at least one reference is marked `featured`, THE home page SHALL render an "In their
+  words" band between the adoption band and the technical band (FS-0009); WHILE none is, IT SHALL
+  render no such band.
 - WHILE no intro video is configured, THE home page SHALL render no video section at all.
 - WHERE an intro video is configured, THE player SHALL be self-hosted, SHALL NOT autoplay, and
   SHALL carry a caption track for the active locale.

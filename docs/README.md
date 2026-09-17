@@ -1,7 +1,7 @@
 ---
 title: faridgurbanov.com documentation index
 status: draft
-last_updated: 2026-06-08
+last_updated: 2026-09-17
 owners: [architect]
 ---
 
@@ -38,6 +38,7 @@ Intent + functional specs (`kind: functional_spec`). Start with the
 | [FS-0006](./product/FS-0006-writing-blog.md) | Writing / blog | M0 |
 | [FS-0007](./product/FS-0007-contact-and-privacy.md) | Contact & privacy/GDPR | M0 |
 | [FS-0008](./product/FS-0008-training-and-eu-ai-act.md) | Training section & EU AI Act page | M0 stub → M1 full |
+| [FS-0009](./product/FS-0009-references.md) | References | ships dark; on with the first file |
 
 ## Design — how it's built
 
@@ -54,6 +55,7 @@ No designs yet; the decisions are locked as ADRs under [`design/decisions/`](./d
 | [0006](./design/decisions/0006-portfolio-restructure-data-architecture.md) | Portfolio restructured for the data-architect / lead-architect target |
 | [0007](./design/decisions/0007-front-page-three-bands-and-portfolio-focus.md) | Front page as three bands; portfolio narrowed to five repos in three areas |
 | [0008](./design/decisions/0008-work-and-expertise-index-redesign.md) | Selected work and Expertise indexes redesigned; WhatsApp scoped back to Contact |
+| [0009](./design/decisions/0009-references-as-curated-snapshots.md) | References are curated markdown snapshots, not a LinkedIn feed |
 
 ## Reference
 
@@ -64,8 +66,9 @@ lands here as the content model and routes stabilise.
 ## Guides
 
 How-to, operations, and onboarding live under `guides/` (Diátaxis discipline is advisory here).
-The shelf is currently empty — build, deploy, and content-authoring guides land here as the
-toolchain settles.
+
+- [`guides/intro-video.md`](./guides/intro-video.md) — recording and enabling the home-page video
+- [`guides/references.md`](./guides/references.md) — asking for, adding and maintaining a reference
 
 ## Delivery — the work
 
@@ -75,7 +78,7 @@ toolchain settles.
 | Epic | Capability | Specs |
 |---|---|---|
 | [EP-00 — Foundation & shell](./delivery/backlog/EP-00-foundation-and-shell/README.md) | Scaffold, bilingual shell, content pipeline, static export, hosting | FS-0001 |
-| [EP-01 — Content pages](./delivery/backlog/EP-01-content-pages/README.md) | Home, expertise, case studies, portfolio, writing, contact/privacy | FS-0002…FS-0007 |
+| [EP-01 — Content pages](./delivery/backlog/EP-01-content-pages/README.md) | Home, expertise, case studies, portfolio, writing, contact/privacy, references | FS-0002…FS-0007, FS-0009 |
 | [EP-02 — Training & EU AI Act](./delivery/backlog/EP-02-training/README.md) | Training CTA stub (M0) → full Training section + EU AI Act page (M1) | FS-0008 |
 
 - [`delivery/issues/`](./delivery/issues/README.md) — `ISSUE-NNNN` (defects, with RCA) + `LIMITATION-NNNN` (accepted constraints)
