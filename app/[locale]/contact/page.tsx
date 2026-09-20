@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { PageIntro } from '@/components/page-intro';
 import { ObfuscatedEmail } from '@/components/obfuscated-email';
 import { WhatsAppContact } from '@/components/whatsapp-contact';
 import { Button } from '@/components/ui/button';
 import { getDictionary } from '@/lib/dictionaries';
+import { hrefFor } from '@/lib/nav';
+import { loadReferences } from '@/lib/references';
 import { site, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
@@ -11,7 +15,9 @@ import { locales, type Locale } from '@/lib/i18n';
 // mailto, a WhatsApp click-to-chat affordance, the profile links, location, and (in M1) the "book a
 // taster" path. Still no form and no backend — the WhatsApp textarea only pre-fills a wa.me link in
 // the visitor's own browser, so the privacy page can keep saying nothing is collected here, while
-// disclosing that choosing WhatsApp makes Meta a processor.
+// disclosing that choosing WhatsApp makes Meta a processor. WHILE references are published
+// (FS-0009) the page also offers them, and an introduction to one of them on request — the one
+// contact path that is a person rather than a channel.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -31,6 +37,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const { locale: raw } = await params;
   const locale = raw as Locale;
   const t = getDictionary(locale).contact;
+  const tr = getDictionary(locale).references;
+  const hasReferences = (await loadReferences()).length > 0;
 
   return (
     <div className="container py-16">
@@ -86,6 +94,23 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               </a>
             </li>
           </ul>
+
+          {hasReferences && (
+            <>
+              <h2 className="mt-10 text-sm font-medium uppercase tracking-wide text-muted-foreground">
+                {tr.contactHeading}
+              </h2>
+              <p className="mt-3 max-w-md text-muted-foreground">{tr.contactBody}</p>
+              <div className="mt-4">
+                <Button asChild variant="outline">
+                  <Link href={hrefFor(locale, '/references')}>
+                    {tr.contactCta}
+                    <ArrowRight />
+                  </Link>
+                </Button>
+              </div>
+            </>
+          )}
 
           <h2 className="mt-10 text-sm font-medium uppercase tracking-wide text-muted-foreground">
             {t.locationHeading}

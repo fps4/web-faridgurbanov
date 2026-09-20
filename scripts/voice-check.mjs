@@ -97,7 +97,11 @@ const strict = args.includes('--strict');
 const explicit = args.filter((a) => !a.startsWith('--'));
 const files = explicit.length
   ? explicit
-  : [...walk('content'), 'lib/dictionaries.ts', 'lib/site.ts'].filter((f) => !f.includes('/mcp-enterprise-architecture'));
+  : [...walk('content'), 'lib/dictionaries.ts', 'lib/site.ts'].filter(
+      // content/references/ holds other people's words, quoted verbatim (FS-0009); the voice
+      // rules are for the owner's prose, so those files are not measured.
+      (f) => !f.includes('/mcp-enterprise-architecture') && !f.includes('content/references/'),
+    );
 
 const rows = files.map(measure);
 const w = Math.max(...rows.map((r) => relative('.', r.path).length));

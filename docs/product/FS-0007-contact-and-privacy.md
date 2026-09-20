@@ -1,10 +1,11 @@
 ---
 title: "FS-0007 — Contact & privacy/GDPR"
 status: draft
-last_updated: 2026-06-09
+last_updated: 2026-09-17
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
+  - docs/product/FS-0009-references.md
   - docs/design/decisions/0001-tech-stack-and-static-export.md
 maestro:
   feature: contact-and-privacy
@@ -42,6 +43,9 @@ privacy/GDPR statement, which the earlier "cut privacy entirely" position got wr
 4. **Cookie/consent** — if no analytics or non-essential cookies are used, state that plainly; if
    any are added, a minimal consent affordance is required.
 5. **Bilingual** — EN + NL (contact and privacy matter to the NL audience; ADR-0002).
+6. **References (FS-0009)** — WHILE references are published, the contact page offers the
+   references page and a live introduction on request, and the privacy page states what a
+   reference publishes about a person and how they have it removed. *(Added 2026-09-17.)*
 
 ## Out of scope
 
@@ -61,6 +65,10 @@ privacy/GDPR statement, which the earlier "cut privacy entirely" position got wr
 - IF the site sets non-essential cookies or runs analytics, THEN THE SYSTEM SHALL present a
   minimal consent affordance; OTHERWISE the privacy page SHALL state that no non-essential
   cookies are used.
+- WHILE at least one reference is published (FS-0009), THE contact page SHALL offer the references
+  page and an introduction on request; THE privacy page SHALL state that references publish a
+  person's name, photo, role at the time, words and profile link with their agreement, and how they
+  have it removed.
 - THE contact and privacy pages SHALL be available in both English and Dutch.
 
 ## Definition of done

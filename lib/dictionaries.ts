@@ -78,6 +78,26 @@ export interface Dictionary {
     lastUpdated: string;
     body: string;
   };
+  references: {
+    title: string;
+    lede: string;
+    heading: string;
+    homeLede: string;
+    allCta: string;
+    readCaseStudy: string;
+    linkedin: string;
+    alsoOnLinkedIn: string;
+    workedTogether: string;
+    /** `{language}` is replaced with the language name in the reader's locale. */
+    inLanguage: string;
+    translatedFrom: string;
+    collectedHeading: string;
+    collectedBody: string;
+    collectedLinkedin: string;
+    contactHeading: string;
+    contactBody: string;
+    contactCta: string;
+  };
   training: {
     title: string;
     lede: string;
@@ -232,7 +252,7 @@ const en: Dictionary = {
   },
   privacy: {
     title: 'Privacy',
-    lastUpdated: 'Last updated: 20 August 2026',
+    lastUpdated: 'Last updated: 17 September 2026',
     body: `This is a static website. It has no backend, no database, no contact form, and no analytics.
 
 **What this site collects:** nothing. There is no form that submits data to me, and no tracking or advertising scripts run on these pages. The message box on the contact page is not a form; it only builds a WhatsApp link in your own browser, and it never sends anything.
@@ -245,7 +265,28 @@ const en: Dictionary = {
 
 **Hosting:** the site is served as static files from my own server. The hosting layer may process technical request data (such as your IP address) in server logs for security and to keep the site running, which is standard for any website.
 
+**References:** the references page and the case studies quote people I have worked with, with their name, photo, role at the time and a link to their public LinkedIn profile. Each of them agreed to that before it went live, and any of them can have it taken down by emailing me.
+
 **Your rights:** you can ask me what correspondence I hold about you, to correct it, or to delete it. Email the address on the contact page and I will action it.`,
+  },
+  references: {
+    title: 'References',
+    lede: 'People I worked with, on the work in the case studies. Their words, unedited, and a link to each of them so you can check.',
+    heading: 'In their words',
+    homeLede: 'People I worked with, in their own words. Each links to their LinkedIn profile; the full set is on the references page.',
+    allCta: 'All references',
+    readCaseStudy: 'Read the case study',
+    linkedin: 'LinkedIn',
+    alsoOnLinkedIn: 'Also on my LinkedIn',
+    workedTogether: 'worked together',
+    inLanguage: 'In {language}.',
+    translatedFrom: 'Translated from {language}, with their approval.',
+    collectedHeading: 'How these were collected',
+    collectedBody: 'Each person read this page before it went live and agreed to their name, photo, role and words being on it, with the link to their profile. Quotes are verbatim; where I shortened one, the cut is marked. Anyone here can have theirs taken down with one email.',
+    collectedLinkedin: 'Some of them are also recommendations on my LinkedIn profile, where you can read them at the source.',
+    contactHeading: 'Ask someone I worked with',
+    contactBody: 'If you would rather hear it from someone else first, the people quoted on the references page were on these engagements, and each links to their profile. For a live conversation, ask me and I will make an introduction.',
+    contactCta: 'References',
   },
   training: {
     title: 'Training',
@@ -414,7 +455,7 @@ const nl: Dictionary = {
   },
   privacy: {
     title: 'Privacy',
-    lastUpdated: 'Laatst bijgewerkt: 20 augustus 2026',
+    lastUpdated: 'Laatst bijgewerkt: 17 september 2026',
     body: `Dit is een statische website. Er is geen backend, geen database, geen contactformulier en geen analytics.
 
 **Wat deze site verzamelt:** niets. Er is geen formulier dat gegevens naar mij verstuurt, en er draaien geen tracking- of advertentiescripts op deze pagina's. Het berichtvak op de contactpagina is geen formulier; het bouwt alleen een WhatsApp-link in je eigen browser, en verstuurt zelf nooit iets.
@@ -427,7 +468,28 @@ const nl: Dictionary = {
 
 **Hosting:** de site wordt als statische bestanden geserveerd vanaf mijn eigen server. De hostinglaag kan technische verzoekgegevens (zoals je IP-adres) verwerken in serverlogs voor beveiliging en werking, zoals bij elke website.
 
+**Referenties:** de referentiepagina en de casussen citeren mensen met wie ik heb gewerkt, met hun naam, foto, rol van destijds en een link naar hun openbare LinkedIn-profiel. Ieder van hen heeft daar vooraf mee ingestemd, en wie dat wil kan het met een e-mail laten verwijderen.
+
 **Je rechten:** je kunt vragen welke correspondentie ik over je heb, die laten corrigeren of verwijderen. Mail het adres op de contactpagina en ik handel het af.`,
+  },
+  references: {
+    title: 'Referenties',
+    lede: 'Mensen met wie ik heb gewerkt, over het werk uit de casussen. Hun woorden, onbewerkt, met een link naar ieder van hen zodat je het kunt nagaan.',
+    heading: 'In hun woorden',
+    homeLede: 'Mensen met wie ik heb gewerkt, in hun eigen woorden. Elk linkt naar hun LinkedIn-profiel; de volledige set staat op de referentiepagina.',
+    allCta: 'Alle referenties',
+    readCaseStudy: 'Lees de casus',
+    linkedin: 'LinkedIn',
+    alsoOnLinkedIn: 'Ook op mijn LinkedIn',
+    workedTogether: 'samengewerkt',
+    inLanguage: 'In het {language}.',
+    translatedFrom: 'Vertaald uit het {language}, met hun goedkeuring.',
+    collectedHeading: 'Hoe deze zijn verzameld',
+    collectedBody: 'Iedereen hier heeft deze pagina gezien voordat hij live ging en heeft ingestemd met naam, foto, rol en woorden erop, met de link naar hun profiel. Citaten zijn letterlijk; waar ik er een heb ingekort, is dat aangegeven. Wie hier staat kan het met één e-mail laten verwijderen.',
+    collectedLinkedin: 'Een aantal staat ook als aanbeveling op mijn LinkedIn-profiel, waar je ze bij de bron kunt lezen.',
+    contactHeading: 'Vraag het iemand met wie ik heb gewerkt',
+    contactBody: 'Hoor je het liever eerst van iemand anders: de mensen op de referentiepagina zaten op deze opdrachten, en elk linkt naar hun profiel. Wil je iemand spreken, vraag het me en ik breng jullie in contact.',
+    contactCta: 'Referenties',
   },
   training: {
     title: 'Training',

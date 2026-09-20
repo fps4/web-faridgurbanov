@@ -25,6 +25,16 @@ export const trainingNav: NavItem = {
   label: { en: 'Training', nl: 'Training' },
 };
 
+/**
+ * The references page (FS-0009). Footer-only while the set is small: it is reached from the home
+ * band, the contact page and the footer, and the footer shows it only WHILE at least one reference
+ * is published. Promote it into primaryNav once there are enough to carry a nav slot.
+ */
+export const referencesNav: NavItem = {
+  href: '/references',
+  label: { en: 'References', nl: 'Referenties' },
+};
+
 /** M0 renders Training as a CTA button; M1 promotes it into primaryNav. */
 export const TRAINING_IN_NAV = false;
 
