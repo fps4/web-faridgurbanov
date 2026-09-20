@@ -1,7 +1,7 @@
 ---
 title: "FS-0009 — References"
 status: accepted
-last_updated: 2026-09-17
+last_updated: 2026-09-20
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -39,9 +39,10 @@ the stakeholders; a reference is one of those stakeholders speaking.
 
 ## Scope
 
-1. **A reference** is one person's words about one engagement: name, role *during the work* and the
-   years worked together (a snapshot that stays true), a link to their public LinkedIn profile, an
-   optional photo, the date they wrote it, the language it is in, and the quote itself, verbatim.
+1. **A reference** is one person's words about one engagement: name, their position as their
+   LinkedIn headline shows it (refreshed by hand on review) and the years worked together, a link to
+   their public LinkedIn profile, an optional photo, the date they wrote it, the language it is in,
+   and the quote itself, verbatim, paragraphs kept.
    Stored as one markdown file per person under `content/references/`, locale-less, because the
    quote is never translated; only the role line carries a Dutch variant.
 2. **Case study** — WHERE a published reference names a case study, that study renders an
@@ -78,9 +79,8 @@ the stakeholders; a reference is one of those stakeholders speaking.
   `draft: true`.
 - EACH reference SHALL carry a `linkedin` URL of the form `https://www.linkedin.com/in/<handle>/`,
   and THE SYSTEM SHALL render it as the person's profile link on every surface.
-- EACH reference SHALL state the person's role during the engagement and the years worked
-  together, and SHALL NOT be updated to the person's current title; the profile link is where a
-  reader finds that.
+- EACH reference SHALL state the person's position as their LinkedIn headline shows it, refreshed
+  by hand when the file is reviewed, and the years worked together.
 - WHERE a reference carries a `photo`, IT SHALL be a file under `public/references/`; WHERE it does
   not, THE SYSTEM SHALL render the person's initials in its place. THE SYSTEM SHALL NOT load any
   image or script from LinkedIn.
@@ -100,7 +100,7 @@ the stakeholders; a reference is one of those stakeholders speaking.
 - WHEN a quote is in a language other than the page's, THE SYSTEM SHALL say so next to the
   attribution; WHERE the quote shown is an approved translation, IT SHALL say what it was translated
   from.
-- THE SYSTEM SHALL fail `npm run test` WHEN a reference's quote is outside 30–90 words (35–75 when
+- THE SYSTEM SHALL fail `npm run test` WHEN a reference's quote is outside 30–120 words (35–75 when
   featured), when its profile link is not a LinkedIn profile URL, when its photo file is missing, or
   when its `work` names no case study.
 - THE voice check SHALL NOT measure `content/references/`, because the words are not the owner's.

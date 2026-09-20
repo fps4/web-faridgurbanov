@@ -44,8 +44,9 @@ npm run test     # vitest run
   `content/{en,nl}`; never dump the frontmatter block into rendered prose (`lib/frontmatter.ts`).
 - References live in `content/references/` (locale-less, one person per file, the quote as the
   body, verbatim). Add or update one by editing the file; see `docs/guides/references.md` for the
-  fields and what the build checks. Never change a person's words, never update their role to a
-  current title (it records the engagement), never fetch anything from LinkedIn.
+  fields and what the build checks. Never change a person's words (cuts and fixes go in square
+  brackets); `role` mirrors their LinkedIn headline and is refreshed by hand on review; never fetch
+  anything from LinkedIn at build or request time.
 
 ## Tile copy
 

@@ -4,7 +4,7 @@ persona: visitor
 status: done
 complexity: M
 milestone: M0
-last_updated: 2026-09-17
+last_updated: 2026-09-20
 spec: docs/product/FS-0009-references.md
 design: docs/design/decisions/0009-references-as-curated-snapshots.md
 ---
@@ -27,16 +27,16 @@ live introduction on request.
 
 The owner asked for the person's photo and position to be "taken from LinkedIn". There is no route
 for that on a static site that keeps its privacy promise (ADR-0009), so each reference is a
-markdown file the owner or an agent maintains by hand, with the role recorded as a dated snapshot of
-the engagement and the profile link carrying the present. Consent is part of the ask: the person
-sees the rendered card before it goes live.
+markdown file the owner or an agent maintains by hand, with the role copied from the profile
+headline and refreshed on review, and the profile link there to check. Consent is part of the ask:
+the person sees the rendered card before it goes live.
 
 ## Acceptance criteria (EARS)
 
 - THE SYSTEM SHALL read references from `content/references/*.md` (one person per file, flat
   frontmatter, the quote as the body) and SHALL skip drafts.
-- EACH reference SHALL link to the person's public LinkedIn profile and SHALL state their role
-  during the engagement and the years worked together.
+- EACH reference SHALL link to the person's public LinkedIn profile and SHALL state their position
+  as the profile headline shows it and the years worked together.
 - WHERE a published reference names a case study, THE case-study page SHALL render it in an "In
   their words" section between "Who had to say yes" and "Role & stack".
 - WHERE a reference is `featured` (at most two), THE home page SHALL render it in a band between the
@@ -77,3 +77,7 @@ site builds as before until the first real file lands.
 - `scripts/voice-check.mjs` skips `content/references/`.
 - Privacy page (EN + NL) gained a "References" paragraph; `lastUpdated` bumped.
 - `docs/guides/references.md` is the runbook for the ask, the file, the photo and the checks.
+- 2026-09-20: `role` switched from "role during the engagement" to the LinkedIn headline, refreshed
+  on review, at the owner's request; quotes may hold paragraphs and run to 120 words (featured ones
+  stay at 35–75). First two references: Oliver J. Wickens (letter, 2019) and Muktar Bashir (LinkedIn
+  recommendation, 2026), both on the Cloudera/Kafka study.

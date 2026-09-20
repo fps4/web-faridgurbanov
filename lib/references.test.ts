@@ -62,11 +62,11 @@ describe('validateReference', () => {
     return { ...ref, featured };
   };
 
-  it('holds a quote to 30–90 words, and a featured one to the tile budget', () => {
+  it('holds a quote to 30–120 words, and a featured one to the tile budget', () => {
     expect(validateReference(withQuote(29))).toHaveLength(1);
     expect(validateReference(withQuote(30))).toEqual([]);
-    expect(validateReference(withQuote(90))).toEqual([]);
-    expect(validateReference(withQuote(91))).toHaveLength(1);
+    expect(validateReference(withQuote(120))).toEqual([]);
+    expect(validateReference(withQuote(121))).toHaveLength(1);
     expect(validateReference(withQuote(34, true))).toHaveLength(1);
     expect(validateReference(withQuote(75, true))).toEqual([]);
     expect(validateReference(withQuote(76, true))).toHaveLength(1);
@@ -80,9 +80,9 @@ describe('validateReference', () => {
     expect(validateReference({ ...ref, linkedin: '' })).toHaveLength(1);
   });
 
-  it('keeps the quote to one paragraph and the photo under public/references/', () => {
+  it('allows paragraphs and keeps the photo under public/references/', () => {
     const ref = parseReference('x', valid)!;
-    expect(validateReference({ ...ref, quote: `${quote(20)}\n\n${quote(20)}` })).toHaveLength(1);
+    expect(validateReference({ ...ref, quote: `${quote(20)}\n\n${quote(20)}` })).toEqual([]);
     expect(validateReference({ ...ref, photo: '/references/first-last.jpg' })).toEqual([]);
     expect(validateReference({ ...ref, photo: 'https://media.licdn.com/x.jpg' })).toHaveLength(1);
   });

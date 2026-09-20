@@ -8,8 +8,8 @@ import { defaultLocale, type Locale } from '@/lib/i18n';
 // — locale-less, because a quote is never translated (only the role line is) — with the person's
 // details in flat frontmatter and the quote as the body. Curated by hand: there is no LinkedIn
 // API for other members' profiles, hotlinked photos expire, and the badge script would put
-// LinkedIn's cookies on every page (FS-0007), so the role and photo are a dated snapshot of the
-// engagement, reviewed by hand (`reviewed:`), and the profile link carries whatever they do now.
+// LinkedIn's cookies on every page (FS-0007), so the role and photo are copied from the profile by
+// hand and refreshed by hand (`reviewed:`); the profile link is where a reader checks the current.
 //
 // `loadReferences` touches the filesystem, so it is server-only like lib/content.ts. The parse and
 // validation helpers are pure and unit-tested; lib/references.test.ts also validates every real
@@ -21,7 +21,10 @@ const PUBLIC_DIR = path.join(process.cwd(), 'public');
 export interface Reference {
   slug: string;
   name: string;
-  /** Role during the engagement, per locale (`role_nl` falls back to `role`). Never a current title. */
+  /**
+   * Their position as their LinkedIn headline shows it (first segment), per locale (`role_nl` falls
+   * back to `role`). Refreshed by hand when the file is reviewed; `years` says when the work was.
+   */
   role: Record<Locale, string>;
   /** The years worked together, as written, e.g. '2021–2023'. */
   years: string;
@@ -41,17 +44,18 @@ export interface Reference {
   featured: boolean;
   /** True when the same text is a recommendation on the owner's LinkedIn profile. */
   verified: boolean;
-  /** ISO date the role, photo and link were last checked against the person. */
+  /** ISO date the role, photo and link were last checked against their profile. */
   reviewed: string;
-  /** The quote, verbatim, one paragraph. */
+  /** The quote, verbatim; blank lines separate paragraphs. */
   quote: string;
 }
 
-// Quote budgets. Every reference reads as a block on the case study and the references page;
-// the featured ones also sit side by side on the home page, so they follow the tile budget from
-// AGENTS.md (35–75 words). The wider band is for the person's own words — trim only with their OK.
+// Quote budgets. Every reference reads as a block on the case study and the references page,
+// where a LinkedIn-length recommendation (~100 words, two paragraphs) fits; the featured ones also
+// sit side by side on the home page, so they follow the tile budget from AGENTS.md (35–75 words).
+// Trim only with the person's OK, and mark the cut.
 export const QUOTE_MIN_WORDS = 30;
-export const QUOTE_MAX_WORDS = 90;
+export const QUOTE_MAX_WORDS = 120;
 export const FEATURED_MIN_WORDS = 35;
 export const FEATURED_MAX_WORDS = 75;
 /** The home band is two columns; a third featured card would wrap onto a row of its own. */
@@ -117,7 +121,6 @@ export function validateReference(ref: Reference): string[] {
   if (words < min || words > max) {
     problems.push(`quote is ${words} words; ${ref.featured ? 'a featured' : 'a'} reference needs ${min}–${max}`);
   }
-  if (/\n\s*\n/.test(ref.quote)) problems.push('quote must be a single paragraph');
   return problems;
 }
 

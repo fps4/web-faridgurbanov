@@ -1,7 +1,7 @@
 ---
 title: "Guide — adding and maintaining a reference"
 status: guide
-last_updated: 2026-09-17
+last_updated: 2026-09-20
 owners: [architect]
 related:
   - docs/product/FS-0009-references.md
@@ -37,7 +37,7 @@ remove `draft: true`. One person per file. The fields:
 | Field | What goes in it |
 |---|---|
 | `name` | As they write it. |
-| `role` | Their role **during the work**, in English: "Product owner, API platform". Never their current title; that is what the profile link is for. |
+| `role` | Their position as their LinkedIn headline shows it, first segment only (before the first "\|"), in English: "AI & Data Product Lead, Accenture". Refresh it whenever you bump `reviewed`. |
 | `role_nl` | The same in Dutch. Optional; falls back to `role`. |
 | `years` | The years worked together, as written: `2021–2023`. |
 | `linkedin` | Their public profile: `https://www.linkedin.com/in/<handle>/`. The build rejects anything else. |
@@ -50,9 +50,11 @@ remove `draft: true`. One person per file. The fields:
 | `verified` | `true` when the same text is a recommendation on the owner's LinkedIn profile; adds an "Also on my LinkedIn" link to the recommendations tab. |
 | `reviewed` | `YYYY-MM-DD`, the last time the role, photo and link were checked with the person. |
 
-The body is the quote, **verbatim**, one paragraph, no quotation marks (the component adds them).
-30–90 words; 35–75 when featured. If it has to be shortened, mark the cut with `[…]` and get their
-OK on the shortened version.
+The body is the quote, **verbatim**, no quotation marks (the component adds them); blank lines
+are kept as paragraphs. 30–120 words; 35–75 when featured. If it has to be shortened, mark the cut
+with `[…]` and get their OK on the shortened version. An editorial fix (a missing word, a typo) goes
+in square brackets too. Where a recommendation names a client the case study abstracts, cut the name
+the same way, so the site does not undo its own confidentiality.
 
 ## The photo
 
@@ -70,7 +72,7 @@ script; it puts their cookies on the page and falsifies the privacy page.
 
 `npm run test` fails on any of these, naming the file and the reason:
 
-- quote outside 30–90 words (35–75 when featured), or more than one paragraph;
+- quote outside 30–120 words (35–75 when featured);
 - `linkedin` not a `linkedin.com/in/` URL;
 - `photo` set but the file missing under `public/`;
 - `work` naming no case study;
@@ -81,7 +83,7 @@ script; it puts their cookies on the page and falsifies the privacy page.
 
 ## Keeping it up to date
 
-Once a year, open each file, check that the profile link still resolves and that the person is still
-happy to be quoted, and bump `reviewed`. Do not update `role` to their new job; the role line
-describes the past and stays true. If they change their mind, delete the file (and the photo) and
+Once a year, open each file, open the profile link, and check three things: the link still
+resolves, `role` still matches their headline (update it if they moved), and the person is still
+happy to be quoted. Bump `reviewed`. If they change their mind, delete the file (and the photo) and
 deploy; that is the whole removal. Note in the PR that the removal was at their request.

@@ -109,7 +109,19 @@ export function ReferenceQuote({
   const t = getDictionary(locale).references;
   const roleLine = `${reference.role[locale]} · ${t.workedTogether} ${reference.years}`;
   const note = languageNote(reference, locale);
-  const quote = <blockquote className="m-0 text-lg leading-[1.6]">“{reference.quote}”</blockquote>;
+  // Blank lines in the file are paragraph breaks; the quote marks wrap the whole quote, once.
+  const paragraphs = reference.quote.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  const quote = (
+    <blockquote className="m-0 flex flex-col gap-3 text-lg leading-[1.6]">
+      {paragraphs.map((p, i) => (
+        <p key={i} className="m-0">
+          {i === 0 ? '“' : ''}
+          {p}
+          {i === paragraphs.length - 1 ? '”' : ''}
+        </p>
+      ))}
+    </blockquote>
+  );
 
   if (variant === 'page') {
     return (

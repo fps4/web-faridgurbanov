@@ -1,7 +1,7 @@
 ---
 title: "0009: References are curated markdown snapshots, not a LinkedIn feed"
 status: accepted
-last_updated: 2026-09-17
+last_updated: 2026-09-20
 owners: [architect]
 related:
   - docs/design/decisions/0001-tech-stack-and-static-export.md
@@ -44,11 +44,13 @@ What LinkedIn allows, checked 2026-09-17:
    body, verbatim. One person per file. Locale-less: a quote is not translated, so there is no
    `content/{en,nl}` split; only the role line has a Dutch variant. An agent maintains these files
    the way it maintains the rest of `content/`; see `docs/guides/references.md`.
-2. **Role and photo are a dated snapshot of the engagement**, never a live mirror. The role line is
-   the role the person held during the work plus the years worked together ("Product owner, API
-   platform · worked together 2021–2023"), which stays true however their career moves. The profile
-   link carries whatever they do now. `reviewed:` records when the file was last checked with the
-   person; one pass a year is the whole update process.
+2. **Role and photo are copied from the profile by hand, and refreshed by hand.** The role line
+   shows the person's position as their LinkedIn headline shows it ("AI & Data Product Lead,
+   Accenture") plus the years worked together, so the card reads like the recommendation card on
+   LinkedIn. `reviewed:` records when the role, photo and link were last checked against the
+   profile; one pass a year, by the owner or an agent, is the whole update process. *(Decided
+   2026-09-20; the first draft of this ADR had the role frozen at the time of the engagement, and the
+   owner preferred the current position.)*
 3. **The photo is a file in the repository** (`public/references/<slug>.jpg`, square, small),
    supplied by the person or taken from their LinkedIn profile with their OK. No hotlinking, no
    badge, no script from LinkedIn. A reference without a photo shows initials.
@@ -56,8 +58,9 @@ What LinkedIn allows, checked 2026-09-17:
    links instead: each reference links to the person's profile, and one marked `verified` also links
    to the owner's recommendations tab, where the same words can be read at the source.
 5. **The build enforces the shape.** `lib/references.test.ts` validates every file: quote length
-   (30–90 words; 35–75 when featured, the tile budget), the profile-URL shape, the photo's presence,
-   and that `work` names an existing case study. At most two references are `featured`.
+   (30–120 words, paragraphs kept; 35–75 when featured, the tile budget), the profile-URL shape, the
+   photo's presence, and that `work` names an existing case study. At most two references are
+   `featured`.
 6. **The voice check skips the folder.** The words are the person's; measuring them against the
    owner's style would push toward editing them, which is the one thing a reference must not have.
 7. **Consent is part of the ask, not a feature.** The person sees the exact card before it goes
@@ -72,8 +75,8 @@ What LinkedIn allows, checked 2026-09-17:
   off the site on the next deploy; the history keeps them unless rewritten. The ask says this
   plainly rather than pretending otherwise; a private asset pipeline would have broken "buildable by
   an agent without bespoke infra".
-- References can go stale in one way only: a person changes their mind. The role line cannot go
-  stale, because it describes the past.
+- References go stale in two ways: a person changes their mind, or changes job. The first is a
+  deletion; the second is the yearly review, which `reviewed:` makes visible.
 - Every surface ships dark. WHILE `content/references/` holds only the template, the site builds
   exactly as before, with `/references` a 404. The first real file turns everything on.
 - `ContentArticle` gained a `beforeLastSection` slot and `lib/sections.ts` a splitter, so a page can
