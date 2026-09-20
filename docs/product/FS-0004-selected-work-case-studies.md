@@ -1,12 +1,13 @@
 ---
 title: "FS-0004 — Selected work / case studies"
 status: draft
-last_updated: 2026-08-21
+last_updated: 2026-09-17
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
   - docs/product/FS-0005-portfolio-repos.md
+  - docs/product/FS-0009-references.md
   - docs/design/decisions/0005-stakeholder-forward-positioning.md
 maestro:
   feature: selected-work-case-studies
@@ -47,7 +48,8 @@ conversation, and it is what makes the training offer credible ("taught by someo
      side wrote code. *(Added under ADR-0005 as the strongest available evidence of working
      across an organisation.)*
    - **Cloud Gateway** — federated cross-cloud API platform; replaced IBM API Connect;
-     consolidated 20+ gateways; ~500M+ req/month; 18–20 teams; ~€250–300k/yr saved; onboarding
+     consolidated 20+ gateways; ~1.5B+ req/month with server-side errors under 0.03% (Datadog,
+     September 2026 — refreshed from ~500M+); 18–20 teams; ~€250–300k/yr saved; onboarding
      days→minutes. *(The canonical proof point — present in all applications.)*
    - **SAP S/4HANA Finance → Snowflake** — GL/AR/AP/CO/AA; ~30+ company codes; multi-TB backfill
      + 10–30 GB daily delta; data contracts at the SAP↔lakehouse seam.
@@ -57,7 +59,12 @@ conversation, and it is what makes the training offer credible ("taught by someo
      govern→build→deliver story; cross-links to the portfolio (FS-0005).
 3. **Consistent structure** per study: context / problem → what was built → quantified impact →
    the pattern behind it (the decision and its trade-off) → who had to say yes (the stakeholders,
-   the disagreement, what resolved it, what it cost) → role & stack.
+   the disagreement, what resolved it, what it cost) → role & stack. The section order is fixed;
+   the prose inside each section is not templated (no shared openers, no fixed "two decisions",
+   no shared closer). See the Voice section of `AGENTS.md`. *(Clarified 2026-09-15.)* WHERE a
+   published reference names the study, an **"In their words"** section is rendered between "who
+   had to say yes" and "role & stack" from `content/references/` (FS-0009); the markdown body
+   carries no placeholder for it. *(Added 2026-09-17.)*
 4. **Anonymization** — client names omitted/abstracted where confidentiality requires; metrics
    kept.
 5. **Bilingual** — EN now; NL may lag (ADR-0002).
@@ -65,7 +72,7 @@ conversation, and it is what makes the training offer credible ("taught by someo
 ## Out of scope
 
 - The repo cards themselves (FS-0005) — case studies *link* to them.
-- Testimonials / workshop write-ups (`/cases` for training is M1, FS-0008).
+- Workshop write-ups (`/cases` for training is M1, FS-0008). Client references are FS-0009.
 
 ## Acceptance criteria (EARS)
 
@@ -82,6 +89,9 @@ conversation, and it is what makes the training offer credible ("taught by someo
 - WHERE a case study describes a self-built demo or portfolio repository rather than client work,
   IT SHALL NOT carry a "who had to say yes" section, because it has no client stakeholders and a
   fabricated one would breach the honesty rule.
+- WHERE a published reference names a case study, THE detail page SHALL render an "In their words"
+  section between the "who had to say yes" section and the role-and-stack section, sourced from
+  `content/references/` (FS-0009), and SHALL render no such section otherwise.
 - THE case-study set SHALL include the Cloud Gateway API platform with its scale and cost-saving
   metrics.
 - WHERE a case study references the owner's repositories, IT SHALL link to the portfolio section

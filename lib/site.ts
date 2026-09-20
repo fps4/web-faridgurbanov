@@ -11,6 +11,9 @@ export const site = {
   // page. The address is assembled from parts at render time to resist naive scraping.
   email: { user: 'farid', domain: 'gurbanov.net' },
   linkedin: 'https://www.linkedin.com/in/fgurbanov/',
+  // The recommendations tab of the same profile. A reference marked `verified` links here so a
+  // reader can check the words at the source (FS-0009).
+  linkedinRecommendations: 'https://www.linkedin.com/in/fgurbanov/details/recommendations/',
   github: 'https://github.com/fps4',
   location: { en: 'Eindhoven, Netherlands', nl: 'Eindhoven, Nederland' },
 } as const;
@@ -115,8 +118,8 @@ export const pillars: PillarMeta[] = [
     id: 'data',
     label: { en: 'Data architecture & modelling', nl: 'Data-architectuur & modellering' },
     lede: {
-      en: 'Deciding what the target looks like, and what crosses the seam to get there.',
-      nl: 'Bepalen hoe het doelmodel eruitziet, en wat de naad oversteekt om er te komen.',
+      en: 'Deciding what the target looks like, and what crosses the boundary to get there.',
+      nl: 'Bepalen hoe het doel eruitziet, en wat er over het koppelvlak heen moet om er te komen.',
     },
   },
   {
@@ -124,15 +127,15 @@ export const pillars: PillarMeta[] = [
     label: { en: 'Modernization & migration', nl: 'Modernisering & migratie' },
     lede: {
       en: 'Moving a live estate wave by wave, with parity gates instead of a big-bang weekend.',
-      nl: 'Een draaiend landschap wave voor wave verplaatsen, met pariteitspoorten in plaats van een big-bang-weekend.',
+      nl: 'Een draaiend landschap in golven verplaatsen, met pariteitscontroles in plaats van een big-bang-weekend.',
     },
   },
   {
     id: 'platform',
     label: { en: 'Integration & platform services', nl: 'Integratie & platformdiensten' },
     lede: {
-      en: 'The self-service spine the teams downstream actually operate.',
-      nl: 'De selfservice-ruggengraat die de teams stroomafwaarts echt bedienen.',
+      en: 'The self-service platform the teams downstream run day to day.',
+      nl: 'Het selfserviceplatform waar de teams verderop dagelijks mee werken.',
     },
   },
 ];
@@ -182,22 +185,22 @@ export const repos: Repo[] = [
     license: 'MIT',
     url: 'https://github.com/fps4/enterprise-data-model-lab',
     proves: {
-      en: 'One retail domain modelled four ways — glossary, conceptual, logical, then two physical targets from identical staging: Kimball dimensional and a Data Vault 2.0 raw vault. Fourteen assertions guard every build, and the trade-off is measured rather than argued: 1 join and 0.79 ms against 3 joins and 302 ms, at 3× the rows stored. Runs with `make demo`.',
-      nl: 'Eén retaildomein op vier manieren gemodelleerd — glossary, conceptueel, logisch, en dan twee fysieke doelen uit identieke staging: Kimball-dimensioneel en een Data Vault 2.0 raw vault. Veertien assertions bewaken elke build, en de afweging wordt gemeten in plaats van beweerd: 1 join en 0,79 ms tegen 3 joins en 302 ms, bij 3× zoveel opgeslagen rijen. Draait met `make demo`.',
+      en: 'One retail domain modelled four ways: glossary, conceptual, logical, then two physical targets from identical staging, Kimball dimensional and a Data Vault 2.0 raw vault. Fourteen assertions guard every build, and the trade-off is measured: 1 join and 0.79 ms against 3 joins and 302 ms, at 3× the rows stored. Runs with `make demo`.',
+      nl: 'Eén retaildomein op vier manieren gemodelleerd: glossary, conceptueel, logisch, en dan twee fysieke doelen uit dezelfde staging, Kimball-dimensioneel en een Data Vault 2.0 raw vault. Veertien assertions bewaken elke build, en de afweging is gemeten: 1 join en 0,79 ms tegen 3 joins en 302 ms, bij 3× zoveel opgeslagen rijen. Draait met `make demo`.',
     },
   },
   {
     slug: 'sap-bdc-snowflake-blueprint',
     name: 'sap-bdc-snowflake-blueprint',
     pillar: 'data',
-    role: { en: 'Decide what crosses the SAP↔cloud seam', nl: 'Bepaal wat de SAP↔cloud-naad oversteekt' },
+    role: { en: 'Decide what crosses the SAP↔cloud boundary', nl: 'Bepaal wat het SAP↔cloud-koppelvlak oversteekt' },
     maturity: 'working',
     license: 'MIT',
     linkLive: true,
     url: 'https://github.com/fps4/sap-bdc-snowflake-blueprint',
     proves: {
-      en: 'A one-page SAP → Business Data Cloud/Datasphere → Snowflake reference architecture with the decision attached: nine ordered rules assign each of 24 objects a mode — share, replicate, federate, split, or keep it in SAP — where residency and SLOs eliminate and cost only chooses among what survives. A local DuckDB simulation runs the modes, so the claim is measured. Runs with `make demo`.',
-      nl: 'Een SAP → Business Data Cloud/Datasphere → Snowflake-referentiearchitectuur van één pagina, met de beslissing erbij: negen geordende regels wijzen elk van 24 objecten een modus toe — delen, repliceren, federeren, splitsen, of in SAP houden — waarbij dataresidentie en SLO\'s elimineren en kosten alleen kiezen uit wat overblijft. Een lokale DuckDB-simulatie draait de modi, zodat de claim gemeten is. Draait met `make demo`.',
+      en: 'A one-page SAP → Business Data Cloud/Datasphere → Snowflake reference architecture with the decision attached. Nine ordered rules assign each of 24 objects a mode (share, replicate, federate, split, or keep it in SAP); residency and SLOs eliminate first, and cost chooses among what survives. A local DuckDB simulation runs the modes. Runs with `make demo`.',
+      nl: 'Een SAP → Business Data Cloud/Datasphere → Snowflake-referentiearchitectuur van één pagina, met de beslissing erbij. Negen geordende regels wijzen elk van 24 objecten een modus toe (delen, repliceren, federeren, splitsen, of in SAP houden); dataresidentie en SLO\'s elimineren eerst, en de kosten kiezen uit wat overblijft. Een lokale DuckDB-simulatie draait de modi. Draait met `make demo`.',
     },
   },
   {
@@ -210,8 +213,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/azure-lakehouse-decision',
     proves: {
-      en: 'Microsoft Fabric or Databricks-on-Azure for a 20-workload Synapse estate, decided per workload rather than per feature: nine ordered rules where residency, streaming semantics and ML lifecycle eliminate, and cost only chooses among what survives. A Fabric workload has no standalone price — one more costs nothing until the pre-paid capacity saturates, and then costs a whole rung. Runs with `make demo`, no Azure subscription.',
-      nl: 'Microsoft Fabric of Databricks-op-Azure voor een Synapse-landschap van 20 workloads, beslist per workload in plaats van per feature: negen geordende regels waarbij dataresidentie, streamingsemantiek en ML-levenscyclus elimineren, en kosten alleen kiezen uit wat overblijft. Een Fabric-workload heeft geen eigen prijs — één extra kost niets tot de vooruitbetaalde capaciteit vol is, en daarna een hele trede. Draait met `make demo`, zonder Azure-abonnement.',
+      en: 'Microsoft Fabric or Databricks-on-Azure for a 20-workload Synapse estate, decided per workload. Nine ordered rules: residency, streaming semantics and ML lifecycle eliminate, and cost chooses among what survives. A Fabric workload has no standalone price; one more costs nothing until the pre-paid capacity saturates, and then costs a whole rung. Runs with `make demo`, no Azure subscription.',
+      nl: 'Microsoft Fabric of Databricks-op-Azure voor een Synapse-landschap van 20 workloads, per workload beslist. Negen geordende regels: dataresidentie, streamingsemantiek en ML-levenscyclus elimineren, en de kosten kiezen uit wat overblijft. Een Fabric-workload heeft geen eigen prijs; één extra kost niets tot de vooruitbetaalde capaciteit vol is, en daarna een hele trede. Draait met `make demo`, zonder Azure-abonnement.',
     },
   },
   {
@@ -224,8 +227,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/ai-first-bi-platform',
     proves: {
-      en: 'Three defensible definitions of “active customer” — Operations’, Analytics’ and Finance’ — built in a real dbt project, returning 953, 900 and 881 on the same estate on the same date. Nobody is wrong, and no dashboard says which one it is showing. The load-bearing finding: the operational table cannot answer the question at all, because its `status` column is overwritten in place. Runs with `make demo`.',
-      nl: 'Drie verdedigbare definities van “actieve klant” — die van Operations, Analytics en Finance — gebouwd in een echt dbt-project, met 953, 900 en 881 als uitkomst op hetzelfde landschap op dezelfde datum. Niemand heeft ongelijk, en geen enkel dashboard zegt welke het toont. De dragende bevinding: de operationele tabel kán de vraag niet beantwoorden, omdat een `status`-kolom ter plekke wordt overschreven. Draait met `make demo`.',
+      en: 'Three defensible definitions of “active customer” (Operations’, Analytics’ and Finance’s), built in a real dbt project, returning 953, 900 and 881 on the same estate on the same date. Nobody is wrong, and no dashboard says which one it is showing. The finding underneath: the operational table cannot answer the question at all, because its `status` column is overwritten in place. Runs with `make demo`.',
+      nl: 'Drie verdedigbare definities van “actieve klant” (die van Operations, Analytics en Finance), gebouwd in een echt dbt-project, met 953, 900 en 881 als uitkomst op hetzelfde landschap op dezelfde datum. Niemand heeft ongelijk, en geen enkel dashboard zegt welke het toont. De bevinding eronder: de operationele tabel kán de vraag niet beantwoorden, omdat de `status`-kolom ter plekke wordt overschreven. Draait met `make demo`.',
     },
   },
   // — Modernization & migration —
@@ -233,27 +236,27 @@ export const repos: Repo[] = [
     slug: 'legacy-dwh-migration',
     name: 'legacy-dwh-migration',
     pillar: 'modernization',
-    role: { en: 'Move a warehouse wave by wave', nl: 'Verhuis een warehouse wave voor wave' },
+    role: { en: 'Move a warehouse wave by wave', nl: 'Verhuis een warehouse in golven' },
     maturity: 'working',
     license: 'MIT',
     url: 'https://github.com/fps4/legacy-dwh-migration',
     proves: {
-      en: 'A legacy warehouse migrated wave by wave, with the programme artefacts as code. The assessment is crawled from the estate rather than read from an inventory — it finds 36% of objects never queried, and separates the genuinely retirable from the dormant but load-bearing. Cutover is gated by a parity harness with one defect injected on purpose, so the gate is demonstrably a gate. Runs with `make demo`.',
-      nl: 'Een legacy warehouse dat wave voor wave wordt gemigreerd, met de programma-artefacten als code. De assessment wordt uit het landschap zelf gehaald in plaats van uit een inventarislijst — 36% van de objecten blijkt nooit bevraagd, en wat echt uitgefaseerd kan worden wordt gescheiden van wat slapend maar dragend is. Cutover wordt bewaakt door een pariteitsharnas met bewust één geïnjecteerd defect, zodat aantoonbaar is dat de poort werkt. Draait met `make demo`.',
+      en: 'A legacy warehouse migrated wave by wave, with the programme artefacts as code. The assessment is crawled from the estate itself; it finds 36% of objects never queried, and separates what can be retired from what is dormant but still depended on. Cutover is gated by a parity harness with one defect injected to prove the gate catches it. Runs with `make demo`.',
+      nl: 'Een legacy warehouse dat in golven wordt gemigreerd, met de programma-artefacten als code. De assessment wordt uit het landschap zelf gehaald; 36% van de objecten blijkt nooit bevraagd, en wat weg kan wordt gescheiden van wat slapend is maar waar nog iets op leunt. De cutover wordt bewaakt door een pariteitscontrole met één ingebouwd defect, om te laten zien dat de controle het ook echt vangt. Draait met `make demo`.',
     },
   },
   {
     slug: 'oracle-to-spring-strangler',
     name: 'oracle-to-spring-strangler',
     pillar: 'modernization',
-    role: { en: 'Modernize legacy live, wave by wave', nl: 'Moderniseer legacy live, wave voor wave' },
+    role: { en: 'Modernize legacy live, wave by wave', nl: 'Moderniseer legacy live, in golven' },
     maturity: 'working',
     license: 'MIT',
     linkLive: true,
     url: 'https://github.com/fps4/oracle-to-spring-strangler',
     proves: {
-      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS system migrated live to Spring Boot + PostgreSQL by the strangler fig pattern. Per-endpoint cutover waves in an nginx router — a wave is a PR, rollback is a git revert — with golden-master parity gates as wave exit criteria. Runs with `docker compose up`.',
-      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS-systeem live gemigreerd naar Spring Boot + PostgreSQL via het strangler-fig-patroon. Cutover-waves per endpoint in een nginx-router — een wave is een PR, rollback een git revert — met golden-master-pariteitspoorten als exitcriteria. Draait met `docker compose up`.',
+      en: 'A working legacy-modernization lab: an Oracle PL/SQL + ORDS system migrated live to Spring Boot + PostgreSQL by the strangler fig pattern. Per-endpoint cutover waves in an nginx router, where a wave is a PR and rollback is a git revert, with golden-master parity gates as wave exit criteria. Runs with `docker compose up`.',
+      nl: 'Een werkend legacy-moderniseringslab: een Oracle PL/SQL + ORDS-systeem live gemigreerd naar Spring Boot + PostgreSQL via het strangler-fig-patroon. Cutover per endpoint, in golven, via een nginx-router: een golf is een PR en een rollback een git revert, met golden-master-pariteitscontroles als exitcriteria. Draait met `docker compose up`.',
     },
   },
   // — Integration & platform services —
@@ -267,8 +270,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/event-integration-platform',
     proves: {
-      en: 'A Kafka-native, multi-tenant event-streaming and integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ and replay, Kafka Connect sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. The self-service spine an integration team actually operates. Runs with `docker compose up`.',
-      nl: 'Een Kafka-native, multi-tenant platform voor event-streaming en integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ en replay, Kafka Connect-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. De selfservice-ruggengraat die een integratieteam echt bedient. Draait met `docker compose up`.',
+      en: 'A Kafka-native, multi-tenant event-streaming and integration platform: REST→Kafka ingest, managed JSONata transforms with DLQ and replay, Kafka Connect sinks, a control-plane API and a drag-and-drop pipeline UI, all under workspace-scoped observability. The self-service platform an integration team runs day to day. Runs with `docker compose up`.',
+      nl: 'Een Kafka-native, multi-tenant platform voor event-streaming en integratie: REST→Kafka-ingest, beheerde JSONata-transformaties met DLQ en replay, Kafka Connect-sinks, een control-plane-API en een drag-and-drop pipeline-UI, alles onder workspace-scoped observability. Het selfserviceplatform waar een integratieteam dagelijks mee werkt. Draait met `docker compose up`.',
     },
   },
   {
@@ -281,8 +284,8 @@ export const repos: Repo[] = [
     linkLive: true,
     url: 'https://github.com/fps4/identity-service',
     proves: {
-      en: 'A working self-hosted identity provider: OAuth 2.0 + OIDC token issuance (RS256, published JWKS), a headless TypeScript SDK and a drop-in React `<Login/>`. Its audited management plane speaks both HTTP and MCP, so agents operate it under the same contract as people. Authentication only — products keep their own authorization. Runs with `docker compose up`.',
-      nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), een headless TypeScript-SDK en een drop-in React `<Login/>`. Het geauditeerde beheervlak spreekt zowel HTTP als MCP, zodat agents het onder hetzelfde contract bedienen als mensen. Alleen authenticatie — producten houden hun eigen autorisatie. Draait met `docker compose up`.',
+      en: 'A working self-hosted identity provider: OAuth 2.0 + OIDC token issuance (RS256, published JWKS), a headless TypeScript SDK and a drop-in React `<Login/>`. Its audited management plane speaks both HTTP and MCP, so agents operate it under the same contract as people. Authentication only; products keep their own authorization. Runs with `docker compose up`.',
+      nl: 'Een werkende self-hosted identity provider: OAuth 2.0 + OIDC-tokenuitgifte (RS256, gepubliceerde JWKS), een headless TypeScript-SDK en een drop-in React `<Login/>`. Het geauditeerde beheervlak spreekt zowel HTTP als MCP, zodat agents het onder hetzelfde contract bedienen als mensen. Alleen authenticatie; producten houden hun eigen autorisatie. Draait met `docker compose up`.',
     },
   },
   {
@@ -296,7 +299,7 @@ export const repos: Repo[] = [
     url: 'https://github.com/fps4/skills-coach',
     proves: {
       en: 'A pack-driven training platform that ships no model client at all: the runtime owns the packs, deterministic grading, spaced-repetition gating and a durable model of what a learner keeps getting wrong. Generation and correction sit behind a versioned coach API, so the caller can be a person today and a model API later. Runs with `make up`.',
-      nl: 'Een pack-gedreven trainingsplatform dat zelf geen enkele model-client bevat: de runtime bezit de packs, deterministische beoordeling, spaced-repetition-poorten en een duurzaam model van wat een lerende blijft fout doen. Generatie en correctie zitten achter een geversioneerde coach-API, dus de aanroeper kan vandaag een mens zijn en later een model-API. Draait met `make up`.',
+      nl: 'Een pack-gedreven trainingsplatform dat zelf geen enkele model-client bevat: de runtime beheert de packs, de deterministische beoordeling, de spaced-repetition-drempels en een blijvend beeld van wat een cursist steeds fout doet. Generatie en correctie zitten achter een geversioneerde coach-API, dus de aanroeper kan vandaag een mens zijn en later een model-API. Draait met `make up`.',
     },
   },
 ];

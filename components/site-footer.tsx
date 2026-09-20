@@ -1,15 +1,22 @@
 import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionaries';
-import { headerNav, hrefFor, trainingNav } from '@/lib/nav';
+import { headerNav, hrefFor, referencesNav, trainingNav } from '@/lib/nav';
+import { loadReferences } from '@/lib/references';
 import { site, TRAINING_PUBLISHED } from '@/lib/site';
 import type { Locale } from '@/lib/i18n';
 
 // Shared footer (FS-0001/US-0002): tagline, the site nav, the connect links (LinkedIn/GitHub +
-// contact), and the site-wide privacy link required by FS-0007.
-export function SiteFooter({ locale }: { locale: Locale }) {
+// contact), and the site-wide privacy link required by FS-0007. The references page (FS-0009) is
+// listed here, not in the header, and only WHILE at least one reference is published.
+export async function SiteFooter({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).shell;
   const year = 2026;
-  const navItems = TRAINING_PUBLISHED ? [...headerNav(), trainingNav] : headerNav();
+  const hasReferences = (await loadReferences()).length > 0;
+  const navItems = [
+    ...headerNav(),
+    ...(hasReferences ? [referencesNav] : []),
+    ...(TRAINING_PUBLISHED ? [trainingNav] : []),
+  ];
 
   return (
     <footer className="mt-16 border-t border-border">

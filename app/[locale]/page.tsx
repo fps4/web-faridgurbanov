@@ -4,8 +4,11 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { HeroBackdrop } from '@/components/hero-backdrop';
 import { IntroVideo } from '@/components/intro-video';
+import { ReferenceQuote } from '@/components/reference-quote';
+import { listSection, title } from '@/lib/content';
 import { getDictionary } from '@/lib/dictionaries';
 import { hrefFor } from '@/lib/nav';
+import { featuredReferences, loadReferences } from '@/lib/references';
 import { HOME_VARIANT, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
@@ -17,6 +20,10 @@ import { locales, type Locale } from '@/lib/i18n';
 // them: what has been delivered (track record), how it got adopted (the half that was doubted), and
 // only then what I build (technical depth, which is the half nobody questions). The optional intro
 // video sits directly under the hero and renders nothing until INTRO_VIDEO is configured.
+//
+// Between the adoption band and the technical one sits "In their words" (FS-0009): the adoption
+// band is the owner's account, and this is other people confirming it. It renders nothing WHILE no
+// reference is marked `featured`, the same ships-dark pattern as the video.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -36,6 +43,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale: raw } = await params;
   const locale = raw as Locale;
   const t = getDictionary(locale).home;
+  const tr = getDictionary(locale).references;
+  const featured = featuredReferences(await loadReferences());
+  const work = featured.length ? await listSection('work', locale) : [];
+  const workLabel = (slug: string) => {
+    const study = work.find((w) => w.slug === slug);
+    if (!study) return undefined;
+    return typeof study.data.short === 'string' ? study.data.short : title(study.data);
+  };
 
   return (
     <>
@@ -126,6 +141,40 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </Button>
         </div>
       </section>
+
+      {/* 2b — references. People who were on those engagements, in their own words, each linked to
+          their public profile. Two at most: the band is two columns, and two voices from different
+          sides (product and engineering, say) carry more than three from the same one. */}
+      {featured.length > 0 && (
+        <section className="border-t border-border">
+          <div className="container py-16">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+              {tr.heading}
+            </h2>
+            <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{tr.homeLede}</p>
+            <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-16">
+              {featured.map((ref) => (
+                <ReferenceQuote
+                  key={ref.slug}
+                  reference={ref}
+                  locale={locale}
+                  variant="home"
+                  workLabel={workLabel(ref.work)}
+                  workHref={hrefFor(locale, `/work/${ref.work}`)}
+                />
+              ))}
+            </div>
+            <div className="mt-10">
+              <Button asChild variant="outline">
+                <Link href={hrefFor(locale, '/references')}>
+                  {tr.allCta}
+                  <ArrowRight />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 3 — technical expertise. Last on purpose: it is the half nobody doubts, so it does not need
           to be the half that argues first. */}

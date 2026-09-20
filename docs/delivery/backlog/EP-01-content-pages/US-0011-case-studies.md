@@ -4,7 +4,7 @@ persona: architect
 status: draft
 complexity: L
 milestone: M0
-last_updated: 2026-06-09
+last_updated: 2026-09-15
 spec: docs/product/FS-0004-selected-work-case-studies.md
 design: docs/design/decisions/0004-public-surface-prerequisites.md
 ---
@@ -28,8 +28,8 @@ anonymized where confidentiality requires. Depends on EP-00; AI-trio links respe
   hook and a headline impact metric.
 - EACH case study SHALL follow a consistent structure: context/problem, what was built, quantified
   impact, role + stack.
-- THE set SHALL include the Cloud Gateway study with its scale (~500M+ req/month) and cost-saving
-  (~€250–300k/yr) metrics.
+- THE set SHALL include the Cloud Gateway study with its scale (~1.5B+ req/month, refreshed from
+  ~500M+ in September 2026) and cost-saving (~€250–300k/yr) metrics.
 - WHERE a study references the repositories, IT SHALL link to the portfolio and respect the honesty
   rule (runnable vs reference; ADR-0004) — no "three production systems" claim.
 - WHERE client confidentiality requires, A study SHALL omit/abstract the client while keeping the

@@ -21,13 +21,14 @@ build artifact (`out/`) is the whole product.
 | Path | Purpose |
 |------|---------|
 | `docs/` | Product intent, ADRs, roadmap, and backlog — the spec-driven source of truth that precedes code (see [`docs/README.md`](docs/README.md)) |
-| `app/` | Next.js App Router. Root `layout.tsx` + `page.tsx` (root `/` → default-locale chooser/redirect); `app/[locale]/` holds the bilingual shell `layout.tsx` and every page — home `page.tsx`, `expertise`, `work`, `portfolio`, `writing` (index + `[slug]`), `contact`, `privacy`, `training`; `globals.css` holds the Tailwind layer |
-| `components/` | React components. `ui/` holds shadcn primitives; `site-header`/`site-footer` are the shell chrome; `language-switcher`, `theme-toggle`, `html-lang`, `root-redirect`, `obfuscated-email` are client islands; `markdown.tsx` + `content-article.tsx` render content bodies; `page-intro`, `fallback-notice` are layout helpers |
-| `lib/` | Framework-free helpers — `i18n.ts` (locales/default), `site.ts` (facts + the `REPO_LINKS_ENABLED`/`HOME_VARIANT` gates + repo data), `nav.ts` (milestone-aware nav), `dictionaries.ts` (bilingual UI copy), `content.ts` (build-time markdown loader, server-only), `frontmatter.ts` (parse/strip), `dates.ts`, `utils.ts` |
-| `content/` | Filesystem markdown under `content/{en,nl}/<section>/`; frontmatter (`title`, `summary`, `order`, `draft`, `date`, `hook`, `metric`) drives titles, ordering, and draft exclusion. Sections: `expertise`, `work`, `writing` |
+| `app/` | Next.js App Router. Root `layout.tsx` + `page.tsx` (root `/` → default-locale chooser/redirect); `app/[locale]/` holds the bilingual shell `layout.tsx` and every page — home `page.tsx`, `expertise`, `work`, `portfolio`, `writing` (index + `[slug]`), `references` (a 404 until the first reference is published), `contact`, `privacy`, `training`; `globals.css` holds the Tailwind layer |
+| `components/` | React components. `ui/` holds shadcn primitives; `site-header`/`site-footer` are the shell chrome; `language-switcher`, `theme-toggle`, `html-lang`, `root-redirect`, `obfuscated-email` are client islands; `markdown.tsx` + `content-article.tsx` render content bodies; `reference-quote.tsx` renders one reference in its three placements; `page-intro`, `fallback-notice` are layout helpers |
+| `lib/` | Framework-free helpers — `i18n.ts` (locales/default), `site.ts` (facts + the `REPO_LINKS_ENABLED`/`HOME_VARIANT` gates + repo data), `nav.ts` (milestone-aware nav), `dictionaries.ts` (bilingual UI copy), `content.ts` (build-time markdown loader, server-only), `references.ts` (the references loader + validation, server-only), `sections.ts` (split a body before its last H2), `frontmatter.ts` (parse/strip), `dates.ts`, `utils.ts` |
+| `content/` | Filesystem markdown under `content/{en,nl}/<section>/`; frontmatter (`title`, `summary`, `order`, `draft`, `date`, `hook`, `metric`) drives titles, ordering, and draft exclusion. Sections: `expertise`, `work`, `writing`. `content/references/` is locale-less: one file per person quoted (FS-0009), the quote as the body, never translated; `_template.md` is the shape |
 | `infra/docker/` | The static site packaged for ds1: multi-stage `web.Dockerfile` (export → nginx), `nginx.conf`, `compose.yml` |
 | `ops/` | Operational scripts (e.g. `ops/maestro/`) |
 | `.github/workflows/` | `dod.yml` — the Definition-of-Done quality gate (lint, test, assert `out/` builds); `deploy-ds1.yml` — deploy to the ds1 self-hosted runner on green merge |
+| `public/references/` | Referee photos, square and small, committed with the reference that names them (never hotlinked from LinkedIn) |
 | `out/` | Build output (git-ignored) — the static export nginx serves |
 
 ## Entry points

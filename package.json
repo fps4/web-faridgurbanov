@@ -8,7 +8,8 @@
     "build": "next build",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "voice": "node scripts/voice-check.mjs"
   },
   "engines": {
     "node": ">=20"

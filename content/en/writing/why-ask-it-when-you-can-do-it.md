@@ -7,7 +7,7 @@ order: 1
 
 # Why ask IT when you can do it yourself?
 
-There's a question quietly reshaping enterprise organisations: **why do I need to submit a ticket when I can just build it myself?**
+There's a question reshaping enterprise organisations: **why do I need to submit a ticket when I can just build it myself?**
 
 Five years ago that was arrogance. Today it's a legitimate strategy.
 
@@ -22,27 +22,27 @@ Many IT departments haven't adapted yet.
 - Shadow IT expands anyway, because people find the workaround.
 - Nobody wins: delivery is slow, risk is high, talent is wasted.
 
-The failure mode is worth naming precisely. A ticket queue is a *rationing* mechanism, and rationing only works while the rationed thing is genuinely scarce. Once a business team can build the report themselves, the queue stops allocating scarce capacity and starts doing one thing only: delaying work that is going to happen regardless, somewhere you can't see it.
+The failure mode is worth naming precisely. A ticket queue is a *rationing* mechanism, and rationing only works while the rationed thing is scarce. Once a business team can build the report themselves, the queue stops allocating scarce capacity and starts doing one thing only: delaying work that is going to happen regardless, somewhere you can't see it.
 
 ## IT stops being the factory and becomes the platform
 
 The organisations getting this right are doing something harder and more valuable than building every application:
 
-- **Defining the golden paths** — secure, compliant, obvious ways for anyone to build.
-- **Running identity, governance and cost control as shared services**, not as review gates.
-- **Curating the AI and low-code tooling** non-engineers can actually use safely.
+- **Defining the golden paths**: secure, compliant, obvious ways for anyone to build.
+- **Running identity, governance and cost control as shared services** rather than review gates.
+- **Curating the AI and low-code tooling** non-engineers can use safely.
 - **Acting as internal consultants** rather than order-takers.
 
 The metric changes with it. Success stops being tickets closed and becomes how many business teams can ship independently without creating chaos.
 
-That second half matters as much as the first. "Let everyone build" without golden paths is just shadow IT with executive sponsorship — and the bill arrives eighteen months later as an estate nobody can secure, price or decommission. The work is making the safe path the easy path, so that governance is something people follow because it's the shortest route, not because it's enforced.
+That second half matters as much as the first. "Let everyone build" without golden paths is shadow IT with executive sponsorship, and the bill arrives eighteen months later as an estate nobody can secure, price or decommission. The work is making the safe path the easy path, so that people follow governance because it's the shortest route.
 
-I've watched this play out on the infrastructure side. Consolidating [twenty-plus API gateways into one federated platform](/en/work/cloud-gateway) worked because onboarding became a reviewed Terraform change that took minutes, rather than a ticket that took days. No team was ordered onto it. The paved road was simply cheaper than the alternative, and the security model came free with it.
+I've watched this play out on the infrastructure side. Consolidating [twenty-plus API gateways into one federated platform](/en/work/cloud-gateway) worked because onboarding became a reviewed Terraform change that took minutes, where it used to be a ticket that took days. No team was ordered onto it. The platform was simply cheaper than the alternative, and the security model came free with it.
 
 ## This is not the death of IT
 
-It's the upgrade. The IT organisations that thrive over the next five years won't be the ones that protected their ticket queue. They'll be the ones that made themselves unnecessary for the routine work, so they could become indispensable for the hard work — the integration, the data contracts, the decisions that are expensive to get wrong.
+It's the upgrade. The IT organisations that thrive over the next five years won't be the ones that protected their ticket queue. They'll be the ones that made themselves unnecessary for the routine work, so they could become indispensable for the hard work: the integration, the data contracts, the decisions that are expensive to get wrong.
 
 The question worth asking about your own organisation isn't whether people are going around IT. They are. It's whether there's a road for them to go around IT *on*.
 
-→ Related: [Integration architecture](/en/expertise/integration-architecture), [APIs & gateways](/en/expertise/apis-and-gateways) and [Stakeholder alignment](/en/expertise/stakeholder-alignment).
+→ Related: [Integration architecture](/en/expertise/integration-architecture), [APIs & gateways](/en/expertise/apis-and-gateways) and [Working across an organisation](/en/expertise/stakeholder-alignment).

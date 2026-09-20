@@ -42,6 +42,11 @@ npm run test     # vitest run
   framework-free and unit-tested.
 - Content is filesystem markdown with frontmatter (title, summary, order, draft) under
   `content/{en,nl}`; never dump the frontmatter block into rendered prose (`lib/frontmatter.ts`).
+- References live in `content/references/` (locale-less, one person per file, the quote as the
+  body, verbatim). Add or update one by editing the file; see `docs/guides/references.md` for the
+  fields and what the build checks. Never change a person's words (cuts and fixes go in square
+  brackets); `role` mirrors their LinkedIn headline and is refreshed by hand on review; never fetch
+  anything from LinkedIn at build or request time.
 
 ## Tile copy
 
@@ -58,6 +63,41 @@ locale:
 - Detail that does not fit goes in the linked repo's README or the case study. The card is the
   hook, not the summary — the reader is deciding whether to click, not being briefed.
 
+## Voice
+
+All copy (`content/`, `lib/dictionaries.ts`, `lib/site.ts`) is written to read as one person's prose,
+not generated text. The tells that get a rewrite sent back, in order of how loudly they read:
+
+- **Antithesis as a reflex.** "X, not Y", "rather than", "instead of". At most one or two per page,
+  and only where the contrast *is* the point. Say the rest straight.
+- **Templated scaffolding.** Case studies keep the section order FS-0004 fixes, but the prose inside
+  is not a mould: no shared paragraph openers ("The obvious shape is…"), no fixed "two decisions",
+  no shared closer. Let each one have its own shape.
+- **Em-dash density.** Budget roughly one per 300 words of body text; the rest become full stops,
+  commas, colons or parentheses. Headings and labels ("D1 — …", "Working — runs end-to-end") are
+  exempt.
+- **Aphoristic bolds and punchline closers.** One short-sentence payoff per page, not one per
+  paragraph. Bold leads in "What I do" lists are catalogue entries, not slogans.
+- **Sincerity words.** "honest(ly)", "genuine(ly)", "deliberate(ly)", "on purpose", "actually".
+  The specifics carry the honesty; the adverbs assert it. Cut them.
+- **Copy that explains its own move.** "AI is last, and that is deliberate", "written as situations,
+  not adjectives". Delete the framing sentence; the ordering speaks for itself.
+- **Dutch is written from the meaning, not the sentence.** No calques: *koppelvlak/grens/overgang*
+  rather than *naad*, *het platform goedkoper maken* rather than *de gebaande weg*, *in golven*
+  rather than *wave voor wave*. If a Dutch reader would not say it, it does not go in.
+- **Facts stay facts.** Years, team words ("we") and admissions come from the resume or the
+  engagement, never invented to add texture.
+
+Quotes in `content/references/` are exempt from all of this: they are other people's words and
+the voice check skips the folder. The tile budget still applies to the two `featured` ones, which
+sit side by side on the home page (`lib/references.test.ts` enforces it).
+
+`npm run voice` measures five of these per file (antithesis, mould phrases, em-dashes, sincerity
+words, Dutch calques) against a budget (em-dashes ≤ 3.5 per
+1,000 words of body text, antithesis ≤ 5 per 1,000, sincerity words / mould phrases / Dutch calques
+= 0) and prints one row per copy surface. Run it on anything you wrote before opening the PR. A
+number over budget is not automatically wrong, but it needs a sentence in the PR saying why.
+
 ## Pre-submit checks
 
 Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):
@@ -65,6 +105,7 @@ Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):
 1. `npm run lint`
 2. `npm run test`
 3. `npm run build` succeeds and produces `out/`.
+4. `npm run voice -- --strict` exits 0, or the PR explains each file it flags (copy changes only).
 
 ## Docs as Definition of Done
 
