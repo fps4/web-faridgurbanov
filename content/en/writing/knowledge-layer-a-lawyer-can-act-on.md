@@ -40,6 +40,8 @@ Together the five let the system refuse. Where the graph has no supported fact, 
 
 ## The shape
 
+![Diagram: systems of record, documents and the barrier rules feed an ingestion column (R2RML mapping, extraction scored on a gold set, chunking and embedding, and a policy compiler checked against the records) into three peers: the knowledge graph, the text and vector index, and the policy engine. One resolver sits between those three and the consumers, runs six steps as the person asking, and decides access at step 3 before it retrieves any passage at step 4. Every request writes a hash-chained decision record that only Risk reads.](/diagrams/knowledge-layer-pattern.svg)
+
 Read it left to right. The **sources** are practice management, the CRM, HR, the document system, the firm's own taxonomies, and the barrier rules. **Ingestion** maps the systems of record into the graph with their identifiers intact, runs a tiered pipeline that extracts facts from documents with a confidence on each, and keeps chunking and indexing the same documents for search. The **knowledge layer** holds an ontology and business glossary owned by knowledge management, the spine of matters, clients, people and practice areas, the extracted and asserted facts, an identity service, and provenance and access enforced in the graph. Then the **resolver**, and behind it the **consumers**: the assistant, enterprise search, a review workbench, an evaluation battery, and Risk.
 
 Two choices in that picture carry most of the weight.
