@@ -1,7 +1,7 @@
 ---
 title: "FS-0005 — Portfolio / repositories"
 status: draft
-last_updated: 2026-09-04
+last_updated: 2026-10-19
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -94,6 +94,28 @@ contradict:
 It is also referenced from two expertise pages — `data-and-lakehouse` (the definitional point is a
 modelling point) and `ai-and-automation` (grounding, refusal, and evaluation as a gate are that
 page's whole argument, applied to analytics).
+
+### Added: `trusted-knowledge-graph` (2026-10-19)
+
+A tenth card, in **Data architecture & modelling** next to `ai-first-bi-platform`. Public, MIT,
+runnable end to end on a laptop with no API key (the Claude-produced extraction and vector-path
+verdicts are committed fixtures), so it is listed with a live link on the same terms as the others.
+
+It answers the question `ai-first-bi-platform` leaves open: once a number has a definition, *who
+may see the evidence behind it*. A graph built from systems of record over a synthetic law firm,
+with one resolver that asks the policy what a person may see before any query runs, and a
+hash-chained record of every decision. The card carries one number from the generated
+`reports/eval.md`: over 34 questions with known answers, vector search behind a document-level ACL
+put a walled matter in front of the model on 13, the resolver on 0.
+
+Framing the card must not contradict:
+
+- It is **not** production experience and makes no scale, latency or cost claim; the estate is
+  around 400 invented matters. The repo's honesty statement says so first.
+- The leak counts are mechanical. Only the vector path's composed answers and their grades are a
+  model's, and the card quotes leaks only.
+- It is not a blueprint-style repo, so the honesty note's "three blueprint-style repositories"
+  stays accurate.
 
 ## Acceptance criteria (EARS)
 

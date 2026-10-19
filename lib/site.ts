@@ -231,6 +231,20 @@ export const repos: Repo[] = [
       nl: 'Drie verdedigbare definities van “actieve klant” (die van Operations, Analytics en Finance), gebouwd in een echt dbt-project, met 953, 900 en 881 als uitkomst op hetzelfde landschap op dezelfde datum. Niemand heeft ongelijk, en geen enkel dashboard zegt welke het toont. De bevinding eronder: de operationele tabel kán de vraag niet beantwoorden, omdat de `status`-kolom ter plekke wordt overschreven. Draait met `make demo`.',
     },
   },
+  {
+    slug: 'trusted-knowledge-graph',
+    name: 'trusted-knowledge-graph',
+    pillar: 'data',
+    role: { en: 'Decide who may see it, then retrieve', nl: 'Bepaal wie het mag zien, en haal dan pas op' },
+    maturity: 'working',
+    license: 'MIT',
+    linkLive: true,
+    url: 'https://github.com/fps4/trusted-knowledge-graph',
+    proves: {
+      en: 'A knowledge graph over a synthetic law firm: one resolver decides what a person may see before any evidence is assembled, and logs each decision in a hash chain. Asked 34 questions with known answers, vector search behind a document-level ACL showed the model a walled matter on 13; the resolver, on none. Runs with `make demo`, no API key.',
+      nl: 'Een knowledge graph over een synthetisch advocatenkantoor: één resolver bepaalt wat iemand mag zien voordat er bewijs wordt verzameld, en legt elke beslissing vast in een hashketen. Bij 34 vragen met een bekend antwoord kreeg het model via vectorzoeken achter een ACL op documentniveau bij 13 vragen een afgeschermde zaak te zien; via de resolver bij geen enkele. Draait met `make demo`, zonder API-sleutel.',
+    },
+  },
   // — Modernization & migration —
   {
     slug: 'legacy-dwh-migration',
