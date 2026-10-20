@@ -97,10 +97,14 @@ const strict = args.includes('--strict');
 const explicit = args.filter((a) => !a.startsWith('--'));
 const files = explicit.length
   ? explicit
-  : [...walk('content'), 'lib/dictionaries.ts', 'lib/site.ts'].filter(
+  : [...walk('content'), 'lib/dictionaries.ts', 'lib/site.ts', 'lib/storyline.ts'].filter(
       // content/references/ holds other people's words, quoted verbatim (FS-0009); the voice
-      // rules are for the owner's prose, so those files are not measured.
-      (f) => !f.includes('/mcp-enterprise-architecture') && !f.includes('content/references/'),
+      // rules are for the owner's prose, so those files are not measured. content/kit/ is a
+      // snapshot of the kit's downloads (FS-0010), checked in the kit, not here.
+      (f) =>
+        !f.includes('/mcp-enterprise-architecture') &&
+        !f.includes('content/references/') &&
+        !f.includes('content/kit/'),
     );
 
 const rows = files.map(measure);

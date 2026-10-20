@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { splitBeforeLastSection } from '@/lib/sections';
+import { splitBeforeLastSection, splitBeforeSection } from '@/lib/sections';
 
 describe('splitBeforeLastSection', () => {
   it('splits at the last level-2 heading', () => {
@@ -32,5 +32,18 @@ describe('splitBeforeLastSection', () => {
     const body = '## A\n\nx\n\n## B\n\ny';
     const { head, tail } = splitBeforeLastSection(body);
     expect(`${head}\n${tail}`).toBe(body);
+  });
+});
+
+describe('splitBeforeSection', () => {
+  it('splits before the named heading', () => {
+    const body = '## The move\n\nA.\n\n## In your organisation\n\nB.\n\n## Sources\n\nC.\n';
+    const { head, tail } = splitBeforeSection(body, 'in your organisation');
+    expect(head).toBe('## The move\n\nA.\n');
+    expect(tail).toBe('## In your organisation\n\nB.\n\n## Sources\n\nC.\n');
+  });
+
+  it('returns the whole body when the heading is missing', () => {
+    expect(splitBeforeSection('## A\n\nx\n', 'B')).toEqual({ head: '## A\n\nx\n', tail: '' });
   });
 });
