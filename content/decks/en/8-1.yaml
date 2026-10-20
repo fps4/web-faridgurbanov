@@ -1,0 +1,189 @@
+# Episode 8.1 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/8-1.ts. Under `npm run dev`
+# a refresh of /en/deck/8-1 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+# - cards:  the heading lines of the artifact cards. The card rows come from the kit downloads, and
+#           the closing card's rows and the "In this episode" lines from lib/episodes/part-8.ts,
+#           because the part page shows them too.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/8-1.ts as well.
+
+title: "It doesn’t ask. It guesses."
+
+steps:
+  recap:
+    at: "0:00"
+    cue: "Recap: the insurer wants the clear small claims paid the same day. The business case is signed. The claims IT team builds the payment path, with coding agents."
+  promise:
+    at: "0:12"
+    cue: "In this episode: why a vague brief now comes back as finished, wrong work; four things an agent could build from one line; a brief in four parts, and six questions to check it."
+  brief:
+    at: "0:25"
+    cue: "(Show the card.) When a developer read an unclear requirement, they asked a question. Somebody answered. One message."
+  agent:
+    at: "0:35"
+    cue: "(Show the agent.) An agent does not ask. It guesses. It fills the gap itself, confidently, and does not tell you."
+  built:
+    at: "0:42"
+    cue: "(Show the box with the tick.) What comes back looks finished."
+  moved:
+    at: "0:48"
+    cue: "The cost of a vague requirement moved from one message to a finished piece of wrong work."
+  dora:
+    at: "0:55"
+    cue: "Google’s DORA research: without a focus on the user, AI makes team performance worse. Teams “may be moving quickly in the wrong direction.”"
+  case:
+    at: "1:10"
+    cue: "Imagine the brief said only: pay small claims automatically. (Turn the tick into a question mark.) Here is what an agent could build."
+  twice:
+    at: "1:20"
+    cue: "It retries when the bank file is slow, and a claim gets paid twice. Nobody said a claim line is paid once."
+  cap:
+    at: "1:30"
+    cue: "It pays a €2,000 claim in full, because nobody wrote the cap."
+  down:
+    at: "1:37"
+    cue: "When the payments interface is down, it does nothing, and tells nobody."
+  iban:
+    at: "1:43"
+    cue: "And it writes the policyholder’s bank account into the log, because nobody said not to."
+  facts:
+    at: "1:50"
+    cue: "None of that is a bad agent. Each one is a fact the agent could not know. Only the insurer knows them."
+  see:
+    at: "2:00"
+    cue: "In your organisation: work delivered on time, looks complete, does the wrong thing. Then a restart."
+  move:
+    at: "2:20"
+    cue: "So every piece of work handed to a team that uses agents starts from a brief in four parts. (Grow the card.)"
+  user:
+    at: "2:28"
+    cue: "User: who, in what situation. Here: the fast track, acting for the head of claims."
+  constraint:
+    at: "2:38"
+    cue: "Constraint: at most a thousand euros per claim. One payment per claim line. Every payment logged with the model, the threshold and the conditions version."
+  criteria:
+    at: "2:58"
+    cue: "Acceptance criteria: a second payment for the same line is refused; a claim of €1,000.01 goes to a handler; a payment can be stopped before the bank."
+  metric:
+    at: "3:15"
+    cue: "Metric: the share of automatic payments later reversed, contested or found to be fraud."
+  slots:
+    at: "3:25"
+    cue: "(Show the six slots.) Then check it against the six ways a brief fails."
+  scale:
+    at: "3:30"
+    cue: "Is the scale stated: how many, how fast?"
+  systems:
+    at: "3:35"
+    cue: "Is every system it touches named, with its interface written down?"
+  error:
+    at: "3:40"
+    cue: "Is there an error case: what happens when something fails?"
+  never:
+    at: "3:45"
+    cue: "Does it say what must never happen twice?"
+  measure:
+    at: "3:50"
+    cue: "Is there a metric?"
+  data:
+    at: "3:53"
+    cue: "And are the rules about the data stated?"
+  bubble:
+    at: "3:58"
+    cue: "(Show the speech bubble.) And tell the agents: if a fact is missing, stop and ask. Don’t guess."
+  who:
+    at: "4:05"
+    cue: "The Product Owner writes the brief and owns it. Engineering points out what is missing. An assistant can help write it; a person runs the six questions."
+  know:
+    at: "4:45"
+    cue: "Count restarts: work thrown away because the agent took the wrong path. If restarts fall, the brief is working."
+  download:
+    at: "5:05"
+    cue: "(Show the brief, blank and filled in.) The brief template and this brief filled in for the claims fast track are linked below."
+  mark:
+    at: "5:12"
+    cue: "(Mark the rows.) Scale, and what must never happen twice: the two gaps that cost money first."
+  checklist:
+    at: "5:18"
+    cue: "(Show the checklist.) And the six ways a brief fails, on one page."
+  takeaway:
+    at: "5:25"
+    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
+  swap:
+    at: "5:45"
+    cue: "In a bank, the payment for a disputed card transaction; in a retailer, the refund for a damaged order. Same brief, same six gaps."
+
+text:
+  # Recap: the title card.
+  episode: "AI Product Design · Part 8 · Episode 8.1"
+  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day. The claims IT team now builds the payment path, with coding agents."
+  recap-tag: "a worked example · fictional insurer"
+
+  # The idea: a one-line brief, an agent, something that looks finished.
+  brief-label: "the brief"
+  brief-text: "Pay small claims automatically."
+  asked: "before: a question, an answer, one message"
+  title-idea: "It doesn’t ask. It guesses."
+  agent-label: "agent"
+  built-label: "built"
+  tick: "✓"
+  looks-finished: "looks finished"
+  moved: "A vague requirement used to cost one message. Now it costs a finished piece of wrong work."
+  dora: "Without a focus on the user, AI makes team performance worse. Teams “may be moving quickly in the wrong direction.”"
+  dora-source: "Google DORA research, State of AI-assisted Software Development 2025"
+
+  # On the case: what an agent could build from that one line.
+  title-case: "If the brief says only this"
+  question: "?"
+  f-twice: "two payments for one claim"
+  f-cap: "€2,000 paid in full"
+  f-down: "payments down → nothing happens"
+  f-iban: "IBAN in the log"
+  facts: "None of that is a bad agent. Each one is a fact only the insurer knows."
+  see: "In your organisation: on time, looks complete, does the wrong thing. Then a restart."
+
+  # The move: the brief in four parts, and the six ways it fails.
+  title-move: "A brief in four parts"
+  fictional: "fictional insurer"
+  b-user: "user"
+  v-user: "the fast track, acting for the head of claims"
+  b-constraint: "constraint"
+  v-constraint: "at most €1,000 per claim · one payment per claim line · every payment logged with its model and versions"
+  b-criteria: "acceptance criteria"
+  v-criteria: "a second payment for the same line is refused · €1,000.01 goes to a handler · a payment can be stopped before the bank"
+  b-metric: "metric"
+  v-metric: "share of automatic payments later reversed, contested or found to be fraud"
+  slots-label: "six ways a brief fails"
+  slot-scale: "scale"
+  slot-systems: "systems"
+  slot-error: "error case"
+  slot-never: "never twice"
+  slot-metric: "metric"
+  slot-data: "data rules"
+  bubble-text: "Missing: the payments contract. Stopping."
+  who: "The Product Owner writes the brief and owns it. Engineering points out what is missing."
+  know: "You’ll know: restarts fall."
+
+  # The download, and the close.
+  download-title: "The brief: blank, and filled in"
+  checklist-title: "The six-failure checklist, beside the brief"
+  takeaway-subtitle: "Episode 8.1 in one card"
+  swap: "In a bank, the payment for a disputed card transaction. In a retailer, the refund for a damaged order. Same brief, same six gaps."
+
+cards:
+  brief-blank:
+    title: "Brief template"
+    subtitle: "2 · Constraint · blank"
+  brief-claims:
+    title: "Brief template"
+    subtitle: "2 · Constraint · filled in for the claims fast track"
+  checklist:
+    title: "Six-failure checklist"
+    subtitle: "Check every brief before it goes to the team"

@@ -35,5 +35,6 @@ export const part1Episodes: Episode[] = [
       monday: 'Score the three decisions you named on the canvas, against today.',
       download: 'Use-case canvas, the scoring half, filled in for three candidates',
     },
+    deck: '1-2',
   },
 ];

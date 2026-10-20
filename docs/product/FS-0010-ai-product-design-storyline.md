@@ -75,13 +75,15 @@ page's figure, and an artifact slide is rendered from the download's own text.
 - PDF and DOCX builds of the downloads; the part page links to the kit's Markdown until they exist.
 - Feedback from readers: [FS-0011](FS-0011-storyline-feedback.md).
 - Dutch translations of the part texts (deferred by the owner, 2026-10-20).
-- Episodes other than 1.1, and parts other than Part 1 (each is a content change once the pattern
-  holds).
+- Part pages other than Part 1 (each is a content change once the pattern holds). The decks of all
+  sixteen first-cut episodes exist (1.1–8.2) so they can be recorded; a part without a page lists its
+  episodes in `lib/episodes/part-<n>.ts` and shows them only as decks.
 
 ## Acceptance criteria (EARS)
 
 - WHILE `STORYLINE_PUBLISHED` is false, THE production build SHALL NOT list the storyline in the
-  header AND SHALL render `/ai-product-design`, every part page and every `/<locale>/deck/<episode>` as a 404.
+  header AND SHALL render `/ai-product-design`, every part page and every `/<locale>/deck/<episode>` as a 404,
+  with no storyline title or summary in the page's metadata.
 - WHILE `STORYLINE_PUBLISHED` is true OR the site runs under `next dev`, THE header SHALL list
   "AI Product Design" first, before the other primary items.
 - THE storyline landing page SHALL list all eight parts in order, linking each part that has a page,

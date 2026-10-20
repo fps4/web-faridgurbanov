@@ -1,0 +1,162 @@
+# Episode 5.1 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/5-1.ts. Under `npm run dev`
+# a refresh of /en/deck/5-1 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+# - cards:  the heading lines of the card slides. The card rows come from the kit download, and
+#           the closing card's rows and the "In this episode" lines from lib/episodes/part-5.ts,
+#           because the part page shows them too.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/5-1.ts as well.
+# A Dutch deck is a copy of this file in content/decks/nl/, translated.
+
+title: "Design for the day it is wrong"
+
+steps:
+  recap:
+    at: "0:00"
+    cue: "Recap: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day. The threshold is signed and the system is built. Now: what do people see?"
+  promise:
+    at: "0:20"
+    cue: "In this episode: why the day it is wrong decides the product; one claim, shown two ways when the check is wrong; three questions for every step, and a card to fill in."
+  idea:
+    at: "0:30"
+    cue: "Every AI feature you put live will be wrong for someone today. It does not give the same answer every time, and that is also what makes it useful."
+  graceful:
+    at: "0:45"
+    cue: "The product is decided by what happens on the day it is wrong. Microsoft Research: what the system does when it is wrong. Google PAIR: failing gracefully."
+  claim:
+    at: "1:10"
+    cue: "(Show the claim card.) The coverage check. A policyholder reports a broken TV."
+  suggest:
+    at: "1:18"
+    cue: "The system reads the claim, finds the policy, and suggests: covered."
+  optionA:
+    at: "1:24"
+    cue: "(Show A and B side by side.) Two ways to show it to the handler. A: a green tick and a confidence score."
+  optionB:
+    at: "1:30"
+    cue: "B: the clause itself, quoted from the version of the policy conditions this policyholder holds."
+  wrong:
+    at: "1:40"
+    cue: "(Turn B red.) The day it is wrong. With A, nothing to check: trust the score or don't. With B, the wrong clause, from the wrong product generation, is visible in a second."
+  explanation:
+    at: "1:52"
+    cue: "The clause is the explanation."
+  correction:
+    at: "1:58"
+    cue: "(Draw the arrow to the verified set.) The handler's correction is checked and goes into the set the system is tested on, every time it changes."
+  policyholder:
+    at: "2:08"
+    cue: "(Show the policyholder screen.) A small claim paid automatically says so, with one button: ask a person. Answered within a day."
+  ask:
+    at: "2:18"
+    cue: "And what that person decides becomes a checked answer as well."
+  seen:
+    at: "2:25"
+    cue: "In most organisations the error case is designed last, if at all. The demo shows the right answer, the slide says human in the loop, and the customer finds out before you do."
+  ombudsman:
+    at: "2:40"
+    cue: "When it is wrong, it is still your answer. The Belgian Insurance Ombudsman reported its first complaints about AI chatbots giving wrong information, and the insurers took responsibility."
+  move:
+    at: "2:55"
+    cue: "So design the error case first. (Write the three questions across the top.) For every step of your use case, three questions."
+  visible:
+    at: "3:00"
+    cue: "How does a wrong answer become visible, to the employee and to the customer?"
+  cheap:
+    at: "3:06"
+    cue: "How cheap is it to fix? One click, or a phone call and a week?"
+  teach:
+    at: "3:12"
+    cue: "Does the correction teach the system, or disappear?"
+  check:
+    at: "3:18"
+    cue: "And explain with something a person can check: the clause, the document, the rule that fired. Not a score, not the model's insides."
+  who:
+    at: "3:30"
+    cue: "The Product Owner's move, with the business owner (the head of claims) and the handlers who do the work today."
+  know:
+    at: "3:50"
+    cue: "You'll know: every step has its three answers before launch. After launch, override and contest rates every month, and you can say why they move."
+  canvas:
+    at: "4:20"
+    cue: "(Show the card.) The automation and failure card is linked below, blank and filled in for the claims case."
+  mark:
+    at: "4:28"
+    cue: "(Mark the rows.) The coverage check and the automatic payment: what each one shows on the day it is wrong."
+  takeaway:
+    at: "4:35"
+    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
+  swap:
+    at: "4:50"
+    cue: "In a bank, the card payment blocked by mistake; in a retailer, the refund refused for a damaged order. Same three questions."
+
+text:
+  # Recap: the title card.
+  episode: "AI Product Design · Part 5 · Episode 5.1"
+  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day."
+  recap-tag: "a worked example · synthetic numbers"
+
+  # The idea.
+  title-idea: "It will be wrong for someone today."
+  same-answer: "It does not give the same answer every time. That is also what makes it useful."
+  decided: "So the product is decided by what happens on the day it is wrong."
+  credit: "after Amershi et al., CHI 2019 · Google PAIR, People + AI Guidebook"
+
+  # In the case: one claim, one step.
+  title-case: "One claim, on the day it is wrong"
+  claim-tag: "synthetic"
+  claim-title: "broken TV"
+  photo: "photo"
+  claim-kind: "home-contents claim"
+  suggests: "the system suggests: covered"
+  label-a: "A"
+  a-tick: "✓ covered"
+  a-bar-label: "confidence"
+  label-b: "B"
+  b-clause: "“… sudden damage to household electronics is covered …”"
+  b-edition: "polisvoorwaarden, 2019 edition"
+  b-wrong: "wrong clause: visible at once"
+  a-nothing: "nothing to see"
+  explanation: "The clause is the explanation."
+  verified: "verified set"
+  verified-note: "checked answers it is tested on"
+  handler: "the handler corrects it"
+  handler-nl: "schadebehandelaar"
+  ph-title: "the policyholder sees"
+  ph-paid: "Paid automatically today"
+  ph-button: "ask a person"
+  ph-day: "answered within a day"
+
+  # What you see.
+  seen: "Most teams design the error case last, if at all."
+  be12: "In Belgium, the Insurance Ombudsman reported its first complaints about AI chatbots giving wrong information, and the insurers took responsibility."
+  be12-source: "Ombudsman van de Verzekeringen, Jaarverslag 2025"
+
+  # The move.
+  title-move: "Design the error case first."
+  q-visible: "visible?"
+  q-cheap: "cheap to fix?"
+  q-teach: "does it teach?"
+  check: "Explain with something a person can check: the clause, the document, the rule that fired."
+  who: "Whose move: the Product Owner, with the head of claims and the handlers who do the work today."
+  know: "You’ll know: every step has its three answers before launch; then override and contest rates, every month."
+
+  # The download, and the close.
+  canvas-title: "The automation and failure card: blank, and filled in"
+  takeaway-subtitle: "Episode 5.1 in one card"
+  swap: "In a bank, the card payment blocked by mistake. In a retailer, the refund refused for a damaged order. Same three questions."
+
+cards:
+  failure-blank:
+    title: "Automation and failure card"
+    subtitle: "The day it is wrong, per step · blank"
+  failure-claims:
+    title: "Automation and failure card"
+    subtitle: "The day it is wrong · filled in for the claims example"
