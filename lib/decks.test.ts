@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { CAMERA, bounds, deckProblems, diagramStep, highlightAt, overlaps, visibleAt, wrapText, type Deck } from '@/lib/deck';
-import { allDecks, deckById } from '@/lib/decks';
+import { CAMERA, bounds, deckProblems, diagramStep, highlightAt, isInline, overlaps, visibleAt, wrapText, type Deck } from '@/lib/deck';
+import { allDecks, deckById, deckFor } from '@/lib/decks';
 import { pickRows, tableUnder } from '@/lib/kit-tables';
 import { decks as storylineDecks } from '@/lib/storyline';
 
@@ -19,6 +19,7 @@ describe.each(allDecks.map((d) => [d.id, d] as const))('deck %s', (_id, deck) =>
 
   it('shows only kit rows that exist in the snapshot', () => {
     for (const card of deck.cards) {
+      if (isInline(card)) continue;
       const rows = pickRows(tableUnder(kitFile(card.source), card.heading), card.rows);
       expect(rows).toHaveLength(card.rows.length);
     }
@@ -37,11 +38,18 @@ describe('the storyline and the decks agree', () => {
   it('every episode with a deck names one that exists', () => {
     for (const { episode } of storylineDecks()) expect(deckById(episode.deck)?.episode).toBe(episode.number);
   });
+
+  it('falls back to the English deck in a locale without its own', () => {
+    expect(deckFor('nl', '1-1')).toEqual({ deck: deckById('1-1'), isFallback: true });
+    expect(deckFor('en', '1-1')?.isFallback).toBe(false);
+    expect(deckFor('en', 'nope')).toBeUndefined();
+  });
 });
 
 describe('deck rules', () => {
   const tiny = (over: Partial<Deck> = {}): Deck => ({
     id: 'x',
+    locale: 'en',
     episode: '0.0',
     title: 'x',
     steps: [{ at: '0:00', cue: 'a' }, { at: '0:10', cue: 'b' }],
@@ -74,6 +82,16 @@ describe('deck rules', () => {
       ],
     });
     expect(deckProblems(deck)).toEqual(['"b" overlaps the camera corner']);
+  });
+
+  it('flags text on top of text', () => {
+    const deck = tiny({
+      elements: [
+        { id: 'a', in: 0, shape: { kind: 'text', x: 0, y: 100, text: 'hello world', size: 40 } },
+        { id: 'b', in: 1, shape: { kind: 'text', x: 10, y: 110, text: 'again', size: 40 } },
+      ],
+    });
+    expect(deckProblems(deck)).toEqual(['step 1: "a" and "b" overlap']);
   });
 
   it('computes visibility and highlights by step', () => {

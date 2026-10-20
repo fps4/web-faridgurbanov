@@ -205,3 +205,27 @@
   font: 13px ui-sans-serif, system-ui, sans-serif;
   color: #9ca3af;
 }
+
+/* An episode's closing card: the same card, set to be read across the room. */
+.deck-card--summary {
+  padding: 48px 56px 32px;
+}
+.deck-card--summary .deck-card-title {
+  font-size: 64px;
+}
+.deck-card--summary .deck-card-subtitle {
+  font-size: 26px;
+}
+.deck-card--summary .deck-card-rows {
+  justify-content: space-around;
+}
+.deck-card--summary .deck-card-row dt {
+  font-size: 22px;
+}
+.deck-card--summary .deck-card-row dd {
+  font-size: 36px;
+  line-height: 1.3;
+}
+.deck-card--summary .deck-card-foot {
+  font-size: 18px;
+}

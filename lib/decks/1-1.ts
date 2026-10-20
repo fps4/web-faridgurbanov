@@ -1,4 +1,5 @@
 import type { Deck, Element } from '@/lib/deck';
+import { episodeByNumber, storylineCopy } from '@/lib/storyline';
 
 // Episode 1.1, "Fund one decision, not more seats" (FS-0010). Built from the script's "On screen"
 // list and stage directions; each step is one click while recording, and its `at` is the script's
@@ -7,30 +8,32 @@ import type { Deck, Element } from '@/lib/deck';
 
 const S = {
   recap: 0,
-  seats: 1,
-  dnb: 2,
-  gap: 3,
-  idea: 4,
-  prediction: 5,
-  judgement: 6,
-  action: 7,
-  scarce: 8,
-  opportunity: 9,
-  decision: 10,
-  predictions: 11,
-  grow: 12,
-  candidate: 13,
-  move: 14,
-  name: 15,
-  labels: 16,
-  useCase: 17,
-  fund: 18,
-  copilots: 19,
-  who: 20,
-  know: 21,
-  canvas: 22,
-  monday: 23,
-  swap: 24,
+  promise: 1,
+  seats: 2,
+  dnb: 3,
+  gap: 4,
+  idea: 5,
+  prediction: 6,
+  judgement: 7,
+  action: 8,
+  scarce: 9,
+  opportunity: 10,
+  decision: 11,
+  predictions: 12,
+  grow: 13,
+  candidate: 14,
+  move: 15,
+  name: 16,
+  labels: 17,
+  useCase: 18,
+  fund: 19,
+  copilots: 20,
+  who: 21,
+  know: 22,
+  canvas: 23,
+  mark: 24,
+  takeaway: 25,
+  swap: 26,
 } as const;
 
 const hand = (id: string, x: number, y: number, text: string, opts: Partial<Element> & { size?: number; anchor?: 'start' | 'middle' | 'end'; wrap?: number } = {}): Element => {
@@ -43,6 +46,10 @@ const sans = (id: string, x: number, y: number, text: string, opts: Partial<Elem
   return { id, tone, in: at, out, shape: { kind: 'text', x, y, text, size, font: 'sans', anchor, wrap } };
 };
 
+const episode = episodeByNumber('1.1');
+if (!episode) throw new Error('episode 1.1 is missing from lib/storyline.ts');
+const labels = storylineCopy.en.takeaway;
+
 const seats: Element[] = [220, 420, 620, 820, 1020, 1220].map((x, i) => ({
   id: `seat-${i + 1}`,
   tone: 'muted',
@@ -53,11 +60,13 @@ const seats: Element[] = [220, 420, 620, 820, 1020, 1220].map((x, i) => ({
 
 export const deck11: Deck = {
   id: '1-1',
+  locale: 'en',
   episode: '1.1',
   title: 'Fund one decision, not more seats',
   steps: [
     { at: '0:00', cue: 'Recap: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day.' },
-    { at: '0:15', cue: '(Show the seats.) Everyone has a copilot. Nothing runs across the organization.' },
+    { at: '0:12', cue: 'In this episode: why more seats don\u2019t add up to a capability; the three parts of a decision, on one claims desk; one move, and a canvas for Monday.' },
+    { at: '0:22', cue: '(Show the seats.) Everyone has a copilot. Nothing runs across the organization.' },
     { at: '0:30', cue: 'Almost eighty percent of large and medium Dutch insurers had AI in use (De Nederlandsche Bank).' },
     { at: '0:42', cue: 'Using AI is not the gap. Nobody owns a decision that runs on it.' },
     { at: '0:50', cue: '(Fade the seats.) Agrawal, Gans and Goldfarb: AI sells predictions, not decisions.' },
@@ -79,10 +88,23 @@ export const deck11: Deck = {
     { at: '3:35', cue: 'This is the sponsor’s move. At our insurer, the head of claims.' },
     { at: '4:00', cue: 'You will know it worked: a go or no-go within one quarter, on evidence.' },
     { at: '4:35', cue: '(Show the canvas, blank and filled in.) The use-case canvas is linked below.' },
-    { at: '4:50', cue: 'On Monday: name three decisions where waiting for information is the cost.' },
-    { at: '5:05', cue: 'In a bank, a disputed card payment; in a retailer, a refund for a damaged order. Same three boxes.' },
+    { at: '4:45', cue: 'The decision, the prediction it lacks and the action: the first three rows of the canvas.' },
+    { at: '4:55', cue: '(Show the episode card.) In one card: the idea, the move, Monday, and the download.' },
+    { at: '5:10', cue: 'In a bank, a disputed card payment; in a retailer, a refund for a damaged order. Same three boxes.' },
   ],
   cards: [
+    {
+      key: 'takeaway',
+      title: 'Fund one decision, not more seats',
+      subtitle: 'Episode 1.1 in one card',
+      source: 'Episode 1.1',
+      inline: [
+        { label: labels.idea, value: episode.takeaway.idea },
+        { label: labels.move, value: episode.takeaway.move },
+        { label: labels.monday, value: episode.takeaway.monday },
+        { label: labels.download, value: episode.takeaway.download },
+      ],
+    },
     {
       key: 'canvas-blank',
       title: 'Use-case canvas',
@@ -103,11 +125,13 @@ export const deck11: Deck = {
   ],
   elements: [
     // Recap: the title card.
-    sans('episode', 120, 200, 'AI Product Design · Part 1 · Episode 1.1', { size: 28, tone: 'muted', out: S.seats }),
-    hand('title', 120, 360, 'Fund one decision, not more seats', { size: 96, out: S.seats }),
-    sans('recap', 120, 520, 'Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day.', { size: 36, wrap: 1150, out: S.seats }),
-    { id: 'recap-tag', in: S.recap, out: S.seats, tone: 'muted', shape: { kind: 'tag', x: 120, y: 760, text: 'a worked example · synthetic numbers' } },
-    sans('header', 120, 70, '1.1 · Fund one decision, not more seats', { size: 24, tone: 'muted', in: S.seats }),
+    sans('episode', 120, 200, 'AI Product Design · Part 1 · Episode 1.1', { size: 28, tone: 'muted', out: S.promise }),
+    hand('title', 120, 360, 'Fund one decision, not more seats', { size: 96, out: S.promise }),
+    sans('recap', 120, 520, 'Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day.', { size: 36, wrap: 1150, out: S.promise }),
+    { id: 'recap-tag', in: S.recap, out: S.promise, tone: 'muted', shape: { kind: 'tag', x: 120, y: 760, text: 'a worked example · synthetic numbers' } },
+    hand('promise-title', 120, 250, storylineCopy.en.inThisEpisode, { size: 72, in: S.promise, out: S.seats }),
+    ...episode.promise.map((line, i) => hand(`promise-${i + 1}`, 160, 420 + i * 120, `${i + 1}  ${line}`, { size: 56, tone: i === 2 ? 'accent' : 'ink', in: S.promise, out: S.seats })),
+    sans('header', 120, 70, '1.1 · Fund one decision, not more seats', { size: 24, tone: 'muted', in: S.promise }),
 
     // What you see: seats, the DNB figure, the gap.
     hand('hook', 120, 230, 'Everyone has a copilot. Nothing runs across the organization.', { size: 60, wrap: 1500, in: S.seats, out: S.idea }),
@@ -161,10 +185,10 @@ export const deck11: Deck = {
     hand('know', 120, 1040, 'You’ll know: go or no-go within a quarter, on evidence.', { size: 38, tone: 'accent', in: S.know, out: S.canvas }),
 
     // The download.
-    hand('canvas-title', 100, 130, 'The use-case canvas: blank, and filled in', { size: 52, in: S.canvas }),
-    { id: 'card-blank', in: S.canvas, shape: { kind: 'card', card: 'canvas-blank', x: 100, y: 180, w: 640, h: 760 } },
-    { id: 'card-claims', in: S.canvas, shape: { kind: 'card', card: 'canvas-claims', x: 780, y: 180, w: 640, h: 760, highlight: { [S.monday]: [0, 1, 3] } } },
-    hand('monday', 100, 1010, 'Monday: name three decisions where waiting for information is the cost.', { size: 40, tone: 'accent', wrap: 1280, in: S.monday, out: S.swap }),
+    hand('canvas-title', 100, 130, 'The use-case canvas: blank, and filled in', { size: 52, in: S.canvas, out: S.takeaway }),
+    { id: 'card-blank', in: S.canvas, out: S.takeaway, shape: { kind: 'card', card: 'canvas-blank', x: 100, y: 180, w: 640, h: 760 } },
+    { id: 'card-claims', in: S.canvas, out: S.takeaway, shape: { kind: 'card', card: 'canvas-claims', x: 780, y: 180, w: 640, h: 760, highlight: { [S.mark]: [0, 1, 3] } } },
+    { id: 'card-takeaway', in: S.takeaway, shape: { kind: 'card', card: 'takeaway', x: 100, y: 120, w: 1240, h: 800 } },
     hand('swap', 100, 1010, 'In a bank, a disputed card payment. In a retailer, a refund for a damaged order. Same three boxes.', { size: 40, wrap: 1280, in: S.swap }),
   ],
 };

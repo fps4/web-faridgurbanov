@@ -5,7 +5,7 @@ import { Sketch } from '@/components/deck/sketch';
 import type { ResolvedCard } from '@/components/deck/artifact-card';
 import { CAMERA, STAGE, type Deck } from '@/lib/deck';
 
-// The recording player for an episode deck (FS-0010). One window shows the stage for OBS to capture
+// The recording player for an episode deck (FS-0010), at /<locale>/deck/<episode>. One window shows the stage for OBS to capture
 // (1920×1080, scaled to fit, the camera corner kept clear); a second, opened with `p`, is the
 // presenter view: the cue to say, the next cue, the script time and a clock. The two follow each
 // other over a BroadcastChannel, so a click or a presenter remote in either moves both.
@@ -21,7 +21,16 @@ function initialStep(max: number): number {
   return Number.isInteger(n) && n >= 0 && n <= max ? n : 0;
 }
 
-export function DeckPlayer({ deck, cards }: { deck: Deck; cards: Record<string, ResolvedCard> }) {
+export function DeckPlayer({
+  deck,
+  cards,
+  isFallback = false,
+}: {
+  deck: Deck;
+  cards: Record<string, ResolvedCard>;
+  /** True when this locale has no deck of its own and shows the English one. */
+  isFallback?: boolean;
+}) {
   const last = deck.steps.length - 1;
   const [step, setStep] = useState(0);
   const [from, setFrom] = useState<number | undefined>(undefined);
@@ -120,6 +129,7 @@ export function DeckPlayer({ deck, cards }: { deck: Deck; cards: Record<string, 
           <Sketch deck={deck} step={step} cards={cards} className="block h-auto w-full" />
         </div>
         <p className="mt-6 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
+        {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
       </div>
     );
   }

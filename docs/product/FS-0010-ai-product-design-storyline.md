@@ -46,17 +46,20 @@ page's figure, and an artifact slide is rendered from the download's own text.
 2. **Part page** (`/ai-product-design/<part>`): the chapter text (markdown), the part's diagram, the
    episodes (with the video once published), the downloads (blank and filled in, linked to the kit),
    then "In your organisation" and the sources.
-3. **Episode deck** (`/deck/<episode>`): a 1920×1080 stage for screen recording, outside the site
+3. **Episode deck** (`/<locale>/deck/<episode>`, e.g. `/en/deck/1-1`): a 1920×1080 stage for screen recording, outside the site
    shell. Steps advance by key, click or presenter remote. Shapes and handwriting draw themselves in
    a hand-drawn style when their step arrives; artifact cards rise in and rows are marked. The
    bottom-right corner stays clear for the camera. A presenter view in a second window shows the cue
    to say, the next cue, the script time and a clock, and follows the stage.
-4. **Artifact slides from the kit.** A card shows rows of a kit download, read at build time from a
+4. **Every episode opens with what you will get and closes on one card.** Right after the recap, three
+   short lines (*In this episode*); at the end, the episode in one card: the idea, the move, Monday
+   and the download. Both come from `lib/storyline.ts`, and the part page shows the same card.
+5. **Artifact slides from the kit.** A card shows rows of a kit download, read at build time from a
    snapshot in `content/kit/` that `scripts/sync-kit.mjs` refreshes.
-5. **Gated.** WHILE `STORYLINE_PUBLISHED` is false, a production build leaves the nav item out and
+6. **Gated.** WHILE `STORYLINE_PUBLISHED` is false, a production build leaves the nav item out and
    renders every storyline route as a 404; `next dev` shows everything, which is where screening and
    recording happen.
-6. **English first.** Dutch routes render the English text with the fallback notice (ADR-0002); the
+7. **English first.** Dutch routes render the English text with the fallback notice (ADR-0002); the
    section's short UI labels are in both languages.
 
 ## Out of scope
@@ -70,13 +73,16 @@ page's figure, and an artifact slide is rendered from the download's own text.
 ## Acceptance criteria (EARS)
 
 - WHILE `STORYLINE_PUBLISHED` is false, THE production build SHALL NOT list the storyline in the
-  header AND SHALL render `/ai-product-design`, every part page and every `/deck/<episode>` as a 404.
+  header AND SHALL render `/ai-product-design`, every part page and every `/<locale>/deck/<episode>` as a 404.
 - WHILE `STORYLINE_PUBLISHED` is true OR the site runs under `next dev`, THE header SHALL list
   "AI Product Design" first, before the other primary items.
 - THE storyline index SHALL list all eight parts in order, linking each part that has a page.
 - THE part page SHALL render, in order: the part label and title, the summary, the diagram, the
   chapter text up to "In your organisation", the episodes, the downloads, then "In your
   organisation" and the sources.
+- EACH episode SHALL carry three opening lines and a closing card (idea, move, Monday, download) in
+  `lib/storyline.ts`; THE deck SHALL show the lines right after the recap and the card before the
+  closing line, AND THE part page SHALL show the idea, the move and Monday for each episode.
 - THE part page's diagram SHALL be the first episode's deck drawn at its finished step (the step
   before the first artifact card).
 - EACH download SHALL link to the blank version in the kit, and to the filled-in version WHERE one

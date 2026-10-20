@@ -19,7 +19,8 @@ import '@/components/deck/deck.css';
 
 // One part of the AI Product Design storyline (FS-0010). The chapter text is markdown
 // (content/en/ai-product-design/<slug>.md, English first per ADR-0010); around it the page shows
-// the part's diagram, its episodes and its downloads from lib/storyline.ts. The diagram is the
+// the part's diagram, its episodes (each as its closing card: the idea, the move, Monday) and its
+// downloads from lib/storyline.ts. The diagram is the
 // first episode's deck drawn at its finished step, so the page figure and the video are the same
 // drawing. Episodes and downloads sit before "In your organisation", where the reader turns from
 // the example to their own case.
@@ -81,8 +82,15 @@ export default async function PartPage({ params }: { params: Promise<{ locale: s
                 <div className="font-medium">
                   {ep.number} · {ep.title}
                 </div>
-                <p className="mt-1 text-sm text-muted-foreground">{ep.line}</p>
-                {ep.video ? null : <p className="mt-2 text-xs uppercase tracking-wide text-muted-foreground">{t.videoComing}</p>}
+                <dl className="mt-3 grid gap-x-4 gap-y-1 text-sm sm:grid-cols-[7rem_1fr]">
+                  {(['idea', 'move', 'monday'] as const).map((key) => (
+                    <div key={key} className="contents">
+                      <dt className="text-muted-foreground">{t.takeaway[key]}</dt>
+                      <dd>{ep.takeaway[key]}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {ep.video ? null : <p className="mt-3 text-xs uppercase tracking-wide text-muted-foreground">{t.videoComing}</p>}
               </div>
             </li>
           ))}

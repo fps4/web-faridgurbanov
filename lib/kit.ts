@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import type { ResolvedCard } from '@/components/deck/artifact-card';
-import type { Deck } from '@/lib/deck';
+import { isInline, type Deck } from '@/lib/deck';
 import { pickRows, tableUnder } from '@/lib/kit-tables';
 
 // Build-time reader for the kit snapshot in content/kit/ (FS-0010). Server-only (node:fs): import it
@@ -14,6 +14,7 @@ const KIT_ROOT = path.join(process.cwd(), 'content', 'kit');
 export async function resolveCards(deck: Deck): Promise<Record<string, ResolvedCard>> {
   const entries = await Promise.all(
     deck.cards.map(async (spec) => {
+      if (isInline(spec)) return [spec.key, { spec, rows: spec.inline }] as const;
       const md = await fs.readFile(path.join(KIT_ROOT, spec.source), 'utf8');
       return [spec.key, { spec, rows: pickRows(tableUnder(md, spec.heading), spec.rows) }] as const;
     }),

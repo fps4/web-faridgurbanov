@@ -38,8 +38,9 @@ it.
    stage with the step each appears and leaves at. `components/deck/` draws them with rough.js
    (seeded per element, so every render is the same drawing) and animates arrivals with CSS: strokes
    trace in, text writes on, cards rise. The handwriting face is Caveat, self-hosted via
-   `@fontsource/caveat`. The deck route sits outside the `[locale]` shell, so OBS captures the stage
-   and nothing else.
+   `@fontsource/caveat`. The deck route is `/<locale>/deck/<episode>`, under the locale so a Dutch deck can
+   follow, but outside the `(site)` route group that carries the header and footer, so OBS captures
+   the stage and nothing else. A locale without its own deck shows the English one.
 4. **The same drawing serves the page.** The part page renders the first episode's deck at its
    finished step as a static SVG on the server, with no client JavaScript.
 5. **Artifact slides come from the kit's text.** A card names a kit file, a heading and row labels;
@@ -50,6 +51,9 @@ it.
    element under the camera corner, or a card that does not exist.
 
 ## Consequences
+
+- The site chrome moved from `app/[locale]/layout.tsx` into the `(site)` route group; URLs are
+  unchanged. The locale layout keeps only the locale check and the `lang` attribute.
 
 - An episode deck is a code change reviewed like any other; a style change reaches all sixteen
   episodes at once.

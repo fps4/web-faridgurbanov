@@ -1,10 +1,11 @@
 import { splitLabel, type KitRow } from '@/lib/kit-tables';
-import type { CardSpec } from '@/lib/deck';
+import { isInline, type CardSpec } from '@/lib/deck';
 
 // One artifact slide (FS-0010): a section of a kit download, set in the same card for every deck so
 // all sixteen episodes show their downloads the same way. The rows come from the kit snapshot at
 // build time (lib/kit-tables.ts). A blank download shows each row's hint and an empty line to fill
-// in; a filled-in one shows the answer. Highlighted rows get a marker stroke behind them.
+// in; a filled-in one shows the answer. Highlighted rows get a marker stroke behind them. An
+// episode's closing card (inline rows) is the same card set larger, read across the room.
 
 export interface ResolvedCard {
   spec: CardSpec;
@@ -14,7 +15,7 @@ export interface ResolvedCard {
 export function ArtifactCard({ card, highlighted, animate }: { card: ResolvedCard; highlighted: number[]; animate: boolean }) {
   const { spec, rows } = card;
   return (
-    <div className="deck-card">
+    <div className={isInline(spec) ? 'deck-card deck-card--summary' : 'deck-card'}>
       <div className="deck-card-head">
         <div>
           <div className="deck-card-title">{spec.title}</div>

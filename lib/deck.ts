@@ -64,24 +64,45 @@ export interface Step {
   cue: string;
 }
 
-/** An artifact slide's content: rows of one table in a kit download (lib/kit-tables.ts). */
-export interface CardSpec {
-  key: string;
-  title: string;
-  subtitle: string;
-  /** Kit path, as in content/kit/ and the kit repository. */
-  source: string;
-  /** Heading text the table sits under. */
-  heading: string;
-  /** Row labels to show, in order. */
-  rows: string[];
-  /** Shown on the card, e.g. 'synthetic'. */
-  tag?: string;
+/**
+ * An artifact slide's content. Either rows of one table in a kit download (lib/kit-tables.ts), or
+ * rows given inline, as the episode's own closing card is (lib/storyline.ts → takeaway). Both render
+ * in the same card, so a download and an episode summary look alike.
+ */
+export type CardSpec =
+  | {
+      key: string;
+      title: string;
+      subtitle: string;
+      /** Kit path, as in content/kit/ and the kit repository. */
+      source: string;
+      /** Heading text the table sits under. */
+      heading: string;
+      /** Row labels to show, in order. */
+      rows: string[];
+      /** Shown on the card, e.g. 'synthetic'. */
+      tag?: string;
+    }
+  | {
+      key: string;
+      title: string;
+      subtitle: string;
+      /** Rows given in full; shown in the footer as where they come from. */
+      inline: { label: string; value: string }[];
+      /** Footer source line, e.g. 'Episode 1.1'. */
+      source: string;
+      tag?: string;
+    };
+
+export function isInline(card: CardSpec): card is Extract<CardSpec, { inline: unknown }> {
+  return 'inline' in card;
 }
 
 export interface Deck {
-  /** Route slug under /deck, e.g. '1-1'. */
+  /** Route slug under /<locale>/deck, e.g. '1-1'. */
   id: string;
+  /** The language the deck is written in. A locale without its own deck shows the English one. */
+  locale: 'en' | 'nl';
   episode: string;
   title: string;
   steps: Step[];
@@ -183,7 +204,8 @@ export function overlaps(a: Box, b: Box): boolean {
 
 /**
  * What is wrong with a deck, as sentences; [] when it is fine. The rules are the format's:
- * every click changes something on screen, nothing sits under the camera, every card exists.
+ * every click changes something on screen, nothing sits under the camera, no text sits on other
+ * text, every card exists.
  */
 export function deckProblems(deck: Deck): string[] {
   const problems: string[] = [];
@@ -198,6 +220,16 @@ export function deckProblems(deck: Deck): string[] {
     if (el.out !== undefined && (el.out <= el.in || el.out > n)) problems.push(`"${el.id}" leaves at ${el.out}, before it appears or after the end`);
     if (overlaps(bounds(el.shape), CAMERA)) problems.push(`"${el.id}" overlaps the camera corner`);
     if (el.shape.kind === 'card' && !cardKeys.has(el.shape.card)) problems.push(`"${el.id}" names unknown card "${el.shape.card}"`);
+  }
+
+  // Two pieces of text on top of each other is always a mistake (a leaver that forgot to leave).
+  const texts = deck.elements.filter((el) => el.shape.kind === 'text');
+  for (let step = 0; step < n; step++) {
+    const shown = texts.filter((el) => visibleAt(el, step));
+    for (let i = 0; i < shown.length; i++)
+      for (let j = i + 1; j < shown.length; j++)
+        if (overlaps(bounds(shown[i].shape), bounds(shown[j].shape)))
+          problems.push(`step ${step}: "${shown[i].id}" and "${shown[j].id}" overlap`);
   }
 
   for (let step = 1; step < n; step++) {

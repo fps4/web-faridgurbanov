@@ -15,12 +15,31 @@ export function kitFileUrl(path: string): string {
   return `${KIT_REPO}/blob/main/${path}`;
 }
 
+/**
+ * An episode in one card (FS-0010): the closing slide of the episode, its entry on the part page,
+ * and the text of its post. Four short lines, the same four in every episode.
+ */
+export interface Takeaway {
+  /** The framework's idea, in one line. */
+  idea: string;
+  /** The move, in one line. */
+  move: string;
+  /** The one thing to do on Monday. */
+  monday: string;
+  /** The download, by name. */
+  download: string;
+}
+
 export interface Episode {
   /** `part.episode`, e.g. '1.1'. */
   number: string;
   title: string;
-  /** One line: the step the episode carries. */
-  line: string;
+  /**
+   * "In this episode": three short lines said right after the recap, so a viewer arriving from a
+   * teaser knows within ten seconds what they will leave with. They promise; the takeaway answers.
+   */
+  promise: [string, string, string];
+  takeaway: Takeaway;
   /** The deck route slug under /deck, when a deck exists. */
   deck?: string;
   /** The published video, when there is one. Nothing embeds until it is set. */
@@ -60,13 +79,33 @@ export const parts: Part[] = [
       {
         number: '1.1',
         title: 'Fund one decision, not more seats',
-        line: 'A capability is one decision made better, with an owner, data, a budget and a result.',
+        promise: [
+          'why more seats don\u2019t add up to a capability',
+          'the three parts of a decision, on one claims desk',
+          'one move, and a canvas to use on Monday',
+        ],
+        takeaway: {
+          idea: 'AI sells predictions, not decisions. Judgement and action stay with you.',
+          move: 'Fund one decision, with an owner, data, a budget and a result someone measures.',
+          monday: 'Name three decisions in your area where waiting for information is the cost.',
+          download: 'Use-case canvas, blank and filled in for the claims example',
+        },
         deck: '1-1',
       },
       {
         number: '1.2',
         title: 'Picking the first one',
-        line: 'Score value and feasibility separately, against today’s process with its errors priced.',
+        promise: [
+          'the baseline that decides it: today\u2019s process, with its mistakes',
+          'three candidates at the insurer, scored two ways',
+          'why one goes first, and how to write down why the others wait',
+        ],
+        takeaway: {
+          idea: 'The baseline is today\u2019s process, errors included. Value and feasibility are separate scores.',
+          move: 'Price today, score value and feasibility separately, pick one and write down why the others wait.',
+          monday: 'Score the three decisions you named on the canvas, against today.',
+          download: 'Use-case canvas, the scoring half, filled in for three candidates',
+        },
       },
     ],
     downloads: [
@@ -112,6 +151,10 @@ export function partsWithPages(): Part[] {
   return parts.filter((p) => p.status !== 'coming');
 }
 
+export function episodeByNumber(number: string): Episode | undefined {
+  return parts.flatMap((p) => p.episodes).find((e) => e.number === number);
+}
+
 /** Every episode that has a deck, with its part, for the /deck routes. */
 export function decks(): { part: Part; episode: Episode & { deck: string } }[] {
   return parts.flatMap((part) =>
@@ -127,6 +170,8 @@ export const storylineCopy: Record<
     tagline: string;
     partLabel: (n: number) => string;
     episodes: string;
+    inThisEpisode: string;
+    takeaway: Record<keyof Takeaway, string>;
     downloads: string;
     blank: string;
     videoComing: string;
@@ -140,6 +185,8 @@ export const storylineCopy: Record<
     tagline: 'From a costly decision to an AI product people trust.',
     partLabel: (n) => `Part ${n} of 8`,
     episodes: 'Episodes',
+    inThisEpisode: 'In this episode',
+    takeaway: { idea: 'The idea', move: 'The move', monday: 'On Monday', download: 'Download' },
     downloads: 'Downloads',
     blank: 'Blank',
     videoComing: 'Video coming',
@@ -152,6 +199,8 @@ export const storylineCopy: Record<
     tagline: 'Van een kostbare beslissing naar een AI-product dat mensen vertrouwen.',
     partLabel: (n) => `Deel ${n} van 8`,
     episodes: 'Afleveringen',
+    inThisEpisode: 'In deze aflevering',
+    takeaway: { idea: 'Het idee', move: 'De stap', monday: 'Op maandag', download: 'Download' },
     downloads: 'Downloads',
     blank: 'Leeg',
     videoComing: 'Video volgt',
