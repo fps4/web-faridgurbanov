@@ -50,7 +50,9 @@ page's figure, and an artifact slide is rendered from the download's own text.
    shell. Steps advance by key, click or presenter remote. Shapes and handwriting draw themselves in
    a hand-drawn style when their step arrives; artifact cards rise in and rows are marked. The
    bottom-right corner stays clear for the camera. A presenter view in a second window shows the cue
-   to say, the next cue, the script time and a clock, and follows the stage.
+   to say, the next cue, the script time and a clock, and follows the stage. The deck's words live in
+   `content/decks/<locale>/<episode>.yaml`, editable without code; the layout in `lib/decks/` places
+   them by id.
 4. **Every episode opens with what you will get and closes on one card.** Right after the recap, three
    short lines (*In this episode*); at the end, the episode in one card: the idea, the move, Monday
    and the download. Both come from `lib/storyline.ts`, and the part page shows the same card.
@@ -66,6 +68,7 @@ page's figure, and an artifact slide is rendered from the download's own text.
 
 - Video hosting or embedding (a later story: YouTube, loaded only after a click).
 - PDF and DOCX builds of the downloads; the part page links to the kit's Markdown until they exist.
+- Feedback from readers: [FS-0011](FS-0011-storyline-feedback.md).
 - Dutch translations of the part texts (deferred by the owner, 2026-10-20).
 - Episodes other than 1.1, and parts other than Part 1 (each is a content change once the pattern
   holds).
@@ -95,7 +98,10 @@ page's figure, and an artifact slide is rendered from the download's own text.
 - THE deck page SHALL carry `noindex, nofollow`.
 - THE build SHALL fail WHEN a deck has a step that changes nothing on screen, an element under the
   camera corner, an element appearing outside the deck's steps, a card naming an unknown card, a card
-  row missing from the kit snapshot, or step times out of order.
+  row missing from the kit snapshot, step times out of order, or a words file and its layout that
+  name different steps or ids.
+- WHEN the owner edits a deck's words file under `next dev`, THE deck SHALL show the change on the
+  next refresh; WHEN the file is malformed, THE error SHALL name the file and every problem in it.
 - WHERE the user prefers reduced motion, THE deck SHALL show each step without the drawing animation.
 - THE voice check SHALL NOT measure `content/kit/`, which is the kit's text.
 

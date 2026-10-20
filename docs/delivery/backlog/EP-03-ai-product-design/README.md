@@ -7,6 +7,7 @@ related:
   - docs/delivery/roadmap/README.md
   - docs/product/FS-0010-ai-product-design-storyline.md
   - docs/design/decisions/0010-storyline-english-first-and-decks-as-data.md
+  - docs/product/FS-0011-storyline-feedback.md
 ---
 
 # EP-03 — AI Product Design storyline
@@ -23,5 +24,7 @@ episode decks the owner records over. Implements FS-0010 under ADR-0010, gated b
 | US-0031 | Episode deck engine and the 1.1 deck | FS-0010 §3, 4 |
 | US-0032 | Episode video on the part page, loaded after a click | FS-0010 (out of scope for now) |
 | US-0033 | PDF and DOCX downloads built from the kit | FS-0010 (out of scope for now) |
+| US-0034 | Feedback section on the part page, and the privacy-page line | FS-0011 §1, 2, 8 |
 
-(US-0030 and US-0031 land together as the prototype; US-0032 and US-0033 are stubs.)
+(US-0030 and US-0031 land together as the prototype; US-0032, US-0033 and US-0034 are stubs. FS-0011
+§3–7 are kit and owner work outside this repository.)
