@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { CAMERA, bounds, deckProblems, diagramStep, highlightAt, isInline, overlaps, visibleAt, wrapText, type Deck } from '@/lib/deck';
-import { allDecks, deckById, deckFor } from '@/lib/decks';
+import { allDecks, deckById, deckFor, deckTextFiles, layouts } from '@/lib/decks';
+import { composeDeck, deckTextProblems, DeckTextError, type DeckLayout, type DeckText } from '@/lib/decks/compose';
 import { pickRows, tableUnder } from '@/lib/kit-tables';
 import { decks as storylineDecks } from '@/lib/storyline';
 
@@ -12,7 +13,7 @@ import { decks as storylineDecks } from '@/lib/storyline';
 
 const kitFile = (path: string) => readFileSync(join(process.cwd(), 'content', 'kit', path), 'utf8');
 
-describe.each(allDecks.map((d) => [d.id, d] as const))('deck %s', (_id, deck) => {
+describe.each(allDecks().map((d) => [d.id, d] as const))('deck %s', (_id, deck) => {
   it('follows the format', () => {
     expect(deckProblems(deck)).toEqual([]);
   });
@@ -35,6 +36,10 @@ describe.each(allDecks.map((d) => [d.id, d] as const))('deck %s', (_id, deck) =>
 });
 
 describe('the storyline and the decks agree', () => {
+  it('every words file under content/decks/ has a layout', () => {
+    for (const { id } of deckTextFiles()) expect(layouts.map((l) => l.id)).toContain(id);
+  });
+
   it('every episode with a deck names one that exists', () => {
     for (const { episode } of storylineDecks()) expect(deckById(episode.deck)?.episode).toBe(episode.number);
   });
@@ -108,5 +113,63 @@ describe('deck rules', () => {
     expect(box).toEqual({ x: 74, y: 75, w: 52, h: 30 });
     expect(bounds({ kind: 'text', x: 0, y: 100, text: 'abcde', size: 20 }).w).toBeCloseTo(42);
     expect(overlaps(box, { x: 0, y: 0, w: 90, h: 90 })).toBe(true);
+  });
+});
+
+describe('deck words (content/decks/<locale>/<id>.yaml)', () => {
+  const layout: DeckLayout<'a' | 'b'> = {
+    id: 't',
+    episode: '0.0',
+    steps: ['a', 'b'],
+    build: (w, S) => ({
+      cards: [],
+      elements: [
+        { id: 'one', in: S.a, shape: { kind: 'text', x: 0, y: 100, text: w.text('one') } },
+        { id: 'two', in: S.b, shape: { kind: 'text', x: 0, y: 300, text: w.text('two') } },
+      ],
+    }),
+  };
+  const words = (over: Partial<DeckText> = {}): DeckText => ({
+    title: 'T',
+    steps: { a: { at: '0:00', cue: 'first' }, b: { at: '0:10', cue: 'second' } },
+    text: { one: 'Hello', two: 'World' },
+    cards: {},
+    ...over,
+  });
+  const problems = (w: DeckText) => {
+    try {
+      composeDeck(layout, w, 'en', 'f.yaml');
+      return [];
+    } catch (err) {
+      return (err as DeckTextError).problems;
+    }
+  };
+
+  it('places the words by id and the steps in the layout order', () => {
+    const deck = composeDeck(layout, words(), 'en', 'f.yaml');
+    expect(deck.steps.map((s) => s.cue)).toEqual(['first', 'second']);
+    expect(deck.elements.map((e) => (e.shape.kind === 'text' ? e.shape.text : ''))).toEqual(['Hello', 'World']);
+  });
+
+  it('lists every mismatch at once', () => {
+    expect(problems(words({ text: { one: 'Hello', three: 'extra' } }))).toEqual([
+      'text: "two" is missing',
+      'text: "three" is not used by the layout',
+    ]);
+    expect(problems(words({ steps: { a: { at: '0:00', cue: 'x' }, c: { at: '0:10', cue: 'y' } } }))).toEqual([
+      'steps: "b" is missing',
+      'steps: "c" is not a step in the layout',
+    ]);
+    expect(problems(words({ steps: { b: { at: '0:10', cue: 'y' }, a: { at: '0:00', cue: 'x' } } }))).toEqual([
+      "steps: keep the layout's order (a, b)",
+    ]);
+  });
+
+  it('rejects a file without the deck shape', () => {
+    expect(deckTextProblems({ title: 'T', steps: { a: { at: 22, cue: 'x' } }, text: { one: '' } })).toEqual([
+      'steps: "a" at: write the time in quotes, like "1:05"',
+      'text: "one" needs words',
+    ]);
+    expect(deckTextProblems('just a line')).toEqual(['the file is not a mapping of title, steps, text and cards']);
   });
 });

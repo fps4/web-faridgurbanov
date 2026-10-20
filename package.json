@@ -32,7 +32,8 @@
     "react-markdown": "^9.0.3",
     "remark-gfm": "^4.0.0",
     "roughjs": "^4.6.6",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

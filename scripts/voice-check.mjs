@@ -42,7 +42,7 @@ function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) walk(p, out);
-    else if (p.endsWith('.md')) out.push(p);
+    else if (p.endsWith('.md') || p.endsWith('.yaml')) out.push(p);
   }
   return out;
 }
@@ -54,6 +54,14 @@ function bodyOf(path, text) {
       .split('\n')
       .filter((l) => !/^\s*(\/\/|\*|\/\*)/.test(l))
       .map((l) => l.replace(/^\s*[\w$]+:\s*/, ''))
+      .join('\n');
+  }
+  if (path.endsWith('.yaml')) {
+    // The deck words (content/decks/): values only; drop comments and keys.
+    return text
+      .split('\n')
+      .filter((l) => !/^\s*#/.test(l))
+      .map((l) => l.replace(/^\s*[\w$-]+:\s*/, ''))
       .join('\n');
   }
   return text

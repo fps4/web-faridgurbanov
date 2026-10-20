@@ -34,8 +34,11 @@ it.
 2. **One flag.** `STORYLINE_PUBLISHED` in `lib/site.ts`, false until Part 1 publishes. While it is
    false, a production build leaves the nav item out and every storyline route renders a 404; under
    `next dev` everything shows. Same shape as `TRAINING_PUBLISHED`.
-3. **A deck is data; the site draws it.** `lib/decks/<episode>.ts` places elements on a 1920×1080
-   stage with the step each appears and leaves at. `components/deck/` draws them with rough.js
+3. **A deck is data; the site draws it.** A deck has two halves. Its words (each step's time and
+   cue, every line on screen, the card headings) are in `content/decks/<locale>/<episode>.yaml`, which
+   the owner edits without touching code. Its layout, `lib/decks/<episode>.ts`, places them by id on a
+   1920×1080 stage with the step each appears and leaves at; adding a step or moving an element is a
+   layout change. A Dutch deck is a translated YAML file on the same layout. `components/deck/` draws them with rough.js
    (seeded per element, so every render is the same drawing) and animates arrivals with CSS: strokes
    trace in, text writes on, cards rise. The handwriting face is Caveat, self-hosted via
    `@fontsource/caveat`. The deck route is `/<locale>/deck/<episode>`, under the locale so a Dutch deck can
@@ -48,7 +51,9 @@ it.
    repository. The build stays offline (ADR-0001), and a test fails when a card names a row the
    download no longer has.
 6. **The format is tested.** `deckProblems()` rejects a deck with a step that changes nothing, an
-   element under the camera corner, or a card that does not exist.
+   element under the camera corner, text on top of text, or a card that does not exist.
+   `composeDeck()` rejects words and a layout that disagree (a step or id in one and not the other)
+   and lists every mismatch with the file it is in.
 
 ## Consequences
 
@@ -57,8 +62,8 @@ it.
 
 - An episode deck is a code change reviewed like any other; a style change reaches all sixteen
   episodes at once.
-- Two dependencies: `roughjs` (about 9 kB gzipped, deck and part pages only) and `@fontsource/caveat`
-  (OFL font files).
+- Three dependencies: `roughjs` (about 9 kB gzipped, deck and part pages only), `@fontsource/caveat`
+  (OFL font files), and `yaml` (server-side only, reads the deck words; no client bytes).
 - The snapshot can lag the kit. It is refreshed by hand, and the test only catches missing rows, not
   changed wording.
 - Text widths are estimated, so the camera-corner check is approximate; the estimate errs large.
@@ -72,5 +77,8 @@ it.
   hand and drift between episodes; every change to a download is a redraw.
 - **Excalidraw with an animation export.** The most hand-drawn look, but each diagram is drawn by
   hand and animated per file, with no shared style or data.
+- **The whole deck in YAML or Markdown, positions included.** One file to edit, but coordinates and
+  step numbers by hand in a text file break silently; a typed layout is checked by the compiler and
+  the tests, and the words still sit in a plain file.
 - **Code-to-video (Remotion, Motion Canvas).** Renders finished video with exact timing; heavier than
   needed while the episodes are recorded live, and a possible later step for the teasers.

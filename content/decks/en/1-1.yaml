@@ -1,0 +1,160 @@
+# Episode 1.1 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/1-1.ts. Under `npm run dev`
+# a refresh of /en/deck/1-1 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - cards:  the heading lines of the canvas cards. The canvas rows come from the kit download, and
+#           the closing card's rows and the "In this episode" lines from lib/storyline.ts, because
+#           the part page shows them too.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/1-1.ts as well.
+# A Dutch deck is a copy of this file in content/decks/nl/, translated.
+
+title: "Fund one decision, not more seats"
+
+steps:
+  recap:
+    at: "0:00"
+    cue: "Recap: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day."
+  promise:
+    at: "0:12"
+    cue: "In this episode: why more seats don’t add up to a capability; the three parts of a decision, on one claims desk; one move, and a canvas for Monday."
+  seats:
+    at: "0:22"
+    cue: "(Show the seats.) Everyone has a copilot. Nothing runs across the organization."
+  dnb:
+    at: "0:30"
+    cue: "Almost eighty percent of large and medium Dutch insurers had AI in use (De Nederlandsche Bank)."
+  gap:
+    at: "0:42"
+    cue: "Using AI is not the gap. Nobody owns a decision that runs on it."
+  idea:
+    at: "0:50"
+    cue: "(Fade the seats.) Agrawal, Gans and Goldfarb: AI sells predictions, not decisions."
+  prediction:
+    at: "1:05"
+    cue: "A prediction: the information you are missing when you decide."
+  judgement:
+    at: "1:12"
+    cue: "Judgement: what each outcome is worth to you."
+  action:
+    at: "1:18"
+    cue: "And an action that someone can take."
+  scarce:
+    at: "1:22"
+    cue: "AI makes the first one cheaper. The other two stay with you, and become the scarce part."
+  opportunity:
+    at: "1:30"
+    cue: "An AI opportunity is one decision where the prediction is the slow or the expensive part."
+  decision:
+    at: "1:40"
+    cue: "(Fill the boxes.) The handler’s decision: pay, pay part, deny, or investigate."
+  predictions:
+    at: "1:50"
+    cue: "Two predictions are missing: is it covered by this policy, and is it genuine?"
+  grow:
+    at: "2:10"
+    cue: "(Grow the prediction box.) Most of the forty minutes go to finding things."
+  candidate:
+    at: "2:25"
+    cue: "The prediction is the slow part. That is what makes this a candidate."
+  move:
+    at: "2:35"
+    cue: "So fund the decision, not more seats. Three steps."
+  name:
+    at: "2:42"
+    cue: "First, name the decision, the prediction it lacks, and the action."
+  labels:
+    at: "2:58"
+    cue: "(Attach the four labels.) An owner, the data, a budget, a result."
+  useCase:
+    at: "3:10"
+    cue: "Together they are the use case."
+  fund:
+    at: "3:18"
+    cue: "Third, fund it as a case. The model is usually the smallest line."
+  copilots:
+    at: "3:30"
+    cue: "Keep the personal copilots. They help people. They are not the capability."
+  who:
+    at: "3:35"
+    cue: "This is the sponsor’s move. At our insurer, the head of claims."
+  know:
+    at: "4:00"
+    cue: "You will know it worked: a go or no-go within one quarter, on evidence."
+  canvas:
+    at: "4:35"
+    cue: "(Show the canvas, blank and filled in.) The use-case canvas is linked below."
+  mark:
+    at: "4:45"
+    cue: "The decision, the prediction it lacks and the action: the first three rows of the canvas."
+  takeaway:
+    at: "4:55"
+    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
+  swap:
+    at: "5:10"
+    cue: "In a bank, a disputed card payment; in a retailer, a refund for a damaged order. Same three boxes."
+
+text:
+  # Recap: the title card.
+  episode: "AI Product Design · Part 1 · Episode 1.1"
+  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day."
+  recap-tag: "a worked example · synthetic numbers"
+
+  # What you see: seats, the DNB figure, the gap.
+  hook: "Everyone has a copilot. Nothing runs across the organization."
+  per-person: "one licence per person"
+  dnb: "Almost 80% of large and medium Dutch insurers had AI in use at the start of 2025."
+  dnb-source: "De Nederlandsche Bank, 21 January 2026"
+  gap: "Using AI is not the gap. Nobody owns a decision that runs on it."
+
+  # The idea: prediction → judgement → action.
+  title-idea: "AI sells predictions, not decisions."
+  credit: "after Agrawal, Gans & Goldfarb, Prediction Machines (2018)"
+  label-prediction: "prediction"
+  label-judgement: "judgement"
+  label-action: "action"
+  cheaper: "AI makes this cheaper"
+  scarce: "stays with you: the scarce part"
+  opportunity: "An AI opportunity is one decision where the prediction is the slow or expensive part."
+
+  # In the case.
+  title-case: "At our insurer: one claims decision"
+  fill-action: "pay · pay part · deny · investigate"
+  fill-prediction: "is it covered? is it genuine?"
+  fill-judgement: "what is each outcome worth?"
+  forty: "most of the 40 minutes"
+  forty-tag: "synthetic"
+  candidate: "→ that makes it a candidate"
+
+  # The move.
+  title-move: "Fund the decision, not more seats."
+  step-1: "1  Name the decision, the prediction it lacks and the action."
+  tag-owner: "owner"
+  tag-data: "data"
+  tag-budget: "budget"
+  tag-result: "result"
+  step-2: "2  Give it what a licence never has: owner, data, budget, result."
+  use-case: "= a use case"
+  step-3: "3  Fund it as a case. The model is usually the smallest line."
+  copilots: "Keep the personal copilots. They help people; they are not the capability."
+  head-of-claims: "the head of claims"
+  know: "You’ll know: go or no-go within a quarter, on evidence."
+
+  # The download, and the close.
+  canvas-title: "The use-case canvas: blank, and filled in"
+  takeaway-subtitle: "Episode 1.1 in one card"
+  swap: "In a bank, a disputed card payment. In a retailer, a refund for a damaged order. Same three boxes."
+
+cards:
+  canvas-blank:
+    title: "Use-case canvas"
+    subtitle: "1 · The decision · blank"
+  canvas-claims:
+    title: "Use-case canvas"
+    subtitle: "1 · The decision · filled in for the claims example"

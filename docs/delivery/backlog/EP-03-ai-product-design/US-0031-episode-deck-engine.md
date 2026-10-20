@@ -18,8 +18,8 @@ so that sixteen episodes look like one series and nobody watches a slide sit sti
 
 ## Context
 
-Decks are data (`lib/decks/`), drawn by `components/deck/` with rough.js and CSS animation, recorded
-from `next dev` with OBS. The 1.1 deck follows the script in the wiki
+Decks are data (words in `content/decks/<locale>/<episode>.yaml`, layout in `lib/decks/`), drawn by
+`components/deck/` with rough.js and CSS animation, recorded from `next dev` with OBS. The 1.1 deck follows the script in the wiki
 (`publishing/ai-product-design/episodes/1.1-fund-one-decision.md`).
 
 ## Acceptance criteria (EARS)
