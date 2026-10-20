@@ -41,8 +41,13 @@ page's figure, and an artifact slide is rendered from the download's own text.
 
 ## Scope
 
-1. **Storyline index** (`/ai-product-design`): what the storyline is, the running example, and the
-   eight parts in order. A part with a page links to it; the others are listed as coming.
+1. **Storyline landing page** (`/ai-product-design`): a hero with Part 1's diagram and a start
+   button, then bands for what the storyline is, who it is for, what every part gives you, the running
+   example in four figures, the eight parts as cards, common questions, and who is behind it. A part
+   with a page links to it; the others are listed as coming. The words are the markdown in
+   `content/en/ai-product-design/index.md`, one band per `## ` heading (`lib/landing.ts`): a list whose
+   items open with bold becomes cards, `### ` headings become questions, and `<!-- parts -->` places
+   the parts.
 2. **Part page** (`/ai-product-design/<part>`): the chapter text (markdown), the part's diagram, the
    episodes (with the video once published), the downloads (blank and filled in, linked to the kit),
    then "In your organisation" and the sources.
@@ -79,7 +84,8 @@ page's figure, and an artifact slide is rendered from the download's own text.
   header AND SHALL render `/ai-product-design`, every part page and every `/<locale>/deck/<episode>` as a 404.
 - WHILE `STORYLINE_PUBLISHED` is true OR the site runs under `next dev`, THE header SHALL list
   "AI Product Design" first, before the other primary items.
-- THE storyline index SHALL list all eight parts in order, linking each part that has a page.
+- THE storyline landing page SHALL list all eight parts in order, linking each part that has a page,
+  AND SHALL render one band per `## ` section of its markdown, in the file's order.
 - THE part page SHALL render, in order: the part label and title, the summary, the diagram, the
   chapter text up to "In your organisation", the episodes, the downloads, then "In your
   organisation" and the sources.

@@ -178,6 +178,11 @@ export const storylineCopy: Record<
     coming: string;
     kit: string;
     back: string;
+    startPart1: string;
+    startHere: string;
+    kitButton: string;
+    contactCta: string;
+    diagramCaption: string;
   }
 > = {
   en: {
@@ -193,6 +198,11 @@ export const storylineCopy: Record<
     coming: 'Coming',
     kit: 'All downloads, as editable sources, in the kit',
     back: 'All parts',
+    startPart1: 'Start with Part 1',
+    startHere: 'Start here',
+    kitButton: 'All downloads',
+    contactCta: 'Talk about your case',
+    diagramCaption: 'From episode 1.1: the anatomy of a decision, drawn step by step while I talk it through.',
   },
   nl: {
     title: 'AI Product Design',
@@ -207,5 +217,10 @@ export const storylineCopy: Record<
     coming: 'Volgt',
     kit: 'Alle downloads, als bewerkbare bronnen, in de kit',
     back: 'Alle delen',
+    startPart1: 'Begin bij deel 1',
+    startHere: 'Begin hier',
+    kitButton: 'Alle downloads',
+    contactCta: 'Bespreek je eigen case',
+    diagramCaption: 'Uit aflevering 1.1: de anatomie van een beslissing, stap voor stap getekend terwijl ik het uitleg.',
   },
 };

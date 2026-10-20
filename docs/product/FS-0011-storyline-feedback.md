@@ -1,6 +1,6 @@
 ---
 title: "FS-0011 — Storyline feedback"
-status: draft
+status: parked
 last_updated: 2026-10-20
 owners: [architect]
 related:
@@ -20,7 +20,9 @@ maestro:
 
 # FS-0011 — Storyline feedback
 
-- **Status:** draft (requirements only; nothing built)
+- **Status:** parked for the next phase (2026-10-20). Requirements only; nothing built. The current
+  phase is refining the storyline and recording the first episodes; feedback collection and the
+  assistant versions of the downloads come after it.
 - **Raised:** 2026-10-20
 - **Owner:** @farid (architect)
 - **Decision:** none yet; see [Open decisions](#open-decisions)
