@@ -1,14 +1,14 @@
 import rough from 'roughjs';
 import type { Options } from 'roughjs/bin/core';
-import { ArtifactCard, type ResolvedCard } from '@/components/deck/artifact-card';
-import { LINE_HEIGHT, STAGE, highlightAt, tagWidth, visibleAt, wrapText, type Deck, type Element, type Shape, type Tone } from '@/lib/deck';
+import { ArtifactCard } from '@/components/deck/artifact-card';
+import { LINE_HEIGHT, STAGE, highlightAt, tagWidth, visibleAt, wrapText, type CardSpec, type Deck, type Element, type Shape, type Tone } from '@/lib/deck';
 
 // The sketch renderer for an episode deck (FS-0010, ADR-0010). Shapes are drawn with rough.js so the
 // diagram looks drawn by hand; a seed per element keeps the strokes identical on every render, so
-// the static diagram on a part page and the recorded deck are the same drawing. When `animate` is
+// a static figure on a page and the recorded deck are the same drawing. When `animate` is
 // on, the elements that arrive at the current step draw themselves in order (strokes trace in, text
 // writes on), fast enough that a viewer never waits for a hand. No hooks: this renders on the
-// server for part pages and inside the client player for recording.
+// server for page figures and inside the client player for recording.
 
 export const PAPER = '#fbf8f1';
 
@@ -127,7 +127,7 @@ function ElementView({
   motion: Motion;
   delay: number;
   step: number;
-  cards: Record<string, ResolvedCard>;
+  cards: Record<string, CardSpec>;
 }) {
   const color = TONES[el.tone ?? 'ink'];
   const shape = el.shape;
@@ -175,15 +175,14 @@ export function Sketch({
   deck,
   step,
   from,
-  cards,
   className,
 }: {
   deck: Deck;
   step: number;
   from?: number;
-  cards: Record<string, ResolvedCard>;
   className?: string;
 }) {
+  const cards = Object.fromEntries(deck.cards.map((c) => [c.key, c]));
   const forward = from !== undefined && from === step - 1;
   const leaving = forward ? deck.elements.filter((el) => visibleAt(el, from) && !visibleAt(el, step)) : [];
   const visible = deck.elements.filter((el) => visibleAt(el, step));

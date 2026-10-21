@@ -1,29 +1,15 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { CAMERA, bounds, deckProblems, diagramStep, highlightAt, isInline, overlaps, visibleAt, wrapText, type Deck } from '@/lib/deck';
+import { CAMERA, bounds, deckProblems, diagramStep, highlightAt, overlaps, visibleAt, wrapText, type Deck } from '@/lib/deck';
 import { allDecks, deckById, deckFor, deckTextFiles, layouts } from '@/lib/decks';
 import { composeDeck, deckTextProblems, DeckTextError, type DeckLayout, type DeckText } from '@/lib/decks/compose';
-import { pickRows, tableUnder } from '@/lib/kit-tables';
 import { decks as storylineDecks } from '@/lib/storyline';
 
 // The deck format's rules (FS-0010): every click changes something, nothing sits under the
-// camera, and an artifact slide shows rows that exist in the kit snapshot (content/kit/), so a
-// slide cannot drift from the download it points to.
-
-const kitFile = (path: string) => readFileSync(join(process.cwd(), 'content', 'kit', path), 'utf8');
+// camera, and no text sits on other text.
 
 describe.each(allDecks().map((d) => [d.id, d] as const))('deck %s', (_id, deck) => {
   it('follows the format', () => {
     expect(deckProblems(deck)).toEqual([]);
-  });
-
-  it('shows only kit rows that exist in the snapshot', () => {
-    for (const card of deck.cards) {
-      if (isInline(card)) continue;
-      const rows = pickRows(tableUnder(kitFile(card.source), card.heading), card.rows);
-      expect(rows).toHaveLength(card.rows.length);
-    }
   });
 
   it('keeps its step times in order', () => {
@@ -45,8 +31,8 @@ describe('the storyline and the decks agree', () => {
   });
 
   it('falls back to the English deck in a locale without its own', () => {
-    expect(deckFor('nl', '1-1')).toEqual({ deck: deckById('1-1'), isFallback: true });
-    expect(deckFor('en', '1-1')?.isFallback).toBe(false);
+    expect(deckFor('nl', '3-1')).toEqual({ deck: deckById('3-1'), isFallback: true });
+    expect(deckFor('en', '3-1')?.isFallback).toBe(false);
     expect(deckFor('en', 'nope')).toBeUndefined();
   });
 });
@@ -73,6 +59,7 @@ describe('deck rules', () => {
     });
     expect(diagramStep(deck)).toBe(1);
     expect(diagramStep(tiny())).toBe(1);
+    expect(diagramStep({ ...deck, figure: 0 })).toBe(0);
   });
 
   it('flags a step that changes nothing', () => {

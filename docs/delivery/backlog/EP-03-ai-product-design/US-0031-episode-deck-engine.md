@@ -1,10 +1,10 @@
 ---
-title: "US-0031: Episode deck engine and the 1.1 deck"
+title: "US-0031: Episode deck engine and the 3.1 deck"
 persona: architect
 status: in-review
 complexity: M
 milestone: M1
-last_updated: 2026-10-20
+last_updated: 2026-10-21
 spec: docs/product/FS-0010-ai-product-design-storyline.md
 design: docs/design/decisions/0010-storyline-english-first-and-decks-as-data.md
 ---
@@ -12,16 +12,17 @@ design: docs/design/decisions/0010-storyline-english-first-and-decks-as-data.md
 ## Story
 
 As the owner recording an episode,
-I want a deck that draws its diagram step by step in a hand-drawn style while I talk, with my
-downloads as slides in the same look,
-so that sixteen episodes look like one series and nobody watches a slide sit still.
+I want a deck that draws its diagrams step by step in a hand-drawn style while I talk, and closes on
+one card,
+so that every episode looks like one series and nobody watches a slide sit still.
 
 ## Context
 
 Decks are data (words in `content/decks/<locale>/<episode>.yaml`, layout in `lib/decks/`), drawn by
 `components/deck/` with rough.js and CSS animation, recorded from `next dev` with OBS. Each deck
-follows its episode's script in the wiki (`publishing/ai-product-design/episodes/<episode>-*.md`);
-1.1 came first, and the other fifteen first-cut episodes (1.2–8.2) followed on 2026-10-20.
+follows its episode's script in the wiki (`publishing/ai-product-design/episodes/<module>/<nn>-*.md`).
+The first iteration's sixteen decks (1.1–8.2) were removed on 2026-10-21; the rebuild starts with
+3.1, *Data requirements* (wiki `episodes/data/01-data-requirements.md`).
 
 ## Acceptance criteria (EARS)
 

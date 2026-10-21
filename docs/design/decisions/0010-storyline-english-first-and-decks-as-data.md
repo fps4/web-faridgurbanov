@@ -1,7 +1,7 @@
 ---
 title: "0010: The storyline ships English first, gated, and its episode decks are data rendered by the site"
 status: proposed
-last_updated: 2026-10-20
+last_updated: 2026-10-21
 owners: [architect]
 related:
   - docs/design/decisions/0001-tech-stack-and-static-export.md
@@ -17,21 +17,25 @@ The AI Product Design storyline (FS-0010) becomes the site's main section. Three
 it.
 
 1. **Language.** ADR-0002 makes the site bilingual, with an explicit English fallback when a page
-   has no Dutch file. The owner deferred Dutch for the storyline (2026-10-20): the parts publish in
-   English first.
-2. **When it shows.** Part 1 is screened privately before it is published, and the main branch keeps
-   deploying to ds1 for every other change.
-3. **How the episodes are made.** Each episode is slides with the talking head in a corner: one
-   diagram that builds while the owner speaks, and the part's downloads shown as slides. The owner
-   wants every episode in the same style, with the diagram drawing itself in a hand-drawn look fast
-   enough that nobody waits for a hand.
+   has no Dutch file. The owner deferred Dutch for the storyline (2026-10-20), and on 2026-10-21 made
+   it English only, labels included, until the owner decides otherwise.
+2. **When it shows.** The first episodes are screened privately before they are published, and the
+   main branch keeps deploying to ds1 for every other change.
+3. **How the episodes are made.** Each episode is slides with the talking head in a corner: diagrams
+   that build while the owner speaks, closing on one card. The owner wants every episode in the same
+   style, with the diagrams drawing themselves in a hand-drawn look fast enough that nobody waits for
+   a hand.
+
+The storyline was rebuilt on 2026-10-21: six modules of short episodes replace the eight parts, and
+the episodes no longer show downloads from a kit. This record is updated to match (it is still
+`proposed`).
 
 ## Decision
 
-1. **English first, through the existing fallback.** The part texts live only in `content/en/`;
-   Dutch routes render them with the fallback notice. The section's short labels are written in both
-   languages. No change to ADR-0002.
-2. **One flag.** `STORYLINE_PUBLISHED` in `lib/site.ts`, false until Part 1 publishes. While it is
+1. **English only, through the existing fallback.** The storyline's text lives only in
+   `content/en/`; Dutch routes render it with the fallback notice, and the section's labels are the
+   English ones in both locales. No change to ADR-0002.
+2. **One flag.** `STORYLINE_PUBLISHED` in `lib/site.ts`, false until the first module publishes. While it is
    false, a production build leaves the nav item out and every storyline route renders a 404; under
    `next dev` everything shows. Same shape as `TRAINING_PUBLISHED`.
 3. **A deck is data; the site draws it.** A deck has two halves. Its words (each step's time and
@@ -44,13 +48,9 @@ it.
    `@fontsource/caveat`. The deck route is `/<locale>/deck/<episode>`, under the locale so a Dutch deck can
    follow, but outside the `(site)` route group that carries the header and footer, so OBS captures
    the stage and nothing else. A locale without its own deck shows the English one.
-4. **The same drawing serves the page.** The part page renders the first episode's deck at its
-   finished step as a static SVG on the server, with no client JavaScript.
-5. **Artifact slides come from the kit's text.** A card names a kit file, a heading and row labels;
-   the build reads the rows from `content/kit/`, a snapshot `scripts/sync-kit.mjs` copies from the kit
-   repository. The build stays offline (ADR-0001), and a test fails when a card names a row the
-   download no longer has.
-6. **The format is tested.** `deckProblems()` rejects a deck with a step that changes nothing, an
+4. **The same drawing serves the page.** The landing page renders the first deck at the step its
+   layout names as the figure, as a static SVG on the server, with no client JavaScript.
+5. **The format is tested.** `deckProblems()` rejects a deck with a step that changes nothing, an
    element under the camera corner, text on top of text, or a card that does not exist.
    `composeDeck()` rejects words and a layout that disagree (a step or id in one and not the other)
    and lists every mismatch with the file it is in.
@@ -60,12 +60,10 @@ it.
 - The site chrome moved from `app/[locale]/layout.tsx` into the `(site)` route group; URLs are
   unchanged. The locale layout keeps only the locale check and the `lang` attribute.
 
-- An episode deck is a code change reviewed like any other; a style change reaches all sixteen
-  episodes at once.
-- Three dependencies: `roughjs` (about 9 kB gzipped, deck and part pages only), `@fontsource/caveat`
+- An episode deck is a code change reviewed like any other; a style change reaches every episode at
+  once.
+- Three dependencies: `roughjs` (about 9 kB gzipped, deck and landing pages only), `@fontsource/caveat`
   (OFL font files), and `yaml` (server-side only, reads the deck words; no client bytes).
-- The snapshot can lag the kit. It is refreshed by hand, and the test only catches missing rows, not
-  changed wording.
 - Text widths are estimated, so the camera-corner check is approximate; the estimate errs large.
 - Recording happens on the owner's machine under `next dev`; the deck needs no deploy.
 - The deck pages are part of the static export once the flag is true. They are not linked and carry
@@ -74,7 +72,7 @@ it.
 ## Alternatives considered
 
 - **PowerPoint or Keynote.** Familiar, but the hand-drawn look and step builds are slow to make by
-  hand and drift between episodes; every change to a download is a redraw.
+  hand and drift between episodes.
 - **Excalidraw with an animation export.** The most hand-drawn look, but each diagram is drawn by
   hand and animated per file, with no shared style or data.
 - **The whole deck in YAML or Markdown, positions included.** One file to edit, but coordinates and
@@ -82,3 +80,5 @@ it.
   the tests, and the words still sit in a plain file.
 - **Code-to-video (Remotion, Motion Canvas).** Renders finished video with exact timing; heavier than
   needed while the episodes are recorded live, and a possible later step for the teasers.
+- **Artifact slides read from the kit's downloads** (the first iteration, removed 2026-10-21). They
+  kept a slide and its download in step, but the rebuilt series has no downloads.

@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Sketch } from '@/components/deck/sketch';
-import type { ResolvedCard } from '@/components/deck/artifact-card';
 import { CAMERA, STAGE, type Deck } from '@/lib/deck';
 
 // The recording player for an episode deck (FS-0010), at /<locale>/deck/<episode>. One window shows the stage for OBS to capture
@@ -23,11 +22,9 @@ function initialStep(max: number): number {
 
 export function DeckPlayer({
   deck,
-  cards,
   isFallback = false,
 }: {
   deck: Deck;
-  cards: Record<string, ResolvedCard>;
   /** True when this locale has no deck of its own and shows the English one. */
   isFallback?: boolean;
 }) {
@@ -126,7 +123,7 @@ export function DeckPlayer({
           <p className="mt-10 text-xl text-neutral-500">End of the episode.</p>
         )}
         <div className="mt-10 w-[640px] overflow-hidden rounded-md border border-neutral-700">
-          <Sketch deck={deck} step={step} cards={cards} className="block h-auto w-full" />
+          <Sketch deck={deck} step={step} className="block h-auto w-full" />
         </div>
         <p className="mt-6 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
         {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
@@ -137,7 +134,7 @@ export function DeckPlayer({
   return (
     <div className="deck-stage-wrap" onClick={() => go(step + 1)}>
       <div className="deck-stage" style={{ transform: `scale(${scale})` }}>
-        <Sketch key={step} deck={deck} step={step} from={from} cards={cards} />
+        <Sketch key={step} deck={deck} step={step} from={from} />
         {guide ? (
           <div
             className="deck-camera-guide"

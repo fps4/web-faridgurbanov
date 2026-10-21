@@ -27,6 +27,8 @@ export interface DeckLayout<S extends string = string> {
   episode: string;
   /** Step names in recording order; the text file names the same ones. */
   steps: readonly S[];
+  /** The step that shows the episode's main diagram, when a page uses the deck as a figure. */
+  figure?: S;
   build(words: Words, step: Record<S, number>): { elements: Element[]; cards: CardSpec[] };
 }
 
@@ -87,6 +89,7 @@ export function composeDeck(layout: DeckLayout, words: DeckText, locale: Locale,
     steps: layout.steps.map((s) => words.steps[s]),
     elements,
     cards,
+    figure: layout.figure === undefined ? undefined : layout.steps.indexOf(layout.figure),
   };
 }
 

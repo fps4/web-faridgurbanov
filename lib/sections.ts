@@ -30,8 +30,7 @@ export function splitBeforeLastSection(body: string): SplitBody {
 
 /**
  * Split a markdown body before the `## ` heading whose text starts with `heading` (case-insensitive),
- * for a page that places a block of its own ahead of a named section. The storyline part pages put
- * their episodes and downloads before "In your organisation" (FS-0010). A body without that heading
+ * for a page that places a block of its own ahead of a named section. A body without that heading
  * comes back whole in `head`.
  */
 export function splitBeforeSection(body: string, heading: string): SplitBody {

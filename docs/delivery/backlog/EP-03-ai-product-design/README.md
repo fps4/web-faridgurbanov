@@ -1,7 +1,7 @@
 ---
 title: "EP-03 — AI Product Design storyline"
 status: open
-last_updated: 2026-10-20
+last_updated: 2026-10-21
 owners: [architect]
 related:
   - docs/delivery/roadmap/README.md
@@ -12,19 +12,21 @@ related:
 
 # EP-03 — AI Product Design storyline
 
-The site's main section for the coming months: the storyline index, one page per part, and the
-episode decks the owner records over. Implements FS-0010 under ADR-0010, gated by
-`STORYLINE_PUBLISHED` until Part 1 is published.
+The site's main section for the coming months: the storyline landing page with its six modules, and
+the episode decks the owner records over. Implements FS-0010 under ADR-0010, gated by
+`STORYLINE_PUBLISHED` until the first module is published. Rebuilt 2026-10-21: the eight parts, their
+part page, their sixteen decks and the kit downloads were removed; the first deck of the rebuild is
+3.1, *Data requirements*.
 
 ## Stories
 
 | Story | Title | Spec |
 |---|---|---|
-| US-0030 | Storyline section: nav item, index and part page (Part 1) | FS-0010 §1, 2, 5, 6 |
-| US-0031 | Episode deck engine and the 1.1 deck; then the decks of all sixteen first-cut episodes | FS-0010 §3, 4 |
-| US-0032 | Episode video on the part page, loaded after a click | FS-0010 (out of scope for now) |
-| US-0033 | PDF and DOCX downloads built from the kit | FS-0010 (out of scope for now) |
-| US-0034 | Feedback section on the part page, and the privacy-page line | FS-0011 §1, 2, 8 |
+| US-0030 | Storyline section: nav item and landing page with the six modules | FS-0010 §1, 2, 5, 6 |
+| US-0031 | Episode deck engine and the 3.1 deck | FS-0010 §3, 4 |
+| US-0032 | Episode video on a module page, loaded after a click | FS-0010 (out of scope for now) |
+| US-0033 | ~~PDF and DOCX downloads built from the kit~~ | dropped 2026-10-21: no downloads in the rebuild |
+| US-0034 | Feedback section, and the privacy-page line | FS-0011 §1, 2, 8 (parked) |
 
-(US-0030 and US-0031 land together as the prototype; US-0032, US-0033 and US-0034 are stubs. FS-0011
-§3–7 are kit and owner work outside this repository.)
+(US-0030 and US-0031 land together as the prototype; US-0032 and US-0034 are stubs. FS-0011 was
+written for the first iteration and is parked.)

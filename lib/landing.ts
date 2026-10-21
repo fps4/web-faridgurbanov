@@ -4,7 +4,7 @@
 //   - paragraphs before anything else are its intro;
 //   - a list whose items open with bold (`- **Title.** body`) becomes cards;
 //   - `### ` headings become questions with their answers;
-//   - a line `<!-- parts -->` marks where the eight parts are listed;
+//   - a line `<!-- modules -->` marks where the six modules are listed;
 //   - anything after the cards is the band's outro.
 // Headings inside fenced code blocks are ignored. Framework-free and unit-tested per AGENTS.md.
 
@@ -23,12 +23,12 @@ export interface LandingSection {
   intro: string;
   cards: LandingCard[];
   questions: LandingQuestion[];
-  /** True where `<!-- parts -->` sits in the section. */
-  parts: boolean;
+  /** True where `<!-- modules -->` sits in the section. */
+  modules: boolean;
   outro: string;
 }
 
-const PARTS_MARKER = /^\s*<!--\s*parts\s*-->\s*$/;
+const MODULES_MARKER = /^\s*<!--\s*modules\s*-->\s*$/;
 const CARD = /^[-*] \*\*(.+?)\*\*\s*(.*)$/;
 
 /** The body before the first `## ` heading, and each `## ` section after it. */
@@ -46,14 +46,14 @@ export function landingSections(body: string): { lead: string; sections: Landing
 }
 
 function section(heading: string, lines: string[]): LandingSection {
-  const out: LandingSection = { heading, intro: '', cards: [], questions: [], parts: false, outro: '' };
+  const out: LandingSection = { heading, intro: '', cards: [], questions: [], modules: false, outro: '' };
   const intro: string[] = [];
   const outro: string[] = [];
   let phase: 'intro' | 'cards' | 'questions' | 'outro' = 'intro';
 
   for (const line of lines) {
-    if (PARTS_MARKER.test(line)) {
-      out.parts = true;
+    if (MODULES_MARKER.test(line)) {
+      out.modules = true;
       continue;
     }
     if (/^### /.test(line)) {

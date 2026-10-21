@@ -37,7 +37,7 @@ export const referencesNav: NavItem = {
 };
 
 /**
- * The AI Product Design storyline (FS-0010): the site's main section while the parts are being
+ * The AI Product Design storyline (FS-0010): the site's main section while the modules are being
  * published, so it leads the header. Shown only WHILE the storyline renders (STORYLINE_PUBLISHED,
  * or `next dev`).
  */

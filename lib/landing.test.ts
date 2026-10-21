@@ -14,9 +14,9 @@ describe('landingSections', () => {
     '',
     'After the cards.',
     '',
-    '## The eight parts',
-    'Start with Part 1.',
-    '<!-- parts -->',
+    '## The six modules',
+    'Each stands alone.',
+    '<!-- modules -->',
     '',
     '## Questions',
     '### Is this a course?',
@@ -34,7 +34,7 @@ describe('landingSections', () => {
 
   it('splits the lead and one band per H2', () => {
     expect(lead).toBe('Lead line.');
-    expect(sections.map((s) => s.heading)).toEqual(['Who it is for', 'The eight parts', 'Questions']);
+    expect(sections.map((s) => s.heading)).toEqual(['Who it is for', 'The six modules', 'Questions']);
   });
 
   it('turns bold-led list items into cards, with continuation lines and an outro', () => {
@@ -47,9 +47,9 @@ describe('landingSections', () => {
     expect(who.outro).toBe('After the cards.');
   });
 
-  it('marks where the parts go', () => {
-    expect(sections[1]).toMatchObject({ intro: 'Start with Part 1.', parts: true, cards: [] });
-    expect(sections[0].parts).toBe(false);
+  it('marks where the modules go', () => {
+    expect(sections[1]).toMatchObject({ intro: 'Each stands alone.', modules: true, cards: [] });
+    expect(sections[0].modules).toBe(false);
   });
 
   it('reads H3s as questions and ignores headings in code fences', () => {

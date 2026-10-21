@@ -1,22 +1,7 @@
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
 import type { Deck } from '@/lib/deck';
-import { layout11 } from '@/lib/decks/1-1';
-import { layout12 } from '@/lib/decks/1-2';
-import { layout21 } from '@/lib/decks/2-1';
-import { layout22 } from '@/lib/decks/2-2';
 import { layout31 } from '@/lib/decks/3-1';
-import { layout32 } from '@/lib/decks/3-2';
-import { layout41 } from '@/lib/decks/4-1';
-import { layout42 } from '@/lib/decks/4-2';
-import { layout51 } from '@/lib/decks/5-1';
-import { layout52 } from '@/lib/decks/5-2';
-import { layout61 } from '@/lib/decks/6-1';
-import { layout62 } from '@/lib/decks/6-2';
-import { layout71 } from '@/lib/decks/7-1';
-import { layout72 } from '@/lib/decks/7-2';
-import { layout81 } from '@/lib/decks/8-1';
-import { layout82 } from '@/lib/decks/8-2';
 import { composeDeck, type DeckLayout } from '@/lib/decks/compose';
 import { DECK_TEXT_ROOT, deckTextFile, readDeckText } from '@/lib/decks/text';
 import { locales, type Locale } from '@/lib/i18n';
@@ -26,24 +11,7 @@ import { locales, type Locale } from '@/lib/i18n';
 // and lib/decks.test.ts checks the lists agree. Server-only: the words are read from disk on every
 // call, so under `next dev` an edit to the YAML shows on the next refresh.
 
-export const layouts: DeckLayout[] = [
-  layout11,
-  layout12,
-  layout21,
-  layout22,
-  layout31,
-  layout32,
-  layout41,
-  layout42,
-  layout51,
-  layout52,
-  layout61,
-  layout62,
-  layout71,
-  layout72,
-  layout81,
-  layout82,
-];
+export const layouts: DeckLayout[] = [layout31];
 
 function layoutById(id: string): DeckLayout | undefined {
   return layouts.find((l) => l.id === id);

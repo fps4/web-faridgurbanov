@@ -1,5 +1,5 @@
-// The episode deck model (FS-0010, ADR-0010). An episode is recorded over one diagram that builds
-// step by step while the talking head speaks, plus artifact slides cut from the kit's downloads.
+// The episode deck model (FS-0010, ADR-0010). An episode is recorded over diagrams that build
+// step by step while the talking head speaks, and closes on a card.
 // A deck is data: elements on a 1920×1080 stage, each with the step it appears at (and, optionally,
 // the step it leaves at). The player draws an element in a sketch style when its step arrives.
 // Framework-free and unit-tested per AGENTS.md; the renderer lives in components/deck/.
@@ -64,38 +64,16 @@ export interface Step {
   cue: string;
 }
 
-/**
- * An artifact slide's content. Either rows of one table in a kit download (lib/kit-tables.ts), or
- * rows given inline, as the episode's own closing card is (lib/storyline.ts → takeaway). Both render
- * in the same card, so a download and an episode summary look alike.
- */
-export type CardSpec =
-  | {
-      key: string;
-      title: string;
-      subtitle: string;
-      /** Kit path, as in content/kit/ and the kit repository. */
-      source: string;
-      /** Heading text the table sits under. */
-      heading: string;
-      /** Row labels to show, in order. */
-      rows: string[];
-      /** Shown on the card, e.g. 'synthetic'. */
-      tag?: string;
-    }
-  | {
-      key: string;
-      title: string;
-      subtitle: string;
-      /** Rows given in full; shown in the footer as where they come from. */
-      inline: { label: string; value: string }[];
-      /** Footer source line, e.g. 'Episode 1.1'. */
-      source: string;
-      tag?: string;
-    };
-
-export function isInline(card: CardSpec): card is Extract<CardSpec, { inline: unknown }> {
-  return 'inline' in card;
+/** A card's content: a title, a subtitle and labelled rows, as the episode's closing card is. */
+export interface CardSpec {
+  key: string;
+  title: string;
+  subtitle: string;
+  rows: { label: string; value: string }[];
+  /** Footer source line, e.g. 'Episode 3.1'. */
+  source: string;
+  /** Shown on the card, e.g. 'fictional'. */
+  tag?: string;
 }
 
 export interface Deck {
@@ -108,6 +86,8 @@ export interface Deck {
   steps: Step[];
   elements: Element[];
   cards: CardSpec[];
+  /** The step that shows the episode's main diagram, for a page figure. */
+  figure?: number;
 }
 
 export function visibleAt(el: Element, step: number): boolean {
@@ -245,11 +225,12 @@ export function deckProblems(deck: Deck): string[] {
 }
 
 /**
- * The step that shows the finished diagram: the last one before the first artifact card arrives
- * (or the last step, in a deck without cards). The part page draws the deck at this step, so the
- * page figure and the episode are the same drawing.
+ * The step that shows the episode's diagram: the one the layout names, or else the last one before
+ * the first card arrives (or the last step, in a deck without cards). A page that shows the deck as
+ * a figure draws it at this step, so the figure and the episode are the same drawing.
  */
 export function diagramStep(deck: Deck): number {
+  if (deck.figure !== undefined) return deck.figure;
   const cardSteps = deck.elements.filter((el) => el.shape.kind === 'card').map((el) => el.in);
   return cardSteps.length ? Math.max(0, Math.min(...cardSteps) - 1) : deck.steps.length - 1;
 }

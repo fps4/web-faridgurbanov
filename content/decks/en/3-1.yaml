@@ -8,175 +8,159 @@
 # - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
 #           view shows. Keep `at` in quotes ("0:22").
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
-# - cards:  the heading lines of the scorecard cards. The scorecard rows come from the kit download,
-#           and the closing card's rows and the "In this episode" lines from lib/episodes/part-3.ts,
-#           because the part page shows them too.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The script is in the wiki: publishing/ai-product-design/episodes/data/01-data-requirements.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-1.ts as well.
-# A Dutch deck is a copy of this file in content/decks/nl/, translated.
 
-title: "The threshold is a business decision"
+title: "Data requirements"
 
 steps:
-  recap:
+  title:
     at: "0:00"
-    cue: "Recap: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day."
+    cue: "“Do we have enough data?” I have heard this question in almost every project."
+  rows:
+    at: "0:06"
+    cue: "And the answer is almost always a row count. “We have three years of sales. Sixty million lines a year.” Everyone nods, and the project starts."
+  shades:
+    at: "0:19"
+    cue: "(The bars.) In 2018, two researchers tested three commercial products that guess gender from a face photo. The usual test sets: about 80% lighter-skinned. On a balanced set: up to about 35% error for darker-skinned women, under 1% for lighter-skinned men."
+  missing:
+    at: "0:50"
+    cue: "Plenty of data. One group missing from it. And the test data missed the same group, so nobody saw it."
   promise:
-    at: "0:12"
-    cue: "In this episode: why the cut-off is a question about money; the four ways to be wrong, priced on one claims desk; one rule that draws the line, and who signs it."
-  score:
-    at: "0:22"
-    cue: "(Show the claim card and the dial.) A model doesn’t decide anything. It gives a score: a €400 TV claim, a 4% chance it is fraudulent or not covered."
-  decision:
-    at: "0:34"
-    cue: "Pay it, or have a handler look? That is the decision."
-  money:
-    at: "0:40"
-    cue: "Where you draw the line is a question about money: what does each kind of mistake cost? (Credit: Elkan, 2001.) The idea is old and simple. It is still usually skipped."
-  fraud:
-    at: "0:57"
-    cue: "(The four boxes appear.) Four ways to be wrong. Pay a fraudulent claim: about €700 too much, on average."
-  uncovered:
-    at: "1:04"
-    cue: "Pay a claim the policy doesn’t cover: you lose the amount."
-  handler:
-    at: "1:08"
-    cue: "Send a valid claim to a handler: about €23 of their time, 25 minutes with AI help, and the customer waits."
-  denied:
-    at: "1:16"
-    cue: "Deny a valid claim: around €350, in complaint handling and in customers who leave. More than many of the claims themselves."
-  axes:
-    at: "1:26"
-    cue: "(Draw the axes.) So the rule writes itself."
-  curve:
-    at: "1:30"
-    cue: "(Draw the curve.) Pay automatically when the expected loss is smaller than the cost of a look: the chance it is wrong, times the amount, below €23."
-  dots:
-    at: "1:42"
-    cue: "(The three dots.) A €150 claim is paid below 15%. A €400 claim below 6%. A €1,000 claim only below about 2%."
-  tv:
-    at: "1:52"
-    cue: "So our TV at 4% is paid today."
-  wall:
-    at: "1:56"
-    cue: "(The wall.) And above €1,000, a handler always looks."
-  moves:
-    at: "2:00"
-    cue: "The line moves with the money. A single cut-off would be too strict on small claims and too loose on large ones."
-  accuracy:
-    at: "2:12"
-    cue: "What do you usually see? (The 86% number.) “Our model is 86% accurate.” 86% of small claims are valid and covered, so a system that pays everything is 86% accurate."
-  euros:
-    at: "2:26"
-    cue: "(Cross it out.) Accuracy tells you nothing here. Euros do."
-  notebook:
-    at: "2:31"
-    cue: "And the cut-off? Often a default, chosen in a notebook by whoever wrote the code. Nobody who owns the result ever saw it."
-  move:
-    at: "2:41"
-    cue: "So move the decision back to the business. Price each kind of wrong answer, with finance."
-  never:
-    at: "2:47"
-    cue: "Say which ones are unacceptable at any price. In this insurer: the system never denies a claim."
-  line:
-    at: "2:55"
-    cue: "Draw the line from those prices, and write it down."
-  sign:
-    at: "3:00"
-    cue: "Then the business owner signs it, as a version, with a date. Changing it later is a new version and a new signature."
-  who:
+    at: "1:02"
+    cue: "In this episode: why a row count does not answer the question; six questions for every data source; how to measure “enough”."
+  werkmora:
+    at: "1:17"
+    cue: "A quick reminder: Werkmora, our home and garden retailer, about 175 stores in NL, BE and DE. Every night it forecasts how much of each garden item every store needs."
+  sources:
+    at: "1:33"
+    cue: "(The nine boxes.) Not “the data”: nine sources. Nine owners. So we ask six questions, of each source."
+  content:
+    at: "1:53"
+    cue: "One: content. Is the signal in the data, does each field mean what its name says? Stock says the plant is on the shelf. Often it is not: about 2 in 3 records wrong at one retailer."
+  labels:
+    at: "2:15"
+    cue: "Two: labels. Recorded, and how late? Sales are not demand: empty shelf, zero sales, people still wanted to buy. Next episode."
+  volume:
+    at: "2:32"
+    cue: "Three: volume. Count events, not rows. 285,000 transactions, 492 frauds: a dataset of about five hundred. The test set needs enough of them too."
+  coverage:
+    at: "2:53"
+    cue: "Four: coverage. Every group the product serves. Big stores and small stores. School holidays per German state. Missing in the data or the test set: you don’t know how the model does there."
+  freshness:
     at: "3:15"
-    cue: "(The signature line on the chart.) The head of claims signs it. The Product Owner prepares it; the data people show the curve; finance checks the prices."
-  know:
+    cue: "Five: freshness. In time for the nightly run? Does the past still look like today? Train on the old weather forecasts: what you knew at that moment."
+  rights:
     at: "3:37"
-    cue: "You’ll know: a threshold with a version and a name, reports in euros per kind of mistake, and a meeting and a record when someone wants to move the line."
-  canvas:
-    at: "4:01"
-    cue: "(Show the scorecard, blank and filled in.) The scorecard template is linked below, with the sheet that draws the line."
-  mark:
-    at: "4:07"
-    cue: "The rule, what it means for each amount, and who signs it: the threshold section of the scorecard."
+    cue: "Six: rights. Are we allowed to use this data for this purpose?"
+  fine:
+    at: "3:43"
+    cue: "(The box.) 2024: the Dutch data protection authority fined Clearview AI €30.5 million. Billions of face photos from the internet. “Public” did not mean “we may use it”. For Werkmora: does the weather contract allow storing and training? Ask the provider, before the build."
+  mine:
+    at: "4:14"
+    cue: "(Your own example: a source that changed meaning upstream, or a licence nobody checked. Two or three sentences.)"
+  magic:
+    at: "4:34"
+    cue: "Now, “enough”. No magic number. You will hear “ten per variable” or “a few hundred per class”. One study: one model needed about 5 events per input, another 23. Their advice: no rules of thumb."
+  curve:
+    at: "4:54"
+    cue: "(Draw the axes and the curve.) So measure it. A pilot: train on 6 months, then 12, 24, 36. Plot the error each time. That is a learning curve."
+  flat:
+    at: "5:07"
+    cue: "(Circle the knee.) While it goes down, more data helps. When it flattens, more data buys very little."
+  small:
+    at: "5:15"
+    cue: "(The second curve.) Big stores: flat after about two years. Small stores: still going down. So the pilot started with big stores. A decision made on a measurement."
+  summary:
+    at: "5:35"
+    cue: "So: six questions, for each source, with an owner for each answer. Write them down where the team keeps them up to date: a datasheet in the repo, or a data contract."
+  law:
+    at: "5:51"
+    cue: "High-risk system under the EU AI Act? Article 10 asks almost the same questions, as law. Werkmora’s forecast is not high-risk. The list is the same."
   takeaway:
-    at: "4:12"
-    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
-  swap:
-    at: "4:27"
-    cue: "In a bank, refunding a disputed card payment without investigation. In a retailer, a refund without the parcel coming back. Same line, same arithmetic."
+    at: "6:06"
+    cue: "(The card.) In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:12"
+    cue: "Next episode: labels. Because sales were never the same as demand."
 
 text:
-  # Recap: the title card.
-  episode: "AI Product Design · Part 3 · Episode 3.1"
-  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day."
-  recap-tag: "a worked example · synthetic numbers"
+  # The title card, and the question.
+  episode: "AI Product Design · Module 3 · Episode 3.1"
+  question: "“Do we have enough data?”"
+  answer: "“3 years of sales. 60 million lines a year.”"
+  answer-tag: "a row count"
 
-  # The idea: a score, a decision, a question about money.
-  title-idea: "A model gives a score. You draw the line."
-  claim: "TV · €400"
-  claim-kind: "a home-contents claim"
-  dial-value: "4%"
-  dial-label: "the score"
-  score-meaning: "a 4% chance it is fraudulent or not covered"
-  pay: "pay it"
-  look: "a handler looks"
-  money: "Where you draw the line is a question about money."
-  credit: "after Elkan (2001), cost-sensitive decisions"
+  # Gender Shades.
+  title-shades: "Same products, a balanced test set"
+  value-women: "34.7%"
+  value-men: "0.8%"
+  label-women: "darker-skinned women"
+  label-men: "lighter-skinned men"
+  shades-what: "highest error of three commercial gender classifiers, 2018"
+  test-sets: "The usual test sets: 80% and 86% lighter-skinned"
+  shades-credit: "Buolamwini & Gebru (2018), Gender Shades. Gender classification, not face recognition."
+  missing: "Plenty of data. One group missing, in the test data too."
 
-  # On the case: four ways to be wrong.
-  title-case: "Four ways to be wrong, each with a price"
-  mistakes-tag: "synthetic"
-  label-fraud: "fraud paid"
-  price-fraud: "≈ €700 too much"
-  label-uncovered: "paid, but not covered"
-  price-uncovered: "the whole amount"
-  label-handler: "valid, sent to a handler"
-  price-handler: "≈ €23 · 25 minutes"
-  label-denied: "valid, but denied"
-  price-denied: "≈ €350"
+  # Werkmora and its nine sources.
+  title-werkmora: "Werkmora: a garden forecast, every night"
+  werkmora: "A home and garden retailer, about 175 stores in the Netherlands, Belgium and Germany. Every night it forecasts how much of each garden item every store needs."
+  werkmora-tag: "fictional company"
+  source-sales: "point-of-sale sales"
+  source-orders: "online orders"
+  source-stock: "store stock"
+  source-prices: "prices, promotions"
+  source-stores: "store attributes"
+  source-calendar: "calendar"
+  source-weather: "weather"
+  source-supply: "supply"
+  source-returns: "returns"
+  nine-owners: "9 sources · 9 owners · 6 questions each"
 
-  # The chart.
-  axis-y-label: "chance it is fraudulent or not covered"
-  axis-y-formal: "P(not genuine or not covered)"
-  tick-30: "30%"
-  tick-0: "0%"
-  tick-1000: "€1,000"
-  tick-2500: "€2,500"
-  axis-x-label: "claim amount"
-  area-pay: "paid automatically"
-  area-look: "a handler looks"
-  rule: "pay when chance × amount < €23"
-  dot-150-label: "€150: below 15%"
-  dot-400-label: "€400: below 6%"
-  dot-1000-label: "€1,000: about 2%"
-  dot-tv-label: "our TV, 4%: paid"
-  cap: "above €1,000 a handler always looks"
-  moves: "The line moves with the money."
+  # The six questions.
+  title-six: "Six questions, for each source"
+  q-content: "Content"
+  q-content-werkmora: "Stock says the plant is on the shelf. Often it is not: about 2 in 3 records wrong at one retailer."
+  q-labels: "Labels"
+  q-labels-werkmora: "Sales are not demand. On a day the shelf was empty, sales were zero. Next episode."
+  q-volume: "Volume"
+  q-volume-werkmora: "Count events, not rows: 492 frauds in 284,807 transactions is a dataset of about 500."
+  q-coverage: "Coverage"
+  q-coverage-werkmora: "Big stores and small stores. School holidays differ per German state. In the data, and in the test set."
+  q-freshness: "Freshness"
+  q-freshness-werkmora: "In time for the nightly run? Train on old weather forecasts: what was known at the time."
+  q-rights: "Rights"
+  q-rights-werkmora: "Allowed for this purpose? Does the weather contract let us store forecasts and train on them?"
+  clearview-amount: "€30.5M"
+  clearview-who: "Clearview AI, fined by the Dutch data protection authority, 2024"
+  clearview-line: "public ≠ permission"
+  mine-tag: "from my projects"
 
-  # What you see.
-  title-see: "What you usually see: one accuracy number"
-  accuracy: "86% accurate"
-  pay-everything: "so is paying every claim: 86% of small claims are valid and covered"
-  count-euros: "count euros instead"
-  notebook: "and the cut-off is often a default, set in a notebook"
+  # "Enough" is measured.
+  title-enough: "“Enough” is measured"
+  no-magic: "No magic number: one model needed about 5 events per input, another 23 (Riley et al., 2019)."
+  axis-y-label: "forecast error"
+  axis-x-label: "months of history in training"
+  tick-6: "6"
+  tick-12: "12"
+  tick-24: "24"
+  tick-36: "36"
+  curve-tag: "fictional"
+  label-big: "big stores"
+  flat: "Flat after about 2 years: more data buys little."
+  label-small: "small stores: still going down"
+  pilot: "Pilot: big stores first, small stores later."
 
-  # The move.
-  title-move: "Move the decision back to the business."
-  move-1: "1  Price each wrong answer, with finance."
-  move-2: "2  Say which are unacceptable at any price."
-  never-tag: "never"
-  move-3: "3  Draw the line from the prices. Write it down."
-  move-4: "4  The business owner signs it, as a version."
-  signature: "head of claims · version 1 · date"
-  know: "You’ll know: a threshold with a version and a name, and reports in euros per mistake."
-
-  # The download, and the close.
-  canvas-title: "The scorecard: blank, and filled in"
+  # The close.
+  title-close: "Six questions. Each source. One owner per answer."
+  write-down: "Write the answers where the team keeps them up to date: a datasheet in the repo, or a data contract."
+  sheet-head: "weather feed · owner: Data & Analytics"
+  sheet-rows: "content ✓ · volume ✓ · coverage ✓ · freshness: forecast history? · rights: ask the provider"
+  law: "EU AI Act, Art. 10: almost the same list, as law, for high-risk systems."
+  law-scope: "Werkmora’s forecast is not high-risk. The list is the same."
   takeaway-subtitle: "Episode 3.1 in one card"
-  swap: "In a bank, refunding a disputed card payment without investigation. In a retailer, a refund without the parcel back. Same line."
-
-cards:
-  scorecard-blank:
-    title: "Scorecard"
-    subtitle: "5 · The threshold · blank"
-  scorecard-claims:
-    title: "Scorecard"
-    subtitle: "5 · The threshold · filled in for the claims example"
+  next: "Next: labels. Sales were never the same as demand."

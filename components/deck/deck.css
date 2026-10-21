@@ -65,7 +65,7 @@
   }
 }
 
-/* The artifact card: one look for every download on every deck. */
+/* The card: one look on every deck. */
 .deck-card {
   box-sizing: border-box;
   height: 100%;
@@ -135,12 +135,6 @@
   margin: 6px 0 0;
   font-size: 22px;
   line-height: 1.35;
-}
-.deck-card-blank {
-  font-style: italic;
-  color: #8b8f97;
-  min-height: 3.6em;
-  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 1.25em, #d6d9dd 1.25em, #d6d9dd calc(1.25em + 1px));
 }
 /* The marker: a highlighter stroke behind a row, swept in from the left. */
 .deck-card-row.is-marked::before {
