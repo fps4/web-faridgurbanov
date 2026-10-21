@@ -8,7 +8,7 @@ import { episodeByNumber, storylineCopy } from '@/lib/storyline';
 // "On screen" list and stage directions; each step is one click while recording. The diagram is four
 // stages rising left to right with a gate between each, after Cooper's Stage-Gate: money spent
 // under each stage, uncertainty narrowing above them. Case numbers are the running case's and are
-// tagged synthetic; the two "≈ €1.1M" figures (35% automatic, and fraud up a quarter) are on
+// tagged synthetic; the 35% figure (≈ €1.13M) and the fraud-up-a-quarter figure (≈ €1.04M) are on
 // different steps so they are not read as one.
 
 const STEPS = [
