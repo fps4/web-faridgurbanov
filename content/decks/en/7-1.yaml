@@ -65,19 +65,19 @@ steps:
     cue: "(Fill in stage 1.) Stage one is a two-week value case. Handling small claims costs about €2.5 million a year today; with the fast track, about €0.8 million."
   net:
     at: "2:15"
-    cue: "After €350,000 a year to run it: about €1.3 million net, paid back in about eight months on a €900,000 build. All synthetic."
+    cue: "The fast track's own errors count too: about €64,000 a year more. After that and €350,000 a year to run it: about €1.28 million net, paid back in about eight and a half months on a €900,000 build. All synthetic."
   gate1:
     at: "2:35"
-    cue: "(Show the gate card.) The gate was written first, and it is stricter: go only if the saving is above €1 million a year at 35% automation, not at the 50% we hope for."
+    cue: "(Show the gate card.) The gate was written first, and it is stricter: go only if the net saving is above €1 million a year at 35% automation, not at the 50% we hope for."
   go:
     at: "2:50"
-    cue: "At 35% it is still about €1.1 million net, paid back in about ten months. So: go."
+    cue: "At 35% it is about €1.13 million net, paid back in about nine and a half months. So: go."
   marker:
     at: "3:00"
     cue: "(Draw the red marker.) Which number breaks the case? Fraud paid: the desk already pays about €950,000 a year in fraud."
   quarter:
     at: "3:08"
-    cue: "If the fast track raised that by a quarter, the net falls to about €1.1 million. Still positive, and the number to watch."
+    cue: "If the fast track raised that by a quarter, the net falls to about €1.04 million — just over a million. Still positive, and the number to watch."
   forward:
     at: "3:16"
     cue: "So the next stages measure it first: 3,000 re-checked claims in stage two, then shadow mode, before anything is paid automatically."
@@ -155,11 +155,11 @@ text:
   two-weeks: "two weeks"
   v-today: "today ≈ €2.5M a year  →  ≈ €0.8M"
   v-tag: "synthetic"
-  v-net: "net ≈ €1.3M a year · payback ≈ 8 months"
+  v-net: "net ≈ €1.28M a year · payback ≈ 8.5 months"
   g-rule: "gate 1, written first: go if the net saving is above €1M a year at 35% automatic"
-  g-go: "at 35%: ≈ €1.1M net, payback ≈ 10 months  →  go"
+  g-go: "at 35%: ≈ €1.13M net, payback ≈ 9.5 months  →  go"
   m-fraud: "fraud paid today ≈ €952,000 a year"
-  m-quarter: "if the fast track raised it by a quarter: net ≈ €1.1M"
+  m-quarter: "if the fast track raised it by a quarter: net ≈ €1.04M"
   f-stage2: "measure fraud paid first"
   f-stage3: "measure fraud paid first"
 

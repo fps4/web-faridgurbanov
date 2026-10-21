@@ -36,7 +36,7 @@ steps:
     cue: "(Draw the grid.) The parts are not a line one person walks down. Four roles move at the same time."
   col1:
     at: "0:55"
-    cue: "(Fill in weeks 1–2.) The sponsor names the decision and its owner and prices today's errors. The architect runs the readiness gates and the risk tier. The Product Owner writes the brief. The engineering lead measures delivery today."
+    cue: "(Fill in weeks 1–2.) The sponsor names the decision and its owner and prices today's errors. The architect runs the readiness gates and the risk tier. The Product Owner writes down which wrong answers are unacceptable, and what each costs. The engineering lead measures delivery today: that row is the delivery track, Part 8, running alongside, not on the critical path."
   col2:
     at: "1:15"
     cue: "(Fill in weeks 3–6.) The sponsor funds the gaps and takes the first gate. The architect draws the system on all its layers. The Product Owner agrees the scorecard, the baseline and the threshold."
@@ -57,7 +57,7 @@ steps:
     cue: "And one thing is booked straight away: 3,000 claims re-checked by senior handlers and the fraud desk, about 3,000 hours. At that size it is a team."
   gate1:
     at: "2:30"
-    cue: "Weeks two and three: the value case, and the first gate. Above a million a year at 35% automation? About €1.1 million: go. All synthetic."
+    cue: "Weeks two and three: the value case, and the first gate. Above a million a year net, at 35% automation? About €1.13 million: go. All synthetic."
   stage2:
     at: "2:45"
     cue: "Weeks four to eleven: the verified set, the model tested against the desk and the rule. The threshold is written down and the head of claims signs it. No denial is ever automatic."
@@ -114,7 +114,7 @@ text:
   cell-architecture-1: "readiness gates and the risk tier"
   cell-architecture-2: "draw all nine layers"
   cell-architecture-3: "shared layers into the platform"
-  cell-po-1: "write the brief"
+  cell-po-1: "list unacceptable errors and their cost"
   cell-po-2: "scorecard and threshold"
   cell-po-3: "sign the threshold as a version"
   cell-engineering-1: "measure delivery today"
@@ -131,7 +131,7 @@ text:
   bar-stage2: "verified set and offline evaluation"
   recheck: "book the re-check: 3,000 claims, ≈ 3,000 hours"
   k-week1: "week 1: the head of claims owns the decision; a triage module turns up, licensed and off"
-  k-gate1: "weeks 2–3: value case; gate 1, above €1M at 35%? ≈ €1.1M net: go"
+  k-gate1: "weeks 2–3: value case; gate 1, above €1M net at 35%? ≈ €1.13M net: go"
   k-stage2: "weeks 4–11: the verified set; the head of claims signs the threshold; no denial is ever automatic"
   k-gate2: "week 12: gate 2, fewer euros in errors on checked claims? Then six weeks of shadow mode."
 

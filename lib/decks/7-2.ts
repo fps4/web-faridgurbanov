@@ -75,7 +75,7 @@ const GATE_X = [840, 1400] as const;
 const ROLES = [
   { id: 'sponsor', parts: [1, 7, 7] },
   { id: 'architecture', parts: [4, 4, 4] },
-  { id: 'po', parts: [8, 3, 8] },
+  { id: 'po', parts: [3, 3, 8] },
   { id: 'engineering', parts: [8, 8, 8] },
 ] as const;
 
