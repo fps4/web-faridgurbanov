@@ -1,0 +1,186 @@
+# Episode 7.1 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/7-1.ts. Under `npm run dev`
+# a refresh of /en/deck/7-1 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+# - cards:  the heading lines of the proposal cards. The proposal rows come from the kit download, and
+#           the closing card's rows and the "In this episode" lines from lib/episodes/part-7.ts,
+#           because the part page shows them too.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/7-1.ts as well.
+# A Dutch deck is a copy of this file in content/decks/nl/, translated.
+
+title: "Buy information before you buy software"
+
+steps:
+  recap:
+    at: "0:00"
+    cue: "Recap: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day. Now someone has to ask for the money."
+  promise:
+    at: "0:12"
+    cue: "In this episode: why so many AI pilots wait for a decision nobody wrote down; four stages, each with a gate written first; the number that breaks the case, and a one-page ask."
+  pilots:
+    at: "0:25"
+    cue: "You have seen this. A pilot that nobody stops and nobody scales. A business case written once, to get the budget, and never opened again."
+  eiopa:
+    at: "0:35"
+    cue: "Across Europe, 65% of insurers already use generative AI, and the European insurance supervisor found most of those uses still at proof-of-concept."
+  nobody:
+    at: "0:50"
+    cue: "The problem is not the pilot. Nobody wrote down, before it started, what result would end it."
+  idea:
+    at: "1:00"
+    cue: "Robert Cooper called it the stage-gate: work moves in stages, and at each gate someone decides go, change course or stop, against criteria agreed in advance."
+  stage1:
+    at: "1:15"
+    cue: "(Draw the four boxes.) The stages follow the uncertainty, in a fixed order. Is it worth doing?"
+  stage2:
+    at: "1:19"
+    cue: "Can a model learn it?"
+  stage3:
+    at: "1:22"
+    cue: "Does it help real people?"
+  stage4:
+    at: "1:25"
+    cue: "Can we keep it working?"
+  bars:
+    at: "1:30"
+    cue: "(Draw the bars.) Each stage is a cheap experiment that answers one question."
+  band:
+    at: "1:37"
+    cue: "(Draw the band.) You spend little where you know least, and more only as the uncertainty falls."
+  gates:
+    at: "1:42"
+    cue: "Between the stages, a gate: go, change or stop, written before the stage begins."
+  buying:
+    at: "1:46"
+    cue: "You are buying information before you buy software."
+  value:
+    at: "1:50"
+    cue: "(Fill in stage 1.) Stage one is a two-week value case. Handling small claims costs about €2.5 million a year today; with the fast track, about €0.8 million."
+  net:
+    at: "2:15"
+    cue: "After €350,000 a year to run it: about €1.3 million net, paid back in about eight months on a €900,000 build. All synthetic."
+  gate1:
+    at: "2:35"
+    cue: "(Show the gate card.) The gate was written first, and it is stricter: go only if the saving is above €1 million a year at 35% automation, not at the 50% we hope for."
+  go:
+    at: "2:50"
+    cue: "At 35% it is still about €1.1 million net, paid back in about ten months. So: go."
+  marker:
+    at: "3:00"
+    cue: "(Draw the red marker.) Which number breaks the case? Fraud paid: the desk already pays about €950,000 a year in fraud."
+  quarter:
+    at: "3:08"
+    cue: "If the fast track raised that by a quarter, the net falls to about €1.1 million. Still positive, and the number to watch."
+  forward:
+    at: "3:16"
+    cue: "So the next stages measure it first: 3,000 re-checked claims in stage two, then shadow mode, before anything is paid automatically."
+  move:
+    at: "3:25"
+    cue: "So: write the gate before the stage. Three things."
+  four:
+    at: "3:30"
+    cue: "Four stages, in that order, each with go, change and stop written before it begins."
+  breaks:
+    at: "3:40"
+    cue: "Name the number that breaks the case, and make the next stage measure it first."
+  page:
+    at: "3:50"
+    cue: "(Show the proposal.) One page to the person who decides: the problem, the stage and how it stops, the alternatives, the risks, and a specific ask."
+  ask:
+    at: "4:15"
+    cue: "Our head of claims asks for stage two only: eight weeks, and the people to re-check 3,000 claims. The rest of the build waits for the next gate."
+  who:
+    at: "4:35"
+    cue: "The owner writes the page; whoever holds the budget decides at each gate, and each decision is recorded next to its criteria."
+  know:
+    at: "5:00"
+    cue: "After a quarter: every stage ended in a recorded go, change or stop, and at least one idea was stopped early and cheaply."
+  canvas:
+    at: "5:25"
+    cue: "(Show the proposal, blank and filled in.) The one-page proposal is linked below."
+  mark:
+    at: "5:32"
+    cue: "(Mark the rows.) The top of the page: who decides, and the ask. Stage two only."
+  takeaway:
+    at: "5:40"
+    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
+  swap:
+    at: "6:00"
+    cue: "In a bank, disputed card payments; in a retailer, refunds for damaged orders. The gates stay the same; the number that breaks the case changes."
+
+text:
+  # Recap: the title card.
+  episode: "AI Product Design · Part 7 · Episode 7.1"
+  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day. The idea is good. Now someone has to ask for the money."
+  recap-tag: "a worked example · synthetic numbers"
+
+  # What you see: pilots that never end.
+  hook: "A pilot nobody stops, and nobody scales."
+  case-once: "A business case written once, to get the budget, and never opened again."
+  eiopa-figure: "65%"
+  eiopa: "of insurers in Europe use generative AI. Most of those uses are still at the proof-of-concept stage."
+  eiopa-source: "EIOPA, Generative AI Market Survey, 2 February 2026"
+  nobody: "Nobody wrote down, before it started, what result would end it."
+
+  # The idea: four stages, a gate between each.
+  title-idea: "Buy information before you buy software."
+  credit: "after Robert G. Cooper, Stage-Gate"
+  label-stage1: "Worth doing?"
+  label-stage2: "Can a model learn it?"
+  label-stage3: "Does it help people?"
+  label-stage4: "Can we keep it working?"
+  money: "money spent"
+  uncertainty: "uncertainty"
+  gate1-go: "go"
+  gate1-change: "change"
+  gate1-stop: "stop"
+  gate2-go: "go"
+  gate2-change: "change"
+  gate2-stop: "stop"
+  gate3-go: "go"
+  gate3-change: "change"
+  gate3-stop: "stop"
+  gates-first: "each gate is written before its stage starts"
+  buying: "You are buying information before you buy software."
+
+  # In the case: stage 1, the value case.
+  title-case: "At our insurer: stage 1, the value case"
+  two-weeks: "two weeks"
+  v-today: "today ≈ €2.5M a year  →  ≈ €0.8M"
+  v-tag: "synthetic"
+  v-net: "net ≈ €1.3M a year · payback ≈ 8 months"
+  g-rule: "gate 1, written first: go if the net saving is above €1M a year at 35% automatic"
+  g-go: "at 35%: ≈ €1.1M net, payback ≈ 10 months  →  go"
+  m-fraud: "fraud paid today ≈ €952,000 a year"
+  m-quarter: "if the fast track raised it by a quarter: net ≈ €1.1M"
+  f-stage2: "measure fraud paid first"
+  f-stage3: "measure fraud paid first"
+
+  # The move.
+  title-move: "Write the gate before the stage."
+  step-1: "1  Four stages, in this order, each with go, change and stop written first."
+  step-2: "2  Name the number that breaks the case; the next stage measures it first."
+  step-3: "3  One page to the person who decides, asking for the next stage only."
+  ask-label: "the ask: stage 2 only, eight weeks"
+  who: "The owner writes the page. Whoever holds the budget decides, on the record."
+  know: "You’ll know: every stage ended in a recorded go, change or stop."
+
+  # The download, and the close.
+  canvas-title: "The one-page proposal: blank, and filled in"
+  takeaway-subtitle: "Episode 7.1 in one card"
+  swap: "In a bank, disputed card payments. In a retailer, refunds for damaged orders. The gates stay the same; the number that breaks the case changes."
+
+cards:
+  proposal-blank:
+    title: "One-page proposal"
+    subtitle: "The top of the page: who decides, and the ask · blank"
+  proposal-claims:
+    title: "One-page proposal"
+    subtitle: "The top of the page · filled in for the claims example"

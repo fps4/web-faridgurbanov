@@ -21,7 +21,7 @@ episode decks the owner records over. Implements FS-0010 under ADR-0010, gated b
 | Story | Title | Spec |
 |---|---|---|
 | US-0030 | Storyline section: nav item, index and part page (Part 1) | FS-0010 §1, 2, 5, 6 |
-| US-0031 | Episode deck engine and the 1.1 deck | FS-0010 §3, 4 |
+| US-0031 | Episode deck engine and the 1.1 deck; then the decks of all sixteen first-cut episodes | FS-0010 §3, 4 |
 | US-0032 | Episode video on the part page, loaded after a click | FS-0010 (out of scope for now) |
 | US-0033 | PDF and DOCX downloads built from the kit | FS-0010 (out of scope for now) |
 | US-0034 | Feedback section on the part page, and the privacy-page line | FS-0011 §1, 2, 8 |

@@ -1,0 +1,168 @@
+# Episode 2.2 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/2-2.ts. Under `npm run dev`
+# a refresh of /en/deck/2-2 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+# - cards:  the heading lines of the glossary cards. Their rows come from the kit download, and the
+#           closing card's rows and the "In this episode" lines from lib/episodes/part-2.ts, because
+#           the part page shows them too.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/2-2.ts as well.
+
+title: "Assistant, workflow, agent"
+
+steps:
+  recap:
+    at: "0:00"
+    cue: "Recap: an insurer where a claims handler reads every small home-contents claim by hand. It knows which decision to improve. Now the vendors call."
+  promise:
+    at: "0:12"
+    cue: "In this episode: why one word, agent, covers three different things; all three in one claims product, and where the system acts; the question to ask first."
+  word:
+    at: "0:25"
+    cue: "(Show the word.) And every vendor says the same word: agent."
+  split:
+    at: "0:30"
+    cue: "(Split it.) One word is being used for three different things. And they need different controls."
+  assistant:
+    at: "0:40"
+    cue: "An assistant helps one person while they work. The person decides and acts. Control: their judgement, and a usage policy."
+  workflow:
+    at: "1:00"
+    cue: "A workflow is a fixed process with an AI step inside. The path is written in advance. Control: a scorecard on that AI step."
+  agent:
+    at: "1:20"
+    cue: "An agent chooses its own next steps and takes them in your systems. The AI acts. Control: limited permissions, a person approving what matters."
+  line:
+    at: "1:40"
+    cue: "(Draw the line.) From the people who build these systems: in a workflow the path is written in advance; an agent directs its own process and tools."
+  pipe:
+    at: "2:00"
+    cue: "(Draw the claims pipe.) In our insurer, all three appear in one product. Rule, coverage check, score, route: a workflow."
+  letter:
+    at: "2:10"
+    cue: "The letter drafter is an assistant. It writes the letter; the handler reads it and sends it."
+  euro:
+    at: "2:25"
+    cue: "(Show the euro sign.) At the end of the path, one step is different: the payment. For small, clear, covered claims, nobody looks."
+  lock:
+    at: "2:40"
+    cue: "So that step gets the agent's controls. (Add the lock.) Up to a thousand euros per claim, this policyholder only, a person on every denial."
+  control:
+    at: "2:55"
+    cue: "The control follows who acts, not what the vendor calls it."
+  vendor:
+    at: "3:00"
+    cue: "(Bring in the vendor box.) The platform vendor calls: their triage module is an agent that handles the claim end to end."
+  questions:
+    at: "3:15"
+    cue: "Then it gets the agent questions first. What can it read? What can it change? Who approves its actions? How do we switch it off?"
+  see:
+    at: "3:30"
+    cue: "In your organisation the word is everywhere: the office assistant, the chatbot, the automation from two years ago. When it means everything, nobody can say which control applies."
+  move:
+    at: "3:55"
+    cue: "So use the three words consistently, in every proposal and vendor conversation. Ask which of the three it is first, before features, before price."
+  layer:
+    at: "4:05"
+    cue: "Then decide build, buy or call an API per layer. A bought triage module still needs your scorecard, permissions and approval rules."
+  who:
+    at: "4:20"
+    cue: "The sponsor decides. Architecture and procurement put the question to every vendor, and write the answer down."
+  know:
+    at: "4:35"
+    cue: "You'll know: proposals and vendor answers say which of the three they are, and every capability has an owner who can answer."
+  canvas:
+    at: "4:55"
+    cue: "(Show the cards.) The glossary cards are linked below, in English and Dutch: what the vendor says, what it means, what to ask."
+  mark:
+    at: "5:05"
+    cue: "Start with the first three cards: they decide which controls apply."
+  takeaway:
+    at: "5:10"
+    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
+  swap:
+    at: "5:25"
+    cue: "In a bank: the assistant drafts the reply to a disputed card payment, the workflow routes it, and the refund under the limit is where the controls go."
+
+text:
+  # Recap: the title card.
+  episode: "AI Product Design · Part 2 · Episode 2.2"
+  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand. It knows which decision to improve. Now the vendors call."
+  recap-tag: "a worked example · synthetic numbers"
+
+  # The idea: one word, three columns.
+  word: "agent"
+  title-idea: "One word, three different things."
+  head-assistant: "assistant"
+  head-workflow: "workflow with an AI step"
+  head-agent: "agent"
+  row-does: "what it does"
+  row-acts: "who acts"
+  row-wrong: "what goes wrong"
+  row-control: "the main control"
+  assistant-does: "helps one person while they work"
+  assistant-acts: "the person acts"
+  assistant-wrong: "a draft nobody checked"
+  assistant-control: "the person’s judgement, and a usage policy"
+  workflow-does: "a fixed process with an AI step"
+  workflow-acts: "the process, on a path written in advance"
+  workflow-wrong: "a wrong classification, passed downstream"
+  workflow-control: "a scorecard on the AI step"
+  agent-does: "chooses its own next steps, and takes them"
+  agent-acts: "the AI acts, in your systems"
+  agent-wrong: "a wrong action, at scale"
+  agent-control: "limited permissions; a person approves what matters"
+  ai-box: "AI"
+  ai-agent: "AI"
+  path-fixed: "path written in advance"
+  path-own: "chooses its own next step"
+  credit: "after Anthropic, “Building effective agents” (2024)"
+
+  # In the case: all three in one claims product.
+  title-case: "At our insurer: all three, in one product"
+  case-tag: "a worked example"
+  letter-label: "letter drafter = assistant"
+  handler: "handler"
+  workflow-label: "workflow: the path is fixed"
+  pipe-rule: "rule"
+  pipe-coverage: "coverage check"
+  pipe-score: "score"
+  pipe-route: "route"
+  euro: "€"
+  acts-here: "the system acts here"
+  lock-cap: "up to €1,000 per claim"
+  lock-who: "this policyholder only"
+  lock-denial: "a person on every denial"
+  control: "The control follows who acts, not what the vendor calls it."
+  vendor: "vendor triage module: “an agent that handles the claim end to end”"
+  vendor-mark: "?"
+  questions: "What can it read? What can it change? Who approves its actions? How do we switch it off?"
+
+  # What you see, and the move.
+  title-see: "When the word means everything, nobody can say which control applies."
+  tag-suite: "office suite: agent"
+  tag-chatbot: "chatbot: agent"
+  tag-automation: "old automation: agent"
+  title-move: "Ask first: which of the three is this?"
+  layer: "then build, buy or API, decided per layer"
+  who: "the sponsor decides; architecture and procurement ask every vendor and write it down"
+  know: "You’ll know: every answer says which of the three, and every capability has an owner."
+
+  # The download, and the close.
+  canvas-title: "The glossary cards: English and Dutch"
+  takeaway-subtitle: "Episode 2.2 in one card"
+  swap: "In a bank: the assistant drafts the reply to a disputed card payment, the workflow routes it, and the refund under the limit gets the controls."
+
+cards:
+  glossary-en:
+    title: "Glossary cards"
+    subtitle: "The three words · say"
+  glossary-nl:
+    title: "Begrippenkaarten"
+    subtitle: "De drie woorden · zeggen"

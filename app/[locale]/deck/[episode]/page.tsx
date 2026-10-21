@@ -22,6 +22,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; episode: string }> }): Promise<Metadata> {
+  // While the storyline is unpublished the page is a 404, and its metadata must not name the episode.
+  if (!storylineVisible()) return { robots: { index: false, follow: false } };
   const { locale, episode } = await params;
   const found = isLocale(locale) ? deckFor(locale, episode) : undefined;
   return {

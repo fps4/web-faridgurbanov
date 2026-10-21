@@ -1,10 +1,18 @@
 import type { Locale } from '@/lib/i18n';
+import { part1Episodes } from '@/lib/episodes/part-1';
+import { part2Episodes } from '@/lib/episodes/part-2';
+import { part3Episodes } from '@/lib/episodes/part-3';
+import { part4Episodes } from '@/lib/episodes/part-4';
+import { part5Episodes } from '@/lib/episodes/part-5';
+import { part6Episodes } from '@/lib/episodes/part-6';
+import { part7Episodes } from '@/lib/episodes/part-7';
+import { part8Episodes } from '@/lib/episodes/part-8';
 
 // The AI Product Design storyline (FS-0010): eight parts, published one at a time. This module is
 // the single list of parts, their episodes and their downloads. The chapter text of a part lives in
 // content/en/ai-product-design/<slug>.md; everything a part page shows around that text comes from
-// here. English first: Dutch pages fall back to the English text with the fallback notice
-// (ADR-0002, ADR-0010).
+// here, and each part's episodes are in lib/episodes/part-<n>.ts. English first: Dutch pages fall
+// back to the English text with the fallback notice (ADR-0002, ADR-0010).
 
 export const STORYLINE_SECTION = 'ai-product-design';
 
@@ -75,39 +83,7 @@ export const parts: Part[] = [
     title: 'Frame the decision',
     line: 'Find the one decision where the prediction is the slow part, price what today costs, and fund that.',
     status: 'draft',
-    episodes: [
-      {
-        number: '1.1',
-        title: 'Fund one decision, not more seats',
-        promise: [
-          'why more seats don\u2019t add up to a capability',
-          'the three parts of a decision, on one claims desk',
-          'one move, and a canvas to use on Monday',
-        ],
-        takeaway: {
-          idea: 'AI sells predictions, not decisions. Judgement and action stay with you.',
-          move: 'Fund one decision, with an owner, data, a budget and a result someone measures.',
-          monday: 'Name three decisions in your area where waiting for information is the cost.',
-          download: 'Use-case canvas, blank and filled in for the claims example',
-        },
-        deck: '1-1',
-      },
-      {
-        number: '1.2',
-        title: 'Picking the first one',
-        promise: [
-          'the baseline that decides it: today\u2019s process, with its mistakes',
-          'three candidates at the insurer, scored two ways',
-          'why one goes first, and how to write down why the others wait',
-        ],
-        takeaway: {
-          idea: 'The baseline is today\u2019s process, errors included. Value and feasibility are separate scores.',
-          move: 'Price today, score value and feasibility separately, pick one and write down why the others wait.',
-          monday: 'Score the three decisions you named on the canvas, against today.',
-          download: 'Use-case canvas, the scoring half, filled in for three candidates',
-        },
-      },
-    ],
+    episodes: part1Episodes,
     downloads: [
       {
         title: 'Use-case canvas',
@@ -129,17 +105,18 @@ export const parts: Part[] = [
       },
     ],
   },
-  coming(2, '2-choose-the-approach', 'Choose the approach', 'Start at the bottom of the ladder, and know whether you are buying an assistant, a workflow or an agent.'),
-  coming(3, '3-data-and-evaluation', 'Data and evaluation', 'The threshold is a business decision, and a demo is not evidence.'),
-  coming(4, '4-make-it-run', 'Make it run', 'The model is one box of nine. Why pilots stay pilots, and the gates that let them go live.'),
-  coming(5, '5-design-for-people', 'Design for people', 'Design for the day it is wrong, and set the automation level per step.'),
-  coming(6, '6-risk-and-governance', 'Risk and governance', 'Risk follows the use of a model, and some of the obligations are ones you already have.'),
-  coming(7, '7-process-and-proposal', 'Process and proposal', 'Buy information before you buy software: stages, gates and a one-page proposal.'),
-  coming(8, '8-building-with-agents', 'Building it with agents', 'From personal copilot to organizational capability: the brief, the review queue, and who signs.'),
+  coming(2, '2-choose-the-approach', 'Choose the approach', 'Start at the bottom of the ladder, and know whether you are buying an assistant, a workflow or an agent.', part2Episodes),
+  coming(3, '3-data-and-evaluation', 'Data and evaluation', 'The threshold is a business decision, and a demo is not evidence.', part3Episodes),
+  coming(4, '4-make-it-run', 'Make it run', 'The model is one box of nine. Why pilots stay pilots, and the gates that let them go live.', part4Episodes),
+  coming(5, '5-design-for-people', 'Design for people', 'Design for the day it is wrong, and set the automation level per step.', part5Episodes),
+  coming(6, '6-risk-and-governance', 'Risk and governance', 'Risk follows the use of a model, and some of the obligations are ones you already have.', part6Episodes),
+  coming(7, '7-process-and-proposal', 'Process and proposal', 'Buy information before you buy software: stages, gates and a one-page proposal.', part7Episodes),
+  coming(8, '8-building-with-agents', 'Building it with agents', 'From personal copilot to organizational capability: the brief, the review queue, and who signs.', part8Episodes),
 ];
 
-function coming(number: number, slug: string, title: string, line: string): Part {
-  return { number, slug, title, line, status: 'coming', episodes: [], downloads: [] };
+/** A part without a page yet. Its episodes are listed so their decks can be recorded (FS-0010). */
+function coming(number: number, slug: string, title: string, line: string, episodes: Episode[] = []): Part {
+  return { number, slug, title, line, status: 'coming', episodes, downloads: [] };
 }
 
 export function partBySlug(slug: string): Part | undefined {

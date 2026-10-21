@@ -7,19 +7,22 @@
 //   node scripts/sync-kit.mjs                     # kit checked out next to this repo
 //   KIT_DIR=/path/to/ai-product-design-kit node scripts/sync-kit.mjs
 //
-// The file list is the set the decks reference (lib/decks/*.ts → `source`); lib/decks.test.ts
-// fails when a deck names a file that is not in the snapshot.
+// It copies every Markdown download under the kit's parts/, so any deck can show any download;
+// lib/decks.test.ts fails when a deck names a file or a row that is not in the snapshot.
 
-import { copyFile, mkdir } from 'node:fs/promises';
+import { copyFile, mkdir, readdir } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
-
-const FILES = [
-  'parts/1-frame-the-decision/use-case-canvas.md',
-  'parts/1-frame-the-decision/use-case-canvas.claims.md',
-];
 
 const kit = resolve(process.env.KIT_DIR ?? join(process.cwd(), '..', 'ai-product-design-kit'));
 const out = join(process.cwd(), 'content', 'kit');
+
+const FILES = [];
+for (const dir of (await readdir(join(kit, 'parts'), { withFileTypes: true })).filter((d) => d.isDirectory())) {
+  for (const name of await readdir(join(kit, 'parts', dir.name))) {
+    if (name.endsWith('.md') && name !== 'README.md') FILES.push(`parts/${dir.name}/${name}`);
+  }
+}
+FILES.sort();
 
 for (const file of FILES) {
   const target = join(out, file);

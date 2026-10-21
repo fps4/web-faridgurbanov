@@ -1,0 +1,194 @@
+# Episode 4.2 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/4-2.ts. Under `npm run dev`
+# a refresh of /en/deck/4-2 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+# - cards:  the heading lines of the readiness-scorecard cards. Their rows come from the kit
+#           download, and the closing card's rows and the "In this episode" lines from
+#           lib/episodes/part-4.ts, because the part page shows them too.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/4-2.ts as well.
+
+title: "Why pilots stay pilots"
+
+steps:
+  recap:
+    at: "0:00"
+    cue: "Recap: the insurer's claims handler reads every small home-contents claim by hand. The model works on the verified set, and the design is on nine layers. Will it ever go live?"
+  promise:
+    at: "0:20"
+    cue: "In this episode: why a pilot that works never goes live; eight gates, run on the claims fast track; one rule: budget the work, or stop."
+  timeline:
+    at: "0:30"
+    cue: "(Show the timeline.) The pilot impressed everyone. Six months later it is still a pilot."
+  eiopa:
+    at: "0:38"
+    cue: "You are not alone. (EIOPA line.) Across Europe, most generative-AI use cases at insurers are still at proof-of-concept stage."
+  dnb:
+    at: "0:48"
+    cue: "(DNB line.) Where AI does run, documentation and monitoring after go-live were \"not always\" adequate."
+  scope:
+    at: "1:00"
+    cue: "(Draw the pilot-scope circle.) A pilot is scoped to show that the model works. So it covers this band."
+  otherEight:
+    at: "1:08"
+    cue: "Going live depends on the other eight, and they were never in the pilot's scope."
+  notAsked:
+    at: "1:18"
+    cue: "Nobody failed. The work just wasn't asked for."
+  move:
+    at: "1:25"
+    cue: "So run the same eight gates on every candidate. Before the pilot, and again before it goes live."
+  gate1:
+    at: "1:35"
+    cue: "One: a data owner. Who owns what it reads, and who keeps it current?"
+  gate2:
+    at: "1:45"
+    cue: "Two: permissions at the moment it answers. It sees only what this person, and this case, allow."
+  gate3:
+    at: "1:55"
+    cue: "Three: integration contracts. Every system it reads or changes has a written interface and an owner."
+  gate4:
+    at: "2:05"
+    cue: "Four: a scorecard and a threshold, signed before the work."
+  gate5:
+    at: "2:13"
+    cue: "Five: cost per use. What one answer costs, times how many you expect."
+  gate6:
+    at: "2:22"
+    cue: "Six: support. Who gets the call when it is wrong, and how it gets corrected."
+  gate7:
+    at: "2:32"
+    cue: "Seven: exit. How you switch it off, and what happens then."
+  gate8:
+    at: "2:40"
+    cue: "Eight: compliance. Personal data, sector rules, and the AI Act's risk tier."
+  rule:
+    at: "2:50"
+    cue: "And one rule. A gate that does not pass gets the work to pass it, with a budget, or the pilot stops. No third option called \"we'll see\"."
+  case:
+    at: "3:05"
+    cue: "(Colour the gates on the claims diagram.) Here is the insurer, before the pilot."
+  c1:
+    at: "3:10"
+    cue: "Gate one: nobody owned the re-checked claims, and the policy conditions had no effective dates. Amber: work budgeted."
+  c3:
+    at: "3:25"
+    cue: "Gate three: the payments interface had no written contract. That is where the thousand-euro cap lives. Amber."
+  c4:
+    at: "3:37"
+    cue: "Gate four passed: the scorecard is in euros, and the head of claims has signed the threshold."
+  c5:
+    at: "3:47"
+    cue: "(Show the sum.) Gate five: five cents of model calls a claim, sixty-eight thousand claims, a few thousand euros a year. The model is the cheapest part."
+  c6:
+    at: "4:00"
+    cue: "Gate six: when a policyholder clicks \"ask a person\", who answers, and by when? Amber, until the claims team has a rota."
+  c7:
+    at: "4:12"
+    cue: "(Show the switch.) Gate seven, the one nobody had asked: can you switch it off within the hour, with the desk ready? You find out in a drill."
+  who:
+    at: "4:30"
+    cue: "Architecture runs the gates. The data owners and the business owner close them. The head of claims makes the call: budget the work, or stop."
+  know:
+    at: "4:50"
+    cue: "Pilots stop or go live. None stay pilots. Every go-live comes with a record of the gates it passed."
+  canvas:
+    at: "5:10"
+    cue: "(Show the readiness scorecard, blank and filled in.) It is linked below."
+  mark:
+    at: "5:17"
+    cue: "(Mark the rows.) The gates that needed work, and the decision: three passed, five budgeted, none stops it."
+  takeaway:
+    at: "5:25"
+    cue: "(Show the episode card.) In one card: the idea, the move, Monday, and the download."
+  swap:
+    at: "5:45"
+    cue: "In a bank, the same gates stand in front of a fast track for disputed card payments; in a retailer, in front of automatic refunds. Same eight questions."
+
+text:
+  # Recap: the title card.
+  episode: "AI Product Design · Part 4 · Episode 4.2"
+  recap: "Our running example: an insurer where a claims handler reads every small home-contents claim by hand, and wants the clear ones paid the same day. The model works and the design is on nine layers. Will it ever go live?"
+  recap-tag: "a worked example · synthetic numbers"
+
+  # What you see: six months, still a pilot.
+  title-hook: "The pilot impressed everyone. Six months later it is still a pilot."
+  tl-pilot: "pilot"
+  tl-six: "six months"
+  tl-still: "still a pilot"
+  demo: "the demo"
+  eiopa: "Most generative-AI use cases at European insurers are still at proof-of-concept stage."
+  eiopa-source: "EIOPA, Generative AI Market Survey, 2 February 2026 (Q2 2025 data)"
+  dnb: "Where AI runs, documentation and monitoring after go-live were “not always” adequate."
+  dnb-source: "De Nederlandsche Bank, Verzekeraars en AI, 21 January 2026"
+
+  # Why: the pilot covers one band of nine.
+  title-scope: "A pilot is scoped to show that the model works."
+  layer-1: "1 · Channel"
+  layer-2: "2 · Orchestration"
+  layer-3: "3 · Model access"
+  layer-4: "4 · Knowledge"
+  layer-5: "5 · Tools"
+  layer-6: "6 · Identity and permissions"
+  layer-7: "7 · Human approval"
+  layer-8: "8 · Evaluation"
+  layer-9: "9 · Observability and cost"
+  scope-label: "pilot scope"
+  other-eight: "Going live depends on the other eight."
+  not-asked: "Nobody failed. The work just wasn’t asked for."
+
+  # The move: eight gates on the bands they test.
+  title-move: "Run the same eight gates, before the pilot and before go-live."
+  gate-1-n: "1"
+  gate-1: "data owner"
+  gate-2-n: "2"
+  gate-2: "permissions"
+  gate-3-n: "3"
+  gate-3: "contracts"
+  gate-4-n: "4"
+  gate-4: "scorecard"
+  gate-5-n: "5"
+  gate-5: "cost per use"
+  gate-6-n: "6"
+  gate-6: "support"
+  gate-7-n: "7"
+  gate-7: "exit"
+  gate-8-n: "8"
+  gate-8: "compliance"
+  rule: "a gate that fails gets the work, with a budget, or the pilot stops"
+  no-third: "There is no third option called “we’ll see”."
+
+  # On the case: the gates before the pilot.
+  title-case: "The insurer, before the pilot"
+  status-1: "work · no data owner; conditions undated"
+  status-2: "pass · closed in Part 3"
+  status-3: "work · payments had no written contract"
+  status-4: "pass · scorecard in euros, threshold signed"
+  status-5: "pass · €0.05 × 68,000 claims ≈ €3,400 a year"
+  sum-tag: "synthetic"
+  status-6: "work · who answers “ask a person”?"
+  status-7: "work · off within the hour? drill it"
+  status-8: "work · register entry, privacy review"
+  who-1: "architecture runs the gates; the owners close them"
+  who-2: "the head of claims decides: budget it, or stop"
+  title-know: "Pilots stop or go live. None stay pilots."
+  record: "Every go-live comes with a record of the gates it passed."
+
+  # The download, and the close.
+  canvas-title: "The readiness scorecard: blank, and filled in"
+  takeaway-subtitle: "Episode 4.2 in one card"
+  swap: "In a bank, the same gates stand before a fast track for card disputes; in a retailer, before automatic refunds. Same eight questions."
+
+cards:
+  gates-blank:
+    title: "Readiness scorecard"
+    subtitle: "Five of the eight gates · blank"
+  gates-claims:
+    title: "Readiness scorecard"
+    subtitle: "The decision · filled in for the claims example"

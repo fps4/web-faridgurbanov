@@ -30,6 +30,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  if (!storylineVisible()) return {};
   const { locale } = await params;
   const t = storylineCopy[locale as Locale];
   const intro = await getEntry(STORYLINE_SECTION, 'index', locale as Locale);

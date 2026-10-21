@@ -19,8 +19,9 @@ so that sixteen episodes look like one series and nobody watches a slide sit sti
 ## Context
 
 Decks are data (words in `content/decks/<locale>/<episode>.yaml`, layout in `lib/decks/`), drawn by
-`components/deck/` with rough.js and CSS animation, recorded from `next dev` with OBS. The 1.1 deck follows the script in the wiki
-(`publishing/ai-product-design/episodes/1.1-fund-one-decision.md`).
+`components/deck/` with rough.js and CSS animation, recorded from `next dev` with OBS. Each deck
+follows its episode's script in the wiki (`publishing/ai-product-design/episodes/<episode>-*.md`);
+1.1 came first, and the other fifteen first-cut episodes (1.2–8.2) followed on 2026-10-20.
 
 ## Acceptance criteria (EARS)
 
