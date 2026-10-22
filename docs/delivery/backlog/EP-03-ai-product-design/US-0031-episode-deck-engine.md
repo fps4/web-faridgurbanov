@@ -22,7 +22,7 @@ Decks are data (words in `content/decks/<locale>/<episode>.yaml`, layout in `lib
 `components/deck/` with rough.js and CSS animation, recorded from `next dev` with OBS. Each deck
 follows its episode's script in the wiki (`publishing/ai-product-design/episodes/<module>/<nn>-*.md`).
 The first iteration's sixteen decks (1.1–8.2) were removed on 2026-10-21; the rebuild starts with
-3.1, *Data requirements* (wiki `episodes/data/01-data-requirements.md`).
+3.1, *Data requirements* (wiki `episodes/data/01-data-requirements.script.md`).
 
 ## Acceptance criteria (EARS)
 

@@ -4,17 +4,17 @@ import { episodeByNumber, storylineCopy } from '@/lib/storyline';
 
 // Episode 3.1, "Data requirements" (FS-0010): the layout. The words are in
 // content/decks/<locale>/3-1.yaml; this file places them on the stage by id. The episode follows the
-// wiki script (publishing/ai-product-design/episodes/data/01-data-requirements.md): a row count
-// as the answer to "enough data?", Gender Shades as the case, Werkmora's nine sources, the six
+// wiki script (publishing/ai-product-design/episodes/data/01-data-requirements.script.md): what the
+// episode promises, a row count as the answer to "enough data?", Gender Shades as the case, Werkmora's nine sources, the six
 // questions asked of each one, a learning curve for "enough", and the close. The Gender Shades
 // numbers are the paper's (Table 4); the learning curves are Werkmora's and fictional.
 
 const STEPS = [
   'title',
+  'promise',
   'rows',
   'shades',
   'missing',
-  'promise',
   'werkmora',
   'sources',
   'content',
@@ -112,33 +112,35 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       },
     ],
     elements: [
-      // The title card, and the question the episode opens on.
-      sans('episode', 120, 200, w.text('episode'), { size: 28, tone: 'muted', out: S.shades }),
-      hand('title', 120, 360, w.title, { size: 96, out: S.shades }),
-      hand('question', 120, 520, w.text('question'), { size: 64, tone: 'accent', out: S.shades }),
-      sans('header', 120, 70, `${episode.number} · ${w.title}`, { size: 24, tone: 'muted', in: S.shades }),
-      hand('answer', 120, 640, w.text('answer'), { size: 52, in: S.rows, out: S.shades }),
-      { id: 'answer-tag', tone: 'muted', in: S.rows, out: S.shades, shape: { kind: 'tag', x: 120, y: 760, text: w.text('answer-tag') } },
+      // The title card.
+      sans('episode', 120, 360, w.text('episode'), { size: 28, tone: 'muted', out: S.promise }),
+      hand('title', 120, 520, w.title, { size: 112, out: S.promise }),
+      sans('header', 120, 70, `${episode.number} · ${w.title}`, { size: 24, tone: 'muted', in: S.promise }),
+
+      // In this episode: what the viewer leaves with, said first.
+      hand('promise-title', 120, 250, copy.inThisEpisode, { size: 72, in: S.promise, out: S.rows }),
+      ...promise.map((line, i) =>
+        hand(`promise-${i + 1}`, 160, 420 + i * 120, `${i + 1}  ${line}`, { size: 52, tone: i === 1 ? 'accent' : 'ink', in: S.promise, out: S.rows }),
+      ),
+
+      // The question, and the usual answer.
+      hand('question', 120, 360, w.text('question'), { size: 80, tone: 'accent', in: S.rows, out: S.shades }),
+      hand('answer', 120, 540, w.text('answer'), { size: 52, in: S.rows, out: S.shades }),
+      { id: 'answer-tag', tone: 'muted', in: S.rows, out: S.shades, shape: { kind: 'tag', x: 120, y: 660, text: w.text('answer-tag') } },
 
       // Gender Shades: the highest error per group on a balanced test set.
-      hand('title-shades', 120, 160, w.text('title-shades'), { size: 52, in: S.shades, out: S.promise }),
-      { id: 'baseline', in: S.shades, out: S.promise, shape: { kind: 'line', points: [[200, 820], [1100, 820]] } },
-      { id: 'bar-women', tone: 'warn', in: S.shades, out: S.promise, shape: { kind: 'box', x: 300, y: 300, w: 220, h: 520, fill: true } },
-      { id: 'bar-men', in: S.shades, out: S.promise, shape: { kind: 'box', x: 700, y: 808, w: 220, h: 12, fill: true } },
-      hand('value-women', 410, 270, w.text('value-women'), { size: 56, anchor: 'middle', tone: 'warn', in: S.shades, out: S.promise }),
-      hand('value-men', 810, 780, w.text('value-men'), { size: 56, anchor: 'middle', in: S.shades, out: S.promise }),
-      sans('label-women', 410, 870, w.text('label-women'), { size: 26, anchor: 'middle', in: S.shades, out: S.promise }),
-      sans('label-men', 810, 870, w.text('label-men'), { size: 26, anchor: 'middle', in: S.shades, out: S.promise }),
-      sans('shades-what', 200, 950, w.text('shades-what'), { size: 24, tone: 'muted', in: S.shades, out: S.promise }),
-      hand('test-sets', 1180, 320, w.text('test-sets'), { size: 36, wrap: 560, in: S.shades, out: S.promise }),
-      sans('shades-credit', 1180, 450, w.text('shades-credit'), { size: 22, tone: 'muted', wrap: 560, in: S.shades, out: S.promise }),
-      hand('missing', 1180, 580, w.text('missing'), { size: 40, tone: 'accent', wrap: 560, in: S.missing, out: S.promise }),
-
-      // In this episode.
-      hand('promise-title', 120, 250, copy.inThisEpisode, { size: 72, in: S.promise, out: S.werkmora }),
-      ...promise.map((line, i) =>
-        hand(`promise-${i + 1}`, 160, 420 + i * 120, `${i + 1}  ${line}`, { size: 52, tone: i === 1 ? 'accent' : 'ink', in: S.promise, out: S.werkmora }),
-      ),
+      hand('title-shades', 120, 160, w.text('title-shades'), { size: 52, in: S.shades, out: S.werkmora }),
+      { id: 'baseline', in: S.shades, out: S.werkmora, shape: { kind: 'line', points: [[200, 820], [1100, 820]] } },
+      { id: 'bar-women', tone: 'warn', in: S.shades, out: S.werkmora, shape: { kind: 'box', x: 300, y: 300, w: 220, h: 520, fill: true } },
+      { id: 'bar-men', in: S.shades, out: S.werkmora, shape: { kind: 'box', x: 700, y: 808, w: 220, h: 12, fill: true } },
+      hand('value-women', 410, 270, w.text('value-women'), { size: 56, anchor: 'middle', tone: 'warn', in: S.shades, out: S.werkmora }),
+      hand('value-men', 810, 780, w.text('value-men'), { size: 56, anchor: 'middle', in: S.shades, out: S.werkmora }),
+      sans('label-women', 410, 870, w.text('label-women'), { size: 26, anchor: 'middle', in: S.shades, out: S.werkmora }),
+      sans('label-men', 810, 870, w.text('label-men'), { size: 26, anchor: 'middle', in: S.shades, out: S.werkmora }),
+      sans('shades-what', 200, 950, w.text('shades-what'), { size: 24, tone: 'muted', in: S.shades, out: S.werkmora }),
+      hand('test-sets', 1180, 320, w.text('test-sets'), { size: 36, wrap: 560, in: S.shades, out: S.werkmora }),
+      sans('shades-credit', 1180, 450, w.text('shades-credit'), { size: 22, tone: 'muted', wrap: 560, in: S.shades, out: S.werkmora }),
+      hand('missing', 1180, 580, w.text('missing'), { size: 40, tone: 'accent', wrap: 560, in: S.missing, out: S.werkmora }),
 
       // Werkmora and its nine sources.
       hand('title-werkmora', 120, 160, w.text('title-werkmora'), { size: 56, in: S.werkmora, out: S.content }),

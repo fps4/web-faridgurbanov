@@ -56,8 +56,8 @@ Werkmora, a fictional home, DIY and garden retailer.
    to say, the next cue, the script time and a clock, and follows the stage. The deck's words live in
    `content/decks/<locale>/<episode>.yaml`, editable without code; the layout in `lib/decks/` places
    them by id.
-4. **Every episode promises early and closes on one card.** Three short lines (*In this episode*) once
-   the opening case has been told; at the end, the episode in one card: the idea, the move and
+4. **Every episode promises first and closes on one card.** Three short lines (*In this episode*)
+   right after the title, before the opening case; at the end, the episode in one card: the idea, the move and
    Monday. Both come from `lib/episodes/module-<n>.ts`.
 5. **Gated.** WHILE `STORYLINE_PUBLISHED` is false, a production build leaves the nav item out and
    renders every storyline route as a 404; `next dev` shows everything, which is where screening and

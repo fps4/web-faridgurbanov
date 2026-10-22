@@ -10,7 +10,7 @@
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
-# The script is in the wiki: publishing/ai-product-design/episodes/data/01-data-requirements.md.
+# The script is in the wiki: publishing/ai-product-design/episodes/data/01-data-requirements.script.md.
 # Times assume about 125 words a minute; adjust them after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-1.ts as well.
@@ -20,19 +20,19 @@ title: "Data requirements"
 steps:
   title:
     at: "0:00"
-    cue: "“Do we have enough data?” I have heard this question in almost every project."
-  rows:
-    at: "0:06"
-    cue: "And the answer is almost always a row count. “We have three years of sales. Sixty million lines a year.” Everyone nods, and the project starts."
-  shades:
-    at: "0:19"
-    cue: "(The bars.) In 2018, two researchers tested three commercial products that guess gender from a face photo. The usual test sets: about 80% lighter-skinned. On a balanced set: up to about 35% error for darker-skinned women, under 1% for lighter-skinned men."
-  missing:
-    at: "0:50"
-    cue: "Plenty of data. One group missing from it. And the test data missed the same group, so nobody saw it."
+    cue: "Episode 3.1 of AI Product Design: data requirements."
   promise:
-    at: "1:02"
-    cue: "In this episode: why a row count does not answer the question; six questions for every data source; how to measure “enough”."
+    at: "0:04"
+    cue: "In this episode, three things. Why a row count does not answer “do we have enough data?”. Six questions to ask of every data source. And how to measure “enough”."
+  rows:
+    at: "0:18"
+    cue: "“Do we have enough data?” I have heard it in almost every project. The answer is almost always a row count. “Three years of sales. Sixty million lines a year.” Everyone nods, and the project starts."
+  shades:
+    at: "0:35"
+    cue: "(The bars.) Here is why that is not enough. In 2018, two researchers tested three commercial products that guess gender from a face photo. The usual test sets: about 80% lighter-skinned. On a balanced set: up to about 35% error for darker-skinned women, under 1% for lighter-skinned men."
+  missing:
+    at: "1:05"
+    cue: "Plenty of data. One group missing from it. And the test data missed the same group, so nobody saw it."
   werkmora:
     at: "1:17"
     cue: "A quick reminder: Werkmora, our home and garden retailer, about 175 stores in NL, BE and DE. Every night it forecasts how much of each garden item every store needs."
@@ -89,7 +89,7 @@ steps:
     cue: "Next episode: labels. Because sales were never the same as demand."
 
 text:
-  # The title card, and the question.
+  # The title card; the question and the usual answer.
   episode: "AI Product Design · Module 3 · Episode 3.1"
   question: "“Do we have enough data?”"
   answer: "“3 years of sales. 60 million lines a year.”"

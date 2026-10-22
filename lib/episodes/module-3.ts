@@ -3,7 +3,7 @@ import type { Episode } from '@/lib/storyline';
 
 // Module 3, Data and model requirements: its episodes (FS-0010). An episode with a deck has its
 // opening lines (`promise`) and closing card (`takeaway`) written here once; the deck and the post
-// read them. The script in the wiki (episodes/data/<nn>-*.md) copies them.
+// read them. The script in the wiki (episodes/data/<nn>-<slug>.script.md) opens with them and copies the card.
 
 const titles = [
   'Intro',
