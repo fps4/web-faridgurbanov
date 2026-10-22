@@ -24,7 +24,6 @@ const STEPS = [
   'freshness',
   'rights',
   'fine',
-  'mine',
   'magic',
   'curve',
   'flat',
@@ -156,7 +155,6 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       hand('clearview-amount', 1650, 380, w.text('clearview-amount'), { size: 64, anchor: 'middle', tone: 'warn', in: S.fine, out: S.magic }),
       sans('clearview-who', 1490, 440, w.text('clearview-who'), { size: 24, wrap: 330, in: S.fine, out: S.magic }),
       hand('clearview-line', 1490, 580, w.text('clearview-line'), { size: 34, tone: 'accent', in: S.fine, out: S.magic }),
-      { id: 'mine-tag', tone: 'muted', in: S.mine, out: S.magic, shape: { kind: 'tag', x: 1480, y: 660, text: w.text('mine-tag') } },
 
       // "Enough" is measured: a learning curve on a pilot.
       hand('title-enough', 120, 160, w.text('title-enough'), { size: 56, in: S.magic, out: S.summary }),
@@ -175,7 +173,7 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       hand('flat', 1340, 420, w.text('flat'), { size: 32, wrap: 440, in: S.flat, out: S.summary }),
       { id: 'curve-small', in: S.small, out: S.summary, shape: { kind: 'line', points: curve(SMALL) } },
       hand('label-small', 900, 560, w.text('label-small'), { size: 30, in: S.small, out: S.summary }),
-      hand('pilot', 1340, 600, w.text('pilot'), { size: 34, tone: 'accent', wrap: 440, in: S.small, out: S.summary }),
+      hand('groups', 1340, 600, w.text('groups'), { size: 34, tone: 'accent', wrap: 440, in: S.small, out: S.summary }),
 
       // The close: one sheet per source, and the law that asks the same.
       hand('title-close', 120, 160, w.text('title-close'), { size: 56, in: S.summary, out: S.takeaway }),
@@ -184,7 +182,6 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       hand('sheet-head', 150, 460, w.text('sheet-head'), { size: 36, in: S.summary, out: S.takeaway }),
       sans('sheet-rows', 150, 530, w.text('sheet-rows'), { size: 28, wrap: 640, in: S.summary, out: S.takeaway }),
       hand('law', 900, 470, w.text('law'), { size: 34, wrap: 520, in: S.law, out: S.takeaway }),
-      sans('law-scope', 900, 590, w.text('law-scope'), { size: 24, tone: 'muted', wrap: 520, in: S.law, out: S.takeaway }),
 
       // The episode in one card, and what comes next.
       { id: 'card-takeaway', in: S.takeaway, shape: { kind: 'card', card: 'takeaway', x: 100, y: 120, w: 1240, h: 800 } },

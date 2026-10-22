@@ -22,71 +22,68 @@ steps:
     at: "0:00"
     cue: "Episode 3.1 of AI Product Design: data requirements."
   promise:
-    at: "0:04"
-    cue: "In this episode, three things. Why a row count does not answer “do we have enough data?”. Six questions to ask of every data source. And how to measure “enough”."
+    at: "0:05"
+    cue: "In this episode we are looking into quality and quantity aspects of data requirements. Why a row count does not answer “do we have enough data?”. You’ll learn which questions to ask and how to approach “data sufficiency”."
   rows:
-    at: "0:18"
-    cue: "“Do we have enough data?” I have heard it in almost every project. The answer is almost always a row count. “Three years of sales. Sixty million lines a year.” Everyone nods, and the project starts."
+    at: "0:25"
+    cue: "“Do we have enough data?” Every use-case or idea starts with that. And the answer is almost always a row count. “We have three years of sales. Sixty million lines a year.”"
   shades:
-    at: "0:35"
-    cue: "(The bars.) Here is why that is not enough. In 2018, two researchers tested three commercial products that guess gender from a face photo. The usual test sets: about 80% lighter-skinned. On a balanced set: up to about 35% error for darker-skinned women, under 1% for lighter-skinned men."
+    at: "0:41"
+    cue: "Let’s look at real life example. In 2018, two researchers tested three commercial products that guess gender from a face photo. The initial test datasets had about 80 percent lighter-skinned people. Test results looked good. However, researchers built a balanced test set. The error for darker-skinned women went up to about 35 percent. While for lighter-skinned men it stayed under 1 percent."
   missing:
-    at: "1:05"
-    cue: "Plenty of data. One group missing from it. And the test data missed the same group, so nobody saw it."
+    at: "1:13"
+    cue: "There was plenty of data. But one group was missing from it. And because the test data was missing the same group, nobody saw the problem."
   werkmora:
-    at: "1:17"
-    cue: "A quick reminder: Werkmora, our home and garden retailer, about 175 stores in NL, BE and DE. Every night it forecasts how much of each garden item every store needs."
+    at: "1:27"
+    cue: "A quick reminder. Werkmora is a fictional company - a garden retailer with a number of stores. Every night it wants to forecast how much of each product every store needs. A very typical use-case and very complex at the same time."
   sources:
-    at: "1:33"
-    cue: "(The nine boxes.) Not “the data”: nine sources. Nine owners. So we ask six questions, of each source."
+    at: "1:48"
+    cue: "That forecast uses nine sources: sales, online orders, stock, prices and promotions, store attributes, the calendar, weather, supply and returns. Nine sources, nine owners. So we ask six questions, and we ask them of each source."
   content:
-    at: "1:53"
-    cue: "One: content. Is the signal in the data, does each field mean what its name says? Stock says the plant is on the shelf. Often it is not: about 2 in 3 records wrong at one retailer."
+    at: "2:07"
+    cue: "Content: Is there a signal in the data, does the data represent the reality? The stock system says the plant is on the shelf. Data quality issues but also legacy fields often kept for compatibility."
   labels:
-    at: "2:15"
-    cue: "Two: labels. Recorded, and how late? Sales are not demand: empty shelf, zero sales, people still wanted to buy. Next episode."
+    at: "2:25"
+    cue: "Labels: Is the outcome recorded, and how late? At Werkmora, sales is not the same as customer demand. On a day the shelf was empty, you sold nothing, but people still wanted to buy. We’ll talk more about Labels in the next episode."
   volume:
-    at: "2:32"
-    cue: "Three: volume. Count events, not rows. 285,000 transactions, 492 frauds: a dataset of about five hundred. The test set needs enough of them too."
+    at: "2:48"
+    cue: "Volume: Count events that either have positive or negative signals, not just rows. A well-known fraud dataset with nearly 300k transactions, had only 492 frauds. To learn what fraud looks like you only need those cases."
   coverage:
-    at: "2:53"
-    cue: "Four: coverage. Every group the product serves. Big stores and small stores. School holidays per German state. Missing in the data or the test set: you don’t know how the model does there."
+    at: "3:06"
+    cue: "Coverage: Ensure data covers every group the product will serve. Werkmora has big stores and small stores. There are different school holidays in every region. If a group is missing from the data, or from the test set, you do not know how the model behaves there."
   freshness:
-    at: "3:15"
-    cue: "Five: freshness. In time for the nightly run? Does the past still look like today? Train on the old weather forecasts: what you knew at that moment."
+    at: "3:30"
+    cue: "Freshness: Does the data arrive in time for the nightly run? And does the past still look like today? Weather is a good example. To train fairly you need the old weather forecasts: what you knew at that moment not the actuals."
   rights:
-    at: "3:37"
-    cue: "Six: rights. Are we allowed to use this data for this purpose?"
+    at: "3:52"
+    cue: "Rights: Are we allowed to use this data for this purpose?"
   fine:
-    at: "3:43"
-    cue: "(The box.) 2024: the Dutch data protection authority fined Clearview AI €30.5 million. Billions of face photos from the internet. “Public” did not mean “we may use it”. For Werkmora: does the weather contract allow storing and training? Ask the provider, before the build."
-  mine:
-    at: "4:14"
-    cue: "(Your own example: a source that changed meaning upstream, or a licence nobody checked. Two or three sentences.)"
+    at: "3:59"
+    cue: "In 2024 the Dutch government fined Clearview AI for 30.5 million euros. Clearview had collected billions of face photos from the internet. “It is public” did not mean “we may use it”. Make sure to ask the provider."
   magic:
-    at: "4:34"
-    cue: "Now, “enough”. No magic number. You will hear “ten per variable” or “a few hundred per class”. One study: one model needed about 5 events per input, another 23. Their advice: no rules of thumb."
+    at: "4:19"
+    cue: "Now, “enough”. There is no magic number or rule of thumb. One model might need only 5 events per input, another needs 23."
   curve:
-    at: "4:54"
-    cue: "(Draw the axes and the curve.) So measure it. A pilot: train on 6 months, then 12, 24, 36. Plot the error each time. That is a learning curve."
+    at: "4:31"
+    cue: "So measure it. Train on 6 months of history, then 12, 24 and 36. Plot the error each time. That is a learning curve."
   flat:
-    at: "5:07"
-    cue: "(Circle the knee.) While it goes down, more data helps. When it flattens, more data buys very little."
+    at: "4:44"
+    cue: "You’ll see the point when it flattens, when more data buys you very little. You can make a decision based on a measurement."
   small:
-    at: "5:15"
-    cue: "(The second curve.) Big stores: flat after about two years. Small stores: still going down. So the pilot started with big stores. A decision made on a measurement."
+    at: "4:57"
+    cue: "This situation could be different for different coverage groups. At our fictional company for small stores it was still going down."
   summary:
-    at: "5:35"
-    cue: "So: six questions, for each source, with an owner for each answer. Write them down where the team keeps them up to date: a datasheet in the repo, or a data contract."
+    at: "5:08"
+    cue: "So: six questions, for each source, with an owner for each answer. Write the answers down where your team will keep them up to date: a datasheet in the repo, or a data contract."
   law:
-    at: "5:51"
-    cue: "High-risk system under the EU AI Act? Article 10 asks almost the same questions, as law. Werkmora’s forecast is not high-risk. The list is the same."
+    at: "5:26"
+    cue: "And if you build a high-risk system under the EU AI Act: Article 10 asks almost the same questions, as law."
   takeaway:
-    at: "6:06"
-    cue: "(The card.) In one card: the idea, the move, and what to do on Monday."
+    at: "5:38"
+    cue: "In one card: the idea, the move, and what to do on Monday."
   next:
-    at: "6:12"
-    cue: "Next episode: labels. Because sales were never the same as demand."
+    at: "5:45"
+    cue: "In the next episode we’ll dive deeper into Labels."
 
 text:
   # The title card; the question and the usual answer.
@@ -107,8 +104,8 @@ text:
   missing: "Plenty of data. One group missing, in the test data too."
 
   # Werkmora and its nine sources.
-  title-werkmora: "Werkmora: a garden forecast, every night"
-  werkmora: "A home and garden retailer, about 175 stores in the Netherlands, Belgium and Germany. Every night it forecasts how much of each garden item every store needs."
+  title-werkmora: "Werkmora: a forecast for every store, every night"
+  werkmora: "A garden retailer with a number of stores. Every night it forecasts how much of each product every store needs."
   werkmora-tag: "fictional company"
   source-sales: "point-of-sale sales"
   source-orders: "online orders"
@@ -124,21 +121,20 @@ text:
   # The six questions.
   title-six: "Six questions, for each source"
   q-content: "Content"
-  q-content-werkmora: "Stock says the plant is on the shelf. Often it is not: about 2 in 3 records wrong at one retailer."
+  q-content-werkmora: "Does the data represent reality? Stock says the plant is on the shelf. Legacy fields kept for compatibility."
   q-labels: "Labels"
-  q-labels-werkmora: "Sales are not demand. On a day the shelf was empty, sales were zero. Next episode."
+  q-labels-werkmora: "Sales are not customer demand. On a day the shelf was empty, sales were zero. Next episode."
   q-volume: "Volume"
-  q-volume-werkmora: "Count events, not rows: 492 frauds in 284,807 transactions is a dataset of about 500."
+  q-volume-werkmora: "Count events, not just rows: 284,807 transactions, only 492 frauds."
   q-coverage: "Coverage"
-  q-coverage-werkmora: "Big stores and small stores. School holidays differ per German state. In the data, and in the test set."
+  q-coverage-werkmora: "Every group the product serves: big and small stores, school holidays per region. In the data, and in the test set."
   q-freshness: "Freshness"
-  q-freshness-werkmora: "In time for the nightly run? Train on old weather forecasts: what was known at the time."
+  q-freshness-werkmora: "In time for the nightly run? Train on old weather forecasts, what was known then, not the actuals."
   q-rights: "Rights"
-  q-rights-werkmora: "Allowed for this purpose? Does the weather contract let us store forecasts and train on them?"
+  q-rights-werkmora: "Allowed for this purpose? Ask the provider."
   clearview-amount: "€30.5M"
   clearview-who: "Clearview AI, fined by the Dutch data protection authority, 2024"
   clearview-line: "public ≠ permission"
-  mine-tag: "from my projects"
 
   # "Enough" is measured.
   title-enough: "“Enough” is measured"
@@ -151,9 +147,9 @@ text:
   tick-36: "36"
   curve-tag: "fictional"
   label-big: "big stores"
-  flat: "Flat after about 2 years: more data buys little."
+  flat: "Where it flattens, more data buys very little."
   label-small: "small stores: still going down"
-  pilot: "Pilot: big stores first, small stores later."
+  groups: "Each group has its own curve: measure them apart."
 
   # The close.
   title-close: "Six questions. Each source. One owner per answer."
@@ -161,6 +157,5 @@ text:
   sheet-head: "weather feed · owner: Data & Analytics"
   sheet-rows: "content ✓ · volume ✓ · coverage ✓ · freshness: forecast history? · rights: ask the provider"
   law: "EU AI Act, Art. 10: almost the same list, as law, for high-risk systems."
-  law-scope: "Werkmora’s forecast is not high-risk. The list is the same."
   takeaway-subtitle: "Episode 3.1 in one card"
-  next: "Next: labels. Sales were never the same as demand."
+  next: "Next episode: labels."
