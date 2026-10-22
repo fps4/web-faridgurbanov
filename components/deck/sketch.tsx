@@ -74,8 +74,15 @@ function paths(shape: Shape, opts: Options): { d: string; stroke: string; stroke
   }
 }
 
+/** Drawing speed: every stroke, word and card takes this share of its base time (0.8 = 20% faster). */
+const DRAW_PACE = 0.8;
+
 /** How long an element takes to appear, in seconds. Fast: a whole step lands in one or two seconds. */
 export function durationOf(shape: Shape): number {
+  return baseDuration(shape) * DRAW_PACE;
+}
+
+function baseDuration(shape: Shape): number {
   switch (shape.kind) {
     case 'text':
       return Math.min(1.2, 0.25 + shape.text.length * 0.02);

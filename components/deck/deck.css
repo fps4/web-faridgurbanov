@@ -147,7 +147,7 @@
 }
 .deck-card-row.is-marking::before {
   transform: scaleX(0);
-  animation: deck-mark 0.45s ease-out forwards;
+  animation: deck-mark 0.36s ease-out forwards;
 }
 @keyframes deck-mark {
   to {
