@@ -1,0 +1,225 @@
+/* Episode decks and the storyline diagrams (FS-0010). Plain CSS, scoped by class: the sketch
+   animations, the artifact card, and the recording stage. The handwriting face is Caveat (SIL Open
+   Font License), self-hosted from @fontsource so the static build needs no font CDN. */
+@import '@fontsource/caveat/500.css';
+@import '@fontsource/caveat/700.css';
+
+/* Strokes trace in. Every path carries pathLength="1", so one dash covers the whole stroke. */
+.deck-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: deck-trace var(--dur, 0.5s) ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes deck-trace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Text writes on, left to right. */
+.deck-write {
+  clip-path: inset(0 100% 0 0);
+  animation: deck-write var(--dur, 0.6s) linear forwards;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes deck-write {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Cards rise in; leavers fade out. */
+.deck-rise {
+  opacity: 0;
+  animation: deck-rise var(--dur, 0.5s) ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes deck-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.deck-leave {
+  animation: deck-leave 0.3s ease-in forwards;
+}
+@keyframes deck-leave {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-draw path,
+  .deck-write,
+  .deck-rise,
+  .deck-leave,
+  .deck-card-row.is-marking::before {
+    animation-duration: 0.01s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* The card: one look on every deck. */
+.deck-card {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 40px 28px;
+  background: #ffffff;
+  border: 2px solid #1f2328;
+  border-radius: 14px;
+  box-shadow: 8px 8px 0 #1f232814;
+  color: #1f2328;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+.deck-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #1f2328;
+}
+.deck-card-title {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+}
+.deck-card-subtitle {
+  margin-top: 8px;
+  font-size: 20px;
+  color: #5b6068;
+}
+.deck-card-tag {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 24px;
+  color: #8b8f97;
+  border: 2px solid #8b8f97;
+  border-radius: 999px;
+  padding: 0 14px;
+  white-space: nowrap;
+}
+.deck-card-rows {
+  flex: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.deck-card-row {
+  position: relative;
+  padding: 16px 0;
+  border-bottom: 1px dashed #c9ccd1;
+}
+.deck-card-row:last-child {
+  border-bottom: 0;
+}
+.deck-card-row dt {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #5b6068;
+}
+.deck-card-row dd {
+  position: relative;
+  margin: 6px 0 0;
+  font-size: 22px;
+  line-height: 1.35;
+}
+/* The marker: a highlighter stroke behind a row, swept in from the left. */
+.deck-card-row.is-marked::before {
+  content: '';
+  position: absolute;
+  inset: 8px -14px;
+  background: #fde68a;
+  border-radius: 6px;
+  transform-origin: left center;
+}
+.deck-card-row.is-marking::before {
+  transform: scaleX(0);
+  animation: deck-mark 0.45s ease-out forwards;
+}
+@keyframes deck-mark {
+  to {
+    transform: scaleX(1);
+  }
+}
+.deck-card-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 2px solid #1f2328;
+  font-size: 15px;
+  color: #8b8f97;
+}
+
+/* The recording stage: 1920×1080, scaled to the window, letterboxed on black. */
+.deck-stage-wrap {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.deck-stage {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  flex: none;
+  transform-origin: center;
+}
+.deck-stage svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.deck-camera-guide {
+  position: absolute;
+  border: 3px dashed #c2410c;
+  border-radius: 12px;
+  pointer-events: none;
+}
+.deck-hud {
+  position: fixed;
+  left: 12px;
+  bottom: 10px;
+  font: 13px ui-sans-serif, system-ui, sans-serif;
+  color: #9ca3af;
+}
+
+/* An episode's closing card: the same card, set to be read across the room. */
+.deck-card--summary {
+  padding: 48px 56px 32px;
+}
+.deck-card--summary .deck-card-title {
+  font-size: 64px;
+}
+.deck-card--summary .deck-card-subtitle {
+  font-size: 26px;
+}
+.deck-card--summary .deck-card-rows {
+  justify-content: space-around;
+}
+.deck-card--summary .deck-card-row dt {
+  font-size: 22px;
+}
+.deck-card--summary .deck-card-row dd {
+  font-size: 32px;
+  line-height: 1.25;
+}
+.deck-card--summary .deck-card-foot {
+  font-size: 18px;
+}

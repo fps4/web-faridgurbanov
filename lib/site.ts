@@ -95,6 +95,20 @@ export const HOME_VARIANT: 'credibility' | 'training' = 'credibility';
  */
 export const TRAINING_PUBLISHED = false;
 
+/**
+ * Whether the AI Product Design storyline (FS-0010) is published. WHILE this is `false`, a
+ * production build hides the storyline nav item and its pages (`/ai-product-design` and the
+ * episode decks under `/deck`) render as a 404, so the first episodes can be screened privately
+ * before they go out (ADR-0010). `next dev` always shows it, which is how the decks are recorded.
+ * Flip to `true` when the first module is published.
+ */
+export const STORYLINE_PUBLISHED = false;
+
+/** True when the storyline renders: published, or running under `next dev`. */
+export function storylineVisible(env: string | undefined = process.env.NODE_ENV): boolean {
+  return STORYLINE_PUBLISHED || env === 'development';
+}
+
 export type Maturity = 'working' | 'reference';
 
 /** The areas the build-proof groups under (FS-0005). */

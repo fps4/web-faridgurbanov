@@ -1,0 +1,161 @@
+# Episode 3.1 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-1.ts. Under `npm run dev`
+# a refresh of /en/deck/3-1 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The script is in the wiki: publishing/ai-product-design/episodes/data/01-data-requirements.script.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-1.ts as well.
+
+title: "Data requirements"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.1 of AI Product Design: data requirements."
+  promise:
+    at: "0:05"
+    cue: "In this episode we are looking into quality and quantity aspects of data requirements. Why a row count does not answer “do we have enough data?”. You’ll learn which questions to ask and how to approach “data sufficiency”."
+  rows:
+    at: "0:25"
+    cue: "“Do we have enough data?” Every use-case or idea starts with that. And the answer is almost always a row count. “We have three years of sales. Sixty million lines a year.”"
+  shades:
+    at: "0:41"
+    cue: "Let’s look at real life example. In 2018, two researchers tested three commercial products that guess gender from a face photo. The initial test datasets had about 80 percent lighter-skinned people. Test results looked good. However, researchers built a balanced test set. The error for darker-skinned women went up to about 35 percent. While for lighter-skinned men it stayed under 1 percent."
+  missing:
+    at: "1:13"
+    cue: "There was plenty of data. But one group was missing from it. And because the test data was missing the same group, nobody saw the problem."
+  werkmora:
+    at: "1:27"
+    cue: "A quick reminder. Werkmora is a fictional company - a garden retailer with a number of stores. Every night it wants to forecast how much of each product every store needs. A very typical use-case and very complex at the same time."
+  sources:
+    at: "1:48"
+    cue: "That forecast uses nine sources: sales, online orders, stock, prices and promotions, store attributes, the calendar, weather, supply and returns. Nine sources, nine owners. So we ask six questions, and we ask them of each source."
+  content:
+    at: "2:07"
+    cue: "Content: Is there a signal in the data, does the data represent the reality? The stock system says the plant is on the shelf. Data quality issues but also legacy fields often kept for compatibility."
+  labels:
+    at: "2:25"
+    cue: "Labels: Is the outcome recorded, and how late? At Werkmora, sales is not the same as customer demand. On a day the shelf was empty, you sold nothing, but people still wanted to buy. We’ll talk more about Labels in the next episode."
+  volume:
+    at: "2:48"
+    cue: "Volume: Count events that either have positive or negative signals, not just rows. A well-known fraud dataset with nearly 300k transactions, had only 492 frauds. To learn what fraud looks like you only need those cases."
+  coverage:
+    at: "3:06"
+    cue: "Coverage: Ensure data covers every group the product will serve. Werkmora has big stores and small stores. There are different school holidays in every region. If a group is missing from the data, or from the test set, you do not know how the model behaves there."
+  freshness:
+    at: "3:30"
+    cue: "Freshness: Does the data arrive in time for the nightly run? And does the past still look like today? Weather is a good example. To train fairly you need the old weather forecasts: what you knew at that moment not the actuals."
+  rights:
+    at: "3:52"
+    cue: "Rights: Are we allowed to use this data for this purpose?"
+  fine:
+    at: "3:59"
+    cue: "In 2024 the Dutch government fined Clearview AI for 30.5 million euros. Clearview had collected billions of face photos from the internet. “It is public” did not mean “we may use it”. Make sure to ask the provider."
+  magic:
+    at: "4:19"
+    cue: "Now, “enough”. There is no magic number or rule of thumb. One model might need only 5 events per input, another needs 23."
+  curve:
+    at: "4:31"
+    cue: "So measure it. Train on 6 months of history, then 12, 24 and 36. Plot the error each time. That is a learning curve."
+  flat:
+    at: "4:44"
+    cue: "You’ll see the point when it flattens, when more data buys you very little. You can make a decision based on a measurement."
+  small:
+    at: "4:57"
+    cue: "This situation could be different for different coverage groups. At our fictional company for small stores it was still going down."
+  summary:
+    at: "5:08"
+    cue: "So: six questions, for each source, with an owner for each answer. Write the answers down where your team will keep them up to date: a datasheet in the repo, or a data contract."
+  law:
+    at: "5:26"
+    cue: "And if you build a high-risk system under the EU AI Act: Article 10 asks almost the same questions, as law."
+  takeaway:
+    at: "5:38"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "5:45"
+    cue: "In the next episode we’ll dive deeper into Labels."
+
+text:
+  # The title card; the question and the usual answer.
+  episode: "AI Product Design · Module 3 · Episode 3.1"
+  question: "“Do we have enough data?”"
+  answer: "“3 years of sales. 60 million lines a year.”"
+  answer-tag: "a row count"
+
+  # Gender Shades.
+  title-shades: "Same products, a balanced test set"
+  value-women: "34.7%"
+  value-men: "0.8%"
+  label-women: "darker-skinned women"
+  label-men: "lighter-skinned men"
+  shades-what: "highest error of three commercial gender classifiers, 2018"
+  test-sets: "The usual test sets: 80% and 86% lighter-skinned"
+  shades-credit: "Buolamwini & Gebru (2018), Gender Shades. Gender classification, not face recognition."
+  missing: "Plenty of data. One group missing, in the test data too."
+
+  # Werkmora and its nine sources.
+  title-werkmora: "Werkmora: a forecast for every store, every night"
+  werkmora: "A garden retailer with a number of stores. Every night it forecasts how much of each product every store needs."
+  werkmora-tag: "fictional company"
+  source-sales: "point-of-sale sales"
+  source-orders: "online orders"
+  source-stock: "store stock"
+  source-prices: "prices, promotions"
+  source-stores: "store attributes"
+  source-calendar: "calendar"
+  source-weather: "weather"
+  source-supply: "supply"
+  source-returns: "returns"
+  nine-owners: "9 sources · 9 owners · 6 questions each"
+
+  # The six questions.
+  title-six: "Six questions, for each source"
+  q-content: "Content"
+  q-content-werkmora: "Does the data represent reality? Stock says the plant is on the shelf. Legacy fields kept for compatibility."
+  q-labels: "Labels"
+  q-labels-werkmora: "Sales are not customer demand. On a day the shelf was empty, sales were zero. Next episode."
+  q-volume: "Volume"
+  q-volume-werkmora: "Count events, not just rows: 284,807 transactions, only 492 frauds."
+  q-coverage: "Coverage"
+  q-coverage-werkmora: "Every group the product serves: big and small stores, school holidays per region. In the data, and in the test set."
+  q-freshness: "Freshness"
+  q-freshness-werkmora: "In time for the nightly run? Train on old weather forecasts, what was known then, not the actuals."
+  q-rights: "Rights"
+  q-rights-werkmora: "Allowed for this purpose? Ask the provider."
+  clearview-amount: "€30.5M"
+  clearview-who: "Clearview AI, fined by the Dutch data protection authority, 2024"
+  clearview-line: "public ≠ permission"
+
+  # "Enough" is measured.
+  title-enough: "“Enough” is measured"
+  no-magic: "No magic number: one model needed about 5 events per input, another 23 (Riley et al., 2019)."
+  axis-y-label: "forecast error"
+  axis-x-label: "months of history in training"
+  tick-6: "6"
+  tick-12: "12"
+  tick-24: "24"
+  tick-36: "36"
+  curve-tag: "fictional"
+  label-big: "big stores"
+  flat: "Where it flattens, more data buys very little."
+  label-small: "small stores: still going down"
+  groups: "Each group has its own curve: measure them apart."
+
+  # The close.
+  title-close: "Six questions. Each source. One owner per answer."
+  write-down: "Write the answers where the team keeps them up to date: a datasheet in the repo, or a data contract."
+  sheet-head: "weather feed · owner: Data & Analytics"
+  sheet-rows: "content ✓ · volume ✓ · coverage ✓ · freshness: forecast history? · rights: ask the provider"
+  law: "EU AI Act, Art. 10: almost the same list, as law, for high-risk systems."
+  takeaway-subtitle: "Episode 3.1 in one card"
+  next: "Next episode: labels."

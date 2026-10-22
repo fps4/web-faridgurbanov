@@ -42,7 +42,7 @@ function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) walk(p, out);
-    else if (p.endsWith('.md')) out.push(p);
+    else if (p.endsWith('.md') || p.endsWith('.yaml')) out.push(p);
   }
   return out;
 }
@@ -54,6 +54,14 @@ function bodyOf(path, text) {
       .split('\n')
       .filter((l) => !/^\s*(\/\/|\*|\/\*)/.test(l))
       .map((l) => l.replace(/^\s*[\w$]+:\s*/, ''))
+      .join('\n');
+  }
+  if (path.endsWith('.yaml')) {
+    // The deck words (content/decks/): values only; drop comments and keys.
+    return text
+      .split('\n')
+      .filter((l) => !/^\s*#/.test(l))
+      .map((l) => l.replace(/^\s*[\w$-]+:\s*/, ''))
       .join('\n');
   }
   return text
@@ -97,7 +105,7 @@ const strict = args.includes('--strict');
 const explicit = args.filter((a) => !a.startsWith('--'));
 const files = explicit.length
   ? explicit
-  : [...walk('content'), 'lib/dictionaries.ts', 'lib/site.ts'].filter(
+  : [...walk('content'), 'lib/dictionaries.ts', 'lib/site.ts', 'lib/storyline.ts'].filter(
       // content/references/ holds other people's words, quoted verbatim (FS-0009); the voice
       // rules are for the owner's prose, so those files are not measured.
       (f) => !f.includes('/mcp-enterprise-architecture') && !f.includes('content/references/'),
