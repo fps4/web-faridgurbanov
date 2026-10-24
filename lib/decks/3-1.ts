@@ -4,7 +4,7 @@ import { episodeByNumber, storylineCopy } from '@/lib/storyline';
 
 // Episode 3.1, "Data requirements" (FS-0010): the layout. The words are in
 // content/decks/<locale>/3-1.yaml; this file places them on the stage by id. The episode follows the
-// wiki script (publishing/ai-product-design/episodes/data/01-data-requirements.script.md): what the
+// wiki script (publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md): what the
 // episode promises, a row count as the answer to "enough data?", Gender Shades as the case, Werkmora's nine sources, the six
 // questions asked of each one, a learning curve for "enough", and the close. The Gender Shades
 // numbers are the paper's (Table 4); the learning curves are Werkmora's and fictional.

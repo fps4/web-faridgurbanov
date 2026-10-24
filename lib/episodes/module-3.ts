@@ -3,7 +3,7 @@ import type { Episode } from '@/lib/storyline';
 
 // Module 3, Data and model requirements: its episodes (FS-0010). An episode with a deck has its
 // opening lines (`promise`) and closing card (`takeaway`) written here once; the deck and the post
-// read them. The script in the wiki (episodes/data/<nn>-<slug>.script.md) opens with them and copies the card.
+// read them. The script in the wiki (episodes/03-data/<nn>-<slug>.slides.md) opens with them and copies the card.
 
 const titles = [
   'Intro',
@@ -22,6 +22,19 @@ const titles = [
 ];
 
 const written: Record<string, Partial<Episode>> = {
+  '3.0': {
+    promise: [
+      'why the model is the small part of an AI product',
+      'the three mental models this module is built on',
+      'Werkmora and the forecast we follow through the module',
+    ],
+    takeaway: {
+      idea: 'The model is a small box in a large diagram. Most requirements for an AI product are requirements for the system around it.',
+      move: 'Treat the data as the specification, give the decision to a business owner, and write monitoring and retraining down before launch.',
+      monday: 'Draw the boxes around the model you work on, and write an owner next to each one.',
+    },
+    deck: '3-0',
+  },
   '3.1': {
     promise: [
       'why a row count does not answer “enough data?”',

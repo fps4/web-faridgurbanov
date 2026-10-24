@@ -10,7 +10,7 @@
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
-# The script is in the wiki: publishing/ai-product-design/episodes/data/01-data-requirements.script.md.
+# The script is in the wiki: publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md.
 # Times assume about 125 words a minute; adjust them after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-1.ts as well.

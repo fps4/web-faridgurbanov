@@ -1,6 +1,7 @@
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
 import type { Deck } from '@/lib/deck';
+import { layout30 } from '@/lib/decks/3-0';
 import { layout31 } from '@/lib/decks/3-1';
 import { composeDeck, type DeckLayout } from '@/lib/decks/compose';
 import { DECK_TEXT_ROOT, deckTextFile, readDeckText } from '@/lib/decks/text';
@@ -11,7 +12,7 @@ import { locales, type Locale } from '@/lib/i18n';
 // and lib/decks.test.ts checks the lists agree. Server-only: the words are read from disk on every
 // call, so under `next dev` an edit to the YAML shows on the next refresh.
 
-export const layouts: DeckLayout[] = [layout31];
+export const layouts: DeckLayout[] = [layout30, layout31];
 
 function layoutById(id: string): DeckLayout | undefined {
   return layouts.find((l) => l.id === id);
