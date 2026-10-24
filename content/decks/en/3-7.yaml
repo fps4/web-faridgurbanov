@@ -1,0 +1,166 @@
+# Episode 3.7 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-7.ts. Under `npm run dev`
+# a refresh of /en/deck/3-7 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/07-baselines.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-7.ts as well.
+
+title: "Baselines"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.7 of AI Product Design: baselines."
+  promise:
+    at: "0:03"
+    cue: "In this episode: why a model score on its own tells you nothing. The three baselines every model should stand next to. And when you should ship the simple rule."
+  claim:
+    at: "0:18"
+    cue: "A forecasting vendor comes to a meeting and says: our tool is forty percent more accurate. The data team has a pilot model with a nice score too."
+  than-what:
+    at: "0:31"
+    cue: "But forty percent more accurate than what? A forecast error of thirty percent: is that good or bad? A score alone has no meaning. It needs something to compare with, on the same data."
+  compas:
+    at: "0:48"
+    cue: "A real example. COMPAS is a commercial risk tool. It predicts if a defendant will commit another crime, from 137 features. In 2018 two researchers put it next to simple baselines. COMPAS was 65.4 percent accurate, on 7,214 defendants."
+  crowd:
+    at: "1:06"
+    cue: "Then they asked people with no criminal justice expertise to predict the same thing, for a thousand of the same defendants. One person alone was worse: 62.1 percent. But as a crowd they reached 67.0 percent."
+  two-features:
+    at: "1:24"
+    cue: "And then a logistic regression with only two features: age and the number of prior convictions. 66.8 percent. A model you can build in an afternoon matched a product with 137 features."
+  werkmora:
+    at: "1:39"
+    cue: "Back to our fictional company, Werkmora: a garden retailer with about 175 stores in the Netherlands, Belgium and Germany. Every night it forecasts how much of each garden product each store needs. The pilot model has a forecast error of 30 percent. Compared with what?"
+  trivial:
+    at: "2:00"
+    cue: "First, a trivial baseline, one that needs no thinking. In classification that is: always predict the most common class. For a forecast it is the seasonal naive: same week last year, adjusted for the calendar. It tells you if the model finds any signal at all."
+  heuristic:
+    at: "2:23"
+    cue: "Second, a heuristic: the rule an expert writes in an afternoon. At Werkmora that is a moving average plus “sunny weekend, add x percent”. The replenishment team sets the x. It tells you if you need machine learning at all."
+  today:
+    at: "2:42"
+    cue: "Third, today’s process, as it really runs. At Werkmora that is the ERP forecast plus the manual changes the replenishment team makes. The raw ERP number is not today: people fix it. This baseline is the real business case."
+  same-data:
+    at: "3:00"
+    cue: "All three run on the same test as the model: last spring, the same stores and items, the same way to handle days with an empty shelf, the same metric. A baseline on other data proves nothing."
+  m4:
+    at: "3:18"
+    cue: "Are simple baselines easy to beat? In forecasting, often not. In the M4 competition in 2018, the six pure machine learning methods performed poorly. None of them beat a simple combination of statistical methods. M4 was not retail data."
+  table:
+    at: "3:37"
+    cue: "Here is Werkmora’s pilot, with made-up numbers. Forecast error on last spring: same week last year, 45 percent. Today’s process, 38. The weather rule, 35. The model, 30."
+  claims:
+    at: "3:50"
+    cue: "So the same model is 33 percent better, or 21, or 14. It depends on the baseline. A vendor picks the first. The board needs the second. And whether you need machine learning at all depends on the third."
+  ship:
+    at: "4:09"
+    cue: "This brings us to the rule. If the model does not clearly beat a simple heuristic on the same data, counting the cost to run and maintain it, ship the heuristic. And collect data for later. Google’s rules of machine learning say the same: don’t be afraid to launch without machine learning."
+  qualifiers:
+    at: "4:34"
+    cue: "Three words in that rule matter. Simple: a weather rule is fine. Four hundred nested rules nobody can maintain, and there Google says: choose machine learning. Clearly: a fair test. In clinical studies with a fair comparison, machine learning and logistic regression showed no difference. And the cost: pipelines, retraining, on-call."
+  keep:
+    at: "4:59"
+    cue: "After launch, keep the baseline running. At Werkmora the ERP baseline runs every night. It is the fallback when the batch is late. And it is the yardstick: retrain when the model is worse than the ERP baseline on the top garden items, two weeks in a row. As engineers we know this from migrations: a parallel run, the new system next to the old one."
+  owners:
+    at: "5:30"
+    cue: "So write it down: three baselines, one test, and one table per slice that the COO can read without a data scientist. The data team builds it with the replenishment team. Supply Chain decides per item group. Where the model does not clearly win, that group keeps the rule."
+  takeaway:
+    at: "5:54"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:00"
+    cue: "In the next episode: non-functional requirements."
+
+text:
+  # The title card; the claim with nothing next to it.
+  episode: "AI Product Design · Module 3 · Episode 3.7"
+  claim: "“Our forecast is 40% more accurate.”"
+  claim-tag: "a vendor, based on a reported case"
+  than-what: "More accurate than what?"
+  score-alone: "WAPE 30%: good or bad? A score alone has no meaning."
+
+  # COMPAS against simple baselines.
+  title-compas: "COMPAS, 137 features, next to simple baselines"
+  value-compas: "65.4%"
+  value-person: "62.1%"
+  value-crowd: "67.0%"
+  value-two: "66.8%"
+  label-compas: "COMPAS"
+  label-person: "one person"
+  label-crowd: "a crowd"
+  label-two: "two features"
+  compas-what: "A commercial risk tool: will a defendant commit another crime? Accuracy on 7,214 defendants."
+  crowd-note: "People with no expertise: one alone is worse, a crowd is better."
+  two-note: "Age + prior convictions matched 137 features."
+  compas-credit: "Dressel & Farid (2018), Science Advances. People and COMPAS compared on the same 1,000 defendants (COMPAS 65.2% there)."
+
+  # Werkmora and its pilot.
+  title-werkmora: "Werkmora: the nightly garden forecast"
+  werkmora-tag: "fictional company"
+  werkmora: "A garden retailer, about 175 stores in NL, BE and DE. Every night it forecasts how much of each garden product each store needs."
+  pilot: "Pilot model: 30% WAPE. Compared with what?"
+
+  # Three baselines, one test.
+  title-three: "Three baselines, one test"
+  b-trivial: "Trivial"
+  b-trivial-asks: "any signal at all?"
+  b-trivial-werkmora: "Same week last year, calendar-adjusted (seasonal naive). In classification: always the most common class."
+  b-heuristic: "Heuristic"
+  b-heuristic-asks: "is ML needed?"
+  b-heuristic-werkmora: "Moving average plus “sunny weekend: +x%”. The replenishment team sets x."
+  b-today: "Today"
+  b-today-werkmora: "The ERP forecast plus the manual changes the replenishment team makes. The raw ERP number is not today."
+  b-today-asks: "better than now?"
+  same-data: "Same test for all: last spring, same stores and items, same stock-out flag, same WAPE."
+  m4: "M4 competition: the six pure ML methods performed poorly. None beat a combination of simple statistical methods."
+  m4-credit: "Makridakis, Spiliotis & Assimakopoulos (2018), International Journal of Forecasting. Not retail data."
+
+  # One model, three claims.
+  title-claims: "One model, three claims"
+  table-tag: "fictional"
+  table-axis: "WAPE on last spring, same stores and items · lower is better"
+  row-naive: "same week last year"
+  row-erp: "ERP + manual changes"
+  row-rule: "moving average + weather"
+  row-model: "the new model"
+  wape-naive: "45%"
+  wape-erp: "38%"
+  wape-rule: "35%"
+  wape-model: "30%"
+  gain-naive: "33% better"
+  gain-erp: "21% better"
+  gain-rule: "14% better"
+  who: "The vendor picks the first. The board needs the second. Whether to use ML at all rests on the third."
+  table-credit: "Fictional numbers. Gain = (baseline − model) / baseline."
+
+  # When to ship the heuristic.
+  title-ship: "When to ship the heuristic"
+  rule: "If the model does not clearly beat a simple heuristic on the same data, counting the cost to run and maintain it: ship the heuristic, and collect data."
+  zinkevich: "“Don’t be afraid to launch a product without machine learning.” Zinkevich, Rules of Machine Learning, Rule #1 (Google)"
+  q-simple: "Simple: a weather rule. 400 nested rules → choose ML (Rule #3)."
+  q-fair: "Clearly: same data, a fair validation, online where you can."
+  q-cost: "Cost: pipelines, retraining, on-call, explaining it to the team."
+  christodoulou: "Clinical prediction studies at low risk of bias: no difference in AUC between ML and logistic regression (Christodoulou et al., 2019)."
+
+  # After launch, and the close.
+  title-keep: "Keep the baseline running"
+  keep-tag: "fictional"
+  box-baseline: "ERP + manual, every night"
+  box-fallback: "fallback when the batch is late"
+  box-trigger: "yardstick: retrain when the model is worse than ERP on top garden items, 2 weeks in a row"
+  parallel: "Engineers know this from migrations: a parallel run."
+  write-down: "Write down: three baselines, one test, one table per slice that the COO can read."
+  owners: "The data team builds it with the replenishment team. Supply Chain decides per item group: where the model does not clearly win, the rule stays."
+  takeaway-subtitle: "Episode 3.7 in one card"
+  next: "Next episode: non-functional requirements."

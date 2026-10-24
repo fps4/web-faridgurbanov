@@ -1,0 +1,179 @@
+# Episode 3.4 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-4.ts. Under `npm run dev`
+# a refresh of /en/deck/3-4 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/04-splits-and-validation.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-4.ts as well.
+
+title: "Splits and validation"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.4 of AI Product Design: splits and validation."
+  promise:
+    at: "0:04"
+    cue: "In this episode: what a split is for, how to choose between a random, a time-based and a group split, and why you may use the test set only once."
+  random:
+    at: "0:19"
+    cue: "A sentence from many model reviews: “We held out 20 percent at random, and the model scored very well.” It sounds like proof. Often it is not."
+  zech:
+    at: "0:32"
+    cue: "A real example. In 2018 researchers trained a model to detect pneumonia on chest X-rays: 158,323 images from three hospital systems."
+  hospital:
+    at: "0:42"
+    cue: "A network could also tell which hospital an X-ray came from: 99.95, 99.98 and 95.59 percent accuracy. And pneumonia was far more common in one: 34.2 percent at Mount Sinai, against 1.2 and 1.0 percent at the other two. So the hospital was a strong clue for the answer."
+  outside:
+    at: "1:05"
+    cue: "On the internal test the model reached an AUC of 0.931. At an outside hospital, 0.815. Images from all hospitals sat on both sides of the test, so the test rewarded the hospital clue. Holding out a whole hospital showed the real performance."
+  werkmora:
+    at: "1:26"
+    cue: "Our company, Werkmora, is a fictional garden retailer with about 175 stores. It forecasts how much of each item each store will sell, 1 to 21 days ahead. The pilot was scored on a random 20 percent of the rows. So the same store and week sit on both sides, and neighbouring days share weather, promotions and stock. The score is good. It says little about next spring."
+  simulate:
+    at: "1:59"
+    cue: "So here is the main idea. A split is a simulation of production. Before you choose one, ask: in production, what will be new to the model? New days, new customers, new stores. Then make exactly those things new in the test."
+  split-random:
+    at: "2:19"
+    cue: "A random split is fine when the rows are independent and the world is stable. And only when there are no duplicates across sources, and no hidden groups, like a patient or a store, on both sides."
+  split-time:
+    at: "2:36"
+    cue: "A time-based split trains on the past and tests on a later period. For a forecast, and for anything that predicts the future, it is the default."
+  backtest:
+    at: "2:49"
+    cue: "One cut-off gives one number. A backtest repeats it at many cut-off dates. Each time you train only on data before the date, forecast the same horizon as the product, and use the data as it was known then."
+  split-group:
+    at: "3:08"
+    cue: "A group split keeps all records of one customer, store or patient on the same side. Otherwise the model is tested on someone it has already seen. If the product will run at new sites, hold out whole sites, as the pneumonia study did."
+  shortcuts:
+    at: "3:29"
+    cue: "Even that can miss things. COVID-19 X-ray models lost half of their performance at other hospitals, and some of their shortcuts worked at the new hospital too. A held-out site is needed, and it does not prove everything."
+  cv:
+    at: "3:48"
+    cue: "Cross-validation rotates which part is held out. You train several times and average the scores. On small data that gives a more stable estimate."
+  cv-rules:
+    at: "3:59"
+    cue: "Two rules. If the data has time, place or group structure, rotate whole blocks. And if cross-validation also tunes or chooses the model, use nested cross-validation or a separate test set. In one study, tuned models looked good in cross-validation on data with no real signal, and were at chance on an independent test."
+  three-sets:
+    at: "4:25"
+    cue: "So there are three sets with three jobs. The model learns from the training set. You tune and choose with the validation set. The test set gives the final number, once."
+  spent:
+    at: "4:40"
+    cue: "Every time you look at the test score and change something, a bit of the test set leaks into your choices. After many looks it is training data, and the score you report is too high. One paper puts this error at the same size as the differences between algorithms."
+  plan:
+    at: "5:04"
+    cue: "Back to Werkmora, done right. The team backtests on weekly cut-offs through spring 2025, 1 to 21 days ahead, with the data as it was known. All tuning and model choice happens here."
+  sealed:
+    at: "5:20"
+    cue: "Spring 2026 is the sealed test. The model is trained up to the end of February, and the test is opened once, at the go/no-go meeting. Some whole stores are held out, and the old ERP forecast is scored on the same splits."
+  page:
+    at: "5:40"
+    cue: "Write it on one page: what is new in production, the cut-off dates, the sealed period, and who may open it. The Head of Data and Analytics keeps it sealed. The field agrees the split should copy production. People differ on how often you may look."
+  takeaway:
+    at: "6:02"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:09"
+    cue: "In the next episode: choosing metrics."
+
+text:
+  # The title card; the usual check.
+  episode: "AI Product Design · Module 3 · Episode 3.4"
+  quote: "“We held out 20% at random. It scored very well.”"
+  quote-how: "Shuffle the rows, hold out a share, report the score."
+  quote-tag: "the usual check"
+
+  # The pneumonia model and the hospital.
+  title-zech: "A pneumonia model that also learned the hospital"
+  zech-what: "158,323 chest X-rays from three hospital systems. A model to detect pneumonia."
+  hospital-nih: "NIH"
+  hospital-sinai: "Mount Sinai"
+  hospital-indiana: "Indiana"
+  which-hospital: "A network could tell which hospital an X-ray came from:"
+  acc-nih: "99.95%"
+  acc-sinai: "99.98%"
+  acc-indiana: "95.59%"
+  prevalence: "Pneumonia in the data: 34.2% at Mount Sinai, 1.2% and 1.0% at the other two."
+  axis-auc: "AUC (0.5 is chance)"
+  value-inside: "0.931"
+  value-outside: "0.815"
+  label-inside: "internal test"
+  label-outside: "outside hospital"
+  zech-line: "All hospitals sat on both sides of the test. The test rewarded the hospital clue."
+  zech-credit: "Zech et al. (2018), PLOS Medicine"
+
+  # Werkmora's pilot.
+  title-werkmora: "Werkmora’s pilot"
+  werkmora-tag: "fictional company"
+  werkmora: "A garden retailer with about 175 stores. The forecast: how much of each item each store sells, 1 to 21 days ahead."
+  strip-label: "store × item × day rows, in time order"
+  strip-test: "test: a random 20%"
+  werkmora-why: "Same store, same week on both sides. Neighbouring days share weather, promotions and stock."
+  werkmora-line: "A good score, and it says little about next spring."
+
+  # The three splits.
+  title-splits: "A split is a copy of production"
+  ask: "Ask first: in production, what will be new to the model?"
+  new-things: "new days · new customers · new stores · new sites"
+  split-random: "random"
+  split-random-when: "Independent rows, a stable world. No duplicates across sources, no hidden groups."
+  split-time: "time"
+  split-time-default: "the forecast default"
+  split-time-when: "Train on the past, test on a later period."
+  split-time-backtest: "Backtest: many cut-offs, the product’s horizon, data as it was known."
+  split-group: "group"
+  split-group-when: "One store, customer or patient on one side only. New sites? Hold out whole sites."
+  group-note: "each block is one store"
+  shortcuts: "Even a held-out site can miss shortcuts that also work there."
+  splits-credit: "Roberts M. et al. (2021) · Kapoor & Narayanan (2023) · Zech et al. (2018) · DeGrave et al. (2021)"
+
+  # Cross-validation.
+  title-cv: "Cross-validation"
+  cv-what: "Rotate which part is held out. Average the scores."
+  cv-why: "A more stable estimate on small data."
+  cv-fold: "one fold held out per round"
+  rule-structure: "Time, place or groups in the data?"
+  rule-structure-do: "Rotate whole blocks: blocked or grouped CV."
+  rule-tune: "Also tuning or choosing the model?"
+  rule-tune-do: "Nested CV, or keep a separate test set."
+  cv-credit: "Roberts D.R. et al. (2017) · Varma & Simon (2006)"
+
+  # The test set is spent once.
+  title-spent: "The test set is spent once"
+  set-train: "training"
+  set-validation: "validation"
+  set-test: "test"
+  job-train: "the model learns from it"
+  job-validation: "you tune and choose"
+  job-test: "the final number, once"
+  leak: "every look leaks a bit"
+  spent-line: "Tune against the test set and it turns into training data. The score you report is too high."
+  spent-quote: "Over-fitting in model selection gives errors “of comparable magnitude to differences in performance” between algorithms. Cawley & Talbot (2010)"
+
+  # Werkmora, done right.
+  title-plan: "Werkmora: the split, written down"
+  plan-tag: "fictional"
+  year-2024: "2024"
+  year-2025: "2025"
+  year-2026: "2026"
+  backtest-label: "backtest: tune and choose here"
+  backtest-what: "Weekly cut-offs through spring 2025. Train only on data before each one, forecast 1 to 21 days ahead, with the data as it was known."
+  sealed-label: "spring 2026: sealed"
+  sealed-what: "Spring 2026 (March to June): trained up to the end of February, opened once, at the go/no-go."
+  stores-what: "Whole stores held out, big and compact. The ERP forecast and the seasonal naive baseline scored on the same splits."
+  page-head: "One page: what is new · the cut-off dates · the sealed period · who may open it"
+  page-owner: "The Head of Data & Analytics keeps the test sealed. The backtest runs as a job in the pipeline."
+  compare: "Everyone agrees the split copies production. They differ on how often you may look."
+
+  # The close.
+  takeaway-subtitle: "Episode 3.4 in one card"
+  next: "Next episode: choosing metrics."

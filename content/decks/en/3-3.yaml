@@ -1,0 +1,187 @@
+# Episode 3.3 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-3.ts. Under `npm run dev`
+# a refresh of /en/deck/3-3 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/03-data-quality-and-leakage.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-3.ts as well.
+
+title: "Data quality and leakage"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.3 of AI Product Design: data quality and leakage."
+  promise:
+    at: "0:05"
+    cue: "In this episode: why great offline numbers are a reason to check, the one rule that stops most leakage, and how to agree the data with the teams that produce it."
+  great:
+    at: "0:20"
+    cue: "A pilot is done. The offline numbers look great, much better than what runs today. The usual next step: ship it."
+  informs:
+    at: "0:30"
+    cue: "Be careful. In 2010 a research challenge asked teams to predict stock price moves one hour ahead. About 30 teams reached an AUC above 0.9, where 1.0 is perfect. The best: above 0.99. Because the data held variables from the future."
+  ibm:
+    at: "0:49"
+    cue: "The same paper has a case closer to normal business. IBM built a model to find companies likely to buy, from the text on their websites. That text was collected after they had become customers, so it held words like “Websphere”, an IBM product. Collected at the wrong moment."
+  werkmora:
+    at: "1:13"
+    cue: "Our company has the same risk. Werkmora is fictional: a home, DIY and garden retailer with about 175 stores. Every night at one o’clock it forecasts demand per store and item. In the notebook the pilot beats the ERP forecast. Before it goes to every store: would we know each input at one o’clock?"
+  timeline:
+    at: "1:39"
+    cue: "Draw it as a timeline. This line is the moment of prediction: one o’clock. The model may use what is known on the left. Never what comes after. Leakage is when training sees the right side anyway."
+  target:
+    at: "1:57"
+    cue: "Target leakage is a feature that holds the answer. A “cancellation reason” field predicts churn perfectly, because it is filled in after the customer left. The IBM website text is the same kind."
+  temporal:
+    at: "2:12"
+    cue: "Temporal leakage is quieter. The history table keeps today’s value and forgets what it was that night. At Werkmora, Pricing sometimes updates promotion flags after the promotion. So in history the model sees flags set when the sales were already known."
+  rule:
+    at: "2:32"
+    cue: "The fix is one rule from the same paper: learn–predict separation. Build every training row only from data that existed at its prediction time. At Werkmora: an “available at” column per feature, and promotion plans stored as they stood before each night’s run."
+  quiet:
+    at: "2:53"
+    cue: "Now a warning about the warning. Kapoor and Narayanan re-ran twelve civil-war prediction papers they could reproduce. Four had errors: exactly the four that said complex ML beats logistic regression. After the fix, one AUC gap fell from 0.14 to 0.01."
+  checklist:
+    at: "3:12"
+    cue: "Those numbers looked plausible, so intuition misses them. A checklist does not. They list eight types of leakage. Three are about the data: duplicates, features that should not be there, and data from the future. The rest is about the split: next episode."
+  skew:
+    at: "3:33"
+    cue: "Leakage has a twin: training/serving skew. In production the model gets something different: different code, different timing, or a different distribution. At Werkmora, weather is both problems. History has the actual weather. At one o’clock the model gets only a forecast."
+  fixes:
+    at: "3:53"
+    cue: "Google’s engineers give three fixes. One feature code for training and scoring. Log the features at serving time and train on those. And measure the skew every night. For weather: store the forecasts as they were issued, starting today."
+  missing:
+    at: "4:12"
+    cue: "Then the basic checks, per feature. Missing values: impute, drop or flag. Werkmora has no shelf capacity for outdoor areas. Fill in zero and the model thinks the shelf holds nothing. Flag it."
+  noisy:
+    at: "4:27"
+    cue: "Noisy values are filled in but wrong. Research at one retailer found 65 percent of stock records wrong. So Werkmora’s stock-out flag uses the stock record and the sales pattern. Label noise hurts most: the model learns it as truth."
+  imbalance:
+    at: "4:47"
+    cue: "Imbalance: when one outcome is rare, accuracy misleads. Resampling is the usual fix, but for probability models it can break the calibration and gain nothing. Move the threshold first. Werkmora reports its slow movers as their own slice."
+  contracts:
+    at: "5:05"
+    cue: "Last, the teams that produce the data. Start with three short contracts where it hurts: promotions, weather and store stock. Each names the owner, the schema, what the key fields mean, when a value is final, when it lands, and who hears before a change."
+  meaning:
+    at: "5:26"
+    cue: "Why more than a schema? A schema catches a changed type. It misses a flag that is still true or false but now set a week later. Research describes the leak, engineering the check, and only industry the contract. So write yours with the owner."
+  write:
+    at: "5:48"
+    cue: "What the team writes down: the “available at” table, three contracts, a nightly skew check, and a leakage question in the pull-request template."
+  takeaway:
+    at: "5:59"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:05"
+    cue: "In the next episode: splits and validation."
+
+text:
+  # The title card; the usual belief.
+  episode: "AI Product Design · Module 3 · Episode 3.3"
+  hook: "“The offline numbers look great. Ship it.”"
+
+  # The case: Kaufman et al. (2011), §2.
+  auc-what: "INFORMS 2010 challenge: predict stock price moves, one hour ahead"
+  auc-axis-label: "AUC · 1.0 = perfect"
+  tick-05: "0.5"
+  tick-09: "0.9"
+  tick-10: "1.0"
+  auc-teams: "≈ 30 teams above 0.9"
+  auc-best: "the best: above 0.99"
+  auc-why: "The data held variables from the future."
+  ibm-title: "IBM: which companies will buy? Read it from their websites"
+  ibm-body: "The text was collected after they became customers, so it held words like “Websphere”."
+  kaufman-credit: "Kaufman, Rosset & Perlich (2011), KDD, §2"
+
+  # Werkmora's pilot.
+  title-werkmora: "Werkmora: the pilot looks great"
+  werkmora-tag: "fictional company"
+  werkmora: "A home, DIY and garden retailer with about 175 stores in NL, BE and DE. Every night at 01:00 it forecasts demand per store and item for the garden range."
+  werkmora-pilot: "In the notebook the pilot beats today’s ERP forecast. The next step would be every store."
+  werkmora-question: "Would we know each input at 01:00?"
+
+  # Leakage on a timeline.
+  title-leak: "Leakage: training sees what serving will not"
+  leak-tag: "Werkmora: fictional"
+  time-label: "time"
+  now-label: "01:00 · the moment of prediction"
+  known: "known: the model may use it"
+  after: "after: off limits"
+  target-title: "Target leakage: a feature that holds the answer"
+  target-body: "“cancellation reason” for churn, filled in after the customer left · IBM’s website text"
+  promo-box: "promotion flag"
+  promo-late: "set after the promotion"
+  temporal-title: "Temporal leakage: the value as it is today"
+  temporal-body: "History overwrites. Werkmora’s promotion flags are sometimes updated after the promotion."
+  rule: "Learn–predict separation: build each training row only from data that existed at its prediction time."
+  rule-werkmora: "Werkmora: an “available at” column per feature; promotion plans kept as they stood"
+  rule-credit: "Kaufman, Rosset & Perlich (2011), §4"
+
+  # The quiet kind.
+  title-quiet: "Loud leakage, quiet leakage"
+  loud-quiet: "Loud: an AUC above 0.99. Quiet: numbers that look plausible."
+  value-before: "0.14"
+  value-after: "0.01"
+  label-before: "before the fix"
+  label-after: "after the fix"
+  gap-what: "AUC gap, complex ML vs logistic regression, one civil-war paper"
+  quiet-what: "12 reproducible papers. 4 had errors: the 4 that said complex ML wins."
+  quiet-credit: "Kapoor & Narayanan (2023), Patterns"
+  checklist: "A checklist: 8 types of leakage. 3 are about the data: duplicates, illegitimate features, the future. The rest: the split, next episode."
+
+  # Training/serving skew.
+  title-skew: "Training/serving skew"
+  skew-tag: "Werkmora: fictional"
+  box-history: "history: actual weather"
+  box-training: "training"
+  box-tonight: "01:00: weather forecast"
+  box-scoring: "nightly scoring"
+  skew-neq: "≠"
+  skew-kinds: "Different code, different timing, or a different distribution"
+  skew-credit: "Breck et al. (2019), Google"
+  fixes: "one feature code · log features at serving · measure the skew every night"
+  fixes-credit: "Zinkevich, Rules of ML #29, #32, #37 (Google)"
+  issued: "Weather: keep forecasts as issued, from today."
+
+  # The basic checks.
+  title-checks: "Basic checks, per feature"
+  checks-tag: "Werkmora: fictional"
+  row-missing: "Missing"
+  row-missing-body: "Impute, drop or flag. Missing is often not random."
+  row-missing-werkmora: "Werkmora: no shelf capacity outdoors. Flag it, do not fill in zero."
+  row-noisy: "Noisy"
+  row-noisy-body: "Filled in but wrong. Noise in the label does the most harm. 65% of stock records wrong at one retailer."
+  row-noisy-werkmora: "Werkmora: stock-out flag from the stock record and the sales pattern"
+  row-imbalance: "Imbalance"
+  row-imbalance-body: "Accuracy misleads. Resampling can break calibration: move the threshold first."
+  row-imbalance-werkmora: "Werkmora: slow movers reported as their own slice"
+  noisy-credit: "Stock records: DeHoratius & Raman (2008)"
+  imbalance-credit: "Resampling: van den Goorbergh et al. (2022), logistic regression"
+
+  # Contracts with the producing teams.
+  title-contracts: "Agree the data with the teams that make it"
+  contracts-tag: "Werkmora: fictional"
+  contract-promotions: "promotions"
+  contract-promotions-owner: "CCO · Pricing & Promotions"
+  contract-weather: "weather"
+  contract-weather-owner: "Data & Analytics + provider"
+  contract-stock: "store stock"
+  contract-stock-owner: "COO · Store Operations"
+  contract-holds: "Each one: owner · schema · what the key fields mean · when a value is final · when it lands · who hears before a change"
+  meaning: "A schema catches a changed type. It misses a changed meaning: the same flag, now set a week later."
+  three-ways: "Research describes the leak. Engineering describes the check. Only industry describes the contract."
+  write: "Write down: the “available at” table · three contracts · a nightly skew check · a leakage question in the PR template"
+
+  # The close.
+  takeaway-subtitle: "Episode 3.3 in one card"
+  next: "Next episode: splits and validation."

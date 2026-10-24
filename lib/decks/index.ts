@@ -3,6 +3,17 @@ import path from 'node:path';
 import type { Deck } from '@/lib/deck';
 import { layout30 } from '@/lib/decks/3-0';
 import { layout31 } from '@/lib/decks/3-1';
+import { layout32 } from '@/lib/decks/3-2';
+import { layout33 } from '@/lib/decks/3-3';
+import { layout34 } from '@/lib/decks/3-4';
+import { layout35 } from '@/lib/decks/3-5';
+import { layout36 } from '@/lib/decks/3-6';
+import { layout37 } from '@/lib/decks/3-7';
+import { layout38 } from '@/lib/decks/3-8';
+import { layout39 } from '@/lib/decks/3-9';
+import { layout310 } from '@/lib/decks/3-10';
+import { layout311 } from '@/lib/decks/3-11';
+import { layout312 } from '@/lib/decks/3-12';
 import { composeDeck, type DeckLayout } from '@/lib/decks/compose';
 import { DECK_TEXT_ROOT, deckTextFile, readDeckText } from '@/lib/decks/text';
 import { locales, type Locale } from '@/lib/i18n';
@@ -12,7 +23,7 @@ import { locales, type Locale } from '@/lib/i18n';
 // and lib/decks.test.ts checks the lists agree. Server-only: the words are read from disk on every
 // call, so under `next dev` an edit to the YAML shows on the next refresh.
 
-export const layouts: DeckLayout[] = [layout30, layout31];
+export const layouts: DeckLayout[] = [layout30, layout31, layout32, layout33, layout34, layout35, layout36, layout37, layout38, layout39, layout310, layout311, layout312];
 
 function layoutById(id: string): DeckLayout | undefined {
   return layouts.find((l) => l.id === id);

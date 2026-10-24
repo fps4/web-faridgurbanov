@@ -1,0 +1,205 @@
+# Episode 3.11 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-11.ts. Under `npm run dev`
+# a refresh of /en/deck/3-11 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/11-people-and-roles.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-11.ts as well.
+
+title: "People and roles"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.11 of AI Product Design: people and roles."
+  promise:
+    at: "0:04"
+    cue: "In this episode: the seven roles of an AI project, read as seven decisions. The roles most lists leave out. And who has the power to stop a model."
+  team:
+    at: "0:18"
+    cue: "“We hired two data scientists, so we have an AI team.” I hear it often. In that picture a role is a job title, and the project belongs to the data team."
+  poaching:
+    at: "0:34"
+    cue: "A real case. In 2021, Google researchers interviewed people who build AI in high-stakes fields. One team had a model that predicted where poaching would happen, for conservation in India. After deployment, the patrollers contested the predicted locations. Most poaching attacks were not in the data."
+  late:
+    at: "0:56"
+    cue: "The people who knew where poaching happens were in the project. But in the study’s words, they were “largely involved in data collection or trouble-shooting, rather than in deep, end-to-end engagements”. They had no seat at the start, where the problem is defined."
+  werkmora:
+    at: "1:16"
+    cue: "Back to Werkmora, our fictional home, DIY and garden retailer, with about 175 stores in three countries. In this module it builds a nightly forecast for every store and item. Data and Analytics has four data scientists and a pilot in one region. The business calls it “the data team’s project”."
+  product:
+    at: "1:41"
+    cue: "The guide lists seven roles. Read each one as a decision someone owns. The product manager owns the problem, the value case, the metrics and the threshold. At Werkmora the Director Supply Chain owns the forecast. The CCO and the COO set the service level, not the data team."
+  domain:
+    at: "2:04"
+    cue: "The domain expert owns what a label means, the edge cases, and whether the output makes sense. And from the start. In the same study, 43.4 percent of practitioners saw data cascades triggered by too little domain expertise. RAND found the same in 2024: a misunderstood problem is the most common root cause. At Werkmora, two planners and a store garden manager join the label discussion before the first backtest."
+  builders:
+    at: "2:38"
+    cue: "Then the builders. The data scientist owns the model and how it is evaluated. The ML engineer runs training and serving. The data engineer owns the pipelines. A study of 28 organisations found that requirements need a data scientist’s prototype, and that the engineering effort is often underestimated. Werkmora has no ML engineer, so a data engineer or the platform team takes that seat."
+  designer:
+    at: "3:09"
+    cue: "The designer owns how a prediction reaches people, and how they correct it. At Werkmora: how a planner sees an order line, changes it, and gives a reason."
+  legal:
+    at: "3:22"
+    cue: "Legal, privacy and risk: data rights, regulation, accountability. At Werkmora, that is the weather licence. And a question for the data protection officer and the works council: may the override log keep the planner’s name?"
+  overlap:
+    at: "3:39"
+    cue: "These roles overlap. There are no hand-offs. In one study, the product team validated every model change in production. And a Google paper calls a hard line between research and engineering “counter-productive”."
+  compare:
+    at: "3:54"
+    cue: "Compare an MLOps paper from 2023. Seven roles too, but no domain expert, no designer and no legal. Instead it has a solution architect, a software engineer and DevOps. The guide is wider on the business side, theirs on engineering."
+  integrator:
+    at: "4:13"
+    cue: "As an engineer, I would add their integrator. Getting the model into the product is a hard point in the research. At Werkmora the forecast must reach the ERP order process, so the integration team is in from the start."
+  frontline:
+    at: "4:33"
+    cue: "Neither list names the front line. At Werkmora the store staff count stock and book plant write-offs. Without them there is no waste label. And neither list names the labellers."
+  stop:
+    at: "4:47"
+    cue: "Last question: who can switch the model off? At the start of COVID-19, Michigan’s clinical AI governance committee switched off the Epic sepsis model, because the link between fever and sepsis had changed. The authors ask that clinicians can report concerns easily, and that a governance team owns monitoring and updating."
+  switch:
+    at: "5:12"
+    cue: "At Werkmora it is written down. The Director Supply Chain can switch the stores back to the ERP forecast at any time. The data team can do it at night, if the batch fails. Planners and store managers report “this looks wrong” in one channel, read every morning."
+  page:
+    at: "5:35"
+    cue: "So write one page for the forecast: the owner, the threshold owners, the data owners, the domain experts, the front line, engineering, legal, and the person who can stop it."
+  month:
+    at: "5:49"
+    cue: "A month later, the label rules changed once. A store garden manager pointed out that plants in the clearance corner are not waste yet. And the board’s question, “whose project is this?”, has a one-line answer."
+  takeaway:
+    at: "6:06"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:12"
+    cue: "In the next episode: what it costs."
+
+text:
+  # The title card; the usual belief.
+  episode: "AI Product Design · Module 3 · Episode 3.11"
+  question: "“We hired two data scientists. So we have an AI team.”"
+  question-tag: "a role = a job title"
+
+  # The case: poaching prediction, experts too late.
+  title-case: "Poaching prediction: the experts came late"
+  case-what: "A team in the study had a model that predicted where poaching would happen (conservation, India)."
+  case-after: "After deployment, patrollers contested the predicted locations. Most attacks were not in the data."
+  case-credit: "Sambasivan et al. (2021), CHI: interviews, anonymised"
+  tl-problem: "the problem"
+  tl-data: "data collection"
+  tl-model: "the model"
+  tl-deploy: "deployment"
+  tl-trouble: "trouble-shooting"
+  late-start: "no seat"
+  late-quote: "“largely involved in data collection or trouble-shooting, rather than in deep, end-to-end engagements”"
+
+  # Werkmora.
+  title-werkmora: "Werkmora: whose forecast is it?"
+  werkmora-tag: "fictional company"
+  fact-company: "Home, DIY and garden retailer · about 175 stores in NL, BE and DE"
+  fact-forecast: "This module: a nightly forecast for every store and item"
+  fact-team: "Data & Analytics: about 35 people, 4 data scientists, a pilot in one region"
+  fact-seen: "Seen as “the data team’s project”. No named owner."
+
+  # Seven roles, seven decisions.
+  title-roles: "Seven roles, seven decisions"
+  col-role: "role"
+  col-decides: "owns the decision about"
+  col-werkmora: "at Werkmora"
+  roles-tag: "fictional"
+  role-product: "Product manager"
+  decides-product: "the problem, the value case, the metrics, the threshold"
+  werkmora-product: "Director Supply Chain. Service level: CCO and COO."
+  role-domain: "Domain expert"
+  decides-domain: "what a label means, edge cases, whether outputs make sense"
+  werkmora-domain: "2 planners, 1 store garden manager, before the first backtest"
+  role-ds: "Data scientist"
+  decides-ds: "which model, and how it is evaluated"
+  werkmora-ds: "4 data scientists: they show the trade-off"
+  role-mle: "ML engineer"
+  decides-mle: "training and serving in production"
+  werkmora-mle: "none: a data engineer or the platform team"
+  role-de: "Data engineer"
+  decides-de: "the pipelines, data quality at the source"
+  werkmora-de: "9 sources, 7 owners, one contact each"
+  role-designer: "Designer"
+  decides-designer: "how predictions reach people, how they correct them"
+  werkmora-designer: "how a planner sees, changes and explains an order line"
+  role-legal: "Legal, privacy, risk"
+  decides-legal: "data rights, regulation, accountability"
+  werkmora-legal: "weather licence; planner names in the override log?"
+  note-domain: "From the start: 43.4% of practitioners saw data cascades triggered by too little domain expertise."
+  credit-domain: "Sambasivan et al. (2021); RAND (2024)"
+  note-builders: "Requirements need a data scientist’s prototype. The engineering effort is often underestimated."
+  credit-builders: "Nahar et al. (2022), 28 organisations"
+  overlap: "They overlap. No hand-offs."
+  credit-overlap: "The product team validates every model change (Shankar et al., 2024). A hard split is “counter-productive” (Sculley et al., 2015)."
+
+  # Two lists compared, and what neither names.
+  title-compare: "Two lists of roles"
+  list-guide: "The guide"
+  list-mlops: "MLOps roles (Kreuzberger et al., 2023)"
+  guide-product: "product manager"
+  guide-domain: "domain expert"
+  guide-ds: "data scientist"
+  guide-mle: "ML engineer"
+  guide-de: "data engineer"
+  guide-designer: "designer"
+  guide-legal: "legal, privacy, risk"
+  mlops-business: "business stakeholder"
+  mlops-ds: "data scientist"
+  mlops-de: "data engineer"
+  mlops-mle: "ML engineer"
+  mlops-devops: "DevOps engineer"
+  mlops-architect: "solution architect"
+  mlops-software: "software engineer"
+  compare-line: "The guide is wider on the business side. Theirs on engineering."
+  integrator: "Add the integrator: Werkmora’s forecast must reach the ERP order process."
+  credit-integrator: "Nahar et al. (2022): integration is a hard point"
+  neither: "Neither list: the front line · the labellers"
+  neither-werkmora: "Werkmora: store staff count stock and book plant write-offs. Without them, no waste label."
+
+  # Who can switch it off.
+  title-stop: "Who can switch it off?"
+  michigan: "Start of COVID-19: Michigan’s clinical AI governance committee switched off the Epic sepsis model."
+  michigan-ask: "Clinicians can report concerns easily. A governance team owns monitoring and updating."
+  michigan-credit: "Finlayson et al. (2021), NEJM"
+  title-switch: "Werkmora, written down"
+  switch-tag: "fictional"
+  switch-director: "Director Supply Chain"
+  switch-director-what: "back to the ERP forecast, at any time"
+  switch-night: "data team"
+  switch-night-what: "at night, when the batch fails"
+  switch-channel: "planners, store managers"
+  switch-channel-what: "“this looks wrong” in one channel, read every morning"
+
+  # The close: one page, a month later.
+  title-close: "One page for the forecast"
+  page-tag: "fictional"
+  page-owner: "owner"
+  page-owner-what: "Director Supply Chain"
+  page-threshold: "threshold"
+  page-threshold-what: "CCO and COO: the service level per item group"
+  page-data: "data"
+  page-data-what: "7 owners for 9 sources, one contact each"
+  page-domain: "domain experts"
+  page-domain-what: "2 replenishment planners, 1 store garden manager"
+  page-front: "front line"
+  page-front-what: "store staff: stock counts, plant write-offs"
+  page-engineering: "engineering"
+  page-engineering-what: "Data & Analytics, the platform team, the integration team"
+  page-legal: "legal"
+  page-legal-what: "weather licence; DPO and works council on the override log"
+  page-stop: "stop"
+  page-stop-what: "Director Supply Chain; the data team at night"
+  month: "A month later: a store garden manager changed the label rules. Plants in the clearance corner are not waste yet."
+  takeaway-subtitle: "Episode 3.11 in one card"
+  next: "Next episode: what it costs."

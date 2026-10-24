@@ -1,0 +1,175 @@
+# Episode 3.2 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-2.ts. Under `npm run dev`
+# a refresh of /en/deck/3-2 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/02-labels.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-2.ts as well.
+
+title: "Labels"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.2 of AI Product Design: labels."
+  promise:
+    at: "0:05"
+    cue: "In this episode: the five places labels come from, and the weakness of each. How to check labels before you trust them. And how to plan for labels that arrive late, or only for some cases."
+  free:
+    at: "0:22"
+    cue: "Most teams start with one belief: the outcome is already in the database, so the labels are free. Was the claim paid? How much did we sell? Just take it."
+  cost:
+    at: "0:36"
+    cue: "In the US, a widely used commercial algorithm picks patients for extra care, for about 200 million people a year. It needed a label for health need. It took what was already in the database: future health-care cost."
+  sicker:
+    at: "0:54"
+    cue: "The cost was recorded correctly. But less money is spent on Black patients with the same needs: 1,801 dollars less per year, at the same number of chronic conditions. So at the same risk score, Black patients were sicker. Race was not an input. The bias came from the label."
+  fix:
+    at: "1:18"
+    cue: "The researchers worked with the manufacturer on a new label that combines health with cost. That cut the bias by 84 percent."
+  werkmora:
+    at: "1:29"
+    cue: "Now Werkmora, our fictional garden retailer. Its model forecasts how much of each item every store will sell. The label is units sold per store, item and day, straight from the tills. And as we saw last episode, sales are not the same as customer demand."
+  existing:
+    at: "1:51"
+    cue: "So where do labels come from? Five places, cheapest first. One: existing outcomes, like those sales. Cheap, with two risks. The outcome can be a proxy for what you want, like cost for need. And past decisions shape it: you only learn whether a defendant comes back to court if the judge released them."
+  implicit:
+    at: "2:17"
+    cue: "Two: implicit feedback. Clicks, purchases, edits. There is a lot of it, but it is noisy, and it only covers what the product showed. Nobody clicks on what they never saw."
+  rules:
+    at: "2:32"
+    cue: "Three: rules, or weak supervision. Small functions label the data for you. Noisy, but fast. In a user study with the Snorkel tool, this was 2.8 times faster than seven hours of hand labelling."
+  assisted:
+    at: "2:48"
+    cue: "Four: model-assisted labelling. A model proposes a label and a person corrects it. Faster, but it still costs people’s time."
+  expert:
+    at: "2:58"
+    cue: "Five: expert annotation. Accurate, expensive, and sometimes the only option, like grading medical images. But experts do not always agree."
+  agree:
+    at: "3:07"
+    cue: "So the first check is agreement. Give the same items to two labellers and measure how often they agree. Disagreement tells you the labels are uncertain. And without a cleaner reference, you cannot show that a model beats an expert."
+  adjudicate:
+    at: "3:27"
+    cue: "Google showed what a clean reference is worth, in eye screening for diabetes. Training used more than 1.6 million images with ordinary grades. Then retina specialists discussed and agreed on 3,737 images. That small set, used for tuning, raised the AUC from 0.934 to 0.986. Against it, the model was on par with the specialists."
+  guideline:
+    at: "3:53"
+    cue: "The second check is a guideline with worked edge cases: what to do in the hard cases, with examples. And watch how labellers are paid. Paying per volume lowers the quality."
+  late:
+    at: "4:08"
+    cue: "Some labels arrive late. Fraud is confirmed weeks later, a loan defaults after months. That slows training, and you cannot measure the model live."
+  partial:
+    at: "4:19"
+    cue: "And a late label is often a partial label. In card fraud, only the transactions that investigators check get a label at all. So plan both: when the label arrives, and which cases get one."
+  censored:
+    at: "4:36"
+    cue: "Back to Werkmora. On a day the shelf was empty, sales are zero, and the model learns “low demand”. Those days are not random: past orders decided which store-days ran empty. It is the judge and the defendant again."
+  flag:
+    at: "4:55"
+    cue: "So Werkmora adds a second label: a stock-out flag. First by rule: stock is zero at opening. Then for two weeks staff check about 400 shelves, to see how often the rule and people agree. A planner and the store manager settle the disagreements. That small set is the reference."
+  waste:
+    at: "5:19"
+    cue: "The third label is plant waste, and it comes late. Write-offs are scanned at the weekly stock count. So waste is used to monitor the forecast and to set the service level. It does not train the daily forecast."
+  spec:
+    at: "5:38"
+    cue: "Write all this down as a label specification: each label with its meaning, its owner and when it arrives. Plus the guideline and one agreement number. Data and Analytics writes it with Store Operations, who own the stock-out flag and the waste."
+  takeaway:
+    at: "5:58"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:04"
+    cue: "In the next episode: data quality and leakage."
+
+text:
+  # The title card; the usual belief.
+  episode: "AI Product Design · Module 3 · Episode 3.2"
+  belief: "“The outcome is already in the database. The labels are free.”"
+  belief-examples: "Was the claim paid? Did the customer leave? How much did we sell?"
+  belief-tag: "the usual belief"
+
+  # Obermeyer et al. (2019): cost used as the label for health need.
+  title-cost: "Cost used as the label for health need"
+  need: "wanted: health need"
+  cost: "label used: future cost"
+  neq: "≠"
+  gap-amount: "$1,801 less"
+  gap-what: "spent per year on Black patients with the same number of chronic conditions"
+  gap-result: "Same risk score, sicker patients. Race was not an input."
+  fix-label: "new label: health + cost"
+  fix-result: "bias cut by 84%"
+  cost-credit: "Obermeyer, Powers, Vogeli & Mullainathan (2019), Science. Applied to about 200 million people a year in the US."
+
+  # Werkmora and its label.
+  title-werkmora: "Werkmora: the label is units sold"
+  werkmora: "A garden retailer. Every night its model forecasts how much of each item every store will sell, 1 to 21 days ahead."
+  werkmora-tag: "fictional company"
+  label-box: "label = units sold per store × item × day"
+  label-trap: "Sales ≠ demand on a day the shelf was empty (episode 3.1)"
+
+  # Five sources, cheapest first.
+  title-sources: "Where labels come from, cheapest first"
+  cheapest: "cheapest"
+  dearest: "most expensive"
+  src-existing: "existing outcomes"
+  src-implicit: "implicit feedback"
+  src-rules: "rules"
+  src-assisted: "model-assisted"
+  src-expert: "experts"
+  src-existing-head: "1 · Existing outcomes: cheap, two risks"
+  src-existing-body: "A proxy for what you want (cost for need). Shaped by past decisions: you only see if a defendant comes back to court when the judge released them (Lakkaraju et al., 2017)."
+  src-implicit-head: "2 · Implicit feedback: plenty, noisy"
+  src-implicit-body: "Clicks, purchases, edits, dismissals. Shaped by what the product showed: nobody clicks on what they never saw."
+  src-rules-head: "3 · Rules, weak supervision: noisy, fast"
+  src-rules-body: "Small functions label the data. Snorkel user study: 2.8× faster than seven hours of hand labelling (Ratner et al., 2017)."
+  src-assisted-head: "4 · Model-assisted: people correct"
+  src-assisted-body: "A model proposes the label. Faster than from scratch, and still people’s time."
+  src-expert-head: "5 · Experts: accurate, expensive"
+  src-expert-body: "Sometimes the only option, as for medical images. And experts disagree."
+
+  # Two checks: agreement with a clean reference, and a guideline.
+  title-checks: "Check labels before you trust them"
+  check-agree: "1 · Measure agreement first"
+  check-agree-body: "Same items, two labellers. Disagreement means the labels are uncertain. Without a cleaner reference you cannot show a model beats an expert."
+  check-reference: "A small agreed reference"
+  check-reference-body: "Experts discuss the hard cases and agree on one label. Use the set to test and to tune."
+  krause-big: "1.6 million+ images"
+  krause-big-what: "ordinary grades · training"
+  krause-small: "3,737"
+  krause-small-what: "agreed by retina specialists · tuning"
+  krause-auc: "AUC 0.934 → 0.986"
+  krause-credit: "Krause et al. (2018), diabetic retinopathy grading, Google. On par with the specialists."
+  check-guideline: "2 · Write a guideline with edge cases"
+  check-guideline-body: "What to do in the hard cases, with examples. Paying labellers per volume lowers quality (Google PAIR)."
+
+  # Late labels, and labels for only some cases.
+  title-late: "Labels that come late, or only for some cases"
+  late-predict: "prediction"
+  late-label: "label arrives"
+  late-gap: "weeks · months"
+  late-examples: "Fraud confirmed weeks later · a loan defaults after months. Training slows, and live monitoring has no label."
+  partial: "Only the checked cases get a label."
+  partial-credit: "Card fraud: only the transactions investigators check get a label (Dal Pozzolo et al., 2018)."
+  plan-both: "Plan both: when the label arrives, and which cases get one."
+
+  # Werkmora's label specification.
+  title-spec: "Werkmora’s labels"
+  spec-tag: "fictional"
+  row-demand: "demand"
+  row-demand-body: "Units sold, only on days with stock. Empty-shelf days taught the model “low demand”, and past orders decided which days ran empty."
+  row-stockout: "stock-out flag"
+  row-stockout-body: "New. Rule first: stock 0 at opening. Staff check about 400 shelves for two weeks; a planner and the store manager settle the disagreements. Owner: Store Operations."
+  row-waste: "waste"
+  row-waste-body: "Written-off live plants, scanned at the weekly stock count: up to a week late. Monitors the forecast and sets the service level; does not train it. Owner: Store Operations."
+  spec: "One label specification: meaning, owner and arrival for each label, plus the guideline and one agreement number."
+
+  # The close.
+  takeaway-subtitle: "Episode 3.2 in one card"
+  next: "Next episode: data quality and leakage."

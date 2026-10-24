@@ -1,0 +1,178 @@
+# Episode 3.10 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-10.ts. Under `npm run dev`
+# a refresh of /en/deck/3-10 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/10-feedback-loops.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-10.ts as well.
+
+title: "Feedback loops"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.10 of AI Product Design: feedback loops."
+  promise:
+    at: "0:04"
+    cue: "In this episode: how a model changes the data it later learns from, three countermeasures that keep that data useful, and why you capture outcomes from the first day."
+  retrain:
+    at: "0:17"
+    cue: "Here is the usual belief: “We retrain on the new data every month, so the model keeps getting better.” It treats live data as neutral. But after go-live, part of that data is made by the model."
+  werkmora:
+    at: "0:35"
+    cue: "Back to Werkmora, our fictional home, DIY and garden retailer, and its garden replenishment forecast. Every night the forecast feeds the store orders. The orders fill the shelf, the shelf makes the sales, and the sales become the next training data."
+  shelf:
+    at: "0:55"
+    cue: "Now say the forecast for a plant is too low. The store orders too little, and on Saturday the shelf is empty. The till records no more sales. An empty shelf records low sales, not low demand."
+  learns:
+    at: "1:12"
+    cue: "The next model trains on that Saturday and learns that demand was low. So it orders less again. The model has picked part of its own training data."
+  direct:
+    at: "1:26"
+    cue: "This has a name. In 2015 engineers at Google called it a direct feedback loop: a model that can influence the selection of its own future training data."
+  hidden:
+    at: "1:39"
+    cue: "There is also a hidden loop: two systems act on each other through the world. At Werkmora, the markdown tool works on the same garden items. Its price cuts change the sales, and those sales feed the forecast."
+  showed:
+    at: "1:58"
+    cue: "The same trap comes in a few shapes. A recommender learns only about the items it showed. An item it never shows never gets a click."
+  fraud:
+    at: "2:10"
+    cue: "A fraud model never learns whether the transactions it blocked were fraud. For the rest, labels arrive late, and only when someone checks or complains. Researchers call this the selective labels problem."
+  same:
+    at: "2:25"
+    cue: "And our forecast: the empty shelf hides demand in the same way. To be clear, no published study has measured such a loop in a live product. Simulations show it can narrow a model over time. The fixes have been measured."
+  yahoo:
+    at: "2:45"
+    cue: "A measured fix comes from Yahoo!, in 2010, with the news on its front page. Mostly the system showed the article it thought was best. A small share of the traffic got a random article, and that traffic was recorded."
+  random:
+    at: "3:04"
+    cue: "With that recorded random traffic they could test any new policy offline, and trust the result. In that study the new approach gave a 12.5 percent click lift, on over 33 million events. The random share shows you items the old model would never show."
+  explore:
+    at: "3:26"
+    cue: "So, three countermeasures. One: exploration, a small share of random choices. For a forecast that is expensive: ordering away from the forecast means dead plants or empty shelves. Werkmora will likely say no. Fine, if the decision is written down."
+  log:
+    at: "3:45"
+    cue: "Two: log what was shown and why, with the model version, and the probability of each choice where there is one. Then you can ask “what if” later, on the logs. At Werkmora: one line per store, item and day, with forecast, order proposed and sent, override and reason, stock, sales, write-offs."
+  control:
+    at: "4:10"
+    cue: "Three: a control group, a slice the model does not influence. Werkmora keeps some comparable stores on the old ERP forecast. They may do worse: that is the price of a fair comparison, and the CCO and the COO decide it. Shadow mode cannot test this: its forecast never reaches the shelf."
+  duo:
+    at: "4:35"
+    cue: "A Dutch case shows the same fix outside machine learning. For years DUO picked students for home checks with a risk profile only. That turned out to discriminate indirectly, and the government apologised in March 2024. Since June 2023 DUO checks a random sample."
+  outcomes:
+    at: "4:56"
+    cue: "Last: capture outcomes from the first day. Corrections, accept or reject, final resolutions. Without fresh labelled live data, there is nothing to retrain on. At Werkmora: a stock-out flag, plant write-offs booked on the handheld the day the plant goes out, and every override by the replenishment team, with a reason."
+  close:
+    at: "5:21"
+    cue: "So who owns what? Data engineering writes the decision log from the first night. Store Operations owns the stock-out flag and the write-offs. The CCO and the COO own the control stores. A month later, the override reasons show three item groups where planners distrust the forecast. That is where to look next."
+  law:
+    at: "5:46"
+    cue: "The EU AI Act writes the same trap down: outputs that influence inputs for future operations. That binds high-risk systems only. The forecast is not one, but the trap is the same."
+  takeaway:
+    at: "6:01"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:08"
+    cue: "In the next episode: people and roles."
+
+text:
+  # The title card and the usual belief.
+  episode: "AI Product Design · Module 3 · Episode 3.10"
+  belief: "“We retrain on the new data every month, so the model keeps getting better.”"
+  belief-tag: "the usual belief"
+  belief-made: "After go-live, part of that new data is made by the model."
+
+  # Werkmora's loop.
+  title-loop: "Werkmora: the forecast feeds its own data"
+  werkmora-line: "A home, DIY and garden retailer. Every night the garden forecast feeds the store orders."
+  werkmora-tag: "fictional company"
+  node-forecast: "forecast"
+  node-order: "store order"
+  node-shelf: "stock on the shelf"
+  node-sales: "sales"
+  node-training: "training data"
+  shelf-empty: "empty on Saturday"
+  shelf-text: "An empty shelf records low sales, not low demand."
+  shelf-chain: "forecast too low → small order → empty shelf → no more sales recorded"
+  learn-mark: "learns: low demand"
+  learns: "The next model learns low demand, and orders less again."
+  loop-direct: "Direct loop: the model picks part of its own future training data."
+  sculley-credit: "Sculley et al. (2015), Hidden Technical Debt in Machine Learning Systems"
+  loop-hidden: "Hidden loop: two systems act on each other through the world."
+  node-markdown: "markdown tool"
+
+  # One trap, three shapes.
+  title-shapes: "One trap, three shapes"
+  shape-recommender: "A recommender"
+  shape-recommender-body: "learns only about the items it showed. An item never shown never gets a click."
+  shape-fraud: "A fraud model"
+  shape-fraud-body: "never learns if the transactions it blocked were fraud. The other labels come late, when someone checks or complains."
+  labels-credit: "Selective labels: Lakkaraju et al. (2017); Dal Pozzolo et al. (2018)"
+  shape-forecast: "The forecast"
+  shape-forecast-body: "an empty shelf hides demand."
+  plainly: "No published study has measured such a loop in a live product. Simulations show it can narrow a model over time."
+  sim-credit: "Simulations: Chaney et al. (2018); Ensign et al. (2018)"
+
+  # Yahoo!: a little randomness, recorded.
+  title-yahoo: "Yahoo!, 2010: a little randomness, recorded"
+  yahoo-what: "Front-page news: mostly the article the system thought best, a small share at random."
+  label-best: "best guess"
+  label-random: "random"
+  log-label: "recorded: the random traffic, what was shown, and the clicks"
+  offline-label: "test any new policy offline, on the recorded traffic"
+  yahoo-quote: "Any policy “can be reliably evaluated offline using previously recorded random traffic”."
+  yahoo-credit: "Li, Chu, Langford & Schapire (2010), WWW. Yahoo! Labs about its own system."
+  lift: "12.5%"
+  lift-label: "click lift on over 33 million events, in that study"
+
+  # Three countermeasures.
+  title-counter: "Three countermeasures"
+  counter-tag: "Werkmora: fictional"
+  c-explore: "Exploration"
+  c-explore-werkmora: "A small share of random choices. For a forecast: dead plants or empty shelves. Werkmora likely says no, and writes the decision down."
+  c-log: "Decision log"
+  c-log-werkmora: "What was shown and why, the model version, the probability of each choice. Per store × item × day: forecast, order proposed and sent, override and reason, stock, sales, write-offs."
+  c-control: "Control group"
+  c-control-werkmora: "A slice the model does not touch. Comparable stores stay on the ERP forecast. They may do worse; the CCO and the COO decide."
+  duo-head: "DUO, NL, 2012–2023: home checks picked by a risk profile only"
+  duo-body: "Indirect discrimination; apology in March 2024. Since June 2023: a random sample."
+  duo-credit: "Rijksoverheid, 1 March 2024. A risk profile, no machine learning."
+
+  # Capture outcomes from day one.
+  title-outcomes: "Capture outcomes from day one"
+  outcomes-what: "Corrections · accept or reject · final resolutions. Without fresh labelled live data there is nothing to retrain on."
+  outcomes-credit: "Shankar et al. (2024)"
+  outcomes-tag: "Werkmora: fictional"
+  out-stockout: "stock-out flag"
+  out-stockout-body: "stock = 0 at opening: that day is “demand at least this”"
+  out-waste: "plant write-offs"
+  out-waste-body: "booked on the handheld the day the plant goes out"
+  out-override: "overrides"
+  out-override-body: "every change by the replenishment team, with its reason"
+  outcomes-log: "All of it logged from the first night of the pilot."
+
+  # Who owns the loop.
+  title-close: "Who owns the loop"
+  close-tag: "Werkmora: fictional"
+  own-log: "Data engineering"
+  own-log-body: "the decision log, from the first night"
+  own-stock: "Store Operations"
+  own-stock-body: "the stock-out flag and the write-offs"
+  own-control: "CCO and COO"
+  own-control-body: "the control stores, and what they may cost"
+  month: "A month later: the override reasons show three item groups where planners distrust the forecast."
+  law: "EU AI Act, Art. 10(2)(f) and 15(4): outputs that influence future inputs. For high-risk systems; the forecast is not one."
+
+  # The close.
+  takeaway-subtitle: "Episode 3.10 in one card"
+  next: "Next episode: people and roles."

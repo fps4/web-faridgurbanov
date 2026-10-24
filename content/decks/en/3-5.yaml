@@ -1,0 +1,190 @@
+# Episode 3.5 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-5.ts. Under `npm run dev`
+# a refresh of /en/deck/3-5 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
+#           view shows. Keep `at` in quotes ("0:22").
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/05-choosing-metrics.slides.md.
+# Times assume about 125 words a minute; adjust them after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-5.ts as well.
+
+title: "Choosing metrics"
+
+steps:
+  title:
+    at: "0:00"
+    cue: "Episode 3.5 of AI Product Design: choosing metrics."
+  promise:
+    at: "0:04"
+    cue: "In this episode: why one number for the whole model is not enough, how to pick the metric from the decision and its cost, and the three levels of metric to write down, each with an owner."
+  usual:
+    at: "0:22"
+    cue: "Most model reviews start with one number: “95 percent accurate.” Often it is the number the tool printed. Nobody asks which errors it counts and which it hides."
+  booking:
+    at: "0:35"
+    cue: "A real example. In 2019 Booking.com published a paper about their 150 or so customer-facing models. Every model was tested in a controlled experiment with real customers. They took 23 comparisons, 46 models: a new model against one that had already proven itself."
+  nocorr:
+    at: "0:56"
+    cue: "For each pair they put the offline gain, in AUC or a ranking metric, next to the gain in the business metric. The correlation was minus 0.1, with a confidence interval from minus 0.45 to 0.27. In plain words: no relation."
+  health:
+    at: "1:15"
+    cue: "Their section title says it: offline model performance is just a health check. One cause they name: a model trained on clicks can drive clicks without more bookings. It is gain against gain, in one system. It does not say offline metrics are useless."
+  werkmora:
+    at: "1:36"
+    cue: "Back to Werkmora, our fictional garden retailer. Every night it forecasts how much of each item every store needs. The pilot team reports one number: WAPE better than the ERP forecast, overall."
+  decision:
+    at: "1:52"
+    cue: "A metric is a decision about which errors count. So start from the decision: how much to order. Too high means dead plants and markdowns. Too low means empty shelves on a sunny weekend. Two errors, two costs."
+  forecast:
+    at: "2:10"
+    cue: "So Werkmora needs two numbers. WAPE: absolute errors divided by total sales, so big sellers count most. And bias, with its sign: too much or too little, on average. Why not MAPE? Many items sell zero on most days, and at zero MAPE is undefined."
+  classify:
+    at: "2:32"
+    cue: "Other tasks need other metrics, and each has its trap. Classification: precision and recall. Accuracy misleads on imbalanced data. A fraud model is 99 percent accurate by never flagging fraud. So read precision and recall at the operating point."
+  rare:
+    at: "2:50"
+    cue: "Ranking a rare class. You will hear that PR-AUC is always better here. Recent research disputes that. Look at precision at your operating point, with how rare the class is. AUROC is fine to compare models before you set a threshold."
+  calibration:
+    at: "3:10"
+    cue: "Probabilities: calibration. Does “70 percent” happen 70 percent of the time? Two UK heart-risk models had almost the same AUROC for men. But one over-predicted. At the 20 percent treatment threshold it flagged 206 men per thousand, the other 110."
+  regression:
+    at: "3:29"
+    cue: "Regression: MAE is the average error in units, RMSE punishes big errors more. MAPE is undefined at zero and punishes over- and under-forecasts differently. The standard alternative is MASE: the error compared with a simple naive forecast."
+  ranking:
+    at: "3:47"
+    cue: "Ranking: precision at k, NDCG, and the trap is the Booking.com one. Generation: rubrics, reference answers, model judges. One average hides the failure types, and model judges have their own biases, so check them against human labels."
+  slice:
+    at: "4:05"
+    cue: "Whatever you pick, report it per slice: store type, country, item group, fast and slow movers. Werkmora has about 0.75 million store-item series. WAPE is weighted by volume, so slow movers can be bad inside a good total. And the slice that matters may not be a column you have."
+  levels:
+    at: "4:29"
+    cue: "Then write down three levels. Business: on-shelf availability, waste and markdown value, stock days. Model: what the data team measures offline, WAPE and bias. Guardrails must not get worse: availability on the top 500 items, waste on live plants, DC trucks per day, manual overrides."
+  owners:
+    at: "4:50"
+    cue: "Each level gets an owner. The CCO and the COO sign the business metrics and the guardrails. The Head of Data and Analytics owns the model metric. The Director Supply Chain watches the guardrails: if one gets worse, the roll-out stops."
+  month:
+    at: "5:10"
+    cue: "A month later, still fictional. The overall gain holds for fast sellers in big stores. But in compact stores, slow live plants show a positive bias: the model orders too many. The slice report and the waste guardrail show it before spring."
+  summary:
+    at: "5:30"
+    cue: "So write it on one page: three levels, the slices, how each number is computed, and who signs. The model metric is the health check; the business metric says if the product works."
+  agents:
+    at: "5:46"
+    cue: "One note for agents. When a system acts over several steps, the unit is the task: did it end in the right state, on every run? The module on agentic products goes deeper."
+  takeaway:
+    at: "6:02"
+    cue: "In one card: the idea, the move, and what to do on Monday."
+  next:
+    at: "6:08"
+    cue: "In the next episode: thresholds and operating points. Where the score becomes a decision."
+
+text:
+  # The title card; the one number.
+  episode: "AI Product Design · Module 3 · Episode 3.5"
+  quote: "“95% accurate.”"
+  usual: "One number, the one the tool printed."
+  usual-tag: "which errors does it hide?"
+
+  # Booking.com: offline gain against business gain.
+  title-booking: "Booking.com: offline gain vs business gain"
+  axis-x-label: "offline gain (AUC, ranking metric)"
+  axis-y-label: "business gain in the experiment"
+  cloud-tag: "schematic"
+  booking-what: "About 150 customer-facing models, each tested in a randomised controlled trial."
+  booking-pairs: "23 comparisons, 46 models: a new model against one already proven."
+  pearson: "Pearson −0.1"
+  ci: "90% CI −0.45 to 0.27"
+  health: "“Offline model performance is just a health check.”"
+  proxy: "One cause they name: trained on clicks, it can drive clicks without more bookings."
+  booking-credit: "Bernardi, Mavridis & Estevez (2019), KDD. Gain against gain, in one system."
+
+  # Werkmora: the decision and the forecast metrics.
+  title-werkmora: "Werkmora: the garden forecast"
+  werkmora-tag: "fictional company"
+  werkmora: "A garden retailer. Every night it forecasts how much of each item every store needs."
+  one-number: "“WAPE better than the ERP forecast. Overall.”"
+  decision: "The decision: how much to order. Two errors, two costs."
+  under: "too low: empty shelves"
+  over: "too high: dead plants, markdowns"
+  zero: "bias 0"
+  wape: "WAPE = sum of absolute errors ÷ sum of sales. Big sellers count most."
+  bias: "Bias = sum of (forecast − actual) ÷ sum of sales. The sign says which way."
+  mape: "MAPE on slow movers: many days with zero sales, so MAPE is undefined."
+
+  # The guide's table: task, metric, trap.
+  title-table: "Other tasks, other metrics, each with a trap"
+  col-task: "task"
+  col-metric: "metric"
+  col-trap: "the trap"
+  task-classify: "classification"
+  metric-classify: "precision, recall"
+  trap-classify: "accuracy: 99% by never flagging fraud"
+  task-rare: "rare class"
+  metric-rare: "precision at the operating point, with prevalence"
+  trap-rare: "“PR-AUC is always better”: disputed. AUROC is fine to compare models."
+  task-calibration: "probabilities"
+  metric-calibration: "calibration: does 70% happen 70% of the time?"
+  trap-calibration: "ranks well, and the numbers are still wrong"
+  task-regression: "regression"
+  metric-regression: "MAE, RMSE, MAPE"
+  trap-regression: "MAPE: undefined at zero, unequal penalty. Use MASE."
+  task-ranking: "ranking"
+  metric-ranking: "precision@k, NDCG"
+  trap-ranking: "offline gains that do not move customers"
+  task-generation: "generation"
+  metric-generation: "rubrics, references, model judges"
+  trap-generation: "one average hides failure types; judges have biases"
+  qrisk-title: "QRISK2 vs Framingham"
+  qrisk-auroc: "Men 35–74: AUROC 0.771 vs 0.750"
+  qrisk-flagged: "110 vs 206"
+  qrisk-per: "men flagged per 1,000 at the 20% treatment threshold"
+  qrisk-credit: "Collins & Altman (2012), BMJ"
+  table-credit: "PR-AUC: McDermott et al. (2024) · MAPE and MASE: Hyndman & Koehler (2006)"
+
+  # Per slice.
+  title-slice: "Report it per slice"
+  slice-tag: "fictional"
+  overall: "overall WAPE"
+  dim-store: "store type: big-box, compact"
+  dim-country: "country: NL, BE, DE"
+  dim-group: "item group: live plants, furniture"
+  dim-speed: "speed: fast and slow movers"
+  series: "≈ 0.75 million store × item series"
+  weighted: "WAPE is weighted by volume: slow movers and compact stores can be bad inside a good total."
+  column: "The slice that matters may not be a column you have."
+
+  # Three levels, with owners.
+  title-levels: "Three levels of metric"
+  levels-tag: "fictional"
+  col-owner: "owner"
+  level-business: "business"
+  level-business-metrics: "on-shelf availability · waste and markdown value · stock days"
+  level-business-owner: "CCO and COO sign"
+  level-model: "model"
+  level-model-metrics: "WAPE and bias per store × item × week, and per division"
+  level-model-owner: "Head of Data & Analytics"
+  level-guardrail: "guardrails"
+  level-guardrail-metrics: "availability on the top 500 garden items · waste on live plants · DC trucks per day · manual overrides"
+  level-guardrail-owner: "Director Supply Chain watches. One gets worse: the roll-out stops."
+  month: "A month later: compact stores, slow live plants, positive bias. Seen before spring."
+  summary: "Write it on one page: the levels, the slices, how each number is computed, who signs."
+  health-again: "The model metric is the health check. The business metric says if the product works."
+
+  # And for agents.
+  title-agents: "And for agents…"
+  agents-unit: "The unit is the task."
+  agent-step-1: "step 1"
+  agent-step-2: "step 2"
+  agent-step-3: "step 3"
+  agent-end: "end state?"
+  agents-check: "Right end state? On every run?"
+  agents-next: "More in the module on agentic products."
+  takeaway-subtitle: "Episode 3.5 in one card"
+  next: "Next episode: thresholds and operating points."
