@@ -116,7 +116,7 @@ export function DeckPlayer({
     const here = deck.steps[step];
     const next = deck.steps[step + 1];
     return (
-      <div className="min-h-screen bg-neutral-950 p-8 font-sans text-neutral-100">
+      <div className="flex h-screen flex-col overflow-hidden bg-neutral-950 p-8 font-sans text-neutral-100">
         <div className="flex items-baseline justify-between text-sm text-neutral-400">
           <span>
             {deck.episode} · {deck.title}
@@ -140,10 +140,17 @@ export function DeckPlayer({
         ) : (
           <p className="mt-10 text-xl text-neutral-500">End of the episode.</p>
         )}
-        <div className="mt-10 w-[640px] overflow-hidden rounded-md border border-neutral-700">
-          <Sketch deck={deck} step={step} className="block h-auto w-full" />
+        {/* The stage fills what the notes leave free, at 16:9: as wide as the window allows, or as
+            tall as the space below the notes, whichever is smaller. */}
+        <div className="mt-8 min-h-0 flex-1 [container-type:size]">
+          <div
+            className="overflow-hidden rounded-md ring-1 ring-neutral-700"
+            style={{ width: `min(100cqw, calc(100cqh * ${STAGE.w / STAGE.h}))` }}
+          >
+            <Sketch deck={deck} step={step} className="block h-auto w-full" />
+          </div>
         </div>
-        <p className="mt-6 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
+        <p className="mt-4 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
         {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
       </div>
     );
