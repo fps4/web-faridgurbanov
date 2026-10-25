@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Sketch } from '@/components/deck/sketch';
 import { CAMERA, STAGE, type Deck } from '@/lib/deck';
 
@@ -18,9 +18,14 @@ type Message = { step: number };
 
 // The notes' own markdown, as the wiki writes it: **bold** for the thought to say, *italic*,
 // `code`. Everything else is plain text.
-function inline(line: string) {
-  return line.split(/(\*\*[^*]+\*\*|\*[^*\s][^*]*\*|`[^`]+`)/g).map((part, i) => {
-    if (/^\*\*.+\*\*$/.test(part)) return <strong key={i} className="font-semibold text-white">{part.slice(2, -2)}</strong>;
+function inline(line: string): ReactNode[] {
+  return line.split(/(\*\*.+?\*\*|\*[^*\s][^*]*\*|`[^`]+`)/g).map((part, i) => {
+    if (/^\*\*.+\*\*$/.test(part))
+      return (
+        <strong key={i} className="font-semibold text-white">
+          {inline(part.slice(2, -2))}
+        </strong>
+      );
     if (/^\*.+\*$/.test(part)) return <em key={i}>{part.slice(1, -1)}</em>;
     if (/^`.+`$/.test(part)) return <code key={i} className="font-mono text-[0.9em]">{part.slice(1, -1)}</code>;
     return part;
@@ -125,9 +130,10 @@ export function DeckPlayer({
             step {step + 1} / {deck.steps.length} · plan {here.at} · clock {clock}
           </span>
         </div>
-        {/* The stage on top, filling what the notes below leave free, at 16:9: as wide as the window
-            allows, or as tall as the space above the notes, whichever is smaller. */}
-        <div className="mt-6 min-h-0 flex-1 [container-type:size]">
+        {/* The stage on top in three fifths of the height, the notes below in a fixed area of two
+            fifths, so neither moves between clicks. The stage is 16:9, as wide as the window allows or
+            as tall as its area, whichever is smaller; the notes start at the top of theirs. */}
+        <div className="mt-6 min-h-0 flex-[3_3_0%] [container-type:size]">
           <div
             className="overflow-hidden rounded-md ring-1 ring-neutral-700"
             style={{ width: `min(100cqw, calc(100cqh * ${STAGE.w / STAGE.h}))` }}
@@ -135,21 +141,23 @@ export function DeckPlayer({
             <Sketch deck={deck} step={step} className="block h-auto w-full" />
           </div>
         </div>
-        <ul className="mt-6 list-disc space-y-3 pl-8 text-3xl leading-snug text-neutral-200">
-          {here.notes.map((line, i) => (
-            <li key={i} className={line.startsWith('→') ? 'list-none -ml-8 text-neutral-400' : undefined}>
-              {inline(line)}
-            </li>
-          ))}
-        </ul>
-        {next ? (
-          <p className="mt-6 text-xl leading-snug text-neutral-400">
-            <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
-            {inline(next.notes[0])}
-          </p>
-        ) : (
-          <p className="mt-6 text-xl text-neutral-500">End of the episode.</p>
-        )}
+        <div className="mt-6 min-h-0 flex-[2_2_0%] overflow-y-auto">
+          <ul className="list-disc space-y-2 pl-7 text-2xl leading-snug text-neutral-200">
+            {here.notes.map((line, i) => (
+              <li key={i} className={line.startsWith('→') ? 'list-none -ml-7 text-neutral-400' : undefined}>
+                {inline(line)}
+              </li>
+            ))}
+          </ul>
+          {next ? (
+            <p className="mt-6 text-xl leading-snug text-neutral-400">
+              <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
+              {inline(next.notes[0])}
+            </p>
+          ) : (
+            <p className="mt-6 text-xl text-neutral-500">End of the episode.</p>
+          )}
+        </div>
         <p className="mt-4 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
         {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
       </div>
