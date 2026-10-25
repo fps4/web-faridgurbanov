@@ -128,13 +128,16 @@ steps:
     notes:
       - "**Six questions · every source · one owner per answer.**"
       - "Write them where the team keeps them current: a datasheet in the repo, or a data contract."
-      - "On screen too: high-risk under the EU AI Act? Article 10 asks almost the same questions, as law."
+  law:
+    at: "5:26"
+    notes:
+      - "**High-risk under the EU AI Act? Article 10 asks almost the same questions — as law.**"
   takeaway:
-    at: "5:33"
+    at: "5:38"
     notes:
       - "**The card: the idea, the move, what to do on Monday.**"
   next:
-    at: "5:40"
+    at: "5:45"
     notes:
       - "**Next: labels.**"
 

@@ -29,6 +29,7 @@ const STEPS = [
   'flat',
   'small',
   'summary',
+  'law',
   'takeaway',
   'next',
 ] as const;
@@ -174,13 +175,13 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       hand('label-small', 900, 560, w.text('label-small'), { size: 30, in: S.small, out: S.summary }),
       hand('groups', 1340, 600, w.text('groups'), { size: 34, tone: 'accent', wrap: 440, in: S.small, out: S.summary }),
 
-      // The close: one sheet per source, and the law that asks the same, on one click.
+      // The close: one sheet per source, and the law that asks the same.
       hand('title-close', 120, 160, w.text('title-close'), { size: 56, in: S.summary, out: S.takeaway }),
       sans('write-down', 120, 260, w.text('write-down'), { size: 34, wrap: 1250, in: S.summary, out: S.takeaway }),
       { id: 'sheet', in: S.summary, out: S.takeaway, shape: { kind: 'box', x: 120, y: 400, w: 700, h: 230 } },
       hand('sheet-head', 150, 460, w.text('sheet-head'), { size: 36, in: S.summary, out: S.takeaway }),
       sans('sheet-rows', 150, 530, w.text('sheet-rows'), { size: 28, wrap: 640, in: S.summary, out: S.takeaway }),
-      hand('law', 900, 470, w.text('law'), { size: 34, wrap: 520, in: S.summary, out: S.takeaway }),
+      hand('law', 900, 470, w.text('law'), { size: 34, wrap: 520, in: S.law, out: S.takeaway }),
 
       // The episode in one card, and what comes next.
       { id: 'card-takeaway', in: S.takeaway, shape: { kind: 'card', card: 'takeaway', x: 100, y: 120, w: 1240, h: 800 } },
