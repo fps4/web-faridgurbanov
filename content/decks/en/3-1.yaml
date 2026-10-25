@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
-# The script is in the wiki: publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-1.ts as well.
 
@@ -20,70 +21,125 @@ title: "Data requirements"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.1 of AI Product Design: data requirements."
+    notes:
+      - "**Episode 3.1 — data requirements.**"
   promise:
     at: "0:05"
-    cue: "In this episode we are looking into quality and quantity aspects of data requirements. Why a row count does not answer “do we have enough data?”. You’ll learn which questions to ask and how to approach “data sufficiency”."
+    notes:
+      - "**In this episode: quality *and* quantity of data.**"
+      - "Why a row count does not answer \"is it enough\"."
+      - "You leave with the questions to ask, and how to measure \"enough\"."
+      - "→ Start where every project starts…"
   rows:
     at: "0:25"
-    cue: "“Do we have enough data?” Every use-case or idea starts with that. And the answer is almost always a row count. “We have three years of sales. Sixty million lines a year.”"
+    notes:
+      - "**\"Do we have enough data?\" — the first question of every idea.**"
+      - "The answer is always a row count: \"three years of sales, sixty million lines a year\"."
+      - "→ Big numbers feel safe. A real example of why they are not."
   shades:
     at: "0:41"
-    cue: "Let’s look at real life example. In 2018, two researchers tested three commercial products that guess gender from a face photo. The initial test datasets had about 80 percent lighter-skinned people. Test results looked good. However, researchers built a balanced test set. The error for darker-skinned women went up to about 35 percent. While for lighter-skinned men it stayed under 1 percent."
+    notes:
+      - "**2018: two researchers test three commercial face-gender products.**"
+      - "The usual test sets: around 80% lighter-skinned faces → results look fine."
+      - "They build a balanced test set → darker-skinned women: errors up to about 35%; lighter-skinned men: under 1%."
   missing:
     at: "1:13"
-    cue: "There was plenty of data. But one group was missing from it. And because the test data was missing the same group, nobody saw the problem."
+    notes:
+      - "**Plenty of data — one group missing.**"
+      - "And the test data missed the same group → nobody saw it."
+      - "→ Same trap, closer to home: our company."
   werkmora:
     at: "1:27"
-    cue: "A quick reminder. Werkmora is a fictional company - a garden retailer with a number of stores. Every night it wants to forecast how much of each product every store needs. A very typical use-case and very complex at the same time."
+    notes:
+      - "**Werkmora — fictional garden retailer, many stores.**"
+      - "Every night: how much of each item does each store need?"
+      - "Typical use case, and hard."
   sources:
     at: "1:48"
-    cue: "That forecast uses nine sources: sales, online orders, stock, prices and promotions, store attributes, the calendar, weather, supply and returns. Nine sources, nine owners. So we ask six questions, and we ask them of each source."
+    notes:
+      - "**Nine sources, nine owners.**"
+      - "Sales · online orders · stock · prices and promotions · store attributes · calendar · weather · supply · returns."
+      - "→ So: six questions — and each one for *every* source."
   content:
     at: "2:07"
-    cue: "Content: Is there a signal in the data, does the data represent the reality? The stock system says the plant is on the shelf. Data quality issues but also legacy fields often kept for compatibility."
+    notes:
+      - "**Content — is the signal there, and does the data match reality?**"
+      - "Stock system says the plant is on the shelf… is it?"
+      - "Quality problems; legacy fields kept for compatibility."
   labels:
     at: "2:25"
-    cue: "Labels: Is the outcome recorded, and how late? At Werkmora, sales is not the same as customer demand. On a day the shelf was empty, you sold nothing, but people still wanted to buy. We’ll talk more about Labels in the next episode."
+    notes:
+      - "**Labels — is the outcome recorded, and how late?**"
+      - "Sales ≠ demand: shelf empty → zero sold, but people wanted it."
+      - "→ Whole next episode on labels."
   volume:
     at: "2:48"
-    cue: "Volume: Count events that either have positive or negative signals, not just rows. A well-known fraud dataset with nearly 300k transactions, had only 492 frauds. To learn what fraud looks like you only need those cases."
+    notes:
+      - "**Volume — count the events you learn from, not the rows.**"
+      - "Public fraud dataset: nearly 300,000 transactions, under 500 frauds."
+      - "The model learns fraud from those few hundred."
   coverage:
     at: "3:06"
-    cue: "Coverage: Ensure data covers every group the product will serve. Werkmora has big stores and small stores. There are different school holidays in every region. If a group is missing from the data, or from the test set, you do not know how the model behaves there."
+    notes:
+      - "**Coverage — every group the product will serve.**"
+      - "Big stores and small stores; school holidays differ by region."
+      - "A group missing from the data — or the test set — = you don't know how the model behaves there."
+      - "(Echo Gender Shades.)"
   freshness:
     at: "3:30"
-    cue: "Freshness: Does the data arrive in time for the nightly run? And does the past still look like today? Weather is a good example. To train fairly you need the old weather forecasts: what you knew at that moment not the actuals."
+    notes:
+      - "**Freshness — in time for the nightly run? Does the past still look like today?**"
+      - "Weather: train on the old *forecasts* — what you knew that night — not the actuals."
   rights:
     at: "3:52"
-    cue: "Rights: Are we allowed to use this data for this purpose?"
+    notes:
+      - "**Rights — may we use it for *this* purpose?**"
+      - "→ A case that shows what \"public\" is worth."
   fine:
     at: "3:59"
-    cue: "In 2024 the Dutch government fined Clearview AI for 30.5 million euros. Clearview had collected billions of face photos from the internet. “It is public” did not mean “we may use it”. Make sure to ask the provider."
+    notes:
+      - "**2024: the Dutch privacy regulator (AP) fines Clearview AI €30.5 million.**"
+      - "Billions of face photos scraped from the internet."
+      - "\"It is public\" ≠ \"we may use it\" → ask the provider, check the contract."
   magic:
     at: "4:19"
-    cue: "Now, “enough”. There is no magic number or rule of thumb. One model might need only 5 events per input, another needs 23."
+    notes:
+      - "**Now \"enough\": there is no magic number.**"
+      - "Research: one model needs about 5 events per input, another about 23."
+      - "→ So don't guess — measure."
   curve:
     at: "4:31"
-    cue: "So measure it. Train on 6 months of history, then 12, 24 and 36. Plot the error each time. That is a learning curve."
+    notes:
+      - "**Train on 6, 12, 24, 36 months. Plot the error each time.**"
+      - "That is a learning curve."
   flat:
     at: "4:44"
-    cue: "You’ll see the point when it flattens, when more data buys you very little. You can make a decision based on a measurement."
+    notes:
+      - "**Where it flattens, more data buys little.**"
+      - "Now \"enough\" is a measurement, not an opinion."
   small:
     at: "4:57"
-    cue: "This situation could be different for different coverage groups. At our fictional company for small stores it was still going down."
+    notes:
+      - "**Each group has its own curve.**"
+      - "Werkmora: big stores flatten — small stores still going down."
+      - "(Coverage again: averages hide the group.)"
   summary:
     at: "5:08"
-    cue: "So: six questions, for each source, with an owner for each answer. Write the answers down where your team will keep them up to date: a datasheet in the repo, or a data contract."
+    notes:
+      - "**Six questions · every source · one owner per answer.**"
+      - "Write them where the team keeps them current: a datasheet in the repo, or a data contract."
   law:
     at: "5:26"
-    cue: "And if you build a high-risk system under the EU AI Act: Article 10 asks almost the same questions, as law."
+    notes:
+      - "**High-risk under the EU AI Act? Article 10 asks almost the same questions — as law.**"
   takeaway:
     at: "5:38"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "5:45"
-    cue: "In the next episode we’ll dive deeper into Labels."
+    notes:
+      - "**Next: labels.**"
 
 text:
   # The title card; the question and the usual answer.

@@ -1,7 +1,7 @@
 ---
 title: "0010: The storyline ships English first, gated, and its episode decks are data rendered by the site"
 status: proposed
-last_updated: 2026-10-21
+last_updated: 2026-10-25
 owners: [architect]
 related:
   - docs/design/decisions/0001-tech-stack-and-static-export.md
@@ -39,7 +39,7 @@ the episodes no longer show downloads from a kit. This record is updated to matc
    false, a production build leaves the nav item out and every storyline route renders a 404; under
    `next dev` everything shows. Same shape as `TRAINING_PUBLISHED`.
 3. **A deck is data; the site draws it.** A deck has two halves. Its words (each step's time and
-   cue, every line on screen, the card headings) are in `content/decks/<locale>/<episode>.yaml`, which
+   presenter notes, every line on screen, the card headings) are in `content/decks/<locale>/<episode>.yaml`, which
    the owner edits without touching code. Its layout, `lib/decks/<episode>.ts`, places them by id on a
    1920×1080 stage with the step each appears and leaves at; adding a step or moving an element is a
    layout change. A Dutch deck is a translated YAML file on the same layout. `components/deck/` draws them with rough.js

@@ -6,14 +6,26 @@ import { CAMERA, STAGE, type Deck } from '@/lib/deck';
 
 // The recording player for an episode deck (FS-0010), at /<locale>/deck/<episode>. One window shows the stage for OBS to capture
 // (1920×1080, scaled to fit, the camera corner kept clear); a second, opened with `p`, is the
-// presenter view: the cue to say, the next cue, the script time and a clock. The two follow each
-// other over a BroadcastChannel, so a click or a presenter remote in either moves both.
+// presenter view: the presenter notes for the click, the next click's first line, the planned time
+// and a clock. The two follow each other over a
+// BroadcastChannel, so a click or a presenter remote in either moves both.
 //
 //   → / Space / PageDown / click   next step       ← / PageUp   previous step
 //   Home / End   first / last       c   camera guide on/off      f   full screen
 //   p   open the presenter view     #12 in the URL   start at step 12
 
 type Message = { step: number };
+
+// The notes' own markdown, as the wiki writes it: **bold** for the thought to say, *italic*,
+// `code`. Everything else is plain text.
+function inline(line: string) {
+  return line.split(/(\*\*[^*]+\*\*|\*[^*\s][^*]*\*|`[^`]+`)/g).map((part, i) => {
+    if (/^\*\*.+\*\*$/.test(part)) return <strong key={i} className="font-semibold text-white">{part.slice(2, -2)}</strong>;
+    if (/^\*.+\*$/.test(part)) return <em key={i}>{part.slice(1, -1)}</em>;
+    if (/^`.+`$/.test(part)) return <code key={i} className="font-mono text-[0.9em]">{part.slice(1, -1)}</code>;
+    return part;
+  });
+}
 
 function initialStep(max: number): number {
   const n = Number(window.location.hash.slice(1));
@@ -101,7 +113,7 @@ export function DeckPlayer({
   if (presenter) {
     const elapsed = started ? Math.floor((now - started) / 1000) : 0;
     const clock = `${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}`;
-    const cue = deck.steps[step];
+    const here = deck.steps[step];
     const next = deck.steps[step + 1];
     return (
       <div className="min-h-screen bg-neutral-950 p-8 font-sans text-neutral-100">
@@ -110,14 +122,20 @@ export function DeckPlayer({
             {deck.episode} · {deck.title}
           </span>
           <span>
-            step {step + 1} / {deck.steps.length} · script {cue.at} · clock {clock}
+            step {step + 1} / {deck.steps.length} · plan {here.at} · clock {clock}
           </span>
         </div>
-        <p className="mt-8 text-4xl leading-snug">{cue.cue}</p>
+        <ul className="mt-8 list-disc space-y-3 pl-8 text-3xl leading-snug text-neutral-200">
+          {here.notes.map((line, i) => (
+            <li key={i} className={line.startsWith('→') ? 'list-none -ml-8 text-neutral-400' : undefined}>
+              {inline(line)}
+            </li>
+          ))}
+        </ul>
         {next ? (
           <p className="mt-10 text-xl leading-snug text-neutral-400">
             <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
-            {next.cue}
+            {inline(next.notes[0])}
           </p>
         ) : (
           <p className="mt-10 text-xl text-neutral-500">End of the episode.</p>

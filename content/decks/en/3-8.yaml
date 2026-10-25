@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/08-non-functional-requirements.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-8.ts as well.
 
@@ -20,73 +21,127 @@ title: "Non-functional requirements"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.8 of AI Product Design: non-functional requirements."
+    notes:
+      - "**Episode 3.8 — non-functional requirements.**"
   promise:
     at: "0:04"
-    cue: "In this episode: the nine non-functional requirements of a model, how they change in a nightly batch, and a fallback for when the model is down or unsure."
+    notes:
+      - "**In this episode: the nine requirements, what changes in a nightly batch, a fallback for \"down\" and for \"unsure\".**"
   usual:
     at: "0:18"
-    cue: "Most requirement pages for a model have one line: how accurate it must be. The rest of the page stays empty."
+    notes:
+      - "**The requirements page for a model has one line: how accurate.**"
+      - "The rest stays empty."
   golive:
     at: "0:29"
-    cue: "Then go-live comes, and the other questions turn up. How fast? What does it cost? May the data leave? Why this answer? And what if it is down?"
+    notes:
+      - "**At go-live the other questions turn up.**"
+      - "How fast? What does it cost? May the data leave? Why this answer? What if it is down?"
+      - "→ One of them went to court."
   refused:
     at: "0:43"
-    cue: "One of those questions went to court. In Austria, a phone operator refused someone a contract of ten euros a month, based on an automated credit assessment by Dun & Bradstreet. What may that person learn about how the result was reached?"
+    notes:
+      - "**Austria: a phone operator refuses a contract of €10 a month.**"
+      - "Based on an automated credit assessment by Dun & Bradstreet Austria (para. 16)."
+      - "The question: what may the person learn about how the result was reached?"
   court:
     at: "1:03"
-    cue: "In 2025 the EU’s highest court answered: the person may learn the procedure and principles that were applied. “The mere communication of a complex mathematical formula, such as an algorithm” is not enough. And in SCHUFA, the same court said that a score a company draws strongly on is an automated decision."
+    notes:
+      - "**CJEU, 27 Feb 2025 (C-203/22): the procedure and principles that were applied.**"
+      - "\"The mere communication of a complex mathematical formula, such as an algorithm\" is not enough."
+      - "SCHUFA (C-634/21, 7 Dec 2023): a score that a company \"draws strongly\" on is an automated decision (GDPR Art. 22(1))."
   logged:
     at: "1:29"
-    cue: "For an engineer, that is a requirement on the system: what do we keep for each decision, so we can explain one result to one person, months later?"
+    notes:
+      - "**For an engineer: a requirement on the system.**"
+      - "What is kept per decision, so one result can be explained to one person months later?"
+      - "→ Back to our own project."
   werkmora:
     at: "1:43"
-    cue: "Now our company. Werkmora is a fictional garden retailer with about 175 stores. Every night it forecasts how much of each garden item every store needs, for the store orders. The pilot’s only requirement: more accurate than today’s ERP forecast."
+    notes:
+      - "**Werkmora — fictional garden retailer, about 175 stores.**"
+      - "Every night: how much of each garden item each store needs → store orders."
+      - "The pilot's only requirement: more accurate than today's ERP forecast."
   nine:
     at: "2:03"
-    cue: "So let’s fill the page. A model has nine non-functional requirements, like any service, and each one needs a number and an owner."
+    notes:
+      - "**Nine non-functional requirements, as for any service. Each: a number and an owner.**"
+      - "Latency · batch or online · throughput and peaks · cost per prediction · where it runs · privacy and residency · explainability · update cadence · fallback."
   latency:
     at: "2:14"
-    cue: "Start with speed. Latency has a price: in a randomised experiment at Booking.com, about 30 percent more latency cost more than half a percent in conversion. Precomputing and caching were among their answers."
+    notes:
+      - "**Speed. Latency has a price.**"
+      - "Booking.com, randomised experiment: about 30% more latency → more than 0.5% less conversion."
+      - "Among their answers: precompute and cache. (Bernardi et al., KDD '19 — vendor about itself.)"
   window:
     at: "2:30"
-    cue: "Werkmora’s forecast is a nightly batch, so latency becomes a window. Weather arrives at midnight, sales by half past twelve, the run goes from one to four, orders are ready at five, and the cut-off is six."
+    notes:
+      - "**Werkmora is a nightly batch: latency becomes a window.**"
+      - "Weather 00:00 · sales 00:30 · run 01:00–04:00 · orders 05:00 · cut-off 06:00 (fictional)."
   throughput:
     at: "2:49"
-    cue: "Throughput becomes series per night: about 0.75 million in the pilot, 5.4 million for the full range later. About seven times more, in the same window. The peak is the season, March to June."
+    notes:
+      - "**Throughput = series per night.**"
+      - "≈ 0.75m in the pilot, ≈ 5.4m later: about 7× in the same window. Peak: March–June."
   cost:
     at: "3:06"
-    cue: "Cost per prediction. For a small model like this, one forecast costs almost nothing; the total is compute, pipelines and people. Generative models cost far more: one study measured 0.002 kilowatt-hours per thousand text classifications, and 0.047 for text generation."
+    notes:
+      - "**Cost per prediction: almost nothing per forecast for a small model.**"
+      - "The total is compute, pipelines and people (3.12 owns the cost lines)."
+      - "Generative is another scale: 0.002 kWh vs 0.047 kWh per 1,000 inferences — energy, not euros."
   boundary:
     at: "3:25"
-    cue: "Next, boundaries. Where does it run: cloud, on-premises, or a device? Which data may leave? Werkmora’s forecast runs in its cloud lakehouse, with no customer data in the inputs. But the weather comes from an outside provider: check its contract and licence. And confirm the lakehouse region."
+    notes:
+      - "**Where it runs (cloud, on-premises, device) and which data may leave.**"
+      - "Werkmora: cloud lakehouse, orders back into the ERP, no customer data in the inputs."
+      - "The weather provider: contract and licence to check. Lakehouse region to confirm."
   provider:
     at: "3:48"
-    cue: "Count the model provider too: a prompt to a hosted language model can carry data out. Personal data leaving the EU needs a legal basis. In 2020 the EU court struck down the EU–US Privacy Shield."
+    notes:
+      - "**The model provider counts too: a prompt can carry data out.**"
+      - "Personal data leaving the EU needs a legal basis. *Schrems II* (2020) struck down the Privacy Shield."
   explain:
     at: "4:06"
-    cue: "Explainability. For a decision about a person it is often law, as we saw. For Werkmora it is trust. A store manager asks: why forty hoses? So each order line keeps a reason, the model version and the main inputs."
+    notes:
+      - "**Explainability: for a decision about a person, often law (the case). For Werkmora, trust.**"
+      - "\"Why 40 hoses?\" → each order line keeps a reason, the model version, the main inputs."
+      - "No personal data in the forecast → no GDPR Art. 22 duty here."
   cadence:
     at: "4:26"
-    cue: "Update cadence follows drift, and for a garden range the season is the drift. Retrain weekly March to August, monthly otherwise, and once more when the ERP baseline wins two weeks in a row."
+    notes:
+      - "**Update cadence follows drift. For garden, the season is the drift.**"
+      - "Weekly March–August, monthly otherwise, plus a retrain when the ERP baseline wins two weeks in a row (Paleyes et al. §6.3: drift sets the cadence)."
   down:
     at: "4:43"
-    cue: "Then the fallback, in two cases. Down: the run is late, failed, or a feed is missing. Then the ERP forecast makes the orders at five, so the model never blocks an order. And a retry alone can make a late batch later."
+    notes:
+      - "**Fallback, case one: down (late, failed, a feed missing).**"
+      - "The ERP forecast makes the orders at 05:00. The model never blocks an order."
+      - "A retry alone can make a late batch later."
   unsure:
     at: "5:04"
-    cue: "Unsure: the very uncertain lines go to the replenishment team. The EU AI Act asks high-risk systems for the same: “backup or fail-safe plans”. This forecast is not high-risk, but the need is the same."
+    notes:
+      - "**Case two: unsure. Very uncertain lines go to the replenishment team (3.6).**"
+      - "AI Act Art. 15(4), high-risk only: robustness \"may include backup or fail-safe plans\"."
+      - "Not high-risk here; the need is the same."
   sheet:
     at: "5:21"
-    cue: "So write it on one page: nine rows, a number and an owner each. Supply Chain owns the deadline, the data team the run, the COO the fallback."
+    notes:
+      - "**One page: nine rows, a number and an owner each.**"
+      - "Supply Chain owns the deadline, the data team the run, the COO the fallback."
   badnight:
     at: "5:35"
-    cue: "Before go-live, test the bad nights: a late sales feed, a missing weather file, a run that ends at a quarter to five. Each must still end in orders by six. Then watch it like any service: run end time, stores on fallback, cost per night."
+    notes:
+      - "**Before go-live, test the bad nights: late sales, no weather file, a run ending 04:45.**"
+      - "Each must still end in orders by 06:00."
+      - "After: watch it like any service — run end time, stores on fallback, cost per night."
   takeaway:
     at: "5:58"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:04"
-    cue: "In the next episode: from prototype to production."
+    notes:
+      - "**Next: from prototype to production.**"
 
 text:
   # The title card.

@@ -57,10 +57,11 @@ function bodyOf(path, text) {
       .join('\n');
   }
   if (path.endsWith('.yaml')) {
-    // The deck words (content/decks/): values only; drop comments and keys.
+    // The deck words (content/decks/): values only; drop comments, keys and the presenter notes
+    // (the list items under `notes`, Farid's own shorthand from the wiki, never on screen).
     return text
       .split('\n')
-      .filter((l) => !/^\s*#/.test(l))
+      .filter((l) => !/^\s*#/.test(l) && !/^\s*- /.test(l))
       .map((l) => l.replace(/^\s*[\w$-]+:\s*/, ''))
       .join('\n');
   }

@@ -3,6 +3,7 @@ import { CAMERA, bounds, deckProblems, diagramStep, highlightAt, overlaps, visib
 import { allDecks, deckById, deckFor, deckTextFiles, layouts } from '@/lib/decks';
 import { composeDeck, deckTextProblems, DeckTextError, type DeckLayout, type DeckText } from '@/lib/decks/compose';
 import { decks as storylineDecks } from '@/lib/storyline';
+import { applyNotes, parsePresenterNotes } from '@/scripts/presenter-notes.mjs';
 
 // The deck format's rules (FS-0010): every click changes something, nothing sits under the
 // camera, and no text sits on other text.
@@ -43,7 +44,7 @@ describe('deck rules', () => {
     locale: 'en',
     episode: '0.0',
     title: 'x',
-    steps: [{ at: '0:00', cue: 'a' }, { at: '0:10', cue: 'b' }],
+    steps: [{ at: '0:00', notes: ['a'] }, { at: '0:10', notes: ['b'] }],
     cards: [],
     elements: [{ id: 'a', in: 0, shape: { kind: 'box', x: 0, y: 0, w: 10, h: 10 } }],
     ...over,
@@ -51,7 +52,7 @@ describe('deck rules', () => {
 
   it('finds the finished diagram before the first card', () => {
     const deck = tiny({
-      steps: [{ at: '0:00', cue: 'a' }, { at: '0:10', cue: 'b' }, { at: '0:20', cue: 'c' }],
+      steps: [{ at: '0:00', notes: ['a'] }, { at: '0:10', notes: ['b'] }, { at: '0:20', notes: ['c'] }],
       elements: [
         { id: 'a', in: 0, shape: { kind: 'box', x: 0, y: 0, w: 1, h: 1 } },
         { id: 'k', in: 2, shape: { kind: 'card', card: 'c', x: 0, y: 0, w: 1, h: 1 } },
@@ -118,7 +119,7 @@ describe('deck words (content/decks/<locale>/<id>.yaml)', () => {
   };
   const words = (over: Partial<DeckText> = {}): DeckText => ({
     title: 'T',
-    steps: { a: { at: '0:00', cue: 'first' }, b: { at: '0:10', cue: 'second' } },
+    steps: { a: { at: '0:00', notes: ['first'] }, b: { at: '0:10', notes: ['second'] } },
     text: { one: 'Hello', two: 'World' },
     cards: {},
     ...over,
@@ -134,7 +135,7 @@ describe('deck words (content/decks/<locale>/<id>.yaml)', () => {
 
   it('places the words by id and the steps in the layout order', () => {
     const deck = composeDeck(layout, words(), 'en', 'f.yaml');
-    expect(deck.steps.map((s) => s.cue)).toEqual(['first', 'second']);
+    expect(deck.steps.map((s) => s.notes)).toEqual([['first'], ['second']]);
     expect(deck.elements.map((e) => (e.shape.kind === 'text' ? e.shape.text : ''))).toEqual(['Hello', 'World']);
   });
 
@@ -143,20 +144,60 @@ describe('deck words (content/decks/<locale>/<id>.yaml)', () => {
       'text: "two" is missing',
       'text: "three" is not used by the layout',
     ]);
-    expect(problems(words({ steps: { a: { at: '0:00', cue: 'x' }, c: { at: '0:10', cue: 'y' } } }))).toEqual([
+    expect(problems(words({ steps: { a: { at: '0:00', notes: ['x'] }, c: { at: '0:10', notes: ['y'] } } }))).toEqual([
       'steps: "b" is missing',
       'steps: "c" is not a step in the layout',
     ]);
-    expect(problems(words({ steps: { b: { at: '0:10', cue: 'y' }, a: { at: '0:00', cue: 'x' } } }))).toEqual([
+    expect(problems(words({ steps: { b: { at: '0:10', notes: ['y'] }, a: { at: '0:00', notes: ['x'] } } }))).toEqual([
       "steps: keep the layout's order (a, b)",
     ]);
   });
 
   it('rejects a file without the deck shape', () => {
-    expect(deckTextProblems({ title: 'T', steps: { a: { at: 22, cue: 'x' } }, text: { one: '' } })).toEqual([
+    expect(deckTextProblems({ title: 'T', steps: { a: { at: 22, notes: ['x'] } }, text: { one: '' } })).toEqual([
       'steps: "a" at: write the time in quotes, like "1:05"',
       'text: "one" needs words',
     ]);
     expect(deckTextProblems('just a line')).toEqual(['the file is not a mapping of title, steps, text and cards']);
+    expect(deckTextProblems({ title: 'T', steps: { a: { at: '0:00', notes: 'one line' } }, text: {} })).toEqual([
+      'steps: "a" notes: a list of lines (copied from the wiki by `npm run notes`)',
+    ]);
+  });
+});
+
+describe('presenter notes (scripts/presenter-notes.mjs)', () => {
+  const md = [
+    '---',
+    'deck: web-faridgurbanov — /en/deck/3-9 (content/decks/en/3-9.yaml)',
+    '---',
+    '## Presenter notes',
+    '',
+    '**Intro**',
+    '',
+    '▶ `a`',
+    '- **The thought.**',
+    '- A fact that runs',
+    '  on to a second line.',
+    '- → the bridge',
+    '',
+    '▶ `b`',
+    '- Only one.',
+    '',
+    '## Slides',
+    '- not a note',
+  ].join('\n');
+
+  it('reads the deck and one list of lines per ▶ block', () => {
+    expect(parsePresenterNotes(md)).toEqual({
+      deck: { locale: 'en', id: '3-9' },
+      notes: { a: ['**The thought.**', 'A fact that runs on to a second line.', '→ the bridge'], b: ['Only one.'] },
+    });
+  });
+
+  it('writes notes under each step, keeping comments, and reports mismatches', () => {
+    const yaml = '# words\nsteps:\n  a:\n    at: "0:00"\n    notes:\n      - "Old."\n  c:\n    at: "0:10"\n    notes:\n      - "Say c."\n';
+    const { text, problems } = applyNotes(yaml, { a: ['**One.**'], b: ['Two.'] });
+    expect(text).toBe('# words\nsteps:\n  a:\n    at: "0:00"\n    notes:\n      - "**One.**"\n  c:\n    at: "0:10"\n');
+    expect(problems).toEqual(['step "c" has no ▶ block in the presenter notes', '▶ `b` is not a step of the deck']);
   });
 });

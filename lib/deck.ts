@@ -60,8 +60,11 @@ export interface Element {
 export interface Step {
   /** Cumulative time in the script, e.g. '0:50'. */
   at: string;
-  /** What the presenter says or does here, from the script's stage directions. */
-  cue: string;
+  /**
+   * The presenter notes for this click, one line per bullet, from the wiki's `.slides.md`
+   * (`npm run notes`): the thought to say in bold, the facts, the bridge to the next click (→).
+   */
+  notes: string[];
 }
 
 /** A card's content: a title, a subtitle and labelled rows, as the episode's closing card is. */

@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/00-intro.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-0.ts as well.
 
@@ -20,49 +21,78 @@ title: "Data and model requirements"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.0 of AI Product Design: the intro to data and model requirements."
+    notes:
+      - "**Episode 3.0 — the intro to data and model requirements.**"
   promise:
     at: "0:05"
-    cue: "In this episode: why the model is the small part of an AI product, the three mental models this module is built on, and the company we follow through it."
+    notes:
+      - "**In this episode: why the model is the small part, the three mental models, and the company.**"
   werkmora:
     at: "0:20"
-    cue: "First, the company. Werkmora is made up, built from public facts of real retailers. A home, DIY and garden retailer with about 175 stores in the Netherlands, Belgium and Germany, and a webshop. For Werkmora the garden season decides the year: spring weather can make or break a quarter."
+    notes:
+      - "**Werkmora — made up, built from public facts of real retailers.** Say it every module."
+      - "Home, DIY and garden · about 175 stores in NL, BE, DE · a webshop."
+      - "The garden season decides the year."
   forecast:
     at: "0:43"
-    cue: "In this module we look at one AI use: the garden replenishment forecast. Every day: how much of each item will each store sell, one to 21 days ahead. That forecast feeds the store orders. Success means fewer empty shelves on sunny spring weekends, and fewer dead plants."
+    notes:
+      - "**This module: the garden replenishment forecast.**"
+      - "Daily demand per store × item, 1–21 days ahead → feeds the store orders."
+      - "Success = fewer empty shelves *and* fewer dead plants."
   usual:
     at: "1:06"
-    cue: "Werkmora has a pilot in one region, with a good offline score. The question on the table is: which algorithm do we scale? That is the usual picture of an AI product. Pick the algorithm, train it, done."
+    notes:
+      - "**\"Which algorithm do we scale?\"** — the pilot has a good offline score."
+      - "The usual picture: pick the algorithm, train it, done."
+      - "→ A different picture."
   box:
     at: "1:25"
-    cue: "Here is a different picture. In 2015 engineers at Google drew what a real machine learning system looks like. The model code is this small box in the middle."
+    notes:
+      - "**2015, engineers at Google: the model code is a small box.**"
   around:
     at: "1:39"
-    cue: "Around it sits everything else. The data that feeds it. The labels that teach it. The evaluation that proves it. The serving that runs it. And the monitoring that notices when it stops working."
+    notes:
+      - "**Data feeds it · labels teach it · evaluation proves it · serving runs it · monitoring notices when it stops.**"
   requirements:
     at: "1:55"
-    cue: "So when we write requirements for an AI product, most of them are not about the algorithm. They are about the system around it."
+    notes:
+      - "**So most requirements are for the system around the model, not the algorithm.**"
+      - "→ Three mental models."
   spec:
     at: "2:07"
-    cue: "Three mental models hold this module together. One: data is the specification. In normal software you write the behaviour in code. In machine learning the behaviour is learned from data. So what the data covers, and what it leaves out, is the spec."
+    notes:
+      - "**One: data is the specification.** Code → behaviour written; ML → behaviour learned."
+      - "What the data covers and leaves out *is* the spec."
   amazon:
     at: "2:29"
-    cue: "Amazon saw this between 2014 and 2017. It built an experimental tool to rate job applicants, trained on ten years of résumés, mostly from men. The tool penalised the word “women’s”. Recruiters looked at its ratings but never relied only on them, and the team was disbanded."
+    notes:
+      - "**Amazon, 2014–2017:** experimental tool to rate applicants, ten years of résumés, mostly from men; penalised \"women's\"."
+      - "Recruiters never relied only on it; team disbanded. Reuters, 2018."
   scores:
     at: "2:51"
-    cue: "Two: the model gives scores, the product makes decisions. Werkmora’s model gives a quantity, not an order. Safety stock turns it into an order, and how much is a business choice: empty shelves against dead plants. So the CCO and the COO decide the service level, not the data team."
+    notes:
+      - "**Two: the model scores, the product decides.**"
+      - "Werkmora: a quantity, not an order. Safety stock turns it into one."
+      - "Empty shelves vs dead plants → a business choice. CCO and COO decide the service level."
   start:
     at: "3:15"
-    cue: "Three: shipping is the start. A model gets worse when the world moves away from its training data. And sometimes the source itself moves: its owner changes the system. So monitoring, retraining and fresh outcomes are requirements, and we write them before launch."
+    notes:
+      - "**Three: shipping is the start.**"
+      - "The world drifts — and sometimes the source owner changes the system."
+      - "Monitoring, retraining, fresh outcomes: written before launch."
   map:
     at: "3:36"
-    cue: "This module walks the diagram one box at a time. Before the model: data and labels. After it: metrics, thresholds and baselines. And over time: from prototype to production, feedback loops and what it costs."
+    notes:
+      - "**The module walks the diagram one box at a time.**"
+      - "Before the model (3.1–3.4) · after it (3.5–3.7) · over time (3.9, 3.10, 3.12)."
   takeaway:
     at: "3:53"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "4:00"
-    cue: "In the next episode: data requirements. Which questions to ask of every data source."
+    notes:
+      - "**Next: data requirements.**"
 
 text:
   # The title card.

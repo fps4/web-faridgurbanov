@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/07-baselines.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-7.ts as well.
 
@@ -20,67 +21,119 @@ title: "Baselines"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.7 of AI Product Design: baselines."
+    notes:
+      - "**Episode 3.7 — baselines.**"
   promise:
     at: "0:03"
-    cue: "In this episode: why a model score on its own tells you nothing. The three baselines every model should stand next to. And when you should ship the simple rule."
+    notes:
+      - "**In this episode: a score alone tells nothing · the three baselines · when to ship the simple rule.**"
   claim:
     at: "0:18"
-    cue: "A forecasting vendor comes to a meeting and says: our tool is forty percent more accurate. The data team has a pilot model with a nice score too."
+    notes:
+      - "**A forecasting vendor: \"our tool is 40% more accurate\".**"
+      - "The data team's pilot also has a nice score."
+      - "Company story, based on a reported case: no name."
   than-what:
     at: "0:31"
-    cue: "But forty percent more accurate than what? A forecast error of thirty percent: is that good or bad? A score alone has no meaning. It needs something to compare with, on the same data."
+    notes:
+      - "**Than what?**"
+      - "\"WAPE 30%\": good or bad? Nobody can say without something to compare, on the same data."
+      - "→ A real case where the comparison changed the story."
   compas:
     at: "0:48"
-    cue: "A real example. COMPAS is a commercial risk tool. It predicts if a defendant will commit another crime, from 137 features. In 2018 two researchers put it next to simple baselines. COMPAS was 65.4 percent accurate, on 7,214 defendants."
+    notes:
+      - "**COMPAS: a commercial risk tool, 137 features. Will a defendant commit another crime?**"
+      - "Dressel & Farid, 2018: 65.4% accurate on 7,214 defendants."
   crowd:
     at: "1:06"
-    cue: "Then they asked people with no criminal justice expertise to predict the same thing, for a thousand of the same defendants. One person alone was worse: 62.1 percent. But as a crowd they reached 67.0 percent."
+    notes:
+      - "**People with no criminal justice expertise, on 1,000 of the same defendants.**"
+      - "One person alone: 62.1% (worse). As a crowd: 67.0%."
+      - "(COMPAS on those 1,000: 65.2%, on the slide's credit line.)"
   two-features:
     at: "1:24"
-    cue: "And then a logistic regression with only two features: age and the number of prior convictions. 66.8 percent. A model you can build in an afternoon matched a product with 137 features."
+    notes:
+      - "**Logistic regression, two features: age and prior convictions → 66.8%.**"
+      - "Built in an afternoon; matched 137 features."
+      - "→ Now our own company."
   werkmora:
     at: "1:39"
-    cue: "Back to our fictional company, Werkmora: a garden retailer with about 175 stores in the Netherlands, Belgium and Germany. Every night it forecasts how much of each garden product each store needs. The pilot model has a forecast error of 30 percent. Compared with what?"
+    notes:
+      - "**Werkmora — fictional garden retailer, about 175 stores in NL, BE, DE.**"
+      - "Every night: how much of each garden product does each store need?"
+      - "The pilot: forecast error 30%. Compared with what?"
   trivial:
     at: "2:00"
-    cue: "First, a trivial baseline, one that needs no thinking. In classification that is: always predict the most common class. For a forecast it is the seasonal naive: same week last year, adjusted for the calendar. It tells you if the model finds any signal at all."
+    notes:
+      - "**One: a trivial baseline — no thinking.**"
+      - "Classification: always the most common class. Forecast: seasonal naive, same week last year, calendar-adjusted."
+      - "Answers: does the model find any signal at all?"
   heuristic:
     at: "2:23"
-    cue: "Second, a heuristic: the rule an expert writes in an afternoon. At Werkmora that is a moving average plus “sunny weekend, add x percent”. The replenishment team sets the x. It tells you if you need machine learning at all."
+    notes:
+      - "**Two: a heuristic — the rule an expert writes in an afternoon.**"
+      - "Moving average + \"sunny weekend → +x%\"; the replenishment team sets x."
+      - "Answers: do we need ML at all?"
   today:
     at: "2:42"
-    cue: "Third, today’s process, as it really runs. At Werkmora that is the ERP forecast plus the manual changes the replenishment team makes. The raw ERP number is not today: people fix it. This baseline is the real business case."
+    notes:
+      - "**Three: today's process, as it really runs.**"
+      - "ERP forecast **plus** the replenishment team's manual changes. The raw ERP number is not today."
+      - "Answers: is it better than now? This is the business case."
   same-data:
     at: "3:00"
-    cue: "All three run on the same test as the model: last spring, the same stores and items, the same way to handle days with an empty shelf, the same metric. A baseline on other data proves nothing."
+    notes:
+      - "**All three on the same test as the model.**"
+      - "Last spring · same stores and items · same stock-out flag (data-02) · same metric (WAPE)."
+      - "A baseline on other data proves nothing."
   m4:
     at: "3:18"
-    cue: "Are simple baselines easy to beat? In forecasting, often not. In the M4 competition in 2018, the six pure machine learning methods performed poorly. None of them beat a simple combination of statistical methods. M4 was not retail data."
+    notes:
+      - "**Simple baselines are hard to beat in forecasting.**"
+      - "M4, 2018: the six pure ML methods performed poorly; none beat a combination of simple statistical methods."
+      - "Not retail data. Say no more than that."
   table:
     at: "3:37"
-    cue: "Here is Werkmora’s pilot, with made-up numbers. Forecast error on last spring: same week last year, 45 percent. Today’s process, 38. The weather rule, 35. The model, 30."
+    notes:
+      - "**Werkmora's pilot, made-up numbers. WAPE on last spring:**"
+      - "Same week last year 45% · ERP + manual 38% · weather rule 35% · the model 30%."
   claims:
     at: "3:50"
-    cue: "So the same model is 33 percent better, or 21, or 14. It depends on the baseline. A vendor picks the first. The board needs the second. And whether you need machine learning at all depends on the third."
+    notes:
+      - "**The same model: 33%, 21% or 14% better — it depends on the baseline.**"
+      - "The vendor picks the first. The board needs the second. \"Do we need ML?\" rests on the third."
   ship:
     at: "4:09"
-    cue: "This brings us to the rule. If the model does not clearly beat a simple heuristic on the same data, counting the cost to run and maintain it, ship the heuristic. And collect data for later. Google’s rules of machine learning say the same: don’t be afraid to launch without machine learning."
+    notes:
+      - "**The rule: if the model does not clearly beat a simple heuristic on the same data, counting the cost to run and maintain it → ship the heuristic, and collect data.**"
+      - "Zinkevich (Google), Rule #1: \"Don't be afraid to launch a product without machine learning.\""
   qualifiers:
     at: "4:34"
-    cue: "Three words in that rule matter. Simple: a weather rule is fine. Four hundred nested rules nobody can maintain, and there Google says: choose machine learning. Clearly: a fair test. In clinical studies with a fair comparison, machine learning and logistic regression showed no difference. And the cost: pipelines, retraining, on-call."
+    notes:
+      - "**Three words matter.**"
+      - "*Simple:* a weather rule, yes. 400 nested rules are unmaintainable → Rule #3: choose ML."
+      - "*Clearly:* a fair test (same data, time-based holdout, online where possible). Christodoulou 2019: in clinical studies at low risk of bias, no AUC difference between ML and logistic regression."
+      - "*Cost:* pipelines, retraining, on-call, explaining it to the replenishment team."
   keep:
     at: "4:59"
-    cue: "After launch, keep the baseline running. At Werkmora the ERP baseline runs every night. It is the fallback when the batch is late. And it is the yardstick: retrain when the model is worse than the ERP baseline on the top garden items, two weeks in a row. As engineers we know this from migrations: a parallel run, the new system next to the old one."
+    notes:
+      - "**After launch the baseline keeps running.**"
+      - "Werkmora: ERP baseline every night → fallback when the batch is late; yardstick → retrain when the model is worse than ERP on the top garden items two weeks in a row."
+      - "From engineering: you know this as a parallel run in a migration."
   owners:
     at: "5:30"
-    cue: "So write it down: three baselines, one test, and one table per slice that the COO can read without a data scientist. The data team builds it with the replenishment team. Supply Chain decides per item group. Where the model does not clearly win, that group keeps the rule."
+    notes:
+      - "**Write it down: three baselines, one test, one table per slice the COO can read.**"
+      - "Data team builds it with the replenishment team; Supply Chain (COO) decides per item group."
+      - "Where the model does not clearly win, that group keeps the rule."
   takeaway:
     at: "5:54"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:00"
-    cue: "In the next episode: non-functional requirements."
+    notes:
+      - "**Next: non-functional requirements.**"
 
 text:
   # The title card; the claim with nothing next to it.

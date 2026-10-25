@@ -4,7 +4,7 @@ persona: architect
 status: in-review
 complexity: M
 milestone: M1
-last_updated: 2026-10-21
+last_updated: 2026-10-25
 spec: docs/product/FS-0010-ai-product-design-storyline.md
 design: docs/design/decisions/0010-storyline-english-first-and-decks-as-data.md
 ---
@@ -29,7 +29,8 @@ The first iteration's sixteen decks (1.1–8.2) were removed on 2026-10-21; the 
 - WHEN the presenter advances, THE stage SHALL draw the arriving elements in order and fade the
   leaving ones; WHEN they step back, THE stage SHALL show the earlier step still.
 - THE stage SHALL keep the bottom-right camera corner clear on every step.
-- THE presenter view SHALL show the cue, the next cue, the script time and a clock, and SHALL stay in
-  step with the stage.
+- THE presenter view SHALL show the step's presenter notes as bullets (copied from the wiki's
+  `.slides.md` by `npm run notes`), the next step's first note, the planned time and a clock, and
+  SHALL stay in step with the stage.
 - THE build SHALL fail WHEN a deck breaks the format (FS-0010 acceptance criteria).
 - THE deck page SHALL carry `noindex, nofollow`.

@@ -99,15 +99,16 @@ export function deckTextProblems(doc: unknown): string[] {
   const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
   if (!isRecord(doc)) return ['the file is not a mapping of title, steps, text and cards'];
   if (typeof doc.title !== 'string' || !doc.title) problems.push('title: write it as text');
-  if (!isRecord(doc.steps)) problems.push('steps: a mapping of step name to `at` and `cue`');
+  if (!isRecord(doc.steps)) problems.push('steps: a mapping of step name to `at` and `notes`');
   else
     for (const [name, step] of Object.entries(doc.steps)) {
       if (!isRecord(step)) {
-        problems.push(`steps: "${name}" needs an \`at\` and a \`cue\``);
+        problems.push(`steps: "${name}" needs an \`at\` and \`notes\``);
         continue;
       }
       if (typeof step.at !== 'string' || !/^\d+:[0-5]\d$/.test(step.at)) problems.push(`steps: "${name}" at: write the time in quotes, like "1:05"`);
-      if (typeof step.cue !== 'string' || !step.cue) problems.push(`steps: "${name}" cue: write it as text`);
+      if (!Array.isArray(step.notes) || !step.notes.length || !step.notes.every((n) => typeof n === 'string' && n))
+        problems.push(`steps: "${name}" notes: a list of lines (copied from the wiki by \`npm run notes\`)`);
     }
   if (!isRecord(doc.text)) problems.push('text: a mapping of element id to its words');
   else for (const [id, v] of Object.entries(doc.text)) if (typeof v !== 'string' || !v) problems.push(`text: "${id}" needs words`);

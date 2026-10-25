@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/04-splits-and-validation.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-4.ts as well.
 
@@ -20,70 +21,130 @@ title: "Splits and validation"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.4 of AI Product Design: splits and validation."
+    notes:
+      - "**Episode 3.4 — splits and validation.**"
   promise:
     at: "0:04"
-    cue: "In this episode: what a split is for, how to choose between a random, a time-based and a group split, and why you may use the test set only once."
+    notes:
+      - "**In this episode: what a split is for, how to choose random, time or group, why the test set is spent once.**"
   random:
     at: "0:19"
-    cue: "A sentence from many model reviews: “We held out 20 percent at random, and the model scored very well.” It sounds like proof. Often it is not."
+    notes:
+      - "**\"We held out 20% at random, and the model scored very well.\"**"
+      - "Sounds like proof. Often it is not."
+      - "→ A real case."
   zech:
     at: "0:32"
-    cue: "A real example. In 2018 researchers trained a model to detect pneumonia on chest X-rays: 158,323 images from three hospital systems."
+    notes:
+      - "**2018: a model to detect pneumonia on chest X-rays.**"
+      - "158,323 images from three hospital systems (NIH, Mount Sinai, Indiana)."
   hospital:
     at: "0:42"
-    cue: "A network could also tell which hospital an X-ray came from: 99.95, 99.98 and 95.59 percent accuracy. And pneumonia was far more common in one: 34.2 percent at Mount Sinai, against 1.2 and 1.0 percent at the other two. So the hospital was a strong clue for the answer."
+    notes:
+      - "**A network could also tell which hospital an image came from.**"
+      - "99.95% · 99.98% · 95.59% accuracy."
+      - "Pneumonia 34.2% at Mount Sinai, against 1.2% and 1.0% at the other two (do not assign them)."
+      - "So the hospital was a strong clue for the answer."
   outside:
     at: "1:05"
-    cue: "On the internal test the model reached an AUC of 0.931. At an outside hospital, 0.815. Images from all hospitals sat on both sides of the test, so the test rewarded the hospital clue. Holding out a whole hospital showed the real performance."
+    notes:
+      - "**Internal test: AUC 0.931. Outside hospital: 0.815.**"
+      - "All hospitals on both sides of the test → the test rewarded the hospital clue."
+      - "Holding out a whole hospital showed the real performance. Zech et al., PLOS Medicine, 2018."
+      - "→ Same trap, at our company."
   werkmora:
     at: "1:26"
-    cue: "Our company, Werkmora, is a fictional garden retailer with about 175 stores. It forecasts how much of each item each store will sell, 1 to 21 days ahead. The pilot was scored on a random 20 percent of the rows. So the same store and week sit on both sides, and neighbouring days share weather, promotions and stock. The score is good. It says little about next spring."
+    notes:
+      - "**Werkmora: fictional garden retailer, about 175 stores.**"
+      - "Forecast per store × item, 1–21 days ahead."
+      - "Pilot scored on a random 20% of store × item × day rows → same store and week on both sides; neighbouring days share weather, promotions, stock."
+      - "Good score; it says little about next spring."
   simulate:
     at: "1:59"
-    cue: "So here is the main idea. A split is a simulation of production. Before you choose one, ask: in production, what will be new to the model? New days, new customers, new stores. Then make exactly those things new in the test."
+    notes:
+      - "**A split is a simulation of production.**"
+      - "Ask first: *in production, what will be new to the model?* New days, customers, stores, sites."
+      - "Make exactly those things new in the test."
   split-random:
     at: "2:19"
-    cue: "A random split is fine when the rows are independent and the world is stable. And only when there are no duplicates across sources, and no hidden groups, like a patient or a store, on both sides."
+    notes:
+      - "**Random: independent rows, a stable world.**"
+      - "And no duplicates across sources, no hidden groups (patient, store, device) on both sides — Roberts M. 2021, Kapoor & Narayanan 2023, Zech 2018."
   split-time:
     at: "2:36"
-    cue: "A time-based split trains on the past and tests on a later period. For a forecast, and for anything that predicts the future, it is the default."
+    notes:
+      - "**Time: train on the past, test on a later period.**"
+      - "The default for a forecast and anything that predicts the future."
+      - "(If asked: Bergmeir, Hyndman & Koo 2018 — for *purely autoregressive* models, K-fold CV can be valid for model selection. Not a reason to drop the later test period.)"
   backtest:
     at: "2:49"
-    cue: "One cut-off gives one number. A backtest repeats it at many cut-off dates. Each time you train only on data before the date, forecast the same horizon as the product, and use the data as it was known then."
+    notes:
+      - "**A backtest repeats the cut-off many times.**"
+      - "Train only on data before each date · same horizon as the product · data as it was known then (data-03)."
   split-group:
     at: "3:08"
-    cue: "A group split keeps all records of one customer, store or patient on the same side. Otherwise the model is tested on someone it has already seen. If the product will run at new sites, hold out whole sites, as the pneumonia study did."
+    notes:
+      - "**Group: one customer, store or patient on one side only.**"
+      - "Otherwise the model is tested on someone it has already seen."
+      - "New sites in production → hold out whole sites (as Zech did)."
   shortcuts:
     at: "3:29"
-    cue: "Even that can miss things. COVID-19 X-ray models lost half of their performance at other hospitals, and some of their shortcuts worked at the new hospital too. A held-out site is needed, and it does not prove everything."
+    notes:
+      - "**Even a held-out site can miss things.**"
+      - "COVID-19 chest X-ray models: \"half of the model's predictive performance is lost\" at other hospitals; shortcuts (markers, text, patient position) — some also work at the new hospital."
+      - "External split: needed, and it does not prove everything. DeGrave et al. 2021."
+      - "→ What if the data is small?"
   cv:
     at: "3:48"
-    cue: "Cross-validation rotates which part is held out. You train several times and average the scores. On small data that gives a more stable estimate."
+    notes:
+      - "**Cross-validation: rotate the held-out part, average the scores.**"
+      - "A more stable estimate on small data."
   cv-rules:
     at: "3:59"
-    cue: "Two rules. If the data has time, place or group structure, rotate whole blocks. And if cross-validation also tunes or chooses the model, use nested cross-validation or a separate test set. In one study, tuned models looked good in cross-validation on data with no real signal, and were at chance on an independent test."
+    notes:
+      - "**Two rules.**"
+      - "Time, place or group structure → rotate whole blocks: blocked or grouped CV (Roberts D.R. 2017, \"serious underestimation of predictive error\" otherwise)."
+      - "CV also used to tune or choose → nested CV, or a separate test set."
+      - "Varma & Simon 2006: on data with no real signal, tuned models looked good in CV and were at chance on an independent test."
   three-sets:
     at: "4:25"
-    cue: "So there are three sets with three jobs. The model learns from the training set. You tune and choose with the validation set. The test set gives the final number, once."
+    notes:
+      - "**Three sets, three jobs.**"
+      - "Training: the model learns · validation: you tune and choose · test: the final number, once."
   spent:
     at: "4:40"
-    cue: "Every time you look at the test score and change something, a bit of the test set leaks into your choices. After many looks it is training data, and the score you report is too high. One paper puts this error at the same size as the differences between algorithms."
+    notes:
+      - "**Every look leaks a bit.**"
+      - "After many looks the test set is training data; the reported score is too high."
+      - "Cawley & Talbot 2010: errors \"of comparable magnitude to differences in performance\" between algorithms → big enough to pick the wrong model."
+      - "(TRIPOD+AI 2024 writes it as a reporting rule.)"
   plan:
     at: "5:04"
-    cue: "Back to Werkmora, done right. The team backtests on weekly cut-offs through spring 2025, 1 to 21 days ahead, with the data as it was known. All tuning and model choice happens here."
+    notes:
+      - "**Werkmora, done right.**"
+      - "Backtest: weekly cut-offs through spring 2025, 1–21 days ahead, data as it was known."
+      - "All tuning and model choice happens here."
   sealed:
     at: "5:20"
-    cue: "Spring 2026 is the sealed test. The model is trained up to the end of February, and the test is opened once, at the go/no-go meeting. Some whole stores are held out, and the old ERP forecast is scored on the same splits."
+    notes:
+      - "**Spring 2026 (March–June) is the sealed test.**"
+      - "Trained up to end of February 2026; opened once, at the go/no-go meeting."
+      - "Whole stores held out (big and compact); the ERP forecast and the seasonal naive baseline scored on the same splits (data-07)."
   page:
     at: "5:40"
-    cue: "Write it on one page: what is new in production, the cut-off dates, the sealed period, and who may open it. The Head of Data and Analytics keeps it sealed. The field agrees the split should copy production. People differ on how often you may look."
+    notes:
+      - "**One page: what is new · cut-off dates · the sealed period · who may open it.**"
+      - "Owner: Head of Data & Analytics keeps it sealed. The backtest runs as a job in the pipeline."
+      - "Everyone agrees the split copies production; they differ on how often you may look (once: TRIPOD+AI and the guide; many times with a method that allows it: Dwork et al. 2015)."
+      - "Your angle, if it fits: the backtest as an integration test suite, the split as an ADR."
   takeaway:
     at: "6:02"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:09"
-    cue: "In the next episode: choosing metrics."
+    notes:
+      - "**Next: choosing metrics.**"
 
 text:
   # The title card; the usual check.

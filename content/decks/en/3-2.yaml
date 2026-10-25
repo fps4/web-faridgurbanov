@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/02-labels.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-2.ts as well.
 
@@ -20,73 +21,129 @@ title: "Labels"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.2 of AI Product Design: labels."
+    notes:
+      - "**Episode 3.2 — labels.**"
   promise:
     at: "0:05"
-    cue: "In this episode: the five places labels come from, and the weakness of each. How to check labels before you trust them. And how to plan for labels that arrive late, or only for some cases."
+    notes:
+      - "**In this episode: the five label sources and their weaknesses, how to check labels, and how to plan for late or partial labels.**"
   free:
     at: "0:22"
-    cue: "Most teams start with one belief: the outcome is already in the database, so the labels are free. Was the claim paid? How much did we sell? Just take it."
+    notes:
+      - "**The usual belief: \"the outcome is already in the database, so the labels are free.\"**"
+      - "Was the claim paid, how much did we sell. Just take it."
+      - "→ What that can do."
   cost:
     at: "0:36"
-    cue: "In the US, a widely used commercial algorithm picks patients for extra care, for about 200 million people a year. It needed a label for health need. It took what was already in the database: future health-care cost."
+    notes:
+      - "**US: a widely used commercial algorithm picks patients for extra care.**"
+      - "About 200 million people a year (authors' estimate)."
+      - "Needed a label for health *need* → took what was in the database: future health-care *cost*."
   sicker:
     at: "0:54"
-    cue: "The cost was recorded correctly. But less money is spent on Black patients with the same needs: 1,801 dollars less per year, at the same number of chronic conditions. So at the same risk score, Black patients were sicker. Race was not an input. The bias came from the label."
+    notes:
+      - "**Cost was recorded correctly, but cost is not need.**"
+      - "Less is spent on Black patients with the same needs: $1,801 less per year at the same number of chronic conditions."
+      - "Same risk score → Black patients sicker. Race was **not** an input. The bias came from the label."
   fix:
     at: "1:18"
-    cue: "The researchers worked with the manufacturer on a new label that combines health with cost. That cut the bias by 84 percent."
+    notes:
+      - "**The fix was a new label: health combined with cost.**"
+      - "Worked with the manufacturer; bias cut by 84%."
+      - "→ Our own label."
   werkmora:
     at: "1:29"
-    cue: "Now Werkmora, our fictional garden retailer. Its model forecasts how much of each item every store will sell. The label is units sold per store, item and day, straight from the tills. And as we saw last episode, sales are not the same as customer demand."
+    notes:
+      - "**Werkmora — fictional garden retailer; the forecast of how much each store will sell.**"
+      - "Label = units sold per store × item × day, from the tills."
+      - "Picks up 3.1: sales are not the same as customer demand."
   existing:
     at: "1:51"
-    cue: "So where do labels come from? Five places, cheapest first. One: existing outcomes, like those sales. Cheap, with two risks. The outcome can be a proxy for what you want, like cost for need. And past decisions shape it: you only learn whether a defendant comes back to court if the judge released them."
+    notes:
+      - "**Five label sources, cheapest first. One: existing outcomes.**"
+      - "Cheap, two risks: a **proxy** for what you want (cost for need) *and* **shaped by past decisions** (Lakkaraju 2017: you only see if a defendant comes back to court when the judge released them)."
   implicit:
     at: "2:17"
-    cue: "Two: implicit feedback. Clicks, purchases, edits. There is a lot of it, but it is noisy, and it only covers what the product showed. Nobody clicks on what they never saw."
+    notes:
+      - "**Two: implicit feedback** — clicks, purchases, edits."
+      - "Plenty, noisy, and only covers what the product showed. Nobody clicks what they never saw."
   rules:
     at: "2:32"
-    cue: "Three: rules, or weak supervision. Small functions label the data for you. Noisy, but fast. In a user study with the Snorkel tool, this was 2.8 times faster than seven hours of hand labelling."
+    notes:
+      - "**Three: rules, weak supervision** — small functions label the data."
+      - "Noisy but fast. Snorkel user study: 2.8× faster than seven hours of hand labelling."
   assisted:
     at: "2:48"
-    cue: "Four: model-assisted labelling. A model proposes a label and a person corrects it. Faster, but it still costs people’s time."
+    notes:
+      - "**Four: model-assisted** — a model proposes, a person corrects."
+      - "Faster, still people's time."
   expert:
     at: "2:58"
-    cue: "Five: expert annotation. Accurate, expensive, and sometimes the only option, like grading medical images. But experts do not always agree."
+    notes:
+      - "**Five: expert annotation** — accurate, expensive, sometimes the only option (medical images)."
+      - "→ But experts do not always agree."
   agree:
     at: "3:07"
-    cue: "So the first check is agreement. Give the same items to two labellers and measure how often they agree. Disagreement tells you the labels are uncertain. And without a cleaner reference, you cannot show that a model beats an expert."
+    notes:
+      - "**Check one: measure agreement first.**"
+      - "Same items, two labellers, how often they agree."
+      - "Disagreement = the labels are uncertain. Without a cleaner reference you cannot show a model beats an expert. (The corrected \"ceiling\".)"
   adjudicate:
     at: "3:27"
-    cue: "Google showed what a clean reference is worth, in eye screening for diabetes. Training used more than 1.6 million images with ordinary grades. Then retina specialists discussed and agreed on 3,737 images. That small set, used for tuning, raised the AUC from 0.934 to 0.986. Against it, the model was on par with the specialists."
+    notes:
+      - "**Google, eye screening for diabetes: what a clean reference is worth.**"
+      - "Training: more than 1.6 million images, ordinary grades."
+      - "Retina specialists discussed and agreed on 3,737 images → used for tuning → AUC 0.934 → 0.986."
+      - "Against that reference: on par with the specialists."
   guideline:
     at: "3:53"
-    cue: "The second check is a guideline with worked edge cases: what to do in the hard cases, with examples. And watch how labellers are paid. Paying per volume lowers the quality."
+    notes:
+      - "**Check two: a guideline with worked edge cases.**"
+      - "What to do in the hard cases, with examples."
+      - "Watch pay: paying labellers per volume lowers quality (Google PAIR)."
   late:
     at: "4:08"
-    cue: "Some labels arrive late. Fraud is confirmed weeks later, a loan defaults after months. That slows training, and you cannot measure the model live."
+    notes:
+      - "**Some labels arrive late.** Fraud confirmed weeks later; a loan defaults after months."
+      - "Slows training; no label to monitor the model live."
   partial:
     at: "4:19"
-    cue: "And a late label is often a partial label. In card fraud, only the transactions that investigators check get a label at all. So plan both: when the label arrives, and which cases get one."
+    notes:
+      - "**A late label is often a partial label.**"
+      - "Card fraud: only the transactions investigators check get a label (Dal Pozzolo 2018)."
+      - "Plan both: *when* the label arrives, and *which* cases get one."
   censored:
     at: "4:36"
-    cue: "Back to Werkmora. On a day the shelf was empty, sales are zero, and the model learns “low demand”. Those days are not random: past orders decided which store-days ran empty. It is the judge and the defendant again."
+    notes:
+      - "**Werkmora: empty shelf → zero sales → the model learns \"low demand\".**"
+      - "Not random: past orders decided which store-days ran empty. The judge and the defendant again."
   flag:
     at: "4:55"
-    cue: "So Werkmora adds a second label: a stock-out flag. First by rule: stock is zero at opening. Then for two weeks staff check about 400 shelves, to see how often the rule and people agree. A planner and the store manager settle the disagreements. That small set is the reference."
+    notes:
+      - "**A second label: the stock-out flag.**"
+      - "Rule first: stock is zero at opening (weak supervision)."
+      - "Two weeks, staff check about 400 shelves: how often do rule and people agree (fictional)."
+      - "A planner and the store manager settle the disagreements → the small reference set."
   waste:
     at: "5:19"
-    cue: "The third label is plant waste, and it comes late. Write-offs are scanned at the weekly stock count. So waste is used to monitor the forecast and to set the service level. It does not train the daily forecast."
+    notes:
+      - "**Third label: plant waste — late.**"
+      - "Write-offs scanned at the weekly stock count: up to a week late."
+      - "Used to monitor and to set the service level; it does not train the daily forecast."
   spec:
     at: "5:38"
-    cue: "Write all this down as a label specification: each label with its meaning, its owner and when it arrives. Plus the guideline and one agreement number. Data and Analytics writes it with Store Operations, who own the stock-out flag and the waste."
+    notes:
+      - "**Write it down: one label specification.**"
+      - "Each label: meaning, owner, when it arrives. Plus the guideline and one agreement number."
+      - "Data & Analytics writes it with Store Operations, who own the stock-out flag and waste."
   takeaway:
     at: "5:58"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:04"
-    cue: "In the next episode: data quality and leakage."
+    notes:
+      - "**Next: data quality and leakage.**"
 
 text:
   # The title card; the usual belief.

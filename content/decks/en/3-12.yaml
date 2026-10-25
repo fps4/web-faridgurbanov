@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/12-what-it-costs.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-12.ts as well.
 
@@ -20,70 +21,117 @@ title: "What it costs"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.12 of AI Product Design: what it costs."
+    notes:
+      - "**Episode 3.12, the last one of the module: what it costs.**"
   promise:
     at: "0:05"
-    cue: "In this episode: the cost lines of an AI product, beyond the cloud bill. Which line is the biggest for a small model, and which for a big model at volume. And the line most budgets leave out: the cost of being wrong."
+    notes:
+      - "**In this episode: the cost lines beyond the cloud bill, which one is biggest for a small and a big model, and the line budgets leave out.**"
   bill:
     at: "0:26"
-    cue: "Somebody asks: what does the model cost? Most of the time the answer is a cloud bill, or the price of a licence. One number."
+    notes:
+      - "**\"What does the model cost?\" The usual answer: a cloud bill or a licence price. One number.**"
+      - "→ A research project that counted its costs."
   run:
     at: "0:38"
-    cue: "A real example. In 2019 three researchers estimated the compute cost of one research project in language processing. One training run of the final model: 52 to 175 dollars."
+    notes:
+      - "**Strubell, Ganesh & McCallum (2019), estimated compute for one NLP research project.**"
+      - "One training run of the final model: **$52–175**."
   rnd:
     at: "0:53"
-    cue: "Tuning it on one new dataset: 1,238 to 4,205 dollars. And the whole project, 4,789 jobs over about six months: 103 to 350 thousand dollars."
+    notes:
+      - "One tuning on a new dataset: **$1,238–4,205**."
+      - "The full R&D: **4,789 jobs, about six months, $103k–350k**."
+      - "The bars are on one linear scale: the first two are a few pixels."
   lesson:
     at: "1:05"
-    cue: "So the cost was in all the runs around the model. And this is compute only. It says nothing about the people or the data."
+    notes:
+      - "**The cost was in all the runs around the model.**"
+      - "Compute only: nothing about people or data."
+      - "→ Werkmora."
   werkmora:
     at: "1:18"
-    cue: "Back to Werkmora, our fictional garden retailer with about 175 stores. In this module it builds a nightly forecast: how much of each garden item every store will sell. The board asks what the forecast costs. The first answer is the cloud bill of the data science workspace."
+    notes:
+      - "**Werkmora: fictional garden retailer, about 175 stores. This module: the nightly garden forecast.**"
+      - "The board asks what the forecast costs; the first answer is the cloud bill of the data-science workspace."
   data:
     at: "1:41"
-    cue: "So we write the lines down, one by one. Data first. Werkmora buys weather data for every store location. To train fairly it also needs the history of past weather forecasts. The contract and the licence are still to check."
+    notes:
+      - "**Write the lines down, one row per line. Data acquisition first.**"
+      - "Weather licence for ≈ 175 store locations, plus the *history of past forecasts* to train fairly."
+      - "Contract and licence still to check."
   labels:
     at: "2:01"
-    cue: "Labelling. Somebody defines the stock-out flag, books the plant write-offs and corrects the promotion flags. One study calls data work “the most under-valued and de-glamorised aspect of AI”. Tools can help: in one vision project, model-assisted labelling cut the time per mask from 34 to 14 seconds."
+    notes:
+      - "**Labelling: stock-out flags, plant write-offs, promotion flags corrected.**"
+      - "Sambasivan et al. (2021): data work is \"the most under-valued and de-glamorised aspect of AI\"."
+      - "Kirillov et al. (2023): model-assisted labelling, 34 → 14 s per mask. A vision example."
   training:
     at: "2:24"
-    cue: "Training and experiments. Backtests on three years of history against three baselines. About 32 scheduled retrains a year, plus extra runs when the error gets worse. Count every run."
+    notes:
+      - "**Training and experiments: count every run.**"
+      - "Backtests on three years against three baselines; ≈ 32 scheduled retrains a year; extra runs on the WAPE trigger."
   inference:
     at: "2:39"
-    cue: "Inference: running the model. For Werkmora that is one nightly batch, about 0.75 million series, later about 5.4 million. This is the line the cloud bill shows."
+    notes:
+      - "**Inference: one nightly batch, ≈ 0.75 million series, later ≈ 5.4 million.**"
+      - "The only line the cloud bill shows."
   people:
     at: "2:52"
-    cue: "People. Four data scientists, data engineers, part of the replenishment team’s time, and someone on call for the nightly batch. One study of ML engineers says it about monitoring: “this is people’s jobs now”."
+    notes:
+      - "**People: four data scientists, data engineers, part of the replenishment team, on-call.**"
+      - "Shankar et al. (2024), on monitoring: \"this is people's jobs now\"."
   debt:
     at: "3:09"
-    cue: "Maintenance. In 2015 engineers at Google wrote about the massive ongoing maintenance costs of ML systems, and named the debt. Entanglement: changing anything changes everything. Data dependencies, feedback loops, glue code, configuration, and a world that changes. Werkmora has nine sources with seven owners, old file transfers, and the ERP forecast still running as a fallback."
+    notes:
+      - "**Maintenance: Sculley et al. (2015), \"massive ongoing maintenance costs\".**"
+      - "Entanglement (changing anything changes everything), data dependencies, feedback loops, glue code and pipeline jungles, configuration, a changing world."
+      - "Werkmora: nine sources, seven owners, old file transfers, a legacy broker, the ERP forecast as fallback."
   wrong:
     at: "3:36"
-    cue: "Most lists stop there. I add one more line: the cost of being wrong. For Werkmora: waste and markdowns on live plants, empty shelves on sunny weekends, and trucks over capacity."
+    notes:
+      - "**Most lists stop here (the guide too). Add one line: the cost of being wrong.**"
+      - "Werkmora: waste and markdowns on live plants, empty shelves on sunny weekends, DC trucks over capacity."
   zillow:
     at: "3:52"
-    cue: "In 2021 Zillow closed its home-buying business. In that third quarter it wrote down about 304 million dollars of inventory. The CEO said “the unpredictability in forecasting home prices far exceeds what we anticipated”. No compute bill comes near that."
+    notes:
+      - "**Zillow, 2021: closed its home-buying business. Q3 inventory write-down of about $304 million.**"
+      - "CEO: \"the unpredictability in forecasting home prices far exceeds what we anticipated\"."
+      - "No compute bill comes near that."
+      - "→ Which line is the biggest?"
   small:
     at: "4:11"
-    cue: "So which line is the biggest? It depends on the system. For a small internal model like this forecast, people and data work come first, then experiments. Inference is a small batch job."
+    notes:
+      - "**It depends on the system. A small internal forecast: people and data work first, then experiments; inference is a small batch.**"
   big:
     at: "4:28"
-    cue: "For a big model at high volume it changes. At Google, from 2019 to 2021, about three fifths of the energy for machine learning went to inference. For one family of open models, inference used as much energy as training and fine-tuning together after about 200 to 590 million inferences. That is energy, not money. But at volume, inference can cost more than training."
+    notes:
+      - "**A big model at high volume: inference can cost more than training.**"
+      - "Google 2019–2021: about ⅗ of ML energy for inference, ⅖ for training (Patterson et al. 2022)."
+      - "BLOOMz: inference energy equals training plus fine-tuning after about 200–590 million inferences (Luccioni et al. 2024)."
+      - "Energy, not money: say \"can\"."
   page:
     at: "4:59"
-    cue: "What to write down: one page with every line. For each line, what drives it, who owns it, and what makes it grow. No amounts yet. Werkmora puts three people at that table: the owner of the use in supply chain, the head of data, and a controller."
+    notes:
+      - "**One page, every line: what drives it, who owns it, what makes it grow. No amounts yet.**"
+      - "Werkmora's table: the Director Supply Chain (owner of the use), the Head of Data & Analytics, a controller from the CFO line."
   paydown:
     at: "5:22"
-    cue: "And put the debt in the plan as work: tests on the nine input feeds, a check on the features every night, monitoring with an owner. Tests and monitoring pay down that debt."
+    notes:
+      - "**Budget the debt as work: tests on the nine feeds, a nightly feature check, monitoring with owners.**"
+      - "Breck et al. (2017): tests and monitoring \"pay down ML technical debt\"."
   cheap:
     at: "5:39"
-    cue: "This page goes into the value case, in Module 6. Next to the other lines, the model is the cheap part."
+    notes:
+      - "**The page goes into the value case (Module 6). Next to the other lines, the model is the cheap part.**"
   takeaway:
     at: "5:49"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "5:56"
-    cue: "That closes this module. Next: human–AI interaction design."
+    notes:
+      - "**That closes this module. Next: human–AI interaction design.**"
 
 text:
   # The title card; the question and the usual answer.

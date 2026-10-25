@@ -1,7 +1,7 @@
 ---
 title: "FS-0010 — AI Product Design storyline"
 status: draft
-last_updated: 2026-10-21
+last_updated: 2026-10-25
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -52,8 +52,10 @@ Werkmora, a fictional home, DIY and garden retailer.
 3. **Episode deck** (`/<locale>/deck/<episode>`, e.g. `/en/deck/3-1`): a 1920×1080 stage for screen
    recording, outside the site shell. Steps advance by key, click or presenter remote. Shapes and
    handwriting draw themselves in a hand-drawn style when their step arrives; cards rise in. The
-   bottom-right corner stays clear for the camera. A presenter view in a second window shows the cue
-   to say, the next cue, the script time and a clock, and follows the stage. The deck's words live in
+   bottom-right corner stays clear for the camera. A presenter view in a second window shows the
+   presenter notes for the click (the bullets of the wiki's `.slides.md`, copied into the words file
+   with `npm run notes`), the next click's first line, the planned time and a clock, and follows the
+   stage. There is no word-for-word script. The deck's words live in
    `content/decks/<locale>/<episode>.yaml`, editable without code; the layout in `lib/decks/` places
    them by id.
 4. **Every episode promises first and closes on one card.** Three short lines (*In this episode*)
@@ -95,6 +97,9 @@ Werkmora, a fictional home, DIY and garden retailer.
   earlier step without animation.
 - THE deck SHALL follow the presenter view and the presenter view SHALL follow the deck, in either
   direction.
+- THE presenter view SHALL show the step's presenter notes as bullets; EVERY step SHALL have at least
+  one note, and `npm run notes` SHALL copy them from the wiki's `.slides.md` and SHALL exit non-zero
+  WHEN the ▶ blocks and the deck's steps do not match.
 - THE deck page SHALL carry `noindex, nofollow`.
 - THE build SHALL fail WHEN a deck has a step that changes nothing on screen, an element under the
   camera corner, text on top of other text, an element appearing outside the deck's steps, a card

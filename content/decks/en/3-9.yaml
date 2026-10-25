@@ -5,14 +5,15 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki:
 # publishing/ai-product-design/episodes/03-data/09-from-prototype-to-production.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-9.ts as well.
 
@@ -21,76 +22,138 @@ title: "From prototype to production"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.9 of AI Product Design: from prototype to production."
+    notes:
+      - "**Episode 3.9 — from prototype to production.**"
   promise:
     at: "0:05"
-    cue: "In this episode: the three stages and the question each one answers. What production adds around the model. And how to roll out, what to watch, and what to write down before go-live."
+    notes:
+      - "**In this episode: the three stages, what production adds, how to roll out, what to watch, what to write down first.**"
   notebook:
     at: "0:21"
-    cue: "“The model works in the notebook. Now switch it on.” A good offline score feels like the work is almost done. A real case shows what is still missing."
+    notes:
+      - "**\"The model works in the notebook. Now switch it on.\"**"
+      - "The usual belief: a good offline score = almost done."
+      - "→ A real case shows what is still missing."
   clinics:
     at: "0:35"
-    cue: "Between 2018 and 2020 Google took a model for diabetic eye disease into clinics of Thailand’s screening programme. In retrospective studies it had more than 90 percent sensitivity and specificity."
+    notes:
+      - "**Google, diabetic eye screening in Thailand's national programme, 2018–2020.**"
+      - ">90% sensitivity and specificity in retrospective studies. Deployed in 3 clinics (fieldwork in 11)."
   rooms:
     at: "0:49"
-    cue: "In the first six months, 21 percent of the images were rejected as ungradable: 393 of 1,838. Uploads took 60 to 90 seconds. A two-hour outage cut one clinic from 200 patients to 100 that day. The model was the same. The rooms and the network were not."
+    notes:
+      - "**First six months: 393 of 1,838 images (21%) rejected as ungradable.** Rooms that could not be darkened, a camera that needed repair."
+      - "Uploads 60–90 s. A two-hour outage: one clinic from 200 to 100 patients that day."
+      - "The model was the same. The inputs and the serving path changed. The pilot found it before national scale. (Beede et al. 2020.)"
+      - "→ Same question at our company."
   werkmora:
     at: "1:12"
-    cue: "Back to Werkmora, our fictional garden retailer. Its nightly forecast says how much of each garden item every store needs. The board asks: when can we switch it on? There are three stages."
+    notes:
+      - "**Werkmora — fictional garden retailer, ≈ 175 stores.** Nightly forecast per store × garden item."
+      - "Today: ERP forecast + manual changes by the replenishment team."
+      - "The board: \"when can we switch it on?\" → three stages."
   poc:
     at: "1:28"
-    cue: "One, proof of concept: can a model learn the signal at all, on history? Werkmora backtests three years against the ERP forecast. A great offline score answers only this question."
+    notes:
+      - "**One, proof of concept: can a model learn the signal at all, offline, on history?**"
+      - "Werkmora: backtest on 3 years against the ERP forecast (and the other baselines, data-07)."
+      - "A great offline score answers this question only."
   pilot:
     at: "1:42"
-    cue: "Two, the pilot: does it help real users in a limited setting, measured against today’s process? Garden only, in all stores: about 0.75 million store and item series."
+    notes:
+      - "**Two, pilot: does it help real users in a limited setting, against today's process?**"
+      - "Garden only, all ≈ 175 stores, ≈ 0.75 million store × item series."
   production:
     at: "1:56"
-    cue: "Three, production: reliable, monitored, integrated and owned. The full range, about 5.4 million series. Seven times the pilot."
+    notes:
+      - "**Three, production: reliable, monitored, integrated, owned.**"
+      - "Full range, ≈ 5.4 million series, about 7× the pilot. (Does the 01:00–04:00 window still hold? data-08.)"
+      - "→ What production adds."
   pipelines:
     at: "2:04"
-    cue: "What does production add around the model? People call it MLOps. Data pipelines that bring the inputs in and check what arrives. And a training pipeline: the notebook becomes a job anyone can run again."
+    notes:
+      - "**Often called MLOps.**"
+      - "Data pipelines: scheduled jobs that bring the inputs in and check what arrives."
+      - "Training pipeline: the notebook becomes a job anyone can run again, same result."
   features:
     at: "2:21"
-    cue: "Between them, shared feature definitions, and a check that training and serving really compute the same values. A feature store is one way to do it, and it is optional. Werkmora runs the check every night."
+    notes:
+      - "**Shared feature definitions, and a check that training and serving really compute the same values** (Breck, Monitor 3)."
+      - "A feature store is one way, optional (Google Cloud; Kreuzberger et al. 2023)."
+      - "Werkmora: a nightly check."
   registry:
     at: "2:38"
-    cue: "And a model registry. Each run writes its model version and data snapshot. So you can say which version made last night’s orders, and go back to the one before."
+    notes:
+      - "**Model registry: each run writes model version and data snapshot.**"
+      - "Which version made last night's orders? Go back to the one before."
+      - "→ Then the rollout."
   shadow:
     at: "2:53"
-    cue: "Then roll out in steps. Shadow first: the new model runs on live inputs, and nothing acts on its output. Werkmora runs it next to the ERP for some weeks. Real teams use one to four stages."
+    notes:
+      - "**Shadow: runs on live inputs, nothing acts on its output.**"
+      - "Werkmora: next to the ERP forecast for some weeks; error per item group."
+      - "Real teams: 1 to 4 stages, own names (Shankar et al. 2024)."
   limit:
     at: "3:11"
-    cue: "Shadow has a limit. A forecast that drives orders has a feedback loop. In shadow you see the forecast error. You do not see what its orders would do to empty shelves and waste."
+    notes:
+      - "**Shadow cannot test a product with a feedback loop.**"
+      - "A forecast that drives orders is one: you see forecast error, not what the orders do to empty shelves and waste."
   canary:
     at: "3:27"
-    cue: "For that you need the canary: a live test on part of the stores. They order from the new forecast; comparable stores stay on the ERP. Compare them on the guardrails. More in the next episode."
+    notes:
+      - "**The canary: a live test on part of the stores.** Breck: traffic \"gradually increased\"."
+      - "Comparable stores stay on the ERP (the control group)."
+      - "Guardrails: availability of the top 500 garden items · waste on live plants · DC trucks per day · manual overrides."
+      - "→ More on that comparison next episode."
   fallback:
     at: "3:44"
-    cue: "And keep a way back. If the batch is late or fails, the ERP makes the orders. Practise it: switch to the ERP for one night, and see that it works."
+    notes:
+      - "**Keep a way back.** Batch late or failed → the ERP makes the orders. The model never blocks an order."
+      - "Practise it: one night on the ERP as a drill (Breck, Infra 7: roll back quickly, practise it)."
   four:
     at: "3:59"
-    cue: "What do you watch? The guide names four things. Data drift: the inputs change. Concept drift: the link between inputs and outcome changes. Performance, once outcomes arrive. And the business metric. Drift words differ between sources; we use them this way."
+    notes:
+      - "**What to watch, the guide's four:** data drift (inputs change) · concept drift (the link between inputs and outcome changes) · performance once outcomes arrive · business metric."
+      - "Lu et al.: drift in P(X) only vs in P(y|X). Words differ between sources — \"we use them this way\"."
   epic:
     at: "4:19"
-    cue: "Concept drift in one example. At the start of COVID-19, in 24 US hospitals, patients with a sepsis alert per day went from 9 to 21 percent. COVID changed what a fever told the model. Michigan switched the alerts off."
+    notes:
+      - "**Concept drift in one line: Epic sepsis alerts, start of COVID-19.**"
+      - "24 US hospitals: patients with a sepsis alert per day 9% → 21% (Wong et al. 2021). Alert volume, no accuracy."
+      - "Fever–sepsis link changed (Finlayson et al. 2021). Michigan switched the alerts off."
+      - "A signal that needed no labels: alerts per day."
   two:
     at: "4:38"
-    cue: "The research adds two more. Upstream health: did the sales and weather data arrive on time? Serving health: did the batch finish by four, with which model version? And when outcomes come late, watch the spread of the outputs."
+    notes:
+      - "**The research adds two:** upstream health (POS landing, weather feed, stock rows — on time, right shape?) and serving health (batch done by 04:00, which model version?). Sculley §7."
+      - "Outcomes late → watch the spread of the outputs, against last year and the ERP (after Booking.com)."
+      - "Each line has an owner."
   triggers:
     at: "4:57"
-    cue: "Before go-live, write down what triggers retraining or rollback. Werkmora’s page, signed by the COO: retrain weekly in the season, monthly after. Retrain extra when the error is worse than the ERP two weeks running. Back to the old version, or the ERP, when a guardrail breaks."
+    notes:
+      - "**Before go-live: what triggers retraining or rollback, on one page.**"
+      - "Werkmora, signed by the COO — Supply Chain: retrain weekly (Sunday night, March–August), monthly the rest of the year; extra retrain when WAPE on the top garden items is worse than the ERP two weeks in a row; back to the previous version or the ERP when a guardrail breaks."
+      - "Common triggers (Google Cloud): a schedule, new data, a performance drop, a change in the data."
   month:
     at: "5:19"
-    cue: "A month later: the pilot runs every night with a known version. The fallback has run once. The trigger page exists; its numbers will be tuned, since no study gives a rule for when to retrain. The live test starts with the season."
+    notes:
+      - "**A month later: runs every night with a known version; fallback has run once; the trigger page exists.**"
+      - "The numbers will be tuned: no study gives a rule for when to retrain (Shankar: no \"scientific procedure\"). The sources agree on what to build around the model."
+      - "Live test on part of the stores at the start of the garden season. Nobody has switched it on for everything."
   agents:
     at: "5:40"
-    cue: "And for agents? On a bought model you do not retrain; the provider changes the model under you. You trace every step, watch the cost per task, and run the evaluation suite again when the prompt, a tool or the model changes. A later module covers it."
+    notes:
+      - "**And for agents: on a bought model you do not retrain — the provider changes it under you.**"
+      - "Trace every step, watch cost per task, run the evaluation suite again when the prompt, a tool or the model version changes."
+      - "→ The module on agentic products."
   takeaway:
     at: "6:02"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:09"
-    cue: "In the next episode: feedback loops."
+    notes:
+      - "**Next: feedback loops.**"
 
 text:
   # The title card; the usual belief.

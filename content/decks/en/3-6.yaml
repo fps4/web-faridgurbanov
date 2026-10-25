@@ -5,13 +5,14 @@
 # text or the camera corner, and that this file and the layout name the same steps and ids.
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
-# - steps:  one per click, in recording order. `at` is the script time; `cue` is what the presenter
-#           view shows. Keep `at` in quotes ("0:22").
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
 # The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/06-thresholds-and-operating-points.slides.md.
-# Times assume about 125 words a minute; adjust them after a practice run.
+# Adjust the times after a practice run.
 #
 # Adding or removing a step or an id is a layout change: do it in lib/decks/3-6.ts as well.
 
@@ -20,67 +21,113 @@ title: "Thresholds and operating points"
 steps:
   title:
     at: "0:00"
-    cue: "Episode 3.6 of AI Product Design: thresholds and operating points."
+    notes:
+      - "**Episode 3.6 — thresholds and operating points.**"
   promise:
     at: "0:04"
-    cue: "In this episode: why the most precise threshold can cost the most, how the cost of each error sets the operating point, and a design with two thresholds and a person in the middle."
+    notes:
+      - "**In this episode: why the most precise threshold can cost the most, how error costs set the operating point, two thresholds with a person between.**"
   usual:
     at: "0:21"
-    cue: "A model gives a score. A threshold turns that score into an action. So who sets the threshold? Often nobody decides. It stays at the tool’s default, or the data team tunes it for the best precision."
+    notes:
+      - "**Score → threshold → action. Who sets the threshold?**"
+      - "Usual answer: the tool's default, or the data team tunes for the best precision."
+      - "→ A real case of the default."
   epic:
     at: "0:38"
-    cue: "A real example. In 2021 researchers tested Epic’s sepsis model on 38,455 hospitalisations, at the threshold Epic recommends. It alerted on 18 percent of them. Only 12 percent of the alerts were right, and it missed two thirds of the sepsis cases."
+    notes:
+      - "**Wong et al., 2021: Epic's sepsis model, 38,455 hospitalisations, at the threshold Epic recommends (score ≥ 6).**"
+      - "Alerts on 6,971 = 18%. PPV 12%. Sensitivity 33% → 67% of sepsis cases missed."
   burden:
     at: "0:59"
-    cue: "That is about eight patients to check for every sepsis case found. The authors call it a large burden of alert fatigue. Nobody worked that workload out from what a miss costs and what a false alarm costs. It is what the recommended setting gives."
+    notes:
+      - "**About 8 patients to check per sepsis case found.** The authors: \"a large burden of alert fatigue\"."
+      - "Nobody worked that out from the cost of a miss and of a false alarm. (Your reading, see above.)"
+      - "→ Our company has the same question."
   werkmora:
     at: "1:20"
-    cue: "Now our own company. Werkmora is a fictional home, DIY and garden retailer with about 175 stores. In this module we follow its garden replenishment forecast. The data team asks: which safety stock should we use? We come back to that at the end."
+    notes:
+      - "**Werkmora — fictional home, DIY and garden retailer, about 175 stores.**"
+      - "This module: the garden replenishment forecast."
+      - "Data team: \"Which safety stock should we use?\" → answered at the end."
   table:
     at: "1:41"
-    cue: "First, the example from the guide. A fraud model scores 10,000 transactions, and 100 are fraud. A missed fraud costs 500 euros, a review costs 5. With a low threshold, A, we flag 300 and catch 80. Precision: 27 percent."
+    notes:
+      - "**The guide's example: 10,000 transactions, 100 frauds. Miss €500, review €5.**"
+      - "A (low threshold): 300 flagged, 80 caught, precision 27% (80/300 = 26.7%)."
   rowb:
     at: "2:00"
-    cue: "With a high threshold, B, we flag 100 and catch 60. Precision: 60 percent. B looks much better."
+    notes:
+      - "**B (high threshold): 100 flagged, 60 caught, precision 60%. Looks better.**"
   total:
     at: "2:09"
-    cue: "Now add the costs. A misses 20 frauds, that is 10,000 euros, plus 1,500 for reviews: 11,500. B misses 40, that is 20,000, plus 500 for reviews: 20,500. The more precise threshold costs about 1.8 times more. Same model."
+    notes:
+      - "**A: 20 missed × €500 = €10,000 + €1,500 reviews = €11,500.**"
+      - "**B: 40 missed = €20,000 + €500 = €20,500.**"
+      - "About 1.8 times more. Same model."
   step:
     at: "2:28"
-    cue: "Why? Going from B to A means 200 more reviews, 1,000 euros. They find 20 more frauds and save 10,000. The table assumes a reviewed fraud is fully stopped, and a false alarm costs only the review."
+    notes:
+      - "**B → A: 200 more reviews (+€1,000) find 20 more frauds (−€10,000).**"
+      - "One line on the assumptions: a reviewed fraud is fully stopped; a false alarm costs only the review (no annoyed customer)."
   elkan:
     at: "2:46"
-    cue: "Charles Elkan wrote this down in 2001: you can compute the threshold from the costs. Here it is 1 percent. Flag every transaction with more than about 1 percent chance of fraud. That needs calibrated scores, from episode 3.5."
+    notes:
+      - "**Elkan, 2001: the threshold follows from the costs.**"
+      - "5 ÷ (5 + 500 − 5) = 1% → flag anything above about 1% fraud probability."
+      - "Only on calibrated scores (3.5)."
   moves:
     at: "3:04"
-    cue: "And when the costs move, the point moves. If a missed fraud costs 50 euros, A and B both cost 2,500, and the threshold goes up to 10 percent. So the operating point is a product decision, with an owner in the business."
+    notes:
+      - "**Costs move → the point moves.** Miss = €50: A = B = €2,500, threshold 10%."
+      - "So the operating point is a product decision, owned in the business."
+      - "→ Often one threshold is not enough."
   two:
     at: "3:25"
-    cue: "A common design uses two thresholds. Below the low one, let it through. Above the high one, act automatically. In between, a person decides."
+    notes:
+      - "**A common design: two thresholds.** Below the low one: let through. Above the high one: act automatically. Between: a person decides."
+      - "(Credit on screen: Hendrickx et al. 2024, reject option.)"
   band:
     at: "3:36"
-    cue: "That middle band has a price: the reviews times the cost of one review. And it has a capacity: how many reviews the team can do per day. If the band is wider than the team, reviews get rushed or skipped."
+    notes:
+      - "**The band has a price (reviews × cost) and a capacity (reviews per day).**"
+      - "Wider than the team → rushed or skipped reviews, back to one threshold."
   kaiser:
     at: "3:56"
-    cue: "Kaiser Permanente built it this way for patients who might get worse in hospital. An alert at a 12-hour risk of 8 percent or more, about one new alert per day per 35 patients. Trained nurses check each alert remotely first. Across 19 hospitals, 30-day mortality after an alert was lower: an adjusted relative risk of 0.84."
+    notes:
+      - "**Kaiser Permanente: alert at a 12-hour risk ≥ 8%, about 1 new alert per day per 35 patients.**"
+      - "Trained nurses check each alert remotely first. 19 hospitals. 30-day mortality after an alert: adjusted RR 0.84 (95% CI 0.78–0.90)."
+      - "8% is theirs, not a rule."
   forecast:
     at: "4:24"
-    cue: "Back to Werkmora. A forecast is not a fraud model, but the logic is the same. The forecast gives units. The decision is how much more than the forecast a store orders. Too little: an empty shelf on a sunny weekend. Too much: a dead plant, or a markdown."
+    notes:
+      - "**Back to Werkmora: a forecast, but the same logic.**"
+      - "The decision is how much above the forecast a store orders (safety stock)."
+      - "Too little = empty shelf on a sunny weekend. Too much = dead plant, markdown."
   levels:
     at: "4:47"
-    cue: "With fictional numbers: one plant short costs 6 euros of margin, one plant too many costs 4, because it dies. That gives a service level of 60 percent. For a garden hose, short is 5 euros and too many is 50 cents. That gives about 91 percent. Same model, two operating points."
+    notes:
+      - "**Fictional: plants €6 short / €4 too many → 60%. Hoses €5 / €0.50 → about 91%.**"
+      - "Same model, two operating points."
   owner:
     at: "5:12"
-    cue: "The CCO and the COO decide the service level per item group. It goes into one table, with the cost assumptions, the owner and a date to look again. The pipeline reads it as configuration. Unsure order lines go to the replenishment team, under 5 percent of lines."
+    notes:
+      - "**CCO and COO decide the service level per item group.**"
+      - "One table: item group, service level, cost assumptions, owner, date, next review → the pipeline reads it as configuration."
+      - "Human band: unsure order lines → replenishment team, under 5% of lines."
   june:
     at: "5:35"
-    cue: "At the end of the season plant markdowns get deeper, so the COO lowers the plants’ service level for June. No retraining, one row changes. As the engineer, keep that row where every change is logged: who, when and why."
+    notes:
+      - "**End of season: plant markdowns deeper → COO lowers plants' service level for June.**"
+      - "No retraining; one row changes. Engineer's job: log every change (who, when, why)."
   takeaway:
     at: "5:54"
-    cue: "In one card: the idea, the move, and what to do on Monday."
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:00"
-    cue: "In the next episode: baselines. What a model has to beat."
+    notes:
+      - "**Next: baselines.**"
 
 text:
   # The title card; the usual answer.
