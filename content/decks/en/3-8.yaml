@@ -1,0 +1,267 @@
+# Episode 3.8 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-8.ts. Under `npm run dev`
+# a refresh of /en/deck/3-8 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
+#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/08-non-functional-requirements.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-8.ts as well.
+
+title: "Non-functional requirements"
+
+steps:
+  title:
+    at: "0:00"
+    notes:
+      - "**Episode 3.8 — non-functional requirements.**"
+  promise:
+    at: "0:04"
+    notes:
+      - "**In this episode: the nine requirements, what changes in a nightly batch, a fallback for \"down\" and for \"unsure\".**"
+  usual:
+    at: "0:18"
+    notes:
+      - "**The requirements page for a model has one line: how accurate.**"
+      - "The rest stays empty."
+  golive:
+    at: "0:29"
+    notes:
+      - "**At go-live the other questions turn up.**"
+      - "How fast? What does it cost? May the data leave? Why this answer? What if it is down?"
+      - "→ One of them went to court."
+  refused:
+    at: "0:43"
+    notes:
+      - "**Austria: a phone operator refuses a contract of €10 a month.**"
+      - "Based on an automated credit assessment by Dun & Bradstreet Austria (para. 16)."
+      - "The question: what may the person learn about how the result was reached?"
+  court:
+    at: "1:03"
+    notes:
+      - "**CJEU, 27 Feb 2025 (C-203/22): the procedure and principles that were applied.**"
+      - "\"The mere communication of a complex mathematical formula, such as an algorithm\" is not enough."
+      - "SCHUFA (C-634/21, 7 Dec 2023): a score that a company \"draws strongly\" on is an automated decision (GDPR Art. 22(1))."
+  logged:
+    at: "1:29"
+    notes:
+      - "**For an engineer: a requirement on the system.**"
+      - "What is kept per decision, so one result can be explained to one person months later?"
+      - "→ Back to our own project."
+  werkmora:
+    at: "1:43"
+    notes:
+      - "**Werkmora — fictional garden retailer, about 175 stores.**"
+      - "Every night: how much of each garden item each store needs → store orders."
+      - "The pilot's only requirement: more accurate than today's ERP forecast."
+  nine:
+    at: "2:03"
+    notes:
+      - "**Nine non-functional requirements, as for any service. Each: a number and an owner.**"
+      - "Latency · batch or online · throughput and peaks · cost per prediction · where it runs · privacy and residency · explainability · update cadence · fallback."
+  latency:
+    at: "2:14"
+    notes:
+      - "**Speed. Latency has a price.**"
+      - "Booking.com, randomised experiment: about 30% more latency → more than 0.5% less conversion."
+      - "Among their answers: precompute and cache. (Bernardi et al., KDD '19 — vendor about itself.)"
+  window:
+    at: "2:30"
+    notes:
+      - "**Werkmora is a nightly batch: latency becomes a window.**"
+      - "Weather 00:00 · sales 00:30 · run 01:00–04:00 · orders 05:00 · cut-off 06:00 (fictional)."
+  throughput:
+    at: "2:49"
+    notes:
+      - "**Throughput = series per night.**"
+      - "≈ 0.75m in the pilot, ≈ 5.4m later: about 7× in the same window. Peak: March–June."
+  cost:
+    at: "3:06"
+    notes:
+      - "**Cost per prediction: almost nothing per forecast for a small model.**"
+      - "The total is compute, pipelines and people (3.12 owns the cost lines)."
+      - "Generative is another scale: 0.002 kWh vs 0.047 kWh per 1,000 inferences — energy, not euros."
+  boundary:
+    at: "3:25"
+    notes:
+      - "**Where it runs (cloud, on-premises, device) and which data may leave.**"
+      - "Werkmora: cloud lakehouse, orders back into the ERP, no customer data in the inputs."
+      - "The weather provider: contract and licence to check. Lakehouse region to confirm."
+  provider:
+    at: "3:48"
+    notes:
+      - "**The model provider counts too: a prompt can carry data out.**"
+      - "Personal data leaving the EU needs a legal basis. *Schrems II* (2020) struck down the Privacy Shield."
+  explain:
+    at: "4:06"
+    notes:
+      - "**Explainability: for a decision about a person, often law (the case). For Werkmora, trust.**"
+      - "\"Why 40 hoses?\" → each order line keeps a reason, the model version, the main inputs."
+      - "No personal data in the forecast → no GDPR Art. 22 duty here."
+  cadence:
+    at: "4:26"
+    notes:
+      - "**Update cadence follows drift. For garden, the season is the drift.**"
+      - "Weekly March–August, monthly otherwise, plus a retrain when the ERP baseline wins two weeks in a row (Paleyes et al. §6.3: drift sets the cadence)."
+  down:
+    at: "4:43"
+    notes:
+      - "**Fallback, case one: down (late, failed, a feed missing).**"
+      - "The ERP forecast makes the orders at 05:00. The model never blocks an order."
+      - "A retry alone can make a late batch later."
+  unsure:
+    at: "5:04"
+    notes:
+      - "**Case two: unsure. Very uncertain lines go to the replenishment team (3.6).**"
+      - "AI Act Art. 15(4), high-risk only: robustness \"may include backup or fail-safe plans\"."
+      - "Not high-risk here; the need is the same."
+  sheet:
+    at: "5:21"
+    notes:
+      - "**One page: nine rows, a number and an owner each.**"
+      - "Supply Chain owns the deadline, the data team the run, the COO the fallback."
+  badnight:
+    at: "5:35"
+    notes:
+      - "**Before go-live, test the bad nights: late sales, no weather file, a run ending 04:45.**"
+      - "Each must still end in orders by 06:00."
+      - "After: watch it like any service — run end time, stores on fallback, cost per night."
+  takeaway:
+    at: "5:58"
+    notes:
+      - "**The card: the idea, the move, what to do on Monday.**"
+  next:
+    at: "6:04"
+    notes:
+      - "**Next: from prototype to production.**"
+
+text:
+  # The title card.
+  episode: "AI Product Design · Module 3 · Episode 3.8"
+
+  # The usual page, and the questions at go-live.
+  title-usual: "What the requirements usually say"
+  usual-head: "Model requirements"
+  usual-line: "accuracy: better than today ✓"
+  ask-fast: "How fast?"
+  ask-cost: "What does it cost?"
+  ask-leave: "May the data leave?"
+  ask-why: "Why this answer?"
+  ask-down: "And when it is down?"
+  golive-tag: "at go-live"
+
+  # The case: Dun & Bradstreet Austria, with SCHUFA.
+  title-case: "A score, a refused contract, a court"
+  refused-amount: "€10 a month"
+  refused-what: "A mobile phone contract, refused after an automated credit assessment by Dun & Bradstreet Austria."
+  court-quote: "The person may learn the procedure and principles that were applied."
+  court-not: "Not enough: “the mere communication of a complex mathematical formula, such as an algorithm”."
+  schufa: "SCHUFA (2023): a score that a company “draws strongly” on is an automated decision."
+  court-credit: "CJEU, C-203/22 Dun & Bradstreet Austria, 27 Feb 2025 · C-634/21 SCHUFA, 7 Dec 2023"
+  logged-title: "For the system"
+  logged-what: "What is kept for each decision? Can we explain one result to one person, months later?"
+
+  # Werkmora and the nine.
+  title-werkmora: "Werkmora: a forecast every night"
+  werkmora-tag: "fictional company"
+  werkmora: "A home and garden retailer with about 175 stores. Every night it forecasts how much of each garden item every store needs, and the forecast feeds the store orders."
+  werkmora-req: "The pilot’s only requirement: “more accurate than the ERP forecast”."
+  nfr-latency: "latency"
+  nfr-batch: "batch or online"
+  nfr-throughput: "throughput and peaks"
+  nfr-cost: "cost per prediction"
+  nfr-where: "where it runs"
+  nfr-privacy: "privacy and residency"
+  nfr-explain: "explainability"
+  nfr-cadence: "update cadence"
+  nfr-fallback: "fallback"
+  nine-caption: "Each one with a number and an owner, as for any service."
+
+  # Speed, volume and cost.
+  title-speed: "Speed, volume and cost"
+  latency-title: "Online: latency has a price"
+  booking: "Booking.com, randomised experiment: about 30% more latency cost more than 0.5% in conversion. Among their answers: precompute and cache."
+  booking-credit: "Bernardi, Mavridis & Estevez (2019), KDD. Booking.com about itself."
+  window-title: "Werkmora, batch: latency becomes a window"
+  speed-tag: "fictional"
+  run-label: "forecast run"
+  mark-weather: "weather"
+  mark-sales: "sales"
+  mark-orders: "orders ready"
+  mark-cutoff: "cut-off"
+  hour-0: "00:00"
+  hour-1: "01:00"
+  hour-2: "02:00"
+  hour-3: "03:00"
+  hour-4: "04:00"
+  hour-5: "05:00"
+  hour-6: "06:00"
+  throughput: "0.75m series a night (pilot) · 5.4m later, same window · peak March–June"
+  cost: "Cost: tiny per forecast. The total is compute, pipelines and people."
+  cost-credit: "Energy per 1,000 inferences: text classification 0.002 kWh, text generation 0.047 kWh (Luccioni et al., 2024)"
+
+  # The data boundary, and explainability.
+  title-bounds: "Where it runs, what may leave, why it says so"
+  bounds-tag: "fictional"
+  boundary-label: "inside Werkmora"
+  box-inputs: "sales, stock, prices"
+  box-lakehouse: "cloud lakehouse"
+  box-erp: "ERP: store orders"
+  box-weather: "weather provider"
+  weather-licence: "contract · licence"
+  boundary-line: "No customer data in the inputs. Lakehouse region: to confirm."
+  box-provider: "model provider?"
+  prompt-label: "a prompt"
+  schrems: "Personal data leaving the EU needs a legal basis. Schrems II (CJEU, 2020) struck down the EU–US Privacy Shield."
+  explain-q: "“Why 40 hoses?”"
+  explain-a: "Each order line keeps a short reason, the model version and the main inputs."
+  explain-why: "Here a trust requirement: no personal data in it."
+
+  # Over time, and on a bad night.
+  title-time: "Over time, and on a bad night"
+  time-tag: "fictional"
+  cadence-title: "Update cadence: the season is the drift"
+  cadence: "Retrain weekly March to August, monthly the rest of the year, and once more when the ERP baseline wins two weeks in a row."
+  fallback-title: "Fallback"
+  down-label: "down"
+  down-what: "Late, failed, or a feed missing: the ERP forecast makes the orders at 05:00. The model never blocks an order."
+  retry: "A retry alone is no fallback: it can make a late batch later."
+  unsure-label: "unsure"
+  unsure-what: "Very uncertain lines go to the replenishment team."
+  law: "EU AI Act, Art. 15(4), for high-risk systems: robustness “may include backup or fail-safe plans”. The forecast is not high-risk; the need is the same."
+
+  # The close: the sheet.
+  title-sheet: "One page: a number and an owner per row"
+  sheet-tag: "fictional"
+  col-value: "Werkmora"
+  col-owner: "owner"
+  sheet-latency-value: "window 01:00–04:00 · orders 05:00 · cut-off 06:00"
+  sheet-latency-owner: "Supply Chain · data team"
+  sheet-batch-value: "batch, one run a night"
+  sheet-batch-owner: "Head of Data & Analytics"
+  sheet-throughput-value: "0.75m series a night, later 5.4m"
+  sheet-throughput-owner: "data team"
+  sheet-cost-value: "per night: compute, pipelines, people"
+  sheet-cost-owner: "Head of Data & Analytics"
+  sheet-where-value: "cloud lakehouse, orders into the ERP"
+  sheet-where-owner: "CDTO"
+  sheet-privacy-value: "no customer data · weather licence to check"
+  sheet-privacy-owner: "DPO · CDTO"
+  sheet-explain-value: "a reason per order line"
+  sheet-explain-owner: "data team · replenishment"
+  sheet-cadence-value: "weekly in season, monthly otherwise"
+  sheet-cadence-owner: "data team"
+  sheet-fallback-value: "down: ERP forecast · unsure: replenishment team"
+  sheet-fallback-owner: "COO, Supply Chain"
+  badnight-test: "Test the bad nights: late sales, no weather file, a run that ends at 04:45."
+  badnight-watch: "Then watch it like any service: run end time, stores on fallback, cost per night."
+  takeaway-subtitle: "Episode 3.8 in one card"
+  next: "Next episode: from prototype to production."
