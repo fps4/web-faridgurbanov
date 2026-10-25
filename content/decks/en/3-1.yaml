@@ -123,21 +123,13 @@ steps:
       - "**Each group has its own curve.**"
       - "Werkmora: big stores flatten — small stores still going down."
       - "(Coverage again: averages hide the group.)"
-  summary:
+  takeaway:
     at: "5:08"
     notes:
-      - "**Six questions · every source · one owner per answer.**"
-      - "Write them where the team keeps them current: a datasheet in the repo, or a data contract."
-  law:
-    at: "5:26"
-    notes:
-      - "**High-risk under the EU AI Act? Article 10 asks almost the same questions — as law.**"
-  takeaway:
-    at: "5:38"
-    notes:
       - "**The card: the idea, the move, what to do on Monday.**"
+      - "Beside it: high-risk under the EU AI Act? Article 10 asks almost the same questions, as law."
   next:
-    at: "5:45"
+    at: "5:20"
     notes:
       - "**Next: labels.**"
 
@@ -207,11 +199,7 @@ text:
   label-small: "small stores: still going down"
   groups: "Each group has its own curve: measure them apart."
 
-  # The close.
-  title-close: "Six questions. Each source. One owner per answer."
-  write-down: "Write the answers where the team keeps them up to date: a datasheet in the repo, or a data contract."
-  sheet-head: "weather feed · owner: Data & Analytics"
-  sheet-rows: "content ✓ · volume ✓ · coverage ✓ · freshness: forecast history? · rights: ask the provider"
+  # The card, with the EU AI Act beside it.
   law: "EU AI Act, Art. 10: almost the same list, as law, for high-risk systems."
   takeaway-subtitle: "Episode 3.1 in one card"
   next: "Next episode: labels."

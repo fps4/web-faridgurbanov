@@ -4,9 +4,9 @@ import { episodeByNumber, storylineCopy } from '@/lib/storyline';
 
 // Episode 3.1, "Data requirements" (FS-0010): the layout. The words are in
 // content/decks/<locale>/3-1.yaml; this file places them on the stage by id. The episode follows the
-// wiki script (publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md): what the
+// wiki presenter notes (publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md): what the
 // episode promises, a row count as the answer to "enough data?", Gender Shades as the case, Werkmora's nine sources, the six
-// questions asked of each one, a learning curve for "enough", and the close. The Gender Shades
+// questions asked of each one, a learning curve for "enough", and the card with the EU AI Act beside it. The Gender Shades
 // numbers are the paper's (Table 4); the learning curves are Werkmora's and fictional.
 
 const STEPS = [
@@ -28,8 +28,6 @@ const STEPS = [
   'curve',
   'flat',
   'small',
-  'summary',
-  'law',
   'takeaway',
   'next',
 ] as const;
@@ -157,34 +155,27 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       hand('clearview-line', 1490, 580, w.text('clearview-line'), { size: 34, tone: 'accent', in: S.fine, out: S.magic }),
 
       // "Enough" is measured: a learning curve on a pilot.
-      hand('title-enough', 120, 160, w.text('title-enough'), { size: 56, in: S.magic, out: S.summary }),
-      sans('no-magic', 120, 240, w.text('no-magic'), { size: 28, wrap: 1250, in: S.magic, out: S.summary }),
-      { id: 'axis-x', in: S.curve, out: S.summary, shape: { kind: 'arrow', x1: 200, y1: 880, x2: 1320, y2: 880 } },
-      { id: 'axis-y', in: S.curve, out: S.summary, shape: { kind: 'arrow', x1: 200, y1: 880, x2: 200, y2: 320 } },
-      hand('axis-y-label', 220, 340, w.text('axis-y-label'), { size: 30, tone: 'muted', in: S.curve, out: S.summary }),
-      hand('axis-x-label', 760, 965, w.text('axis-x-label'), { size: 30, anchor: 'middle', tone: 'muted', in: S.curve, out: S.summary }),
+      hand('title-enough', 120, 160, w.text('title-enough'), { size: 56, in: S.magic, out: S.takeaway }),
+      sans('no-magic', 120, 240, w.text('no-magic'), { size: 28, wrap: 1250, in: S.magic, out: S.takeaway }),
+      { id: 'axis-x', in: S.curve, out: S.takeaway, shape: { kind: 'arrow', x1: 200, y1: 880, x2: 1320, y2: 880 } },
+      { id: 'axis-y', in: S.curve, out: S.takeaway, shape: { kind: 'arrow', x1: 200, y1: 880, x2: 200, y2: 320 } },
+      hand('axis-y-label', 220, 340, w.text('axis-y-label'), { size: 30, tone: 'muted', in: S.curve, out: S.takeaway }),
+      hand('axis-x-label', 760, 965, w.text('axis-x-label'), { size: 30, anchor: 'middle', tone: 'muted', in: S.curve, out: S.takeaway }),
       ...([6, 12, 24, 36] as const).map((m) =>
-        sans(`tick-${m}`, X(m), 918, w.text(`tick-${m}`), { size: 24, anchor: 'middle', tone: 'muted', in: S.curve, out: S.summary }),
+        sans(`tick-${m}`, X(m), 918, w.text(`tick-${m}`), { size: 24, anchor: 'middle', tone: 'muted', in: S.curve, out: S.takeaway }),
       ),
-      { id: 'curve-tag', tone: 'muted', in: S.curve, out: S.summary, shape: { kind: 'tag', x: 1340, y: 300, text: w.text('curve-tag') } },
-      { id: 'curve-big', tone: 'accent', in: S.curve, out: S.summary, shape: { kind: 'line', points: curve(BIG) } },
-      hand('label-big', 900, 830, w.text('label-big'), { size: 30, tone: 'accent', in: S.curve, out: S.summary }),
-      { id: 'knee', tone: 'warn', in: S.flat, out: S.summary, shape: { kind: 'ellipse', x: X(24) - 60, y: Y(26.6) - 38, w: 120, h: 76 } },
-      hand('flat', 1340, 420, w.text('flat'), { size: 32, wrap: 440, in: S.flat, out: S.summary }),
-      { id: 'curve-small', in: S.small, out: S.summary, shape: { kind: 'line', points: curve(SMALL) } },
-      hand('label-small', 900, 560, w.text('label-small'), { size: 30, in: S.small, out: S.summary }),
-      hand('groups', 1340, 600, w.text('groups'), { size: 34, tone: 'accent', wrap: 440, in: S.small, out: S.summary }),
+      { id: 'curve-tag', tone: 'muted', in: S.curve, out: S.takeaway, shape: { kind: 'tag', x: 1340, y: 300, text: w.text('curve-tag') } },
+      { id: 'curve-big', tone: 'accent', in: S.curve, out: S.takeaway, shape: { kind: 'line', points: curve(BIG) } },
+      hand('label-big', 900, 830, w.text('label-big'), { size: 30, tone: 'accent', in: S.curve, out: S.takeaway }),
+      { id: 'knee', tone: 'warn', in: S.flat, out: S.takeaway, shape: { kind: 'ellipse', x: X(24) - 60, y: Y(26.6) - 38, w: 120, h: 76 } },
+      hand('flat', 1340, 420, w.text('flat'), { size: 32, wrap: 440, in: S.flat, out: S.takeaway }),
+      { id: 'curve-small', in: S.small, out: S.takeaway, shape: { kind: 'line', points: curve(SMALL) } },
+      hand('label-small', 900, 560, w.text('label-small'), { size: 30, in: S.small, out: S.takeaway }),
+      hand('groups', 1340, 600, w.text('groups'), { size: 34, tone: 'accent', wrap: 440, in: S.small, out: S.takeaway }),
 
-      // The close: one sheet per source, and the law that asks the same.
-      hand('title-close', 120, 160, w.text('title-close'), { size: 56, in: S.summary, out: S.takeaway }),
-      sans('write-down', 120, 260, w.text('write-down'), { size: 34, wrap: 1250, in: S.summary, out: S.takeaway }),
-      { id: 'sheet', in: S.summary, out: S.takeaway, shape: { kind: 'box', x: 120, y: 400, w: 700, h: 230 } },
-      hand('sheet-head', 150, 460, w.text('sheet-head'), { size: 36, in: S.summary, out: S.takeaway }),
-      sans('sheet-rows', 150, 530, w.text('sheet-rows'), { size: 28, wrap: 640, in: S.summary, out: S.takeaway }),
-      hand('law', 900, 470, w.text('law'), { size: 34, wrap: 520, in: S.law, out: S.takeaway }),
-
-      // The episode in one card, and what comes next.
+      // The episode in one card, the law that asks the same beside it, and what comes next.
       { id: 'card-takeaway', in: S.takeaway, shape: { kind: 'card', card: 'takeaway', x: 100, y: 120, w: 1240, h: 800 } },
+      hand('law', 1400, 300, w.text('law'), { size: 34, wrap: 440, tone: 'accent', in: S.takeaway }),
       hand('next', 100, 1010, w.text('next'), { size: 40, wrap: 1280, in: S.next }),
     ],
   };
