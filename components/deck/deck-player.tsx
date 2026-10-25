@@ -6,8 +6,8 @@ import { CAMERA, STAGE, type Deck } from '@/lib/deck';
 
 // The recording player for an episode deck (FS-0010), at /<locale>/deck/<episode>. One window shows the stage for OBS to capture
 // (1920×1080, scaled to fit, the camera corner kept clear); a second, opened with `p`, is the
-// presenter view: the presenter notes for the click, the next click's first line, the planned time
-// and a clock. The two follow each other over a
+// presenter view: the stage, the presenter notes for the click under it, the next click's first
+// line, the planned time and a clock. The two follow each other over a
 // BroadcastChannel, so a click or a presenter remote in either moves both.
 //
 //   → / Space / PageDown / click   next step       ← / PageUp   previous step
@@ -125,24 +125,9 @@ export function DeckPlayer({
             step {step + 1} / {deck.steps.length} · plan {here.at} · clock {clock}
           </span>
         </div>
-        <ul className="mt-8 list-disc space-y-3 pl-8 text-3xl leading-snug text-neutral-200">
-          {here.notes.map((line, i) => (
-            <li key={i} className={line.startsWith('→') ? 'list-none -ml-8 text-neutral-400' : undefined}>
-              {inline(line)}
-            </li>
-          ))}
-        </ul>
-        {next ? (
-          <p className="mt-10 text-xl leading-snug text-neutral-400">
-            <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
-            {inline(next.notes[0])}
-          </p>
-        ) : (
-          <p className="mt-10 text-xl text-neutral-500">End of the episode.</p>
-        )}
-        {/* The stage fills what the notes leave free, at 16:9: as wide as the window allows, or as
-            tall as the space below the notes, whichever is smaller. */}
-        <div className="mt-8 min-h-0 flex-1 [container-type:size]">
+        {/* The stage on top, filling what the notes below leave free, at 16:9: as wide as the window
+            allows, or as tall as the space above the notes, whichever is smaller. */}
+        <div className="mt-6 min-h-0 flex-1 [container-type:size]">
           <div
             className="overflow-hidden rounded-md ring-1 ring-neutral-700"
             style={{ width: `min(100cqw, calc(100cqh * ${STAGE.w / STAGE.h}))` }}
@@ -150,6 +135,21 @@ export function DeckPlayer({
             <Sketch deck={deck} step={step} className="block h-auto w-full" />
           </div>
         </div>
+        <ul className="mt-6 list-disc space-y-3 pl-8 text-3xl leading-snug text-neutral-200">
+          {here.notes.map((line, i) => (
+            <li key={i} className={line.startsWith('→') ? 'list-none -ml-8 text-neutral-400' : undefined}>
+              {inline(line)}
+            </li>
+          ))}
+        </ul>
+        {next ? (
+          <p className="mt-6 text-xl leading-snug text-neutral-400">
+            <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
+            {inline(next.notes[0])}
+          </p>
+        ) : (
+          <p className="mt-6 text-xl text-neutral-500">End of the episode.</p>
+        )}
         <p className="mt-4 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
         {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
       </div>
