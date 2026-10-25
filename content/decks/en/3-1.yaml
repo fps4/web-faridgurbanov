@@ -1,4 +1,4 @@
-# Episode 3.1 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.1 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-1.ts. Under `npm run dev`
 # a refresh of /en/deck/3-1 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,117 +21,44 @@ title: "Data requirements"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.1 — data requirements.**"
   promise:
     at: "0:05"
-    notes:
-      - "**In this episode: quality *and* quantity of data.**"
-      - "Why a row count does not answer \"is it enough\"."
-      - "You leave with the questions to ask, and how to measure \"enough\"."
-      - "→ Start where every project starts…"
   rows:
     at: "0:25"
-    notes:
-      - "**\"Do we have enough data?\" — the first question of every idea.**"
-      - "The answer is always a row count: \"three years of sales, sixty million lines a year\"."
-      - "→ Big numbers feel safe. A real example of why they are not."
   shades:
     at: "0:41"
-    notes:
-      - "**2018: two researchers test three commercial face-gender products.**"
-      - "The usual test sets: around 80% lighter-skinned faces → results look fine."
-      - "They build a balanced test set → darker-skinned women: errors up to about 35%; lighter-skinned men: under 1%."
   missing:
     at: "1:13"
-    notes:
-      - "**Plenty of data — one group missing.**"
-      - "And the test data missed the same group → nobody saw it."
-      - "→ Same trap, closer to home: our company."
   werkmora:
     at: "1:27"
-    notes:
-      - "**Werkmora — fictional garden retailer, many stores.**"
-      - "Every night: how much of each item does each store need?"
-      - "Typical use case, and hard."
   sources:
     at: "1:48"
-    notes:
-      - "**Nine sources, nine owners.**"
-      - "Sales · online orders · stock · prices and promotions · store attributes · calendar · weather · supply · returns."
-      - "→ So: six questions — and each one for *every* source."
   content:
     at: "2:07"
-    notes:
-      - "**Content — is the signal there, and does the data match reality?**"
-      - "Stock system says the plant is on the shelf… is it?"
-      - "Quality problems; legacy fields kept for compatibility."
   labels:
     at: "2:25"
-    notes:
-      - "**Labels — is the outcome recorded, and how late?**"
-      - "Sales ≠ demand: shelf empty → zero sold, but people wanted it."
-      - "→ Whole next episode on labels."
   volume:
     at: "2:48"
-    notes:
-      - "**Volume — count the events you learn from, not the rows.**"
-      - "Public fraud dataset: nearly 300,000 transactions, under 500 frauds."
-      - "The model learns fraud from those few hundred."
   coverage:
     at: "3:06"
-    notes:
-      - "**Coverage — every group the product will serve.**"
-      - "Big stores and small stores; school holidays differ by region."
-      - "A group missing from the data — or the test set — = you don't know how the model behaves there."
-      - "(Echo Gender Shades.)"
   freshness:
     at: "3:30"
-    notes:
-      - "**Freshness — in time for the nightly run? Does the past still look like today?**"
-      - "Weather: train on the old *forecasts* — what you knew that night — not the actuals."
   rights:
     at: "3:52"
-    notes:
-      - "**Rights — may we use it for *this* purpose?**"
-      - "→ A case that shows what \"public\" is worth."
   fine:
     at: "3:59"
-    notes:
-      - "**2024: the Dutch privacy regulator (AP) fines Clearview AI €30.5 million.**"
-      - "Billions of face photos scraped from the internet."
-      - "\"It is public\" ≠ \"we may use it\" → ask the provider, check the contract."
   magic:
     at: "4:19"
-    notes:
-      - "**Now \"enough\": there is no magic number.**"
-      - "Research: one model needs about 5 events per input, another about 23."
-      - "→ So don't guess — measure."
   curve:
     at: "4:31"
-    notes:
-      - "**Train on 6, 12, 24, 36 months. Plot the error each time.**"
-      - "That is a learning curve."
   flat:
     at: "4:44"
-    notes:
-      - "**Where it flattens, more data buys little.**"
-      - "Now \"enough\" is a measurement, not an opinion."
   small:
     at: "4:57"
-    notes:
-      - "**Each group has its own curve.**"
-      - "Werkmora: big stores flatten — small stores still going down."
-      - "(Coverage again: averages hide the group.)"
   takeaway:
     at: "5:08"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
-      - "Beside it: high-risk under the EU AI Act? Article 10 asks almost the same questions, as law."
   next:
     at: "5:20"
-    notes:
-      - "**Next: labels.**"
 
 text:
   # The title card; the question and the usual answer.

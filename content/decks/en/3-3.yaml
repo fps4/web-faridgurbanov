@@ -1,4 +1,4 @@
-# Episode 3.3 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.3 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-3.ts. Under `npm run dev`
 # a refresh of /en/deck/3-3 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,121 +21,48 @@ title: "Data quality and leakage"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.3 — data quality and leakage.**"
   promise:
     at: "0:05"
-    notes:
-      - "**In this episode: great numbers are a reason to check · one rule against leakage · agree the data with its producers.**"
   great:
     at: "0:20"
-    notes:
-      - "**\"The offline numbers look great. Ship it.\"** The usual belief."
-      - "→ A case that should make you careful."
   informs:
     at: "0:30"
-    notes:
-      - "**INFORMS 2010 challenge: predict stock price moves one hour ahead.**"
-      - "About 30 teams above AUC 0.9, the best above 0.99 (1.0 = perfect)."
-      - "The data held variables from the future. Kaufman, Rosset & Perlich (2011), §2."
   ibm:
     at: "0:49"
-    notes:
-      - "**IBM: which companies will buy? Read from their websites.**"
-      - "Text collected *after* they became customers → \"Websphere\"."
-      - "Nothing secret, only collected at the wrong moment."
-      - "→ Our company has the same risk."
   werkmora:
     at: "1:13"
-    notes:
-      - "**Werkmora — fictional home, DIY and garden retailer, about 175 stores.**"
-      - "Nightly forecast at 01:00, per store × item. The pilot beats the ERP forecast in the notebook."
-      - "**\"Would we know each input at 01:00?\"**"
   timeline:
     at: "1:39"
-    notes:
-      - "**A timeline: the moment of prediction is 01:00.**"
-      - "Left: may be used. Right: off limits."
-      - "Leakage = training sees the right side anyway."
   target:
     at: "1:57"
-    notes:
-      - "**Target leakage: a feature that holds the answer.**"
-      - "\"Cancellation reason\" predicts churn, filled in after the customer left. IBM's website text."
   temporal:
     at: "2:12"
-    notes:
-      - "**Temporal leakage: the table keeps today's value.**"
-      - "Werkmora: Pricing updates promotion flags after the promotion → in history, flags set when the sales were known."
   rule:
     at: "2:32"
-    notes:
-      - "**Learn–predict separation (Kaufman §4): each training row only from data that existed at its prediction time.**"
-      - "Werkmora: an \"available at\" column per feature; promotion plans stored as they stood each night."
-      - "→ But you will not always see it."
   quiet:
     at: "2:53"
-    notes:
-      - "**A warning about the warning: leakage can be quiet.**"
-      - "Kapoor & Narayanan (2023): 12 reproducible civil-war papers, 4 with errors, exactly the 4 that said complex ML beats logistic regression. One AUC gap 0.14 → 0.01."
   checklist:
     at: "3:12"
-    notes:
-      - "**Plausible numbers pass intuition. A checklist catches them.**"
-      - "8 types; 3 about the data: duplicates, illegitimate features, the future."
-      - "The rest is about the split → next episode."
   skew:
     at: "3:33"
-    notes:
-      - "**The twin: training/serving skew.** Different code, timing or distribution (Breck et al. 2019)."
-      - "Werkmora's weather is both: history has actuals, 01:00 has a forecast."
   fixes:
     at: "3:53"
-    notes:
-      - "**One feature code · log features at serving and train on them · measure the skew nightly** (Zinkevich #29, #32, #37)."
-      - "Weather: store forecasts as issued, from today."
-      - "→ Then the basics."
   missing:
     at: "4:12"
-    notes:
-      - "**Missing: impute, drop or flag, per feature.**"
-      - "Werkmora: shelf capacity missing outdoors → flag it, a zero would say \"holds nothing\"."
   noisy:
     at: "4:27"
-    notes:
-      - "**Noisy: filled in but wrong.** 65% of stock records wrong at one retailer."
-      - "Werkmora: stock-out flag from the stock record *and* the sales pattern."
-      - "Label noise hurts most."
   imbalance:
     at: "4:47"
-    notes:
-      - "**Imbalance: accuracy misleads.**"
-      - "Resampling *can* break calibration in probability models, with no gain. Threshold first."
-      - "Werkmora: slow movers as their own slice."
   contracts:
     at: "5:05"
-    notes:
-      - "**Agree the data with the teams that make it. Three contracts first, where it hurts.**"
-      - "Promotions (CCO, Pricing & Promotions) · weather (Data & Analytics + provider) · store stock (COO, Store Operations)."
-      - "Each: owner, schema, meaning of key fields, when final, when it lands, who hears before a change."
   meaning:
     at: "5:26"
-    notes:
-      - "**A schema catches a changed type; it misses a changed meaning** (same flag, set a week later)."
-      - "Research describes the leak, engineering the check, only industry the contract."
-      - "(Your observation from integration work goes here, if you add one.)"
   write:
     at: "5:48"
-    notes:
-      - "**Written down: \"available at\" table · three contracts · nightly skew check · leakage question in the PR template.**"
   takeaway:
     at: "5:59"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:05"
-    notes:
-      - "**Next: splits and validation.**"
 
 text:
   # The title card; the usual belief.

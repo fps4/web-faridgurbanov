@@ -29,8 +29,11 @@ The first iteration's sixteen decks (1.1–8.2) were removed on 2026-10-21; the 
 - WHEN the presenter advances, THE stage SHALL draw the arriving elements in order and fade the
   leaving ones; WHEN they step back, THE stage SHALL show the earlier step still.
 - THE stage SHALL keep the bottom-right camera corner clear on every step.
-- THE presenter view SHALL show the step's presenter notes as bullets (copied from the wiki's
-  `.slides.md` by `npm run notes`), the next step's first note, the planned time and a clock, and
-  SHALL stay in step with the stage.
+- THE presenter view SHALL show the step's presenter notes as bullets (read live from the wiki's
+  `.slides.md` through the dev-only notes server), the next step's first note, the planned time and a
+  clock, and SHALL stay in step with the stage.
+- WHEN the owner presses `e` in the presenter view, edits the click's notes and presses ⌘↵, THE
+  notes SHALL be saved into that click's ▶ block in the wiki file (FS-0010 acceptance criteria).
+- THE presenter view SHALL exist under `next dev` only; a production build SHALL carry no notes.
 - THE build SHALL fail WHEN a deck breaks the format (FS-0010 acceptance criteria).
 - THE deck page SHALL carry `noindex, nofollow`.

@@ -1,4 +1,4 @@
-# Episode 3.5 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.5 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-5.ts. Under `npm run dev`
 # a refresh of /en/deck/3-5 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,126 +21,48 @@ title: "Choosing metrics"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.5 — choosing metrics.**"
   promise:
     at: "0:04"
-    notes:
-      - "**In this episode: why one number is not enough, how to pick the metric, three levels with owners.**"
   usual:
     at: "0:22"
-    notes:
-      - "**\"95% accurate.\"** One number, the one the tool printed."
-      - "Nobody asks which errors it counts and which it hides."
-      - "→ A company that measured this."
   booking:
     at: "0:35"
-    notes:
-      - "**Booking.com, 2019: about 150 customer-facing models, every one tested in an RCT.**"
-      - "23 comparisons, 46 models: a new model against one already proven in an RCT."
   nocorr:
     at: "0:56"
-    notes:
-      - "**Offline gain (AUC or a ranking metric) next to business gain in the RCT.**"
-      - "Pearson −0.1, 90% CI −0.45 to 0.27 → no relation."
   health:
     at: "1:15"
-    notes:
-      - "**Their section title: \"Offline model performance is just a health check.\"**"
-      - "One cause: a model trained on clicks can drive clicks without more bookings (proxy over-optimisation)."
-      - "Careful: gain vs gain, one system. Not \"offline metrics are useless\"."
-      - "→ Back to our company."
   werkmora:
     at: "1:36"
-    notes:
-      - "**Werkmora — fictional garden retailer; nightly forecast per store × item.**"
-      - "The pilot reports one number: \"WAPE better than the ERP forecast, overall.\""
   decision:
     at: "1:52"
-    notes:
-      - "**A metric is a decision about which errors count → start from the decision.**"
-      - "Decision = how much to order. Too high → dead plants, markdowns. Too low → empty shelves on a sunny weekend."
   forecast:
     at: "2:10"
-    notes:
-      - "**Two numbers: WAPE and bias.**"
-      - "WAPE = sum of absolute errors ÷ sum of sales → big sellers count most."
-      - "Bias = sum of (forecast − actual) ÷ sum of sales → the sign says too much or too little. The nearest thing to calibration."
-      - "Not MAPE: many store × item × day values are zero → undefined (Hyndman & Koehler 2006, §2.2)."
-      - "→ Other tasks, same question."
   classify:
     at: "2:32"
-    notes:
-      - "**Classification: precision and recall.**"
-      - "Accuracy misleads on imbalance: 99% by never flagging fraud. Read precision and recall at the operating point."
   rare:
     at: "2:50"
-    notes:
-      - "**Rare class: precision at the operating point, with the prevalence.**"
-      - "\"PR-AUC is always better\" is disputed (McDermott 2024). AUROC is fine to compare models before a threshold is set."
   calibration:
     at: "3:10"
-    notes:
-      - "**Probabilities: calibration. Does \"70%\" happen 70% of the time?**"
-      - "QRISK2 vs Framingham, men 35–74: AUROC 0.771 vs 0.750. Framingham over-predicted."
-      - "At the 20% threshold, per 1,000 men: 110 vs 206 flagged."
   regression:
     at: "3:29"
-    notes:
-      - "**Regression: MAE, RMSE, MAPE.**"
-      - "MAPE: undefined at zero, skewed near zero, unequal penalty for over and under. MASE = error scaled by a naive forecast's error."
   ranking:
     at: "3:47"
-    notes:
-      - "**Ranking: precision@k, NDCG; trap = the Booking.com one.**"
-      - "**Generation:** rubrics, reference answers, model judges. One average hides failure types; judges have biases → check against human labels."
-      - "→ Whatever you pick…"
   slice:
     at: "4:05"
-    notes:
-      - "**Report it per slice.**"
-      - "Werkmora: store type, country, item group, fast vs slow movers. ≈ 0.75 million series (fictional)."
-      - "WAPE is volume-weighted → slow movers and compact stores hide inside a good total."
-      - "The slice that matters may not be a column you have (hidden stratification)."
   levels:
     at: "4:29"
-    notes:
-      - "**Three levels.**"
-      - "Business: on-shelf availability, waste and markdown value, stock days."
-      - "Model: WAPE and bias per store × item × week, and per division."
-      - "Guardrails (must not get worse): availability on the top 500 garden items · waste on live plants · DC trucks per day · manual overrides."
-      - "(Guide's general examples, if you want them: cost per claim, retention · recall at a fixed precision · complaints, latency, fairness gaps.)"
   owners:
     at: "4:50"
-    notes:
-      - "**Each level has an owner.**"
-      - "CCO and COO sign business metrics and guardrails. Head of Data & Analytics owns the model metric."
-      - "Director Supply Chain watches the guardrails; one gets worse → the roll-out stops."
   month:
     at: "5:10"
-    notes:
-      - "**A month later (fictional).**"
-      - "Overall gain holds for fast sellers in big stores. Compact stores, slow live plants: positive bias → orders too many."
-      - "The slice report and the live-plant waste guardrail show it before spring."
   summary:
     at: "5:30"
-    notes:
-      - "**One page: three levels, the slices, how each number is computed, who signs.**"
-      - "Model metric = health check; business metric = does the product work."
   agents:
     at: "5:46"
-    notes:
-      - "**And for agents: the unit is the task.**"
-      - "Several steps → did it end in the right state, and on every run?"
-      - "→ The module on agentic products (evaluating agents)."
   takeaway:
     at: "6:02"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:08"
-    notes:
-      - "**Next: thresholds and operating points.**"
 
 text:
   # The title card; the one number.

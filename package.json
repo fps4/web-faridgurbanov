@@ -4,13 +4,14 @@
   "private": true,
   "description": "faridgurbanov.com — static-export Next.js site (ADR-0001). Scaffolded from the maestro/web base, served as a static export from a thin nginx image.",
   "scripts": {
-    "dev": "next dev -p 3040",
+    "dev": "node scripts/dev.mjs",
     "build": "next build",
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
     "voice": "node scripts/voice-check.mjs",
-    "notes": "node scripts/presenter-notes.mjs"
+    "notes:check": "node scripts/presenter-notes.mjs",
+    "notes:serve": "node scripts/notes-server.mjs"
   },
   "engines": {
     "node": ">=20"

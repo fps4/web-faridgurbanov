@@ -1,4 +1,4 @@
-# Episode 3.2 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.2 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-2.ts. Under `npm run dev`
 # a refresh of /en/deck/3-2 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,129 +21,50 @@ title: "Labels"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.2 — labels.**"
   promise:
     at: "0:05"
-    notes:
-      - "**In this episode: the five label sources and their weaknesses, how to check labels, and how to plan for late or partial labels.**"
   free:
     at: "0:22"
-    notes:
-      - "**The usual belief: \"the outcome is already in the database, so the labels are free.\"**"
-      - "Was the claim paid, how much did we sell. Just take it."
-      - "→ What that can do."
   cost:
     at: "0:36"
-    notes:
-      - "**US: a widely used commercial algorithm picks patients for extra care.**"
-      - "About 200 million people a year (authors' estimate)."
-      - "Needed a label for health *need* → took what was in the database: future health-care *cost*."
   sicker:
     at: "0:54"
-    notes:
-      - "**Cost was recorded correctly, but cost is not need.**"
-      - "Less is spent on Black patients with the same needs: $1,801 less per year at the same number of chronic conditions."
-      - "Same risk score → Black patients sicker. Race was **not** an input. The bias came from the label."
   fix:
     at: "1:18"
-    notes:
-      - "**The fix was a new label: health combined with cost.**"
-      - "Worked with the manufacturer; bias cut by 84%."
-      - "→ Our own label."
   werkmora:
     at: "1:29"
-    notes:
-      - "**Werkmora — fictional garden retailer; the forecast of how much each store will sell.**"
-      - "Label = units sold per store × item × day, from the tills."
-      - "Picks up 3.1: sales are not the same as customer demand."
   existing:
     at: "1:51"
-    notes:
-      - "**Five label sources, cheapest first. One: existing outcomes.**"
-      - "Cheap, two risks: a **proxy** for what you want (cost for need) *and* **shaped by past decisions** (Lakkaraju 2017: you only see if a defendant comes back to court when the judge released them)."
   implicit:
     at: "2:17"
-    notes:
-      - "**Two: implicit feedback** — clicks, purchases, edits."
-      - "Plenty, noisy, and only covers what the product showed. Nobody clicks what they never saw."
   rules:
     at: "2:32"
-    notes:
-      - "**Three: rules, weak supervision** — small functions label the data."
-      - "Noisy but fast. Snorkel user study: 2.8× faster than seven hours of hand labelling."
   assisted:
     at: "2:48"
-    notes:
-      - "**Four: model-assisted** — a model proposes, a person corrects."
-      - "Faster, still people's time."
   expert:
     at: "2:58"
-    notes:
-      - "**Five: expert annotation** — accurate, expensive, sometimes the only option (medical images)."
-      - "→ But experts do not always agree."
   agree:
     at: "3:07"
-    notes:
-      - "**Check one: measure agreement first.**"
-      - "Same items, two labellers, how often they agree."
-      - "Disagreement = the labels are uncertain. Without a cleaner reference you cannot show a model beats an expert. (The corrected \"ceiling\".)"
   adjudicate:
     at: "3:27"
-    notes:
-      - "**Google, eye screening for diabetes: what a clean reference is worth.**"
-      - "Training: more than 1.6 million images, ordinary grades."
-      - "Retina specialists discussed and agreed on 3,737 images → used for tuning → AUC 0.934 → 0.986."
-      - "Against that reference: on par with the specialists."
   guideline:
     at: "3:53"
-    notes:
-      - "**Check two: a guideline with worked edge cases.**"
-      - "What to do in the hard cases, with examples."
-      - "Watch pay: paying labellers per volume lowers quality (Google PAIR)."
   late:
     at: "4:08"
-    notes:
-      - "**Some labels arrive late.** Fraud confirmed weeks later; a loan defaults after months."
-      - "Slows training; no label to monitor the model live."
   partial:
     at: "4:19"
-    notes:
-      - "**A late label is often a partial label.**"
-      - "Card fraud: only the transactions investigators check get a label (Dal Pozzolo 2018)."
-      - "Plan both: *when* the label arrives, and *which* cases get one."
   censored:
     at: "4:36"
-    notes:
-      - "**Werkmora: empty shelf → zero sales → the model learns \"low demand\".**"
-      - "Not random: past orders decided which store-days ran empty. The judge and the defendant again."
   flag:
     at: "4:55"
-    notes:
-      - "**A second label: the stock-out flag.**"
-      - "Rule first: stock is zero at opening (weak supervision)."
-      - "Two weeks, staff check about 400 shelves: how often do rule and people agree (fictional)."
-      - "A planner and the store manager settle the disagreements → the small reference set."
   waste:
     at: "5:19"
-    notes:
-      - "**Third label: plant waste — late.**"
-      - "Write-offs scanned at the weekly stock count: up to a week late."
-      - "Used to monitor and to set the service level; it does not train the daily forecast."
   spec:
     at: "5:38"
-    notes:
-      - "**Write it down: one label specification.**"
-      - "Each label: meaning, owner, when it arrives. Plus the guideline and one agreement number."
-      - "Data & Analytics writes it with Store Operations, who own the stock-out flag and waste."
   takeaway:
     at: "5:58"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:04"
-    notes:
-      - "**Next: data quality and leakage.**"
 
 text:
   # The title card; the usual belief.

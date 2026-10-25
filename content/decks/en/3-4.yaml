@@ -1,4 +1,4 @@
-# Episode 3.4 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.4 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-4.ts. Under `npm run dev`
 # a refresh of /en/deck/3-4 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,130 +21,48 @@ title: "Splits and validation"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.4 — splits and validation.**"
   promise:
     at: "0:04"
-    notes:
-      - "**In this episode: what a split is for, how to choose random, time or group, why the test set is spent once.**"
   random:
     at: "0:19"
-    notes:
-      - "**\"We held out 20% at random, and the model scored very well.\"**"
-      - "Sounds like proof. Often it is not."
-      - "→ A real case."
   zech:
     at: "0:32"
-    notes:
-      - "**2018: a model to detect pneumonia on chest X-rays.**"
-      - "158,323 images from three hospital systems (NIH, Mount Sinai, Indiana)."
   hospital:
     at: "0:42"
-    notes:
-      - "**A network could also tell which hospital an image came from.**"
-      - "99.95% · 99.98% · 95.59% accuracy."
-      - "Pneumonia 34.2% at Mount Sinai, against 1.2% and 1.0% at the other two (do not assign them)."
-      - "So the hospital was a strong clue for the answer."
   outside:
     at: "1:05"
-    notes:
-      - "**Internal test: AUC 0.931. Outside hospital: 0.815.**"
-      - "All hospitals on both sides of the test → the test rewarded the hospital clue."
-      - "Holding out a whole hospital showed the real performance. Zech et al., PLOS Medicine, 2018."
-      - "→ Same trap, at our company."
   werkmora:
     at: "1:26"
-    notes:
-      - "**Werkmora: fictional garden retailer, about 175 stores.**"
-      - "Forecast per store × item, 1–21 days ahead."
-      - "Pilot scored on a random 20% of store × item × day rows → same store and week on both sides; neighbouring days share weather, promotions, stock."
-      - "Good score; it says little about next spring."
   simulate:
     at: "1:59"
-    notes:
-      - "**A split is a simulation of production.**"
-      - "Ask first: *in production, what will be new to the model?* New days, customers, stores, sites."
-      - "Make exactly those things new in the test."
   split-random:
     at: "2:19"
-    notes:
-      - "**Random: independent rows, a stable world.**"
-      - "And no duplicates across sources, no hidden groups (patient, store, device) on both sides — Roberts M. 2021, Kapoor & Narayanan 2023, Zech 2018."
   split-time:
     at: "2:36"
-    notes:
-      - "**Time: train on the past, test on a later period.**"
-      - "The default for a forecast and anything that predicts the future."
-      - "(If asked: Bergmeir, Hyndman & Koo 2018 — for *purely autoregressive* models, K-fold CV can be valid for model selection. Not a reason to drop the later test period.)"
   backtest:
     at: "2:49"
-    notes:
-      - "**A backtest repeats the cut-off many times.**"
-      - "Train only on data before each date · same horizon as the product · data as it was known then (data-03)."
   split-group:
     at: "3:08"
-    notes:
-      - "**Group: one customer, store or patient on one side only.**"
-      - "Otherwise the model is tested on someone it has already seen."
-      - "New sites in production → hold out whole sites (as Zech did)."
   shortcuts:
     at: "3:29"
-    notes:
-      - "**Even a held-out site can miss things.**"
-      - "COVID-19 chest X-ray models: \"half of the model's predictive performance is lost\" at other hospitals; shortcuts (markers, text, patient position) — some also work at the new hospital."
-      - "External split: needed, and it does not prove everything. DeGrave et al. 2021."
-      - "→ What if the data is small?"
   cv:
     at: "3:48"
-    notes:
-      - "**Cross-validation: rotate the held-out part, average the scores.**"
-      - "A more stable estimate on small data."
   cv-rules:
     at: "3:59"
-    notes:
-      - "**Two rules.**"
-      - "Time, place or group structure → rotate whole blocks: blocked or grouped CV (Roberts D.R. 2017, \"serious underestimation of predictive error\" otherwise)."
-      - "CV also used to tune or choose → nested CV, or a separate test set."
-      - "Varma & Simon 2006: on data with no real signal, tuned models looked good in CV and were at chance on an independent test."
   three-sets:
     at: "4:25"
-    notes:
-      - "**Three sets, three jobs.**"
-      - "Training: the model learns · validation: you tune and choose · test: the final number, once."
   spent:
     at: "4:40"
-    notes:
-      - "**Every look leaks a bit.**"
-      - "After many looks the test set is training data; the reported score is too high."
-      - "Cawley & Talbot 2010: errors \"of comparable magnitude to differences in performance\" between algorithms → big enough to pick the wrong model."
-      - "(TRIPOD+AI 2024 writes it as a reporting rule.)"
   plan:
     at: "5:04"
-    notes:
-      - "**Werkmora, done right.**"
-      - "Backtest: weekly cut-offs through spring 2025, 1–21 days ahead, data as it was known."
-      - "All tuning and model choice happens here."
   sealed:
     at: "5:20"
-    notes:
-      - "**Spring 2026 (March–June) is the sealed test.**"
-      - "Trained up to end of February 2026; opened once, at the go/no-go meeting."
-      - "Whole stores held out (big and compact); the ERP forecast and the seasonal naive baseline scored on the same splits (data-07)."
   page:
     at: "5:40"
-    notes:
-      - "**One page: what is new · cut-off dates · the sealed period · who may open it.**"
-      - "Owner: Head of Data & Analytics keeps it sealed. The backtest runs as a job in the pipeline."
-      - "Everyone agrees the split copies production; they differ on how often you may look (once: TRIPOD+AI and the guide; many times with a method that allows it: Dwork et al. 2015)."
-      - "Your angle, if it fits: the backtest as an integration test suite, the split as an ADR."
   takeaway:
     at: "6:02"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:09"
-    notes:
-      - "**Next: choosing metrics.**"
 
 text:
   # The title card; the usual check.
