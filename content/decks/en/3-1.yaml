@@ -27,7 +27,7 @@ steps:
     at: "0:25"
   shades:
     at: "0:41"
-  missing:
+  balanced:
     at: "1:13"
   werkmora:
     at: "1:27"
@@ -67,7 +67,10 @@ text:
   answer: "“3 years of sales. 60 million lines a year.”"
   answer-tag: "a row count"
 
-  # Gender Shades.
+  # Gender Shades: the overall number on the usual test sets, then the balanced test set.
+  title-usual: "Same products, the usual test sets"
+  value-all: "0.95%"
+  label-all: "error rate, all faces"
   title-shades: "Same products, a balanced test set"
   value-women: "34.7%"
   value-men: "0.8%"
@@ -76,7 +79,6 @@ text:
   shades-what: "highest error of three commercial gender classifiers, 2018"
   test-sets: "The usual test sets: 80% and 86% lighter-skinned"
   shades-credit: "Buolamwini & Gebru (2018), Gender Shades. Gender classification, not face recognition."
-  missing: "Plenty of data. One group missing, in the test data too."
 
   # Werkmora and its nine sources.
   title-werkmora: "Werkmora: a forecast for every store, every night"
