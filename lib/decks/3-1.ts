@@ -68,6 +68,9 @@ const LANGUAGES = [
 const CASES = ['retail', 'insurance', 'manufacturing'] as const;
 const CASE_X = (i: number) => 120 + i * 440;
 
+// Insurance fraud found vs not found, by country (Insurance Europe 2019, pp. 6–7): a table beside the use cases.
+const FRAUD = ['denmark', 'slovenia', 'ireland', 'france'] as const;
+
 // The six questions, one row each, in the order they are asked.
 const QUESTIONS = ['content', 'labels', 'volume', 'coverage', 'freshness', 'rights'] as const;
 
@@ -116,10 +119,19 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
     ];
   });
 
+  const fraud: Element[] = FRAUD.flatMap((key, i) => {
+    const y = 380 + i * 72;
+    return [
+      sans(`fraud-${key}`, 1460, y, w.text(`fraud-${key}`), { size: 24, in: S.sources, out: S.content }),
+      sans(`fraud-${key}-amounts`, 1460, y + 28, w.text(`fraud-${key}-amounts`), { size: 18, tone: 'muted', in: S.sources, out: S.content }),
+      hand(`fraud-${key}-share`, 1880, y + 8, w.text(`fraud-${key}-share`), { size: 36, anchor: 'end', tone: 'warn', in: S.sources, out: S.content }),
+    ];
+  });
+
   const questions: Element[] = QUESTIONS.flatMap((key, i) => {
     const y = 260 + i * 110;
     return [
-      hand(`q-${key}`, 120, y, w.text(`q-${key}`), { size: 44, tone: 'accent', in: S[key], out: S.magic }),
+      hand(`q-${key}`, 120, y, `${i + 1}  ${w.text(`q-${key}`)}`, { size: 44, tone: 'accent', in: S[key], out: S.magic }),
       sans(`q-${key}-example`, 470, y, w.text(`q-${key}-example`), { size: 28, wrap: 920, in: S[key], out: S.magic }),
     ];
   });
@@ -172,6 +184,9 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       // Three use cases, each with what it predicts, one number to know, and its sources with their owners.
       hand('title-cases', 120, 160, w.text('title-cases'), { size: 56, in: S.cases, out: S.content }),
       ...cases,
+      hand('fraud-title', 1460, 280, w.text('fraud-title'), { size: 30, tone: 'accent', wrap: 420, in: S.sources, out: S.content }),
+      ...fraud,
+      sans('fraud-credit', 1460, 670, w.text('fraud-credit'), { size: 18, tone: 'muted', in: S.sources, out: S.content }),
       hand('sources-owners', 120, 1010, w.text('sources-owners'), { size: 40, tone: 'accent', in: S.sources, out: S.content }),
 
       // The six questions, one row per click, each with an example from one of the three use cases.

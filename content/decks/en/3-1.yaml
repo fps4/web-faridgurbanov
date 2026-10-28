@@ -65,8 +65,8 @@ steps:
 text:
   # The title card; the question, the usual answer, and what the EU AI Act asks instead.
   episode: "AI Product Design · Module 3 · Episode 3.1"
-  question: "“Do we have enough data to train it?”"
-  answer: "“3 years of history. 60 million records a year.”"
+  question: "“Is our data ready for AI?”"
+  answer: "“Sure. Ten years of history, millions of records.”"
   answer-tag: "a row count"
   act: "EU AI Act, Art. 10(3), for high-risk AI: training, validation and test data “relevant, sufficiently representative” … “in view of the intended purpose”."
 
@@ -98,8 +98,8 @@ text:
   source-retail-4: "weather · external"
   case-insurance: "Insurance"
   case-insurance-predicts: "Which claims to check for fraud"
-  case-insurance-stat: "1 in 5"
-  case-insurance-stat-what: "frauds ever detected: €2.5bn of ≈ €13bn, Europe, 2017"
+  case-insurance-stat: "10–50%"
+  case-insurance-stat-what: "of the fraud is ever found, by country (Europe, 2017)"
   source-insurance-1: "claims · claims team"
   source-insurance-2: "policies · underwriting"
   source-insurance-3: "payments · finance"
@@ -112,7 +112,23 @@ text:
   source-manufacturing-2: "repair log · maintenance"
   source-manufacturing-3: "production plan · planning"
   source-manufacturing-4: "parts · procurement"
-  sources-owners: "12 sources · 12 owners · 6 questions each"
+  sources-owners: "Every industry, same pattern: each source has its own owner."
+
+  # Beside the use cases: insurance fraud found vs estimated not found, by country (Insurance Europe 2019, pp. 6–7).
+  fraud-title: "Insurance fraud found, by country, 2017"
+  fraud-denmark: "Denmark"
+  fraud-denmark-amounts: "€33m found · ≈ €300m not found"
+  fraud-denmark-share: "≈ 10%"
+  fraud-slovenia: "Slovenia"
+  fraud-slovenia-amounts: "€20m found · ≈ €90m not found"
+  fraud-slovenia-share: "≈ 18%"
+  fraud-ireland: "Ireland, non-life"
+  fraud-ireland-amounts: "€76m found · ≈ €200m not found"
+  fraud-ireland-share: "≈ 28%"
+  fraud-france: "France, motor"
+  fraud-france-amounts: "€127m found · ≈ €125m not found"
+  fraud-france-share: "≈ 50%"
+  fraud-credit: "Insurance Europe (2019), pp. 6–7; by value"
 
   # The six questions, each with an example from one of the use cases.
   title-six: "Six questions, for each source"
