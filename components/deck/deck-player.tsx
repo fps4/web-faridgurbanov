@@ -97,8 +97,8 @@ export function DeckPlayer({
       } else if (e.key === 'Home') go(0);
       else if (e.key === 'End') go(last);
       else if (e.key === 'c') setGuide((g) => !g);
-      else if (e.key === 'f') void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen());
-      else if (e.key === 'p' && PRESENTER) window.open(`${window.location.pathname}?presenter#${step}`, `presenter-${deck.id}`, 'width=1100,height=760');
+      else if (e.key === 'f') void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()).catch(() => {});
+      else if (e.key === 'p' && PRESENTER) window.open(`${window.location.pathname}?presenter#${step}`, `presenter-${deck.id}`, `width=${screen.availWidth},height=${screen.availHeight}`);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);

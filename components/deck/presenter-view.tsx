@@ -24,9 +24,16 @@ type Notes = { file: string; version: string; steps: Record<string, string> };
 type Editing = { step: string; text: string; base: string | null };
 
 // The notes' own markdown, as the wiki writes it: **bold** for the thought to say, *italic*,
-// `code`. Everything else is plain text.
+// `code`, [links](url) shown by their text. Everything else is plain text.
 function inline(line: string): ReactNode[] {
-  return line.split(/(\*\*.+?\*\*|\*[^*\s][^*]*\*|`[^`]+`)/g).map((part, i) => {
+  return line.split(/(\[[^\]]+\]\([^)\s]+\)|\*\*.+?\*\*|\*[^*\s][^*]*\*|`[^`]+`)/g).map((part, i) => {
+    const link = /^\[([^\]]+)\]\(([^)\s]+)\)$/.exec(part);
+    if (link)
+      return (
+        <a key={i} href={link[2]} target="_blank" rel="noreferrer" className="underline decoration-neutral-600 underline-offset-2 hover:text-white">
+          {inline(link[1])}
+        </a>
+      );
     if (/^\*\*.+\*\*$/.test(part))
       return (
         <strong key={i} className="font-semibold text-white">
@@ -97,6 +104,16 @@ export function PresenterView({ deck, step, clock, isFallback }: { deck: Deck; s
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ text: string; warn?: boolean } | null>(null);
   const box = useRef<HTMLTextAreaElement>(null);
+  // Full screen hides the browser's tabs and address bar; `f` does the same (the player's key).
+  const [full, setFull] = useState(false);
+  useEffect(() => {
+    const onChange = () => setFull(Boolean(document.fullscreenElement));
+    onChange();
+    document.addEventListener('fullscreenchange', onChange);
+    return () => document.removeEventListener('fullscreenchange', onChange);
+  }, []);
+  // The browser refuses full screen without a real click or key press; that is not an error to report.
+  const toggleFull = () => void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()).catch(() => {});
 
   const here = deck.steps[step];
   const next = deck.steps[step + 1];
@@ -163,84 +180,104 @@ export function PresenterView({ deck, step, clock, isFallback }: { deck: Deck; s
     }
   }
 
+  // A *Source* line is for checking, not for saying: it reads smaller and quieter.
+  const lineClass = (line: string) =>
+    line.startsWith('→') ? 'list-none -ml-5 text-neutral-400' : /^\*Sources?:\*/.test(line) ? 'text-sm text-neutral-500' : undefined;
+
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-neutral-950 p-8 font-sans text-neutral-100">
-      <div className="flex items-baseline justify-between text-sm text-neutral-400">
-        <span>
+    <div className="flex h-screen flex-col overflow-hidden bg-neutral-950 px-4 py-3 font-sans text-neutral-100">
+      <div className="flex items-baseline justify-between gap-4 text-xs text-neutral-400">
+        <span className="truncate">
           {deck.episode} · {deck.title}
         </span>
-        <span>
+        <span className="flex shrink-0 items-baseline gap-3 tabular-nums">
           step {step + 1} / {deck.steps.length} · plan {here.at} · clock {clock}
+          <button
+            type="button"
+            // Blurred after the click, so Space (next click) does not press it again.
+            onClick={(e) => {
+              e.currentTarget.blur();
+              toggleFull();
+            }}
+            className="rounded px-1.5 py-0.5 text-neutral-400 ring-1 ring-neutral-700 hover:text-white hover:ring-neutral-500"
+          >
+            {full ? 'Exit full screen' : 'Full screen'}
+          </button>
         </span>
       </div>
-      {/* The stage on top in three fifths of the height, the notes below in a fixed area of two
-          fifths, so neither moves between clicks. The stage is 16:9, as wide as the window allows or
-          as tall as its area, whichever is smaller; the notes start at the top of theirs. */}
-      <div className="mt-6 min-h-0 flex-[3_3_0%] [container-type:size]">
-        <div
-          className="overflow-hidden rounded-md ring-1 ring-neutral-700"
-          style={{ width: `min(100cqw, calc(100cqh * ${STAGE.w / STAGE.h}))` }}
-        >
-          <Sketch deck={deck} step={step} className="block h-auto w-full" />
+      {/* The stage gets the most room it can: beside the notes on a landscape window (the notes in a
+          narrow column on the right), above them on a portrait one. The stage is 16:9, as wide as its
+          area allows or as tall, whichever is smaller; the next click's first line sits under it, in
+          the room a wide window leaves there. Neither moves between clicks. */}
+      <div className="mt-3 grid min-h-0 flex-1 grid-rows-[minmax(0,3fr)_minmax(0,2fr)] gap-4 [@media(min-aspect-ratio:5/4)]:grid-cols-[minmax(0,1fr)_clamp(240px,24%,380px)] [@media(min-aspect-ratio:5/4)]:grid-rows-1">
+        <div className="min-h-0 [container-type:size]">
+          <div
+            className="overflow-hidden rounded-md ring-1 ring-neutral-700"
+            style={{ width: `min(100cqw, calc((100cqh - 3rem) * ${STAGE.w / STAGE.h}))` }}
+          >
+            <Sketch deck={deck} step={step} className="block h-auto w-full" />
+          </div>
+          {notes ? (
+            <p className="mt-2 line-clamp-2 text-sm leading-snug text-neutral-400 [&_strong]:font-normal [&_strong]:text-neutral-300">
+              {next ? (
+                <>
+                  <span className="mr-1.5 text-neutral-500">Next ({next.at}):</span>
+                  {inline(lines(next.name)[0] ?? '')}
+                </>
+              ) : (
+                <span className="text-neutral-500">End of the episode.</span>
+              )}
+            </p>
+          ) : null}
         </div>
+        {editing ? (
+          <div className="flex min-h-0 flex-col">
+            <p className="mb-2 text-xs text-amber-400">
+              Editing ▶ <code className="font-mono">{editing.step}</code>
+              {editing.step !== here.name ? ' (the deck has moved on; this saves the block you opened)' : ''} · ⌘↵ save · Esc cancel
+            </p>
+            <textarea
+              ref={box}
+              value={editing.text}
+              spellCheck
+              onChange={(e) => setEditing({ ...editing, text: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                  e.preventDefault();
+                  void save();
+                } else if (e.key === 'Escape') {
+                  e.preventDefault();
+                  setEditing(null);
+                  setMessage(null);
+                }
+              }}
+              className="min-h-0 flex-1 resize-none rounded-md bg-neutral-900 p-3 font-mono text-sm leading-relaxed text-neutral-100 ring-1 ring-amber-500/60 focus:outline-none"
+            />
+          </div>
+        ) : (
+          <div className="min-h-0 overflow-y-auto pr-1" onDoubleClick={edit} title={notes ? 'Double-click or press e to edit' : undefined}>
+            {notes ? (
+              <ul className="list-disc space-y-1.5 pl-5 text-base leading-snug text-neutral-200">
+                {lines(here.name).map((line, i) => (
+                  <li key={i} className={lineClass(line)}>
+                    {inline(line)}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {notes && !lines(here.name).length ? (
+              <p className="text-sm text-neutral-500">No notes for ▶ {here.name} yet: press e to write them.</p>
+            ) : null}
+            {problem ? <p className="mt-3 text-sm text-amber-400">{inline(problem)}</p> : null}
+          </div>
+        )}
       </div>
-      {editing ? (
-        <div className="mt-6 flex min-h-0 flex-[2_2_0%] flex-col">
-          <p className="mb-2 text-sm text-amber-400">
-            Editing ▶ <code className="font-mono">{editing.step}</code>
-            {editing.step !== here.name ? ' (the deck has moved on; this saves the block you opened)' : ''} · ⌘↵ save · Esc cancel
-          </p>
-          <textarea
-            ref={box}
-            value={editing.text}
-            spellCheck
-            onChange={(e) => setEditing({ ...editing, text: e.target.value })}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                void save();
-              } else if (e.key === 'Escape') {
-                e.preventDefault();
-                setEditing(null);
-                setMessage(null);
-              }
-            }}
-            className="min-h-0 flex-1 resize-none rounded-md bg-neutral-900 p-4 font-mono text-lg leading-relaxed text-neutral-100 ring-1 ring-amber-500/60 focus:outline-none"
-          />
-        </div>
-      ) : (
-        <div className="mt-6 min-h-0 flex-[2_2_0%] overflow-y-auto" onDoubleClick={edit} title={notes ? 'Double-click or press e to edit' : undefined}>
-          {notes ? (
-            <ul className="list-disc space-y-2 pl-7 text-2xl leading-snug text-neutral-200">
-              {lines(here.name).map((line, i) => (
-                <li key={i} className={line.startsWith('→') ? 'list-none -ml-7 text-neutral-400' : undefined}>
-                  {inline(line)}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-          {notes && !lines(here.name).length ? (
-            <p className="text-xl text-neutral-500">No notes for ▶ {here.name} yet: press e to write them.</p>
-          ) : null}
-          {notes ? (
-            next ? (
-              <p className="mt-6 text-xl leading-snug text-neutral-400">
-                <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
-                {inline(lines(next.name)[0] ?? '')}
-              </p>
-            ) : (
-              <p className="mt-6 text-xl text-neutral-500">End of the episode.</p>
-            )
-          ) : null}
-          {problem ? <p className="text-xl text-amber-400">{inline(problem)}</p> : null}
-        </div>
-      )}
-      {message ? <p className={`mt-3 text-sm ${message.warn ? 'text-amber-400' : 'text-emerald-400'}`}>{inline(message.text)}</p> : null}
-      <p className="mt-4 text-sm text-neutral-500">
-        → / Space next · ← back · e edit notes · this window and the stage follow each other
+      {message ? <p className={`mt-2 text-xs ${message.warn ? 'text-amber-400' : 'text-emerald-400'}`}>{inline(message.text)}</p> : null}
+      <p className="mt-2 truncate text-right text-xs text-neutral-500">
+        → / Space next · ← back · e edit notes · f full screen · this window and the stage follow each other
         {notes ? ` · notes: wiki/${notes.file}` : ''}
       </p>
-      {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
+      {isFallback ? <p className="mt-1 text-xs text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
     </div>
   );
 }
