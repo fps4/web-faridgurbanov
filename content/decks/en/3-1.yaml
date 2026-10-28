@@ -183,8 +183,8 @@ text:
   source-manufacturing-7-owner: "quality"
   source-manufacturing-8: "operator notes"
   source-manufacturing-8-owner: "production"
-  case-manufacturing-extra: "A missed failure costs 50 times a needless check."
-  case-manufacturing-extra-source: "Scania's own cost figures for the dataset: 500 vs 10 (UCI, 2017)"
+  case-manufacturing-extra: "A missed failure stops the line: an hour in a large car plant costs $2.3 million."
+  case-manufacturing-extra-source: "Siemens, The True Cost of Downtime 2024, p. 2 (vendor survey)"
   sources-owners: "Every industry, same pattern: each source has its own owner."
 
   # The six questions, each with an example from one of the use cases.
