@@ -170,6 +170,7 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
 
       // One headline number on the usual benchmark, then the same questions by language, on the same scale.
       hand('title-headline', 120, 160, w.text('title-headline'), { size: 52, in: S.headline, out: S.languages }),
+      sans('mmlu', 120, 235, w.text('mmlu'), { size: 28, tone: 'muted', wrap: 1250, in: S.headline, out: S.languages }),
       { id: 'baseline', in: S.headline, out: S.cases, shape: { kind: 'line', points: [[200, BAR_BASE], [1100, BAR_BASE]] } },
       { id: 'bar-all', in: S.headline, out: S.languages, shape: { kind: 'box', x: 260, y: BAR_BASE - bar(7.7), w: 820, h: bar(7.7), fill: true } },
       hand('value-all', 670, BAR_BASE - bar(7.7) - 30, w.text('value-all'), { size: 56, anchor: 'middle', in: S.headline, out: S.languages }),
@@ -177,7 +178,10 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       hand('english-only', 1180, 580, w.text('english-only'), { size: 36, wrap: 560, in: S.headline, out: S.languages }),
       hand('title-languages', 120, 160, w.text('title-languages'), { size: 52, in: S.languages, out: S.cases }),
       ...languages,
-      hand('web-share', 1180, 580, w.text('web-share'), { size: 36, tone: 'accent', wrap: 560, in: S.languages, out: S.cases }),
+      // Speakers against share of the open web: many people, few pages.
+      ...(['yoruba', 'swahili', 'english'] as const).map((key, i) =>
+        hand(`web-${key}`, 1180, 560 + i * 48, w.text(`web-${key}`), { size: 32, tone: key === 'english' ? 'muted' : 'accent', in: S.languages, out: S.cases }),
+      ),
       sans('languages-what', 200, 950, w.text('languages-what'), { size: 24, tone: 'muted', in: S.languages, out: S.cases }),
       sans('languages-credit', 200, 995, w.text('languages-credit'), { size: 22, tone: 'muted', wrap: 1180, in: S.headline, out: S.cases }),
 
