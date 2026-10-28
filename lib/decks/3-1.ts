@@ -17,8 +17,15 @@ const STEPS = [
   'act',
   'headline',
   'languages',
-  'cases',
-  'sources',
+  'retail',
+  'retail-sources',
+  'retail-gap',
+  'insurance',
+  'insurance-sources',
+  'insurance-found',
+  'manufacturing',
+  'manufacturing-sources',
+  'manufacturing-cost',
   'content',
   'labels',
   'volume',
@@ -64,12 +71,13 @@ const LANGUAGES = [
   { key: 'yoruba', pct: 24.6, x: 860 },
 ] as const;
 
-// Three use cases, one column each; four sources per use case, each with its owner.
-const CASES = ['retail', 'insurance', 'manufacturing'] as const;
-const CASE_X = (i: number) => 120 + i * 440;
-
-// Insurance fraud found vs not found, by country (Insurance Europe 2019, pp. 6–7): a table beside the use cases.
+// Three use cases, one slide each, three clicks: what it predicts and one number; its sources, each with
+// its owner; one more fact (for insurance, fraud found vs not found by country, Insurance Europe 2019, pp. 6–7).
+const INDUSTRIES = ['retail', 'insurance', 'manufacturing'] as const;
 const FRAUD = ['denmark', 'slovenia', 'ireland', 'france'] as const;
+// How many sources each use case lists, drawn two to a row on the right.
+const SOURCE_COUNT = { retail: 9, insurance: 8, manufacturing: 8 } as const;
+const EXTRA = { retail: 'retail-gap', insurance: 'insurance-found', manufacturing: 'manufacturing-cost' } as const;
 
 // The six questions, one row each, in the order they are asked.
 const QUESTIONS = ['content', 'labels', 'volume', 'coverage', 'freshness', 'rights'] as const;
@@ -96,35 +104,48 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
     const h = bar(pct);
     const tone = key === 'yoruba' ? 'warn' : undefined;
     return [
-      { id: `bar-${key}`, tone, in: S.languages, out: S.cases, shape: { kind: 'box', x, y: BAR_BASE - h, w: 220, h, fill: true } },
-      hand(`value-${key}`, x + 110, BAR_BASE - h - 30, w.text(`value-${key}`), { size: 56, anchor: 'middle', tone, in: S.languages, out: S.cases }),
-      sans(`label-${key}`, x + 110, 870, w.text(`label-${key}`), { size: 26, anchor: 'middle', in: S.languages, out: S.cases }),
+      { id: `bar-${key}`, tone, in: S.languages, out: S.retail, shape: { kind: 'box', x, y: BAR_BASE - h, w: 220, h, fill: true } },
+      hand(`value-${key}`, x + 110, BAR_BASE - h - 30, w.text(`value-${key}`), { size: 56, anchor: 'middle', tone, in: S.languages, out: S.retail }),
+      sans(`label-${key}`, x + 110, 870, w.text(`label-${key}`), { size: 26, anchor: 'middle', in: S.languages, out: S.retail }),
     ];
   });
 
-  const cases: Element[] = CASES.flatMap((key, i) => {
-    const x = CASE_X(i);
+  const industries: Element[] = INDUSTRIES.flatMap((key, i) => {
+    const show = { in: S[key], out: i < INDUSTRIES.length - 1 ? S[INDUSTRIES[i + 1]] : S.content };
+    const sources = { in: S[`${key}-sources`], out: show.out };
+    const extra = { in: S[EXTRA[key]], out: show.out };
     return [
-      hand(`case-${key}`, x, 260, w.text(`case-${key}`), { size: 48, tone: 'accent', in: S.cases, out: S.content }),
-      sans(`case-${key}-predicts`, x, 320, w.text(`case-${key}-predicts`), { size: 26, wrap: 380, in: S.cases, out: S.content }),
-      hand(`case-${key}-stat`, x, 450, w.text(`case-${key}-stat`), { size: 56, tone: 'warn', in: S.cases, out: S.content }),
-      sans(`case-${key}-stat-what`, x, 495, w.text(`case-${key}-stat-what`), { size: 22, tone: 'muted', wrap: 380, in: S.cases, out: S.content }),
-      ...[1, 2, 3, 4].flatMap((n) => {
-        const y = 600 + (n - 1) * 85;
+      hand(`case-${key}`, 120, 160, w.text(`case-${key}`), { size: 56, ...show }),
+      sans(`case-${key}-predicts`, 120, 250, w.text(`case-${key}-predicts`), { size: 34, wrap: 700, ...show }),
+      hand(`case-${key}-stat`, 120, 440, w.text(`case-${key}-stat`), { size: 120, tone: 'warn', ...show }),
+      sans(`case-${key}-stat-what`, 120, 500, w.text(`case-${key}-stat-what`), { size: 26, tone: 'muted', wrap: 680, ...show }),
+      hand(`sources-${key}`, 880, 250, w.text('sources-heading'), { size: 34, tone: 'muted', ...sources }),
+      ...Array.from({ length: SOURCE_COUNT[key] }, (_, i) => i + 1).flatMap((n) => {
+        const x = 880 + ((n - 1) % 2) * 270;
+        const y = 290 + Math.floor((n - 1) / 2) * 88;
         return [
-          { id: `source-${key}-${n}`, in: S.sources, out: S.content, shape: { kind: 'box', x, y, w: 400, h: 70 } } as Element,
-          hand(`source-${key}-${n}-label`, x + 20, y + 46, w.text(`source-${key}-${n}`), { size: 28, in: S.sources, out: S.content }),
+          { id: `source-${key}-${n}`, ...sources, shape: { kind: 'box', x, y, w: 250, h: 76 } } as Element,
+          hand(`source-${key}-${n}-label`, x + 16, y + 34, w.text(`source-${key}-${n}`), { size: 28, ...sources }),
+          sans(`source-${key}-${n}-owner`, x + 16, y + 62, w.text(`source-${key}-${n}-owner`), { size: 18, tone: 'muted', ...sources }),
         ];
       }),
-    ];
-  });
-
-  const fraud: Element[] = FRAUD.flatMap((key, i) => {
-    const y = 380 + i * 72;
-    return [
-      sans(`fraud-${key}`, 1460, y, w.text(`fraud-${key}`), { size: 24, in: S.sources, out: S.content }),
-      sans(`fraud-${key}-amounts`, 1460, y + 28, w.text(`fraud-${key}-amounts`), { size: 18, tone: 'muted', in: S.sources, out: S.content }),
-      hand(`fraud-${key}-share`, 1880, y + 8, w.text(`fraud-${key}-share`), { size: 36, anchor: 'end', tone: 'warn', in: S.sources, out: S.content }),
+      ...(key === 'insurance'
+        ? [
+            hand('fraud-title', 120, 620, w.text('fraud-title'), { size: 34, tone: 'accent', ...extra }),
+            ...FRAUD.flatMap((country, j) => {
+              const y = 690 + j * 62;
+              return [
+                sans(`fraud-${country}`, 120, y, w.text(`fraud-${country}`), { size: 26, ...extra }),
+                sans(`fraud-${country}-amounts`, 360, y, w.text(`fraud-${country}-amounts`), { size: 22, tone: 'muted', ...extra }),
+                hand(`fraud-${country}-share`, 820, y, w.text(`fraud-${country}-share`), { size: 38, anchor: 'end', tone: 'warn', ...extra }),
+              ];
+            }),
+            sans('fraud-credit', 120, 950, w.text('fraud-credit'), { size: 20, tone: 'muted', ...extra }),
+          ]
+        : [
+            hand(`case-${key}-extra`, 120, 660, w.text(`case-${key}-extra`), { size: 40, tone: 'accent', wrap: 700, ...extra }),
+            sans(`case-${key}-extra-source`, 120, 800, w.text(`case-${key}-extra-source`), { size: 20, tone: 'muted', wrap: 700, ...extra }),
+          ]),
     ];
   });
 
@@ -171,27 +192,23 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
       // One headline number on the usual benchmark, then the same questions by language, on the same scale.
       hand('title-headline', 120, 160, w.text('title-headline'), { size: 52, in: S.headline, out: S.languages }),
       sans('mmlu', 120, 235, w.text('mmlu'), { size: 28, tone: 'muted', wrap: 1250, in: S.headline, out: S.languages }),
-      { id: 'baseline', in: S.headline, out: S.cases, shape: { kind: 'line', points: [[200, BAR_BASE], [1100, BAR_BASE]] } },
+      { id: 'baseline', in: S.headline, out: S.retail, shape: { kind: 'line', points: [[200, BAR_BASE], [1100, BAR_BASE]] } },
       { id: 'bar-all', in: S.headline, out: S.languages, shape: { kind: 'box', x: 260, y: BAR_BASE - bar(7.7), w: 820, h: bar(7.7), fill: true } },
       hand('value-all', 670, BAR_BASE - bar(7.7) - 30, w.text('value-all'), { size: 56, anchor: 'middle', in: S.headline, out: S.languages }),
       sans('label-all', 670, 870, w.text('label-all'), { size: 26, anchor: 'middle', in: S.headline, out: S.languages }),
       hand('english-only', 1180, 580, w.text('english-only'), { size: 36, wrap: 560, in: S.headline, out: S.languages }),
-      hand('title-languages', 120, 160, w.text('title-languages'), { size: 52, in: S.languages, out: S.cases }),
+      hand('title-languages', 120, 160, w.text('title-languages'), { size: 52, in: S.languages, out: S.retail }),
       ...languages,
       // Speakers against share of the open web: many people, few pages.
       ...(['yoruba', 'swahili', 'english'] as const).map((key, i) =>
-        hand(`web-${key}`, 1180, 560 + i * 48, w.text(`web-${key}`), { size: 32, tone: key === 'english' ? 'muted' : 'accent', in: S.languages, out: S.cases }),
+        hand(`web-${key}`, 1180, 560 + i * 48, w.text(`web-${key}`), { size: 32, tone: key === 'english' ? 'muted' : 'accent', in: S.languages, out: S.retail }),
       ),
-      sans('languages-what', 200, 950, w.text('languages-what'), { size: 24, tone: 'muted', in: S.languages, out: S.cases }),
-      sans('languages-credit', 200, 995, w.text('languages-credit'), { size: 22, tone: 'muted', wrap: 1180, in: S.headline, out: S.cases }),
+      sans('languages-what', 200, 950, w.text('languages-what'), { size: 24, tone: 'muted', in: S.languages, out: S.retail }),
+      sans('languages-credit', 200, 995, w.text('languages-credit'), { size: 22, tone: 'muted', wrap: 1180, in: S.headline, out: S.retail }),
 
-      // Three use cases, each with what it predicts, one number to know, and its sources with their owners.
-      hand('title-cases', 120, 160, w.text('title-cases'), { size: 56, in: S.cases, out: S.content }),
-      ...cases,
-      hand('fraud-title', 1460, 280, w.text('fraud-title'), { size: 30, tone: 'accent', wrap: 420, in: S.sources, out: S.content }),
-      ...fraud,
-      sans('fraud-credit', 1460, 670, w.text('fraud-credit'), { size: 18, tone: 'muted', in: S.sources, out: S.content }),
-      hand('sources-owners', 120, 1010, w.text('sources-owners'), { size: 40, tone: 'accent', in: S.sources, out: S.content }),
+      // Three use cases, one slide each.
+      ...industries,
+      hand('sources-owners', 120, 1010, w.text('sources-owners'), { size: 40, tone: 'accent', in: S['manufacturing-sources'], out: S.content }),
 
       // The six questions, one row per click, each with an example from one of the three use cases.
       hand('title-six', 120, 160, w.text('title-six'), { size: 56, in: S.content, out: S.magic }),
