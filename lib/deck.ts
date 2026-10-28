@@ -58,13 +58,12 @@ export interface Element {
 }
 
 export interface Step {
+  /** The step's name in the layout and the words file, e.g. 'retrain'; the wiki's `▶` block names it too. */
+  name: string;
   /** Cumulative time in the script, e.g. '0:50'. */
   at: string;
-  /**
-   * The presenter notes for this click, one line per bullet, from the wiki's `.slides.md`
-   * (`npm run notes`): the thought to say in bold, the facts, the bridge to the next click (→).
-   */
-  notes: string[];
+  // No presenter notes: they stay in the wiki's `.slides.md`, which the presenter view reads under
+  // `npm run dev` (scripts/notes-server.mjs), so the published deck carries none.
 }
 
 /** A card's content: a title, a subtitle and labelled rows, as the episode's closing card is. */

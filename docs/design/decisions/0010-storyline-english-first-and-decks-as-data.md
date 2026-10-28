@@ -38,8 +38,8 @@ the episodes no longer show downloads from a kit. This record is updated to matc
 2. **One flag.** `STORYLINE_PUBLISHED` in `lib/site.ts`, false until the first module publishes. While it is
    false, a production build leaves the nav item out and every storyline route renders a 404; under
    `next dev` everything shows. Same shape as `TRAINING_PUBLISHED`.
-3. **A deck is data; the site draws it.** A deck has two halves. Its words (each step's time and
-   presenter notes, every line on screen, the card headings) are in `content/decks/<locale>/<episode>.yaml`, which
+3. **A deck is data; the site draws it.** A deck has two halves. Its words (each step's time,
+   every line on screen, the card headings) are in `content/decks/<locale>/<episode>.yaml`, which
    the owner edits without touching code. Its layout, `lib/decks/<episode>.ts`, places them by id on a
    1920×1080 stage with the step each appears and leaves at; adding a step or moving an element is a
    layout change. A Dutch deck is a translated YAML file on the same layout. `components/deck/` draws them with rough.js
@@ -54,6 +54,13 @@ the episodes no longer show downloads from a kit. This record is updated to matc
    element under the camera corner, text on top of text, or a card that does not exist.
    `composeDeck()` rejects words and a layout that disagree (a step or id in one and not the other)
    and lists every mismatch with the file it is in.
+6. **The presenter notes stay in the wiki and out of the build.** They live in the episode's
+   `.slides.md` (one `▶` block per step), never in the deck's words file, which ships with the site.
+   Under `npm run dev` a small Node server next to `next dev` (`scripts/notes-server.mjs`, 127.0.0.1
+   only, the dev origin only) reads them for the presenter view and writes an edit back into the
+   `▶` block it came from; a save that would overwrite a block changed on disk since the editor opened
+   is refused once. The presenter view is compiled only when `NODE_ENV` is `development`. The site
+   stays a static export (ADR-0001): the server is a dev tool, like `next dev` itself.
 
 ## Consequences
 
@@ -66,6 +73,8 @@ the episodes no longer show downloads from a kit. This record is updated to matc
   (OFL font files), and `yaml` (server-side only, reads the deck words; no client bytes).
 - Text widths are estimated, so the camera-corner check is approximate; the estimate errs large.
 - Recording happens on the owner's machine under `next dev`; the deck needs no deploy.
+- The presenter view needs the wiki checked out next to this repository (or `WIKI_DIR`). Saves land in
+  the wiki's working tree; committing them stays a manual step.
 - The deck pages are part of the static export once the flag is true. They are not linked and carry
   `noindex`, but they are public.
 
@@ -75,6 +84,11 @@ the episodes no longer show downloads from a kit. This record is updated to matc
   hand and drift between episodes.
 - **Excalidraw with an animation export.** The most hand-drawn look, but each diagram is drawn by
   hand and animated per file, with no shared style or data.
+- **Copy the notes into the words file (`npm run notes`, until 2026-10-25).** One source to render
+  from, but the notes then shipped with every deck page, the copy went stale between runs, and an
+  edit had to go back to the wiki by hand.
+- **A Next.js route handler for saving, enabled in development only.** No second process, but API
+  routes are excluded by ADR-0001 and a dev-only route under `output: 'export'` is easy to break.
 - **The whole deck in YAML or Markdown, positions included.** One file to edit, but coordinates and
   step numbers by hand in a text file break silently; a typed layout is checked by the compiler and
   the tests, and the words still sit in a plain file.

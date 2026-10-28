@@ -1,4 +1,4 @@
-# Episode 3.12 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.12 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-12.ts. Under `npm run dev`
 # a refresh of /en/deck/3-12 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,117 +21,48 @@ title: "What it costs"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.12, the last one of the module: what it costs.**"
   promise:
     at: "0:05"
-    notes:
-      - "**In this episode: the cost lines beyond the cloud bill, which one is biggest for a small and a big model, and the line budgets leave out.**"
   bill:
     at: "0:26"
-    notes:
-      - "**\"What does the model cost?\" The usual answer: a cloud bill or a licence price. One number.**"
-      - "→ A research project that counted its costs."
   run:
     at: "0:38"
-    notes:
-      - "**Strubell, Ganesh & McCallum (2019), estimated compute for one NLP research project.**"
-      - "One training run of the final model: **$52–175**."
   rnd:
     at: "0:53"
-    notes:
-      - "One tuning on a new dataset: **$1,238–4,205**."
-      - "The full R&D: **4,789 jobs, about six months, $103k–350k**."
-      - "The bars are on one linear scale: the first two are a few pixels."
   lesson:
     at: "1:05"
-    notes:
-      - "**The cost was in all the runs around the model.**"
-      - "Compute only: nothing about people or data."
-      - "→ Werkmora."
   werkmora:
     at: "1:18"
-    notes:
-      - "**Werkmora: fictional garden retailer, about 175 stores. This module: the nightly garden forecast.**"
-      - "The board asks what the forecast costs; the first answer is the cloud bill of the data-science workspace."
   data:
     at: "1:41"
-    notes:
-      - "**Write the lines down, one row per line. Data acquisition first.**"
-      - "Weather licence for ≈ 175 store locations, plus the *history of past forecasts* to train fairly."
-      - "Contract and licence still to check."
   labels:
     at: "2:01"
-    notes:
-      - "**Labelling: stock-out flags, plant write-offs, promotion flags corrected.**"
-      - "Sambasivan et al. (2021): data work is \"the most under-valued and de-glamorised aspect of AI\"."
-      - "Kirillov et al. (2023): model-assisted labelling, 34 → 14 s per mask. A vision example."
   training:
     at: "2:24"
-    notes:
-      - "**Training and experiments: count every run.**"
-      - "Backtests on three years against three baselines; ≈ 32 scheduled retrains a year; extra runs on the WAPE trigger."
   inference:
     at: "2:39"
-    notes:
-      - "**Inference: one nightly batch, ≈ 0.75 million series, later ≈ 5.4 million.**"
-      - "The only line the cloud bill shows."
   people:
     at: "2:52"
-    notes:
-      - "**People: four data scientists, data engineers, part of the replenishment team, on-call.**"
-      - "Shankar et al. (2024), on monitoring: \"this is people's jobs now\"."
   debt:
     at: "3:09"
-    notes:
-      - "**Maintenance: Sculley et al. (2015), \"massive ongoing maintenance costs\".**"
-      - "Entanglement (changing anything changes everything), data dependencies, feedback loops, glue code and pipeline jungles, configuration, a changing world."
-      - "Werkmora: nine sources, seven owners, old file transfers, a legacy broker, the ERP forecast as fallback."
   wrong:
     at: "3:36"
-    notes:
-      - "**Most lists stop here (the guide too). Add one line: the cost of being wrong.**"
-      - "Werkmora: waste and markdowns on live plants, empty shelves on sunny weekends, DC trucks over capacity."
   zillow:
     at: "3:52"
-    notes:
-      - "**Zillow, 2021: closed its home-buying business. Q3 inventory write-down of about $304 million.**"
-      - "CEO: \"the unpredictability in forecasting home prices far exceeds what we anticipated\"."
-      - "No compute bill comes near that."
-      - "→ Which line is the biggest?"
   small:
     at: "4:11"
-    notes:
-      - "**It depends on the system. A small internal forecast: people and data work first, then experiments; inference is a small batch.**"
   big:
     at: "4:28"
-    notes:
-      - "**A big model at high volume: inference can cost more than training.**"
-      - "Google 2019–2021: about ⅗ of ML energy for inference, ⅖ for training (Patterson et al. 2022)."
-      - "BLOOMz: inference energy equals training plus fine-tuning after about 200–590 million inferences (Luccioni et al. 2024)."
-      - "Energy, not money: say \"can\"."
   page:
     at: "4:59"
-    notes:
-      - "**One page, every line: what drives it, who owns it, what makes it grow. No amounts yet.**"
-      - "Werkmora's table: the Director Supply Chain (owner of the use), the Head of Data & Analytics, a controller from the CFO line."
   paydown:
     at: "5:22"
-    notes:
-      - "**Budget the debt as work: tests on the nine feeds, a nightly feature check, monitoring with owners.**"
-      - "Breck et al. (2017): tests and monitoring \"pay down ML technical debt\"."
   cheap:
     at: "5:39"
-    notes:
-      - "**The page goes into the value case (Module 6). Next to the other lines, the model is the cheap part.**"
   takeaway:
     at: "5:49"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "5:56"
-    notes:
-      - "**That closes this module. Next: human–AI interaction design.**"
 
 text:
   # The title card; the question and the usual answer.

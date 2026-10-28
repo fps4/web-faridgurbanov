@@ -38,12 +38,12 @@ const written: Record<string, Partial<Episode>> = {
   '3.1': {
     promise: [
       'why a row count does not answer “enough data?”',
-      'which questions to ask of every data source',
-      'how to approach “data sufficiency”',
+      'six questions to ask of every data source',
+      'how to measure “enough”, per group',
     ],
     takeaway: {
-      idea: 'Enough data is six answers per source and a measurement. A row count answers none of them.',
-      move: 'Ask the six questions of every source, give each answer an owner, and measure “enough” with a learning curve, per group.',
+      idea: 'Enough data is six answers per source and a learning curve per group. A row count answers none of them.',
+      move: 'Ask the six questions of every source, give each answer an owner, and measure how the error falls with more data, for each group.',
       monday: 'List the sources of the model you work on, and write the six answers for one of them.',
     },
     deck: '3-1',

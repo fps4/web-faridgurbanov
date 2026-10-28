@@ -1,36 +1,26 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { PresenterView } from '@/components/deck/presenter-view';
 import { Sketch } from '@/components/deck/sketch';
 import { CAMERA, STAGE, type Deck } from '@/lib/deck';
 
 // The recording player for an episode deck (FS-0010), at /<locale>/deck/<episode>. One window shows the stage for OBS to capture
 // (1920×1080, scaled to fit, the camera corner kept clear); a second, opened with `p`, is the
-// presenter view: the stage, the presenter notes for the click under it, the next click's first
-// line, the planned time and a clock. The two follow each other over a
-// BroadcastChannel, so a click or a presenter remote in either moves both.
+// presenter view (components/deck/presenter-view.tsx): the stage, the presenter notes for the click
+// under it, editable, the next click's first line, the planned time and a clock. The two follow each
+// other over a BroadcastChannel, so a click or a presenter remote in either moves both.
 //
 //   → / Space / PageDown / click   next step       ← / PageUp   previous step
 //   Home / End   first / last       c   camera guide on/off      f   full screen
 //   p   open the presenter view     #12 in the URL   start at step 12
+//
+// The presenter view exists under `npm run dev` only: its notes come from the wiki through a local
+// server, and a production build leaves the view out, so a published deck has no notes to show.
 
 type Message = { step: number };
 
-// The notes' own markdown, as the wiki writes it: **bold** for the thought to say, *italic*,
-// `code`. Everything else is plain text.
-function inline(line: string): ReactNode[] {
-  return line.split(/(\*\*.+?\*\*|\*[^*\s][^*]*\*|`[^`]+`)/g).map((part, i) => {
-    if (/^\*\*.+\*\*$/.test(part))
-      return (
-        <strong key={i} className="font-semibold text-white">
-          {inline(part.slice(2, -2))}
-        </strong>
-      );
-    if (/^\*.+\*$/.test(part)) return <em key={i}>{part.slice(1, -1)}</em>;
-    if (/^`.+`$/.test(part)) return <code key={i} className="font-mono text-[0.9em]">{part.slice(1, -1)}</code>;
-    return part;
-  });
-}
+const PRESENTER = process.env.NODE_ENV === 'development';
 
 function initialStep(max: number): number {
   const n = Number(window.location.hash.slice(1));
@@ -71,7 +61,7 @@ export function DeckPlayer({
   );
 
   useEffect(() => {
-    setPresenter(new URLSearchParams(window.location.search).has('presenter'));
+    setPresenter(PRESENTER && new URLSearchParams(window.location.search).has('presenter'));
     const start = initialStep(last);
     current.current = start;
     setStep(start);
@@ -96,6 +86,8 @@ export function DeckPlayer({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Typing in the presenter view's notes editor moves nothing.
+      if (e.target instanceof HTMLElement && e.target.closest('textarea, input')) return;
       if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) {
         e.preventDefault();
         go(step + 1);
@@ -105,8 +97,8 @@ export function DeckPlayer({
       } else if (e.key === 'Home') go(0);
       else if (e.key === 'End') go(last);
       else if (e.key === 'c') setGuide((g) => !g);
-      else if (e.key === 'f') void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen());
-      else if (e.key === 'p') window.open(`${window.location.pathname}?presenter#${step}`, `presenter-${deck.id}`, 'width=1100,height=760');
+      else if (e.key === 'f') void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()).catch(() => {});
+      else if (e.key === 'p' && PRESENTER) window.open(`${window.location.pathname}?presenter#${step}`, `presenter-${deck.id}`, `width=${screen.availWidth},height=${screen.availHeight}`);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -115,53 +107,10 @@ export function DeckPlayer({
   // Nothing until the window size, the step and the view are known: no flash of step 0 at full size.
   if (!ready) return <div className="deck-stage-wrap" />;
 
-  if (presenter) {
+  if (PRESENTER && presenter) {
     const elapsed = started ? Math.floor((now - started) / 1000) : 0;
     const clock = `${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}`;
-    const here = deck.steps[step];
-    const next = deck.steps[step + 1];
-    return (
-      <div className="flex h-screen flex-col overflow-hidden bg-neutral-950 p-8 font-sans text-neutral-100">
-        <div className="flex items-baseline justify-between text-sm text-neutral-400">
-          <span>
-            {deck.episode} · {deck.title}
-          </span>
-          <span>
-            step {step + 1} / {deck.steps.length} · plan {here.at} · clock {clock}
-          </span>
-        </div>
-        {/* The stage on top in three fifths of the height, the notes below in a fixed area of two
-            fifths, so neither moves between clicks. The stage is 16:9, as wide as the window allows or
-            as tall as its area, whichever is smaller; the notes start at the top of theirs. */}
-        <div className="mt-6 min-h-0 flex-[3_3_0%] [container-type:size]">
-          <div
-            className="overflow-hidden rounded-md ring-1 ring-neutral-700"
-            style={{ width: `min(100cqw, calc(100cqh * ${STAGE.w / STAGE.h}))` }}
-          >
-            <Sketch deck={deck} step={step} className="block h-auto w-full" />
-          </div>
-        </div>
-        <div className="mt-6 min-h-0 flex-[2_2_0%] overflow-y-auto">
-          <ul className="list-disc space-y-2 pl-7 text-2xl leading-snug text-neutral-200">
-            {here.notes.map((line, i) => (
-              <li key={i} className={line.startsWith('→') ? 'list-none -ml-7 text-neutral-400' : undefined}>
-                {inline(line)}
-              </li>
-            ))}
-          </ul>
-          {next ? (
-            <p className="mt-6 text-xl leading-snug text-neutral-400">
-              <span className="mr-2 text-neutral-500">Next ({next.at}):</span>
-              {inline(next.notes[0])}
-            </p>
-          ) : (
-            <p className="mt-6 text-xl text-neutral-500">End of the episode.</p>
-          )}
-        </div>
-        <p className="mt-4 text-sm text-neutral-500">→ / Space next · ← back · this window and the stage follow each other</p>
-        {isFallback ? <p className="mt-2 text-sm text-amber-400">No deck in this language yet: showing the English deck.</p> : null}
-      </div>
-    );
+    return <PresenterView deck={deck} step={step} clock={clock} isFallback={isFallback} />;
   }
 
   return (
@@ -178,7 +127,7 @@ export function DeckPlayer({
       </div>
       {guide ? (
         <div className="deck-hud">
-          step {step + 1} / {deck.steps.length} · {deck.steps[step].at} · c guide · p presenter · f full screen
+          step {step + 1} / {deck.steps.length} · {deck.steps[step].at} · c guide{PRESENTER ? ' · p presenter' : ''} · f full screen
         </div>
       ) : null}
     </div>

@@ -1,4 +1,4 @@
-import type { CardSpec, Deck, Element, Step } from '@/lib/deck';
+import type { CardSpec, Deck, Element } from '@/lib/deck';
 import type { Locale } from '@/lib/i18n';
 
 // A deck is two halves (FS-0010, ADR-0010): the words, in content/decks/<locale>/<id>.yaml, which the
@@ -8,7 +8,7 @@ import type { Locale } from '@/lib/i18n';
 
 export interface DeckText {
   title: string;
-  steps: Record<string, Step>;
+  steps: Record<string, { at: string }>;
   text: Record<string, string>;
   cards: Record<string, { title: string; subtitle: string }>;
 }
@@ -86,7 +86,7 @@ export function composeDeck(layout: DeckLayout, words: DeckText, locale: Locale,
     locale,
     episode: layout.episode,
     title: words.title,
-    steps: layout.steps.map((s) => words.steps[s]),
+    steps: layout.steps.map((s) => ({ name: s, at: words.steps[s].at })),
     elements,
     cards,
     figure: layout.figure === undefined ? undefined : layout.steps.indexOf(layout.figure),
@@ -99,16 +99,16 @@ export function deckTextProblems(doc: unknown): string[] {
   const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
   if (!isRecord(doc)) return ['the file is not a mapping of title, steps, text and cards'];
   if (typeof doc.title !== 'string' || !doc.title) problems.push('title: write it as text');
-  if (!isRecord(doc.steps)) problems.push('steps: a mapping of step name to `at` and `notes`');
+  if (!isRecord(doc.steps)) problems.push('steps: a mapping of step name to `at`');
   else
     for (const [name, step] of Object.entries(doc.steps)) {
       if (!isRecord(step)) {
-        problems.push(`steps: "${name}" needs an \`at\` and \`notes\``);
+        problems.push(`steps: "${name}" needs an \`at\``);
         continue;
       }
       if (typeof step.at !== 'string' || !/^\d+:[0-5]\d$/.test(step.at)) problems.push(`steps: "${name}" at: write the time in quotes, like "1:05"`);
-      if (!Array.isArray(step.notes) || !step.notes.length || !step.notes.every((n) => typeof n === 'string' && n))
-        problems.push(`steps: "${name}" notes: a list of lines (copied from the wiki by \`npm run notes\`)`);
+      // Everything in this file ships with the site; the presenter notes must not.
+      if ('notes' in step) problems.push(`steps: "${name}" notes: the presenter notes stay in the wiki's .slides.md, not here`);
     }
   if (!isRecord(doc.text)) problems.push('text: a mapping of element id to its words');
   else for (const [id, v] of Object.entries(doc.text)) if (typeof v !== 'string' || !v) problems.push(`text: "${id}" needs words`);

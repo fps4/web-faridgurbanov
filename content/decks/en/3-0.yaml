@@ -1,4 +1,4 @@
-# Episode 3.0 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.0 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-0.ts. Under `npm run dev`
 # a refresh of /en/deck/3-0 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,78 +21,34 @@ title: "Data and model requirements"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.0 — the intro to data and model requirements.**"
   promise:
     at: "0:05"
-    notes:
-      - "**In this episode: why the model is the small part, the three mental models, and the company.**"
   werkmora:
     at: "0:20"
-    notes:
-      - "**Werkmora — made up, built from public facts of real retailers.** Say it every module."
-      - "Home, DIY and garden · about 175 stores in NL, BE, DE · a webshop."
-      - "The garden season decides the year."
   forecast:
     at: "0:43"
-    notes:
-      - "**This module: the garden replenishment forecast.**"
-      - "Daily demand per store × item, 1–21 days ahead → feeds the store orders."
-      - "Success = fewer empty shelves *and* fewer dead plants."
   usual:
     at: "1:06"
-    notes:
-      - "**\"Which algorithm do we scale?\"** — the pilot has a good offline score."
-      - "The usual picture: pick the algorithm, train it, done."
-      - "→ A different picture."
   box:
     at: "1:25"
-    notes:
-      - "**2015, engineers at Google: the model code is a small box.**"
   around:
     at: "1:39"
-    notes:
-      - "**Data feeds it · labels teach it · evaluation proves it · serving runs it · monitoring notices when it stops.**"
   requirements:
     at: "1:55"
-    notes:
-      - "**So most requirements are for the system around the model, not the algorithm.**"
-      - "→ Three mental models."
   spec:
     at: "2:07"
-    notes:
-      - "**One: data is the specification.** Code → behaviour written; ML → behaviour learned."
-      - "What the data covers and leaves out *is* the spec."
   amazon:
     at: "2:29"
-    notes:
-      - "**Amazon, 2014–2017:** experimental tool to rate applicants, ten years of résumés, mostly from men; penalised \"women's\"."
-      - "Recruiters never relied only on it; team disbanded. Reuters, 2018."
   scores:
     at: "2:51"
-    notes:
-      - "**Two: the model scores, the product decides.**"
-      - "Werkmora: a quantity, not an order. Safety stock turns it into one."
-      - "Empty shelves vs dead plants → a business choice. CCO and COO decide the service level."
   start:
     at: "3:15"
-    notes:
-      - "**Three: shipping is the start.**"
-      - "The world drifts — and sometimes the source owner changes the system."
-      - "Monitoring, retraining, fresh outcomes: written before launch."
   map:
     at: "3:36"
-    notes:
-      - "**The module walks the diagram one box at a time.**"
-      - "Before the model (3.1–3.4) · after it (3.5–3.7) · over time (3.9, 3.10, 3.12)."
   takeaway:
     at: "3:53"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "4:00"
-    notes:
-      - "**Next: data requirements.**"
 
 text:
   # The title card.

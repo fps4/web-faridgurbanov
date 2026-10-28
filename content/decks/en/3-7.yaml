@@ -1,4 +1,4 @@
-# Episode 3.7 deck: every word on screen and in the presenter view (FS-0010, ADR-0010).
+# Episode 3.7 deck: every word on screen (FS-0010, ADR-0010).
 #
 # Edit the words here; the positions, sizes and colours stay in lib/decks/3-7.ts. Under `npm run dev`
 # a refresh of /en/deck/3-7 shows the change. `npm run test` then checks that no text overlaps other
@@ -6,8 +6,8 @@
 #
 # - title:  the episode title; also the slide header and the closing card's heading.
 # - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
-#           quotes ("0:22"). `notes` are what the presenter view shows: the presenter notes, copied
-#           from the wiki's .slides.md by `npm run notes`. Edit them there, not here.
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
 # - text:   the on-screen lines, by element id. Long lines wrap by themselves.
 #
 # The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
@@ -21,119 +21,46 @@ title: "Baselines"
 steps:
   title:
     at: "0:00"
-    notes:
-      - "**Episode 3.7 — baselines.**"
   promise:
     at: "0:03"
-    notes:
-      - "**In this episode: a score alone tells nothing · the three baselines · when to ship the simple rule.**"
   claim:
     at: "0:18"
-    notes:
-      - "**A forecasting vendor: \"our tool is 40% more accurate\".**"
-      - "The data team's pilot also has a nice score."
-      - "Company story, based on a reported case: no name."
   than-what:
     at: "0:31"
-    notes:
-      - "**Than what?**"
-      - "\"WAPE 30%\": good or bad? Nobody can say without something to compare, on the same data."
-      - "→ A real case where the comparison changed the story."
   compas:
     at: "0:48"
-    notes:
-      - "**COMPAS: a commercial risk tool, 137 features. Will a defendant commit another crime?**"
-      - "Dressel & Farid, 2018: 65.4% accurate on 7,214 defendants."
   crowd:
     at: "1:06"
-    notes:
-      - "**People with no criminal justice expertise, on 1,000 of the same defendants.**"
-      - "One person alone: 62.1% (worse). As a crowd: 67.0%."
-      - "(COMPAS on those 1,000: 65.2%, on the slide's credit line.)"
   two-features:
     at: "1:24"
-    notes:
-      - "**Logistic regression, two features: age and prior convictions → 66.8%.**"
-      - "Built in an afternoon; matched 137 features."
-      - "→ Now our own company."
   werkmora:
     at: "1:39"
-    notes:
-      - "**Werkmora — fictional garden retailer, about 175 stores in NL, BE, DE.**"
-      - "Every night: how much of each garden product does each store need?"
-      - "The pilot: forecast error 30%. Compared with what?"
   trivial:
     at: "2:00"
-    notes:
-      - "**One: a trivial baseline — no thinking.**"
-      - "Classification: always the most common class. Forecast: seasonal naive, same week last year, calendar-adjusted."
-      - "Answers: does the model find any signal at all?"
   heuristic:
     at: "2:23"
-    notes:
-      - "**Two: a heuristic — the rule an expert writes in an afternoon.**"
-      - "Moving average + \"sunny weekend → +x%\"; the replenishment team sets x."
-      - "Answers: do we need ML at all?"
   today:
     at: "2:42"
-    notes:
-      - "**Three: today's process, as it really runs.**"
-      - "ERP forecast **plus** the replenishment team's manual changes. The raw ERP number is not today."
-      - "Answers: is it better than now? This is the business case."
   same-data:
     at: "3:00"
-    notes:
-      - "**All three on the same test as the model.**"
-      - "Last spring · same stores and items · same stock-out flag (data-02) · same metric (WAPE)."
-      - "A baseline on other data proves nothing."
   m4:
     at: "3:18"
-    notes:
-      - "**Simple baselines are hard to beat in forecasting.**"
-      - "M4, 2018: the six pure ML methods performed poorly; none beat a combination of simple statistical methods."
-      - "Not retail data. Say no more than that."
   table:
     at: "3:37"
-    notes:
-      - "**Werkmora's pilot, made-up numbers. WAPE on last spring:**"
-      - "Same week last year 45% · ERP + manual 38% · weather rule 35% · the model 30%."
   claims:
     at: "3:50"
-    notes:
-      - "**The same model: 33%, 21% or 14% better — it depends on the baseline.**"
-      - "The vendor picks the first. The board needs the second. \"Do we need ML?\" rests on the third."
   ship:
     at: "4:09"
-    notes:
-      - "**The rule: if the model does not clearly beat a simple heuristic on the same data, counting the cost to run and maintain it → ship the heuristic, and collect data.**"
-      - "Zinkevich (Google), Rule #1: \"Don't be afraid to launch a product without machine learning.\""
   qualifiers:
     at: "4:34"
-    notes:
-      - "**Three words matter.**"
-      - "*Simple:* a weather rule, yes. 400 nested rules are unmaintainable → Rule #3: choose ML."
-      - "*Clearly:* a fair test (same data, time-based holdout, online where possible). Christodoulou 2019: in clinical studies at low risk of bias, no AUC difference between ML and logistic regression."
-      - "*Cost:* pipelines, retraining, on-call, explaining it to the replenishment team."
   keep:
     at: "4:59"
-    notes:
-      - "**After launch the baseline keeps running.**"
-      - "Werkmora: ERP baseline every night → fallback when the batch is late; yardstick → retrain when the model is worse than ERP on the top garden items two weeks in a row."
-      - "From engineering: you know this as a parallel run in a migration."
   owners:
     at: "5:30"
-    notes:
-      - "**Write it down: three baselines, one test, one table per slice the COO can read.**"
-      - "Data team builds it with the replenishment team; Supply Chain (COO) decides per item group."
-      - "Where the model does not clearly win, that group keeps the rule."
   takeaway:
     at: "5:54"
-    notes:
-      - "**The card: the idea, the move, what to do on Monday.**"
   next:
     at: "6:00"
-    notes:
-      - "**Next: non-functional requirements.**"
 
 text:
   # The title card; the claim with nothing next to it.

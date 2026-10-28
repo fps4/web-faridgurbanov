@@ -1,75 +1,42 @@
 #!/usr/bin/env node
-// Presenter notes for the episode decks (FS-0010). Farid writes them in the wiki, one `▶ \`step\``
-// block per click in each episode's `<nn>-<slug>.slides.md` (section "## Presenter notes"); this
-// copies them into the deck's words file as `notes` under each step, which the presenter view shows.
-// The wiki stays the place to edit them: run this again after a change.
+// Checks the presenter notes against the decks (FS-0010). Farid writes the notes in the wiki, one
+// `▶ \`step\`` block per click in each episode's `<nn>-<slug>.slides.md`; under `npm run dev` the
+// presenter view reads and edits them there through the notes server (scripts/notes-server.mjs).
+// Nothing is copied into the deck, so the published site carries no notes. This checks that every
+// step of a deck has a block with at least one line and every block names a step.
 //
-//   npm run notes                                   # every .slides.md under the default folder
-//   npm run notes -- ../wiki/…/03-data/00-intro.slides.md   # one or more files or folders
+//   npm run notes:check                                       # every .slides.md under the wiki's publishing/
+//   npm run notes:check -- ../wiki/…/03-data/00-intro.slides.md   # one or more files or folders
 //
-// The default folder is the sibling wiki checkout: ../wiki/publishing/ai-product-design/episodes.
 // A .slides.md names its deck in the front matter (`deck: … /en/deck/3-0 …`). Exit 1 when a file
-// names no deck, the deck has no words file, or the steps and the ▶ blocks do not match.
+// names a deck without a words file, or the steps and the ▶ blocks do not match.
 
-import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseDocument } from 'yaml';
+import { parse } from 'yaml';
+import { parsePresenterNotes } from '../lib/decks/presenter-notes.mjs';
 
-const DEFAULT_DIR = '../wiki/publishing/ai-product-design/episodes';
-
-/**
- * The presenter notes of one .slides.md: the deck it names and, per step, its lines. A line is one
- * `- ` bullet; indented lines continue the bullet above. Section labels (**Intro**), rules and blank
- * lines between blocks are left out.
- */
-export function parsePresenterNotes(markdown) {
-  const deckMatch = markdown.match(/^deck:.*?\/(en|nl)\/deck\/([\w-]+)/m);
-  const deck = deckMatch ? { locale: deckMatch[1], id: deckMatch[2] } : undefined;
-  const section = markdown.split(/^## Presenter notes[ \t]*$/m)[1]?.split(/^## /m)[0] ?? '';
-  const notes = {};
-  let lines = null;
-  for (const line of section.split('\n')) {
-    const step = line.match(/^▶ `([\w-]+)`\s*$/);
-    if (step) {
-      lines = notes[step[1]] = [];
-      continue;
-    }
-    if (!lines) continue;
-    if (line.startsWith('- ')) lines.push(line.slice(2).trim());
-    else if (/^\s{2,}\S/.test(line) && lines.length) lines[lines.length - 1] += ` ${line.trim()}`;
-  }
-  return { deck, notes };
-}
+const DEFAULT_DIR = '../wiki/publishing';
 
 /**
- * The words file with each step's `notes` replaced by the given ones, comments and quoting kept.
- * Returns the new text and the mismatches (a step without a block, a block without a step).
+ * The mismatches between a deck's steps and the ▶ blocks, as sentences; [] when they match.
+ * @param {string[]} steps
+ * @param {Record<string, string[]>} notes
  */
-export function applyNotes(yamlText, notes) {
-  const doc = parseDocument(yamlText);
-  const steps = doc.get('steps');
+export function notesProblems(steps, notes) {
   const problems = [];
-  const names = steps ? steps.items.map((pair) => String(pair.key.value ?? pair.key)) : [];
-  for (const name of names) {
-    const step = steps.get(name);
-    const lines = notes[name];
-    if (!lines?.length) {
-      problems.push(`step "${name}" has no ▶ block in the presenter notes`);
-      step.delete('notes');
-      continue;
-    }
-    step.set('notes', doc.createNode(lines));
-  }
-  for (const name of Object.keys(notes)) if (!names.includes(name)) problems.push(`▶ \`${name}\` is not a step of the deck`);
-  return { text: doc.toString({ lineWidth: 0, defaultStringType: 'QUOTE_DOUBLE', defaultKeyType: 'PLAIN' }), problems };
+  for (const name of steps) if (!notes[name]?.length) problems.push(`step "${name}" has no ▶ block in the presenter notes`);
+  for (const name of Object.keys(notes)) if (!steps.includes(name)) problems.push(`▶ \`${name}\` is not a step of the deck`);
+  return problems;
 }
 
 function slidesFiles(paths) {
   const out = [];
   const walk = (p) => {
-    if (statSync(p).isDirectory()) for (const name of readdirSync(p).sort()) walk(join(p, name));
-    else if (p.endsWith('.slides.md')) out.push(p);
+    if (statSync(p).isDirectory()) {
+      for (const name of readdirSync(p).sort()) if (name !== 'archive') walk(join(p, name));
+    } else if (p.endsWith('.slides.md')) out.push(p);
   };
   for (const p of paths) walk(p);
   return out;
@@ -83,21 +50,15 @@ function main(args) {
   for (const file of slidesFiles(paths)) {
     const { deck, notes } = parsePresenterNotes(readFileSync(file, 'utf8'));
     if (!deck) continue; // a .slides.md without a deck yet
-    const target = join(root, 'content', 'decks', deck.locale, `${deck.id}.yaml`);
-    const where = relative(root, target);
-    if (!existsSync(target)) {
-      console.log(`✗ ${deck.id}: ${where} does not exist (named by ${file})`);
+    const words = join(root, 'content', 'decks', deck.locale, `${deck.id}.yaml`);
+    if (!existsSync(words)) {
+      console.log(`✗ ${deck.id}: ${relative(root, words)} does not exist (named by ${file})`);
       failed = true;
       continue;
     }
-    const before = readFileSync(target, 'utf8');
-    const { text, problems } = applyNotes(before, notes);
-    if (problems.length) {
-      failed = true;
-      console.log(`✗ ${deck.id}: ${problems.join('; ')}`);
-    }
-    if (text !== before) writeFileSync(target, text);
-    console.log(`${text !== before ? '✎' : '·'} ${deck.id}: ${Object.keys(notes).length} steps → ${where}${text !== before ? '' : ' (unchanged)'}`);
+    const problems = notesProblems(Object.keys(parse(readFileSync(words, 'utf8'))?.steps ?? {}), notes);
+    if (problems.length) failed = true;
+    console.log(`${problems.length ? '✗' : '✓'} ${deck.id}: ${Object.keys(notes).length} ▶ blocks${problems.length ? `; ${problems.join('; ')}` : ''}`);
   }
   process.exit(failed ? 1 : 0);
 }

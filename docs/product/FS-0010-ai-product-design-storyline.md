@@ -53,9 +53,12 @@ Werkmora, a fictional home, DIY and garden retailer.
    recording, outside the site shell. Steps advance by key, click or presenter remote. Shapes and
    handwriting draw themselves in a hand-drawn style when their step arrives; cards rise in. The
    bottom-right corner stays clear for the camera. A presenter view in a second window shows the
-   presenter notes for the click (the bullets of the wiki's `.slides.md`, copied into the words file
-   with `npm run notes`), the next click's first line, the planned time and a clock, and follows the
-   stage. There is no word-for-word script. The deck's words live in
+   presenter notes for the click, the next click's first line, the planned time and a clock, and
+   follows the stage. There is no word-for-word script. The notes stay in the wiki's `.slides.md`:
+   under `npm run dev` a local notes server (`scripts/notes-server.mjs`, 127.0.0.1:3041) serves them
+   to the presenter view, which edits a click's block in place (`e`, ⌘↵ to save) and writes it back
+   into the wiki file. The presenter view and its notes exist only on the owner's machine; the
+   published deck has neither. The deck's words live in
    `content/decks/<locale>/<episode>.yaml`, editable without code; the layout in `lib/decks/` places
    them by id.
 4. **Every episode promises first and closes on one card.** Three short lines (*In this episode*)
@@ -97,9 +100,19 @@ Werkmora, a fictional home, DIY and garden retailer.
   earlier step without animation.
 - THE deck SHALL follow the presenter view and the presenter view SHALL follow the deck, in either
   direction.
-- THE presenter view SHALL show the step's presenter notes as bullets; EVERY step SHALL have at least
-  one note, and `npm run notes` SHALL copy them from the wiki's `.slides.md` and SHALL exit non-zero
-  WHEN the ▶ blocks and the deck's steps do not match.
+- THE presenter view SHALL show the step's presenter notes as bullets, read from the wiki's
+  `.slides.md` through the notes server; `npm run notes:check` SHALL exit non-zero WHEN a step has no
+  ▶ block with at least one line or a ▶ block names no step.
+- WHEN the owner edits a step's notes in the presenter view and saves, THE notes server SHALL replace
+  that step's ▶ block in the `.slides.md` and SHALL leave every other byte of the file unchanged.
+- WHEN the step's ▶ block changed on disk after the editor opened, THE notes server SHALL refuse the
+  first save (409) and THE presenter view SHALL keep the edited text and say so; a second save SHALL
+  overwrite the block.
+- WHEN the `.slides.md` changes on disk, THE presenter view SHALL show the new notes without a reload.
+- THE production build SHALL contain no presenter notes and no presenter view, and a deck's words file
+  SHALL be rejected WHEN it carries `notes`.
+- THE notes server SHALL listen on 127.0.0.1 only and SHALL refuse requests from any origin other
+  than the dev site and any host name other than its own.
 - THE deck page SHALL carry `noindex, nofollow`.
 - THE build SHALL fail WHEN a deck has a step that changes nothing on screen, an element under the
   camera corner, text on top of other text, an element appearing outside the deck's steps, a card
