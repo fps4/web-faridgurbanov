@@ -9,6 +9,20 @@ The static site (ADR-0001) packaged for the **ds1 Docker host**.
 | `compose.yml` | One `web` service; built from the repo root context. |
 | `.env.example` | Host config (`IMAGE_TAG`, `NEXT_PUBLIC_SITE_URL`, `WEB_BIND`, `WEB_PORT`). Copy to `.env` on ds1. |
 
+## Published image
+
+`.github/workflows/publish-images.yml` builds the same image on a GitHub-hosted runner after a green
+`dod` on `main` and publishes it as `ghcr.io/fps4/faridgurbanov-web`, tagged `:<commit sha>` and
+`:main`. It is scanned before the push (a fixable critical blocks it), carries a CycloneDX SBOM, and
+has build provenance attested against its digest:
+
+```sh
+gh attestation verify oci://ghcr.io/fps4/faridgurbanov-web:main --repo fps4/web-faridgurbanov
+```
+
+It deploys nothing. A deploy that pulls this image by digest will replace the in-place build below;
+until then, the build below is what runs the site.
+
 ## Deploy
 
 On merge to `main`, the `dod` gate runs; on green, `.github/workflows/deploy-ds1.yml` runs on the
