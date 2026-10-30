@@ -21,6 +21,9 @@ RUN npm run build
 RUN test -d out
 
 FROM nginx:1.27-alpine AS runtime
+# The base image lags Alpine's security fixes; publish-images scans this stage and a fixable
+# critical blocks the push.
+RUN apk upgrade --no-cache
 COPY infra/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/out /usr/share/nginx/html
 # nginx listens on 3035 (see nginx.conf) — keep EXPOSE and the healthcheck in lock-step.
