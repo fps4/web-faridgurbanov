@@ -10,6 +10,9 @@ name: dod
 #   * build-test  — lint, unit/component tests, and the static export (asserts out/ is emitted).
 # Both must be green for the deploy (deploy-ds1.yml) to chain off this workflow on main.
 #
+# Every job runs on GitHub-hosted runners. This repository is public, so a pull request runs code
+# nobody has reviewed yet, and that code must never reach a self-hosted runner.
+#
 # NOTE: the app is expected at the repo root. If it is scaffolded under web/, set
 # `working-directory: web` on build-test.
 
@@ -28,20 +31,20 @@ concurrency:
 
 jobs:
   secret-scan: # fps4 security floor — never disabled. Blocks credentials reaching git.
-    runs-on: [self-hosted, ds1]
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # full history so the scan sees every commit on the ref
       - name: gitleaks
-        uses: docker://ghcr.io/gitleaks/gitleaks:latest
+        uses: docker://ghcr.io/gitleaks/gitleaks:v8.30.1
         with:
           args: detect --source=/github/workspace --no-banner --redact
 
   build-test:
     name: lint • test • static build
-    runs-on: [self-hosted, ds1]
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
       run:
@@ -81,7 +84,7 @@ jobs:
     # on HIGH,CRITICAL with --ignore-unfixed (only actionable advisories gate, so transitive unfixed noise
     # never red-walls a PR). Never disabled. A product that ships an image SHOULD also add a `scan-type:
     # image` scan of the built tag (cf. ../maestro dod.yml) to catch pinned transitives this fs scan can't.
-    runs-on: [self-hosted, ds1]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: cache the trivy vuln DB # warm-start so a registry blip/rate-limit doesn't flake the gate
@@ -90,7 +93,7 @@ jobs:
           path: .cache/trivy
           key: trivy-db
       - name: trivy filesystem scan (deps, IaC misconfig)
-        uses: aquasecurity/trivy-action@v0.36.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           scan-type: fs
           scan-ref: .
