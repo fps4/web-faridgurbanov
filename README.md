@@ -35,8 +35,9 @@ there is no runtime server.
 ## Deploy
 
 On merge to `main`, the `dod` quality gate runs (`.github/workflows/dod.yml`); on green,
-`deploy-ds1.yml` builds and serves the static export on the **ds1** Docker host. A reverse proxy
-on ds1 terminates TLS and routes `faridgurbanov.com` (and the parked `faridgurbanov.nl` →
+`publish-images.yml` builds the site image and publishes it to GHCR. This repository deploys
+nothing: a private operations repository deploys the published image by digest. A reverse proxy
+on the host terminates TLS and routes `faridgurbanov.com` (and the parked `faridgurbanov.nl` →
 `/training`). See [`infra/docker/README.md`](infra/docker/README.md).
 
 ## Documentation

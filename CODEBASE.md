@@ -27,7 +27,7 @@ build artifact (`out/`) is the whole product.
 | `content/` | Filesystem markdown under `content/{en,nl}/<section>/`; frontmatter (`title`, `summary`, `order`, `draft`, `date`, `hook`, `metric`) drives titles, ordering, and draft exclusion. Sections: `expertise`, `work`, `writing`. `content/references/` is locale-less: one file per person quoted (FS-0009), the quote as the body, never translated; `_template.md` is the shape |
 | `infra/docker/` | The static site packaged for ds1: multi-stage `web.Dockerfile` (export → nginx), `nginx.conf`, `compose.yml` |
 | `ops/` | Operational scripts (e.g. `ops/maestro/`) |
-| `.github/workflows/` | `dod.yml` — the Definition-of-Done quality gate (lint, test, assert `out/` builds); `deploy-ds1.yml` — deploy to the ds1 self-hosted runner on green merge |
+| `.github/workflows/` | `dod.yml` — the Definition-of-Done quality gate (lint, test, assert `out/` builds); `publish-images.yml` — build, scan and publish the site image to GHCR on green merge (the deploy is run elsewhere, by digest) |
 | `public/references/` | Referee photos, square and small, committed with the reference that names them (never hotlinked from LinkedIn) |
 | `out/` | Build output (git-ignored) — the static export nginx serves |
 
