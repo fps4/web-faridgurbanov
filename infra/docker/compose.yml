@@ -4,8 +4,10 @@
 # context via infra/docker/web.Dockerfile. A reverse proxy on ds1 terminates TLS and routes
 # faridgurbanov.com (and the parked faridgurbanov.nl → /training) to WEB_PORT.
 #
-# Deploy on ds1 (run by the self-hosted runner, or manually on the host):
+# Local run:
 #   docker compose -f infra/docker/compose.yml up -d --build
+# The deployment runs the image publish-images publishes, pinned by digest, from a compose file kept
+# with the deployment (infra/docker/README.md).
 name: faridgurbanov-site
 
 services:
