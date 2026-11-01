@@ -2,6 +2,7 @@
 title: AI Product Design
 eyebrow: An engineering perspective, in six modules
 summary: How an AI product gets framed, built, measured and run, told by an engineer who builds the data and integration platforms these systems depend on.
+figure_caption: From episode 3.1, six questions for every data source, drawn step by step while I talk it through.
 ---
 
 ## What this is

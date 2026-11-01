@@ -1,7 +1,7 @@
 ---
 title: "EP-03 — AI Product Design storyline"
 status: open
-last_updated: 2026-10-21
+last_updated: 2026-11-01
 owners: [architect]
 related:
   - docs/delivery/roadmap/README.md
@@ -14,7 +14,8 @@ related:
 
 The site's main section for the coming months: the storyline landing page with its six modules, and
 the episode decks the owner records over. Implements FS-0010 under ADR-0010, gated by
-`STORYLINE_PUBLISHED` until the first module is published. Rebuilt 2026-10-21: the eight parts, their
+`LEARNING_PUBLISHED` (formerly `STORYLINE_PUBLISHED`) until the first episodes are published. Since
+2026-11-01 the series sits under the Learning section (FS-0012), next to AI Product Delivery. Rebuilt 2026-10-21: the eight parts, their
 part page, their sixteen decks and the kit downloads were removed; the first deck of the rebuild is
 3.1, *Data requirements*.
 
@@ -27,6 +28,7 @@ part page, their sixteen decks and the kit downloads were removed; the first dec
 | US-0032 | Episode video on a module page, loaded after a click | FS-0010 (out of scope for now) |
 | US-0033 | ~~PDF and DOCX downloads built from the kit~~ | dropped 2026-10-21: no downloads in the rebuild |
 | US-0034 | Feedback section, and the privacy-page line | FS-0011 §1, 2, 8 (parked) |
+| US-0035 | Learning section: series, module and episode pages, episodes switched on one by one | FS-0012 |
 
 (US-0030 and US-0031 land together as the prototype; US-0032 and US-0034 are stubs. FS-0011 was
 written for the first iteration and is parked.)

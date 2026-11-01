@@ -1,7 +1,7 @@
 ---
 title: "FS-0011 — Storyline feedback"
 status: parked
-last_updated: 2026-10-20
+last_updated: 2026-11-01
 owners: [architect]
 related:
   - docs/product/FS-0010-ai-product-design-storyline.md
@@ -85,7 +85,7 @@ same mechanisms the contact page already uses. Counts come from tools that alrea
    to send them: the part page's feedback section. It never sends anything, and the kit text holds
    no email address.
 4. **Same link everywhere outside the site.** Episode descriptions, the LinkedIn post and the first
-   comment link to `/ai-product-design/<part>#feedback`, with no tracking parameters.
+   comment link to `/learning/ai-product-design/<module>#feedback`, with no tracking parameters.
 5. **Kit traffic saved weekly.** GitHub keeps traffic for 14 days. A small script run by the owner
    saves the kit repository's views, popular files, referrers and clones to a private file once a
    week. It lives with the owner's notes, not in this repository, and the site does not call it.
@@ -93,7 +93,7 @@ same mechanisms the contact page already uses. Counts come from tools that alrea
    the reader's role (no name unless they agree), the four answers, and whether it meets the pilot's
    pass rule. The original email or message is deleted once logged, unless the reader asked for a
    reply.
-7. **Pilot access while the gate is shut.** While `STORYLINE_PUBLISHED` is false the part page is a
+7. **Pilot access while the gate is shut.** While `LEARNING_PUBLISHED` is false the part page is a
    404 in production, so pilot viewers get a pilot pack by email: the episodes as unlisted YouTube
    links, the downloads from the kit (already public), the assistant version, and the four questions.
 8. **Privacy page.** One sentence in English and Dutch: feedback sent by email or WhatsApp is used
@@ -122,11 +122,11 @@ same mechanisms the contact page already uses. Counts come from tools that alrea
   both SHALL be assembled in the browser, as on the contact page.
 - THE feedback links SHALL work on the static export and SHALL NOT load any third-party script.
 - THE prefilled subject and body SHALL hold no data about the visitor.
-- WHILE `STORYLINE_PUBLISHED` is false, THE feedback section SHALL follow the part page's gate.
+- WHILE `LEARNING_PUBLISHED` is false, THE feedback section SHALL follow the part page's gate.
 - EACH assistant version in the kit SHALL end with an offer to draft the four answers AND SHALL
   point to the part page's feedback section; IT SHALL NOT contain an email address or instruct the
   assistant to send anything.
-- THE links in episode descriptions and posts SHALL point to `/ai-product-design/<part>#feedback`
+- THE links in episode descriptions and posts SHALL point to `/learning/ai-product-design/<module>#feedback`
   without query parameters.
 - WHERE feedback arrives by email or WhatsApp, THE privacy page SHALL state, in English and Dutch,
   what it is used for, that it is summarised without the sender's name, and that the message is

@@ -1,7 +1,7 @@
 ---
 title: "0010: The storyline ships English first, gated, and its episode decks are data rendered by the site"
 status: proposed
-last_updated: 2026-10-25
+last_updated: 2026-11-01
 owners: [architect]
 related:
   - docs/design/decisions/0001-tech-stack-and-static-export.md
@@ -35,9 +35,14 @@ the episodes no longer show downloads from a kit. This record is updated to matc
 1. **English only, through the existing fallback.** The storyline's text lives only in
    `content/en/`; Dutch routes render it with the fallback notice, and the section's labels are the
    English ones in both locales. No change to ADR-0002.
-2. **One flag.** `STORYLINE_PUBLISHED` in `lib/site.ts`, false until the first module publishes. While it is
-   false, a production build leaves the nav item out and every storyline route renders a 404; under
-   `next dev` everything shows. Same shape as `TRAINING_PUBLISHED`.
+2. **One flag, and a release list.** `LEARNING_PUBLISHED` in `lib/site.ts` (named
+   `STORYLINE_PUBLISHED` until 2026-11-01, when the series moved under the Learning section,
+   FS-0012), false until the first episodes publish. While it is false, a production build leaves the
+   nav item out and every page under `/learning` and every deck renders a 404. Same shape as
+   `TRAINING_PUBLISHED`. Which episodes show is data: `RELEASED` in `lib/learning.ts` lists the
+   switched-on episodes per series, and a module or series opens with its first one. Under
+   `next dev` the section shows what a published build would, and every deck stays reachable for
+   recording.
 3. **A deck is data; the site draws it.** A deck has two halves. Its words (each step's time,
    every line on screen, the card headings) are in `content/decks/<locale>/<episode>.yaml`, which
    the owner edits without touching code. Its layout, `lib/decks/<episode>.ts`, places them by id on a

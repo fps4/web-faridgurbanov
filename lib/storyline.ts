@@ -8,8 +8,6 @@ import { plan } from '@/lib/episodes/plan';
 // with a deck are written out in lib/episodes/module-<n>.ts. English first: Dutch pages fall back to
 // the English text with the fallback notice (ADR-0002, ADR-0010).
 
-export const STORYLINE_SECTION = 'ai-product-design';
-
 /**
  * An episode in one card (FS-0010): the closing slide of the episode and the text of its post.
  * Three short lines, the same three in every episode.
@@ -42,15 +40,12 @@ export interface Episode {
   video?: { youtubeId: string; duration: string };
 }
 
-export type ModuleStatus = 'draft' | 'coming';
-
 export interface Module {
   number: number;
   slug: string;
   title: string;
   /** What the module answers, in one line. */
   line: string;
-  status: ModuleStatus;
   episodes: Episode[];
 }
 
@@ -60,7 +55,6 @@ export const modules: Module[] = [
     slug: 'framing',
     title: 'Framing AI opportunities',
     line: 'AI sells predictions. Find the decision where a better prediction pays, and size what it is worth.',
-    status: 'coming',
     episodes: plan(1, 'framing', [
       'Intro',
       'Prediction as the unit',
@@ -82,7 +76,6 @@ export const modules: Module[] = [
     slug: 'ml-and-deep-learning',
     title: 'Machine learning and deep learning for product',
     line: 'What learning means, the model families worth knowing, and how to choose an approach.',
-    status: 'coming',
     episodes: plan(2, 'ml', [
       'Intro',
       'What learning means',
@@ -102,7 +95,6 @@ export const modules: Module[] = [
     slug: 'data-and-model-requirements',
     title: 'Data and model requirements',
     line: 'What the data has to answer, how to measure a model, and what it takes to run one.',
-    status: 'coming',
     episodes: module3Episodes,
   },
   {
@@ -110,7 +102,6 @@ export const modules: Module[] = [
     slug: 'human-ai-interaction',
     title: 'Human–AI interaction design',
     line: 'Design for a system that is sometimes wrong: expectations, trust, uncertainty and recovery.',
-    status: 'coming',
     episodes: plan(4, 'hai', [
       'Intro',
       'What makes AI interfaces different',
@@ -133,7 +124,6 @@ export const modules: Module[] = [
     slug: 'risks-and-governance',
     title: 'AI product risks and governance',
     line: 'What goes wrong with AI products, what the EU AI Act asks, and a risk register you can keep.',
-    status: 'coming',
     episodes: plan(5, 'risks', [
       'Intro',
       'Why AI projects fail',
@@ -154,7 +144,6 @@ export const modules: Module[] = [
     slug: 'process-and-proposal',
     title: 'AI product process and proposal',
     line: 'Four stages, success metrics in three layers, and a proposal a reviewer can say yes to.',
-    status: 'coming',
     episodes: plan(6, 'process', [
       'Intro',
       'Four stages',
@@ -183,24 +172,18 @@ interface StorylineCopy {
   title: string;
   tagline: string;
   moduleLabel: (n: number) => string;
-  episodeCount: (n: number) => string;
   inThisEpisode: string;
   takeaway: Record<keyof Takeaway, string>;
-  coming: string;
   contactCta: string;
-  diagramCaption: string;
 }
 
 const en: StorylineCopy = {
   title: 'AI Product Design',
   tagline: 'An engineering perspective on deciding, building and running an AI product.',
   moduleLabel: (n) => `Module ${n} of 6`,
-  episodeCount: (n) => `${n} episodes`,
   inThisEpisode: 'In this episode',
   takeaway: { idea: 'The idea', move: 'The move', monday: 'On Monday' },
-  coming: 'Coming',
   contactCta: 'Talk about your case',
-  diagramCaption: 'From episode 3.1: six questions for every data source, drawn step by step while I talk it through.',
 };
 
 /**

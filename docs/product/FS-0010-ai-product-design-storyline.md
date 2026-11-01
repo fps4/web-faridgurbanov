@@ -1,7 +1,7 @@
 ---
 title: "FS-0010 — AI Product Design storyline"
 status: draft
-last_updated: 2026-10-25
+last_updated: 2026-11-01
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -40,10 +40,11 @@ Werkmora, a fictional home, DIY and garden retailer.
 
 ## Scope
 
-1. **Storyline landing page** (`/ai-product-design`): a hero with the first deck's diagram and a
-   contact button, then bands for what the series is, who it is for, the running example in four
-   figures, the six modules as cards (each with its number of episodes), common questions, and who
-   is behind it. The words are the markdown in `content/en/ai-product-design/index.md`, one band per
+1. **Storyline landing page**, since 2026-11-01 the AI Product Design series page of the Learning
+   section (`/learning/ai-product-design`, [FS-0012](FS-0012-learning-section.md)): a hero with the
+   first switched-on episode's diagram and a contact button, then bands for what the series is, who it
+   is for, the running example in four figures, the six modules as cards, common questions, and who
+   is behind it. The words are the markdown in `content/en/learning/ai-product-design.md`, one band per
    `## ` heading (`lib/landing.ts`): a list whose items open with bold becomes cards, `### ` headings
    become questions, and `<!-- modules -->` places the modules.
 2. **Modules and episodes** in `lib/storyline.ts`: every module with its episodes by title, numbered
@@ -64,16 +65,17 @@ Werkmora, a fictional home, DIY and garden retailer.
 4. **Every episode promises first and closes on one card.** Three short lines (*In this episode*)
    right after the title, before the opening case; at the end, the episode in one card: the idea, the move and
    Monday. Both come from `lib/episodes/module-<n>.ts`.
-5. **Gated.** WHILE `STORYLINE_PUBLISHED` is false, a production build leaves the nav item out and
-   renders every storyline route as a 404; `next dev` shows everything, which is where screening and
-   recording happen.
+5. **Gated.** WHILE `LEARNING_PUBLISHED` (formerly `STORYLINE_PUBLISHED`) is false, a production
+   build leaves the nav item out and renders every storyline route as a 404; `next dev` shows the
+   section as a published build would, and every deck, which is where screening and recording
+   happen. Which episodes show is the release list of [FS-0012](FS-0012-learning-section.md).
 6. **English only.** The landing text, the decks and the section's labels are English; Dutch routes
    show the English text with the fallback notice (ADR-0002) and the English labels, until the owner
    decides on Dutch.
 
 ## Out of scope
 
-- Module pages. A module gets a page once its text is written; until then the landing page lists it.
+- Module and episode pages, the nav item and the release list: [FS-0012](FS-0012-learning-section.md).
 - Video hosting or embedding (a later story: YouTube, loaded only after a click).
 - Knowledge checks, contact through an API and visitor statistics: parked in the wiki
   (`publishing/ai-product-design/site-backend-design.md`); they need a backend next to the static
@@ -84,17 +86,15 @@ Werkmora, a fictional home, DIY and garden retailer.
 
 ## Acceptance criteria (EARS)
 
-- WHILE `STORYLINE_PUBLISHED` is false, THE production build SHALL NOT list the storyline in the
-  header AND SHALL render `/ai-product-design` and every `/<locale>/deck/<episode>` as a 404, with no
-  storyline title or summary in the page's metadata.
-- WHILE `STORYLINE_PUBLISHED` is true OR the site runs under `next dev`, THE header SHALL list
-  "AI Product Design" first, before the other primary items.
-- THE landing page SHALL list all six modules in order with their number of episodes, AND SHALL
-  render one band per `## ` section of its markdown, in the file's order.
+- WHILE `LEARNING_PUBLISHED` is false, THE production build SHALL render every
+  `/<locale>/deck/<episode>` as a 404, with no storyline title or summary in the page's metadata. (The
+  nav item and the series page follow FS-0012.)
+- THE landing page SHALL list all six modules in order, AND SHALL render one band per `## ` section of
+  its markdown, in the file's order.
 - EACH episode with a deck SHALL carry three opening lines and a closing card (idea, move, Monday)
   in `lib/episodes/module-<n>.ts`; THE deck SHALL show both.
-- THE landing page's figure SHALL be the first deck drawn at the step its layout names as the figure
-  (or, without one, the step before its first card).
+- THE landing page's figure SHALL be the deck of the first switched-on episode, drawn at the step its
+  layout names as the figure (or, without one, the step before its first card).
 - WHEN the presenter advances a deck, THE stage SHALL draw the arriving elements in order within about
   two seconds and fade the leaving ones; WHEN the presenter steps back, THE stage SHALL show the
   earlier step without animation.

@@ -21,6 +21,8 @@ so that I can pick the module I need without reading the others first.
 The section leads the header while the storyline is published module by module. The text is English
 only (ADR-0010); `lib/storyline.ts` holds the modules and their episodes; the landing text is
 `content/en/ai-product-design/index.md`. Module pages follow once a module's text is written.
+(2026-11-01: the page is now `/learning/ai-product-design`, its text `content/en/learning/ai-product-design.md`,
+and the gate `LEARNING_PUBLISHED`; see US-0035 and FS-0012.)
 
 ## Acceptance criteria (EARS)
 
