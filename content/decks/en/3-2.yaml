@@ -1,0 +1,153 @@
+# Episode 3.2 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-2.ts. Under `npm run dev`
+# a refresh of /en/deck/3-2 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/02-labels.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-2.ts as well.
+
+title: "Labels"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:05"
+  free:
+    at: "0:22"
+  cost:
+    at: "0:36"
+  sicker:
+    at: "0:54"
+  fix:
+    at: "1:18"
+  werkmora:
+    at: "1:29"
+  existing:
+    at: "1:51"
+  implicit:
+    at: "2:17"
+  rules:
+    at: "2:32"
+  assisted:
+    at: "2:48"
+  expert:
+    at: "2:58"
+  agree:
+    at: "3:07"
+  adjudicate:
+    at: "3:27"
+  guideline:
+    at: "3:53"
+  late:
+    at: "4:08"
+  partial:
+    at: "4:19"
+  censored:
+    at: "4:36"
+  flag:
+    at: "4:55"
+  waste:
+    at: "5:19"
+  spec:
+    at: "5:38"
+  takeaway:
+    at: "5:58"
+  next:
+    at: "6:04"
+
+text:
+  # The title card; the usual belief.
+  episode: "AI Product Design · Module 3 · Episode 3.2"
+  belief: "“The outcome is already in the database. The labels are free.”"
+  belief-examples: "Was the claim paid? Did the customer leave? How much did we sell?"
+  belief-tag: "the usual belief"
+
+  # Obermeyer et al. (2019): cost used as the label for health need.
+  title-cost: "Cost used as the label for health need"
+  need: "wanted: health need"
+  cost: "label used: future cost"
+  neq: "≠"
+  gap-amount: "$1,801 less"
+  gap-what: "spent per year on Black patients with the same number of chronic conditions"
+  gap-result: "Same risk score, sicker patients. Race was not an input."
+  fix-label: "new label: health + cost"
+  fix-result: "bias cut by 84%"
+  cost-credit: "Obermeyer, Powers, Vogeli & Mullainathan (2019), Science. Applied to about 200 million people a year in the US."
+
+  # Werkmora and its label.
+  title-werkmora: "Werkmora: the label is units sold"
+  werkmora: "A garden retailer. Every night its model forecasts how much of each item every store will sell, 1 to 21 days ahead."
+  werkmora-tag: "fictional company"
+  label-box: "label = units sold per store × item × day"
+  label-trap: "Sales ≠ demand on a day the shelf was empty (episode 3.1)"
+
+  # Five sources, cheapest first.
+  title-sources: "Where labels come from, cheapest first"
+  cheapest: "cheapest"
+  dearest: "most expensive"
+  src-existing: "existing outcomes"
+  src-implicit: "implicit feedback"
+  src-rules: "rules"
+  src-assisted: "model-assisted"
+  src-expert: "experts"
+  src-existing-head: "1 · Existing outcomes: cheap, two risks"
+  src-existing-body: "A proxy for what you want (cost for need). Shaped by past decisions: you only see if a defendant comes back to court when the judge released them (Lakkaraju et al., 2017)."
+  src-implicit-head: "2 · Implicit feedback: plenty, noisy"
+  src-implicit-body: "Clicks, purchases, edits, dismissals. Shaped by what the product showed: nobody clicks on what they never saw."
+  src-rules-head: "3 · Rules, weak supervision: noisy, fast"
+  src-rules-body: "Small functions label the data. Snorkel user study: 2.8× faster than seven hours of hand labelling (Ratner et al., 2017)."
+  src-assisted-head: "4 · Model-assisted: people correct"
+  src-assisted-body: "A model proposes the label. Faster than from scratch, and still people’s time."
+  src-expert-head: "5 · Experts: accurate, expensive"
+  src-expert-body: "Sometimes the only option, as for medical images. And experts disagree."
+
+  # Two checks: agreement with a clean reference, and a guideline.
+  title-checks: "Check labels before you trust them"
+  check-agree: "1 · Measure agreement first"
+  check-agree-body: "Same items, two labellers. Disagreement means the labels are uncertain. Without a cleaner reference you cannot show a model beats an expert."
+  check-reference: "A small agreed reference"
+  check-reference-body: "Experts discuss the hard cases and agree on one label. Use the set to test and to tune."
+  krause-big: "1.6 million+ images"
+  krause-big-what: "ordinary grades · training"
+  krause-small: "3,737"
+  krause-small-what: "agreed by retina specialists · tuning"
+  krause-auc: "AUC 0.934 → 0.986"
+  krause-credit: "Krause et al. (2018), diabetic retinopathy grading, Google. On par with the specialists."
+  check-guideline: "2 · Write a guideline with edge cases"
+  check-guideline-body: "What to do in the hard cases, with examples. Paying labellers per volume lowers quality (Google PAIR)."
+
+  # Late labels, and labels for only some cases.
+  title-late: "Labels that come late, or only for some cases"
+  late-predict: "prediction"
+  late-label: "label arrives"
+  late-gap: "weeks · months"
+  late-examples: "Fraud confirmed weeks later · a loan defaults after months. Training slows, and live monitoring has no label."
+  partial: "Only the checked cases get a label."
+  partial-credit: "Card fraud: only the transactions investigators check get a label (Dal Pozzolo et al., 2018)."
+  plan-both: "Plan both: when the label arrives, and which cases get one."
+
+  # Werkmora's label specification.
+  title-spec: "Werkmora’s labels"
+  spec-tag: "fictional"
+  row-demand: "demand"
+  row-demand-body: "Units sold, only on days with stock. Empty-shelf days taught the model “low demand”, and past orders decided which days ran empty."
+  row-stockout: "stock-out flag"
+  row-stockout-body: "New. Rule first: stock 0 at opening. Staff check about 400 shelves for two weeks; a planner and the store manager settle the disagreements. Owner: Store Operations."
+  row-waste: "waste"
+  row-waste-body: "Written-off live plants, scanned at the weekly stock count: up to a week late. Monitors the forecast and sets the service level; does not train it. Owner: Store Operations."
+  spec: "One label specification: meaning, owner and arrival for each label, plus the guideline and one agreement number."
+
+  # The close.
+  takeaway-subtitle: "Episode 3.2 in one card"
+  next: "Next episode: data quality and leakage."

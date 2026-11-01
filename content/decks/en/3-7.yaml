@@ -1,0 +1,146 @@
+# Episode 3.7 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-7.ts. Under `npm run dev`
+# a refresh of /en/deck/3-7 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/07-baselines.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-7.ts as well.
+
+title: "Baselines"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:03"
+  claim:
+    at: "0:18"
+  than-what:
+    at: "0:31"
+  compas:
+    at: "0:48"
+  crowd:
+    at: "1:06"
+  two-features:
+    at: "1:24"
+  werkmora:
+    at: "1:39"
+  trivial:
+    at: "2:00"
+  heuristic:
+    at: "2:23"
+  today:
+    at: "2:42"
+  same-data:
+    at: "3:00"
+  m4:
+    at: "3:18"
+  table:
+    at: "3:37"
+  claims:
+    at: "3:50"
+  ship:
+    at: "4:09"
+  qualifiers:
+    at: "4:34"
+  keep:
+    at: "4:59"
+  owners:
+    at: "5:30"
+  takeaway:
+    at: "5:54"
+  next:
+    at: "6:00"
+
+text:
+  # The title card; the claim with nothing next to it.
+  episode: "AI Product Design · Module 3 · Episode 3.7"
+  claim: "“Our forecast is 40% more accurate.”"
+  claim-tag: "a vendor, based on a reported case"
+  than-what: "More accurate than what?"
+  score-alone: "WAPE 30%: good or bad? A score alone has no meaning."
+
+  # COMPAS against simple baselines.
+  title-compas: "COMPAS, 137 features, next to simple baselines"
+  value-compas: "65.4%"
+  value-person: "62.1%"
+  value-crowd: "67.0%"
+  value-two: "66.8%"
+  label-compas: "COMPAS"
+  label-person: "one person"
+  label-crowd: "a crowd"
+  label-two: "two features"
+  compas-what: "A commercial risk tool: will a defendant commit another crime? Accuracy on 7,214 defendants."
+  crowd-note: "People with no expertise: one alone is worse, a crowd is better."
+  two-note: "Age + prior convictions matched 137 features."
+  compas-credit: "Dressel & Farid (2018), Science Advances. People and COMPAS compared on the same 1,000 defendants (COMPAS 65.2% there)."
+
+  # Werkmora and its pilot.
+  title-werkmora: "Werkmora: the nightly garden forecast"
+  werkmora-tag: "fictional company"
+  werkmora: "A garden retailer, about 175 stores in NL, BE and DE. Every night it forecasts how much of each garden product each store needs."
+  pilot: "Pilot model: 30% WAPE. Compared with what?"
+
+  # Three baselines, one test.
+  title-three: "Three baselines, one test"
+  b-trivial: "Trivial"
+  b-trivial-asks: "any signal at all?"
+  b-trivial-werkmora: "Same week last year, calendar-adjusted (seasonal naive). In classification: always the most common class."
+  b-heuristic: "Heuristic"
+  b-heuristic-asks: "is ML needed?"
+  b-heuristic-werkmora: "Moving average plus “sunny weekend: +x%”. The replenishment team sets x."
+  b-today: "Today"
+  b-today-werkmora: "The ERP forecast plus the manual changes the replenishment team makes. The raw ERP number is not today."
+  b-today-asks: "better than now?"
+  same-data: "Same test for all: last spring, same stores and items, same stock-out flag, same WAPE."
+  m4: "M4 competition: the six pure ML methods performed poorly. None beat a combination of simple statistical methods."
+  m4-credit: "Makridakis, Spiliotis & Assimakopoulos (2018), International Journal of Forecasting. Not retail data."
+
+  # One model, three claims.
+  title-claims: "One model, three claims"
+  table-tag: "fictional"
+  table-axis: "WAPE on last spring, same stores and items · lower is better"
+  row-naive: "same week last year"
+  row-erp: "ERP + manual changes"
+  row-rule: "moving average + weather"
+  row-model: "the new model"
+  wape-naive: "45%"
+  wape-erp: "38%"
+  wape-rule: "35%"
+  wape-model: "30%"
+  gain-naive: "33% better"
+  gain-erp: "21% better"
+  gain-rule: "14% better"
+  who: "The vendor picks the first. The board needs the second. Whether to use ML at all rests on the third."
+  table-credit: "Fictional numbers. Gain = (baseline − model) / baseline."
+
+  # When to ship the heuristic.
+  title-ship: "When to ship the heuristic"
+  rule: "If the model does not clearly beat a simple heuristic on the same data, counting the cost to run and maintain it: ship the heuristic, and collect data."
+  zinkevich: "“Don’t be afraid to launch a product without machine learning.” Zinkevich, Rules of Machine Learning, Rule #1 (Google)"
+  q-simple: "Simple: a weather rule. 400 nested rules → choose ML (Rule #3)."
+  q-fair: "Clearly: same data, a fair validation, online where you can."
+  q-cost: "Cost: pipelines, retraining, on-call, explaining it to the team."
+  christodoulou: "Clinical prediction studies at low risk of bias: no difference in AUC between ML and logistic regression (Christodoulou et al., 2019)."
+
+  # After launch, and the close.
+  title-keep: "Keep the baseline running"
+  keep-tag: "fictional"
+  box-baseline: "ERP + manual, every night"
+  box-fallback: "fallback when the batch is late"
+  box-trigger: "yardstick: retrain when the model is worse than ERP on top garden items, 2 weeks in a row"
+  parallel: "Engineers know this from migrations: a parallel run."
+  write-down: "Write down: three baselines, one test, one table per slice that the COO can read."
+  owners: "The data team builds it with the replenishment team. Supply Chain decides per item group: where the model does not clearly win, the rule stays."
+  takeaway-subtitle: "Episode 3.7 in one card"
+  next: "Next episode: non-functional requirements."

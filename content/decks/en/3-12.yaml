@@ -1,0 +1,167 @@
+# Episode 3.12 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-12.ts. Under `npm run dev`
+# a refresh of /en/deck/3-12 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/12-what-it-costs.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-12.ts as well.
+
+title: "What it costs"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:05"
+  bill:
+    at: "0:26"
+  run:
+    at: "0:38"
+  rnd:
+    at: "0:53"
+  lesson:
+    at: "1:05"
+  werkmora:
+    at: "1:18"
+  data:
+    at: "1:41"
+  labels:
+    at: "2:01"
+  training:
+    at: "2:24"
+  inference:
+    at: "2:39"
+  people:
+    at: "2:52"
+  debt:
+    at: "3:09"
+  wrong:
+    at: "3:36"
+  zillow:
+    at: "3:52"
+  small:
+    at: "4:11"
+  big:
+    at: "4:28"
+  page:
+    at: "4:59"
+  paydown:
+    at: "5:22"
+  cheap:
+    at: "5:39"
+  takeaway:
+    at: "5:49"
+  next:
+    at: "5:56"
+
+text:
+  # The title card; the question and the usual answer.
+  episode: "AI Product Design · Module 3 · Episode 3.12"
+  question: "“What does the model cost?”"
+  answer: "a cloud bill, or a licence price"
+  answer-tag: "one number"
+
+  # Strubell et al.: one research project, three compute costs.
+  title-strubell: "One research project, three costs"
+  value-run: "$52–175"
+  value-tune: "$1,238–4,205"
+  value-full: "$103k–350k"
+  label-run: "one training run"
+  label-tune: "tuning on a new dataset"
+  label-full: "the full R&D: 4,789 jobs, about six months"
+  strubell-credit: "Strubell, Ganesh & McCallum (2019), Table 4: estimated compute cost of one NLP research project."
+  lesson: "The cost is in the runs around the model."
+  lesson-only: "Compute only. No people, no data."
+
+  # Werkmora and the board's question.
+  title-werkmora: "Werkmora"
+  werkmora-tag: "fictional company"
+  werkmora: "A garden retailer with about 175 stores. This module: the nightly forecast of what every store sells, per garden item."
+  board: "The board: “What does the forecast cost?”"
+  first-answer: "First answer: the cloud bill of the data science workspace."
+
+  # The cost lines, one row per click, each with Werkmora's driver.
+  title-lines: "The cost lines"
+  lines-tag: "fictional drivers"
+  line-data: "Data acquisition"
+  line-data-werkmora: "weather licence for ≈ 175 store locations, plus a history of past forecasts"
+  line-labels: "Labelling"
+  line-labels-werkmora: "stock-out flags, plant write-offs, promotion flags corrected"
+  labels-quote: "“the most under-valued and de-glamorised aspect of AI”"
+  labels-credit: "Sambasivan et al. (2021)"
+  labels-tool: "Model-assisted labelling: 34 → 14 s per mask (a vision example)"
+  labels-tool-credit: "Kirillov et al. (2023), Segment Anything"
+  line-training: "Training, experiments"
+  line-training-werkmora: "backtests against 3 baselines, ≈ 32 retrains a year, extra runs"
+  training-note: "Count every run."
+  line-inference: "Inference"
+  line-inference-werkmora: "one nightly batch: ≈ 0.75m series, later ≈ 5.4m, 01:00–04:00"
+  inference-note: "The line the cloud bill shows."
+  line-people: "People"
+  line-people-werkmora: "4 data scientists, data engineers, replenishment team time, on-call"
+  people-quote: "“this is people’s jobs now”"
+  people-credit: "Shankar et al. (2024), on monitoring"
+  line-debt: "Maintenance, debt"
+  line-debt-werkmora: "9 sources, 7 owners, old file transfers, a legacy broker, the ERP fallback"
+  debt-title: "ML technical debt"
+  debt-cace: "entanglement: change anything, change everything"
+  debt-data: "data dependencies"
+  debt-loops: "feedback loops"
+  debt-glue: "glue code, pipeline jungles"
+  debt-config: "configuration"
+  debt-world: "a changing world"
+  debt-credit: "Sculley et al. (2015), §2–§7"
+  line-wrong: "Being wrong"
+  line-wrong-werkmora: "waste and markdowns on live plants, empty shelves, DC trucks over capacity"
+  zillow-amount: "about $304M"
+  zillow-what: "Zillow Offers: inventory write-down, Q3 2021"
+  zillow-quote: "“the unpredictability in forecasting home prices far exceeds what we anticipated”"
+  zillow-credit: "Zillow Group, Form 8-K, 2 Nov 2021"
+
+  # Which line is the biggest.
+  title-biggest: "Which line is the biggest?"
+  small-title: "A small internal forecast"
+  small-tag: "fictional, no amounts"
+  bar-people: "people"
+  bar-data: "data work"
+  bar-experiments: "experiments"
+  bar-inference: "inference"
+  big-title: "A big model at high volume"
+  big-tag: "energy, not money"
+  bar-big-inference: "inference ⅗"
+  bar-big-training: "training ⅖"
+  big-credit: "Share of ML energy at Google, 2019–2021 (Patterson et al., 2022)"
+  bloomz: "BLOOMz models: inference energy equals training plus fine-tuning after about 200–590 million inferences (Luccioni et al., 2024)."
+
+  # The close: one page of lines.
+  title-close: "One page, every line"
+  close-what: "For each line: what drives it, who owns it, what makes it grow. No amounts yet."
+  col-line: "line"
+  col-driver: "driver"
+  col-owner: "owner"
+  col-grows: "grows when"
+  row-weather: "weather"
+  row-weather-driver: "locations × days × history"
+  row-weather-owner: "Data & Analytics"
+  row-weather-grows: "new stores, new variables"
+  row-inference: "inference"
+  row-inference-driver: "series × nightly runs"
+  row-inference-owner: "data platform"
+  row-inference-grows: "full range: ≈ 5.4m series"
+  owners: "At the table: the Director Supply Chain (owner of the use), the Head of Data & Analytics, a controller from the CFO line."
+  paydown: "Budget the debt as work: tests on the nine feeds, a nightly feature check, monitoring with owners."
+  paydown-credit: "Breck et al. (2017), The ML Test Score: tests and monitoring “pay down ML technical debt”."
+  cheap: "Next to the other lines, the model is the cheap part."
+  value-case: "The page goes into the value case: Module 6."
+  takeaway-subtitle: "Episode 3.12 in one card"
+  next: "Next module: human–AI interaction design."

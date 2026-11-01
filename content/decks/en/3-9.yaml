@@ -1,0 +1,181 @@
+# Episode 3.9 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-9.ts. Under `npm run dev`
+# a refresh of /en/deck/3-9 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki:
+# publishing/ai-product-design/episodes/03-data/09-from-prototype-to-production.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-9.ts as well.
+
+title: "From prototype to production"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:05"
+  notebook:
+    at: "0:21"
+  clinics:
+    at: "0:35"
+  rooms:
+    at: "0:49"
+  werkmora:
+    at: "1:12"
+  poc:
+    at: "1:28"
+  pilot:
+    at: "1:42"
+  production:
+    at: "1:56"
+  pipelines:
+    at: "2:04"
+  features:
+    at: "2:21"
+  registry:
+    at: "2:38"
+  shadow:
+    at: "2:53"
+  limit:
+    at: "3:11"
+  canary:
+    at: "3:27"
+  fallback:
+    at: "3:44"
+  four:
+    at: "3:59"
+  epic:
+    at: "4:19"
+  two:
+    at: "4:38"
+  triggers:
+    at: "4:57"
+  month:
+    at: "5:19"
+  agents:
+    at: "5:40"
+  takeaway:
+    at: "6:02"
+  next:
+    at: "6:09"
+
+text:
+  # The title card; the usual belief.
+  episode: "AI Product Design · Module 3 · Episode 3.9"
+  hook: "“The model works in the notebook. Now switch it on.”"
+  hook-belief: "A good offline score feels almost done."
+  hook-tag: "the usual belief"
+
+  # The case: Thai clinics.
+  case-what: "Google’s screening for diabetic eye disease in Thailand’s national programme, 2018–2020. Deployed in 3 clinics."
+  value-lab: ">90%"
+  label-lab: "sensitivity and specificity in retrospective studies"
+  case-credit: "Beede et al. (2020), CHI ’20. Google about its own system."
+  value-clinic: "21%"
+  label-clinic: "of images ungradable: 393 of 1,838, first six months"
+  outage: "Uploads 60–90 s. A 2-hour outage: 200 → 100 patients that day."
+  same: "Same model. Different rooms, a slow network."
+  followup: "Follow-up at 9 sites, 7,651 patients, specialists checking every image: 91.4% sensitivity, 95.4% specificity (Ruamviboonsuk et al., 2022)."
+
+  # Werkmora and the three stages.
+  title-werkmora: "Werkmora: “When can we switch it on?”"
+  werkmora-tag: "fictional company"
+  werkmora: "Garden retailer, about 175 stores. A nightly forecast per store and garden item. Today the orders come from the ERP forecast plus manual changes."
+  stage-poc: "proof of concept"
+  stage-poc-question: "Can a model learn the signal, offline, on history?"
+  stage-poc-werkmora: "Backtest on 3 years of history against the ERP forecast"
+  stage-pilot: "pilot"
+  stage-pilot-question: "Does it help real users, against today’s process?"
+  stage-pilot-werkmora: "Garden only, all ≈ 175 stores, ≈ 0.75 million series"
+  stage-production: "production"
+  stage-production-question: "Reliable, monitored, integrated, owned"
+  stage-production-werkmora: "Full range, ≈ 5.4 million series: about 7× the pilot"
+  offline: "A great offline score answers question 1 only."
+
+  # What production adds.
+  title-adds: "What production adds around the model"
+  mlops: "often called MLOps"
+  add-data: "data pipelines"
+  add-data-note: "Scheduled jobs that bring the inputs in and check what arrives"
+  add-features: "shared features"
+  add-features-note: "Same definitions in training and serving, plus a nightly check that the values match"
+  add-training: "training pipeline"
+  add-training-note: "The notebook becomes a job anyone can run again, with the same result"
+  add-registry: "model registry"
+  add-registry-note: "Model version and data snapshot, written by every run"
+  feature-store: "A feature store is one way to do it, and optional (Google Cloud; Kreuzberger et al., 2023)."
+  registry-question: "Which version made last night’s orders? Go back to the one before."
+
+  # The rollout in steps.
+  title-rollout: "Roll out in steps"
+  roll-shadow: "shadow"
+  roll-shadow-note: "Runs on live inputs; nothing orders from it. Werkmora: next to the ERP for some weeks, error per item group."
+  stages-credit: "In practice 1 to 4 stages, each company with its own names (Shankar et al., 2024)."
+  limit: "A feedback loop: shadow shows forecast error, never what the orders do to shelves and waste."
+  roll-canary: "canary"
+  roll-canary-note: "A live test: part of the stores order from the new forecast. Comparable stores stay on the ERP."
+  guardrails: "Guardrails: availability of the top 500 garden items · waste on live plants · DC trucks per day · manual overrides"
+  roll-all: "all stores"
+  fallback: "Fallback: if the batch is late or fails, the ERP makes the orders. Practise it for one night."
+  fallback-credit: "Roll back quickly, and practise it (Breck et al., 2017)."
+
+  # What to watch.
+  title-watch: "What to watch, each line with an owner"
+  drift-words: "The words for drift differ between sources. We use them this way."
+  col-labels: "needs outcomes?"
+  signal-data-drift: "data drift"
+  signal-data-drift-what: "The inputs change: weather, prices, promotions outside the training range"
+  signal-data-drift-labels: "no"
+  signal-concept-drift: "concept drift"
+  signal-concept-drift-what: "The link between inputs and outcome changes"
+  signal-concept-drift-labels: "yes, to prove it"
+  signal-performance: "performance"
+  signal-performance-what: "WAPE and bias, once the sales arrive"
+  signal-performance-labels: "yes, and late"
+  signal-business: "business metric"
+  signal-business-what: "Availability, waste, trucks, overrides"
+  signal-business-labels: "no, but slow"
+  signal-upstream: "upstream health"
+  signal-upstream-what: "Sales, weather feed, stock rows: on time, in the right shape?"
+  signal-upstream-labels: "no"
+  signal-serving: "serving health"
+  signal-serving-what: "Batch done by 04:00? Which model version?"
+  signal-serving-labels: "no"
+  epic: "Epic sepsis alerts, 24 US hospitals, start of COVID-19: patients with an alert per day went from 9% to 21%. Michigan switched the alerts off."
+  epic-credit: "Wong et al. (2021), JAMA Netw Open: alerts counted, accuracy not measured. Finlayson et al. (2021), NEJM."
+  outputs: "Outcomes late? Watch the outputs: the spread of the forecast against last year and the ERP."
+  watch-credit: "Sculley et al. (2015), §7; output distributions after Bernardi et al. (2019), Booking.com."
+
+  # The trigger page.
+  title-triggers: "Written down before go-live"
+  page-head: "Triggers · signed: COO, Supply Chain"
+  page-tag: "fictional"
+  trigger-schedule: "Retrain weekly on Sunday night from March to August, monthly the rest of the year."
+  trigger-extra: "Extra retrain when WAPE on the top garden items is worse than the ERP two weeks in a row."
+  trigger-rollback: "Back to the previous version, or to the ERP, when a guardrail breaks."
+  retrain-kinds: "Common retraining triggers: a schedule, new data, a drop in performance, a change in the data (Google Cloud)."
+
+  # A month later, and agents.
+  title-month: "A month later at Werkmora"
+  month-nightly: "✓ the pilot runs every night, with a known version"
+  month-fallback: "✓ the fallback has run once, as a drill"
+  month-page: "✓ the trigger page exists; its numbers will be tuned"
+  month-live: "→ the live test on part of the stores starts with the garden season"
+  no-rule: "No study gives a rule for when to retrain: none of 18 engineers had “any scientific procedure” (Shankar et al., 2024)."
+  agents-title: "And for agents"
+  agents: "On a bought model you do not retrain: the provider changes it under you. Trace every step, watch the cost per task, and run the evaluation suite again when the prompt, a tool or the model version changes."
+  agents-module: "More in the module on designing agentic products."
+
+  # The close.
+  takeaway-subtitle: "Episode 3.9 in one card"
+  next: "Next episode: feedback loops."

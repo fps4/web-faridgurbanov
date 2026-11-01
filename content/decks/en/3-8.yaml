@@ -1,0 +1,190 @@
+# Episode 3.8 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-8.ts. Under `npm run dev`
+# a refresh of /en/deck/3-8 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/08-non-functional-requirements.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-8.ts as well.
+
+title: "Non-functional requirements"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:04"
+  usual:
+    at: "0:18"
+  golive:
+    at: "0:29"
+  refused:
+    at: "0:43"
+  court:
+    at: "1:03"
+  logged:
+    at: "1:29"
+  werkmora:
+    at: "1:43"
+  nine:
+    at: "2:03"
+  latency:
+    at: "2:14"
+  window:
+    at: "2:30"
+  throughput:
+    at: "2:49"
+  cost:
+    at: "3:06"
+  boundary:
+    at: "3:25"
+  provider:
+    at: "3:48"
+  explain:
+    at: "4:06"
+  cadence:
+    at: "4:26"
+  down:
+    at: "4:43"
+  unsure:
+    at: "5:04"
+  sheet:
+    at: "5:21"
+  badnight:
+    at: "5:35"
+  takeaway:
+    at: "5:58"
+  next:
+    at: "6:04"
+
+text:
+  # The title card.
+  episode: "AI Product Design · Module 3 · Episode 3.8"
+
+  # The usual page, and the questions at go-live.
+  title-usual: "What the requirements usually say"
+  usual-head: "Model requirements"
+  usual-line: "accuracy: better than today ✓"
+  ask-fast: "How fast?"
+  ask-cost: "What does it cost?"
+  ask-leave: "May the data leave?"
+  ask-why: "Why this answer?"
+  ask-down: "And when it is down?"
+  golive-tag: "at go-live"
+
+  # The case: Dun & Bradstreet Austria, with SCHUFA.
+  title-case: "A score, a refused contract, a court"
+  refused-amount: "€10 a month"
+  refused-what: "A mobile phone contract, refused after an automated credit assessment by Dun & Bradstreet Austria."
+  court-quote: "The person may learn the procedure and principles that were applied."
+  court-not: "Not enough: “the mere communication of a complex mathematical formula, such as an algorithm”."
+  schufa: "SCHUFA (2023): a score that a company “draws strongly” on is an automated decision."
+  court-credit: "CJEU, C-203/22 Dun & Bradstreet Austria, 27 Feb 2025 · C-634/21 SCHUFA, 7 Dec 2023"
+  logged-title: "For the system"
+  logged-what: "What is kept for each decision? Can we explain one result to one person, months later?"
+
+  # Werkmora and the nine.
+  title-werkmora: "Werkmora: a forecast every night"
+  werkmora-tag: "fictional company"
+  werkmora: "A home and garden retailer with about 175 stores. Every night it forecasts how much of each garden item every store needs, and the forecast feeds the store orders."
+  werkmora-req: "The pilot’s only requirement: “more accurate than the ERP forecast”."
+  nfr-latency: "latency"
+  nfr-batch: "batch or online"
+  nfr-throughput: "throughput and peaks"
+  nfr-cost: "cost per prediction"
+  nfr-where: "where it runs"
+  nfr-privacy: "privacy and residency"
+  nfr-explain: "explainability"
+  nfr-cadence: "update cadence"
+  nfr-fallback: "fallback"
+  nine-caption: "Each one with a number and an owner, as for any service."
+
+  # Speed, volume and cost.
+  title-speed: "Speed, volume and cost"
+  latency-title: "Online: latency has a price"
+  booking: "Booking.com, randomised experiment: about 30% more latency cost more than 0.5% in conversion. Among their answers: precompute and cache."
+  booking-credit: "Bernardi, Mavridis & Estevez (2019), KDD. Booking.com about itself."
+  window-title: "Werkmora, batch: latency becomes a window"
+  speed-tag: "fictional"
+  run-label: "forecast run"
+  mark-weather: "weather"
+  mark-sales: "sales"
+  mark-orders: "orders ready"
+  mark-cutoff: "cut-off"
+  hour-0: "00:00"
+  hour-1: "01:00"
+  hour-2: "02:00"
+  hour-3: "03:00"
+  hour-4: "04:00"
+  hour-5: "05:00"
+  hour-6: "06:00"
+  throughput: "0.75m series a night (pilot) · 5.4m later, same window · peak March–June"
+  cost: "Cost: tiny per forecast. The total is compute, pipelines and people."
+  cost-credit: "Energy per 1,000 inferences: text classification 0.002 kWh, text generation 0.047 kWh (Luccioni et al., 2024)"
+
+  # The data boundary, and explainability.
+  title-bounds: "Where it runs, what may leave, why it says so"
+  bounds-tag: "fictional"
+  boundary-label: "inside Werkmora"
+  box-inputs: "sales, stock, prices"
+  box-lakehouse: "cloud lakehouse"
+  box-erp: "ERP: store orders"
+  box-weather: "weather provider"
+  weather-licence: "contract · licence"
+  boundary-line: "No customer data in the inputs. Lakehouse region: to confirm."
+  box-provider: "model provider?"
+  prompt-label: "a prompt"
+  schrems: "Personal data leaving the EU needs a legal basis. Schrems II (CJEU, 2020) struck down the EU–US Privacy Shield."
+  explain-q: "“Why 40 hoses?”"
+  explain-a: "Each order line keeps a short reason, the model version and the main inputs."
+  explain-why: "Here a trust requirement: no personal data in it."
+
+  # Over time, and on a bad night.
+  title-time: "Over time, and on a bad night"
+  time-tag: "fictional"
+  cadence-title: "Update cadence: the season is the drift"
+  cadence: "Retrain weekly March to August, monthly the rest of the year, and once more when the ERP baseline wins two weeks in a row."
+  fallback-title: "Fallback"
+  down-label: "down"
+  down-what: "Late, failed, or a feed missing: the ERP forecast makes the orders at 05:00. The model never blocks an order."
+  retry: "A retry alone is no fallback: it can make a late batch later."
+  unsure-label: "unsure"
+  unsure-what: "Very uncertain lines go to the replenishment team."
+  law: "EU AI Act, Art. 15(4), for high-risk systems: robustness “may include backup or fail-safe plans”. The forecast is not high-risk; the need is the same."
+
+  # The close: the sheet.
+  title-sheet: "One page: a number and an owner per row"
+  sheet-tag: "fictional"
+  col-value: "Werkmora"
+  col-owner: "owner"
+  sheet-latency-value: "window 01:00–04:00 · orders 05:00 · cut-off 06:00"
+  sheet-latency-owner: "Supply Chain · data team"
+  sheet-batch-value: "batch, one run a night"
+  sheet-batch-owner: "Head of Data & Analytics"
+  sheet-throughput-value: "0.75m series a night, later 5.4m"
+  sheet-throughput-owner: "data team"
+  sheet-cost-value: "per night: compute, pipelines, people"
+  sheet-cost-owner: "Head of Data & Analytics"
+  sheet-where-value: "cloud lakehouse, orders into the ERP"
+  sheet-where-owner: "CDTO"
+  sheet-privacy-value: "no customer data · weather licence to check"
+  sheet-privacy-owner: "DPO · CDTO"
+  sheet-explain-value: "a reason per order line"
+  sheet-explain-owner: "data team · replenishment"
+  sheet-cadence-value: "weekly in season, monthly otherwise"
+  sheet-cadence-owner: "data team"
+  sheet-fallback-value: "down: ERP forecast · unsure: replenishment team"
+  sheet-fallback-owner: "COO, Supply Chain"
+  badnight-test: "Test the bad nights: late sales, no weather file, a run that ends at 04:45."
+  badnight-watch: "Then watch it like any service: run end time, stores on fallback, cost per night."
+  takeaway-subtitle: "Episode 3.8 in one card"
+  next: "Next episode: from prototype to production."

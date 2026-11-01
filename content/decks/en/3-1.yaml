@@ -1,0 +1,226 @@
+# Episode 3.1 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-1.ts. Under `npm run dev`
+# a refresh of /en/deck/3-1 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/01-data-requirements.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-1.ts as well.
+
+title: "Data requirements"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:05"
+  rows:
+    at: "0:25"
+  act:
+    at: "0:38"
+  headline:
+    at: "0:52"
+  languages:
+    at: "1:12"
+  retail:
+    at: "1:35"
+  retail-sources:
+    at: "1:50"
+  retail-gap:
+    at: "2:05"
+  insurance:
+    at: "2:15"
+  insurance-sources:
+    at: "2:30"
+  insurance-found:
+    at: "2:42"
+  manufacturing:
+    at: "3:00"
+  manufacturing-sources:
+    at: "3:12"
+  manufacturing-cost:
+    at: "3:24"
+  content:
+    at: "3:36"
+  labels:
+    at: "3:52"
+  volume:
+    at: "4:08"
+  coverage:
+    at: "4:22"
+  freshness:
+    at: "4:40"
+  rights:
+    at: "4:56"
+  fine:
+    at: "5:04"
+  magic:
+    at: "5:20"
+  curve:
+    at: "5:32"
+  flat:
+    at: "5:44"
+  small:
+    at: "5:55"
+  takeaway:
+    at: "6:06"
+  next:
+    at: "6:18"
+
+text:
+  # The title card; the question, the usual answer, and what the EU AI Act asks instead.
+  episode: "AI Product Design · Module 3 · Episode 3.1"
+  question: "“Is our data ready for AI?”"
+  answer: "“Sure. Ten years of history, millions of records.”"
+  answer-tag: "a row count"
+  act: "The EU AI Act (Art. 10) asks for data that is “relevant, sufficiently representative” … “in view of the intended purpose”."
+
+  # One headline number, then the same questions by language: OpenAI o1, System Card Table 17.
+  title-headline: "OpenAI o1 on the standard test"
+  mmlu: "MMLU, the standard test for AI models: exam questions in 57 subjects, from maths to law."
+  value-all: "7.7%"
+  label-all: "wrong answers, in English"
+  english-only: "The standard test is in English only."
+  title-languages: "Same model, same questions, translated"
+  value-english: "7.7%"
+  value-swahili: "14.6%"
+  value-yoruba: "24.6%"
+  label-english: "English"
+  label-swahili: "Swahili"
+  label-yoruba: "Yoruba"
+  web-yoruba: "Yoruba: 45M+ speakers, 0.002% of the web"
+  web-swahili: "Swahili: 60–150M speakers, 0.01%"
+  web-english: "English: 42.6% of the web"
+  languages-what: "wrong answers: the same exam questions, translated by professional translators"
+  languages-credit: "OpenAI o1 System Card (Dec 2024), Table 17 · Common Crawl CC-MAIN-2026-43, share of web pages by language"
+
+  # Three use cases, one slide each: what it predicts and one number; its sources, each with its owner; one more fact.
+  sources-heading: "Its data, and who owns it"
+  case-retail: "Retail"
+  case-retail-predicts: "Predicts demand per store and product, 7 days ahead"
+  case-retail-stat: "≈ 32%"
+  case-retail-stat-what: "typical forecast error, even with good models (898 stores, 2025)"
+  source-retail-1: "sales"
+  source-retail-1-owner: "store operations"
+  source-retail-2: "online orders"
+  source-retail-2-owner: "e-commerce"
+  source-retail-3: "stock"
+  source-retail-3-owner: "store operations"
+  source-retail-4: "prices, promotions"
+  source-retail-4-owner: "pricing"
+  source-retail-5: "range, shelf space"
+  source-retail-5-owner: "space planning"
+  source-retail-6: "calendar, holidays"
+  source-retail-6-owner: "data & analytics"
+  source-retail-7: "weather"
+  source-retail-7-owner: "external provider"
+  source-retail-8: "supply, lead times"
+  source-retail-8-owner: "supply chain"
+  source-retail-9: "returns"
+  source-retail-9-owner: "customer service"
+  case-retail-extra: "Out of stock, sales are zero: forecasts learned from sales came out ≈ 7% too low."
+  case-retail-extra-source: "FreshRetailNet-50K (2025), Table 3"
+  case-insurance: "Insurance"
+  case-insurance-predicts: "Predicts which claims to check for fraud"
+  case-insurance-stat: "10–50%"
+  case-insurance-stat-what: "of the fraud is ever found, by country (Europe, 2017)"
+  source-insurance-1: "claims"
+  source-insurance-1-owner: "claims department"
+  source-insurance-2: "policies"
+  source-insurance-2-owner: "underwriting"
+  source-insurance-3: "customers"
+  source-insurance-3-owner: "sales & service"
+  source-insurance-4: "payments"
+  source-insurance-4-owner: "finance"
+  source-insurance-5: "fraud cases"
+  source-insurance-5-owner: "fraud team"
+  source-insurance-6: "repair bills"
+  source-insurance-6-owner: "partner network"
+  source-insurance-7: "fraud register"
+  source-insurance-7-owner: "insurers’ association"
+  source-insurance-8: "photos, documents"
+  source-insurance-8-owner: "claims handlers"
+  fraud-title: "Fraud found, by country, 2017"
+  fraud-denmark: "Denmark"
+  fraud-denmark-amounts: "€33m found · ≈ €300m not"
+  fraud-denmark-share: "≈ 10%"
+  fraud-slovenia: "Slovenia"
+  fraud-slovenia-amounts: "€20m found · ≈ €90m not"
+  fraud-slovenia-share: "≈ 18%"
+  fraud-ireland: "Ireland"
+  fraud-ireland-amounts: "€76m found · ≈ €200m not"
+  fraud-ireland-share: "≈ 28%"
+  fraud-france: "France, motor"
+  fraud-france-amounts: "€127m found · ≈ €125m not"
+  fraud-france-share: "≈ 50%"
+  fraud-credit: "Insurance Europe (2019), pp. 6–7; by value. Ireland: non-life."
+  case-manufacturing: "Manufacturing"
+  case-manufacturing-predicts: "Predicts which machine fails before its next service"
+  case-manufacturing-stat: "1.7%"
+  case-manufacturing-stat-what: "of the records are failures: 1,000 in 60,000 (Scania trucks, 2017)"
+  source-manufacturing-1: "sensors"
+  source-manufacturing-1-owner: "engineering"
+  source-manufacturing-2: "machine alarms"
+  source-manufacturing-2-owner: "automation"
+  source-manufacturing-3: "work orders"
+  source-manufacturing-3-owner: "maintenance"
+  source-manufacturing-4: "asset register"
+  source-manufacturing-4-owner: "asset management"
+  source-manufacturing-5: "production plan"
+  source-manufacturing-5-owner: "planning"
+  source-manufacturing-6: "spare parts"
+  source-manufacturing-6-owner: "procurement"
+  source-manufacturing-7: "quality checks"
+  source-manufacturing-7-owner: "quality"
+  source-manufacturing-8: "operator notes"
+  source-manufacturing-8-owner: "production"
+  case-manufacturing-extra: "A missed failure stops the line: an hour in a large car plant costs $2.3 million."
+  case-manufacturing-extra-source: "Siemens, The True Cost of Downtime 2024, p. 2 (vendor survey)"
+  sources-owners: "Every industry, same pattern: each source has its own owner."
+
+  # The six questions, each with an example from one of the use cases.
+  title-six: "Six questions, for each source"
+  q-content: "Content"
+  q-content-example: "Does the data match reality? Manufacturing: a new sensor can shift every reading, while the field keeps its name."
+  q-labels: "Labels"
+  q-labels-example: "Is the right answer recorded? Retail: sales are not demand. An empty shelf sells zero. Next episode."
+  q-volume: "Volume"
+  q-volume-example: "Count the cases you learn from, not the rows: 284,807 card payments, only 492 frauds."
+  q-coverage: "Coverage"
+  q-coverage-example: "Every group it serves: each insurance product, each region, the rare big claim. In training and in test."
+  q-freshness: "Freshness"
+  q-freshness-example: "There in time, and still like today? Retail: learn from the weather forecast you had that night, not the weather that came."
+  q-rights: "Rights"
+  q-rights-example: "Allowed for this purpose? Insurance: data collected to pay claims. May we use it to train a model?"
+  clearview-amount: "€30.5M"
+  clearview-who: "Clearview AI, fined by the Dutch data protection authority, 2024"
+  clearview-line: "public ≠ permission"
+
+  # "Enough" is measured.
+  title-enough: "“Enough” is measured"
+  no-magic: "No magic number: in one study, one model needed about 5 cases for each factor it uses, another needed 23."
+  axis-y-label: "model error"
+  axis-x-label: "examples to learn from"
+  tick-10: "10k"
+  tick-20: "20k"
+  tick-40: "40k"
+  tick-60: "60k"
+  curve-tag: "fictional"
+  label-big: "most cases"
+  flat: "Where it flattens, more data buys very little."
+  label-small: "a small group: still going down"
+  groups: "Each group has its own curve: measure each one."
+
+  # The card, with the EU AI Act beside it.
+  law: "EU AI Act, Art. 10: the same list, as law, for high-risk AI."
+  takeaway-subtitle: "Episode 3.1 in one card"
+  next: "Next episode: labels."

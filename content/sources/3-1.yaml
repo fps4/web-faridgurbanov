@@ -1,0 +1,121 @@
+# Episode 3.1, Data requirements: every source the episode uses, in the order it uses them (FS-0012).
+#
+# Shown on the episode page under "Sources", numbered across the parts. Edit freely; `npm run test`
+# checks the shape. Each item: title, who, year, url (https), kind.
+# kind is one of: law, paper, preprint, model-card, dataset, report, vendor, news, docs, encyclopedia.
+#
+# The full references and their check status are in the wiki's prep file:
+# publishing/ai-product-design/episodes/03-data/01-data-requirements.md (Sources).
+
+- part: The question
+  items:
+    - title: Regulation (EU) 2024/1689 (AI Act), Article 10(3)
+      who: European Union
+      year: 2024
+      url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689
+      kind: law
+
+- part: The case
+  items:
+    - title: Measuring Massive Multitask Language Understanding
+      who: Hendrycks et al.
+      year: 2021
+      url: https://arxiv.org/abs/2009.03300
+      kind: paper
+    - title: OpenAI o1 System Card, Table 17
+      who: OpenAI
+      year: 2024
+      url: https://cdn.openai.com/o1-system-card-20241205.pdf
+      kind: model-card
+    - title: MMMLU, MMLU translated into 14 languages
+      who: OpenAI
+      year: 2024
+      url: https://huggingface.co/datasets/openai/MMMLU
+      kind: dataset
+    - title: "Statistics of Common Crawl monthly archives: distribution of languages"
+      who: Common Crawl
+      year: 2026
+      url: https://commoncrawl.github.io/cc-crawl-statistics/plots/languages
+      kind: dataset
+    - title: Yoruba language
+      who: Wikipedia
+      year: accessed 2026
+      url: https://en.wikipedia.org/wiki/Yoruba_language
+      kind: encyclopedia
+    - title: Swahili language
+      who: Wikipedia
+      year: accessed 2026
+      url: https://en.wikipedia.org/wiki/Swahili_language
+      kind: encyclopedia
+
+- part: Three industries
+  items:
+    - title: FreshRetailNet-50K (arXiv 2505.16319), Table 3
+      who: Wang et al.
+      year: 2025
+      url: https://arxiv.org/abs/2505.16319
+      kind: preprint
+    - title: "Insurance fraud: not a victimless crime, pp. 6–7"
+      who: Insurance Europe
+      year: 2019
+      url: https://www.insuranceeurope.eu/mediaitem/2bf88e16-0fe2-4476-8512-7492f5007f3c/Insurance%20fraud%20-%20not%20a%20victimless%20crime.pdf
+      kind: report
+    - title: APS Failure at Scania Trucks
+      who: Scania (UCI Machine Learning Repository)
+      year: 2017
+      url: https://archive.ics.uci.edu/dataset/421/aps+failure+at+scania+trucks
+      kind: dataset
+    - title: The True Cost of Downtime 2024, p. 2
+      who: Siemens
+      year: 2024
+      url: https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf
+      kind: vendor
+
+- part: Six questions
+  items:
+    - title: Classification on imbalanced data
+      who: Google (TensorFlow tutorial)
+      year: n.d.
+      url: https://www.tensorflow.org/tutorials/structured_data/imbalanced_data
+      kind: docs
+    - title: Regulation (EU) 2016/679 (GDPR), Article 5(1)(b)
+      who: European Union
+      year: 2016
+      url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+      kind: law
+    - title: Boete van privacywaakhond voor verzamelaar van miljarden foto's van gezichten
+      who: NOS
+      year: 2024
+      url: https://nos.nl/l/2535633
+      kind: news
+
+- part: How much is enough
+  items:
+    - title: "Minimum sample size for developing a multivariable prediction model: Part II"
+      who: Riley et al.
+      year: 2019
+      url: https://doi.org/10.1002/sim.7992
+      kind: paper
+    - title: Predicting sample size required for classification performance
+      who: Figueroa et al.
+      year: 2012
+      url: https://doi.org/10.1186/1472-6947-12-8
+      kind: paper
+    - title: Revisiting Unreasonable Effectiveness of Data in Deep Learning Era
+      who: Sun et al.
+      year: 2017
+      url: https://doi.org/10.1109/ICCV.2017.97
+      kind: paper
+    - title: Deep Learning Scaling is Predictable, Empirically
+      who: Hestness et al.
+      year: 2017
+      url: https://arxiv.org/abs/1712.00409
+      kind: preprint
+
+- part: Further reading
+  items:
+    - title: Datasheets for Datasets
+      who: Gebru et al.
+      year: 2021
+      url: https://doi.org/10.1145/3458723
+      kind: paper

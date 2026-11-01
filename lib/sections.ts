@@ -27,3 +27,22 @@ export function splitBeforeLastSection(body: string): SplitBody {
     tail: lines.slice(lastHeading).join('\n'),
   };
 }
+
+/**
+ * Split a markdown body before the `## ` heading whose text starts with `heading` (case-insensitive),
+ * for a page that places a block of its own ahead of a named section. A body without that heading
+ * comes back whole in `head`.
+ */
+export function splitBeforeSection(body: string, heading: string): SplitBody {
+  const lines = body.split('\n');
+  let inFence = false;
+  const wanted = heading.toLowerCase();
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (/^\s*(```|~~~)/.test(line)) inFence = !inFence;
+    else if (!inFence && /^## /.test(line) && line.slice(3).trim().toLowerCase().startsWith(wanted)) {
+      return { head: lines.slice(0, i).join('\n'), tail: lines.slice(i).join('\n') };
+    }
+  }
+  return { head: body, tail: '' };
+}

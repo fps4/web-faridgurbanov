@@ -1,4 +1,5 @@
 import type { Locale } from '@/lib/i18n';
+import { learningVisible } from '@/lib/site';
 
 // A single nav definition driving the header in both languages (FS-0001, US-0002). The set is
 // milestone-aware: in M0 Training is a CTA stub (rendered as a button, not a nav link); in M1 it
@@ -35,11 +36,22 @@ export const referencesNav: NavItem = {
   label: { en: 'References', nl: 'Referenties' },
 };
 
+/**
+ * The Learning section (FS-0012): the video series, AI Product Design first. The site's main section
+ * while the series are being published, so it leads the header. Shown only WHILE the section renders
+ * (LEARNING_PUBLISHED, or `next dev`).
+ */
+export const learningNav: NavItem = {
+  href: '/learning',
+  label: { en: 'Learning', nl: 'Leren' },
+};
+
 /** M0 renders Training as a CTA button; M1 promotes it into primaryNav. */
 export const TRAINING_IN_NAV = false;
 
-export function headerNav(): NavItem[] {
-  return TRAINING_IN_NAV ? [...primaryNav, trainingNav] : primaryNav;
+export function headerNav(showLearning: boolean = learningVisible()): NavItem[] {
+  const items = TRAINING_IN_NAV ? [...primaryNav, trainingNav] : primaryNav;
+  return showLearning ? [learningNav, ...items] : items;
 }
 
 /** Build a locale-prefixed href: hrefFor('en', '/work') → '/en/work'; home → '/en'. */

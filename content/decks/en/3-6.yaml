@@ -1,0 +1,171 @@
+# Episode 3.6 deck: every word on screen (FS-0010, ADR-0010).
+#
+# Edit the words here; the positions, sizes and colours stay in lib/decks/3-6.ts. Under `npm run dev`
+# a refresh of /en/deck/3-6 shows the change. `npm run test` then checks that no text overlaps other
+# text or the camera corner, and that this file and the layout name the same steps and ids.
+#
+# - title:  the episode title; also the slide header and the closing card's heading.
+# - steps:  one per click, in recording order. `at` is the planned time in the episode; keep it in
+#           quotes ("0:22"). The presenter notes are not in this file: they stay in the
+#           wiki's .slides.md, and under `npm run dev` the presenter view reads and edits them there.
+# - text:   the on-screen lines, by element id. Long lines wrap by themselves.
+#
+# The "In this episode" lines and the closing card's rows are in lib/episodes/module-3.ts.
+# The presenter notes are in the wiki: publishing/ai-product-design/episodes/03-data/06-thresholds-and-operating-points.slides.md.
+# Adjust the times after a practice run.
+#
+# Adding or removing a step or an id is a layout change: do it in lib/decks/3-6.ts as well.
+
+title: "Thresholds and operating points"
+
+steps:
+  title:
+    at: "0:00"
+  promise:
+    at: "0:04"
+  usual:
+    at: "0:21"
+  epic:
+    at: "0:38"
+  burden:
+    at: "0:59"
+  werkmora:
+    at: "1:20"
+  table:
+    at: "1:41"
+  rowb:
+    at: "2:00"
+  total:
+    at: "2:09"
+  step:
+    at: "2:28"
+  elkan:
+    at: "2:46"
+  moves:
+    at: "3:04"
+  two:
+    at: "3:25"
+  band:
+    at: "3:36"
+  kaiser:
+    at: "3:56"
+  forecast:
+    at: "4:24"
+  levels:
+    at: "4:47"
+  owner:
+    at: "5:12"
+  june:
+    at: "5:35"
+  takeaway:
+    at: "5:54"
+  next:
+    at: "6:00"
+
+text:
+  # The title card; the usual answer.
+  episode: "AI Product Design · Module 3 · Episode 3.6"
+  flow-score: "score"
+  flow-threshold: "threshold"
+  flow-action: "action"
+  question: "Who sets the threshold?"
+  usual-default: "“The tool’s default.”"
+  usual-precision: "“The data team, for the best precision.”"
+  usual-tag: "the usual answer"
+
+  # Epic's sepsis model at the threshold the vendor recommends.
+  title-epic: "The threshold the vendor recommends"
+  epic-what: "Epic Sepsis Model, alert at score 6 or higher · 38,455 hospitalisations"
+  stat-alerted: "18%"
+  stat-alerted-label: "of hospitalisations alerted"
+  stat-right: "12%"
+  stat-right-label: "of alerts right (PPV)"
+  stat-missed: "67%"
+  stat-missed-label: "of sepsis cases missed"
+  burden: "≈ 8 patients to check for each sepsis case found"
+  burden-note: "a workload nobody worked out from costs"
+  epic-credit: "Wong et al. (2021), JAMA Internal Medicine. One health system, one model version."
+
+  # Werkmora and its question.
+  title-werkmora: "Werkmora"
+  werkmora-tag: "fictional company"
+  werkmora: "A home, DIY and garden retailer, about 175 stores in NL, BE and DE."
+  werkmora-forecast: "This module: the garden replenishment forecast, per store and item, every night."
+  werkmora-ask: "Data team: “Which safety stock should we use?”"
+
+  # The fraud table: same model, two thresholds.
+  title-fraud: "Same model, two thresholds"
+  fraud-setup: "10,000 transactions · 100 frauds · a missed fraud costs €500 · a review costs €5"
+  col-threshold: "threshold"
+  col-flagged: "flagged"
+  col-caught: "caught"
+  col-precision: "precision"
+  col-missed: "missed frauds"
+  col-reviews: "reviews"
+  col-total: "total"
+  a-name: "A · low"
+  a-flagged: "300"
+  a-caught: "80"
+  a-precision: "27%"
+  a-missed: "€10,000"
+  a-reviews: "€1,500"
+  a-total: "€11,500"
+  b-name: "B · high"
+  b-flagged: "100"
+  b-caught: "60"
+  b-precision: "60%"
+  b-missed: "€20,000"
+  b-reviews: "€500"
+  b-total: "€20,500"
+  b-looks: "looks better"
+  ratio: "B costs about 1.8 × as much"
+  step-line: "From B to A: 200 more reviews (+€1,000) find 20 more frauds (−€10,000)."
+  assumptions: "Assumes a reviewed fraud is fully stopped and a false alarm costs only the review."
+  elkan: "Threshold from the costs: 5 ÷ (5 + 500 − 5) = 1%"
+  elkan-credit: "Elkan (2001). Works on calibrated scores (episode 3.5)."
+  moves: "Missed fraud €50 instead of €500: A and B tie, the threshold moves to 10%."
+  decision: "The operating point is a product decision."
+
+  # Two thresholds and the human band.
+  title-two: "Two thresholds, a person in between"
+  two-credit: "A common design: machine learning with a reject option (Hendrickx et al., 2024)"
+  axis-label: "score"
+  region-through: "let through"
+  region-person: "a person decides"
+  region-act: "act automatically"
+  tick-low: "low threshold"
+  tick-high: "high threshold"
+  band-price: "price: reviews × cost of one review"
+  band-capacity: "capacity: reviews the team can do per day"
+  band-wide: "Wider than the team: reviews get rushed or skipped."
+  kaiser: "Kaiser Permanente, 19 hospitals: alert at a 12-hour risk of 8% or more"
+  kaiser-body: "About 1 new alert per day per 35 patients. Trained nurses check each alert remotely first. 30-day mortality after an alert: adjusted relative risk 0.84."
+  kaiser-credit: "Escobar et al. (2020), NEJM. 8% fits their model, their patients and their nurse team."
+
+  # Werkmora's threshold: a service level per item group.
+  title-service: "Werkmora’s threshold: a service level"
+  service-tag: "fictional"
+  service-what: "The forecast gives units. The decision: how much more than the forecast a store orders (safety stock)."
+  service-short: "too little: an empty shelf on a sunny weekend"
+  service-excess: "too much: a dead plant, a markdown"
+  col-group: "item group"
+  col-short: "one short"
+  col-excess: "one too many"
+  col-level: "service level"
+  plants: "live plants"
+  plants-short: "€6"
+  plants-excess: "€4"
+  plants-level: "60%"
+  hoses: "hoses and tools"
+  hoses-short: "€5"
+  hoses-excess: "€0.50"
+  hoses-level: "91%"
+  level-rule: "short ÷ (short + too many)"
+  owner: "The CCO and the COO decide it, per item group."
+  owner-table: "One table the pipeline reads: item group · service level · cost assumptions · owner · date · next review"
+  owner-band: "Unsure order lines go to the replenishment team: under 5% of lines."
+  june: "June: deeper plant markdowns, a lower service level for plants. No retraining, one row changes."
+
+  # The close.
+  takeaway-subtitle: "Episode 3.6 in one card"
+  next: "Next episode: baselines."

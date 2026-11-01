@@ -4,12 +4,14 @@
   "private": true,
   "description": "faridgurbanov.com — static-export Next.js site (ADR-0001). Scaffolded from the maestro/web base, served as a static export from a thin nginx image.",
   "scripts": {
-    "dev": "next dev -p 3040",
+    "dev": "node scripts/dev.mjs",
     "build": "next build",
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "voice": "node scripts/voice-check.mjs"
+    "voice": "node scripts/voice-check.mjs",
+    "notes:check": "node scripts/presenter-notes.mjs",
+    "notes:serve": "node scripts/notes-server.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -20,6 +22,7 @@
     "nanoid": "^3.3.17"
   },
   "dependencies": {
+    "@fontsource/caveat": "^5.2.8",
     "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,7 +33,9 @@
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",
     "remark-gfm": "^4.0.0",
-    "tailwind-merge": "^2.6.0"
+    "roughjs": "^4.6.6",
+    "tailwind-merge": "^2.6.0",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

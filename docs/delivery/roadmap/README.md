@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 status: draft
-last_updated: 2026-06-07
+last_updated: 2026-10-20
 owners: [architect]
 related:
   - docs/overview.md
@@ -20,3 +20,10 @@ Milestones for the build. Each milestone flows `open -> closed`.
 The positioning sequencing (training-forward *target*, credibility-first *first ship*) is locked
 in [ADR-0003](../../design/decisions/0003-single-site-training-forward-positioning.md). Backlog
 epics and stories live under [`../backlog/`](../backlog).
+
+**2026-10-20:** the AI Product Design storyline ([EP-03](../backlog/EP-03-ai-product-design/README.md),
+FS-0010) is the site's main section for the coming months. It ships behind `STORYLINE_PUBLISHED`
+and is published module by module, independent of the M1 training flip. Rebuilt 2026-10-21 as
+six modules of short episodes. **2026-11-01:** it moves under a Learning section (FS-0012) with AI
+Product Delivery next; the gate is now `LEARNING_PUBLISHED`, and episodes are switched on one by one
+in `RELEASED` (`lib/learning.ts`).
