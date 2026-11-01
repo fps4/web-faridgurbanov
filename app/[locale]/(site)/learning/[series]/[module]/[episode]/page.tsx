@@ -172,34 +172,36 @@ export default async function EpisodePage({ params }: { params: Params }) {
 }
 
 /**
- * The episode's sources, numbered across its parts in the order the episode uses them. Each entry:
- * the title (a link), then who and when with the kind of source.
+ * The episode's sources, numbered across its parts in the order the episode uses them. Each entry is
+ * one line: the title (a link), who and when, and the kind of source; a long one wraps.
  */
 function Sources({ groups, title, intro }: { groups: SourceGroup[]; title: string; intro: string }) {
   let n = 0;
   return (
-    <section id="sources" className="mt-16 max-w-3xl scroll-mt-8">
+    <section id="sources" className="mt-16 max-w-4xl scroll-mt-8">
       <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">{title}</h2>
       <p className="mt-2 text-sm text-muted-foreground">{intro}</p>
       {groups.map((group) => (
         <div key={group.part} className="mt-8">
           <h3 className="text-base font-medium">{group.part}</h3>
-          <ol className="mt-3 space-y-4">
+          <ol className="mt-3 space-y-2">
             {group.items.map((item) => {
               n += 1;
               return (
                 <li key={item.url + item.title} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2">
-                  <span className="pt-0.5 text-sm tabular-nums text-muted-foreground">{n}</span>
-                  <div>
+                  <span className="text-sm tabular-nums leading-6 text-muted-foreground">{n}</span>
+                  <p className="leading-6">
                     <a href={item.url} target="_blank" rel="noreferrer" className="font-medium underline-offset-4 hover:underline">
                       {item.title}
                       <span aria-hidden="true" className="ml-1 text-muted-foreground">↗</span>
                     </a>
-                    <p className="mt-0.5 text-sm text-muted-foreground">
+                    <span className="ml-2 whitespace-nowrap text-sm text-muted-foreground">
                       {item.who} · {item.year}
-                      <span className="ml-2 rounded border border-border px-1.5 py-px text-xs">{SOURCE_KINDS[item.kind]}</span>
-                    </p>
-                  </div>
+                    </span>
+                    <span className="ml-2 whitespace-nowrap rounded border border-border px-1.5 py-px align-middle text-xs text-muted-foreground">
+                      {SOURCE_KINDS[item.kind]}
+                    </span>
+                  </p>
                 </li>
               );
             })}
