@@ -17,13 +17,16 @@ import {
 } from '@/lib/learning';
 import { hrefFor } from '@/lib/nav';
 import { site, learningVisible } from '@/lib/site';
+import { SOURCE_KINDS, readSources, type SourceGroup } from '@/lib/sources';
 import { storylineCopy } from '@/lib/storyline';
 import { locales, type Locale } from '@/lib/i18n';
 import '@/components/deck/deck.css';
 
 // An episode page in the Learning section (FS-0012): what the episode promises, its diagram (the
 // same drawing as the deck, at the step the deck names as its figure) with a link to step through
-// the slides, and the closing card: the idea, the move, and what to do on Monday. Previous and next
+// the slides, the closing card (the idea, the move, and what to do on Monday), and its sources
+// (content/sources/<episode>.yaml), numbered in the order the episode uses them and grouped by its
+// parts, so the video can point to them; a link at the top jumps there (#sources). Previous and next
 // walk the switched-on episodes of the series in order. Only a switched-on episode has a page
 // (RELEASED, lib/learning.ts). The video joins the page once it is published (US-0032). WHILE the
 // Learning section is unpublished a production build renders a 404; `next dev` shows it.
@@ -66,6 +69,8 @@ export default async function EpisodePage({ params }: { params: Params }) {
   const l = learningCopy[locale];
   const t = storylineCopy[locale];
   const deck = episode.deck ? deckById(episode.deck) : undefined;
+  const sources = readSources(episode.number) ?? [];
+  const sourceCount = sources.reduce((n, g) => n + g.items.length, 0);
 
   const all = releasedInSeries(s);
   const at = all.findIndex((x) => x.episode.number === episode.number);
@@ -100,6 +105,11 @@ export default async function EpisodePage({ params }: { params: Params }) {
               </ol>
             </>
           ) : null}
+          {sourceCount > 0 ? (
+            <a href="#sources" className="mt-8 inline-block text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
+              {l.sourcesJump(sourceCount)}
+            </a>
+          ) : null}
         </div>
 
         {deck ? (
@@ -133,6 +143,8 @@ export default async function EpisodePage({ params }: { params: Params }) {
         </section>
       ) : null}
 
+      {sourceCount > 0 ? <Sources groups={sources} title={l.sources} intro={l.sourcesIntro} /> : null}
+
       {previous || next ? (
         <nav aria-label="Episodes" className="mt-16 flex flex-wrap justify-between gap-4 border-t border-border pt-8 text-sm">
           {previous ? (
@@ -156,5 +168,45 @@ export default async function EpisodePage({ params }: { params: Params }) {
         </nav>
       ) : null}
     </article>
+  );
+}
+
+/**
+ * The episode's sources, numbered across its parts in the order the episode uses them. Each line: the
+ * title (a link), who and when with the kind of source, and what it backs up in the episode.
+ */
+function Sources({ groups, title, intro }: { groups: SourceGroup[]; title: string; intro: string }) {
+  let n = 0;
+  return (
+    <section id="sources" className="mt-16 max-w-3xl scroll-mt-8">
+      <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">{title}</h2>
+      <p className="mt-2 text-sm text-muted-foreground">{intro}</p>
+      {groups.map((group) => (
+        <div key={group.part} className="mt-8">
+          <h3 className="text-base font-medium">{group.part}</h3>
+          <ol className="mt-3 space-y-4">
+            {group.items.map((item) => {
+              n += 1;
+              return (
+                <li key={item.url + item.title} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-2">
+                  <span className="pt-0.5 text-sm tabular-nums text-muted-foreground">{n}</span>
+                  <div>
+                    <a href={item.url} target="_blank" rel="noreferrer" className="font-medium underline-offset-4 hover:underline">
+                      {item.title}
+                      <span aria-hidden="true" className="ml-1 text-muted-foreground">↗</span>
+                    </a>
+                    <p className="mt-0.5 text-sm text-muted-foreground">
+                      {item.who} · {item.year}
+                      <span className="ml-2 rounded border border-border px-1.5 py-px text-xs">{SOURCE_KINDS[item.kind]}</span>
+                    </p>
+                    <p className="mt-1 text-sm">{item.note}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ))}
+    </section>
   );
 }

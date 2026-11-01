@@ -131,6 +131,9 @@ interface LearningCopy {
   openSeries: string;
   slides: string;
   slidesCta: string;
+  sources: string;
+  sourcesIntro: string;
+  sourcesJump: (n: number) => string;
   previous: string;
   next: string;
 }
@@ -148,6 +151,9 @@ const en: LearningCopy = {
   openSeries: 'Open the series',
   slides: 'The slides',
   slidesCta: 'Step through the slides',
+  sources: 'Sources',
+  sourcesIntro: 'Everything the episode cites, in the order it comes up.',
+  sourcesJump: (n) => `Sources (${n}) ↓`,
   previous: 'Previous',
   next: 'Next',
 };

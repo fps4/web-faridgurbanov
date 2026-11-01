@@ -48,8 +48,12 @@ not recorded yet.
    switched-on episodes in order with their *In this episode* lines, and how many more are planned.
 5. **Episode page** (`/learning/<series>/<module>/<episode>`, the episode slug from its title):
    the episode's number and title, its *In this episode* lines, its diagram with a link to step
-   through the deck, the closing card (idea, move, Monday), and previous / next across the series'
-   switched-on episodes.
+   through the deck, the closing card (idea, move, Monday), its sources, and previous / next across
+   the series' switched-on episodes. The sources are `content/sources/<episode>.yaml` (`3-1.yaml`,
+   locale-less): numbered in the order the episode uses them, grouped by its parts, each with its
+   title as a link, who and when, the kind of source (law, peer-reviewed, preprint, model card,
+   dataset, industry report, vendor survey, news, documentation, encyclopedia) and what it backs up.
+   A *Sources (n)* link near the top jumps to them (`#sources`), so the video can point there.
 6. **The series and their plans** in `lib/learning.ts`: AI Product Design takes its modules and
    episodes from `lib/storyline.ts`; AI Product Delivery lists its eight modules, episodes to follow.
 7. **The release list.** `RELEASED` in `lib/learning.ts` holds, per series, the numbers of the
@@ -89,6 +93,10 @@ not recorded yet.
   episode twice, or switches on an episode without its *In this episode* lines and closing card.
 - WHILE `LEARNING_PUBLISHED` is true, THE production build SHALL render a deck only WHEN its episode
   is switched on; under `next dev` every deck SHALL render.
+- THE episode page SHALL list the episode's sources, numbered across its parts in file order, each
+  with a link, who and when, its kind and what it backs up; THE tests SHALL fail WHEN a switched-on
+  episode with a deck has no sources file, or a sources file lacks a field, uses a URL that is not
+  https, or names an unknown kind.
 - WHEN a Dutch route is requested, THE page SHALL show the English text with the fallback notice.
 
 ## Definition of done
