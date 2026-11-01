@@ -115,36 +115,36 @@ function build(w: Words, S: Record<Step, number>): { elements: Element[]; cards:
     const sources = { in: S[`${key}-sources`], out: show.out };
     const extra = { in: S[EXTRA[key]], out: show.out };
     return [
-      hand(`case-${key}`, 120, 160, w.text(`case-${key}`), { size: 56, ...show }),
-      sans(`case-${key}-predicts`, 120, 250, w.text(`case-${key}-predicts`), { size: 34, wrap: 700, ...show }),
-      hand(`case-${key}-stat`, 120, 440, w.text(`case-${key}-stat`), { size: 120, tone: 'warn', ...show }),
-      sans(`case-${key}-stat-what`, 120, 500, w.text(`case-${key}-stat-what`), { size: 26, tone: 'muted', wrap: 680, ...show }),
-      hand(`sources-${key}`, 880, 250, w.text('sources-heading'), { size: 34, tone: 'muted', ...sources }),
+      hand(`case-${key}`, 120, 160, w.text(`case-${key}`), { size: 64, ...show }),
+      sans(`case-${key}-predicts`, 120, 250, w.text(`case-${key}-predicts`), { size: 38, wrap: 680, ...show }),
+      hand(`case-${key}-stat`, 120, 470, w.text(`case-${key}-stat`), { size: 140, tone: 'warn', ...show }),
+      sans(`case-${key}-stat-what`, 120, 530, w.text(`case-${key}-stat-what`), { size: 30, tone: 'muted', wrap: 680, ...show }),
+      hand(`sources-${key}`, 860, 240, w.text('sources-heading'), { size: 38, tone: 'muted', ...sources }),
       ...Array.from({ length: SOURCE_COUNT[key] }, (_, i) => i + 1).flatMap((n) => {
-        const x = 880 + ((n - 1) % 2) * 270;
-        const y = 290 + Math.floor((n - 1) / 2) * 88;
+        const x = 860 + ((n - 1) % 2) * 290;
+        const y = 280 + Math.floor((n - 1) / 2) * 100;
         return [
-          { id: `source-${key}-${n}`, ...sources, shape: { kind: 'box', x, y, w: 250, h: 76 } } as Element,
-          hand(`source-${key}-${n}-label`, x + 16, y + 34, w.text(`source-${key}-${n}`), { size: 28, ...sources }),
-          sans(`source-${key}-${n}-owner`, x + 16, y + 62, w.text(`source-${key}-${n}-owner`), { size: 18, tone: 'muted', ...sources }),
+          { id: `source-${key}-${n}`, ...sources, shape: { kind: 'box', x, y, w: 275, h: 88 } } as Element,
+          hand(`source-${key}-${n}-label`, x + 18, y + 40, w.text(`source-${key}-${n}`), { size: 34, ...sources }),
+          sans(`source-${key}-${n}-owner`, x + 18, y + 72, w.text(`source-${key}-${n}-owner`), { size: 22, tone: 'muted', ...sources }),
         ];
       }),
       ...(key === 'insurance'
         ? [
-            hand('fraud-title', 120, 620, w.text('fraud-title'), { size: 34, tone: 'accent', ...extra }),
+            hand('fraud-title', 120, 640, w.text('fraud-title'), { size: 38, tone: 'accent', ...extra }),
             ...FRAUD.flatMap((country, j) => {
-              const y = 690 + j * 62;
+              const y = 710 + j * 66;
               return [
-                sans(`fraud-${country}`, 120, y, w.text(`fraud-${country}`), { size: 26, ...extra }),
-                sans(`fraud-${country}-amounts`, 360, y, w.text(`fraud-${country}-amounts`), { size: 22, tone: 'muted', ...extra }),
-                hand(`fraud-${country}-share`, 820, y, w.text(`fraud-${country}-share`), { size: 38, anchor: 'end', tone: 'warn', ...extra }),
+                sans(`fraud-${country}`, 120, y, w.text(`fraud-${country}`), { size: 28, ...extra }),
+                sans(`fraud-${country}-amounts`, 380, y, w.text(`fraud-${country}-amounts`), { size: 24, tone: 'muted', ...extra }),
+                hand(`fraud-${country}-share`, 840, y, w.text(`fraud-${country}-share`), { size: 42, anchor: 'end', tone: 'warn', ...extra }),
               ];
             }),
-            sans('fraud-credit', 120, 950, w.text('fraud-credit'), { size: 20, tone: 'muted', ...extra }),
+            sans('fraud-credit', 120, 975, w.text('fraud-credit'), { size: 22, tone: 'muted', ...extra }),
           ]
         : [
-            hand(`case-${key}-extra`, 120, 660, w.text(`case-${key}-extra`), { size: 40, tone: 'accent', wrap: 700, ...extra }),
-            sans(`case-${key}-extra-source`, 120, 800, w.text(`case-${key}-extra-source`), { size: 20, tone: 'muted', wrap: 700, ...extra }),
+            hand(`case-${key}-extra`, 120, 680, w.text(`case-${key}-extra`), { size: 44, tone: 'accent', wrap: 700, ...extra }),
+            sans(`case-${key}-extra-source`, 120, 840, w.text(`case-${key}-extra-source`), { size: 22, tone: 'muted', wrap: 700, ...extra }),
           ]),
     ];
   });
