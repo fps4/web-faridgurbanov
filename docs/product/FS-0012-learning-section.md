@@ -7,6 +7,7 @@ related:
   - docs/product/FS-0010-ai-product-design-storyline.md
   - docs/design/decisions/0010-storyline-english-first-and-decks-as-data.md
   - docs/delivery/backlog/EP-03-ai-product-design/US-0035-learning-section.md
+  - docs/guides/episode-pages.md
 maestro:
   feature: learning-section
   kind: functional_spec
@@ -46,7 +47,8 @@ not recorded yet.
    and says how many of its episodes are out; the others are muted and marked *Coming*.
 4. **Module page** (`/learning/<series>/<module>`): the module's number, title and line, its
    switched-on episodes in order with their *In this episode* lines, and how many more are planned.
-5. **Episode page** (`/learning/<series>/<module>/<episode>`, the episode slug from its title):
+5. **Episode page** (`/learning/<series>/<module>/<episode>`, the episode slug from its title), one
+   template for every episode, fed by files ([guide](../guides/episode-pages.md)):
    the episode's number and title, its *In this episode* lines, its diagram with a link to step
    through the deck, its sources, and previous / next across
    the series' switched-on episodes. The sources are `content/sources/<episode>.yaml` (`3-1.yaml`,

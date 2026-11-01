@@ -22,6 +22,9 @@ import { storylineCopy } from '@/lib/storyline';
 import { locales, type Locale } from '@/lib/i18n';
 import '@/components/deck/deck.css';
 
+// The template for every episode page (docs/guides/episode-pages.md): an episode has no markup of
+// its own, so a style change here reaches them all.
+//
 // An episode page in the Learning section (FS-0012): what the episode promises, its diagram (the
 // same drawing as the deck, at the step the deck names as its figure) with a link to step through
 // the slides, and its sources (content/sources/<episode>.yaml), numbered in the order the episode uses them and grouped by its
