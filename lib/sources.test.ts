@@ -26,7 +26,7 @@ describe('episode sources', () => {
   it('names what is wrong with a malformed file', () => {
     expect(sourcesProblems({})).toEqual(['the file must be a list of parts, each with `part` and `items`']);
     const problems = sourcesProblems([{ part: 'The case', items: [{ title: 'x', who: 'y', year: 2024, url: 'http://a', kind: 'blog' }] }]);
-    expect(problems).toContain('The case, item 1 needs `note`');
+    expect(sourcesProblems([{ part: 'The case', items: [{ title: 'x', who: 'y', year: 2024, url: 'https://a' }] }])).toContain('The case, item 1 needs `kind`');
     expect(problems).toContain('The case, item 1: `url` must start with https://');
     expect(problems.some((p) => p.includes('unknown `kind` "blog"'))).toBe(true);
   });

@@ -172,8 +172,8 @@ export default async function EpisodePage({ params }: { params: Params }) {
 }
 
 /**
- * The episode's sources, numbered across its parts in the order the episode uses them. Each line: the
- * title (a link), who and when with the kind of source, and what it backs up in the episode.
+ * The episode's sources, numbered across its parts in the order the episode uses them. Each entry:
+ * the title (a link), then who and when with the kind of source.
  */
 function Sources({ groups, title, intro }: { groups: SourceGroup[]; title: string; intro: string }) {
   let n = 0;
@@ -199,7 +199,6 @@ function Sources({ groups, title, intro }: { groups: SourceGroup[]; title: strin
                       {item.who} · {item.year}
                       <span className="ml-2 rounded border border-border px-1.5 py-px text-xs">{SOURCE_KINDS[item.kind]}</span>
                     </p>
-                    <p className="mt-1 text-sm">{item.note}</p>
                   </div>
                 </li>
               );

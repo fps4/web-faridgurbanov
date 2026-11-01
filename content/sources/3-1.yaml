@@ -1,7 +1,7 @@
 # Episode 3.1, Data requirements: every source the episode uses, in the order it uses them (FS-0012).
 #
 # Shown on the episode page under "Sources", numbered across the parts. Edit freely; `npm run test`
-# checks the shape. Each item: title, who, year, url (https), kind, note (what it backs up, one line).
+# checks the shape. Each item: title, who, year, url (https), kind.
 # kind is one of: law, paper, preprint, model-card, dataset, report, vendor, news, docs, encyclopedia.
 #
 # The full references and their check status are in the wiki's prep file:
@@ -14,7 +14,6 @@
       year: 2024
       url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689
       kind: law
-      note: Training, validation and test data "relevant, sufficiently representative" … "in view of the intended purpose".
 
 - part: The case
   items:
@@ -23,37 +22,31 @@
       year: 2021
       url: https://arxiv.org/abs/2009.03300
       kind: paper
-      note: What MMLU is, the standard test, with exam questions in 57 subjects (ICLR 2021).
     - title: OpenAI o1 System Card, Table 17
       who: OpenAI
       year: 2024
       url: https://cdn.openai.com/o1-system-card-20241205.pdf
       kind: model-card
-      note: Wrong answers by language. English 7.7%, Swahili 14.6%, Yoruba 24.6%.
     - title: MMMLU, MMLU translated into 14 languages
       who: OpenAI
       year: 2024
       url: https://huggingface.co/datasets/openai/MMMLU
       kind: dataset
-      note: The same questions, translated by professional translators.
     - title: "Statistics of Common Crawl monthly archives: distribution of languages"
       who: Common Crawl
       year: 2026
       url: https://commoncrawl.github.io/cc-crawl-statistics/plots/languages
       kind: dataset
-      note: Share of web pages in crawl CC-MAIN-2026-43. English 42.6%, Swahili 0.01%, Yoruba 0.002%.
     - title: Yoruba language
       who: Wikipedia
       year: accessed 2026
       url: https://en.wikipedia.org/wiki/Yoruba_language
       kind: encyclopedia
-      note: Over 45 million speakers.
     - title: Swahili language
       who: Wikipedia
       year: accessed 2026
       url: https://en.wikipedia.org/wiki/Swahili_language
       kind: encyclopedia
-      note: Generally 60 to 150 million speakers, most of them as a second language.
 
 - part: Three industries
   items:
@@ -62,25 +55,21 @@
       year: 2025
       url: https://arxiv.org/abs/2505.16319
       kind: preprint
-      note: Retail. About 32% forecast error per store and product, 7 days ahead; forecasts learned from sales come out about 7% too low.
     - title: "Insurance fraud: not a victimless crime, pp. 6–7"
       who: Insurance Europe
       year: 2019
       url: https://www.insuranceeurope.eu/mediaitem/2bf88e16-0fe2-4476-8512-7492f5007f3c/Insurance%20fraud%20-%20not%20a%20victimless%20crime.pdf
       kind: report
-      note: Insurance. Fraud found and estimated not found, by country (2017); the 10–50% shares are my division, by value.
     - title: APS Failure at Scania Trucks
       who: Scania (UCI Machine Learning Repository)
       year: 2017
       url: https://archive.ics.uci.edu/dataset/421/aps+failure+at+scania+trucks
       kind: dataset
-      note: Manufacturing. 1,000 failures in 60,000 records.
     - title: The True Cost of Downtime 2024, p. 2
       who: Siemens
       year: 2024
       url: https://assets.new.siemens.com/siemens/assets/api/uuid:1b43afb5-2d07-47f7-9eb7-893fe7d0bc59/TCOD-2024_original.pdf
       kind: vendor
-      note: Manufacturing. An hour of downtime in a large car plant costs $2.3 million (a survey of 181 interviews).
 
 - part: Six questions
   items:
@@ -89,19 +78,16 @@
       year: n.d.
       url: https://www.tensorflow.org/tutorials/structured_data/imbalanced_data
       kind: docs
-      note: Volume. The public card-fraud dataset, 284,807 transactions with 492 frauds.
     - title: Regulation (EU) 2016/679 (GDPR), Article 5(1)(b)
       who: European Union
       year: 2016
       url: https://eur-lex.europa.eu/eli/reg/2016/679/oj
       kind: law
-      note: Rights. Data collected for one purpose may not be used for an incompatible one.
     - title: Boete van privacywaakhond voor verzamelaar van miljarden foto's van gezichten
       who: NOS
       year: 2024
       url: https://nos.nl/l/2535633
       kind: news
-      note: Rights. The Dutch data protection authority fines Clearview AI €30.5 million.
 
 - part: How much is enough
   items:
@@ -110,25 +96,21 @@
       year: 2019
       url: https://doi.org/10.1002/sim.7992
       kind: paper
-      note: No magic number. In their examples one model needed about 5 events per predictor parameter, another 23.
     - title: Predicting sample size required for classification performance
       who: Figueroa et al.
       year: 2012
       url: https://doi.org/10.1186/1472-6947-12-8
       kind: paper
-      note: A learning curve fitted on a small pilot set predicts performance at larger sizes.
     - title: Revisiting Unreasonable Effectiveness of Data in Deep Learning Era
       who: Sun et al.
       year: 2017
       url: https://doi.org/10.1109/ICCV.2017.97
       kind: paper
-      note: Performance grows with the logarithm of the data, so each new example buys less.
     - title: Deep Learning Scaling is Predictable, Empirically
       who: Hestness et al.
       year: 2017
       url: https://arxiv.org/abs/1712.00409
       kind: preprint
-      note: Learning curves follow a power law, then flatten at an error that more data does not remove.
 
 - part: Further reading
   items:
@@ -137,4 +119,3 @@
       year: 2021
       url: https://doi.org/10.1145/3458723
       kind: paper
-      note: The same questions as a documentation form, one per dataset.

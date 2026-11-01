@@ -31,8 +31,6 @@ export interface Source {
   year: string;
   url: string;
   kind: SourceKind;
-  /** What it backs up in the episode, in one line. */
-  note: string;
 }
 
 export interface SourceGroup {
@@ -62,7 +60,7 @@ export function sourcesProblems(doc: unknown): string[] {
       const at = `${typeof part === 'string' ? part : where}, item ${i + 1}`;
       if (!item || typeof item !== 'object') return void problems.push(`${at} is not a mapping`);
       const s = item as Record<string, unknown>;
-      for (const field of ['title', 'who', 'year', 'url', 'kind', 'note'] as const)
+      for (const field of ['title', 'who', 'year', 'url', 'kind'] as const)
         if (typeof s[field] !== 'string' && typeof s[field] !== 'number') problems.push(`${at} needs \`${field}\``);
       if (typeof s.url === 'string' && !/^https:\/\//.test(s.url)) problems.push(`${at}: \`url\` must start with https://`);
       if (typeof s.kind === 'string' && !(s.kind in SOURCE_KINDS))

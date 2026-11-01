@@ -52,7 +52,7 @@ not recorded yet.
    the series' switched-on episodes. The sources are `content/sources/<episode>.yaml` (`3-1.yaml`,
    locale-less): numbered in the order the episode uses them, grouped by its parts, each with its
    title as a link, who and when, the kind of source (law, peer-reviewed, preprint, model card,
-   dataset, industry report, vendor survey, news, documentation, encyclopedia) and what it backs up.
+   dataset, industry report, vendor survey, news, documentation, encyclopedia).
    A *Sources (n)* link near the top jumps to them (`#sources`), so the video can point there.
 6. **The series and their plans** in `lib/learning.ts`: AI Product Design takes its modules and
    episodes from `lib/storyline.ts`; AI Product Delivery lists its eight modules, episodes to follow.
@@ -94,7 +94,7 @@ not recorded yet.
 - WHILE `LEARNING_PUBLISHED` is true, THE production build SHALL render a deck only WHEN its episode
   is switched on; under `next dev` every deck SHALL render.
 - THE episode page SHALL list the episode's sources, numbered across its parts in file order, each
-  with a link, who and when, its kind and what it backs up; THE tests SHALL fail WHEN a switched-on
+  with a link, who and when, and its kind; THE tests SHALL fail WHEN a switched-on
   episode with a deck has no sources file, or a sources file lacks a field, uses a URL that is not
   https, or names an unknown kind.
 - WHEN a Dutch route is requested, THE page SHALL show the English text with the fallback notice.
