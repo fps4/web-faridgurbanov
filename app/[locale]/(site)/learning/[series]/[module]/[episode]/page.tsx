@@ -24,8 +24,7 @@ import '@/components/deck/deck.css';
 
 // An episode page in the Learning section (FS-0012): what the episode promises, its diagram (the
 // same drawing as the deck, at the step the deck names as its figure) with a link to step through
-// the slides, the closing card (the idea, the move, and what to do on Monday), and its sources
-// (content/sources/<episode>.yaml), numbered in the order the episode uses them and grouped by its
+// the slides, and its sources (content/sources/<episode>.yaml), numbered in the order the episode uses them and grouped by its
 // parts, so the video can point to them; a link at the top jumps there (#sources). Previous and next
 // walk the switched-on episodes of the series in order. Only a switched-on episode has a page
 // (RELEASED, lib/learning.ts). The video joins the page once it is published (US-0032). WHILE the
@@ -126,22 +125,6 @@ export default async function EpisodePage({ params }: { params: Params }) {
           </figure>
         ) : null}
       </div>
-
-      {episode.takeaway ? (
-        <section className="mt-16 max-w-3xl rounded-lg border border-border">
-          <h2 className="border-b border-border px-6 py-4 text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {l.episodeLabel(episode.number)} · {episode.title}
-          </h2>
-          <dl className="divide-y divide-border">
-            {(['idea', 'move', 'monday'] as const).map((key) => (
-              <div key={key} className="grid gap-x-8 gap-y-1 px-6 py-5 sm:grid-cols-[8rem_minmax(0,1fr)]">
-                <dt className="text-sm font-medium uppercase tracking-wide text-muted-foreground">{t.takeaway[key]}</dt>
-                <dd className="text-lg">{episode.takeaway![key]}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      ) : null}
 
       {sourceCount > 0 ? <Sources groups={sources} title={l.sources} intro={l.sourcesIntro} /> : null}
 

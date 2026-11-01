@@ -48,7 +48,7 @@ not recorded yet.
    switched-on episodes in order with their *In this episode* lines, and how many more are planned.
 5. **Episode page** (`/learning/<series>/<module>/<episode>`, the episode slug from its title):
    the episode's number and title, its *In this episode* lines, its diagram with a link to step
-   through the deck, the closing card (idea, move, Monday), its sources, and previous / next across
+   through the deck, its sources, and previous / next across
    the series' switched-on episodes. The sources are `content/sources/<episode>.yaml` (`3-1.yaml`,
    locale-less): numbered in the order the episode uses them, grouped by its parts, each with its
    title as a link, who and when, the kind of source (law, peer-reviewed, preprint, model card,
