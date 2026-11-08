@@ -10,8 +10,6 @@ topics: [adoption, architecture]
 tech: []
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## De regel
 
 Elk ontwerp dat over een teamgrens gaat, krijgt een korte sectie met de mensen die het kunnen

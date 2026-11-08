@@ -10,8 +10,6 @@ topics: [governance, ai]
 tech: [fabric]
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## Probleem
 
 Toegangsbeheer beschrijft de voordeur: wie een tabel mag lezen. Data verlaat het landschap ook via

@@ -10,8 +10,6 @@ topics: [governance, data-platforms]
 tech: [databricks, fabric]
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## Probleem
 
 Hetzelfde toegangsbeleid moet op twee of meer platforms gelden, identiek en jarenlang, terwijl elk

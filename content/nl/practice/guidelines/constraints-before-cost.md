@@ -10,8 +10,6 @@ topics: [architecture, cost]
 tech: []
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## De regel
 
 Als dezelfde beslissing vaak terugkomt (elk object over een grens, elke workload naar een platform),

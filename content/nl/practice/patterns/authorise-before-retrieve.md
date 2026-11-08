@@ -10,8 +10,6 @@ topics: [ai, governance]
 tech: [knowledge-graphs]
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## Probleem
 
 Een AI-assistent antwoordt op basis van opgehaalde passages. De gangbare controle filtert de

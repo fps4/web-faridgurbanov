@@ -10,8 +10,6 @@ topics: [integration, data-platforms]
 tech: [sap, snowflake]
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## Probleem
 
 Data moet van het ene platform naar het andere, bijvoorbeeld van een ERP naar een warehouse, en het

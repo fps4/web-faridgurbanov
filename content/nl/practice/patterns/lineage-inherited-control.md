@@ -10,8 +10,6 @@ topics: [governance, data-platforms]
 tech: [databricks]
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN entry (FS-0013). Remove this line once Farid has read it. -->
-
 ## Probleem
 
 Controles worden op tabellen gezet: classificeer elke tabel, tag haar en ken rechten toe per tag. Op
