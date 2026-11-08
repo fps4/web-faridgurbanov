@@ -7,7 +7,7 @@ order: 1
 
 # Eén beleid, twee compilers
 
-In [het vorige stuk](/nl/writing/export-control-who-sees-what) beargumenteerde ik zes beslissingen voor een lakehouse onder exportcontrole. Dit stuk gaat over wat er ná de beslissingen gebeurt. Het beleid moet bestaan op Databricks Unity Catalog *én* op Microsoft Fabric, identiek, jarenlang, terwijl beide platforms elke maand releasen. Niemand houdt twee beheerconsoles met de hand in sync. Dus in [`export-controlled-lakehouse`](https://github.com/fps4/export-controlled-lakehouse) is het beleid data, evalueert een engine het, en produceren **twee compilers** wat elk platform kan afdwingen en, in dezelfde uitvoer, wat het niet kan.
+In [het vorige stuk](/nl/practice/articles/export-control-who-sees-what) beargumenteerde ik zes beslissingen voor een lakehouse onder exportcontrole. Dit stuk gaat over wat er ná de beslissingen gebeurt. Het beleid moet bestaan op Databricks Unity Catalog *én* op Microsoft Fabric, identiek, jarenlang, terwijl beide platforms elke maand releasen. Niemand houdt twee beheerconsoles met de hand in sync. Dus in [`export-controlled-lakehouse`](https://github.com/fps4/export-controlled-lakehouse) is het beleid data, evalueert een engine het, en produceren **twee compilers** wat elk platform kan afdwingen en, in dezelfde uitvoer, wat het niet kan.
 
 Het verschil tussen de twee platforms is het interessante deel, en dat werd pas zichtbaar omdat iets beide kanten genereerde.
 
@@ -142,6 +142,6 @@ Wat het echt zou maken is kort en concreet. Een Databricks-workspace om de SQL o
 
 Omdat een beleid dat in twee consoles leeft, twee beleidsregels is. Zodra het data is met twee compilers erachter, wordt onenigheid een pull request tegen `config/`. Verander de toegestane geografieën van een regime, de groepen van een persoon, de vervaldatum van een registerinvoer, en de artefacten van beide platforms renderen opnieuw met het gevolg erbij, en CI weigert de commit als de vastgelegde artefacten niet meer overeenkomen met de code.
 
-Dat is dezelfde lus als bij de [SAP↔Snowflake-grens](/nl/writing/sap-snowflake-seam-decision) en het [Synapse-landschap](/nl/writing/synapse-platform-decision), één laag verder. Daar ging de beslissing over welk platform of welke modus. Hier over wat het platform verteld wordt, in zijn eigen termen, en of het überhaupt verteld kan worden.
+Dat is dezelfde lus als bij de [SAP↔Snowflake-grens](/nl/practice/articles/sap-snowflake-seam-decision) en het [Synapse-landschap](/nl/practice/articles/synapse-platform-decision), één laag verder. Daar ging de beslissing over welk platform of welke modus. Hier over wat het platform verteld wordt, in zijn eigen termen, en of het überhaupt verteld kan worden.
 
 *De repo is openbaar en MIT-gelicenseerd: [github.com/fps4/export-controlled-lakehouse](https://github.com/fps4/export-controlled-lakehouse). `make demo` schrijft alles wat hierboven geciteerd is in een paar seconden; begin met `build/unity_catalog/20_policies.sql` en `build/fabric/onelake_security_roles.json` naast elkaar. Dat paar is waar de twee platforms elkaar raken.*

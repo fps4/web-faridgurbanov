@@ -2,7 +2,7 @@ import type { Locale } from '@/lib/i18n';
 
 // Localized UI copy for the bespoke (non-markdown) surfaces — shell chrome, home, portfolio,
 // contact, privacy, training stub, and the index/fallback strings. Content-body pages
-// (expertise, work, writing) live as markdown under content/{en,nl}/; this file is the chrome and
+// (expertise, work, practice) live as markdown under content/{en,nl}/; this file is the chrome and
 // the conversion pages, authored fully in both languages (ADR-0002).
 
 export interface Dictionary {
@@ -116,10 +116,25 @@ export interface Dictionary {
     disagreementLabel: string;
     evidenceLabel: string;
     portfolioLabel: string;
-    writingTitle: string;
-    writingLede: string;
     readMore: string;
-    backToIndex: { expertise: string; work: string; writing: string };
+    backToIndex: { expertise: string; work: string };
+  };
+  /** The Practice section (FS-0013): the landing page's groups and a guideline's page furniture. */
+  practice: {
+    title: string;
+    lede: string;
+    guidelinesHeading: string;
+    guidelinesLede: string;
+    articlesHeading: string;
+    articlesLede: string;
+    lastRevised: string;
+    status: { revised: string; retired: string };
+    supersedes: string;
+    supersededBy: string;
+    related: string;
+    previous: string;
+    next: string;
+    backToIndex: string;
   };
 }
 
@@ -319,10 +334,24 @@ If that sounds useful to your team, book a short taster.`,
     disagreementLabel: 'The disagreement',
     evidenceLabel: 'Evidenced by',
     portfolioLabel: 'Portfolio',
-    writingTitle: 'Writing',
-    writingLede: 'Occasional pieces on architecture decisions, delivery economics, and directing AI in real work. No newsletter.',
     readMore: 'Read more',
-    backToIndex: { expertise: 'All expertise', work: 'All selected work', writing: 'All writing' },
+    backToIndex: { expertise: 'All expertise', work: 'All selected work' },
+  },
+  practice: {
+    title: 'Practice',
+    lede: 'How I work, written down where it can be argued with. Guidelines are the standing rules I bring to an engagement. Articles are the one-offs.',
+    guidelinesHeading: 'Guidelines',
+    guidelinesLede: 'In reading order. Each one says what it costs and when I would bend it.',
+    articlesHeading: 'Articles',
+    articlesLede: 'Occasional pieces on architecture decisions, delivery economics, and directing AI in real work. No newsletter.',
+    lastRevised: 'Last revised',
+    status: { revised: 'Revised', retired: 'Retired' },
+    supersedes: 'Replaces',
+    supersededBy: 'Replaced by',
+    related: 'Where I applied it',
+    previous: 'Previous',
+    next: 'Next',
+    backToIndex: 'Back to Practice',
   },
 };
 
@@ -522,10 +551,24 @@ Klinkt dat nuttig voor je team? Boek dan een korte proefsessie.`,
     disagreementLabel: 'De onenigheid',
     evidenceLabel: 'Aangetoond door',
     portfolioLabel: 'Portfolio',
-    writingTitle: 'Blog',
-    writingLede: 'Af en toe een stuk over architectuurbeslissingen, de economie van software bouwen, en het aansturen van AI in echt werk. Geen nieuwsbrief.',
     readMore: 'Lees meer',
-    backToIndex: { expertise: 'Alle expertise', work: 'Al het werk', writing: 'Alle blogs' },
+    backToIndex: { expertise: 'Alle expertise', work: 'Al het werk' },
+  },
+  practice: {
+    title: 'Werkwijze',
+    lede: 'Hoe ik werk, vastgelegd op een plek waar je het kunt aanvechten. De richtlijnen zijn de vaste regels die ik in een opdracht meeneem. De artikelen staan elk op zichzelf.',
+    guidelinesHeading: 'Richtlijnen',
+    guidelinesLede: 'Op volgorde van lezen. Bij elke richtlijn staat wat ze kost en wanneer ik ervan afwijk.',
+    articlesHeading: 'Artikelen',
+    articlesLede: 'Af en toe een stuk over architectuurbeslissingen, de economie van software bouwen, en het aansturen van AI in echt werk. Geen nieuwsbrief.',
+    lastRevised: 'Laatst herzien',
+    status: { revised: 'Herzien', retired: 'Vervallen' },
+    supersedes: 'Vervangt',
+    supersededBy: 'Vervangen door',
+    related: 'Waar ik het toepaste',
+    previous: 'Vorige',
+    next: 'Volgende',
+    backToIndex: 'Terug naar Werkwijze',
   },
 };
 

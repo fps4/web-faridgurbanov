@@ -1,7 +1,7 @@
 ---
 title: faridgurbanov.com documentation index
 status: draft
-last_updated: 2026-09-17
+last_updated: 2026-11-08
 owners: [architect]
 ---
 
@@ -39,6 +39,7 @@ Intent + functional specs (`kind: functional_spec`). Start with the
 | [FS-0007](./product/FS-0007-contact-and-privacy.md) | Contact & privacy/GDPR | M0 |
 | [FS-0008](./product/FS-0008-training-and-eu-ai-act.md) | Training section & EU AI Act page | M0 stub → M1 full |
 | [FS-0009](./product/FS-0009-references.md) | References | ships dark; on with the first file |
+| [FS-0013](./product/FS-0013-practice-and-guidelines.md) | Practice: guidelines and articles (Writing renamed) | M1 |
 
 ## Design — how it's built
 
@@ -78,7 +79,7 @@ How-to, operations, and onboarding live under `guides/` (Diátaxis discipline is
 | Epic | Capability | Specs |
 |---|---|---|
 | [EP-00 — Foundation & shell](./delivery/backlog/EP-00-foundation-and-shell/README.md) | Scaffold, bilingual shell, content pipeline, static export, hosting | FS-0001 |
-| [EP-01 — Content pages](./delivery/backlog/EP-01-content-pages/README.md) | Home, expertise, case studies, portfolio, writing, contact/privacy, references | FS-0002…FS-0007, FS-0009 |
+| [EP-01 — Content pages](./delivery/backlog/EP-01-content-pages/README.md) | Home, expertise, case studies, portfolio, practice (guidelines + articles), contact/privacy, references | FS-0002…FS-0007, FS-0009, FS-0013 |
 | [EP-02 — Training & EU AI Act](./delivery/backlog/EP-02-training/README.md) | Training CTA stub (M0) → full Training section + EU AI Act page (M1) | FS-0008 |
 
 - [`delivery/issues/`](./delivery/issues/README.md) — `ISSUE-NNNN` (defects, with RCA) + `LIMITATION-NNNN` (accepted constraints)

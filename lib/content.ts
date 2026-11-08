@@ -49,6 +49,12 @@ function stripDuplicateTitle(body: string, frontTitle: string): string {
   return body;
 }
 
+// An HTML comment in a body is a note to whoever edits the file (e.g. the NEEDS HUMAN REVIEW line
+// on a machine-drafted translation). react-markdown would print it as text, so it is cut here.
+export function stripComments(body: string): string {
+  return body.replace(/<!--[\s\S]*?-->[ \t]*\r?\n?/g, '');
+}
+
 async function readDir(section: string, locale: Locale): Promise<string[]> {
   try {
     const files = await fs.readdir(path.join(CONTENT_ROOT, locale, section));
@@ -91,7 +97,7 @@ export async function getEntry(
 
   const { data, body } = parseFrontmatter(raw);
   if (isDraft(data)) return null;
-  return { slug, data, body: stripDuplicateTitle(body, title(data)), isFallback };
+  return { slug, data, body: stripDuplicateTitle(stripComments(body), title(data)), isFallback };
 }
 
 /**

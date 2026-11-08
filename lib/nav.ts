@@ -15,7 +15,7 @@ export const primaryNav: NavItem[] = [
   { href: '/expertise', label: { en: 'Expertise', nl: 'Expertise' } },
   { href: '/work', label: { en: 'Selected work', nl: 'Geselecteerd werk' } },
   { href: '/portfolio', label: { en: 'Portfolio', nl: 'Portfolio' } },
-  { href: '/writing', label: { en: 'Writing', nl: 'Blog' } },
+  { href: '/practice', label: { en: 'Practice', nl: 'Werkwijze' } },
   { href: '/contact', label: { en: 'Contact', nl: 'Contact' } },
 ];
 

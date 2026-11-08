@@ -1,11 +1,12 @@
 ---
 title: "FS-0006 — Writing / blog"
 status: draft
-last_updated: 2026-09-15
+last_updated: 2026-11-08
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
+  - docs/product/FS-0013-practice-and-guidelines.md
 maestro:
   feature: writing-blog
   kind: functional_spec
@@ -21,6 +22,11 @@ maestro:
 - **Status:** draft
 - **Raised:** 2026-06-07
 - **Owner:** @farid (architect)
+
+> **Since 2026-11-08 (FS-0013):** the section is called **Practice** / **Werkwijze** and lives at
+> `/practice`. The posts are its *Articles* group, at `/practice/articles/<slug>`, from
+> `content/<locale>/practice/articles/`; nginx answers the old `/writing` URLs with a 301. What this
+> spec says about the posts still holds; "writing index" below now means that group.
 
 ## Why
 
