@@ -3,6 +3,8 @@ title: Bepalen wie wat mag zien, en van waar
 summary: Exportcontrole doet iets met een lakehouse wat de AVG nooit deed. Dezelfde rij krijgt drie verschillende antwoorden, afhankelijk van wie vraagt, van waar, en waaruit hij is afgeleid. Zes beslissingen voor een dataplatform onder exportcontrole, één beleid gecompileerd naar zowel Unity Catalog als Fabric, en de twee bevindingen die het meest telden. De grens is niet de regio, en classificatie is geen eigenschap van een tabel.
 date: 2026-09-13
 order: 1
+topics: [governance, data-platforms]
+tech: [databricks, fabric, azure]
 ---
 
 # Bepalen wie wat mag zien, en van waar

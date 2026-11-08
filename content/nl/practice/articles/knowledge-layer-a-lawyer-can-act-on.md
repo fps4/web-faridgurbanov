@@ -3,6 +3,8 @@ title: Een kennislaag waar een advocaat op kan varen
 summary: Een taalmodel kan een goed juridisch antwoord schrijven. Het kan niet weten wat het kantoor deed, voor wie, wat ervan kwam, en wie dat mag horen. Een architectuur voor de knowledge graph van een advocatenkantoor waar een AI-assistent op kan steunen, verankerd in de bronsystemen, met één resolver die over toegang beslist voordat er iets wordt opgehaald. En een lab dat meet waar filteren op documentniveau lekt.
 date: 2026-10-19
 order: 1
+topics: [ai, governance]
+tech: [knowledge-graphs, mcp]
 ---
 
 # Een kennislaag waar een advocaat op kan varen

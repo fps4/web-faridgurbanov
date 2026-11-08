@@ -119,19 +119,27 @@ export interface Dictionary {
     readMore: string;
     backToIndex: { expertise: string; work: string };
   };
-  /** The Practice section (FS-0013): the landing page's groups and a guideline's page furniture. */
+  /** The Practice section (FS-0013): the filterable list, and an entry's page furniture. */
   practice: {
     title: string;
     lede: string;
-    guidelinesHeading: string;
-    guidelinesLede: string;
-    articlesHeading: string;
-    articlesLede: string;
+    /** The filter rows' labels. */
+    filterKind: string;
+    filterTopic: string;
+    filterTech: string;
+    all: string;
+    clear: string;
+    /** "{n} of {total}", announced when the filter changes. */
+    showing: string;
+    empty: string;
+    kind: { guideline: string; pattern: string; article: string };
+    kindPlural: { guideline: string; pattern: string; article: string };
     lastRevised: string;
     status: { revised: string; retired: string };
     supersedes: string;
     supersededBy: string;
     related: string;
+    drawnFrom: string;
     previous: string;
     next: string;
     backToIndex: string;
@@ -339,16 +347,22 @@ If that sounds useful to your team, book a short taster.`,
   },
   practice: {
     title: 'Practice',
-    lede: 'How I work, written down where it can be argued with. Guidelines are the standing rules I bring to an engagement. Articles are the one-offs.',
-    guidelinesHeading: 'Guidelines',
-    guidelinesLede: 'In reading order. Each one says what it costs and when I would bend it.',
-    articlesHeading: 'Articles',
-    articlesLede: 'Occasional pieces on architecture decisions, delivery economics, and directing AI in real work. No newsletter.',
+    lede: 'How I work, written down where it can be argued with. Guidelines are the standing rules I bring to an engagement, patterns the solutions I reuse, and articles the longer pieces they came from.',
+    filterKind: 'Show',
+    filterTopic: 'Topic',
+    filterTech: 'Technology',
+    all: 'All',
+    clear: 'Clear filters',
+    showing: '{n} of {total}',
+    empty: 'Nothing matches these filters.',
+    kind: { guideline: 'Guideline', pattern: 'Pattern', article: 'Article' },
+    kindPlural: { guideline: 'Guidelines', pattern: 'Patterns', article: 'Articles' },
     lastRevised: 'Last revised',
     status: { revised: 'Revised', retired: 'Retired' },
     supersedes: 'Replaces',
     supersededBy: 'Replaced by',
     related: 'Where I applied it',
+    drawnFrom: 'Extracted from this article',
     previous: 'Previous',
     next: 'Next',
     backToIndex: 'Back to Practice',
@@ -556,16 +570,22 @@ Klinkt dat nuttig voor je team? Boek dan een korte proefsessie.`,
   },
   practice: {
     title: 'Werkwijze',
-    lede: 'Hoe ik werk, vastgelegd op een plek waar je het kunt aanvechten. De richtlijnen zijn de vaste regels die ik in een opdracht meeneem. De artikelen staan elk op zichzelf.',
-    guidelinesHeading: 'Richtlijnen',
-    guidelinesLede: 'Op volgorde van lezen. Bij elke richtlijn staat wat ze kost en wanneer ik ervan afwijk.',
-    articlesHeading: 'Artikelen',
-    articlesLede: 'Af en toe een stuk over architectuurbeslissingen, de economie van software bouwen, en het aansturen van AI in echt werk. Geen nieuwsbrief.',
+    lede: 'Hoe ik werk, vastgelegd op een plek waar je het kunt aanvechten. De richtlijnen zijn de vaste regels die ik in een opdracht meeneem, de patronen de oplossingen die ik hergebruik, en de artikelen de langere stukken waar ze uit komen.',
+    filterKind: 'Toon',
+    filterTopic: 'Onderwerp',
+    filterTech: 'Technologie',
+    all: 'Alles',
+    clear: 'Filters wissen',
+    showing: '{n} van {total}',
+    empty: 'Niets past bij deze filters.',
+    kind: { guideline: 'Richtlijn', pattern: 'Patroon', article: 'Artikel' },
+    kindPlural: { guideline: 'Richtlijnen', pattern: 'Patronen', article: 'Artikelen' },
     lastRevised: 'Laatst herzien',
     status: { revised: 'Herzien', retired: 'Vervallen' },
     supersedes: 'Vervangt',
     supersededBy: 'Vervangen door',
     related: 'Waar ik het toepaste',
+    drawnFrom: 'Uit dit artikel afgeleid',
     previous: 'Vorige',
     next: 'Volgende',
     backToIndex: 'Terug naar Werkwijze',

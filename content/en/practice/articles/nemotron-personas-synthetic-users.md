@@ -3,6 +3,8 @@ title: Synthetic users you're allowed to test with — Nemotron-Personas
 summary: NVIDIA's Nemotron-Personas gives you a million fictional-but-grounded people to seed test harnesses and ML experiments with. No real PII, no DPIA. Where it earns its keep, the regulatory angle for EU teams, and the caveats that bite if you forget they're synthetic.
 date: 2026-06-23
 order: 1
+topics: [ai, governance]
+tech: []
 ---
 
 # Synthetic users you're allowed to test with — Nemotron-Personas

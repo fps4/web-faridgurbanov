@@ -3,6 +3,8 @@ title: Het argument voor one-engineer economics
 summary: Vijf cijfers veranderden wat een klein team kan bouwen. AI-adoptie, de 280-voudige daling van de inferentiekosten, de opkomst van de solo-oprichter, en een scherpe daling van de werkgelegenheid voor programmeurs. Wat ze samen betekenen, en wat ze weglaten.
 date: 2026-03-07
 order: 1
+topics: [ai, cost]
+tech: []
 ---
 
 # Het argument voor one-engineer economics

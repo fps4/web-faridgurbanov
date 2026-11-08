@@ -3,6 +3,8 @@ title: Who had to say yes
 summary: Every architecture has a list of people who can quietly refuse it. The teams, the functions, the budget holders. Most designs never write that list down, and I think that is why so many correct architectures never ship. A way of designing for adoption instead of hoping for it.
 date: 2026-08-20
 order: 1
+topics: [adoption, architecture]
+tech: []
 ---
 
 # Who had to say yes

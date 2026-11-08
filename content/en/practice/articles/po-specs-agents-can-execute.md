@@ -3,6 +3,8 @@ title: How I get non-technical POs writing specs agents can execute
 summary: The difference between a lazy prompt and a spec that directs an agent, and why a product owner who can write the second is a force multiplier for the whole team.
 date: 2026-05-20
 order: 1
+topics: [ai, adoption]
+tech: []
 ---
 
 # How I get non-technical POs writing specs agents can execute

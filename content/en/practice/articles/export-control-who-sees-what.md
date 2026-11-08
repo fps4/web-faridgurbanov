@@ -3,6 +3,8 @@ title: Deciding who may see what, and from where
 summary: Export control does something to a lakehouse that GDPR never did. The same row gets three different answers depending on who asks, from where, and what it was derived from. Six decisions for a data platform under export control, one policy compiled to both Unity Catalog and Fabric, and the two findings that mattered most. The border is not the region, and classification is not a property of a table.
 date: 2026-09-13
 order: 1
+topics: [governance, data-platforms]
+tech: [databricks, fabric, azure]
 ---
 
 # Deciding who may see what, and from where

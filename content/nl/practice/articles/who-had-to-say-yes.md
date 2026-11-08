@@ -3,6 +3,8 @@ title: Wie ja moest zeggen
 summary: Elke architectuur heeft een lijst van mensen die er stilzwijgend nee tegen kunnen zeggen. Teams, afdelingen, budgethouders. De meeste ontwerpen schrijven die lijst nooit op, en ik denk dat dat is waarom zoveel correcte architecturen er nooit komen. Een werkwijze om adoptie te ontwerpen in plaats van erop te hopen.
 date: 2026-08-20
 order: 1
+topics: [adoption, architecture]
+tech: []
 ---
 
 # Wie ja moest zeggen

@@ -3,6 +3,8 @@ title: Bepalen waar een Synapse-landschap heen gaat
 summary: Synapse heeft een einddatum, dus de vraag is niet meer óf je verhuist maar waar elke workload landt. Fabric, Databricks of Snowflake. Tien geordende regels, een kostenmodel dat een vooruitbetaalde capaciteit behandelt als de trapfunctie die het is, en de uitkomst die mij het meest verraste. Het platform met de beste prijs werd uitgesloten van bijna elke workload waarop het die beste prijs had.
 date: 2026-08-29
 order: 1
+topics: [data-platforms, cost]
+tech: [azure, fabric, databricks, snowflake]
 ---
 
 # Bepalen waar een Synapse-landschap heen gaat

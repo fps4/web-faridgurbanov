@@ -3,6 +3,8 @@ title: Deciding what crosses the SAP↔Snowflake seam
 summary: For every object in a SAP estate, one question sets the cost and the freshness of everything downstream. Share it zero-copy, replicate it, federate it, split it, or keep it in SAP. Here is a reference architecture that answers it per object, with nine ordered rules, a cost model with the crossover frequency, and a local simulation that runs all three modes.
 date: 2026-08-10
 order: 1
+topics: [data-platforms, integration, cost]
+tech: [sap, snowflake]
 ---
 
 # Deciding what crosses the SAP↔Snowflake seam

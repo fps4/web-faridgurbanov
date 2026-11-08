@@ -3,6 +3,8 @@ title: Hoe ik niet-technische PO's specs laat schrijven die agents kunnen uitvoe
 summary: Het verschil tussen een luie prompt en een spec die een agent aanstuurt, en waarom een product owner die het tweede kan schrijven een force multiplier is voor het hele team.
 date: 2026-05-20
 order: 1
+topics: [ai, adoption]
+tech: []
 ---
 
 # Hoe ik niet-technische PO's specs laat schrijven die agents kunnen uitvoeren
