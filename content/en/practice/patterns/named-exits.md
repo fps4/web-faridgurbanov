@@ -37,6 +37,8 @@ Enumerate the exits per platform, and give each one a name, a control and an own
 - assistants, with the tenant settings that decide where prompts are processed;
 - agents, treated as shares, which carry only declassified products.
 
+![Diagram: controlled data, whose front door is read access, leaves through seven named exits per platform: file exports and notebook output; shares, shortcuts and replicas; backups and disaster recovery; vendor support access and logs; and, new with AI, models and their endpoints, assistants governed by tenant settings, and agents treated as shares. Each exit gets a named control and owner, reviewed when a feature moves data; the exits nobody can control go into a register with a named person accepting each.](/diagrams/named-exits.svg)
+
 The exits nobody can control go into the register with a named person accepting each. Every
 request is evaluated against the exit as well as the asset, so the same person, data and purpose
 can be allowed to read and refused an export.

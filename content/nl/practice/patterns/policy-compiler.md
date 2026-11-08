@@ -32,6 +32,8 @@ principals en hun groepen, en een register van de beslissingen die een controle 
 evalueert het eerst, los van welk platform ook. Hij propageert controles, valideert het register en
 beantwoordt "mag deze persoon, vanaf hier, dit met dit asset doen", met de uitleg erbij.
 
+![Diagram: een repository met de taxonomie van controles, de regio's, de principals en hun groepen, en een register van beslissingen voedt een engine die controles propageert, het register valideert en elk verzoek met de uitleg erbij beantwoordt. Per platform schrijft één compiler, een voor een platform met tags en een voor een platform met rollen, de artefacten van dat platform en daarnaast in gewone tekst wat het niet kan afdwingen; alles wat een overtreding permanent zou maken, weigert hij te genereren. CI genereert de artefacten opnieuw en laat de commit falen bij een verschil.](/diagrams/policy-compiler-nl.svg)
+
 Daarna leest per platform één compiler de geëvalueerde toestand en maakt de eigen artefacten van dat
 platform: SQL-policies en tags voor het ene, roldefinities en labels voor het andere. Elke compiler
 schrijft in dezelfde output ook op wat zijn platform niet kan afdwingen, in gewone tekst waar iemand

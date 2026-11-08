@@ -58,6 +58,8 @@ Dus R7 blijft er bewust blind voor, en R9 stelt de vraag zodra de hele toewijzin
 
 Op het uitgewerkte landschap (20 workloads, verzonnen maar gevormd naar een middelgroot Azure-landschap dat tussen 2020 en 2024 via Synapse is gegroeid) komt het antwoord uit op 15 workloads op Fabric, 4 op Databricks, en één die nergens heen gaat. **Snowflake wint niets.**
 
+![Diagram: de 20 workloads van een Synapse-landschap gaan langs tien geordende regels. R1 tot en met R5 zijn constraints die redenen teruggeven en nooit een getal zien, R7 is de eerste regel die een prijs ziet, en R8 en R9 toetsen de volledige toewijzing. De uitkomst is 15 workloads op Fabric, 4 op Databricks, geen op Snowflake en één zonder bestemming. Snowflake was de goedkoopste meter op 5 workloads; R2 sloot er 4 van uit omdat ze in T-SQL geschreven zijn, en de vijfde werd opgenomen door capaciteit waar het landschap al voor betaalde. De stream zonder bestemming heeft event-time-herziening nodig, wat Fabric en Snowflake uitsluit, en zijn restricted-classificatie is alleen voor Fabric goedgekeurd, wat Databricks uitsluit.](/diagrams/synapse-platform-decision-nl.svg)
+
 Dat is geen schouderophalen, en het plan laat het niet als een lege kolom staan. Snowflake is de **goedkoopste meter op vijf van de twintig workloads**, allemaal in de dedicated SQL pool, waar de facturering per seconde en het automatisch pauzeren het alternatief wel degelijk verslaan. En R2 sluit het uit van vier van die vijf, omdat ze in T-SQL geschreven zijn. De vijfde wordt opgenomen door capaciteit waar het landschap toch al voor betaalt, en geen enkele meter kan onder €0 bieden.
 
 Het platform heeft precies daar de beste prijs waar het niet mee mag doen.

@@ -27,6 +27,8 @@ Releasing controlled technology to a foreign person is a US export to that perso
 
 So the question is never *which region*. It is: for this row, derived from these inputs, requested by this identity from this place, allow, deny, or aggregate-only, and why. Six decisions answer it, in order.
 
+![Diagram: the same row of plant telemetry, requested four ways. The engineer in Veldhoven, from the office, is shown it because they hold the authorisation group (D2); the engineer at the next desk is refused for lacking the group (D2); the first engineer, from a hotel in a third country, is refused on place of access at the identity layer (D3); and once the row is joined to the wrong table, everyone is refused because the derived asset inherits the strictest control of its inputs (D1). Every answer feeds explain, which records who saw it, from where, under which authorisation, because of which rule and under which decision.](/diagrams/export-control-who-sees-what.svg)
+
 ## D1 — The unit of control is lineage
 
 Classify each table, tag it, grant by tag. That is true on the day it is done, and it drifts from then on, because controlled tables are *inputs*. They get joined, aggregated, featurised and trained on, and the results are new tables nobody classified.

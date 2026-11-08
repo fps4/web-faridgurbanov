@@ -40,6 +40,8 @@ Zodra een PO dat ziet, volgt de rest. Ik leer drie vaardigheden aan, en de eerst
 
 3. **Echte capaciteit van hype onderscheiden.** Een leveranciersclaim lezen en inschatten. Is dit een weekend of een kwartaal? Een PO die dit kan, weerhoudt het team ervan demo's na te jagen die het contact met productie niet overleven.
 
+![Diagram: de product owner stuurt de agent aan, beoordeelt de output en schat leveranciersclaims in. Dezelfde agent en hetzelfde model krijgen twee instructies. De luie prompt, "Voeg een factuurexport-feature toe", levert iets op dat het datumbereik mist en een formaat verzint. De spec heeft drie delen (het werk opgedeeld in actie, velden en CSV-formaat, toetsbare criteria in de vorm WANNEER … MOET HET SYSTEEM, en wat buiten scope valt) en levert op wat de PO besliste, zonder iets te gissen. Die output wordt beoordeeld met acceptatiecriteria, held-out voorbeelden en een LLM-as-judge, en gaat terug naar een mens bij de gate.](/diagrams/po-specs-agents-can-execute-nl.svg)
+
 ## Waarom dit dezelfde discipline is waarmee ik bouw
 
 Niets hiervan is een trainingstrucje. Het is hoe ik levering met agents aanpak. In de `maestro`-referentiearchitectuur mergen agents niets. Ze stellen voor, en een mens beslist, achter functionele en technische gates. De spec is het contract. De evals zijn de sign-off. Branch protection dwingt "mensen beslissen" af.

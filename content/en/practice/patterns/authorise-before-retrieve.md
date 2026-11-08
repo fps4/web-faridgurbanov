@@ -37,6 +37,8 @@ the same steps in the same order on every request:
 5. Answer with citations, or refuse and name the rule, its owner and the date it was set.
 6. Write one record of the request.
 
+![Diagram: the AI assistant and agents send each request to one resolver, which runs six steps in order: resolve the terms, find candidates in the graph as identifiers only, decide per entity and per derived fact by lineage what this person may see, retrieve passages from the search index with the permitted set inside the query, cite or refuse, and write one record of the request. Only the permitted set passes from step 3 into step 4, and denied items stop at step 3, so the index query never names them. Citations lead to the document store, which keeps its own lock as a second line.](/diagrams/authorise-before-retrieve.svg)
+
 Step 3 comes before step 4. The search cannot name a denied item, so nothing needs filtering
 afterwards. The index stores every entity a passage depends on, and the filter requires all of
 them to be permitted. The document store keeps its own lock as a second line.

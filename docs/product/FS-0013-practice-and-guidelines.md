@@ -66,12 +66,18 @@ needs one durable place to add those rules one at a time, without losing the art
    Detail pages show the tags as links to the filtered list.
 11. **First extraction**: G-02 *Adoption by design*, G-03 *Constraints before cost*, P-01 to P-05;
    G-01 retitled *Documentation in three layers* (URL unchanged).
+12. **Diagrams** *(added 2026-11-08)*: every guideline, pattern and article carries at least one
+   diagram of its central mechanism, a hand-written SVG in `public/diagrams/` in the house style
+   (monochrome greys on a transparent background, so one file serves light and dark mode),
+   embedded as a markdown image whose alt text starts with `Diagram:` and states what it shows.
+   Dutch pages use a Dutch-labelled copy, `<name>-nl.svg`. A guideline or pattern drawn from an
+   article redraws only the part it explains.
 
 ## Out of scope
 
 - The video series (the Learning section, FS-0012, not yet on main). They stay their own section; a Series group on the Practice
   landing page that links to them is a follow-up once Learning is published.
-- Rewriting existing articles (they gain tags in frontmatter only); search, comments, RSS.
+- Rewriting existing articles (they gain tags in frontmatter and a diagram only); search, comments, RSS.
 - `<link rel="alternate">` tags in each page's head (the sitemap carries the pairs).
 
 ## Acceptance criteria (EARS)
@@ -108,6 +114,10 @@ needs one durable place to add those rules one at a time, without losing the art
 - WHERE a Dutch guideline is a machine draft, IT SHALL carry a `NEEDS HUMAN REVIEW` comment (never
   rendered) and SHALL NOT merge until the owner has reviewed it.
 - EACH guideline SHALL read as the owner's own prose per the Voice section of `AGENTS.md`.
+- WHEN a visitor opens a guideline, pattern or article, THE SYSTEM SHALL show at least one diagram
+  with alt text starting `Diagram:`, labelled in the page's language.
+- IF a guideline, pattern or article has no diagram, references a diagram file that does not exist,
+  or a Dutch page references an English-labelled diagram, THEN the test suite SHALL fail.
 
 ## Definition of done
 

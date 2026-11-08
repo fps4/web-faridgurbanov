@@ -57,6 +57,8 @@ I now write a short block into every cross-team design, and into every case stud
 - **What resolved it**: the mechanism. "We aligned" is not a mechanism. "Finance could run the reconciliation themselves" is one.
 - **What it cost**: the friction the design created, and who carries it. A design that looks free was not analysed properly.
 
+![Diagram: the four kinds of people who can refuse a design (the teams who have to change, the function that has to trust the output, the team whose scope shrinks, and the budget holder behind the incumbent) are named in the first paragraph of a block called Who had to say yes. That block sits inside every cross-team design and case study, and its four paragraphs are stakeholders, the disagreement, what resolved it, and what it cost.](/diagrams/who-had-to-say-yes.svg)
+
 It takes about twenty minutes, and it changes the conversation, because it moves the hardest part of the work out of one architect's head and into a document other people can argue with.
 
 → The case studies on this site each carry that block: [Cloud Gateway](/en/work/cloud-gateway), [the SAP event backbone](/en/work/sap-event-backbone), [SAP Finance → Snowflake](/en/work/sap-snowflake) and [the Cloudera data-product platform](/en/work/cloudera-kafka). The way of working behind them is written up under [working across an organisation](/en/expertise/stakeholder-alignment).

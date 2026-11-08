@@ -58,6 +58,8 @@ So R7 stays blind to it by design, and R9 asks the question once the whole alloc
 
 On the worked estate (20 workloads, invented but shaped like a mid-size Azure estate that grew through Synapse between 2020 and 2024) the answer comes out as 15 workloads on Fabric, 4 on Databricks, and one that goes nowhere. **Snowflake wins nothing.**
 
+![Diagram: the 20 workloads of a Synapse estate pass ten ordered rules. R1 to R5 are constraints that return reasons and never see a number, R7 is the first rule to see a price, and R8 and R9 review the whole allocation. The result is 15 workloads on Fabric, 4 on Databricks, none on Snowflake and one with no home. Snowflake was the cheapest meter on 5 workloads; R2 eliminated 4 of them because they are written in T-SQL, and the fifth was absorbed by capacity the estate had already paid for. The stream with no home needs event-time restatement, which rules out Fabric and Snowflake, and its restricted data is cleared only for Fabric, which rules out Databricks.](/diagrams/synapse-platform-decision.svg)
+
 That is not a shrug, and the plan does not leave it as an empty column. Snowflake is the **cheapest meter on five of the twenty workloads**, every one of them in the dedicated SQL pool, where its per-second billing and auto-suspend do beat the alternative. And R2 eliminates it from four of those five, because they are written in T-SQL. The fifth is absorbed by capacity the estate has already paid for, and no meter can underbid €0.
 
 The platform prices best precisely where it is not allowed to compete.

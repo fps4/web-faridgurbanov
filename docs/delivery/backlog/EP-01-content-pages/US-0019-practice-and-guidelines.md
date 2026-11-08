@@ -54,6 +54,13 @@ the landing page is a follow-up.
 - WHEN an entry names an article in `related`, THE article page SHALL link back to it.
 - THE first extraction SHALL publish G-02, G-03 and P-01 to P-05, with Dutch drafts marked for review.
 
+### Revision (2026-11-08): a diagram on every page
+
+- WHEN a visitor opens a guideline, pattern or article, THE SYSTEM SHALL show at least one diagram
+  of its central mechanism, labelled in the page's language, with alt text starting `Diagram:`.
+- IF a page has no diagram, a missing diagram file, or a Dutch page uses the English-labelled
+  file, THEN the test suite SHALL fail.
+
 ## Out of scope
 
-- Editing article prose (tags are frontmatter only); search, comments, RSS; the Series group (follow-up).
+- Editing article prose (articles gain tags in frontmatter and a diagram only); search, comments, RSS; the Series group (follow-up).

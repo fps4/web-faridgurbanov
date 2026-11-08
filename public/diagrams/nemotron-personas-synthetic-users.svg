@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g fill="#9a9aa3" font-size="10" text-anchor="middle" letter-spacing="0.8">
+    <text x="86" y="24">GROUNDED IN</text>
+    <text x="256" y="24">DATASET</text>
+    <text x="442" y="24">FIXTURES FOR</text>
+    <text x="662" y="24">GATE</text>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="12" y="96" width="148" height="84" rx="8"/>
+    <rect x="356" y="40" width="172" height="40" rx="8"/>
+    <rect x="356" y="92" width="172" height="40" rx="8"/>
+    <rect x="356" y="144" width="172" height="40" rx="8"/>
+    <rect x="356" y="196" width="172" height="40" rx="8"/>
+    <rect x="576" y="104" width="172" height="68" rx="8"/>
+    <rect x="576" y="268" width="172" height="62" rx="8"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none" stroke-dasharray="4 3">
+    <rect x="12" y="268" width="148" height="62" rx="8"/>
+    <rect x="184" y="268" width="344" height="62" rx="8"/>
+  </g>
+  <g stroke="#7b7b85" stroke-width="2" fill="none">
+    <rect x="184" y="40" width="144" height="196" rx="8"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <line x1="528" y1="60" x2="550" y2="60"/>
+    <line x1="528" y1="112" x2="550" y2="112"/>
+    <line x1="528" y1="164" x2="550" y2="164"/>
+    <line x1="528" y1="216" x2="550" y2="216"/>
+    <line x1="550" y1="60" x2="550" y2="216"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" marker-end="url(#ah)">
+    <line x1="160" y1="138" x2="180" y2="138"/>
+    <line x1="328" y1="60" x2="352" y2="60"/>
+    <line x1="328" y1="112" x2="352" y2="112"/>
+    <line x1="328" y1="164" x2="352" y2="164"/>
+    <line x1="328" y1="216" x2="352" y2="216"/>
+    <line x1="550" y1="138" x2="572" y2="138"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" marker-end="url(#ah)" stroke-dasharray="4 3">
+    <line x1="160" y1="299" x2="180" y2="299"/>
+    <line x1="442" y1="268" x2="442" y2="240"/>
+  </g>
+  <g fill="#7b7b85" font-size="12" text-anchor="middle">
+    <text x="86" y="118" font-weight="600">Distributions</text>
+    <text x="86" y="136" font-size="10.5">census demographics</text>
+    <text x="86" y="151" font-size="10.5">geography</text>
+    <text x="86" y="166" font-size="10.5">personality psychology</text>
+
+    <text x="256" y="116" font-size="12.5" font-weight="600">Nemotron-Personas</text>
+    <text x="256" y="136" font-size="10.5">~1M fictional people</text>
+    <text x="256" y="151" font-size="10.5">CC BY 4.0</text>
+    <text x="256" y="166" font-size="10.5">no real PII, no DPIA</text>
+
+    <text x="442" y="57" font-weight="600">Test harness</text>
+    <text x="442" y="72" font-size="10.5">seed staging with users</text>
+    <text x="442" y="109" font-weight="600">Agent evals</text>
+    <text x="442" y="124" font-size="10.5">replay the same personas</text>
+    <text x="442" y="161" font-weight="600">ML experiments</text>
+    <text x="442" y="176" font-size="10.5">augment thin eval sets</text>
+    <text x="442" y="213" font-weight="600">Red-teaming</text>
+    <text x="442" y="228" font-size="10.5">believable targets</text>
+
+    <text x="662" y="134" font-weight="600">Real evals, a human</text>
+    <text x="662" y="150" font-size="10.5">decide whether it ships</text>
+
+    <text x="86" y="294" font-weight="600">Production data</text>
+    <text x="86" y="310" font-size="10.5">real people, real PII</text>
+    <text x="356" y="287" font-weight="600">GDPR processing</text>
+    <text x="356" y="303" font-size="10.5">lawful basis, data minimisation,</text>
+    <text x="356" y="318" font-size="10.5">retention limits, often a DPIA</text>
+    <text x="452" y="258" font-size="10.5" font-style="italic" text-anchor="start">the route personas avoid</text>
+    <text x="662" y="287" font-weight="600">Caveats</text>
+    <text x="662" y="303" font-size="10.5">inherits its sources' bias</text>
+    <text x="662" y="318" font-size="10.5">says nothing about behaviour</text>
+
+    <text x="380" y="360" font-size="11.5" font-style="italic">a persona has no data subject, so seeding a test with personas processes no personal data;</text>
+    <text x="380" y="376" font-size="11.5" font-style="italic">the personas seed the test, and real evals and a human still decide whether it ships</text>
+  </g>
+</svg>

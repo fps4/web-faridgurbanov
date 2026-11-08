@@ -84,6 +84,8 @@ requests, met diagrammen als code. Voor een systeem dat over veel repository's
 loopt, staan het HLD en de overkoepelende ADR's in één architectuurrepository
 waar iedereen naar linkt.
 
+![Diagram: de kaart, een high-level design, beschrijft hoe het systeem er nu uitziet, verandert een paar keer per jaar en linkt naar de beslissingen. Het logboek van ADR's verantwoordt ze, met één record per beslissing die duur is om terug te draaien, over de vorm of over het detail, en er komt alleen iets bij. Het detail staat als code (OpenAPI- en AsyncAPI-specs, schemabestanden, infrastructure as code, contracttests) en verandert wekelijks, en alle drie staan in de repository naast de code.](/diagrams/architecture-documentation-nl.svg)
+
 ## Afwegingen
 
 - **Repository's sluiten mensen buiten.** Risk, compliance en business owners

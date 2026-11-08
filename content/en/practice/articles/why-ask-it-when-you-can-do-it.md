@@ -37,6 +37,8 @@ The organisations getting this right are doing something harder and more valuabl
 
 The metric changes with it. Success stops being tickets closed and becomes how many business teams can ship independently without creating chaos.
 
+![Diagram: two structures side by side. In the factory, the business waits weeks while a request passes through a ticket queue that rations IT capacity to an IT factory doing repetitive build work, and the result comes back weeks later; a dashed path shows shadow IT as the workaround, and the metric is tickets closed. In the platform, operations, marketing and other teams build on IT as the platform, which offers golden paths, shared services for identity, governance and cost, curated AI and low-code tooling, and internal consultants for integration and data contracts; the metric is how many teams ship independently.](/diagrams/why-ask-it-when-you-can-do-it.svg)
+
 That second half matters as much as the first. "Let everyone build" without golden paths is shadow IT with executive sponsorship, and the bill arrives eighteen months later as an estate nobody can secure, price or decommission. The work is making the safe path the easy path, so that people follow governance because it's the shortest route.
 
 I've watched this play out on the infrastructure side. Consolidating [twenty-plus API gateways into one federated platform](/en/work/cloud-gateway) worked because onboarding became a reviewed Terraform change that took minutes, where it used to be a ticket that took days. No team was ordered onto it. The platform was simply cheaper than the alternative, and the security model came free with it.

@@ -33,6 +33,8 @@ residency and personal data, delta capability, freshness, latency at peak, share
 semantics, and economics in seventh place. For a Synapse estate: residency and clearance, T-SQL
 surface, streaming semantics, sub-second telemetry, ML lifecycle, and again economics seventh.
 
+![Diagram: every option for one object passes the placement rules in their fixed order across the SAP↔Snowflake seam: residency and personal data, delta capability, freshness, latency at peak, share availability and semantics. Each rule that eliminates an option sends it to the register with the rule and its reason, and the excluded options are still priced. Economics, rule 7, compares price only among the options still standing, and a review of the whole allocation follows.](/diagrams/constraints-before-cost.svg)
+
 **Constraints return reasons.** Each eliminating rule writes why an option fell, so the register
 shows the rule that decided every row.
 

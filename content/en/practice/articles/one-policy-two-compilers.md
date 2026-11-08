@@ -69,6 +69,8 @@ AGGREGATE_ONLY  P-ENG-NL-B · from NL · read · clean_telemetry_eu
 
 Every control names the source it came from; every refusal names the group that was missing; every denial that has a declassified product from the same sources offers it. The compilers read the same propagated state, so both platforms answer the same question the same way, where they can.
 
+![Diagram: six YAML files (taxonomy, regions, platforms, an estate of 31 assets with lineage, six principals with their groups, and the ledger) feed an engine that propagates, validates the ledger and evaluates, with explain as its output. The Unity Catalog compiler emits 8 catalogs, 47 tag statements naming the source, 22 ABAC policies evaluated per query, 4 Delta Shares of KPI products and a Markdown file of what SQL cannot say; the Fabric compiler emits 6 capacities with none in China, 20 OneLake roles with static predicates, 26 sensitivity labels, 4 named cross-geo tenant settings and no_home.md listing 4 assets in China. Between the two outputs sits where they meet: a per-query policy against a static role, an export refused against a label that travels, a separate account for China against no capacity, and a workspace setting against four tenant settings.](/diagrams/one-policy-two-compilers.svg)
+
 ## Compiler one: Unity Catalog
 
 The first compiler writes SQL and JSON under `build/unity_catalog/`. Eight catalogs: one per geography for the logical tiers, one per geography for the export-controlled tier, and one in a *separate file* for the Chinese estate, because Azure China is a different account and metastore and nothing in the main file can reach it.

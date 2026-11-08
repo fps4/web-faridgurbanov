@@ -63,6 +63,8 @@ weer een technische discussie, en die kun je afronden.
 **Begin bij wie het meest wint.** Laat het team met de slechtste huidige opzet als eerste
 overstappen. Hun verhaal over de migratie reikt verder dan welke review board ook.
 
+![Diagram: vier groepen kunnen een ontwerp dat meerdere teams raakt weigeren: de teams die moeten veranderen, de functie die de uitkomst moet vertrouwen, het team waarvan de scope kleiner wordt, en de budgethouder achter het systeem dat wordt vervangen. Elk van hen kan blijven waar ze zitten, met een migratie die een kwartaal opschuift, een verzoek om een uitzondering of door te blijven draaien wat werkt, of ja zeggen zodra dat minder kost dan blijven waar ze zitten. Vijf zetten in het ontwerp maken ja goedkoper: het onwelkome deel eerst zeggen, het platform goedkoper maken, de controle bouwen die de scepticus vertrouwt, de saaie helft nemen, en beginnen bij wie het meest wint.](/diagrams/adoption-by-design-nl.svg)
+
 ## Afwegingen
 
 - **Het kost de architect tijd** die nooit op een diagram verschijnt: gesprekken, een aansluiting

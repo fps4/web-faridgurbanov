@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g fill="#9a9aa3" font-size="10" text-anchor="middle" letter-spacing="0.8">
+    <text x="188" y="24">DE FABRIEK</text>
+    <text x="572" y="24">HET PLATFORM</text>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="24" y="40" width="328" height="46" rx="8"/>
+    <rect x="130" y="116" width="160" height="46" rx="8"/>
+    <rect x="130" y="192" width="160" height="46" rx="8"/>
+    <rect x="396" y="40" width="108" height="46" rx="8"/>
+    <rect x="518" y="40" width="108" height="46" rx="8"/>
+    <rect x="640" y="40" width="108" height="46" rx="8"/>
+    <rect x="408" y="146" width="160" height="42" rx="8"/>
+    <rect x="576" y="146" width="160" height="42" rx="8"/>
+    <rect x="408" y="196" width="160" height="42" rx="8"/>
+    <rect x="576" y="196" width="160" height="42" rx="8"/>
+  </g>
+  <rect x="24" y="192" width="92" height="46" rx="8" fill="none" stroke="#9a9aa3" stroke-width="1.25" stroke-dasharray="4 3"/>
+  <g stroke="#7b7b85" stroke-width="2" fill="none">
+    <rect x="396" y="116" width="352" height="134" rx="8"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none" marker-end="url(#ah)">
+    <line x1="210" y1="86" x2="210" y2="112"/>
+    <line x1="210" y1="162" x2="210" y2="188"/>
+    <polyline points="290,215 318,215 318,90"/>
+    <line x1="450" y1="86" x2="450" y2="112"/>
+    <line x1="572" y1="86" x2="572" y2="112"/>
+    <line x1="694" y1="86" x2="694" y2="112"/>
+  </g>
+  <line x1="70" y1="86" x2="70" y2="188" stroke="#9a9aa3" stroke-width="1.25" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <g fill="#7b7b85" font-size="12" text-anchor="middle">
+    <text x="188" y="59" font-weight="600">Business</text>
+    <text x="188" y="75" font-size="10.5">wacht weken op prioriteit</text>
+    <text x="210" y="135" font-weight="600">Ticketwachtrij</text>
+    <text x="210" y="151" font-size="10.5">rantsoeneert IT-capaciteit</text>
+    <text x="210" y="211" font-weight="600">IT-fabriek</text>
+    <text x="210" y="227" font-size="10.5">repetitief bouwwerk</text>
+    <text x="70" y="211" font-weight="600">Shadow IT</text>
+    <text x="70" y="227" font-size="10.5">de omweg</text>
+    <g text-anchor="start" font-size="10.5">
+      <text x="326" y="148">weken</text>
+      <text x="326" y="162">later</text>
+    </g>
+
+    <text x="450" y="59" font-weight="600">Operations</text>
+    <text x="450" y="75" font-size="10.5">eigen rapporten</text>
+    <text x="572" y="59" font-weight="600">Marketing</text>
+    <text x="572" y="75" font-size="10.5">eigen pipelines</text>
+    <text x="694" y="59" font-weight="600">Andere teams</text>
+    <text x="694" y="75" font-size="10.5">leveren zelf</text>
+
+    <text x="572" y="136" font-size="12.5" font-weight="600">IT als platform</text>
+    <text x="488" y="163" font-weight="600">Standaardroutes</text>
+    <text x="488" y="178" font-size="10.5">veilig en compliant</text>
+    <text x="656" y="163" font-weight="600">Gedeelde diensten</text>
+    <text x="656" y="178" font-size="10">identiteit, governance, kosten</text>
+    <text x="488" y="213" font-weight="600">Gecureerde tooling</text>
+    <text x="488" y="228" font-size="10.5">AI en low-code</text>
+    <text x="656" y="213" font-weight="600">Interne adviseur</text>
+    <text x="656" y="228" font-size="10.5">integratie, datacontracten</text>
+
+    <text x="188" y="274" font-size="11">maatstaf: gesloten tickets</text>
+    <text x="572" y="274" font-size="11">maatstaf: teams die zelfstandig leveren</text>
+
+    <text x="380" y="310" font-size="11.5" font-style="italic">een ticketwachtrij rantsoeneert IT-capaciteit, en zodra teams zelf bouwen, vertraagt ze alleen werk dat toch gebeurt;</text>
+    <text x="380" y="326" font-size="11.5" font-style="italic">het platform maakt de veilige weg de kortste route</text>
+  </g>
+</svg>

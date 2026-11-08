@@ -29,6 +29,8 @@ The cost line is the one that matters. A 25% productivity gain is an improvement
 
 That is what the solo-founder number is really measuring. The floor under a functioning product team dropped.
 
+![Diagram: five figures side by side: 90% of engineering teams use AI coding tools (61% a year earlier), McKinsey's estimate of up to 45% improvement, a 280-fold drop in the cost of querying a model ($20 to $0.07 per million tokens), 38% of startups launched by solo founders without venture capital (22.2% in 2015), and a 27.5% fall in US programmer employment between 2023 and 2025. Together they make the cost line a change of category and lower the floor under a functioning product team. They leave out what limits delivery in an enterprise: twenty teams with an opinion, the decision nobody will own, the data contract with no upstream owner, and the vendor agreement nobody wants to reopen.](/diagrams/one-engineer-economics.svg)
+
 ## What the numbers leave out
 
 Every one of those productivity figures is measured on the part of the job that was already the fastest part. In an enterprise, delivery is not limited by how quickly code appears. It's limited by the twenty teams with an opinion, the decision nobody will own, the data contract that has no upstream owner, and the four-year-old vendor agreement nobody wants to reopen. Doubling typing speed against that constraint changes very little, which is why organisations reporting large individual gains often can't find them in their lead time.

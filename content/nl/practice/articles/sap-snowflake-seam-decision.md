@@ -23,6 +23,8 @@ Alles links van de integratielaag hoort bij SAP; alles rechts ervan hoort bij Sn
 - **Hybride**: repliceer het aggregaat, federeer de zeldzame drill-down. Een dashboard en een opzoeking op regelniveau zijn twee workloads, en één daarvan rechtvaardigt een kopie.
 - **In SAP houden**: modelleren en rapporteren binnen SAP, met de resultaten naar SAP Analytics Cloud.
 
+![Diagram: SAP links, Snowflake rechts, en de grens ertussen met de vijf manieren om over te gaan. Delen leest een door SAP geleverd dataproduct waar het staat via Delta Sharing; repliceren zet via een Datasphere-replicatieflow een tweede kopie neer; federeren stuurt elke query via een remote table terug naar de bron; hybride repliceert het aggregaat en federeert de zeldzame drill-down; in SAP houden modelleert en rapporteert binnen SAP, gebonden door residentie en persoonsgegevens, en er gaat niets over.](/diagrams/sap-snowflake-seam-decision-nl.svg)
+
 Het diagram loopt bovendien beide kanten op. Snowflake dient ook als bron voor Datasphere, als remote table of binnen een replicatieflow, en zo werken de meeste echte landschappen.
 
 ## Eerst de constraints, dan pas de kosten

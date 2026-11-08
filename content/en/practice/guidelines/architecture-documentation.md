@@ -79,6 +79,8 @@ requests, with diagrams as code. For a system that spans many repositories,
 the HLD and the cross-cutting ADRs live in one architecture repository that
 everyone links to.
 
+![Diagram: the map, a high-level design, describes what the system looks like now, changes a few times a year and links to the decisions. The logbook of ADRs justifies them, one append-only record per decision that is costly to reverse, whether it concerns the shape or the detail. The detail lives as code (OpenAPI and AsyncAPI specs, schema files, infrastructure as code, contract tests) and changes weekly, and all three sit in the repository next to the code.](/diagrams/architecture-documentation.svg)
+
 ## Trade-offs
 
 - **Repositories exclude people.** Risk, compliance and business owners rarely

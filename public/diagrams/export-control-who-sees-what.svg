@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 394" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g fill="#9a9aa3" font-size="10" text-anchor="middle" letter-spacing="0.8">
+    <text x="76" y="24">THE ROW</text>
+    <text x="298" y="24">THE REQUEST</text>
+    <text x="598" y="24">ANSWER, AND THE DECISION BEHIND IT</text>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="176" y="40" width="244" height="44" rx="8"/>
+    <rect x="448" y="40" width="300" height="44" rx="8"/>
+    <rect x="176" y="96" width="244" height="44" rx="8"/>
+    <rect x="448" y="96" width="300" height="44" rx="8"/>
+    <rect x="176" y="152" width="244" height="44" rx="8"/>
+    <rect x="448" y="152" width="300" height="44" rx="8"/>
+    <rect x="176" y="208" width="244" height="44" rx="8"/>
+    <rect x="448" y="208" width="300" height="44" rx="8"/>
+  </g>
+  <g stroke="#7b7b85" stroke-width="2" fill="none">
+    <rect x="12" y="40" width="128" height="212" rx="8"/>
+    <rect x="176" y="284" width="572" height="52" rx="8"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none" marker-end="url(#ah)">
+    <line x1="140" y1="62" x2="172" y2="62"/>
+    <line x1="420" y1="62" x2="444" y2="62"/>
+    <line x1="140" y1="118" x2="172" y2="118"/>
+    <line x1="420" y1="118" x2="444" y2="118" stroke-dasharray="4 3"/>
+    <line x1="140" y1="174" x2="172" y2="174"/>
+    <line x1="420" y1="174" x2="444" y2="174" stroke-dasharray="4 3"/>
+    <line x1="140" y1="230" x2="172" y2="230"/>
+    <line x1="420" y1="230" x2="444" y2="230" stroke-dasharray="4 3"/>
+    <line x1="598" y1="252" x2="598" y2="280"/>
+  </g>
+  <g fill="#7b7b85" font-size="12" text-anchor="middle">
+    <text x="76" y="142" font-weight="600">The same row</text>
+    <text x="76" y="160" font-size="10.5">plant telemetry</text>
+
+    <text x="298" y="59" font-weight="600">Engineer in Veldhoven</text>
+    <text x="298" y="75" font-size="10.5">from the office</text>
+    <text x="598" y="59" font-weight="600">Shown</text>
+    <text x="598" y="75" font-size="10.5">holds the authorisation group (D2)</text>
+    <text x="298" y="115" font-weight="600">Engineer at the next desk</text>
+    <text x="298" y="131" font-size="10.5">same office</text>
+    <text x="598" y="115" font-weight="600">Refused</text>
+    <text x="598" y="131" font-size="10.5">no authorisation group for the category (D2)</text>
+    <text x="298" y="171" font-weight="600">The first engineer</text>
+    <text x="298" y="187" font-size="10.5">from a hotel in a third country</text>
+    <text x="598" y="171" font-weight="600">Refused</text>
+    <text x="598" y="187" font-size="10.5">place of access, at the identity layer (D3)</text>
+    <text x="298" y="227" font-weight="600">Joined to the wrong table</text>
+    <text x="298" y="243" font-size="10.5">anyone who asks</text>
+    <text x="598" y="227" font-weight="600">Refused to everyone</text>
+    <text x="598" y="243" font-size="10.5">inherits the strictest control of its inputs (D1)</text>
+
+    <text x="462" y="305" font-weight="600">explain</text>
+    <text x="462" y="323" font-size="10.5">who saw it · from where · under which authorisation · because of which rule · under which decision</text>
+
+    <text x="380" y="364" font-size="11.5" font-style="italic">the same row gets a different answer by who asks, from where, and what it was derived from;</text>
+    <text x="380" y="380" font-size="11.5" font-style="italic">explain joins five parts from four places into one sentence</text>
+  </g>
+</svg>

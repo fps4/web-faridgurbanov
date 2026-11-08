@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 424" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g fill="#9a9aa3" font-size="10" text-anchor="middle" letter-spacing="0.8">
+    <text x="290" y="24">VOLGORDE OP DE GRENS TUSSEN SAP EN SNOWFLAKE</text>
+    <text x="674" y="24">GESCHRAPT, MET EEN REDEN</text>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="50" y="38" width="480" height="40" rx="8"/>
+    <rect x="70" y="90" width="440" height="26" rx="8"/>
+    <rect x="85" y="128" width="410" height="26" rx="8"/>
+    <rect x="100" y="166" width="380" height="26" rx="8"/>
+    <rect x="115" y="204" width="350" height="26" rx="8"/>
+    <rect x="130" y="242" width="320" height="26" rx="8"/>
+    <rect x="145" y="280" width="290" height="26" rx="8"/>
+    <rect x="600" y="90" width="148" height="216" rx="8"/>
+    <rect x="600" y="322" width="148" height="44" rx="8"/>
+  </g>
+  <rect x="160" y="322" width="260" height="44" rx="8" fill="none" stroke="#7b7b85" stroke-width="2"/>
+  <g stroke="#9a9aa3" stroke-width="1.25" marker-end="url(#ah)">
+    <line x1="290" y1="78" x2="290" y2="87"/>
+    <line x1="290" y1="116" x2="290" y2="125"/>
+    <line x1="290" y1="154" x2="290" y2="163"/>
+    <line x1="290" y1="192" x2="290" y2="201"/>
+    <line x1="290" y1="230" x2="290" y2="239"/>
+    <line x1="290" y1="268" x2="290" y2="277"/>
+    <line x1="290" y1="306" x2="290" y2="319"/>
+    <line x1="420" y1="344" x2="596" y2="344"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" stroke-dasharray="4 3" marker-end="url(#ah)">
+    <line x1="510" y1="103" x2="596" y2="103"/>
+    <line x1="495" y1="141" x2="596" y2="141"/>
+    <line x1="480" y1="179" x2="596" y2="179"/>
+    <line x1="465" y1="217" x2="596" y2="217"/>
+    <line x1="450" y1="255" x2="596" y2="255"/>
+    <line x1="435" y1="293" x2="596" y2="293"/>
+  </g>
+  <g fill="#7b7b85" font-size="12" text-anchor="middle">
+    <text x="290" y="55" font-weight="600">Elke optie voor één object</text>
+    <text x="290" y="70" font-size="10.5">de vraag komt per object terug</text>
+
+    <g font-weight="600">
+      <text x="290" y="107">1  Residency en persoonsgegevens</text>
+      <text x="290" y="145">2  Delta-ondersteuning</text>
+      <text x="290" y="183">3  Versheid</text>
+      <text x="290" y="221">4  Latency op piekmomenten</text>
+      <text x="290" y="259">5  Beschikbaarheid van een share</text>
+      <text x="290" y="297">6  Semantiek</text>
+      <text x="290" y="340">7  Economie</text>
+    </g>
+    <text x="290" y="356" font-size="10.5">prijs alleen tussen wat overblijft</text>
+
+    <text x="674" y="150" font-weight="600">Register</text>
+    <g font-size="10.5">
+      <text x="674" y="174">elke schrapping,</text>
+      <text x="674" y="189">met de regel die</text>
+      <text x="674" y="204">besliste</text>
+      <text x="674" y="232">uitgesloten opties</text>
+      <text x="674" y="247">toch geprijsd</text>
+    </g>
+
+    <text x="674" y="340" font-weight="600">Geheel beoordelen</text>
+    <text x="674" y="356" font-size="10.5">na de delen</text>
+
+    <text x="380" y="396" font-size="11.5" font-style="italic">de randvoorwaarden lopen eerst en geven redenen terug; de prijs komt bij regel 7</text>
+    <text x="380" y="412" font-size="11.5" font-style="italic">en vergelijkt alleen de opties die nog over zijn</text>
+  </g>
+</svg>

@@ -40,6 +40,8 @@ dezelfde stappen in dezelfde volgorde doorlopen:
    vastgesteld.
 6. Schrijf één record van het verzoek.
 
+![Diagram: de AI-assistent en agents sturen elk verzoek naar één resolver, die zes stappen in vaste volgorde doorloopt: de termen oplossen, kandidaten in de graph zoeken als alleen identifiers, per entiteit en per afgeleid feit via lineage bepalen wat deze persoon mag zien, passages uit de zoekindex ophalen met de toegestane set in de query, antwoorden met bronvermelding of weigeren, en één record van het verzoek schrijven. Alleen de toegestane set gaat van stap 3 naar stap 4; geweigerde items blijven bij stap 3 achter, dus de query naar de index noemt ze nooit. Bronvermeldingen leiden naar de documentopslag, die zijn eigen slot houdt als tweede linie.](/diagrams/authorise-before-retrieve-nl.svg)
+
 Stap 3 komt vóór stap 4. De zoekopdracht kan een geweigerd item niet noemen, dus achteraf hoeft er
 niets gefilterd te worden. De index slaat elke entiteit op waarvan een passage afhangt, en het
 filter eist dat ze allemaal zijn toegestaan. De documentopslag houdt zijn eigen slot als tweede
