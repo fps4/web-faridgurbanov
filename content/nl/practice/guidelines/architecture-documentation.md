@@ -1,11 +1,13 @@
 ---
 id: G-01
 order: 1
-title: "Architectuurdocumentatie: HLD, ADR's en LLD"
-summary: "Eén kaart, één logboek, en code voor de rest."
+title: "Documentatie in drie lagen"
+summary: "Eén kaart (HLD), één logboek (ADR's), en code voor de rest."
 status: current
 revised: 2026-11-08
-related: []
+related: [expertise/architecture-decisions, G-03]
+topics: [architecture]
+tech: []
 ---
 
 ## De regel

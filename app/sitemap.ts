@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { listSection } from '@/lib/content';
-import { ARTICLES_SECTION, GUIDELINES_SECTION } from '@/lib/guidelines';
+import { ARTICLES_SECTION, ENTRY_KINDS } from '@/lib/practice';
 import { locales } from '@/lib/i18n';
 import { loadReferences } from '@/lib/references';
 import { siteOrigin, sitemapEntries } from '@/lib/sitemap';
@@ -17,11 +17,12 @@ async function slugs(section: string): Promise<string[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [expertise, work, articles, guidelines, references] = await Promise.all([
+  const [expertise, work, articles, guidelines, patterns, references] = await Promise.all([
     slugs('expertise'),
     slugs('work'),
     slugs(ARTICLES_SECTION),
-    slugs(GUIDELINES_SECTION),
+    slugs(ENTRY_KINDS.guideline.section),
+    slugs(ENTRY_KINDS.pattern.section),
     loadReferences(),
   ]);
   const paths = [
@@ -33,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/portfolio',
     '/practice',
     ...guidelines.map((s) => `/practice/guidelines/${s}`),
+    ...patterns.map((s) => `/practice/patterns/${s}`),
     ...articles.map((s) => `/practice/articles/${s}`),
     ...(references.length ? ['/references'] : []),
     '/contact',

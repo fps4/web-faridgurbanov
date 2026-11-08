@@ -3,6 +3,8 @@ title: Bepalen wat er over de SAP↔Snowflake-grens gaat
 summary: Voor elk object in een SAP-landschap bepaalt één vraag de kosten en de versheid van alles wat erop volgt. Zero-copy delen, repliceren, federeren, splitsen, of in SAP houden. Dit is een referentiearchitectuur die die vraag per object beantwoordt, met negen geordende regels, een kostenmodel met de omslagfrequentie, en een lokale simulatie die alle drie de modi draait.
 date: 2026-08-10
 order: 1
+topics: [data-platforms, integration, cost]
+tech: [sap, snowflake]
 ---
 
 # Bepalen wat er over de SAP↔Snowflake-grens gaat

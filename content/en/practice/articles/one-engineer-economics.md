@@ -3,6 +3,8 @@ title: The case for one-engineer economics
 summary: Five numbers changed what a small team can build. AI adoption, the 280-fold collapse in inference cost, the rise of the solo founder, and a sharp fall in programmer employment. Here is what they add up to, and the part they leave out.
 date: 2026-03-07
 order: 1
+topics: [ai, cost]
+tech: []
 ---
 
 # The case for one-engineer economics

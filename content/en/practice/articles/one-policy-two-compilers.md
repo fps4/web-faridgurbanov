@@ -3,6 +3,8 @@ title: One policy, two compilers
 summary: An export-control policy has to hold on Unity Catalog and on Fabric at the same time, and nobody keeps two admin consoles in sync by hand. So the policy is data, and two compilers turn it into what each platform can enforce. 22 ABAC policies and tags that carry their own provenance on one side, 20 static roles and four tenant settings on the other. The gap between the two only became visible because it was generated.
 date: 2026-09-20
 order: 1
+topics: [governance, data-platforms]
+tech: [databricks, fabric, azure]
 ---
 
 # One policy, two compilers

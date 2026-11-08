@@ -3,6 +3,8 @@ title: Synthetische gebruikers waarmee je mag testen — Nemotron-Personas
 summary: NVIDIA's Nemotron-Personas geeft je een miljoen fictieve-maar-gefundeerde mensen om testharnessen en ML-experimenten mee te vullen. Geen echte PII, geen DPIA. Waar het zijn waarde bewijst, de regelgevingshoek voor EU-teams, en de kanttekeningen die bijten als je vergeet dat ze synthetisch zijn.
 date: 2026-06-23
 order: 1
+topics: [ai, governance]
+tech: []
 ---
 
 # Synthetische gebruikers waarmee je mag testen — Nemotron-Personas

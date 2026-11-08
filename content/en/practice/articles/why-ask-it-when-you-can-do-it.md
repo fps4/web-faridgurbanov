@@ -3,6 +3,8 @@ title: Why ask IT when you can do it yourself?
 summary: The skill gap between a business analyst and a junior developer has collapsed, and the ticket queue is losing its reason to exist. The IT organisations that come out ahead stop being the factory and become the platform.
 date: 2026-03-14
 order: 1
+topics: [ai, adoption]
+tech: []
 ---
 
 # Why ask IT when you can do it yourself?

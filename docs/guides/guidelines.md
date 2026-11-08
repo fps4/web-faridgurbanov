@@ -1,33 +1,56 @@
 ---
-title: "Guide — adding and revising a guideline"
+title: "Guide — adding guidelines, patterns and tags"
 status: guide
 last_updated: 2026-11-08
 owners: [architect]
 related:
   - docs/product/FS-0013-practice-and-guidelines.md
-  - lib/guidelines.ts
+  - lib/practice-model.ts
+  - lib/practice.ts
   - content/en/practice/guidelines/architecture-documentation.md
 ---
 
-# Adding and revising a guideline
+# Adding guidelines, patterns and tags
 
-A guideline is one markdown file per locale under `content/<locale>/practice/guidelines/`, named
-by its slug (`architecture-documentation.md` → `/practice/guidelines/architecture-documentation`).
-The Practice landing page, the previous/next links and the sitemap pick it up from the file; no
-code changes.
+The Practice list holds three kinds. A **guideline** (`G-NN`) is a standing rule I bring to an
+engagement. A **pattern** (`P-NN`) is a reusable solution to a problem that keeps coming back,
+usually extracted from an article. An **article** is a dated piece. Guidelines and patterns are
+"entries": one markdown file per locale, named by slug, under
+`content/<locale>/practice/guidelines/` or `content/<locale>/practice/patterns/`
+(`policy-compiler.md` → `/practice/patterns/policy-compiler`). The list, the filters, the
+previous/next links and the sitemap pick a file up on their own; no code changes.
+
+**Titles** are catalogue names. A guideline's title is its subject in two to four words
+(*Constraints before cost*) and the summary states the rule. A pattern's title is what you would
+call it in a design review (*Policy compiler*) and the summary goes from problem to solution.
 
 ## Frontmatter
 
 ```yaml
-id: G-02                 # next free number; never reused, even after a guideline is retired
-order: 2                 # reading order on the landing page; unique
+id: G-02                 # G- for a guideline, P- for a pattern; next free number, never reused
+order: 2                 # reading order within the kind; unique per kind
 title: "Data contracts at the source"
 summary: "…"             # ≤ 140 characters: the landing card and the meta description
 status: current          # current | revised | retired
 revised: 2026-12-01      # date of the last substantive change, not of a typo fix
 supersedes: G-01         # optional: the id this one replaces
-related: [G-01, work/cloud-gateway]   # optional: guideline ids, or work/, expertise/, practice/articles/<slug>
+related: [G-01, P-02, work/cloud-gateway, practice/articles/<slug>]   # optional
+topics: [architecture, cost]   # one or more, from TOPICS in lib/practice-model.ts
+tech: [sap, snowflake]         # zero or more, from TECH; [] when none
 ```
+
+`related` takes entry ids or `work/`, `expertise/`, `practice/articles/<slug>`; it renders as
+"Where I applied it". When an entry names an article there, the article's page links back to the
+entry ("Extracted from this article"), so the source article itself is never edited.
+
+## Tags
+
+Every item, articles included, carries `topics` and `tech` in its frontmatter. The vocabularies
+are fixed in `lib/practice-model.ts` (`TOPICS` with an EN and NL label each, `TECH` with one
+label), and an unknown value fails the tests and the build. A technology earns a tag only when the
+item works with it in substance; a passing mention does not. To add a tag, add it to the
+vocabulary in the same PR as the first item that uses it; a chip appears only once an item uses
+it.
 
 The frontmatter parser takes flat `key: value` lines only; leave `supersedes` out rather than
 writing `null`. `npm run test` (and the build) fails on a malformed field, a reused id or order,
@@ -35,10 +58,17 @@ or a `related` / `supersedes` entry that does not resolve.
 
 ## Body
 
-The sections, in this order, as `##` headings: **The rule** (one or two sentences), **Why**,
+A **guideline**, as `##` headings in this order: **The rule** (one or two sentences), **Why**,
 **How I apply it**, **Trade-offs**, **When I'd bend it**, and optionally **Starter templates**
 (fenced code blocks). In Dutch: *De regel*, *Waarom*, *Hoe ik het toepas*, *Afwegingen*,
-*Wanneer ik ervan afwijk*, *Sjablonen om mee te beginnen*. The test checks the first five.
+*Wanneer ik ervan afwijk*, *Sjablonen om mee te beginnen*.
+
+A **pattern**: **Problem**, **Forces**, **Solution**, **Consequences**, **When not to use it**. In
+Dutch: *Probleem*, *Krachten*, *Oplossing*, *Gevolgen*, *Wanneer niet*. Where it was used goes in
+`related`, not in the body.
+
+Both run about 400 to 700 words: written to the template, not pasted from the source article, with
+at most one number, where it proves the point. The test checks the required headings.
 
 The Voice section of `AGENTS.md` applies; run `npm run voice -- --strict` on the file.
 

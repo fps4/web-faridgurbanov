@@ -3,6 +3,8 @@ title: Waarom IT vragen als je het zelf kunt?
 summary: Het vaardigheidsverschil tussen een business analist en een junior developer is ingestort, en de ticketwachtrij verliest zijn bestaansrecht. De IT-organisaties die er beter uitkomen houden op de fabriek te zijn en worden het platform.
 date: 2026-03-14
 order: 1
+topics: [ai, adoption]
+tech: []
 ---
 
 # Waarom IT vragen als je het zelf kunt?

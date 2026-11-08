@@ -3,6 +3,8 @@ title: Deciding where a Synapse estate goes
 summary: Synapse has an end date, so the question is no longer whether to move but where each workload lands. Fabric, Databricks or Snowflake. Ten ordered rules, a cost model that treats a pre-paid capacity as the step function it is, and the finding that surprised me most. The platform that priced best was eliminated from almost every workload it priced best on.
 date: 2026-08-29
 order: 1
+topics: [data-platforms, cost]
+tech: [azure, fabric, databricks, snowflake]
 ---
 
 # Deciding where a Synapse estate goes

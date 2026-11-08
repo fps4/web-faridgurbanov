@@ -1,11 +1,13 @@
 ---
 id: G-01
 order: 1
-title: "Architecture documentation: HLD, ADRs and LLD"
-summary: "One map, one logbook, and code for the rest."
+title: "Documentation in three layers"
+summary: "One map (HLD), one logbook (ADRs), and code for the rest."
 status: current
 revised: 2026-11-08
-related: []
+related: [expertise/architecture-decisions, G-03]
+topics: [architecture]
+tech: []
 ---
 
 ## The rule

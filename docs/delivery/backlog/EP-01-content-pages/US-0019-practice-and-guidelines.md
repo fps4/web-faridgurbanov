@@ -44,6 +44,16 @@ the landing page is a follow-up.
 - THE build SHALL emit `/sitemap.xml` with the new URLs, none of the old, and hreflang pairs.
 - THE Dutch guideline SHALL carry the review marker until Farid has read it.
 
+### Revision (2026-11-08): one filterable list, patterns and tags
+
+- WHEN a visitor opens `/<locale>/practice`, THE SYSTEM SHALL list guidelines, patterns and articles
+  in one row shape, with chips for kind, topic and technology that filter it and are reflected in
+  the query string.
+- THE build SHALL publish patterns at `/<locale>/practice/patterns/<slug>` with the same page
+  furniture as a guideline, and SHALL fail on an unknown tag.
+- WHEN an entry names an article in `related`, THE article page SHALL link back to it.
+- THE first extraction SHALL publish G-02, G-03 and P-01 to P-05, with Dutch drafts marked for review.
+
 ## Out of scope
 
-- Editing article content; search, tags, comments, RSS; the Series group (follow-up).
+- Editing article prose (tags are frontmatter only); search, comments, RSS; the Series group (follow-up).

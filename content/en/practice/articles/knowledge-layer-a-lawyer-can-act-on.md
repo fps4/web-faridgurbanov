@@ -3,6 +3,8 @@ title: A knowledge layer a lawyer can act on
 summary: A language model can write a good legal answer. It cannot know what the firm did, for whom, what came of it, and who is allowed to be told. An architecture for a law firm's knowledge graph that an AI assistant can stand on, anchored to the systems of record, with one resolver that decides access before anything is retrieved. And a lab that measures where document-level filtering leaks.
 date: 2026-10-19
 order: 1
+topics: [ai, governance]
+tech: [knowledge-graphs, mcp]
 ---
 
 # A knowledge layer a lawyer can act on

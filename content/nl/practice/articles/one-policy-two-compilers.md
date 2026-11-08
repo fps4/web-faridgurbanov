@@ -3,6 +3,8 @@ title: Eén beleid, twee compilers
 summary: Een exportcontrolebeleid moet tegelijk gelden op Unity Catalog en op Fabric, en niemand houdt twee beheerconsoles met de hand in sync. Dus is het beleid data, en zetten twee compilers het om in wat elk platform kan afdwingen. 22 ABAC-policies en tags die hun eigen herkomst dragen aan de ene kant, 20 statische rollen en vier tenant-instellingen aan de andere. Het verschil tussen de twee werd pas zichtbaar omdat het gegenereerd is.
 date: 2026-09-20
 order: 1
+topics: [governance, data-platforms]
+tech: [databricks, fabric, azure]
 ---
 
 # Eén beleid, twee compilers
