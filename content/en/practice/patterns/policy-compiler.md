@@ -32,6 +32,8 @@ and their groups, and a ledger of the decisions that remove a control. An engine
 first, independent of any platform. It propagates controls, validates the ledger, and answers
 "may this person, from here, do this to this asset", with the explanation attached.
 
+![Diagram: a policy repository holding the taxonomy of controls, the regions, the principals and their groups, and a ledger of removals feeds an engine that propagates controls, validates the ledger and answers each request with its explanation. One compiler per platform, one for a tag-based platform and one for a role-based platform, writes that platform's artefacts and, beside them, a plain-text list of what it cannot enforce, and refuses to emit anything that would make a violation permanent. CI regenerates the artefacts and fails the commit on a mismatch.](/diagrams/policy-compiler.svg)
+
 Then one compiler per platform reads the evaluated state and emits that platform's own artefacts:
 SQL policies and tags for one, role definitions and labels for another. Each compiler also
 writes, in the same output, what its platform cannot enforce, as plain text for someone to act

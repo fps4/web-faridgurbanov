@@ -29,6 +29,8 @@ De kostenlijn is degene die ertoe doet. Over 25% productiviteitswinst valt te tw
 
 Dat is wat het solo-oprichtercijfer eigenlijk meet. De vloer onder een functionerend productteam zakte weg.
 
+![Diagram: vijf cijfers naast elkaar: 90% van de engineeringteams gebruikt AI-codeertools (61% een jaar eerder), de McKinsey-schatting van maximaal 45% winst, een daling van 280 keer in de kosten van een modelquery ($20 naar $0,07 per miljoen tokens), 38% van de startups opgericht door solo-oprichters zonder durfkapitaal (22,2% in 2015), en 27,5% minder werkgelegenheid voor programmeurs in de Verenigde Staten tussen 2023 en 2025. Samen maken ze van de kostenlijn een categoriewissel en laten ze de vloer onder een functionerend productteam wegzakken. Ze laten weg wat levering in een enterprise begrenst: twintig teams met een mening, de beslissing zonder eigenaar, het datacontract zonder eigenaar bovenstrooms en het leverancierscontract dat niemand wil openbreken.](/diagrams/one-engineer-economics-nl.svg)
+
 ## Wat de cijfers weglaten
 
 Al die productiviteitscijfers meten het deel van het werk dat al het snelste deel was. In een enterprise wordt levering niet begrensd door hoe snel er code verschijnt. Ze wordt begrensd door de twintig teams met een mening, de beslissing waar niemand eigenaar van wil zijn, het datacontract zonder eigenaar bovenstrooms, en het vier jaar oude leverancierscontract dat niemand wil openbreken. De typesnelheid verdubbelen tegen die randvoorwaarde verandert weinig, en daarom vinden organisaties die grote individuele winst rapporteren die vaak niet terug in hun doorlooptijd.

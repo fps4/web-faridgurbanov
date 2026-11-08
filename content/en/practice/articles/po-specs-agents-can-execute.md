@@ -40,6 +40,8 @@ Once a PO sees that, the rest follows. I teach three skills, and the first carri
 
 3. **Telling real capability from hype.** Reading a vendor claim and sizing it. Is this a weekend or a quarter? A PO who can do this stops the team from chasing demos that don't survive contact with production.
 
+![Diagram: the product owner directs the agent, evaluates the output and sizes vendor claims. The same agent and model get two instructions. The lazy prompt, "Add an invoice export feature", returns something that misses the date range and invents a format. The spec has three parts (the work decomposed into action, fields and CSV format, testable criteria in WHEN … THE SYSTEM SHALL form, and what is out of scope) and returns what the PO decided, with nothing left to guess. That output is evaluated against acceptance criteria, held-out examples and an LLM-as-judge, and goes back to a human at the gate.](/diagrams/po-specs-agents-can-execute.svg)
+
 ## Why this is the same discipline I build with
 
 None of this is a training gimmick. It's how I run delivery with agents. In the `maestro` reference architecture, agents don't merge anything. They propose, and a human disposes, behind functional and technical gates. The spec is the contract. The evals are the sign-off. Branch protection enforces "humans decide".

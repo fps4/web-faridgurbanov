@@ -219,6 +219,32 @@ describe('the published practice content', () => {
     }
   });
 
+  it('gives every guideline, pattern and article a diagram in its own language', () => {
+    for (const locale of ['en', 'nl']) {
+      for (const section of ['guidelines', 'patterns', 'articles']) {
+        const dir = join(process.cwd(), 'content', locale, 'practice', section);
+        for (const f of readdirSync(dir).filter((x) => x.endsWith('.md'))) {
+          const where = `${locale}/${section}/${f}`;
+          const images = [...readFileSync(join(dir, f), 'utf8').matchAll(/^!\[(Diagram: [^\]]{40,})\]\(\/diagrams\/([a-z0-9-]+\.svg)\)$/gm)];
+          expect(images.length, `${where} has no diagram`).toBeGreaterThan(0);
+          for (const [, , file] of images) {
+            expect(existsSync(join(process.cwd(), 'public', 'diagrams', file)), `${where}: ${file} missing`).toBe(true);
+            expect(file.endsWith('-nl.svg'), `${where}: ${file} is for the other language`).toBe(locale === 'nl');
+          }
+        }
+      }
+    }
+  });
+
+  it('keeps every diagram a self-contained image that works in both themes', () => {
+    const dir = join(process.cwd(), 'public', 'diagrams');
+    for (const f of readdirSync(dir).filter((x) => x.endsWith('.svg'))) {
+      const svg = readFileSync(join(dir, f), 'utf8');
+      expect(svg, f).toMatch(/^<svg [^>]*viewBox="0 0 \d+ \d+"[^>]*role="img"/);
+      expect(svg, f).not.toMatch(/<script|<foreignObject|<image|href="http|@import|<style/i);
+    }
+  });
+
   it('tags every article with known topics and technologies', () => {
     for (const locale of ['en', 'nl']) {
       const dir = join(process.cwd(), 'content', locale, 'practice', 'articles');

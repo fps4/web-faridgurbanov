@@ -40,6 +40,8 @@ Bepaal de overgang per object, uit vijf vormen:
 | Splitsen | één object is twee workloads: een dashboard op het aggregaat, een zeldzame drill-down naar regelniveau |
 | In de bron houden | residency- of privacyregels houden het daar vast |
 
+![Diagram: één object gaat langs de randvoorwaarden (residency, persoonsgegevens, delta-ondersteuning), die een deel van de vijf vormen uitsluiten. De kosten worden alleen vergeleken tussen de vormen die overblijven, en het register legt de vorm vast, de regel die besliste, en wat de afgewezen vormen gekost zouden hebben. Tussen repliceren en federeren zijn de kosten twee rechte lijnen, repliceren vooral vast en federeren vooral variabel, en onder het omslagpunt is federeren goedkoper; in de uitgewerkte catalogus ligt het omslagpunt van een grote financiële feitentabel bij 61 queries per dag en van een kleine referentietabel bij ongeveer 11.000.](/diagrams/per-object-crossing-mode-nl.svg)
+
 Draai eerst de randvoorwaarden ([G-03](/nl/practice/guidelines/constraints-before-cost)), en
 vergelijk daarna de overgebleven vormen op kosten. Tussen repliceren en federeren zijn dat twee
 rechte lijnen, en die snijden elkaar:

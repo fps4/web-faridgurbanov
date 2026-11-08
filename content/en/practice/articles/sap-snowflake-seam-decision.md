@@ -23,6 +23,8 @@ Everything to the left of the integration layer belongs to SAP; everything to th
 - **Hybrid**: replicate the aggregate, federate the rare drill-down. A dashboard and a line-item lookup are two workloads, and one of them justifies a copy.
 - **Keep in SAP**: model and report inside SAP, with the results going to SAP Analytics Cloud.
 
+![Diagram: SAP on the left, Snowflake on the right, and the seam between them with the five ways across. Share reads an SAP-delivered data product in place over Delta Sharing; replicate lands a second copy through a Datasphere replication flow; federate sends each query back to the source through a remote table; hybrid replicates the aggregate and federates the rare drill-down; keep in SAP models and reports inside SAP, bound by residency and personal data, and nothing crosses.](/diagrams/sap-snowflake-seam-decision.svg)
+
 The diagram also runs in both directions. Snowflake serves as a source for Datasphere, as a remote table or inside a replication flow, which is how most real estates work.
 
 ## Constraints resolve first, cost decides last

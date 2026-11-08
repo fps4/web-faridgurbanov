@@ -41,6 +41,8 @@ Som de uitgangen per platform op, en geef elk een naam, een controle en een eige
 - assistenten, met de tenant-instellingen die bepalen waar prompts worden verwerkt;
 - agents, behandeld als shares, die alleen gedeclassificeerde producten bevatten.
 
+![Diagram: gecontroleerde data, met leestoegang als voordeur, verlaat het platform via zeven benoemde uitgangen: bestandsexports en notebook-uitvoer; shares, shortcuts en replica's; back-ups en disaster recovery; leveranciersondersteuning en logs; en, nieuw met AI, modellen en hun endpoints, assistenten via tenant-instellingen, en agents die als shares worden behandeld. Elke uitgang krijgt een benoemde controle en eigenaar, herzien als een feature data verplaatst; de uitgangen die niemand kan controleren, gaan in een register, elk geaccepteerd door een persoon met naam.](/diagrams/named-exits-nl.svg)
+
 De uitgangen die niemand kan controleren, gaan in het register, elk met een persoon met naam die
 haar accepteert. Elk verzoek wordt getoetst aan de uitgang en aan het asset. Zo mag dezelfde
 persoon, met dezelfde data en hetzelfde doel, wel lezen en toch een export geweigerd krijgen.

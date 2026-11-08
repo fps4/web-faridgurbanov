@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 490" role="img" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9a9aa3"/>
+    </marker>
+  </defs>
+  <g fill="#9a9aa3" font-size="10" text-anchor="middle" letter-spacing="0.8">
+    <text x="79" y="24">AFNEMERS</text>
+    <text x="306" y="24">RESOLVER</text>
+    <text x="657" y="24">GRAPH EN INDEX</text>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none">
+    <rect x="10" y="90" width="138" height="38" rx="8"/>
+    <rect x="10" y="144" width="138" height="38" rx="8"/>
+    <rect x="10" y="384" width="138" height="38" rx="8"/>
+    <rect x="192" y="90" width="228" height="38" rx="8"/>
+    <rect x="192" y="144" width="228" height="38" rx="8"/>
+    <rect x="192" y="330" width="228" height="38" rx="8"/>
+    <rect x="192" y="384" width="228" height="38" rx="8"/>
+    <rect x="566" y="144" width="182" height="92" rx="8"/>
+    <rect x="566" y="276" width="182" height="38" rx="8"/>
+    <rect x="566" y="330" width="182" height="38" rx="8"/>
+  </g>
+  <g stroke="#7b7b85" stroke-width="2" fill="none">
+    <rect x="176" y="40" width="260" height="396" rx="8"/>
+    <rect x="192" y="198" width="228" height="38" rx="8"/>
+    <rect x="192" y="276" width="228" height="38" rx="8"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" fill="none" marker-end="url(#ah)">
+    <line x1="148" y1="109" x2="172" y2="109"/>
+    <line x1="148" y1="163" x2="172" y2="163"/>
+    <line x1="240" y1="128" x2="240" y2="140"/>
+    <line x1="240" y1="182" x2="240" y2="194"/>
+    <line x1="240" y1="314" x2="240" y2="326"/>
+    <line x1="240" y1="368" x2="240" y2="380"/>
+    <line x1="440" y1="349" x2="562" y2="349"/>
+    <line x1="176" y1="403" x2="152" y2="403"/>
+    <polyline points="176,349 79,349 79,186"/>
+  </g>
+  <line x1="240" y1="236" x2="240" y2="272" stroke="#7b7b85" stroke-width="2" marker-end="url(#ah)"/>
+  <g stroke="#9a9aa3" stroke-width="1.25">
+    <line x1="356" y1="236" x2="356" y2="254" stroke-dasharray="4 3"/>
+    <line x1="347" y1="255" x2="365" y2="255" stroke-width="2"/>
+  </g>
+  <g stroke="#9a9aa3" stroke-width="1.25" marker-start="url(#ah)" marker-end="url(#ah)">
+    <line x1="440" y1="163" x2="562" y2="163"/>
+    <line x1="440" y1="217" x2="562" y2="217"/>
+    <line x1="440" y1="295" x2="562" y2="295"/>
+  </g>
+  <g fill="#7b7b85" font-size="12" text-anchor="middle">
+    <text x="79" y="106" font-weight="600">AI-assistent</text>
+    <text x="79" y="121" font-size="10.5">antwoordt uit passages</text>
+    <text x="79" y="160" font-weight="600">Agents</text>
+    <text x="79" y="175" font-size="10.5">roepen hem aan als tool</text>
+    <text x="79" y="400" font-weight="600">Record per verzoek</text>
+    <text x="79" y="415" font-size="10.5">zelf ook gevoelig</text>
+    <g text-anchor="start" font-size="10.5">
+      <text x="88" y="255">antwoord met</text>
+      <text x="88" y="269">bronvermelding</text>
+      <text x="88" y="283">of weigering</text>
+    </g>
+
+    <text x="306" y="62" font-size="13" font-weight="600">Resolver</text>
+    <text x="306" y="78" font-size="10.5">elk verzoek: zelfde stappen, zelfde volgorde</text>
+    <g text-anchor="start">
+      <text x="206" y="106" font-weight="600">1  Termen oplossen</text>
+      <text x="206" y="121" font-size="10.5">weiger een dubbelzinnige term</text>
+      <text x="206" y="160" font-weight="600">2  Kandidaten zoeken</text>
+      <text x="206" y="175" font-size="10.5">alleen identifiers</text>
+      <text x="206" y="214" font-weight="600">3  Bepalen</text>
+      <text x="206" y="229" font-size="10.5">per entiteit, per feit via lineage</text>
+      <text x="206" y="292" font-weight="600">4  Passages ophalen</text>
+      <text x="206" y="307" font-size="10.5">toegestane set in de query</text>
+      <text x="206" y="346" font-weight="600">5  Antwoorden of weigeren</text>
+      <text x="206" y="361" font-size="10.5">weigering noemt regel, eigenaar, datum</text>
+      <text x="206" y="400" font-weight="600">6  Vastleggen</text>
+      <text x="206" y="415" font-size="10.5">één record per verzoek</text>
+      <text x="250" y="258" font-size="11" font-weight="600">toegestane set</text>
+      <text x="372" y="259" font-size="10.5">geweigerd</text>
+    </g>
+
+    <g font-size="10.5">
+      <text x="501" y="157">identifiers</text>
+      <text x="501" y="211">lineage</text>
+      <text x="501" y="289">query +</text>
+      <text x="501" y="310">toegestane set</text>
+      <text x="501" y="343">bronvermelding</text>
+    </g>
+
+    <text x="657" y="186" font-weight="600">Graph</text>
+    <text x="657" y="202" font-size="10.5">entiteiten, feiten, lineage</text>
+    <text x="657" y="292" font-weight="600">Zoekindex</text>
+    <text x="657" y="307" font-size="10.5">passages</text>
+    <text x="657" y="346" font-weight="600">Documentopslag</text>
+    <text x="657" y="361" font-size="10.5">eigen slot, tweede linie</text>
+
+    <text x="380" y="462" font-size="11.5" font-style="italic">stap 3 bepaalt wat deze persoon mag zien, voordat stap 4 zoekt;</text>
+    <text x="380" y="478" font-size="11.5" font-style="italic">de query kan geen geweigerd item noemen, dus achteraf wordt er niets gefilterd</text>
+  </g>
+</svg>

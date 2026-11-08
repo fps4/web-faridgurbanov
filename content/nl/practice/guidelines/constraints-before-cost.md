@@ -35,6 +35,8 @@ beschikbaarheid van een share, semantiek, en economie op de zevende plaats. Voor
 Synapse-landschap: residency en clearance, T-SQL-oppervlak, streamingsemantiek, telemetrie onder de
 seconde, ML-levenscyclus, en ook daar economie als zevende.
 
+![Diagram: elke optie voor één object gaat in vaste volgorde langs de plaatsingsregels op de grens tussen SAP en Snowflake: residency en persoonsgegevens, delta-ondersteuning, versheid, latency op piekmomenten, beschikbaarheid van een share en semantiek. Elke regel die een optie schrapt, stuurt haar met de regel en de reden naar het register, en ook de uitgesloten opties krijgen een prijs. Economie, regel 7, vergelijkt de prijs alleen tussen de opties die nog over zijn, en daarna volgt een beoordeling van de volledige verdeling.](/diagrams/constraints-before-cost-nl.svg)
+
 **Randvoorwaarden geven redenen terug.** Elke regel die een optie schrapt, schrijft op waarom die
 afviel. Zo laat het register bij elke rij de regel zien die besliste.
 

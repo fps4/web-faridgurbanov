@@ -33,6 +33,8 @@ Maak lineage de eenheid van controle. Classificatie komt alleen binnen bij een b
 weigert een gedeclareerde classificatie op alles wat afgeleid is. Elk afgeleid asset erft elke
 controle van elke invoer, met de bron waar die vandaan komt, en houdt die.
 
+![Diagram: twee brontabellen declareren elk één controle, A en B. Een gejoinde tabel, een featureset, een aggregaat, en het model en endpoint die daaruit zijn gemaakt, erven via lineage allebei de controles, en de loader weigert een classificatie die op een afgeleid asset is gedeclareerd. Alleen een registerinvoer, met het asset, wat ze weghaalt, de grond, wie besliste, de vervaldatum en of ze stroomafwaarts geldt, haalt controle A weg bij het gedeclassificeerde product van het aggregaat; de engine toetst een regel als grond en legt een beoordeling vast met de datum waarop die vervalt.](/diagrams/lineage-inherited-control-nl.svg)
+
 Alleen een registerinvoer haalt een controle weg. De invoer noemt het asset, wat ze weghaalt, de
 grond, wie besliste, wanneer ze verloopt, en of ze ook geldt voor wat stroomafwaarts wordt afgeleid.
 Is de grond een regel (minstens vijfentwintig per groep, geen gecontroleerde parameter, geen vrije

@@ -72,6 +72,25 @@ at most one number, where it proves the point. The test checks the required head
 
 The Voice section of `AGENTS.md` applies; run `npm run voice -- --strict` on the file.
 
+## Diagram
+
+Every guideline, pattern and article carries at least one diagram of its central mechanism (a
+flow, an order, a structure, a comparison). Draw it as a hand-written SVG in `public/diagrams/`,
+named after the slug, matching the existing ones: `viewBox` 760 wide, `role="img"`, the system
+sans font, monochrome greys (`#9a9aa3` lines, `#7b7b85` text and the one or two boxes that are the
+point) on a transparent background, so the same file reads in light and dark mode. No scripts,
+external references or embedded fonts. Every label comes from the page's own text.
+
+Embed it on its own line, in a pattern's *Solution*, a guideline's *How I apply it*, or the
+article section that introduces the mechanism:
+
+```md
+![Diagram: what it shows, in one to three sentences.](/diagrams/<slug>.svg)
+```
+
+The Dutch page points at a Dutch-labelled copy, `/diagrams/<slug>-nl.svg`, with Dutch alt text.
+The test fails a page with no diagram, a missing file, or a Dutch page using the English one.
+
 ## Dutch
 
 The Dutch file carries the same `id`, `order`, `status`, `revised`, `supersedes` and `related` as

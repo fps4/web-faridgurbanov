@@ -27,6 +27,8 @@ Gecontroleerde technologie vrijgeven aan een buitenlandse persoon is onder de Am
 
 De vraag is dus nooit *welke regio*. De vraag is: voor deze rij, afgeleid uit deze bronnen, opgevraagd door deze identiteit vanaf deze plek, toestaan, weigeren, of alleen geaggregeerd, en waarom. Zes beslissingen beantwoorden haar, in volgorde.
 
+![Diagram: dezelfde rij fabriekstelemetrie, op vier manieren opgevraagd. De engineer in Veldhoven krijgt haar vanaf kantoor te zien omdat hij de autorisatiegroep heeft (D2); de engineer aan het bureau ernaast wordt geweigerd omdat de groep ontbreekt (D2); de eerste engineer wordt vanuit een hotel in een derde land geweigerd op plaats van toegang, in de identiteitslaag (D3); en zodra de rij aan de verkeerde tabel is gekoppeld, wordt iedereen geweigerd, omdat het afgeleide asset de strengste controle van zijn bronnen erft (D1). Elk antwoord gaat naar explain, dat vastlegt wie hem zag, van waar, onder welke autorisatie, vanwege welke regel en onder welke beslissing.](/diagrams/export-control-who-sees-what-nl.svg)
+
 ## D1 — De eenheid van controle is lineage
 
 Elke tabel classificeren, taggen, toegang op tag verlenen. Dat klopt op de dag dat het gebeurt, en vanaf dan begint het te verschuiven, omdat gecontroleerde tabellen *invoer* zijn. Ze worden gejoind, geaggregeerd, tot features verwerkt en er wordt op getraind, en de uitkomsten zijn nieuwe tabellen die niemand heeft geclassificeerd.

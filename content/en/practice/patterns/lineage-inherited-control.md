@@ -32,6 +32,8 @@ Make lineage the unit of control. Classification enters only at a source, and th
 a declared classification on anything derived. Every derived asset inherits every control of
 every input, with the source it came from, and keeps it.
 
+![Diagram: two source tables each declare one control, A and B. A joined table, a feature set, an aggregate, and the model and endpoint built from them all inherit both controls along lineage, and the loader refuses a classification declared on a derived asset. Only a ledger entry, naming the asset, what it removes, the grounds, who decided, the expiry and whether it covers downstream, removes control A from the aggregate's declassified product; the engine checks rule-based grounds and records an assessment with its lapse date.](/diagrams/lineage-inherited-control.svg)
+
 Only a ledger entry removes a control. The entry names the asset, what it removes, the grounds,
 who decided, when it expires, and whether it covers what is derived downstream. Where the grounds
 are a rule (at least twenty-five per group, no controlled parameter, no free text) the engine

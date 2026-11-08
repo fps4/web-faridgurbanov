@@ -57,6 +57,8 @@ Ik schrijf inmiddels een kort blok in elk teamoverstijgend ontwerp, en in elke c
 - **Wat het oploste**: het mechanisme. "We hebben afgestemd" is geen mechanisme. "Finance kon de aansluiting zelf draaien" wel.
 - **Wat het kostte**: de wrijving die het ontwerp veroorzaakte, en wie die draagt. Een ontwerp dat gratis lijkt, is niet goed geanalyseerd.
 
+![Diagram: de vier soorten mensen die een ontwerp kunnen weigeren (de teams die moeten veranderen, de afdeling die de uitkomst moet vertrouwen, het team wiens scope krimpt, en de budgethouder achter de bestaande leverancier) worden benoemd in de eerste alinea van een blok met de kop Wie ja moest zeggen. Dat blok staat in elk teamoverstijgend ontwerp en elke casus, en de vier alinea's zijn stakeholders, de onenigheid, wat het oploste en wat het kostte.](/diagrams/who-had-to-say-yes-nl.svg)
+
 Het kost ongeveer twintig minuten, en het verandert het gesprek, omdat het het lastigste deel van het werk uit het hoofd van één architect haalt en in een document zet waar anderen het mee oneens kunnen zijn.
 
 → De casussen op deze site dragen dat blok elk: [Cloud Gateway](/nl/work/cloud-gateway), [de SAP-event-backbone](/nl/work/sap-event-backbone), [SAP Finance → Snowflake](/nl/work/sap-snowflake) en [het Cloudera-dataproductplatform](/nl/work/cloudera-kafka). De werkwijze erachter staat uitgeschreven onder [werken door de organisatie heen](/nl/expertise/stakeholder-alignment).

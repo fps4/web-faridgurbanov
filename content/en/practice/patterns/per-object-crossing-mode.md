@@ -40,6 +40,8 @@ Decide the crossing per object, from five modes:
 | Split | one object is two workloads: a dashboard on the aggregate, a rare line-item drill-down |
 | Keep at source | residency or personal-data rules bind it there |
 
+![Diagram: one object goes through the constraints (residency, personal data, delta capability), which rule some of the five modes out. Cost is compared only among the modes that survive, and the register records the mode, the rule that decided it, and what the rejected modes would have cost. Between replicate and federate the cost is two straight lines, replication mostly fixed and federation mostly variable, and below the crossover federating is cheaper; on the worked catalogue a large finance fact table crosses over at 61 queries a day and a small reference table at about 11,000.](/diagrams/per-object-crossing-mode.svg)
+
 Run the constraints first ([G-03](/en/practice/guidelines/constraints-before-cost)), then compare
 the surviving modes on cost. Between replication and federation that comparison is two straight
 lines, and they meet:

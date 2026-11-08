@@ -59,6 +59,8 @@ those can be finished.
 **Migrate by benefit.** Move the team with the worst current setup first. Their account of the
 migration carries further than any review board.
 
+![Diagram: four groups can refuse a cross-team design: the teams who have to change, the function that has to trust the output, the team whose scope gets smaller, and the budget holder behind the system being replaced. Each of them can stay put, through a migration that slips a quarter, an exception request or by running what already works, or say yes once that costs less than staying put. Five moves in the design lower the cost of yes: say the unwelcome part first, make the platform cheaper, build the check the sceptic trusts, take the boring half, and migrate by benefit.](/diagrams/adoption-by-design.svg)
+
 ## Trade-offs
 
 - **It costs the architect time** that never shows on a diagram: conversations, a reconciliation

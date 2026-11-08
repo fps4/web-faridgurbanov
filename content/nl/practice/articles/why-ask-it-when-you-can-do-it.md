@@ -37,6 +37,8 @@ De organisaties die dit goed doen, doen iets moeilijkers en waardevollers dan el
 
 De maatstaf verschuift mee. Succes is niet langer het aantal gesloten tickets, maar hoeveel businessteams zelfstandig kunnen leveren zonder chaos te veroorzaken.
 
+![Diagram: twee structuren naast elkaar. In de fabriek wacht de business weken terwijl een verzoek via een ticketwachtrij, die IT-capaciteit rantsoeneert, naar een IT-fabriek met repetitief bouwwerk gaat, en het resultaat komt weken later terug; een gestippelde route toont shadow IT als de omweg, en de maatstaf is het aantal gesloten tickets. In het platform bouwen operations, marketing en andere teams op IT als platform, dat standaardroutes biedt, gedeelde diensten voor identiteit, governance en kosten, gecureerde AI- en low-codetooling, en interne adviseurs voor integratie en datacontracten; de maatstaf is hoeveel teams zelfstandig leveren.](/diagrams/why-ask-it-when-you-can-do-it-nl.svg)
+
 Die tweede helft telt net zo zwaar als de eerste. "Laat iedereen bouwen" zonder standaardroutes is shadow IT met directiesteun, en de rekening komt achttien maanden later als een landschap dat niemand kan beveiligen, beprijzen of uitfaseren. Het werk zit in de veilige weg de makkelijke weg maken, zodat mensen governance volgen omdat het de kortste route is.
 
 Ik heb dit aan de infrastructuurkant zien gebeuren. [Ruim twintig API-gateways samenvoegen tot één federatief platform](/nl/work/cloud-gateway) werkte omdat onboarding een gereviewde Terraform-wijziging van minuten werd, waar het eerst een ticket van dagen was. Geen enkel team werd erheen gestuurd. Het platform was simpelweg goedkoper dan het alternatief, en het beveiligingsmodel kwam er gratis bij.
