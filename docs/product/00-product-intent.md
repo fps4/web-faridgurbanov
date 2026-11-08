@@ -1,7 +1,7 @@
 ---
 title: "Product intent — faridgurbanov.com"
 status: draft
-last_updated: 2026-09-17
+last_updated: 2026-11-08
 owners: [architect]
 related:
   - docs/overview.md
@@ -75,6 +75,7 @@ is a *separate future product*, not this one.
 | FS-0007 | Contact & privacy/GDPR | M0 |
 | FS-0008 | Training section & EU AI Act page | M0 stub → M1 full |
 | FS-0009 | References | ships dark; on with the first file |
+| FS-0013 | Practice: guidelines and articles (Writing renamed) | M1 |
 
 ## Cross-cutting constraints
 

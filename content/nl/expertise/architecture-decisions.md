@@ -20,8 +20,8 @@ Een diagram heeft een korte houdbaarheid. De redenering erachter zou een lange m
 
 ## Aangetoond door
 
-- [Bepalen wat er over de SAP↔Snowflake-grens gaat](/nl/writing/sap-snowflake-seam-decision): een decision record in het openbaar. Wat oversteekt, wat blijft, en de regels die dat bepalen.
-- [Bepalen waar een Synapse-landschap heen gaat](/nl/writing/synapse-platform-decision): dezelfde discipline een laag hoger, met een einddatum eraan. Tien geordende regels over Fabric, Databricks en Snowflake, en een platform dat het best geprijsd was op de workloads die het niet mocht hebben.
+- [Bepalen wat er over de SAP↔Snowflake-grens gaat](/nl/practice/articles/sap-snowflake-seam-decision): een decision record in het openbaar. Wat oversteekt, wat blijft, en de regels die dat bepalen.
+- [Bepalen waar een Synapse-landschap heen gaat](/nl/practice/articles/synapse-platform-decision): dezelfde discipline een laag hoger, met een einddatum eraan. Tien geordende regels over Fabric, Databricks en Snowflake, en een platform dat het best geprijsd was op de workloads die het niet mocht hebben.
 - [Cloud Gateway](/nl/work/cloud-gateway): één standaard over twee clouds, met de blijvende prijs van die belofte vooraf benoemd.
 - [SAP S/4HANA Finance → Snowflake](/nl/work/sap-snowflake): een contract op het punt waar SAP overdraagt aan het lakehouse, en één regio gebouwd als referentiearchitectuur voor de rest.
 - [Portfolio](/nl/portfolio): `sap-bdc-snowflake-blueprint` maakt van dezelfde overdrachtsvraag negen geordende regels en een kostenmodel dat je kunt draaien.

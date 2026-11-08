@@ -96,7 +96,7 @@ The durable artifact is the decision procedure, and certainly not the capability
 
 Intent written down first, trade-offs recorded as decision records, and the claim demonstrated rather than asserted. Disagreement takes the form of a pull request against `config/policy.yaml` or `config/cost_model.yaml`, after which the plan re-renders with the consequence attached.
 
-It is the same loop as the [SAP↔Snowflake seam decision](/en/writing/sap-snowflake-seam-decision), applied one layer up. There the question was which objects cross a boundary; here it is which platform carries a workload. Both put the design surface where the decision is, and both make it explicit enough to be argued with.
+It is the same loop as the [SAP↔Snowflake seam decision](/en/practice/articles/sap-snowflake-seam-decision), applied one layer up. There the question was which objects cross a boundary; here it is which platform carries a workload. Both put the design surface where the decision is, and both make it explicit enough to be argued with.
 
 A reference architecture becomes useful at the moment a team can disagree with it precisely.
 

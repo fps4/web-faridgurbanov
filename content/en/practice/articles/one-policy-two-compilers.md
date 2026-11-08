@@ -7,7 +7,7 @@ order: 1
 
 # One policy, two compilers
 
-In [the previous piece](/en/writing/export-control-who-sees-what) I argued six decisions for a lakehouse under export control. This one is about what happens after the decisions. The policy has to exist on Databricks Unity Catalog *and* on Microsoft Fabric, identically, for years, while both platforms ship every month. Nobody keeps two admin consoles in sync by hand. So in [`export-controlled-lakehouse`](https://github.com/fps4/export-controlled-lakehouse) the policy is data, an engine evaluates it, and **two compilers** emit what each platform can enforce and, in the same output, what it cannot.
+In [the previous piece](/en/practice/articles/export-control-who-sees-what) I argued six decisions for a lakehouse under export control. This one is about what happens after the decisions. The policy has to exist on Databricks Unity Catalog *and* on Microsoft Fabric, identically, for years, while both platforms ship every month. Nobody keeps two admin consoles in sync by hand. So in [`export-controlled-lakehouse`](https://github.com/fps4/export-controlled-lakehouse) the policy is data, an engine evaluates it, and **two compilers** emit what each platform can enforce and, in the same output, what it cannot.
 
 The gap between the two platforms is the interesting part, and it only became visible because something generated both sides.
 
@@ -142,6 +142,6 @@ What would make it real is short and specific. A Databricks workspace to apply t
 
 Because a policy that lives in two consoles is two policies. The moment it is data with two compilers behind it, disagreement becomes a pull request against `config/`. Change a regime's allowed geographies, a principal's groups, a ledger entry's expiry, and both platforms' artefacts re-render with the consequence attached, and CI refuses the commit if the committed artefacts no longer match the code.
 
-That is the same loop as the [SAP↔Snowflake seam](/en/writing/sap-snowflake-seam-decision) and the [Synapse estate](/en/writing/synapse-platform-decision), one layer further in. There the decision was which platform or which mode. Here it is what the platform is told, in its own terms, and whether it can be told at all.
+That is the same loop as the [SAP↔Snowflake seam](/en/practice/articles/sap-snowflake-seam-decision) and the [Synapse estate](/en/practice/articles/synapse-platform-decision), one layer further in. There the decision was which platform or which mode. Here it is what the platform is told, in its own terms, and whether it can be told at all.
 
 *The repo is public and MIT-licensed: [github.com/fps4/export-controlled-lakehouse](https://github.com/fps4/export-controlled-lakehouse). `make demo` writes everything quoted above in a few seconds; start with `build/unity_catalog/20_policies.sql` and `build/fabric/onelake_security_roles.json` side by side. That pair is where the two platforms meet.*

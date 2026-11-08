@@ -96,7 +96,7 @@ Het duurzame artefact is de beslisprocedure, en zeker niet de capability matrix.
 
 Eerst de intentie opschrijven, afwegingen vastleggen als decision records, en de claim aantonen in plaats van beweren. Het oneens zijn krijgt hier de vorm van een pull request tegen `config/policy.yaml` of `config/cost_model.yaml`, waarna het plan opnieuw rendert met de consequentie eraan vast.
 
-Het is dezelfde werkwijze als bij [de SAP↔Snowflake-grens](/nl/writing/sap-snowflake-seam-decision), een laag hoger toegepast. Daar was de vraag welke objecten een grens oversteken; hier welk platform een workload draagt. Beide leggen het ontwerpvlak daar waar de beslissing zit, en maken die expliciet genoeg om over te discussiëren.
+Het is dezelfde werkwijze als bij [de SAP↔Snowflake-grens](/nl/practice/articles/sap-snowflake-seam-decision), een laag hoger toegepast. Daar was de vraag welke objecten een grens oversteken; hier welk platform een workload draagt. Beide leggen het ontwerpvlak daar waar de beslissing zit, en maken die expliciet genoeg om over te discussiëren.
 
 Een referentiearchitectuur wordt bruikbaar op het moment dat een team het er precies mee oneens kan zijn.
 
