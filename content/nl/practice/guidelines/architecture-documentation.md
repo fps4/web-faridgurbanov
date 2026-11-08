@@ -8,8 +8,6 @@ revised: 2026-11-08
 related: []
 ---
 
-<!-- NEEDS HUMAN REVIEW: machine-drafted Dutch of the EN guideline (FS-0013). Remove this line once Farid has read it. -->
-
 ## De regel
 
 Houd één dun, levend high-level design bij dat de vorm van het systeem laat
