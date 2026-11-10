@@ -43,7 +43,9 @@ See FS-0012. In short:
 
 - [x] `LEARNING_PUBLISHED` and `learningVisible()` in `lib/site.ts`; Learning first in the header.
 - [x] `lib/learning.ts` (courses, release list, paths, copy) and `lib/courses/confluent-crash-course.ts`.
-- [x] `/learning`, `/learning/[series]`, `/learning/[series]/[episode]`; self-hosted episode video.
+- [x] `/learning`, `/learning/[series]`, `/learning/[series]/[episode]`; YouTube video loaded on click.
+- [x] Privacy paragraph on the YouTube player, shown once a video is live (EN and NL).
 - [x] Sitemap entries once published; `lib/learning.test.ts`.
-- [ ] Record and encode the episodes, with captions; host the files; switch them on.
+- [ ] Record the episodes over the decks in the wiki, upload to YouTube, add the ids and posters, switch them on.
+- [ ] Bump the privacy page's *Last updated* when the first video goes live.
 - [ ] Publish: set `LEARNING_PUBLISHED` once the first episodes are switched on.

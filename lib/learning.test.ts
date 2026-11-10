@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   RELEASED,
+  courseVideosLive,
   learningPath,
   learningSitemapPaths,
   pagedEpisodes,
@@ -30,11 +31,12 @@ describe('the release list', () => {
     }
   });
 
-  it('switches an episode on only with its video, captions and "In this episode" lines', () => {
+  it('switches an episode on only with its YouTube video and "In this episode" lines', () => {
     for (const s of series) {
       for (const e of releasedEpisodes(s)) {
         expect(e.video, `${s.slug} ${e.number} video`).toBeDefined();
-        expect(e.video!.captions, `${s.slug} ${e.number} captions`).toMatch(/\.vtt$/);
+        expect(e.video!.youtubeId, `${s.slug} ${e.number} youtube id`).toMatch(/^[A-Za-z0-9_-]{11}$/);
+        if (e.video!.poster) expect(e.video!.poster, `${s.slug} ${e.number} poster`).toMatch(/^\/(?!\/)/);
         expect(e.promise?.length ?? 0, `${s.slug} ${e.number} promise`).toBeGreaterThanOrEqual(2);
       }
     }
@@ -97,6 +99,12 @@ describe('the gate', () => {
   it('puts Learning first in the header only while the section shows', () => {
     expect(headerNav(true)[0]).toBe(learningNav);
     expect(headerNav(false)).not.toContain(learningNav);
+  });
+
+  it('names the YouTube player on the privacy page only once a video is live', () => {
+    expect(courseVideosLive(false)).toBe(false);
+    const anyLive = series.some((s) => releasedEpisodes(s).some((e) => e.video));
+    expect(courseVideosLive(true)).toBe(anyLive);
   });
 
   it('lists nothing in the sitemap until the section is published', () => {

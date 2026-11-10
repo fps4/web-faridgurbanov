@@ -1,5 +1,6 @@
 import type { Locale } from '@/lib/i18n';
 import { confluentCrashCourse } from '@/lib/courses/confluent-crash-course';
+import { learningVisible } from '@/lib/site';
 
 // The Learning section (FS-0012): free video courses, each a list of short episodes, and which
 // episodes are switched on. A course and an episode show on the site only once the episode is
@@ -12,16 +13,18 @@ import { confluentCrashCourse } from '@/lib/courses/confluent-crash-course';
  */
 export const LEARNING_SECTION = 'learning';
 
-/** A self-hosted episode video, as the home intro video (no third-party player, FS-0007). */
+/**
+ * An episode's video on YouTube. The page shows the poster from our own files and loads the
+ * youtube-nocookie player only when the visitor presses play, so nothing reaches Google before that
+ * click; the privacy page says so once a video is live (FS-0007, FS-0012).
+ */
 export interface EpisodeVideo {
-  /** Path under public/ or an https URL. H.264/AAC in an MP4 container. */
-  src: string;
-  /** Poster frame shown before playback. */
-  poster: string;
-  /** WebVTT caption track. Required: an uncaptioned episode excludes people. */
-  captions: string;
+  /** The 11-character YouTube video id. */
+  youtubeId: string;
   /** Running time as shown, e.g. '8:40'. */
   duration: string;
+  /** A still under public/, e.g. '/media/learning/confluent-1.jpg'. Without it a plain frame shows. */
+  poster?: string;
 }
 
 export interface Episode {
@@ -38,7 +41,7 @@ export interface Episode {
   questions?: string[];
   /** The module folder in the course repo that the episode explains, e.g. '08-linking-and-contracts'. */
   repoModule?: string;
-  /** Required to switch the episode on. */
+  /** The YouTube video. Required to switch the episode on. */
   video?: EpisodeVideo;
 }
 
@@ -122,6 +125,11 @@ export function seriesHasPage(s: Series, preview: boolean = previewing()): boole
   return pagedEpisodes(s, preview).length > 0;
 }
 
+/** Whether a course video is live on the site, so the privacy page must name the YouTube player. */
+export function courseVideosLive(visible: boolean = learningVisible()): boolean {
+  return visible && series.some((s) => releasedEpisodes(s).some((e) => e.video));
+}
+
 /** Paths under the locale segment, for hrefFor(). */
 export const learningPath = {
   index: '/learning',
@@ -159,6 +167,7 @@ interface LearningCopy {
   lab: string;
   repoCta: string;
   videoComing: string;
+  play: (title: string) => string;
   duration: string;
   previous: string;
   next: string;
@@ -182,6 +191,7 @@ const en: LearningCopy = {
   lab: 'Lab',
   repoCta: 'Notes and labs on GitHub',
   videoComing: 'The video for this episode is not out yet.',
+  play: (title) => `Play the video: ${title}`,
   duration: 'Running time',
   previous: 'Previous',
   next: 'Next',

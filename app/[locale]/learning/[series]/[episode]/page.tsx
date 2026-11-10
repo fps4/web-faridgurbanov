@@ -93,7 +93,7 @@ export default async function EpisodePage({ params }: { params: Params }) {
             </p>
           ) : null}
         </div>
-        <EpisodeVideo video={episode.video} title={episode.title} missing={l.videoComing} />
+        <EpisodeVideo video={episode.video} title={episode.title} missing={l.videoComing} playLabel={l.play(episode.title)} />
       </div>
 
       <div className="mt-14 grid gap-12 lg:grid-cols-2">

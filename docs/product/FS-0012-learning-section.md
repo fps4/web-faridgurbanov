@@ -13,7 +13,7 @@ maestro:
   summary: |
     Free video courses under one section, Learning: a landing page with one card per course, a page
     per course and a page per episode. The Confluent crash course goes first: one episode per module
-    of its public repo, each a self-hosted video with what you leave with, the questions to ask, and
+    of its public repo, each a YouTube video loaded only on click, with what you leave with, the questions to ask, and
     links to the module's notes and lab. The owner switches episodes on one by one as their videos
     are published; the rest of the plan shows as coming. AI Product Design and AI Product Delivery
     show as coming cards and join the section later.
@@ -45,9 +45,11 @@ written by hand per episode and without showing what is not recorded yet.
 4. **Episode page** (`/learning/<course>/<episode>`), one template for every episode: the number,
    title and line, the video, the *In this episode* lines, the *Questions to ask*, links to the
    module's notes and lab in the repo, and previous / next across the course's episodes.
-5. **The video is self-hosted** (`<video>` with a poster and a WebVTT caption track), as the home
-   intro video. No YouTube or Vimeo player: a third-party frame would add a processor and its cookies
-   and break the privacy page's "nothing is collected" (FS-0007).
+5. **The video is on YouTube, loaded on click.** The page shows a poster from the site's own files
+   (or a plain frame) and a play button, and puts the youtube-nocookie player in the page only when
+   the visitor presses play, the way Confluent's own course pages do (theirs load the thumbnail from
+   YouTube; ours doesn't). Nothing reaches Google before the click. Once a video is live, the
+   privacy page gains a paragraph naming Google as a third party for viewers who press play (FS-0007).
 6. **The courses and their plans** in `lib/learning.ts`; a course with episodes keeps them in
    `lib/courses/<course>.ts`. A course whose episodes are not planned yet carries only its size
    ("6 modules") for its card.
@@ -65,7 +67,8 @@ written by hand per episode and without showing what is not recorded yet.
   course. A course with several episodes per module (AI Product Design) adds that level when it joins.
 - The AI Product Design decks, presenter view and per-episode sources (draft PR #99), which rebase
   onto this section.
-- Where the video files are hosted. The `video.src` field takes a path under `public/` or an https URL.
+- The decks the episodes are recorded over. They stay in the owner's private wiki and are never
+  part of this repo or the site.
 
 ## Acceptance criteria (EARS)
 
@@ -84,12 +87,13 @@ written by hand per episode and without showing what is not recorded yet.
 - WHEN the owner adds an episode's number to `RELEASED`, THE episode page, its course page and the
   sitemap entries SHALL appear without any other change.
 - THE tests SHALL fail WHEN `RELEASED` names a course or an episode the plan does not have, names an
-  episode twice, or switches on an episode without a video, a `.vtt` caption track or its *In this
-  episode* lines.
+  episode twice, or switches on an episode without a YouTube id or its *In this episode* lines.
 - WHILE the site runs under `next dev`, THE course page SHALL link every planned episode AND each
   unreleased episode page SHALL say it is a preview.
-- THE episode video SHALL be a self-hosted `<video>` with controls, no autoplay, a poster and a
-  caption track; THE page SHALL NOT embed a third-party player.
+- THE episode page SHALL make no request to YouTube or Google before the visitor presses play;
+  WHEN the visitor presses play, THE page SHALL load the youtube-nocookie player for that video.
+- WHILE a switched-on episode with a video renders, THE privacy page SHALL include the paragraph on
+  the YouTube player; OTHERWISE it SHALL NOT.
 - WHEN a Dutch route is requested, THE page SHALL show the English text with the fallback notice.
 
 ## Definition of done
