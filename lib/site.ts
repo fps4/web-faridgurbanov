@@ -95,6 +95,19 @@ export const HOME_VARIANT: 'credibility' | 'training' = 'credibility';
  */
 export const TRAINING_PUBLISHED = false;
 
+/**
+ * Whether the Learning section (FS-0012) is published. WHILE this is `false`, a production build
+ * hides the Learning nav item and every page under `/learning` renders as a 404, so the first
+ * episodes can be checked privately before they go out. `next dev` always shows the section. Which
+ * episodes show once it is published is `RELEASED` in lib/learning.ts.
+ */
+export const LEARNING_PUBLISHED = false;
+
+/** True when the Learning section renders: published, or running under `next dev`. */
+export function learningVisible(env: string | undefined = process.env.NODE_ENV): boolean {
+  return LEARNING_PUBLISHED || env === 'development';
+}
+
 export type Maturity = 'working' | 'reference';
 
 /** The areas the build-proof groups under (FS-0005). */
