@@ -112,7 +112,11 @@ function SeriesCard({ locale, series: s }: { locale: Locale; series: Series }) {
         {open ? null : <span className="shrink-0 text-xs uppercase tracking-wide text-muted-foreground">{l.coming}</span>}
       </div>
       <p className="mt-4 text-muted-foreground">{s.line}</p>
-      {size ? <p className="mt-auto pt-6 text-xs uppercase tracking-wide text-muted-foreground">{size}</p> : null}
+      {size || s.level ? (
+        <p className="mt-auto pt-6 text-xs uppercase tracking-wide text-muted-foreground">
+          {[s.level, size].filter(Boolean).join(' · ')}
+        </p>
+      ) : null}
       {linked ? <p className="mt-4 text-sm font-medium">{l.openSeries} →</p> : null}
     </div>
   );

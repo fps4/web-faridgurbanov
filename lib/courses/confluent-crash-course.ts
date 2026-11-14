@@ -1,13 +1,13 @@
 import type { Series } from '@/lib/learning';
 
 // The Confluent crash course (FS-0012): one episode per module of the public repo, plus an intro.
-// The episodes explain why the labs are built the way they are; the scripts are in the wiki
-// (publishing/confluent-crash-course/episodes/). Episode numbers follow the repo's suggested order,
-// so they differ from the repo's module folder numbers (episode 1 is module 08).
+// The episodes give the reasoning and the lab follows each one step by step; the scripts are in the
+// wiki (publishing/confluent-crash-course/episodes/). Episode n is module 0n in the repo.
 export const confluentCrashCourse: Series = {
   slug: 'confluent-crash-course',
   title: 'Confluent crash course',
   line: 'Confluent Platform in your own data centres and Confluent Cloud on Azure: linking, private networking, governance, encryption and access, with a lab for every module.',
+  level: 'Advanced',
   repo: 'https://github.com/fps4/confluent-crash-course',
   episodes: [
     {
@@ -21,6 +21,7 @@ export const confluentCrashCourse: Series = {
         poster: '/media/learning/confluent-0.jpg',
         uploaded: '2026-11-13',
       },
+      repoLinks: [{ label: 'Set up the labs', path: '00-lab-setup/README.md' }],
       promise: [
         'The situation: Kafka that runs operations in your own data centres, and data and AI teams in Azure who want the same events.',
         'Who the course is for, and what you need before you start.',
@@ -32,7 +33,8 @@ export const confluentCrashCourse: Series = {
       slug: 'getting-data-out',
       title: 'Getting data out of the data centre',
       line: 'One outbound link to Confluent Cloud, schemas that keep their IDs, and what broker validation checks.',
-      repoModule: '08-linking-and-contracts',
+      repoModule: '01-linking-and-contracts',
+      repoLinks: [{ label: 'Notes: data contracts', path: '01-linking-and-contracts/notes-data-contracts.md' }],
       promise: [
         'How one outbound connection carries a full copy of a topic to Confluent Cloud.',
         'Why that copy is useless if the schemas don’t travel with it.',
@@ -51,7 +53,7 @@ export const confluentCrashCourse: Series = {
       slug: 'copies-and-failover',
       title: 'Copies, failover and the way back',
       line: 'Byte copies and record copies, what an analytics copy promises, and why failback is decided on day one.',
-      repoModule: '01-hybrid-multicloud',
+      repoModule: '02-hybrid-multicloud',
       promise: [
         'How the three tools for copying Kafka data differ, and how to pick one.',
         'Why a copy for analytics and a copy for disaster recovery make different promises.',
@@ -69,7 +71,7 @@ export const confluentCrashCourse: Series = {
       slug: 'kafka-on-azure-networks',
       title: 'Kafka doesn’t fit through a load balancer',
       line: 'Why Kafka networking is different, Private Link on Azure, and the DNS that makes it work.',
-      repoModule: '02-cloud-networking-azure',
+      repoModule: '03-cloud-networking-azure',
       promise: [
         'Why a Kafka client must reach every broker, so a load balancer or an API gateway can’t sit in the path.',
         'Which private networking options you have on Azure, and which one fits a data centre.',
@@ -87,35 +89,37 @@ export const confluentCrashCourse: Series = {
       slug: 'stream-governance',
       title: 'Governance for teams that don’t know each other',
       line: 'No schema, no topic; Git as the source of truth; a catalog the cloud teams use.',
-      repoModule: '03-stream-governance',
+      repoModule: '04-stream-governance',
     },
     {
       number: '5',
       slug: 'field-level-encryption',
       title: 'Encrypting a field nobody else should read',
       line: 'Minimise first, then encrypt: who holds the key, and what Databricks sees.',
-      repoModule: '04-csfle',
+      repoModule: '05-csfle',
     },
     {
       number: '6',
       slug: 'security-and-access',
       title: 'Who is allowed to read this',
       line: 'Entra ID in place of shared API keys, one role per access pattern, quotas and audit.',
-      repoModule: '05-cloud-security',
+      repoModule: '06-cloud-security',
+      repoLinks: [{ label: 'Notes: the Confluent Platform side', path: '06-cloud-security/notes-cp-security.md' }],
     },
     {
       number: '7',
       slug: 'production-platform',
       title: 'From “it works” to “it runs a business”',
       line: 'The accidental shared service, clusters split by SLA, lag in seconds, and chargeback.',
-      repoModule: '06-production-systems',
+      repoModule: '07-production-systems',
     },
     {
       number: '8',
       slug: 'kafka-internals',
       title: 'One layer down',
       line: 'The Kafka internals behind these decisions: acks, in-sync replicas, and the third site.',
-      repoModule: '07-kafka-internals',
+      repoModule: '08-kafka-internals',
+      repoLinks: [{ label: 'Notes: clients and storage', path: '08-kafka-internals/notes-clients-and-storage.md' }],
     },
   ],
 };

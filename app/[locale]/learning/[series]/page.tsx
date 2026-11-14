@@ -24,7 +24,7 @@ import { locales, type Locale } from '@/lib/i18n';
 
 // A course page (FS-0012): its words from content/<locale>/learning/<course>.md, then every planned
 // episode in order. A switched-on episode links to its page; the others are muted and marked
-// Coming. Under `next dev` every planned episode links to its preview. Only a course with a page
+// Coming, with a link to their lab when the repo already has it. Under `next dev` every planned episode links to its preview. Only a course with a page
 // (lib/learning.ts) is generated; WHILE the section is unpublished a production build renders a 404.
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -72,7 +72,7 @@ export default async function SeriesPage({ params }: { params: Params }) {
         {s.repo ? (
           <Button asChild variant="outline" className="mt-8">
             <a href={s.repo} target="_blank" rel="noreferrer">
-              {l.repoCta} ↗
+              {l.repoCta} <span aria-hidden="true">↗</span>
             </a>
           </Button>
         ) : null}
@@ -83,6 +83,8 @@ export default async function SeriesPage({ params }: { params: Params }) {
         <ol className="mt-6 divide-y divide-border border-y border-border">
           {s.episodes.map((episode) => {
             const released = isReleased(s, episode);
+            const isLinked = linked.has(episode.number);
+            const lab = !isLinked && s.repo && episode.repoModule ? `${s.repo}/blob/main/${episode.repoModule}/lab.md` : undefined;
             const row = (
               <div className="grid gap-x-6 gap-y-1 py-5 sm:grid-cols-[6rem_minmax(0,1fr)_auto]">
                 <span className="text-sm tabular-nums text-muted-foreground">{l.episodeLabel(episode.number)}</span>
@@ -91,15 +93,20 @@ export default async function SeriesPage({ params }: { params: Params }) {
                   <span className="mt-1 block text-sm text-muted-foreground">{episode.line}</span>
                 </span>
                 {released ? null : (
-                  <span className="text-xs uppercase tracking-wide text-muted-foreground sm:pt-1.5">
-                    {previewing() ? l.previewTag : l.coming}
+                  <span className="flex gap-4 text-xs uppercase tracking-wide text-muted-foreground sm:flex-col sm:items-end sm:gap-1 sm:pt-1.5">
+                    <span>{previewing() ? l.previewTag : l.coming}</span>
+                    {lab ? (
+                      <a href={lab} target="_blank" rel="noreferrer" className="font-medium text-foreground underline-offset-4 hover:underline">
+                        {l.labReady} <span aria-hidden="true" className="text-muted-foreground">↗</span>
+                      </a>
+                    ) : null}
                   </span>
                 )}
               </div>
             );
             return (
               <li key={episode.number}>
-                {linked.has(episode.number) ? (
+                {isLinked ? (
                   <Link href={hrefFor(locale, learningPath.episode(s, episode))} className="block transition-colors hover:bg-muted/50">
                     {row}
                   </Link>

@@ -41,8 +41,11 @@ export interface Episode {
   promise?: string[];
   /** The questions to ask the team that runs the platform, from the episode's close. */
   questions?: string[];
-  /** The module folder in the course repo that the episode explains, e.g. '08-linking-and-contracts'. */
+  /** The module folder in the course repo that the episode explains, e.g. '01-linking-and-contracts'. */
   repoModule?: string;
+  /** More files in the course repo for the episode's "In the repo" list, next to the module's notes
+   *  and lab: a second notes file, or the lab setup for the intro. Paths from the repo root. */
+  repoLinks?: { label: string; path: string }[];
   /** The YouTube video. Required to switch the episode on. */
   video?: EpisodeVideo;
 }
@@ -55,6 +58,8 @@ export interface Series {
   line: string;
   /** The course's size for its card while no episode is listed, e.g. '6 modules'. */
   size?: string;
+  /** Who the course is pitched at, on its card, e.g. 'Advanced'. */
+  level?: string;
   /** The public repo with the notes and labs, when the course has one. */
   repo?: string;
   episodes: Episode[];
@@ -222,6 +227,7 @@ interface LearningCopy {
   inTheRepo: string;
   notes: string;
   lab: string;
+  labReady: string;
   repoCta: string;
   videoComing: string;
   play: (title: string) => string;
@@ -248,6 +254,7 @@ const en: LearningCopy = {
   inTheRepo: 'In the repo',
   notes: 'Notes',
   lab: 'Lab',
+  labReady: 'Lab ready',
   repoCta: 'Notes and labs on GitHub',
   videoComing: 'The video for this episode is not out yet.',
   play: (title) => `Play the video: ${title}`,

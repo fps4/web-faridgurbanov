@@ -114,6 +114,17 @@ describe('the plan', () => {
   it('links the repo only over https', () => {
     for (const s of series) if (s.repo) expect(s.repo).toMatch(/^https:\/\//);
   });
+
+  it('gives a course with a repo one module per episode, numbered like the episode', () => {
+    for (const s of series.filter((c) => c.repo)) {
+      for (const e of s.episodes.filter((x) => x.number !== '0')) {
+        expect(e.repoModule, `${s.slug} episode ${e.number}`).toMatch(new RegExp(`^${e.number.padStart(2, '0')}-[a-z-]+$`));
+      }
+      for (const e of s.episodes) {
+        for (const r of e.repoLinks ?? []) expect(r.path, `${s.slug} episode ${e.number}`).toMatch(/^[\w.-]+(\/[\w.-]+)*\.md$/);
+      }
+    }
+  });
 });
 
 const course: Series = {

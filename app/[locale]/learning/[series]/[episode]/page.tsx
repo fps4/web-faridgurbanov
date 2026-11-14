@@ -73,6 +73,10 @@ export default async function EpisodePage({ params }: { params: Params }) {
   const previous = all[at - 1];
   const next = all[at + 1];
   const repoBase = s.repo && episode.repoModule ? `${s.repo}/blob/main/${episode.repoModule}` : undefined;
+  const repoLinks = [
+    ...(repoBase ? [{ label: l.notes, href: `${repoBase}/notes.md` }, { label: l.lab, href: `${repoBase}/lab.md` }] : []),
+    ...(s.repo ? (episode.repoLinks ?? []).map((r) => ({ label: r.label, href: `${s.repo}/blob/main/${r.path}` })) : []),
+  ];
   const transcript = await getEntry(transcriptSection(s), episode.slug, locale);
   const origin = siteOrigin(process.env.NEXT_PUBLIC_SITE_URL, site.domain);
   const structured = videoStructuredData(
@@ -146,20 +150,17 @@ export default async function EpisodePage({ params }: { params: Params }) {
         ) : null}
       </div>
 
-      {repoBase ? (
+      {repoLinks.length ? (
         <section className="mt-14">
           <h2 className={heading}>{l.inTheRepo}</h2>
           <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
-            <li>
-              <a href={`${repoBase}/notes.md`} target="_blank" rel="noreferrer" className="font-medium underline-offset-4 hover:underline">
-                {l.notes} <span aria-hidden="true" className="text-muted-foreground">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href={`${repoBase}/lab.md`} target="_blank" rel="noreferrer" className="font-medium underline-offset-4 hover:underline">
-                {l.lab} <span aria-hidden="true" className="text-muted-foreground">↗</span>
-              </a>
-            </li>
+            {repoLinks.map((r) => (
+              <li key={r.href}>
+                <a href={r.href} target="_blank" rel="noreferrer" className="font-medium underline-offset-4 hover:underline">
+                  {r.label} <span aria-hidden="true" className="text-muted-foreground">↗</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
       ) : null}
