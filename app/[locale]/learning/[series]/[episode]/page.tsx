@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { EpisodeVideo } from '@/components/episode-video';
 import { LearningCrumbs } from '@/components/learning-crumbs';
+import { Markdown } from '@/components/markdown';
+import { getEntry } from '@/lib/content';
 import {
   isReleased,
   learningCopy,
@@ -10,11 +12,14 @@ import {
   pagedEpisodes,
   series as allSeries,
   seriesBySlug,
+  transcriptSection,
+  videoStructuredData,
   type Episode,
   type Series,
 } from '@/lib/learning';
 import { hrefFor } from '@/lib/nav';
 import { site, learningVisible } from '@/lib/site';
+import { siteOrigin } from '@/lib/sitemap';
 import { locales, type Locale } from '@/lib/i18n';
 
 // The template for every episode page (FS-0012): the video, what the viewer leaves with, the
@@ -22,6 +27,8 @@ import { locales, type Locale } from '@/lib/i18n';
 // Previous and next walk the course's episodes that have a page. Only a switched-on episode has a
 // page in a production build (RELEASED, lib/learning.ts); under `next dev` every planned episode
 // renders as a marked preview. WHILE the section is unpublished a production build renders a 404.
+// The transcript (content/<locale>/learning/<course>/<episode>.md) sits closed under the episode, in
+// the HTML for search engines, agents and screen readers, and also goes into the structured data.
 export const dynamicParams = false;
 export function generateStaticParams() {
   // Every planned episode is listed so the route never has an empty param list in the static
@@ -66,9 +73,24 @@ export default async function EpisodePage({ params }: { params: Params }) {
   const previous = all[at - 1];
   const next = all[at + 1];
   const repoBase = s.repo && episode.repoModule ? `${s.repo}/blob/main/${episode.repoModule}` : undefined;
+  const transcript = await getEntry(transcriptSection(s), episode.slug, locale);
+  const origin = siteOrigin(process.env.NEXT_PUBLIC_SITE_URL, site.domain);
+  const structured = videoStructuredData(
+    origin,
+    `${origin}${hrefFor(locale, learningPath.episode(s, episode))}`,
+    episode,
+    transcript?.body,
+  );
 
   return (
     <article className="container py-16 sm:py-20">
+      {structured ? (
+        <script
+          type="application/ld+json"
+          // Build-time data from our own files; `<` is escaped so the text can't close the tag.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structured).replace(/</g, '\\u003c') }}
+        />
+      ) : null}
       {isReleased(s, episode) ? null : (
         <p role="note" className="mb-8 rounded-md border border-dashed border-border px-4 py-2 text-sm text-muted-foreground">
           {l.preview}
@@ -140,6 +162,29 @@ export default async function EpisodePage({ params }: { params: Params }) {
             </li>
           </ul>
         </section>
+      ) : null}
+
+      {transcript ? (
+        <details className="group mt-14 rounded-lg border border-border">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+            <span>
+              <span className={heading}>{l.transcript}</span>
+              <span className="mt-1 block text-sm text-muted-foreground">{l.transcriptIntro}</span>
+            </span>
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="h-5 w-5 shrink-0 fill-none stroke-muted-foreground stroke-2 transition-transform group-open:rotate-180"
+            >
+              <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </summary>
+          <div className="border-t border-border px-5 py-6">
+            <div className="max-w-3xl [&_h2:first-child]:mt-0 [&_h2]:text-xl">
+              <Markdown>{transcript.body}</Markdown>
+            </div>
+          </div>
+        </details>
       ) : null}
 
       {previous || next ? (

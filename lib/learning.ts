@@ -25,6 +25,8 @@ export interface EpisodeVideo {
   duration: string;
   /** A still under public/, e.g. '/media/learning/confluent-1.jpg'. Without it a plain frame shows. */
   poster?: string;
+  /** The day it went up on YouTube, YYYY-MM-DD, for the page's structured data. */
+  uploaded: string;
 }
 
 export interface Episode {
@@ -84,7 +86,7 @@ export const series: Series[] = [
  * A production build still shows nothing WHILE `LEARNING_PUBLISHED` is false (lib/site.ts).
  */
 export const RELEASED: Record<string, string[]> = {
-  'confluent-crash-course': [],
+  'confluent-crash-course': ['0'],
   'ai-product-design': [],
   'ai-product-delivery': [],
 };
@@ -130,6 +132,61 @@ export function courseVideosLive(visible: boolean = learningVisible()): boolean 
   return visible && series.some((s) => releasedEpisodes(s).some((e) => e.video));
 }
 
+/**
+ * Where an episode's transcript lives, under content/<locale>/ (getEntry's section). One markdown
+ * file per episode, named by its slug, made from the script's takes (FS-0012).
+ */
+export function transcriptSection(s: Series): string {
+  return `${LEARNING_SECTION}/${s.slug}`;
+}
+
+/** A running time as shown ('8:40', '1:02:05') in ISO 8601 ('PT8M40S'), for structured data. */
+export function isoDuration(shown: string): string {
+  const parts = shown.split(':').map(Number);
+  if (parts.length < 2 || parts.length > 3 || parts.some((n) => !Number.isInteger(n) || n < 0)) {
+    throw new Error(`Running time "${shown}" is not m:ss or h:mm:ss`);
+  }
+  const [h, m, sec] = parts.length === 3 ? parts : [0, ...parts];
+  return `PT${h ? `${h}H` : ''}${m ? `${m}M` : ''}${sec || (!h && !m) ? `${sec}S` : ''}`;
+}
+
+/** Markdown to plain text for structured data: headings lose their marks, paragraphs one line each. */
+export function plainText(markdown: string): string {
+  return markdown
+    .split(/\n\s*\n/)
+    .map((block) => block.trim().replace(/^#+\s+/, '').replace(/\s*\n\s*/g, ' '))
+    .filter(Boolean)
+    .join('\n\n');
+}
+
+/**
+ * schema.org VideoObject for an episode page, so search engines and agents can read what the video
+ * is without loading YouTube. Only built for an episode with a video; the poster must exist for
+ * `thumbnailUrl`, which search engines require.
+ */
+export function videoStructuredData(
+  origin: string,
+  pageUrl: string,
+  episode: Episode,
+  transcript?: string,
+): Record<string, unknown> | undefined {
+  const v = episode.video;
+  if (!v || !v.poster) return undefined;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: episode.title,
+    description: episode.line,
+    thumbnailUrl: `${origin}${v.poster}`,
+    uploadDate: v.uploaded,
+    duration: isoDuration(v.duration),
+    embedUrl: `https://www.youtube-nocookie.com/embed/${v.youtubeId}`,
+    url: pageUrl,
+    inLanguage: 'en',
+    ...(transcript ? { transcript: plainText(transcript) } : {}),
+  };
+}
+
 /** Paths under the locale segment, for hrefFor(). */
 export const learningPath = {
   index: '/learning',
@@ -169,6 +226,8 @@ interface LearningCopy {
   videoComing: string;
   play: (title: string) => string;
   duration: string;
+  transcript: string;
+  transcriptIntro: string;
   previous: string;
   next: string;
 }
@@ -193,6 +252,8 @@ const en: LearningCopy = {
   videoComing: 'The video for this episode is not out yet.',
   play: (title) => `Play the video: ${title}`,
   duration: 'Running time',
+  transcript: 'Transcript',
+  transcriptIntro: 'What is said in the video, take by take.',
   previous: 'Previous',
   next: 'Next',
 };

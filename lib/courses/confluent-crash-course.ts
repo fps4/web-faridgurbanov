@@ -15,6 +15,12 @@ export const confluentCrashCourse: Series = {
       slug: 'why-this-course',
       title: 'Why this course',
       line: 'The situation the course is built around, who it is for, and how a module works.',
+      video: {
+        youtubeId: 'ci4eOUho0mM',
+        duration: '3:07',
+        poster: '/media/learning/confluent-0.jpg',
+        uploaded: '2026-11-13',
+      },
       promise: [
         'The situation: Kafka that runs operations in your own data centres, and data and AI teams in Azure who want the same events.',
         'Who the course is for, and what you need before you start.',

@@ -20,51 +20,78 @@ export function EpisodeVideo({
 }) {
   const [playing, setPlaying] = useState(false);
 
+  // A mat around the picture, so a light video (the decks are white paper) keeps its edge on a
+  // light page.
+  const frame =
+    'rounded-xl border border-foreground/30 bg-muted p-1.5 shadow-md sm:p-2';
+
   if (!video) {
     return (
-      <div className="grid aspect-video place-items-center rounded-lg border border-dashed border-border bg-muted/40 p-6 text-center text-sm text-muted-foreground">
-        {missing}
+      <div className={frame}>
+        <div className="grid aspect-video place-items-center rounded-lg border border-dashed border-border bg-background p-6 text-center text-sm text-muted-foreground">
+          {missing}
+        </div>
       </div>
     );
   }
 
   if (playing) {
     return (
-      <div className="overflow-hidden rounded-lg border border-border bg-black">
-        <iframe
-          className="aspect-video h-auto w-full"
-          src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
-          title={title}
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
+      <div className={frame}>
+        <div className="overflow-hidden rounded-lg bg-black">
+          <iframe
+            className="block aspect-video h-auto w-full"
+            src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+            title={title}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
       </div>
     );
   }
 
   return (
-    <button
-      type="button"
-      onClick={() => setPlaying(true)}
-      aria-label={playLabel}
-      className="group relative block aspect-video w-full overflow-hidden rounded-lg border border-border bg-muted text-left"
-    >
-      {video.poster ? (
-        // eslint-disable-next-line @next/next/no-img-element -- static export, images are unoptimised
-        <img src={video.poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      ) : (
-        <span className="absolute inset-0 grid place-items-center p-8 text-center text-2xl font-semibold tracking-tight text-muted-foreground">
-          {title}
+    <div className={frame}>
+      <button
+        type="button"
+        onClick={() => setPlaying(true)}
+        aria-label={playLabel}
+        className="group relative block aspect-video w-full overflow-hidden rounded-lg bg-background text-left"
+      >
+        {video.poster ? (
+          // eslint-disable-next-line @next/next/no-img-element -- static export, images are unoptimised
+          <img
+            src={video.poster}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <span className="absolute inset-x-0 bottom-0 p-6 text-center text-xl font-semibold tracking-tight text-muted-foreground">
+            {title}
+          </span>
+        )}
+        {/* On a poster (a deck's title slide) the button sits in the corner the decks keep clear for
+            the camera, off the title; on a plain frame it is centred. */}
+        <span
+          className={
+            video.poster
+              ? 'absolute bottom-[18%] right-[12.5%] translate-x-1/2 translate-y-1/2'
+              : 'absolute inset-0 grid place-items-center'
+          }
+        >
+          <span className="grid h-14 w-14 place-items-center rounded-full sm:h-20 sm:w-20 bg-foreground/85 text-background shadow-lg transition-transform group-hover:scale-105">
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="ml-1 h-7 w-7 fill-current sm:h-9 sm:w-9"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
         </span>
-      )}
-      <span className="absolute inset-0 grid place-items-center">
-        <span className="grid h-20 w-20 place-items-center rounded-full bg-foreground/85 text-background shadow-lg transition-transform group-hover:scale-105">
-          <svg viewBox="0 0 24 24" aria-hidden="true" className="ml-1 h-9 w-9 fill-current">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </span>
-      </span>
-    </button>
+      </button>
+    </div>
   );
 }

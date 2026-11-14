@@ -1,7 +1,7 @@
 ---
 title: "FS-0012 — Learning section"
 status: draft
-last_updated: 2026-11-10
+last_updated: 2026-11-13
 owners: [architect]
 related:
   - docs/product/FS-0007-contact-and-privacy.md
@@ -87,13 +87,21 @@ written by hand per episode and without showing what is not recorded yet.
 - WHEN the owner adds an episode's number to `RELEASED`, THE episode page, its course page and the
   sitemap entries SHALL appear without any other change.
 - THE tests SHALL fail WHEN `RELEASED` names a course or an episode the plan does not have, names an
-  episode twice, or switches on an episode without a YouTube id or its *In this episode* lines.
+  episode twice, or switches on an episode without a YouTube id, an upload date, a running time in
+  m:ss, a poster file, a transcript file or its *In this episode* lines.
 - WHILE the site runs under `next dev`, THE course page SHALL link every planned episode AND each
   unreleased episode page SHALL say it is a preview.
 - THE episode page SHALL make no request to YouTube or Google before the visitor presses play;
   WHEN the visitor presses play, THE page SHALL load the youtube-nocookie player for that video.
 - WHILE a switched-on episode with a video renders, THE privacy page SHALL include the paragraph on
   the YouTube player; OTHERWISE it SHALL NOT.
+- WHEN an episode has a transcript (`content/en/learning/<course>/<episode>.md`), THE episode page
+  SHALL show it in a closed *Transcript* section whose text is in the page's HTML before any click.
+- WHEN an episode has a video and a poster, THE episode page SHALL carry a schema.org `VideoObject`
+  (title, line, poster, upload date, running time, the youtube-nocookie embed URL and the transcript
+  as plain text).
+- WHILE no visitor has pressed play, THE episode page SHALL show the poster, AND the play button SHALL
+  sit in the poster's bottom-right corner, the area the decks keep clear for the camera.
 - WHEN a Dutch route is requested, THE page SHALL show the English text with the fallback notice.
 
 ## Definition of done
