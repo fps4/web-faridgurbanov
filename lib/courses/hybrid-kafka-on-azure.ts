@@ -1,14 +1,14 @@
 import type { Series } from '@/lib/learning';
 
-// The Confluent Kafka crash course (FS-0012): one episode per module of the public repo, plus an intro.
+// The Hybrid Kafka on Azure course (FS-0012): one episode per module of the public repo, plus an intro.
 // The episodes give the reasoning and the lab follows each one step by step; the scripts are in the
-// wiki (publishing/confluent-crash-course/episodes/). Episode n is module 0n in the repo.
-export const confluentKafkaCrashCourse: Series = {
-  slug: 'confluent-kafka-crash-course',
-  title: 'Confluent Kafka crash course',
+// wiki (publishing/hybrid-kafka-on-azure/episodes/). Episode n is module 0n in the repo.
+export const hybridKafkaOnAzure: Series = {
+  slug: 'hybrid-kafka-on-azure',
+  title: 'Hybrid Kafka on Azure',
   line: 'Apache Kafka with Confluent Platform in your own data centres and Confluent Cloud on Azure: linking, private networking, governance, encryption and access, with a lab for every module.',
   level: 'Advanced',
-  repo: 'https://github.com/fps4/confluent-kafka-crash-course',
+  repo: 'https://github.com/fps4/hybrid-kafka-on-azure',
   episodes: [
     {
       number: '0',
