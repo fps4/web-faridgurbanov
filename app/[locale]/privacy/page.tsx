@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import { PageIntro } from '@/components/page-intro';
 import { Markdown } from '@/components/markdown';
 import { getDictionary } from '@/lib/dictionaries';
+import { courseVideosLive } from '@/lib/learning';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 
 // Privacy/GDPR (FS-0007/US-0015). Minimal and honest, reflecting the actual data flow: a static
 // site with mailto-only contact collects nothing, sets no non-essential cookies, runs no
-// analytics. Linked site-wide from the footer.
+// analytics. Linked site-wide from the footer. Once a course video is live (FS-0012), a paragraph on
+// the click-to-load YouTube player joins the body.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -32,7 +34,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
       <PageIntro title={t.title} />
       <p className="mt-2 text-sm text-muted-foreground">{t.lastUpdated}</p>
       <div className="mt-8">
-        <Markdown>{t.body}</Markdown>
+        <Markdown>{courseVideosLive() ? `${t.body}\n\n${t.youtube}` : t.body}</Markdown>
       </div>
     </div>
   );

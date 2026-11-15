@@ -77,6 +77,8 @@ export interface Dictionary {
     title: string;
     lastUpdated: string;
     body: string;
+    /** Added to the body only once a course video is live (FS-0012): the click-to-load YouTube player. */
+    youtube: string;
   };
   references: {
     title: string;
@@ -291,6 +293,7 @@ const en: Dictionary = {
 **References:** the references page and the case studies quote people I have worked with, with their name, photo, role at the time and a link to their public LinkedIn profile. Each of them agreed to that before it went live, and any of them can have it taken down by emailing me.
 
 **Your rights:** you can ask me what correspondence I hold about you, to correct it, or to delete it. Email the address on the contact page and I will action it.`,
+    youtube: `**If you watch a course video:** an episode page shows a still image served from my own server, and nothing loads from YouTube until you press play. When you do, the video plays in YouTube's privacy-enhanced player (youtube-nocookie.com), and **Google processes your IP address and viewing data as a third party**, under their terms and not mine.`,
   },
   references: {
     title: 'References',
@@ -514,6 +517,7 @@ const nl: Dictionary = {
 **Referenties:** de referentiepagina en de casussen citeren mensen met wie ik heb gewerkt, met hun naam, foto, rol van destijds en een link naar hun openbare LinkedIn-profiel. Ieder van hen heeft daar vooraf mee ingestemd, en wie dat wil kan het met een e-mail laten verwijderen.
 
 **Je rechten:** je kunt vragen welke correspondentie ik over je heb, die laten corrigeren of verwijderen. Mail het adres op de contactpagina en ik handel het af.`,
+    youtube: `**Als je een cursusvideo bekijkt:** een afleveringspagina toont een stilstaand beeld vanaf mijn eigen server, en er wordt niets van YouTube geladen tot je op afspelen drukt. Doe je dat, dan speelt de video in de privacyvriendelijke speler van YouTube (youtube-nocookie.com), en **verwerkt Google je IP-adres en kijkgegevens als derde partij**, onder hun voorwaarden en niet de mijne.`,
   },
   references: {
     title: 'Referenties',

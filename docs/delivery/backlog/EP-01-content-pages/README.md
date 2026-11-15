@@ -1,7 +1,7 @@
 ---
 title: "EP-01 — Content pages"
 status: open
-last_updated: 2026-11-08
+last_updated: 2026-11-10
 owners: [architect]
 related:
   - docs/delivery/roadmap/README.md
@@ -13,8 +13,8 @@ related:
 # EP-01 — Content pages
 
 The credibility surface: home, expertise, case studies, portfolio, practice (guidelines and
-articles, formerly writing), contact + privacy. Implements FS-0002 through FS-0007, FS-0009 and
-FS-0013. Depends on EP-00 (the shell + pipeline).
+articles, formerly writing), the Learning section, contact + privacy. Implements FS-0002 through
+FS-0007, FS-0009, FS-0012 and FS-0013. Depends on EP-00 (the shell + pipeline).
 
 ## Stories
 
@@ -29,5 +29,6 @@ FS-0013. Depends on EP-00 (the shell + pipeline).
 | [US-0016](US-0016-whatsapp-deep-link.md) | WhatsApp click-to-chat contact channel | M1 | FS-0007 |
 | [US-0018](US-0018-references.md) | References from people I worked with, linked to LinkedIn | M0 | FS-0009 |
 | [US-0019](US-0019-practice-and-guidelines.md) | Writing becomes Practice, with working guidelines | M1 | FS-0013 |
+| [US-0040](US-0040-learning-section-confluent-course.md) | Learning section, with the Confluent crash course first | M1 | FS-0012 |
 
 (Each story links its spec and design and flows `draft -> accepted -> done`.)
