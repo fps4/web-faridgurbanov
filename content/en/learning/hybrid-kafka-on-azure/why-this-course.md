@@ -4,7 +4,7 @@ title: "Why this course: transcript"
 
 ## The situation
 
-Hi, I'm Farid. I'm an integration and data architect, and this is a short course on Confluent Kafka in a hybrid setup.
+Hi, I'm Farid. I'm an integration and data architect, and this course is Hybrid Kafka on Azure: how to design Confluent between your own data centres and the cloud.
 
 Picture a mobile operator that runs Kafka in its own two data centres. Billing, the network operations centre and customer care all depend on it, so it's mission-critical.
 

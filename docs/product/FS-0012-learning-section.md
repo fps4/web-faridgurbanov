@@ -12,7 +12,7 @@ maestro:
   kind: functional_spec
   summary: |
     Free video courses under one section, Learning: a landing page with one card per course, a page
-    per course and a page per episode. The Confluent crash course goes first: one episode per module
+    per course and a page per episode. The Hybrid Kafka on Azure course goes first: one episode per module
     of its public repo, each a YouTube video loaded only on click, with what you leave with, the questions to ask, and
     links to the module's notes and lab. The owner switches episodes on one by one as their videos
     are published; the rest of the plan shows as coming. AI Product Design and AI Product Delivery
@@ -22,12 +22,12 @@ maestro:
 # FS-0012 — Learning section
 
 - **Status:** draft
-- **Raised:** 2026-11-01, rewritten 2026-11-10 for the Confluent crash course going first
+- **Raised:** 2026-11-01, rewritten 2026-11-10 for the Hybrid Kafka on Azure course going first
 - **Owner:** @farid (architect)
 
 ## Why
 
-The owner is publishing free video courses. The first one ready is the Confluent crash course: a
+The owner is publishing free video courses. The first one ready is the Hybrid Kafka on Azure course: a
 public repo with notes and labs for eight modules, and a short video per module that explains the
 reasoning. The AI Product Design series is further from ready (draft PR #99). The courses need one
 home, and the owner needs to publish them episode by episode as videos are recorded, without a page
@@ -106,7 +106,7 @@ written by hand per episode and without showing what is not recorded yet.
 
 ## Definition of done
 
-- `/learning`, `/learning/confluent-crash-course` and its episode pages render under `next dev`.
+- `/learning`, `/learning/hybrid-kafka-on-azure` and its episode pages render under `next dev`.
 - `lib/learning.test.ts` covers the release list, the plan, what opens, the routes and the gate.
 - A production build with the gate closed emits no course or episode title, no nav item and no
   sitemap entry for the section.
