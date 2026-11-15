@@ -1,7 +1,7 @@
 ---
-title: Confluent crash course
+title: Confluent Kafka crash course
 eyebrow: Advanced · hybrid and multicloud, eight modules with labs
-summary: How Confluent works between your own data centres and Azure, for experienced engineers and architects who already run Kafka in production. Cluster Linking, private networking, governance, encryption and access, each with a lab you run yourself.
+summary: How Apache Kafka with Confluent works between your own data centres and Azure, for experienced engineers and architects who already run Kafka in production. Cluster Linking, private networking, governance, encryption and access, each with a lab you run yourself.
 ---
 
 ## Who it is for

@@ -1,5 +1,5 @@
 import type { Locale } from '@/lib/i18n';
-import { confluentCrashCourse } from '@/lib/courses/confluent-crash-course';
+import { confluentKafkaCrashCourse } from '@/lib/courses/confluent-kafka-crash-course';
 import { learningVisible } from '@/lib/site';
 
 // The Learning section (FS-0012): free video courses, each a list of short episodes, and which
@@ -9,7 +9,7 @@ import { learningVisible } from '@/lib/site';
 
 /**
  * The section's words under content/<locale>/learning/: `index.md` for /learning, and one file per
- * course named by its slug (`confluent-crash-course.md`).
+ * course named by its slug (`confluent-kafka-crash-course.md`).
  */
 export const LEARNING_SECTION = 'learning';
 
@@ -66,7 +66,7 @@ export interface Series {
 }
 
 export const series: Series[] = [
-  confluentCrashCourse,
+  confluentKafkaCrashCourse,
   {
     slug: 'ai-product-design',
     title: 'AI Product Design',
@@ -91,7 +91,7 @@ export const series: Series[] = [
  * A production build still shows nothing WHILE `LEARNING_PUBLISHED` is false (lib/site.ts).
  */
 export const RELEASED: Record<string, string[]> = {
-  'confluent-crash-course': ['0'],
+  'confluent-kafka-crash-course': ['0'],
   'ai-product-design': [],
   'ai-product-delivery': [],
 };

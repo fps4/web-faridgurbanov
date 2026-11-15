@@ -1,5 +1,5 @@
 ---
-title: "US-0040: Learning section, with the Confluent crash course first"
+title: "US-0040: Learning section, with the Confluent Kafka crash course first"
 persona: visitor
 status: draft
 complexity: M
@@ -23,9 +23,9 @@ so that the first course can go live before the AI Product Design series is read
 ## Context
 
 Implements FS-0012. Brings the Learning section's gate, nav item, release list and breadcrumbs over
-from draft PR #99, without its decks and storyline, so the Confluent crash course can be published
+from draft PR #99, without its decks and storyline, so the Confluent Kafka crash course can be published
 first. The episode scripts are in the wiki (`publishing/confluent-crash-course/`); the notes and
-labs are in the public repo `fps4/confluent-crash-course`. AI Product Design and AI Product Delivery
+labs are in the public repo `fps4/confluent-kafka-crash-course`. AI Product Design and AI Product Delivery
 show as coming cards. Nothing is published at merge: `LEARNING_PUBLISHED` is false. Episode 0 (the
 intro, YouTube `ci4eOUho0mM`, unlisted) is switched on, so it is the first page live once the section
 is published.
@@ -43,7 +43,7 @@ See FS-0012. In short:
 ## Tasks
 
 - [x] `LEARNING_PUBLISHED` and `learningVisible()` in `lib/site.ts`; Learning first in the header.
-- [x] `lib/learning.ts` (courses, release list, paths, copy) and `lib/courses/confluent-crash-course.ts`.
+- [x] `lib/learning.ts` (courses, release list, paths, copy) and `lib/courses/confluent-kafka-crash-course.ts`.
 - [x] `/learning`, `/learning/[series]`, `/learning/[series]/[episode]`; YouTube video loaded on click.
 - [x] Privacy paragraph on the YouTube player, shown once a video is live (EN and NL).
 - [x] Sitemap entries once published; `lib/learning.test.ts`.

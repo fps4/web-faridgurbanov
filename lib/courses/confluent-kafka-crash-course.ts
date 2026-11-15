@@ -1,20 +1,20 @@
 import type { Series } from '@/lib/learning';
 
-// The Confluent crash course (FS-0012): one episode per module of the public repo, plus an intro.
+// The Confluent Kafka crash course (FS-0012): one episode per module of the public repo, plus an intro.
 // The episodes give the reasoning and the lab follows each one step by step; the scripts are in the
 // wiki (publishing/confluent-crash-course/episodes/). Episode n is module 0n in the repo.
-export const confluentCrashCourse: Series = {
-  slug: 'confluent-crash-course',
-  title: 'Confluent crash course',
-  line: 'Confluent Platform in your own data centres and Confluent Cloud on Azure: linking, private networking, governance, encryption and access, with a lab for every module.',
+export const confluentKafkaCrashCourse: Series = {
+  slug: 'confluent-kafka-crash-course',
+  title: 'Confluent Kafka crash course',
+  line: 'Apache Kafka with Confluent Platform in your own data centres and Confluent Cloud on Azure: linking, private networking, governance, encryption and access, with a lab for every module.',
   level: 'Advanced',
-  repo: 'https://github.com/fps4/confluent-crash-course',
+  repo: 'https://github.com/fps4/confluent-kafka-crash-course',
   episodes: [
     {
       number: '0',
       slug: 'why-this-course',
       title: 'Why this course',
-      line: 'The situation the course is built around, who it is for, and how a module works.',
+      line: 'Kafka in your own data centres, data teams in Azure: the situation the course is built around, who it is for, and how a module works.',
       video: {
         youtubeId: 'ci4eOUho0mM',
         duration: '3:07',
@@ -32,7 +32,7 @@ export const confluentCrashCourse: Series = {
       number: '1',
       slug: 'getting-data-out',
       title: 'Getting data out of the data centre',
-      line: 'One outbound link to Confluent Cloud, schemas that keep their IDs, and what broker validation checks.',
+      line: 'One outbound Kafka cluster link to Confluent Cloud, schemas that keep their IDs, and what broker-side validation checks.',
       repoModule: '01-linking-and-contracts',
       repoLinks: [{ label: 'Notes: data contracts', path: '01-linking-and-contracts/notes-data-contracts.md' }],
       promise: [
@@ -52,7 +52,7 @@ export const confluentCrashCourse: Series = {
       number: '2',
       slug: 'copies-and-failover',
       title: 'Copies, failover and the way back',
-      line: 'Byte copies and record copies, what an analytics copy promises, and why failback is decided on day one.',
+      line: 'Kafka byte copies and record copies, what an analytics copy promises, and why failback is decided on day one.',
       repoModule: '02-hybrid-multicloud',
       promise: [
         'How the three tools for copying Kafka data differ, and how to pick one.',
@@ -88,21 +88,21 @@ export const confluentCrashCourse: Series = {
       number: '4',
       slug: 'stream-governance',
       title: 'Governance for teams that don’t know each other',
-      line: 'No schema, no topic; Git as the source of truth; a catalog the cloud teams use.',
+      line: 'Kafka governance: no schema, no topic; Git as the source of truth; a catalog the cloud teams use.',
       repoModule: '04-stream-governance',
     },
     {
       number: '5',
       slug: 'field-level-encryption',
       title: 'Encrypting a field nobody else should read',
-      line: 'Minimise first, then encrypt: who holds the key, and what Databricks sees.',
+      line: 'Field-level encryption for Kafka: minimise first, then encrypt; who holds the key, and what Databricks sees.',
       repoModule: '05-csfle',
     },
     {
       number: '6',
       slug: 'security-and-access',
       title: 'Who is allowed to read this',
-      line: 'Entra ID in place of shared API keys, one role per access pattern, quotas and audit.',
+      line: 'Kafka access with Entra ID in place of shared API keys, one role per access pattern, quotas and audit.',
       repoModule: '06-cloud-security',
       repoLinks: [{ label: 'Notes: the Confluent Platform side', path: '06-cloud-security/notes-cp-security.md' }],
     },
@@ -110,7 +110,7 @@ export const confluentCrashCourse: Series = {
       number: '7',
       slug: 'production-platform',
       title: 'From “it works” to “it runs a business”',
-      line: 'The accidental shared service, clusters split by SLA, lag in seconds, and chargeback.',
+      line: 'Kafka as the accidental shared service, clusters split by SLA, lag in seconds, and chargeback.',
       repoModule: '07-production-systems',
     },
     {
