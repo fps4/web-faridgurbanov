@@ -23,9 +23,9 @@ export const confluentCrashCourse: Series = {
       },
       repoLinks: [{ label: 'Set up the labs', path: '00-lab-setup/README.md' }],
       promise: [
-        'The situation: Kafka that runs operations in your own data centres, and data and AI teams in Azure who want the same events.',
-        'Who the course is for, and what you need before you start.',
-        'How a module works: notes, a lab you run yourself, and a video on the reasoning.',
+        'The situation: a mobile operator’s Kafka in two data centres, and data and AI teams in Azure who want the same events.',
+        'Who the course is for: experienced engineers who already run Kafka. It is an advanced course.',
+        'How a module works: a video with the reasoning, and a lab that follows it step by step.',
       ],
     },
     {
