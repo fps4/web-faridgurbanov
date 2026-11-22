@@ -1,6 +1,6 @@
 ---
 title: "0008: Selected work and Expertise indexes redesigned; WhatsApp scoped back to Contact"
-status: accepted
+status: superseded by 0010
 last_updated: 2026-08-20
 owners: [architect]
 related:

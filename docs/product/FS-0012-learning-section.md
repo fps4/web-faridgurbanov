@@ -1,7 +1,7 @@
 ---
 title: "FS-0012 — Learning section"
-status: draft
-last_updated: 2026-11-13
+status: superseded by ADR-0010
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/product/FS-0007-contact-and-privacy.md
@@ -20,6 +20,8 @@ maestro:
 ---
 
 # FS-0012 — Learning section
+
+> **Superseded** by [ADR-0010](../design/decisions/0010-the-site-has-one-job.md), the decision that the site has one job and carries no courses or labs: <https://maestro.fps4.nl/artifacts/art-896t5kxfka>. Kept as history; do not build from it.
 
 - **Status:** draft
 - **Raised:** 2026-11-01, rewritten 2026-11-10 for the Hybrid Kafka on Azure course going first

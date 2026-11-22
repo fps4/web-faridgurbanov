@@ -1,6 +1,6 @@
 ---
 title: "0003: Single site, training-forward target, credibility-first first ship; phased .nl"
-status: accepted
+status: superseded by 0010
 last_updated: 2026-06-07
 owners: [architect]
 related:

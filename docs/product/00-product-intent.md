@@ -1,85 +1,87 @@
 ---
 title: "Product intent — faridgurbanov.com"
 status: draft
-last_updated: 2026-11-08
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/overview.md
   - docs/design/decisions/0001-tech-stack-and-static-export.md
+  - docs/design/decisions/0010-the-site-has-one-job.md
   - docs/delivery/roadmap/README.md
 ---
 
 # Product intent
 
 The **what & why** for faridgurbanov.com. Functional specs (`FS-NNNN-*.md`) decompose this;
-ADRs in [`../design/decisions/`](../design/decisions/) lock the *how*.
+ADRs in [`../design/decisions/`](../design/decisions/) lock the *how*. The strategy itself is
+[ADR-0010](../design/decisions/0010-the-site-has-one-job.md), recorded in maestro at
+<https://maestro.fps4.nl/artifacts/art-896t5kxfka>; this page restates the parts a builder needs
+(decision §1 and §2).
 
-## Why this product exists
+## The one job
 
-A ZZP / contracting integration architect who **also** sells AI-assisted delivery **and** is
-standing up a training practice needs one credibility surface all three legs share — a URL the
-owner controls, not a LinkedIn template. The site is itself a portfolio piece: a clean, fast,
-bilingual static site on the same open stack the owner recommends to clients quietly proves the
-pitch.
+A visitor who can hire the owner or recommend him decides to get in touch. Every page is kept or
+cut by whether it helps that.
 
-## Audiences (one brand, three journeys)
+He presents himself as a **Platform and Integration Architect**. The same title heads his résumé
+and his LinkedIn profile.
 
-| Audience | Who | Needs to see | Primary CTA |
-|---|---|---|---|
-| **Training buyer** | L&D leads, heads of product, EA practice leads | Offer ladder, build-proof, EU AI Act framing | Book a taster / webinar |
-| **Hiring / contract** | Recruiters, hiring managers, brokers | Selected work, expertise, availability, repos | Contact / résumé |
-| **Build-service client** (year-2) | Product orgs commissioning modernization | Case studies, the `maestro` delivery model | Contact |
+The site sells no training and publishes no courses. It has no labs and no portfolio section.
 
-Brand line: *"the architect who builds AI and teaches teams to direct it."* These journeys
-reinforce each other — they do **not** split into separate brands or sites.
+## Three readers
 
-## Positioning: training-forward target, credibility-first first-ship
+| Reader | Who | What they come for |
+|---|---|---|
+| **Hiring manager** | A manager hiring an architect, a small business owner hiring one directly, or a product or business leader who will work with him | What he does, proof that it worked, and how to reach him |
+| **Peer** | A fellow architect or a senior engineer, asked for an opinion on him | How he thinks and decides, and whether they would want to work with him |
+| **Recruiter** | A niche recruiter placing architects | Résumé, availability and how he contracts |
 
-- **Target (M1):** home leads with the training/workshops offer; the architect track record is
-  the credibility proof beneath it. Two tiers — **EA premium** ("architecting agentic systems
-  that survive production") and **PO breadth** ("directing AI as a PO", with the offer ladder).
-- **First ship (M0):** home leads with **credibility** (selected work + portfolio + expertise);
-  training is a single "book a taster" CTA stub. Rationale: the training sale *depends on* the
-  architect proof, and that proof is shippable now while the training section is built/validated.
+Training buyers and course learners are not readers the site is built for.
 
-## Scope of the product
+## Two goals
 
-In scope: a multi-page bilingual marketing/portfolio site — home, expertise, selected work /
-case studies, portfolio (repos), writing, training, contact, EU AI Act page, minimal privacy.
-Content authored as filesystem markdown, rendered at build, exported static.
+| Goal | Who it serves | Description |
+|---|---|---|
+| **G-01 · Decide whether to call him** | Hiring manager, peer | In a few minutes I see what he does, what it achieved and where it stands, and I can reach him in one step. |
+| **G-04 · Place him quickly** | Recruiter | I find his résumé, his availability and how he contracts without asking. |
 
-Out of scope (deliberately): any server runtime, database, CMS, auth, per-seat checkout, blog
-comment system, analytics-heavy tracking. The standalone `.nl` product site (training Phase 4)
-is a *separate future product*, not this one.
+G-02 and G-03 are retired. Plain words for a reader who does not build are a rule on every page,
+not a goal of their own.
 
-## Success criteria
+## Shape of the site
 
-- A recruiter / L&D buyer landing cold understands within 10 seconds what the owner does and how
-  to start a conversation.
-- The site is static, free-to-host, and buildable from markdown by an agent without bespoke
-  infra.
-- The case studies and portfolio are credible to a senior architect audience — including the
-  **honesty rule**: only `sovereign-llm-gateway` runs end-to-end; `sovereign-copilot` and
-  `maestro` are reference architectures. No "three production systems" claim.
+Home, Work, Practice and Contact; the header reads Work, Practice, Contact. The site stays
+bilingual (EN/NL) and static. The pages are cut to what a reader uses, and each changes in its own
+story when its copy is approved.
+
+## Rules that hold for every change
+
+- **Every text is the owner's and is approved by him.** Site copy is taken verbatim from the
+  approved review document of the site copy; a builder adds, rewrites or generalizes nothing
+  (see `AGENTS.md`, *Where copy comes from*).
+- **The repository is public.** Nothing the owner has not cleared for publishing is committed,
+  and no private repository is linked.
+- **One set of facts.** The site, his LinkedIn profile and his one résumé say the same, in the
+  same words. No client is named and no exact internal figure of his current work is written.
+
+## Out of scope
+
+Any server runtime, database, CMS, auth, per-seat checkout, comment system, or tracking of
+visitors. The site collects nothing about visitors.
+
+## Measure
+
+One measure: enquiries that name the site or arrive through it, counted by hand by the owner.
 
 ## Functional specs
 
-| Spec | Title | Milestone |
-|---|---|---|
-| FS-0001 | Bilingual site shell, navigation & content pipeline | M0 |
-| FS-0002 | Home page | M0 (credibility) → M1 (training-forward) |
-| FS-0003 | Expertise pages | M0 |
-| FS-0004 | Selected work / case studies | M0 |
-| FS-0005 | Portfolio / repositories | M0 (gated — see ADR-0004) |
-| FS-0006 | Writing / blog | M0 (1 post) |
-| FS-0007 | Contact & privacy/GDPR | M0 |
-| FS-0008 | Training section & EU AI Act page | M0 stub → M1 full |
-| FS-0009 | References | ships dark; on with the first file |
-| FS-0013 | Practice: guidelines and articles (Writing renamed) | M1 |
+The specs that still describe the site are FS-0001 (shell and content pipeline), FS-0002 (home),
+FS-0004 (case studies), FS-0006 (writing), FS-0007 (contact and privacy) and FS-0009
+(references); each is brought in line by the story that changes its pages. FS-0003, FS-0005,
+FS-0008, FS-0012 and FS-0013 are superseded by ADR-0010.
 
 ## Cross-cutting constraints
 
-- **Bilingual EN/NL** with i18n routing (ADR-0002). Dutch may lag English on low-traffic pages.
-- **Static export** — every feature must work with `output: 'export'` (ADR-0001).
-- **Public-surface prerequisites** gate the repo links (ADR-0004): one umbrella name, neutralized
-  + licensed forks, honest runnable-vs-reference framing.
+- **Bilingual EN/NL** with i18n routing (ADR-0002). The Dutch text is made from the approved
+  English and approved the same way.
+- **Static export**: every feature must work with `output: 'export'` (ADR-0001).

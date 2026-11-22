@@ -7,8 +7,10 @@ and the ADRs it cites.
 ## Allowed
 
 - Read any file in the repository.
-- Create and edit application code (`app/`, `components/`, `lib/`), content (`content/`), styles,
-  config, and docs (`docs/`).
+- Create and edit application code (`app/`, `components/`, `lib/`), styles, config, and docs
+  (`docs/`).
+- Put approved text into `content/`, `lib/dictionaries.ts` and `lib/site.ts`, and only that (see
+  [Where copy comes from](#where-copy-comes-from)).
 - Propose changes as branches and pull requests.
 
 ## Not allowed
@@ -17,12 +19,14 @@ and the ADRs it cites.
   middleware, or anything that needs a server at request time — the site ships as `output: 'export'`
   to `out/` (ADR-0001). If `next build` can't emit `out/`, the change is wrong.
 - **Edit accepted ADRs** under `docs/design/decisions/` — they are immutable once `accepted`.
-  Propose a new ADR that supersedes instead (and set the old one's status to `superseded by NNNN`).
+  Propose a new ADR that supersedes instead. On the old one only the status line changes (to
+  `superseded by NNNN`), or a note naming the parts that are superseded; its body stays as written.
 - **Add a shelf-folder README.** `docs/product/`, `docs/design/`, `docs/reference/`, and
   `docs/guides/` carry no README (only epic indexes and the roadmap/issues area indexes do) — see
   the [documentation standard](../maestro/docs/guides/documentation-standards.md).
-- **Publish a gated surface** before its prerequisite clears (e.g. portfolio repos pending the
-  public-surface scrub, ADR-0004).
+- **Commit what the owner has not cleared for publishing**, or link a private repository. See
+  [Public repository](#public-repository).
+- **Add, rewrite or generalize site text.** See [Where copy comes from](#where-copy-comes-from).
 
 ## How to run
 
@@ -50,53 +54,83 @@ npm run test     # vitest run
 
 ## Tile copy
 
-Anything that renders as a **card in a grid** — the portfolio `proves` bodies in `lib/site.ts`
-above all, but the same applies to any tile added later — is written to a length budget, in every
-locale:
+Anything that renders as a **card in a grid** is written to a length budget, in every locale:
 
-- **40-70 words** (~250-450 characters) per card. `lib/site.test.ts` fails the build outside
-  35-75 words, and fails again if the longest card is more than twice the shortest.
-- **Three sentences at most:** what it is, the single strongest concrete finding (one measured
-  number, not an inventory of them), then the run command.
+- **40-70 words** (~250-450 characters) per card, with the cards of one grid close in length.
+  Where a test enforces the budget (`lib/site.test.ts`, `lib/references.test.ts`), it fails the
+  build outside its range.
 - Cards sit **side by side**. Length is relative: an essay in one tile makes its neighbours look
-  thin and gets none of them read. Match the neighbours, don't outdo them.
-- Detail that does not fit goes in the linked repo's README or the case study. The card is the
-  hook, not the summary — the reader is deciding whether to click, not being briefed.
+  thin and gets none of them read.
+- The card is the hook, not the summary. Detail that does not fit goes behind the link.
+
+The budget is about layout. It never gives a builder leave to shorten or reword approved text: if
+an approved text does not fit its card, the PR says so and the owner decides.
+
+## Where copy comes from
+
+Every text on the site (`content/`, `lib/dictionaries.ts`, `lib/site.ts`) is taken **verbatim** from
+the approved review document of the site copy, the version the story names. The owner is the
+author (§12 of the decision, ADR-0010:
+<https://maestro.fps4.nl/artifacts/art-896t5kxfka>).
+
+- A builder **adds, rewrites or generalizes no text**. Not to fit a card, not to pass the voice
+  check, not to make Dutch read better, not to fill a gap.
+- A text that is **not yet approved** in that document is **not built**. Stop and say what is
+  missing instead of writing it.
+- The Dutch version is made from the approved English and approved the same way; it is not
+  translated on the spot.
+- A text that is not in the document and has to change goes back to the owner to be approved in
+  it first, and then into the repository.
+
+## Public repository
+
+This repository is public. Anything committed here, in a file or in git history, is public.
+
+- A text the owner has not cleared for publishing is **not committed**: an article that is waiting
+  for its moment, a quote the person has not agreed to, a translation he has not approved.
+- A **private repository is never linked**, in copy, config or docs. Only the owner's public
+  repositories may be linked.
+- Do not write into the repository the name of the owner's current or an earlier client, his
+  private projects, or any figure that is not in the approved copy.
 
 ## Voice
 
-All copy (`content/`, `lib/dictionaries.ts`, `lib/site.ts`) is written to read as one person's prose,
-not generated text. The tells that get a rewrite sent back, in order of how loudly they read:
+The decision (ADR-0010, §7: <https://maestro.fps4.nl/artifacts/art-896t5kxfka>) sets how the site
+reads. A builder keeps to it by using the approved
+text as it stands:
 
-- **Antithesis as a reflex.** "X, not Y", "rather than", "instead of". At most one or two per page,
-  and only where the contrast *is* the point. Say the rest straight.
-- **Templated scaffolding.** Case studies keep the section order FS-0004 fixes, but the prose inside
-  is not a mould: no shared paragraph openers ("The obvious shape is…"), no fixed "two decisions",
-  no shared closer. Let each one have its own shape.
-- **Em-dash density.** Budget roughly one per 300 words of body text; the rest become full stops,
-  commas, colons or parentheses. Headings and labels ("D1 — …", "Working — runs end-to-end") are
-  exempt.
-- **Aphoristic bolds and punchline closers.** One short-sentence payoff per page, not one per
-  paragraph. Bold leads in "What I do" lists are catalogue entries, not slogans.
-- **Sincerity words.** "honest(ly)", "genuine(ly)", "deliberate(ly)", "on purpose", "actually".
-  The specifics carry the honesty; the adverbs assert it. Cut them.
-- **Copy that explains its own move.** "AI is last, and that is deliberate", "written as situations,
-  not adjectives". Delete the framing sentence; the ordering speaks for itself.
-- **Dutch is written from the meaning, not the sentence.** No calques: *koppelvlak/grens/overgang*
-  rather than *naad*, *het platform goedkoper maken* rather than *de gebaande weg*, *in golven*
-  rather than *wave voor wave*. If a Dutch reader would not say it, it does not go in.
-- **Facts stay facts.** Years, team words ("we") and admissions come from the resume or the
-  engagement, never invented to add texture.
+- **First person, plain English.** Copy is in the first person, in the plain English the owner
+  speaks. His wording and his order of words are kept; only errors are corrected, and only by the
+  owner or in the review document.
+- **No client is named**, the current one or an earlier one. A client is described by its kind
+  (a large Dutch grocery retailer, a UK telecom operator).
+- **Figures of the owner's current work** stand in the rounder words of the approved copy, never
+  as an exact internal figure.
+- **Two languages are named** for him: English and Dutch. No other.
+- **Nothing that people at his current client would read as an account of their own teams**,
+  incidents, policies or weak points. A disagreement that is still going on, and an idea he is
+  proposing there, appear as a pattern seen in many organizations, as the approved copy has them.
+- **Facts stay facts.** Years, team words ("we"), admissions and outcomes come from the owner's
+  résumé or the approved copy, never added to give texture. Work that is not finished is told as
+  in progress, and a proof of concept is called a proof of concept.
+- Every page opens in words a reader who does not build can follow, and articles carry the date
+  they were written.
 
-Quotes in `content/references/` are exempt from all of this: they are other people's words and
-the voice check skips the folder. The tile budget still applies to the two `featured` ones, which
-sit side by side on the home page (`lib/references.test.ts` enforces it).
+Quotes in `content/references/` are other people's words, verbatim and only with the agreement of
+the person quoted. The voice check skips that folder.
 
-`npm run voice` measures five of these per file (antithesis, mould phrases, em-dashes, sincerity
-words, Dutch calques) against a budget (em-dashes ≤ 3.5 per
-1,000 words of body text, antithesis ≤ 5 per 1,000, sincerity words / mould phrases / Dutch calques
-= 0) and prints one row per copy surface. Run it on anything you wrote before opening the PR. A
-number over budget is not automatically wrong, but it needs a sentence in the PR saying why.
+### The voice check
+
+`npm run voice` measures five patterns per file (antithesis, mould phrases, em-dashes, sincerity
+words, Dutch calques) against a budget (em-dashes ≤ 3.5 per 1,000 words of body text, antithesis
+≤ 5 per 1,000, sincerity words / mould phrases / Dutch calques = 0) and prints one row per copy
+surface. It still runs over **every** copy surface, and `npm run voice -- --strict` is still a
+pre-submit check.
+
+It is a signal and not a rule for the text. When a file holding **approved text, unchanged**,
+gets flagged, the PR explains the flag in a sentence, naming the file and pointing to the
+approved copy it comes from. **The text is not reworded to pass.** A flag on text a builder wrote
+or changed without approval is a sign the text should not be there.
 
 ## Pre-submit checks
 
@@ -105,10 +139,20 @@ Before opening a PR, all must pass (the `dod` workflow enforces them on `main`):
 1. `npm run lint`
 2. `npm run test`
 3. `npm run build` succeeds and produces `out/`.
-4. `npm run voice -- --strict` exits 0, or the PR explains each file it flags (copy changes only).
+4. `npm run voice -- --strict` exits 0, or the PR explains each file it flags by pointing to the
+   approved copy (copy changes only; see [The voice check](#the-voice-check)).
 
 ## Docs as Definition of Done
 
-Docs change in the **same PR** as the code. Update the relevant spec/story and bump
-`last_updated`. Acceptance criteria are written in **EARS** form ("WHEN … THE SYSTEM SHALL …").
-The repo is spec-driven: product intent precedes design precedes code.
+- **The story lives in maestro**, not in this repository. A change is built from one story and its
+  acceptance criteria.
+- The **pull request description carries the line `Implements: art-…`** with the story's art id.
+  One pull request implements one story.
+- The **repository spec the change touches** (`docs/product/`, `docs/design/`) is updated in the
+  **same PR**, with `last_updated` bumped. A decision is changed by a new ADR, never by editing an
+  accepted one.
+- The product intent, the three readers and the two goals are in
+  [`docs/product/00-product-intent.md`](docs/product/00-product-intent.md); the decision behind
+  them is [ADR-0010](docs/design/decisions/0010-the-site-has-one-job.md).
+- Acceptance criteria in repository specs are written in **EARS** form ("WHEN … THE SYSTEM SHALL
+  …"). The repo is spec-driven: product intent precedes design precedes code.

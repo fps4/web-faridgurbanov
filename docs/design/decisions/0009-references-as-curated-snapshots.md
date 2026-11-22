@@ -1,6 +1,7 @@
 ---
 title: "0009: References are curated markdown snapshots, not a LinkedIn feed"
 status: accepted
+note: "Partly superseded by 0010: the References page goes, quotes are shown on Home and on a case study. The rule that a quote is never changed stays."
 last_updated: 2026-09-20
 owners: [architect]
 related:
