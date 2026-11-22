@@ -43,8 +43,10 @@ across pages and across languages.
 3. **Content pipeline** — markdown files under `/content/{en,nl}/<section>/...` rendered via
    `react-markdown` + `remark-gfm` + `@tailwindcss/typography`; frontmatter (title, summary,
    order, draft) drives titles and ordering.
-4. **Navigation** — a single nav definition driving header links and localized labels; the nav
-   set is milestone-aware (Training is a CTA stub in M0, a full nav item in M1).
+4. **Navigation** — a single nav definition driving header links and localized labels. The header
+   reads Work, Practice, Contact, in that order, besides the name, the language switcher and the
+   theme toggle ([ADR-0010](../design/decisions/0010-the-site-has-one-job.md) §5; maestro story
+   `art-y97cjsakwq`). The footer lists the same three, and References while one is published.
 5. **Static export** — `output: 'export'`; the production build emits static HTML/CSS/JS with no
    server or database.
 6. **Graceful language fallback** — when a page has no translation in the requested locale, the
@@ -74,8 +76,15 @@ across pages and across languages.
   frontmatter, and SHALL exclude `draft: true` content from the production build.
 - THE SYSTEM SHALL produce a fully static export (`output: 'export'`) served by a static file
   server (nginx on the ds1 Docker host) with no server-side application runtime or database.
-- THE navigation SHALL be milestone-configurable so that the Training entry renders as a CTA
-  stub in M0 and as a full navigation item in M1 without code changes to the shell.
+- THE header SHALL show the links Work, Practice and Contact, in that order, on every page in both
+  locales, besides the name, the language switcher and the theme toggle.
+- WHEN a visitor opens an old address under `/learning`, `/portfolio` or `/training` in either
+  locale (including its trailing-slash and `.html` forms), THE SYSTEM SHALL answer 301 to Work in the
+  same locale; WHEN the address is under `/expertise`, THE SYSTEM SHALL answer 301 to the home page
+  in the same locale. The rules are nginx locations in `infra/docker/nginx.conf`, checked against the
+  export by `lib/redirects.test.ts`.
+- WHEN any internal link on any page of the export is followed, THE SYSTEM SHALL NOT end on a 404;
+  a link to a removed address ends on its 301 target.
 
 ## Interim state: Dutch shows the English page
 
@@ -83,7 +92,7 @@ Until the owner approves the Dutch copy, every address under `/nl` shows the Eng
 fallback notice above (maestro story `art-bf5tq4788n`, "Site · Dutch pages show the English page, with
 a notice, until the Dutch copy is approved", which follows [ADR-0010](../design/decisions/0010-the-site-has-one-job.md)). `content/nl` holds no files, the Dutch
 dictionary is the English one except the notice, and `copyLocale` in `lib/i18n.ts` makes the
-locale-keyed copy (navigation labels, topics, portfolio cards) read English under `/nl`. The text
+locale-keyed copy (navigation labels, topics) read English under `/nl`. The text
 of the page is marked `lang="en"` and the notice `lang="nl"`. A link written as `/en/…` in
 markdown stays under `/nl`, each `/nl` page has a canonical link to its English twin, and the sitemap
 lists the English addresses only. The routes and the language switcher are unchanged. The Dutch story of the site's cut brings the approved copy back.

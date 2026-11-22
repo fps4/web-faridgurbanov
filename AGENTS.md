@@ -61,8 +61,8 @@ npm run test     # vitest run
 Anything that renders as a **card in a grid** is written to a length budget, in every locale:
 
 - **40-70 words** (~250-450 characters) per card, with the cards of one grid close in length.
-  Where a test enforces the budget (`lib/site.test.ts`, `lib/references.test.ts`), it fails the
-  build outside its range.
+  Where a test enforces the budget (`lib/references.test.ts`), it fails the build outside
+  its range.
 - Cards sit **side by side**. Length is relative: an essay in one tile makes its neighbours look
   thin and gets none of them read.
 - The card is the hook, not the summary. Detail that does not fit goes behind the link.

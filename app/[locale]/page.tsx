@@ -9,14 +9,11 @@ import { listSection, title } from '@/lib/content';
 import { getDictionary } from '@/lib/dictionaries';
 import { hrefFor } from '@/lib/nav';
 import { featuredReferences, loadReferences } from '@/lib/references';
-import { HOME_VARIANT, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
 
-// Home page (FS-0002/US-0010). M0 leads with the credibility hero; the M1 training-forward flip is
-// the single HOME_VARIANT switch (ADR-0003) — the section set and CTAs stay, only the lead changes,
-// so no structural rebuild. Authored fully in EN + NL (highest-traffic page).
+// Home page (FS-0002/US-0010): the credibility hero. Authored fully in EN + NL (highest-traffic page).
 //
 // Restructured by ADR-0007 into three bands under the hero, in the order a doubting buyer needs
 // them: what has been delivered (track record), how it got adopted (the half that was doubted), and
@@ -61,10 +58,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="container py-16 sm:py-24">
           <div className="relative max-w-3xl">
             <LocaleNotice locale={locale} />
-            {/* M0: credibility-led. M1 (HOME_VARIANT='training') leads with the training offer and
-                moves the architect proof beneath it — same page, configured emphasis (FS-0002). */}
             <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-              {HOME_VARIANT === 'training' ? t.tasterHeading : t.heroEyebrow}
+              {t.heroEyebrow}
             </p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t.heroTitle}</h1>
             <p className="mt-6 text-lg text-muted-foreground">{t.heroLede}</p>
@@ -213,23 +208,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </ul>
         </div>
       </section>
-
-      {/* Training block — hidden until M1 (TRAINING_PUBLISHED). Copy stays in the dictionary. */}
-      {TRAINING_PUBLISHED && (
-        <section className="container py-16">
-          <div className="max-w-2xl rounded-lg border border-border p-8">
-            <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-              {t.tasterHeading}
-            </h2>
-            <p className="mt-4 text-lg">{t.tasterBody}</p>
-            <div className="mt-6">
-              <Button asChild variant="secondary">
-                <Link href={hrefFor(locale, '/training')}>{t.tasterCta}</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-      )}
     </>
   );
 }

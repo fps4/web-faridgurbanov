@@ -39,7 +39,7 @@ topics: [architecture, cost]   # one or more, from TOPICS in lib/practice-model.
 tech: [sap, snowflake]         # zero or more, from TECH; [] when none
 ```
 
-`related` takes entry ids or `work/`, `expertise/`, `practice/articles/<slug>`; it renders as
+`related` takes entry ids or `work/`, `practice/articles/<slug>`; it renders as
 "Where I applied it". When an entry names an article there, the article's page links back to the
 entry ("Extracted from this article"), so the source article itself is never edited.
 
