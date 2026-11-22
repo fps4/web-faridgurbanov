@@ -6,11 +6,12 @@ import { headerNav, hrefFor } from '@/lib/nav';
 // maestro story art-y97cjsakwq). Header and footer read headerNav(), so this guards both.
 describe('the header navigation', () => {
   it('is exactly Work, Practice, Contact, in that order', () => {
-    expect(headerNav().map((i) => i.href)).toEqual(['/work', '/practice', '/contact']);
+    expect(headerNav().map((i) => i.href)).toEqual(['/work', '/practice', '#contact']);
     expect(headerNav().map((i) => i.label.en)).toEqual(['Work', 'Practice', 'Contact']);
   });
 
-  it.each(locales)('links /%s/work, /%s/practice and /%s/contact', (l) => {
-    expect(headerNav().map((i) => hrefFor(l, i.href))).toEqual([`/${l}/work`, `/${l}/practice`, `/${l}/contact`]);
+  // Contact is a part of the home page (maestro story art-r903t1r2tp): one click from any page.
+  it.each(locales)('links /%s/work, /%s/practice and the Contact part of /%s', (l) => {
+    expect(headerNav().map((i) => hrefFor(l, i.href))).toEqual([`/${l}/work`, `/${l}/practice`, `/${l}#contact`]);
   });
 });

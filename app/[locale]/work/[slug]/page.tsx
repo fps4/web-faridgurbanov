@@ -6,7 +6,7 @@ import { ReferenceQuote } from '@/components/reference-quote';
 import { caseStudyFrontmatter } from '@/lib/case-study';
 import { getDictionary } from '@/lib/dictionaries';
 import { getEntry, sectionSlugs, summary, title } from '@/lib/content';
-import { hrefFor } from '@/lib/nav';
+import { CONTACT_HREF, hrefFor } from '@/lib/nav';
 import { loadReferences, referencesFor } from '@/lib/references';
 import { site } from '@/lib/site';
 import { isLocale, type Locale } from '@/lib/i18n';
@@ -76,7 +76,7 @@ export default async function WorkPage({
           ) : undefined
         }
         backHref={hrefFor(locale, '/work')}
-        contactHref={hrefFor(locale, '/contact')}
+        contactHref={hrefFor(locale, CONTACT_HREF)}
         nextHref={study.next ? hrefFor(locale, `/work/${study.next.slug}`) : null}
       />
     );

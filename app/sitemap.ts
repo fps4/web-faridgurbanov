@@ -33,7 +33,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...patterns.map((s) => `/practice/patterns/${s}`),
     ...articles.map((s) => `/practice/articles/${s}`),
     ...(references.length ? ['/references'] : []),
-    '/contact',
     '/privacy',
   ];
   return sitemapEntries(siteOrigin(process.env.NEXT_PUBLIC_SITE_URL, site.domain), paths);
