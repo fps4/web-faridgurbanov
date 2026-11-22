@@ -14,12 +14,15 @@ import { locales, type Locale } from '@/lib/i18n';
 import { earlierWorkTitle, site } from '@/lib/site';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
+import { trackRecordCards, whatIDoHrefs } from '@/lib/home';
 
 // Home page (FS-0002; maestro story art-9947n0hg99, following the decision art-896t5kxfka): the hero
 // (line above the title, title, introduction, two buttons), the optional intro video and How I work,
 // every text verbatim from the approved site copy, section "Home". The references band stays as it
 // was until its own story: it renders nothing WHILE no reference is marked `featured` (FS-0009).
-// The track record and What I do bands come back when their text is approved, not before.
+// Track record and What I do (art-spqwxpsqc3, following art-896t5kxfka §5): two bands between the
+// introduction and How I work, as the design orders them, texts verbatim from the approved copy
+// ("Home · track record", "Home · What I do"); where each card and line leads is in lib/home.ts.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -42,7 +45,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const tc = getDictionary(locale).contact;
   const tr = getDictionary(locale).references;
   const featured = featuredReferences(await loadReferences());
-  const work = featured.length ? await listSection('work', locale) : [];
+  const work = await listSection('work', locale);
+  // A card's large text is the case study's own `large` when it has one (the same words as its row
+  // on the Work page), so the two places cannot drift.
+  const largeOf = (slug: string) => {
+    const v = work.find((w) => w.slug === slug)?.data.large;
+    return typeof v === 'string' && v.trim() !== '' ? v : undefined;
+  };
   const workLabel = (slug: string) => {
     const earlier = earlierWorkOf(slug);
     if (earlier) return earlierWorkTitle(earlier);
@@ -80,6 +89,65 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* The place of the intro video (art-9947n0hg99, AC-5): nothing at all, no frame, WHILE
           INTRO_VIDEO in lib/site.ts is null. */}
       <IntroVideo locale={locale} />
+
+      <section aria-labelledby="track-record" className="border-t border-border bg-muted/40">
+        <div className="container flex flex-col gap-7 py-12">
+          <div className="flex flex-col gap-1.5">
+            <h2 id="track-record" className="text-2xl font-semibold tracking-tight">
+              {t.trackHeading}
+            </h2>
+            <p className="text-muted-foreground">{t.trackLine}</p>
+          </div>
+          <ul className="m-0 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-4">
+            {trackRecordCards.map((card, i) => {
+              const copy = t.trackCards[i];
+              const large = card.largeFrom ? largeOf(card.largeFrom) : copy.large;
+              return (
+                <li key={i} className="flex">
+                  <Link
+                    href={hrefFor(locale, card.href)}
+                    className="flex min-w-0 flex-1 flex-col gap-2 rounded-lg border border-border bg-background p-5 transition-colors hover:border-foreground/40"
+                  >
+                    {large ? (
+                      <span className="text-2xl font-semibold leading-tight tracking-tight">{large}</span>
+                    ) : null}
+                    <span className="text-[15px] text-foreground/90">{copy.text}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="what-i-do">
+        <div className="container flex flex-wrap gap-x-10 gap-y-6 py-16">
+          <div className="flex min-w-0 flex-[1_1_16rem] flex-col gap-2">
+            <h2 id="what-i-do" className="text-2xl font-semibold tracking-tight">
+              {t.whatHeading}
+            </h2>
+            <p className="text-muted-foreground">{t.whatLine}</p>
+          </div>
+          <ul className="m-0 flex min-w-0 flex-[999_1_32rem] list-none flex-col border-b border-border p-0">
+            {t.whatLines.map((line, i) => (
+              <li
+                key={line.name}
+                className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-border py-4"
+              >
+                <span className="min-w-0 font-semibold">
+                  {line.name} <span className="font-normal text-muted-foreground">{line.detail}</span>
+                </span>
+                <Link
+                  href={hrefFor(locale, whatIDoHrefs[i])}
+                  className="py-1 underline underline-offset-4"
+                >
+                  {line.link}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section aria-labelledby="how-i-work" className="border-t border-border">
         <div className="container grid gap-10 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)]">

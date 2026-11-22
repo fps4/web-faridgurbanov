@@ -21,6 +21,14 @@ export interface Dictionary {
     heroIntro: string[];
     primaryContact: string;
     primaryWork: string;
+    trackHeading: string;
+    trackLine: string;
+    /** `large` is absent for the two cards whose large text is the case study's own (lib/home.ts). */
+    trackCards: { large?: string; text: string }[];
+    whatHeading: string;
+    whatLine: string;
+    /** `name` is the bold start, `detail` the muted rest, `link` the label of the link. */
+    whatLines: { name: string; detail: string; link: string }[];
     howHeading: string;
     howLine: string;
     howBody: string[];
@@ -113,6 +121,28 @@ const en: Dictionary = {
     ],
     primaryContact: 'Start a conversation',
     primaryWork: 'See the work',
+    // art-spqwxpsqc3: "Home · track record" and "Home · What I do", verbatim from the approved site copy.
+    trackHeading: 'Track record',
+    trackLine: 'Four numbers from my work. Each links to the work behind it.',
+    trackCards: [
+      { text: 'One API platform on AWS and Azure. Around 10 teams use it, and they publish an API in minutes instead of days.' },
+      { large: 'Over a billion requests a month', text: 'What the API platform handles today.' },
+      { text: 'A new interface on the integration adapter is configuration. The first adapters run in production.' },
+      {
+        large: '5–10 TB a day',
+        text: 'A security data lake for a UK telecom operator. I designed it from the concept and proved it with a demo.',
+      },
+    ],
+    whatHeading: 'What I do',
+    whatLine: 'Each line leads to the work that shows it.',
+    whatLines: [
+      { name: 'API platforms', detail: '· one way in for every system that calls another', link: 'Cloud gateway' },
+      { name: 'Integration platforms', detail: '· an interface via configuration', link: 'Integration adapter' },
+      { name: 'Moving off legacy middleware', detail: '· from vendor specific products to cloud native ones', link: 'Both products' },
+      { name: 'Security of APIs', detail: '· OAuth 2 as the standard, and not API keys', link: 'Cloud gateway' },
+      { name: 'Getting teams to rely on a platform', detail: '· when there is no direct mandate', link: 'Simple first' },
+      { name: 'Data platforms, earlier', detail: '· Kafka, Cloudera, Snowflake', link: 'Earlier work' },
+    ],
     howHeading: 'How I work',
     howLine: 'In my own words.',
     howBody: [
