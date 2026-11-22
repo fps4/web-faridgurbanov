@@ -1,4 +1,4 @@
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 
 const LOCALE_TAG: Record<Locale, string> = { en: 'en-GB', nl: 'nl-NL' };
 
@@ -7,7 +7,7 @@ export function formatDate(iso: string, locale: Locale): string {
   if (!iso) return '';
   const date = new Date(`${iso}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return iso;
-  return new Intl.DateTimeFormat(LOCALE_TAG[locale], {
+  return new Intl.DateTimeFormat(LOCALE_TAG[copyLocale(locale)], {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -20,5 +20,5 @@ export function formatMonth(iso: string, locale: Locale): string {
   if (!iso) return '';
   const date = new Date(`${iso}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return iso;
-  return new Intl.DateTimeFormat(LOCALE_TAG[locale], { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
+  return new Intl.DateTimeFormat(LOCALE_TAG[copyLocale(locale)], { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
 }

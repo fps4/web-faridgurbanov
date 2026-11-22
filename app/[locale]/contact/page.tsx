@@ -9,7 +9,8 @@ import { getDictionary } from '@/lib/dictionaries';
 import { hrefFor } from '@/lib/nav';
 import { loadReferences } from '@/lib/references';
 import { site, TRAINING_PUBLISHED } from '@/lib/site';
-import { locales, type Locale } from '@/lib/i18n';
+import { copyLocale, locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
 
 // Contact (FS-0007/US-0015, US-0016). Works on the static export with no backend: an obfuscated
 // mailto, a WhatsApp click-to-chat affordance, the profile links, location, and (in M1) the "book a
@@ -42,6 +43,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <div className="container py-16">
+      <LocaleNotice locale={locale} />
       <PageIntro title={t.title} lede={t.lede} />
 
       <div className="mt-12 grid gap-10 lg:grid-cols-2">
@@ -115,7 +117,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <h2 className="mt-10 text-sm font-medium uppercase tracking-wide text-muted-foreground">
             {t.locationHeading}
           </h2>
-          <p className="mt-3 text-muted-foreground">{site.location[locale]}</p>
+          <p className="mt-3 text-muted-foreground">{site.location[copyLocale(locale)]}</p>
         </section>
       </div>
     </div>

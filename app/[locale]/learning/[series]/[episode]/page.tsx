@@ -21,6 +21,7 @@ import { hrefFor } from '@/lib/nav';
 import { site, learningVisible } from '@/lib/site';
 import { siteOrigin } from '@/lib/sitemap';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
 
 // The template for every episode page (FS-0012): the video, what the viewer leaves with, the
 // questions to ask the platform team, and the notes and lab for the episode in the course's repo.
@@ -88,6 +89,7 @@ export default async function EpisodePage({ params }: { params: Params }) {
 
   return (
     <article className="container py-16 sm:py-20">
+      <LocaleNotice locale={locale} />
       {structured ? (
         <script
           type="application/ld+json"

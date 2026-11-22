@@ -16,4 +16,14 @@ export function otherLocale(locale: Locale): Locale {
   return locale === 'en' ? 'nl' : 'en';
 }
 
+/**
+ * The locale whose copy a page shows. Until the owner approves the Dutch copy, every Dutch address
+ * shows the English page under the fallback notice (US-0002, ADR-0001 of the site's strategy), so
+ * this maps nl to en. The Dutch story brings the approved copy back by making this the identity.
+ * The URL, the language switcher and the notice keep using the requested locale.
+ */
+export function copyLocale(locale: Locale): Locale {
+  return locale === 'nl' ? defaultLocale : locale;
+}
+
 export const localeName: Record<Locale, string> = { en: 'English', nl: 'Nederlands' };

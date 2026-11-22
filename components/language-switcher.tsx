@@ -31,6 +31,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
               prefetch={false}
               className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
               hrefLang={l}
+              lang={l}
               aria-label={localeName[l]}
             >
               {l.toUpperCase()}

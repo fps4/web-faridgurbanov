@@ -5,7 +5,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { getDictionary } from '@/lib/dictionaries';
 import { headerNav, hrefFor, trainingNav } from '@/lib/nav';
 import { site, TRAINING_PUBLISHED } from '@/lib/site';
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 
 // Shared header (FS-0001/US-0002): name → home, primary nav, the Training "book a taster" CTA
 // (gated by TRAINING_PUBLISHED — hidden in M0, surfaced in M1), language switcher, theme toggle.
@@ -29,7 +29,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
               href={hrefFor(locale, item.href)}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              {item.label[locale]}
+              {item.label[copyLocale(locale)]}
             </Link>
           ))}
         </nav>

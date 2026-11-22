@@ -3,7 +3,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { headerNav, hrefFor, referencesNav, trainingNav } from '@/lib/nav';
 import { loadReferences } from '@/lib/references';
 import { site, TRAINING_PUBLISHED } from '@/lib/site';
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 
 // Shared footer (FS-0001/US-0002): tagline, the site nav, the connect links (LinkedIn/GitHub +
 // contact), and the site-wide privacy link required by FS-0007. The references page (FS-0009) is
@@ -35,7 +35,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
                   href={hrefFor(locale, item.href)}
                   className="text-muted-foreground hover:text-foreground"
                 >
-                  {item.label[locale]}
+                  {item.label[copyLocale(locale)]}
                 </Link>
               </li>
             ))}
@@ -57,7 +57,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
             </li>
             <li>
               <Link href={hrefFor(locale, '/contact')} className="text-muted-foreground hover:text-foreground">
-                {navItems.find((n) => n.href === '/contact')?.label[locale]}
+                {navItems.find((n) => n.href === '/contact')?.label[copyLocale(locale)]}
               </Link>
             </li>
           </ul>

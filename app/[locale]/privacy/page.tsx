@@ -5,6 +5,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { courseVideosLive } from '@/lib/learning';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
 
 // Privacy/GDPR (FS-0007/US-0015). Minimal and honest, reflecting the actual data flow: a static
 // site with mailto-only contact collects nothing, sets no non-essential cookies, runs no
@@ -31,6 +32,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
   return (
     <div className="container py-16">
+      <LocaleNotice locale={raw as Locale} />
       <PageIntro title={t.title} />
       <p className="mt-2 text-sm text-muted-foreground">{t.lastUpdated}</p>
       <div className="mt-8">

@@ -171,6 +171,10 @@ describe('filtering', () => {
   });
 });
 
+// Dutch has no files while it shows the English page under the fallback notice (US-0002), so only
+// the locales that have a practice folder are read; the Dutch story brings its folder back.
+const localesWithFiles = ['en', 'nl'].filter((l) => existsSync(join(process.cwd(), 'content', l, 'practice')));
+
 describe('the published practice content', () => {
   const read = (locale: string, kind: EntryKind) => {
     const dir = join(process.cwd(), 'content', locale, ENTRY_KINDS[kind].section);
@@ -220,7 +224,7 @@ describe('the published practice content', () => {
   });
 
   it('gives every guideline, pattern and article a diagram in its own language', () => {
-    for (const locale of ['en', 'nl']) {
+    for (const locale of localesWithFiles) {
       for (const section of ['guidelines', 'patterns', 'articles']) {
         const dir = join(process.cwd(), 'content', locale, 'practice', section);
         for (const f of readdirSync(dir).filter((x) => x.endsWith('.md'))) {
@@ -246,7 +250,7 @@ describe('the published practice content', () => {
   });
 
   it('tags every article with known topics and technologies', () => {
-    for (const locale of ['en', 'nl']) {
+    for (const locale of localesWithFiles) {
       const dir = join(process.cwd(), 'content', locale, 'practice', 'articles');
       for (const f of readdirSync(dir).filter((x) => x.endsWith('.md'))) {
         const tags = toTags(parseFrontmatter(readFileSync(join(dir, f), 'utf8')).data);
