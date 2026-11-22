@@ -33,7 +33,7 @@ maestro:
 
 ## Why
 
-A peer asked for an opinion on the owner wants to see how he thinks (use case UC-01, extension 4b).
+A peer who is asked for an opinion on the owner wants to see how he thinks (use case UC-01, extension 4b).
 Practice gives his position, a real case from his work and the other side, in his own words. Work
 shows what was done; Practice gives his opinion on it.
 
@@ -60,6 +60,8 @@ shows what was done; Practice gives his opinion on it.
 6. **Drafts are not built.** A file marked `draft: true` is not listed, has no page (it is left out of
    the static params), and is not in the sitemap. The guidelines, the patterns and the ten earlier
    articles are kept in the repository marked draft; they come back only rewritten under ADR-0010 §12.
+   Their diagrams are kept in `content/en/practice/diagrams/`, outside `public/`, so the build does
+   not export them; a diagram moves back to `public/diagrams/` when its piece is published again.
 7. **Redirects.** The addresses of the unpublished pieces, and every old `/writing` address, answer
    301 to `/<locale>/practice` (nginx, `infra/docker/nginx.conf`; checked by `lib/redirects.test.ts`).
 8. **Sitemap.** `/sitemap.xml` lists Practice and each published article (`app/sitemap.ts`).

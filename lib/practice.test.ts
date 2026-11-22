@@ -181,6 +181,34 @@ describe('the unpublished practice pieces', () => {
   });
 });
 
+describe('the diagrams of the unpublished pieces', () => {
+  // A diagram under public/ is exported and anyone with its address can open it, so the diagrams of
+  // the unpublished pieces live under content/en/practice/diagrams/, which is not exported. A draft
+  // still points at /diagrams/<name>.svg; the folder's NOTE.txt says to move one back on publishing.
+  const drafts = ['guidelines', 'patterns', 'articles']
+    .flatMap((dir) => files(dir).map((f) => ({ dir, f })))
+    .filter(({ dir, f }) => read(dir, f).data.draft === true);
+
+  it('keeps each one outside public/, and none is served', () => {
+    const names = new Set(
+      drafts.flatMap(({ dir, f }) => [...read(dir, f).body.matchAll(/\/diagrams\/([a-z0-9-]+\.svg)/g)].map((m) => m[1])),
+    );
+    expect(names.size).toBeGreaterThan(0);
+    for (const name of names) {
+      expect(existsSync(join(process.cwd(), 'public', 'diagrams', name)), `public/diagrams/${name}`).toBe(false);
+      expect(existsSync(join(ROOT, 'diagrams', name)), `content/en/practice/diagrams/${name}`).toBe(true);
+    }
+  });
+
+  it('leaves nothing of the folder in public/', () => {
+    const dir = join(process.cwd(), 'public', 'diagrams');
+    const left = existsSync(dir) ? readdirSync(dir) : [];
+    const published = files('articles').filter((f) => read('articles', f).data.draft !== true);
+    const used = published.flatMap((f) => [...read('articles', f).body.matchAll(/\/diagrams\/([a-z0-9-]+\.svg)/g)].map((m) => m[1]));
+    expect(left.filter((n) => !used.includes(n))).toEqual([]);
+  });
+});
+
 describe('the end of the Integration adapter case study', () => {
   it('links to Simple first, in the words of the approved copy', () => {
     const body = readFileSync(join(process.cwd(), 'content', 'en', 'work', 'integration-adapter.md'), 'utf8').trimEnd();

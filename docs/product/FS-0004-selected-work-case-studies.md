@@ -81,8 +81,8 @@ The design's dashed placeholder row in Also built is not drawn.
 **Anchors.** The Earlier work list is `/work#earlier-work` (`EARLIER_WORK_ANCHOR`), and each entry has
 a stable id of its own: `earlier-sap-events`, `earlier-databricks-review`,
 `earlier-security-data-lake` (the UK telecom operator) and `earlier-sap-finance-snowflake`. Another
-page links to an entry as `/work#<id>`; a reference names it in `work:`, and a Practice piece in
-`related:` as `work#<id>`. An id is not renamed without redirecting what links to it.
+page links to an entry as `/work#<id>`; a reference names it in `work:`, and a Practice article in
+`from:` as `Label | /en/work#<id>` (FS-0006). An id is not renamed without redirecting what links to it.
 
 **Also built** lists a repository only when the owner has chosen it, it is public under
 `github.com/fps4/`, and ADR-0004's prerequisites hold for it. `lib/work.test.ts` checks the list
