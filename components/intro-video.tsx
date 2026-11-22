@@ -8,33 +8,15 @@ import { copyLocale, type Locale } from '@/lib/i18n';
 //
 // No autoplay and no muted-loop background trick — this is content, not decoration, so the visitor
 // starts it. `preload="metadata"` keeps the page weight to a poster image until they do.
-export function IntroVideo({
-  locale,
-  heading,
-  body,
-  durationLabel,
-}: {
-  locale: Locale;
-  heading: string;
-  body: string;
-  durationLabel: string;
-}) {
+// No text of its own (maestro story art-9947n0hg99): every text on the home page is approved copy,
+// and there is none for this place yet. The player and its caption track are all it renders.
+export function IntroVideo({ locale }: { locale: Locale }) {
   if (!INTRO_VIDEO) return null;
 
   return (
-    <section className="border-b border-border bg-muted/30">
-      <div className="container grid items-center gap-8 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
-        <div className="max-w-md">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {heading}
-          </h2>
-          <p className="mt-4 text-lg">{body}</p>
-          <p className="mt-3 text-sm text-muted-foreground">
-            {durationLabel} {INTRO_VIDEO.duration}
-          </p>
-        </div>
-
-        <div className="overflow-hidden rounded-lg border border-border bg-background">
+    <section className="border-t border-border bg-muted/30">
+      <div className="container py-12">
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-lg border border-border bg-background">
           {/* eslint-disable-next-line jsx-a11y/media-has-caption -- a <track> is rendered below */}
           <video
             className="aspect-video h-auto w-full"
