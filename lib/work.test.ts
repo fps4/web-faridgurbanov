@@ -48,9 +48,15 @@ describe('Earlier work', () => {
     expect(earlierWorkTitle(earlierWork[2])).toBe('Security data lake for a UK telecom operator');
   });
 
-  it('names no client', () => {
-    const all = earlierWork.map((e) => e.lead + e.rest).join('\n');
-    for (const word of ['Telef', 'Siemens', 'Jumbo', 'Heineken']) expect(all).not.toContain(word);
+  // Every visible string of the list is one of the approved ones, so a client name cannot come in
+  // without this test (and the approved copy) changing first.
+  it('holds exactly the approved texts', () => {
+    expect(earlierWork.map((e) => e.lead + e.rest)).toEqual([
+      'SAP events, proof of concept. SAP Advanced Event Mesh pushes events to a REST endpoint of the adapter, with retry, dead-letter queue and a pause per event type.',
+      'Databricks cost and pipeline review. Together with a data scientist. The cost of the existing workloads went down by more than a third.',
+      'Security data lake for a UK telecom operator, at Accenture. I designed it from the concept and proved it with a demo. An offshore team brought it to production. 5–10 TB a day.',
+      'SAP Finance to Snowflake for a German manufacturer, at Accenture. A large proof of concept that I built myself.',
+    ]);
   });
 });
 
