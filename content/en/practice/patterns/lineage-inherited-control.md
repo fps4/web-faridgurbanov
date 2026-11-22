@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [practice/articles/export-control-who-sees-what, practice/articles/knowledge-layer-a-lawyer-can-act-on, P-02, P-04]
 topics: [governance, data-platforms]
 tech: [databricks]
+draft: true
 ---
 
 ## Problem

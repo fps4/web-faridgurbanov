@@ -5,6 +5,7 @@ date: 2026-09-20
 order: 1
 topics: [governance, data-platforms]
 tech: [databricks, fabric, azure]
+draft: true
 ---
 
 # One policy, two compilers

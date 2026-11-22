@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [G-03]
 topics: [architecture]
 tech: []
+draft: true
 ---
 
 ## The rule

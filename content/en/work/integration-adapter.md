@@ -34,3 +34,5 @@ Compared with infrastructure that teams deployed themselves, without a platform 
 ## Where it stands
 
 The first adapters run in production. The migration of the interfaces is ongoing. The hardest part is to get teams to rely on the platform.
+
+Why I kept it simple: read ["Simple first"](/en/practice/articles/simple-first)

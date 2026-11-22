@@ -1,7 +1,7 @@
 ---
 title: "Guide — adding guidelines, patterns and tags"
-status: guide
-last_updated: 2026-11-08
+status: superseded by ADR-0010
+last_updated: 2026-11-23
 owners: [architect]
 related:
   - docs/product/FS-0013-practice-and-guidelines.md
@@ -11,6 +11,8 @@ related:
 ---
 
 # Adding guidelines, patterns and tags
+
+> **Superseded** by [ADR-0010](../design/decisions/0010-the-site-has-one-job.md) (§11) and maestro story `art-gdp0zjj9fd`: Practice is a short list of the owner's approved articles, and the guidelines, patterns, tags and filter described below are no longer built. Their files stay in the repository marked `draft: true`, and `lib/practice-model.ts` no longer has the tag vocabularies. Kept as history; do not build from it. See [FS-0006](../product/FS-0006-writing-blog.md).
 
 The Practice list holds three kinds. A **guideline** (`G-NN`) is a standing rule I bring to an
 engagement. A **pattern** (`P-NN`) is a reusable solution to a problem that keeps coming back,

@@ -5,6 +5,7 @@ date: 2026-09-13
 order: 1
 topics: [governance, data-platforms]
 tech: [databricks, fabric, azure]
+draft: true
 ---
 
 # Deciding who may see what, and from where

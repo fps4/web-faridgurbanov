@@ -71,30 +71,21 @@ export interface Dictionary {
     alsoLine: string;
     backToIndex: { work: string };
   };
-  /** The Practice section (FS-0013): the filterable list, and an entry's page furniture. */
+  /**
+   * The Practice section (art-gdp0zjj9fd): the page introduction and the labels of the list and of an
+   * article page. Every text is verbatim from the approved site copy, "Practice" and "Texts shown in
+   * the design that were missing above" (Practice · list and article page).
+   */
   practice: {
     title: string;
     lede: string;
-    /** The filter rows' labels. */
-    filterKind: string;
-    filterTopic: string;
-    filterTech: string;
-    all: string;
-    clear: string;
-    /** "{n} of {total}", announced when the filter changes. */
-    showing: string;
-    empty: string;
-    kind: { guideline: string; pattern: string; article: string };
-    kindPlural: { guideline: string; pattern: string; article: string };
-    lastRevised: string;
-    status: { revised: string; retired: string };
-    supersedes: string;
-    supersededBy: string;
-    related: string;
-    drawnFrom: string;
-    previous: string;
-    next: string;
-    backToIndex: string;
+    comesFrom: string;
+    writtenHowLabel: string;
+    writtenHow: string;
+    back: string;
+    barQuestion: string;
+    barAction: string;
+    barAll: string;
   };
 }
 
@@ -194,25 +185,14 @@ const en: Dictionary = {
   },
   practice: {
     title: 'Practice',
-    lede: 'How I work, written down where it can be argued with. Guidelines are the standing rules I bring to an engagement, patterns the solutions I reuse, and articles the longer pieces they came from.',
-    filterKind: 'Show',
-    filterTopic: 'Topic',
-    filterTech: 'Technology',
-    all: 'All',
-    clear: 'Clear filters',
-    showing: '{n} of {total}',
-    empty: 'Nothing matches these filters.',
-    kind: { guideline: 'Guideline', pattern: 'Pattern', article: 'Article' },
-    kindPlural: { guideline: 'Guidelines', pattern: 'Patterns', article: 'Articles' },
-    lastRevised: 'Last revised',
-    status: { revised: 'Revised', retired: 'Retired' },
-    supersedes: 'Replaces',
-    supersededBy: 'Replaced by',
-    related: 'Where I applied it',
-    drawnFrom: 'Extracted from this article',
-    previous: 'Previous',
-    next: 'Next',
-    backToIndex: 'Back to Practice',
+    lede: 'How I work and what I think about it. Written from my own projects, in my own words.',
+    comesFrom: 'Where it comes from',
+    writtenHowLabel: 'Written how',
+    writtenHow: 'From my own answers in an interview. Edited, not generated.',
+    back: '← Practice',
+    barQuestion: 'Do you see it differently, or do you have the same problem?',
+    barAction: 'Start a conversation',
+    barAll: 'All of Practice',
   },
 };
 

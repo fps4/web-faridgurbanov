@@ -72,10 +72,18 @@ async function readFile(section: string, slug: string, locale: Locale): Promise<
   }
 }
 
-/** Every slug that exists for a section in any locale — the set for generateStaticParams. */
+/**
+ * Every slug that is published for a section in any locale: the set for generateStaticParams, so
+ * no page is emitted for a draft (art-gdp0zjj9fd). A slug counts when some locale has an entry for
+ * it that getEntry returns.
+ */
 export async function sectionSlugs(section: string): Promise<string[]> {
   const perLocale = await Promise.all(locales.map((l) => readDir(section, l)));
-  return [...new Set(perLocale.flat())];
+  const slugs = [...new Set(perLocale.flat())];
+  const published = await Promise.all(
+    slugs.map(async (slug) => (await Promise.all(locales.map((l) => getEntry(section, slug, l)))).some((e) => e !== null)),
+  );
+  return slugs.filter((_, i) => published[i]);
 }
 
 /**

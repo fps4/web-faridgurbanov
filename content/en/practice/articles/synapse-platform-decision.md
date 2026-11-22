@@ -5,6 +5,7 @@ date: 2026-08-29
 order: 1
 topics: [data-platforms, cost]
 tech: [azure, fabric, databricks, snowflake]
+draft: true
 ---
 
 # Deciding where a Synapse estate goes

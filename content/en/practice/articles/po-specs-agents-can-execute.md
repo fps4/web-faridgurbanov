@@ -5,6 +5,7 @@ date: 2026-05-20
 order: 1
 topics: [ai, adoption]
 tech: []
+draft: true
 ---
 
 # How I get non-technical POs writing specs agents can execute

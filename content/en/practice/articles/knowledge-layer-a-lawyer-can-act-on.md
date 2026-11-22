@@ -5,6 +5,7 @@ date: 2026-10-19
 order: 1
 topics: [ai, governance]
 tech: [knowledge-graphs, mcp]
+draft: true
 ---
 
 # A knowledge layer a lawyer can act on
