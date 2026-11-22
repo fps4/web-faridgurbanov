@@ -72,13 +72,11 @@ review document of the site copy; where a text is not there, the element is not 
 | Part | Where the text is |
 |---|---|
 | Heading and introduction | `indexes.workTitle`, `indexes.workIntro` in `lib/dictionaries.ts` |
-| A case study's row | its title, and `listed` (the line) and `stands` (Where it stands) in its frontmatter; the label *Where it stands:* is `indexes.whereItStands`; the row leads to its case study |
+| A case study's row | its title, and `large` (the large text at the left), `listed` (the line) and `stands` (Where it stands) in its frontmatter; the label *Where it stands:* is `indexes.whereItStands`; the row leads to its case study |
 | Earlier work | `indexes.earlierHeading`, `indexes.earlierLine`, and `earlierWork` in `lib/site.ts`: four entries of one or two lines, no case page behind them |
 | Also built | `indexes.alsoHeading`, `indexes.alsoLine`, and `alsoBuilt` in `lib/site.ts`: a repository name linked to its public GitHub repository, and its one line |
 
-The design's large text on the left of each case-study row is not drawn: the approved copy has those
-words for the home page's track record only, not for this place. The design's dashed placeholder row
-in Also built is not drawn either.
+The design's dashed placeholder row in Also built is not drawn.
 
 **Anchors.** The Earlier work list is `/work#earlier-work` (`EARLIER_WORK_ANCHOR`), and each entry has
 a stable id of its own: `earlier-sap-events`, `earlier-databricks-review`,

@@ -62,8 +62,9 @@ describe('the case studies on the Work page', () => {
     expect(files.sort()).toEqual(['cloud-gateway.md', 'integration-adapter.md']);
   });
 
-  it.each(files)('%s carries its list line and its Where it stands', (f) => {
+  it.each(files)('%s carries its large text, list line and Where it stands', (f) => {
     const { data } = parseFrontmatter(readFileSync(join(dir, f), 'utf8'));
+    expect(typeof data.large).toBe('string');
     expect(typeof data.listed).toBe('string');
     expect(typeof data.stands).toBe('string');
     expect((data.listed as string).length).toBeGreaterThan(0);

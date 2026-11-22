@@ -15,7 +15,7 @@ import { fallbackCanonical } from '@/lib/canonical';
 // the Also built strip with the owner's public repositories. Every text is verbatim from the
 // approved site copy: the introduction, the list labels and the Earlier work and Also built
 // entries come from lib/dictionaries.ts and lib/site.ts; a case study's list line and Where it
-// stands come from its own frontmatter (`listed`, `stands`). An element whose text is not there is
+// stands come from its own frontmatter (`large`, `listed`, `stands`). An element whose text is not there is
 // not drawn.
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -49,24 +49,32 @@ export default async function WorkIndex({ params }: { params: Promise<{ locale: 
 
         <ol className="mt-12 flex flex-col border-b border-border">
           {entries.map((e) => {
+            const large = str(e, 'large');
             const listed = str(e, 'listed');
             const stands = str(e, 'stands');
             return (
               <li key={e.slug} className="border-t border-border">
                 <Link
                   href={hrefFor(locale, `/work/${e.slug}`)}
-                  className="group flex flex-col gap-1.5 py-6"
+                  className="group flex flex-wrap gap-x-10 gap-y-2 py-7"
                 >
-                  <h2 className="flex items-start justify-between gap-3 text-lg font-semibold">
-                    {title(e.data)}
-                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-                  </h2>
-                  {listed ? <p className="max-w-3xl text-foreground/90">{listed}</p> : null}
-                  {stands ? (
-                    <p className="max-w-3xl text-sm text-muted-foreground">
-                      <span className="font-semibold text-foreground">{t.whereItStands}</span> {stands}
-                    </p>
+                  {large ? (
+                    <span className="flex-[0_0_16rem] text-2xl font-semibold leading-tight tracking-tight">
+                      {large}
+                    </span>
                   ) : null}
+                  <div className="flex min-w-0 flex-[999_1_24rem] flex-col gap-1.5">
+                    <h2 className="flex items-start justify-between gap-3 text-lg font-semibold">
+                      {title(e.data)}
+                      <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+                    </h2>
+                    {listed ? <p className="max-w-3xl text-foreground/90">{listed}</p> : null}
+                    {stands ? (
+                      <p className="max-w-3xl text-sm text-muted-foreground">
+                        <span className="font-semibold text-foreground">{t.whereItStands}</span> {stands}
+                      </p>
+                    ) : null}
+                  </div>
                 </Link>
               </li>
             );
