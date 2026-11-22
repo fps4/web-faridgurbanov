@@ -5,8 +5,9 @@ import { loadReferences } from '@/lib/references';
 import { site } from '@/lib/site';
 import { copyLocale, type Locale } from '@/lib/i18n';
 
-// Shared footer (FS-0001/US-0002): tagline, the site nav, the connect links (LinkedIn/GitHub +
-// contact), and the site-wide privacy link required by FS-0007. The references page (FS-0009) is
+// Shared footer (FS-0001/US-0002): the one statement on how AI is used (art-4fzvp6bqm0), the site
+// nav, the connect links (LinkedIn/GitHub + contact), and the site-wide privacy link required by
+// FS-0007. The references page (FS-0009) is
 // listed here, not in the header, and only WHILE at least one reference is published.
 export async function SiteFooter({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).shell;
@@ -19,7 +20,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
       <div className="container grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <p className="text-sm font-semibold">{site.name}</p>
-          <p className="mt-2 max-w-xs text-sm text-muted-foreground">{t.footerTagline}</p>
+          <p className="mt-2 max-w-md text-sm text-muted-foreground">{t.footerAiStatement}</p>
         </div>
 
         <nav aria-label="Footer" className="text-sm">
@@ -68,7 +69,6 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={hrefFor(locale, '/privacy')} className="hover:text-foreground">
             {t.privacy}
           </Link>
-          <span>{t.builtWith}</span>
         </div>
       </div>
     </footer>

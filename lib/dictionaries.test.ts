@@ -40,3 +40,16 @@ describe('links written for the English pages', () => {
     }
   });
 });
+
+// Maestro story art-4fzvp6bqm0: one statement on how AI is used, in the footer, verbatim from the approved copy.
+describe('the footer', () => {
+  const statement =
+    'How AI is used here. The code and some notes on this site are built with AI assistance. The decisions and the client work are mine.';
+
+  it.each(['en', 'nl'] as const)('holds the approved AI statement in %s and no tagline or built-with line', (l) => {
+    const shell = getDictionary(l).shell as Record<string, unknown>;
+    expect(shell.footerAiStatement).toBe(statement);
+    expect(shell).not.toHaveProperty('footerTagline');
+    expect(shell).not.toHaveProperty('builtWith');
+  });
+});

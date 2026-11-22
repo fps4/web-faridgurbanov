@@ -47,6 +47,8 @@ across pages and across languages.
    reads Work, Practice, Contact, in that order, besides the name, the language switcher and the
    theme toggle ([ADR-0010](../design/decisions/0010-the-site-has-one-job.md) §5; maestro story
    `art-y97cjsakwq`). The footer lists the same three, and References while one is published.
+   The footer carries the one statement on how AI is used, verbatim from the approved copy
+   (ADR-0010 §6; maestro story `art-4fzvp6bqm0`), and stands nowhere else on the site.
 5. **Static export** — `output: 'export'`; the production build emits static HTML/CSS/JS with no
    server or database.
 6. **Graceful language fallback** — when a page has no translation in the requested locale, the
@@ -62,6 +64,9 @@ across pages and across languages.
 
 - THE SYSTEM SHALL render every page within a shared layout providing a header with the owner's
   name/logo and primary navigation, and a footer with contact and social links.
+- THE SYSTEM SHALL carry in the footer of every page, in both locales, the approved statement on
+  how AI is used, and SHALL carry that statement nowhere else.
+- THE SYSTEM SHALL NOT carry a footer tagline or a built-with line.
 - THE SYSTEM SHALL serve content under locale-segmented routes for English and Dutch, with a
   single configured default locale.
 - WHEN a visitor uses the language switcher on any page, THE SYSTEM SHALL navigate to the
