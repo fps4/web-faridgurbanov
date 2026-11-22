@@ -29,7 +29,7 @@ describe('Dutch while its copy is unapproved', () => {
 describe('links written for the English pages', () => {
   it('stay inside the locale they are served under', () => {
     expect(localizeHref('/en/work/integration-platform', 'nl')).toBe('/nl/work/integration-platform');
-    expect(localizeHref('/en/portfolio#top', 'nl')).toBe('/nl/portfolio#top');
+    expect(localizeHref('/en/work#top', 'nl')).toBe('/nl/work#top');
     expect(localizeHref('/en', 'nl')).toBe('/nl');
     expect(localizeHref('/en/work/x', 'en')).toBe('/en/work/x');
   });

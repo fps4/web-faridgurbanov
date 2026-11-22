@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionaries';
-import { headerNav, hrefFor, referencesNav, trainingNav } from '@/lib/nav';
+import { headerNav, hrefFor, referencesNav } from '@/lib/nav';
 import { loadReferences } from '@/lib/references';
-import { site, TRAINING_PUBLISHED } from '@/lib/site';
+import { site } from '@/lib/site';
 import { copyLocale, type Locale } from '@/lib/i18n';
 
 // Shared footer (FS-0001/US-0002): tagline, the site nav, the connect links (LinkedIn/GitHub +
@@ -12,11 +12,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).shell;
   const year = 2026;
   const hasReferences = (await loadReferences()).length > 0;
-  const navItems = [
-    ...headerNav(),
-    ...(hasReferences ? [referencesNav] : []),
-    ...(TRAINING_PUBLISHED ? [trainingNav] : []),
-  ];
+  const navItems = [...headerNav(), ...(hasReferences ? [referencesNav] : [])];
 
   return (
     <footer className="mt-16 border-t border-border">

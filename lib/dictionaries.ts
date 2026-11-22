@@ -1,15 +1,14 @@
 import type { Locale } from '@/lib/i18n';
 
-// Localized UI copy for the bespoke (non-markdown) surfaces — shell chrome, home, portfolio,
-// contact, privacy, training stub, and the index/fallback strings. Content-body pages
-// (expertise, work, practice) live as markdown under content/en/; this file is the chrome and
+// Localized UI copy for the bespoke (non-markdown) surfaces — shell chrome, home, contact,
+// privacy, references, and the index/fallback strings. Content-body pages
+// (work, practice) live as markdown under content/en/; this file is the chrome and
 // the conversion pages. Dutch shows the English values for now (see `nl` below, ADR-0002).
 
 export interface Dictionary {
   shell: {
     skipToContent: string;
     nav: { home: string };
-    tasterCta: string;
     themeToggle: string;
     footerTagline: string;
     footerNavHeading: string;
@@ -40,20 +39,6 @@ export interface Dictionary {
     practiceLede: string;
     practicePoints: { title: string; body: string; href: string }[];
     practiceCta: string;
-    tasterHeading: string;
-    tasterBody: string;
-    tasterCta: string;
-  };
-  portfolio: {
-    title: string;
-    lede: string;
-    narrative: string;
-    maturityWorking: string;
-    maturityReference: string;
-    provesHeading: string;
-    viewRepo: string;
-    linksGatedNotice: string;
-    honesty: string;
   };
   contact: {
     title: string;
@@ -65,9 +50,6 @@ export interface Dictionary {
     whatsappPlaceholder: string;
     whatsappCta: string;
     whatsappDefault: string;
-    tasterHeading: string;
-    tasterBody: string;
-    tasterCta: string;
     elsewhereHeading: string;
     locationHeading: string;
     linkedin: string;
@@ -77,8 +59,6 @@ export interface Dictionary {
     title: string;
     lastUpdated: string;
     body: string;
-    /** Added to the body only once a course video is live (FS-0012): the click-to-load YouTube player. */
-    youtube: string;
   };
   references: {
     title: string;
@@ -100,26 +80,14 @@ export interface Dictionary {
     contactBody: string;
     contactCta: string;
   };
-  training: {
-    title: string;
-    lede: string;
-    body: string;
-    ctaHeading: string;
-    ctaBody: string;
-    cta: string;
-  };
   indexes: {
-    expertiseTitle: string;
-    expertiseLede: string;
-    expertiseGroups: { domain: { heading: string; lede: string }; practice: { heading: string; lede: string } };
     workTitle: string;
     workLede: string;
     workHonesty: string;
     disagreementLabel: string;
     evidenceLabel: string;
-    portfolioLabel: string;
     readMore: string;
-    backToIndex: { expertise: string; work: string };
+    backToIndex: { work: string };
   };
   /** The Practice section (FS-0013): the filterable list, and an entry's page furniture. */
   practice: {
@@ -152,7 +120,6 @@ const en: Dictionary = {
   shell: {
     skipToContent: 'Skip to content',
     nav: { home: 'Home' },
-    tasterCta: 'Book a taster',
     themeToggle: 'Toggle theme',
     footerTagline: 'Senior Solution Architect — Data & Integration. I design the backbone, build what runs on it, and get the organisation to adopt both.',
     footerNavHeading: 'Site',
@@ -238,23 +205,6 @@ const en: Dictionary = {
     buildCta: 'See the code behind it',
     buildCtaBody:
       'Public repositories you can clone and run: the “active customer” question, the SAP↔Snowflake decision, the Fabric-or-Databricks decision, the modernization lab, the streaming platform and the identity service.',
-    tasterHeading: 'Training',
-    tasterBody:
-      'I also teach architecture and product teams to direct AI agents. The full programme is coming; for now, book a taster.',
-    tasterCta: 'Book a taster',
-  },
-  portfolio: {
-    title: 'Portfolio',
-    lede: 'Working code behind the positioning, in three areas: deciding and modelling the target, moving an estate onto it, and running the platform underneath. Every repository here is public, runs end to end, and says in its own README where the demo stops and production would begin.',
-    narrative: 'Working code, and what it proves',
-    maturityWorking: 'Working — runs end-to-end',
-    maturityReference: 'Reference architecture',
-    provesHeading: 'What it proves',
-    viewRepo: 'View repository',
-    linksGatedNotice:
-      'A repository is listed here once it is public and licensed. Anything still being built is not on this page.',
-    honesty:
-      'All of these run end to end; clone any of them and bring it up. Two caveats. They run on synthetic data, so the claim is the architecture and the mechanics, and every README says where real data would go instead. And the three blueprint-style repositories are documents first: what runs is the decision engine, the cost model and the simulation behind the document. None of them is a production system.',
   },
   contact: {
     title: 'Contact',
@@ -267,9 +217,6 @@ const en: Dictionary = {
     whatsappPlaceholder: 'What would you like to ask?',
     whatsappCta: 'Open WhatsApp',
     whatsappDefault: 'Hi Farid, I found you via faridgurbanov.com. I would like to ask about ',
-    tasterHeading: 'Book a training taster',
-    tasterBody: 'Curious about the training? Email me with “taster” and your team’s context, and I’ll propose a short session.',
-    tasterCta: 'Email about a taster',
     elsewhereHeading: 'Elsewhere',
     locationHeading: 'Based in',
     linkedin: 'LinkedIn',
@@ -293,7 +240,6 @@ const en: Dictionary = {
 **References:** the references page and the case studies quote people I have worked with, with their name, photo, role at the time and a link to their public LinkedIn profile. Each of them agreed to that before it went live, and any of them can have it taken down by emailing me.
 
 **Your rights:** you can ask me what correspondence I hold about you, to correct it, or to delete it. Email the address on the contact page and I will action it.`,
-    youtube: `**If you watch a course video:** an episode page shows a still image served from my own server, and nothing loads from YouTube until you press play. When you do, the video plays in YouTube's privacy-enhanced player (youtube-nocookie.com), and **Google processes your IP address and viewing data as a third party**, under their terms and not mine.`,
   },
   references: {
     title: 'References',
@@ -314,39 +260,14 @@ const en: Dictionary = {
     contactBody: 'If you would rather hear it from someone else first, the people quoted on the references page were on these engagements, and each links to their profile. For a live conversation, ask me and I will make an introduction.',
     contactCta: 'References',
   },
-  training: {
-    title: 'Training',
-    lede: 'AI training for architecture and product teams, taught by someone who ships.',
-    body: `Most AI training is delivered by people who have never put an agentic system into production. I have, and I teach teams to direct AI the way a senior engineer would: writing specs an agent can execute, evaluating what comes back, and telling real capability from hype.
-
-The full programme (two tiers, an offer ladder, and a plain-language EU AI Act explainer) is being built and validated with real teams now. I would rather get it right with a few pilots than publish a brochure.
-
-If that sounds useful to your team, book a short taster.`,
-    ctaHeading: 'Book a taster',
-    ctaBody: 'A short session for your team, no commitment. Tell me your context and I’ll tailor it.',
-    cta: 'Book a taster',
-  },
   indexes: {
-    expertiseTitle: 'Expertise',
-    expertiseLede: 'How I get an architecture decided and adopted, and what I build once it is.',
-    expertiseGroups: {
-      domain: {
-        heading: 'What I build',
-        lede: 'The five areas I work in, in the order I am usually hired for.',
-      },
-      practice: {
-        heading: 'How I work',
-        lede: 'The part of an architect\u2019s job that is not the diagram: deciding, recording, and getting people who report elsewhere to come along.',
-      },
-    },
     workTitle: 'Selected work',
     workLede: 'Five client engagements, with numbers. Clients are abstracted where confidentiality requires; the metrics are as delivered. Each one carries the disagreement it had to survive, because that is usually what decided whether it shipped.',
     workHonesty: 'These are the engagements I can describe accurately and defend under questioning, including what each one cost the teams it landed on. Self-built demos live on the portfolio, labelled as demos.',
     disagreementLabel: 'The disagreement',
     evidenceLabel: 'Evidenced by',
-    portfolioLabel: 'Portfolio',
     readMore: 'Read more',
-    backToIndex: { expertise: 'All expertise', work: 'All selected work' },
+    backToIndex: { work: 'All selected work' },
   },
   practice: {
     title: 'Practice',
