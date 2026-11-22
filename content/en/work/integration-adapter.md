@@ -8,6 +8,8 @@ role: Designed and built the initial version. Tech lead of the team that expands
 client: A large Dutch grocery retailer
 built_with: AWS Lambda, SNS/SQS, S3, DynamoDB, JSONata, Terraform, Datadog
 order: 2
+listed: The same retailer. Teams provision an integration between applications via configuration, on a light serverless stack.
+stands: the first adapters run in production and several teams use it. The migration of some hundreds of interfaces from the IBM middleware is ongoing.
 next: cloud-gateway
 next_label: Next: Cloud gateway
 ---

@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { parseFrontmatter, type Frontmatter } from '@/lib/frontmatter';
 import { defaultLocale, type Locale } from '@/lib/i18n';
+import { earlierWork, type EarlierWorkEntry } from '@/lib/site';
 
 // References (FS-0009, ADR-0009): people the owner worked with, quoted in their own words and
 // linked to their public LinkedIn profile. Each one is a markdown file under content/references/
@@ -30,7 +31,10 @@ export interface Reference {
   years: string;
   /** Their public profile: https://www.linkedin.com/in/<handle>/ */
   linkedin: string;
-  /** The case-study slug (content/{en,nl}/work/<slug>.md) this reference is about. */
+  /**
+   * The work this reference is about: a case-study slug (content/{en,nl}/work/<slug>.md) or the id
+   * of an Earlier work entry on /work (lib/site.ts; art-vvzsw9ap9e), which has no page of its own.
+   */
   work: string;
   /** ISO date the reference was written. */
   date: string;
@@ -104,7 +108,7 @@ export function validateReference(ref: Reference): string[] {
   if (!LINKEDIN_PROFILE.test(ref.linkedin)) {
     problems.push('linkedin must be a public profile URL (https://www.linkedin.com/in/<handle>/)');
   }
-  if (!ref.work) problems.push('work must name a case-study slug');
+  if (!ref.work) problems.push('work must name a case-study slug or an earlier-work entry');
   if (!ISO_DATE.test(ref.date)) problems.push('date must be YYYY-MM-DD');
   if (!ISO_DATE.test(ref.reviewed)) problems.push('reviewed must be YYYY-MM-DD');
   if (!LANG_TAG.test(ref.lang)) problems.push('lang must be a language tag such as en, nl or de');
@@ -186,8 +190,11 @@ export async function loadReferences(): Promise<Reference[]> {
       problems.push(`photo ${ref.photo} is not in public/`);
     }
     // EN is the required locale; NL may fall back to it (ADR-0002), so only EN is checked.
-    if (!(await exists(path.join(process.cwd(), 'content', defaultLocale, 'work', `${ref.work}.md`)))) {
-      problems.push(`work "${ref.work}" has no case study`);
+    if (
+      !earlierWorkOf(ref.work) &&
+      !(await exists(path.join(process.cwd(), 'content', defaultLocale, 'work', `${ref.work}.md`)))
+    ) {
+      problems.push(`work "${ref.work}" is neither a case study nor an earlier-work entry`);
     }
     if (problems.length) throw new Error(`content/references/${file}: ${problems.join('; ')}`);
     refs.push(ref);
@@ -196,6 +203,13 @@ export async function loadReferences(): Promise<Reference[]> {
   if (setProblems.length) throw new Error(`content/references: ${setProblems.join('; ')}`);
   return sortReferences(refs);
 }
+
+/** The Earlier work entry a reference's `work` names, or undefined when it names a case study. */
+export const earlierWorkOf = (work: string): EarlierWorkEntry | undefined =>
+  earlierWork.find((e) => e.id === work);
+
+/** Where the work of a reference lives, without the locale: a case page, or an entry on /work. */
+export const workPath = (work: string): string => (earlierWorkOf(work) ? `/work#${work}` : `/work/${work}`);
 
 export const featuredReferences = (refs: Reference[]) => refs.filter((r) => r.featured);
 export const referencesFor = (refs: Reference[], work: string) => refs.filter((r) => r.work === work);

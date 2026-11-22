@@ -18,6 +18,69 @@ export const site = {
   location: { en: 'Eindhoven, Netherlands', nl: 'Eindhoven, Nederland' },
 } as const;
 
+// The Work page's two lists (art-vvzsw9ap9e, ADR-0010 §3.3, §5), verbatim from the approved site
+// copy: "Work" > "Earlier work, short" and "Also built". Nothing here is written by a builder.
+
+/**
+ * Earlier work: one or two lines each, no case page behind it. `lead` is the bold start of the
+ * entry as the copy has it and `rest` is the text after it, so `lead + rest` reads as in the copy.
+ * `id` is the entry's anchor on /work and is stable: other pages (a reference, a Practice piece)
+ * link to `/work#<id>`. Never rename one without redirecting what links to it.
+ */
+export interface EarlierWorkEntry {
+  id: string;
+  lead: string;
+  rest: string;
+}
+
+export const earlierWork: readonly EarlierWorkEntry[] = [
+  {
+    id: 'earlier-sap-events',
+    lead: 'SAP events, proof of concept.',
+    rest: ' SAP Advanced Event Mesh pushes events to a REST endpoint of the adapter, with retry, dead-letter queue and a pause per event type.',
+  },
+  {
+    id: 'earlier-databricks-review',
+    lead: 'Databricks cost and pipeline review.',
+    rest: ' Together with a data scientist. The cost of the existing workloads went down by more than a third.',
+  },
+  {
+    id: 'earlier-security-data-lake',
+    lead: 'Security data lake for a UK telecom operator',
+    rest: ', at Accenture. I designed it from the concept and proved it with a demo. An offshore team brought it to production. 5–10 TB a day.',
+  },
+  {
+    id: 'earlier-sap-finance-snowflake',
+    lead: 'SAP Finance to Snowflake for a German manufacturer',
+    rest: ', at Accenture. A large proof of concept that I built myself.',
+  },
+];
+
+/** The entry's name without the full stop that ends a bold lead in the copy. */
+export const earlierWorkTitle = (e: EarlierWorkEntry): string => e.lead.replace(/\.$/, '');
+
+/** The anchor of the Earlier work list on /work; the old case-study addresses lead here. */
+export const EARLIER_WORK_ANCHOR = 'earlier-work';
+
+/**
+ * Also built: the owner's public repositories, one line each in his words. Only a repository he
+ * has chosen and that meets ADR-0004 (public, licensed, neutral, described as what it is) is
+ * listed; `camel-quarkus-crash-course` is "not listed for now" in the copy.
+ */
+export interface AlsoBuiltEntry {
+  name: string;
+  href: string;
+  text: string;
+}
+
+export const alsoBuilt: readonly AlsoBuiltEntry[] = [
+  {
+    name: 'hybrid-kafka-on-azure',
+    href: 'https://github.com/fps4/hybrid-kafka-on-azure',
+    text: 'My own notes and labs from learning hybrid Kafka on Azure, module by module.',
+  },
+];
+
 export function emailAddress(): string {
   return `${site.email.user}@${site.email.domain}`;
 }

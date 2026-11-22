@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { locales } from '@/lib/i18n';
+import { EARLIER_WORK_ANCHOR } from '@/lib/site';
 
 // Writing moved under Practice (FS-0013). The 301s live in infra/docker/nginx.conf; this reads the
 // regex locations out of it and checks that every old /writing URL, the index and each published
@@ -9,7 +10,7 @@ import { locales } from '@/lib/i18n';
 // content/<locale>/practice/articles/, which moved there from content/<locale>/writing/ unchanged.
 
 const conf = readFileSync(join(process.cwd(), 'infra/docker/nginx.conf'), 'utf8');
-const rules = [...conf.matchAll(/location ~ (\S+) \{\s*return 301 (\S+?)(?:\$is_args\$args)?;/g)].map(([, re, to]) => ({
+const rules = [...conf.matchAll(/location ~ (\S+) \{\s*return 301 (\S+?);/g)].map(([, re, to]) => ({
   re: new RegExp(re),
   to,
 }));
@@ -17,7 +18,8 @@ const rules = [...conf.matchAll(/location ~ (\S+) \{\s*return 301 (\S+?)(?:\$is_
 function redirect(path: string): string | null {
   for (const { re, to } of rules) {
     const m = re.exec(path);
-    if (m) return to.replace(/\$(\d)/g, (_, i) => m[Number(i)]);
+    // `$is_args$args` carries the query string through; a request has none here, so it is dropped.
+    if (m) return to.replace('$is_args$args', '').replace(/\$(\d)/g, (_, i) => m[Number(i)]);
   }
   return null;
 }
@@ -137,5 +139,45 @@ describe('the renamed Integration adapter case study', () => {
     for (const kept of ['/work', '/work/cloud-gateway', '/work/integration-adapter', '/work/integration-platform-notes']) {
       expect(redirect(`/${l}${kept}`), kept).toBeNull();
     }
+  });
+});
+
+// The three earlier case studies are removed (decision art-896t5kxfka, maestro story art-vvzsw9ap9e).
+// Each old address, in every form and locale, answers 301 to the Earlier work list on /work in the
+// same locale, with the fragment of the list; the list is a page the export has, with that anchor
+// and an entry for the work each old study told.
+describe('the removed Cloudera Kafka, SAP to Snowflake and SAP event backbone case studies', () => {
+  const removed = ['cloudera-kafka', 'sap-snowflake', 'sap-event-backbone'];
+
+  it.each(locales)('sends /%s/work/<old slug>, in every form, to the Earlier work list', (l) => {
+    for (const slug of removed) {
+      for (const old of forms(`/${l}/work/${slug}`)) {
+        const to = redirect(old);
+        expect(to, old).toBe(`/${l}/work#${EARLIER_WORK_ANCHOR}`);
+        expect(pageExists(to!.replace(/#.*$/, '')), old).toBe(true);
+      }
+    }
+  });
+
+  it('keeps the query string, before the fragment', () => {
+    expect(conf).toMatch(/return 301 \/\$1\/work\$is_args\$args#earlier-work;/);
+  });
+
+  it('leaves the pages that stay alone, and similar slugs', () => {
+    for (const l of locales) {
+      for (const kept of ['/work', '/work/cloud-gateway', '/work/integration-adapter', '/work/sap-snowflake-seam', '/work/cloudera-kafka-notes']) {
+        expect(redirect(`/${l}${kept}`), kept).toBeNull();
+      }
+    }
+  });
+
+  it('has no case study file or diagram left, and the Earlier work anchor exists on the page', () => {
+    for (const slug of removed) {
+      expect(existsSync(join(process.cwd(), 'content', 'en', 'work', `${slug}.md`)), slug).toBe(false);
+      expect(existsSync(join(process.cwd(), 'public', 'diagrams', `${slug}-pattern.svg`)), slug).toBe(false);
+    }
+    const page = readFileSync(join(process.cwd(), 'app', '[locale]', 'work', 'page.tsx'), 'utf8');
+    expect(page).toContain('id={EARLIER_WORK_ANCHOR}');
+    expect(EARLIER_WORK_ANCHOR).toBe('earlier-work');
   });
 });

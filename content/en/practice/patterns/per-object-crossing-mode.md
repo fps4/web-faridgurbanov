@@ -5,7 +5,7 @@ title: "Per-object crossing mode"
 summary: "Choose share, replicate, federate, split or keep for each object, by ordered rules and a crossover cost."
 status: current
 revised: 2026-11-08
-related: [practice/articles/sap-snowflake-seam-decision, work/sap-snowflake, G-03]
+related: [practice/articles/sap-snowflake-seam-decision, work#earlier-sap-finance-snowflake, G-03]
 topics: [integration, data-platforms]
 tech: [sap, snowflake]
 ---

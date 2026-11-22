@@ -55,8 +55,11 @@ export const SUMMARY_MAX = 140;
 
 const ID_RE = /^[GP]-\d{2,}$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-/** A related entry is another entry's id, or a page of the site by section and slug. */
-const RELATED_PAGE_RE = /^(work|practice\/articles)\/[a-z0-9-]+$/;
+/**
+ * A related entry is another entry's id, a page of the site by section and slug, or an Earlier
+ * work entry on /work as `work#<id>` (art-vvzsw9ap9e: the entries have no page of their own).
+ */
+const RELATED_PAGE_RE = /^((work|practice\/articles)\/[a-z0-9-]+|work#earlier-[a-z0-9-]+)$/;
 
 export interface Tags {
   topics: Topic[];
@@ -146,7 +149,7 @@ export function validateEntry(e: EntryMeta): string[] {
   if (!DATE_RE.test(e.revised)) errors.push(`revised "${e.revised}" is not a YYYY-MM-DD date`);
   if (e.supersedes !== undefined && !e.supersedes.startsWith(`${prefix}-`)) errors.push(`supersedes "${e.supersedes}" is not a ${e.kind} id`);
   for (const r of e.related) {
-    if (!ID_RE.test(r) && !RELATED_PAGE_RE.test(r)) errors.push(`related "${r}" is neither an entry id nor work/ or practice/articles/<slug>`);
+    if (!ID_RE.test(r) && !RELATED_PAGE_RE.test(r)) errors.push(`related "${r}" is neither an entry id nor work/<slug>, work#<earlier-work id> or practice/articles/<slug>`);
   }
   return [...errors.map((x) => `${e.slug}: ${x}`), ...validateTags(e.slug, e)];
 }

@@ -7,7 +7,8 @@ import { ReferenceQuote } from '@/components/reference-quote';
 import { listSection, title } from '@/lib/content';
 import { getDictionary } from '@/lib/dictionaries';
 import { hrefFor } from '@/lib/nav';
-import { featuredReferences, loadReferences } from '@/lib/references';
+import { earlierWorkOf, featuredReferences, loadReferences, workPath } from '@/lib/references';
+import { earlierWorkTitle } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
@@ -40,6 +41,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const featured = featuredReferences(await loadReferences());
   const work = featured.length ? await listSection('work', locale) : [];
   const workLabel = (slug: string) => {
+    const earlier = earlierWorkOf(slug);
+    if (earlier) return earlierWorkTitle(earlier);
     const study = work.find((w) => w.slug === slug);
     if (!study) return undefined;
     return typeof study.data.short === 'string' ? study.data.short : title(study.data);
@@ -115,7 +118,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   locale={locale}
                   variant="home"
                   workLabel={workLabel(ref.work)}
-                  workHref={hrefFor(locale, `/work/${ref.work}`)}
+                  workHref={hrefFor(locale, workPath(ref.work))}
                 />
               ))}
             </div>

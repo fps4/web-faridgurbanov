@@ -5,7 +5,7 @@ title: "Adoption by design"
 summary: "Name who can refuse the design, then make saying yes cheaper than staying put."
 status: current
 revised: 2026-11-08
-related: [practice/articles/who-had-to-say-yes, work/cloud-gateway, work/sap-snowflake, work/sap-event-backbone]
+related: [practice/articles/who-had-to-say-yes, work/cloud-gateway, work#earlier-sap-finance-snowflake, work#earlier-sap-events]
 topics: [adoption, architecture]
 tech: []
 ---

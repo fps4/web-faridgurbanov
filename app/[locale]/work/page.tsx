@@ -3,19 +3,20 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageIntro } from '@/components/page-intro';
 import { getDictionary } from '@/lib/dictionaries';
-import { listSection, summary, title, type ContentMeta } from '@/lib/content';
+import { listSection, title, type ContentMeta } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
-import { site } from '@/lib/site';
+import { EARLIER_WORK_ANCHOR, alsoBuilt, earlierWork, site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
 
-// Selected-work index (FS-0004/US-0011, redesigned by ADR-0008). Four case studies, all client
-// engagements — few enough that the index can carry them rather than list them. Each row shows the
-// headline metric at display size, the abstracted client (so the page keeps the promise its lede
-// makes), the hook, the disagreement, and the stack. The disagreement is the differentiator and it
-// belongs here: a visitor who never opens a case study should still see that these engagements were
-// argued about. All of it is frontmatter, so a new study needs no code change.
+// The Work page (art-vvzsw9ap9e, ADR-0010 §3.3, §5), in the order of the approved design: the
+// introduction, the two case studies as rows, Earlier work as a short list with no case pages, and
+// the Also built strip with the owner's public repositories. Every text is verbatim from the
+// approved site copy: the introduction, the list labels and the Earlier work and Also built
+// entries come from lib/dictionaries.ts and lib/site.ts; a case study's list line and Where it
+// stands come from its own frontmatter (`listed`, `stands`). An element whose text is not there is
+// not drawn.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,14 +29,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).indexes;
-  return { title: `${t.workTitle} — ${site.name}`, description: t.workLede, ...fallbackCanonical(locale, '/work') };
+  return { title: `${t.workTitle} — ${site.name}`, description: t.workIntro, ...fallbackCanonical(locale, '/work') };
 }
 
 const str = (e: ContentMeta, key: string) =>
   typeof e.data[key] === 'string' ? (e.data[key] as string) : '';
-
-const list = (e: ContentMeta, key: string) =>
-  Array.isArray(e.data[key]) ? (e.data[key] as string[]) : [];
 
 export default async function WorkIndex({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -44,61 +42,82 @@ export default async function WorkIndex({ params }: { params: Promise<{ locale: 
   const entries = await listSection('work', locale);
 
   return (
-    <div className="container py-16">
-      <LocaleNotice locale={locale} />
-      <PageIntro title={t.workTitle} lede={t.workLede} />
+    <>
+      <div className="container py-16">
+        <LocaleNotice locale={locale} />
+        <PageIntro title={t.workTitle} lede={t.workIntro} />
 
-      <ol className="mt-12 flex flex-col gap-px overflow-hidden rounded-lg border border-border bg-border">
-        {entries.map((e) => {
-          const hook = str(e, 'hook') || summary(e.data);
-          const disagreement = str(e, 'disagreement');
-          const stack = list(e, 'stack');
-          return (
-            <li key={e.slug} className="bg-background">
-              <Link
-                href={hrefFor(locale, `/work/${e.slug}`)}
-                className="group grid gap-x-10 gap-y-5 p-6 sm:p-8 lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)]"
-              >
-                {/* The metric leads. On the home page these numbers are set large and land hard;
-                    setting them small here made the strongest asset on the page a footnote. */}
-                <div className="lg:pt-1">
-                  <p className="text-2xl font-semibold tracking-tight">{str(e, 'metric')}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{str(e, 'client')}</p>
-                </div>
-
-                <div>
-                  <h2 className="flex items-start justify-between gap-3 text-lg font-medium">
+        <ol className="mt-12 flex flex-col border-b border-border">
+          {entries.map((e) => {
+            const listed = str(e, 'listed');
+            const stands = str(e, 'stands');
+            return (
+              <li key={e.slug} className="border-t border-border">
+                <Link
+                  href={hrefFor(locale, `/work/${e.slug}`)}
+                  className="group flex flex-col gap-1.5 py-6"
+                >
+                  <h2 className="flex items-start justify-between gap-3 text-lg font-semibold">
                     {title(e.data)}
                     <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
                   </h2>
-                  <p className="mt-2 text-muted-foreground">{hook}</p>
-
-                  {disagreement ? (
-                    <div className="mt-5 border-l-2 border-border pl-4">
-                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                        {t.disagreementLabel}
-                      </p>
-                      <p className="mt-1.5 text-sm text-muted-foreground">{disagreement}</p>
-                    </div>
+                  {listed ? <p className="max-w-3xl text-foreground/90">{listed}</p> : null}
+                  {stands ? (
+                    <p className="max-w-3xl text-sm text-muted-foreground">
+                      <span className="font-semibold text-foreground">{t.whereItStands}</span> {stands}
+                    </p>
                   ) : null}
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
 
-                  {stack.length > 0 ? (
-                    <ul className="mt-5 flex flex-wrap gap-x-2 gap-y-1.5 text-xs text-muted-foreground">
-                      {stack.map((s) => (
-                        <li key={s} className="rounded-full border border-border px-2.5 py-0.5">
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
-              </Link>
-            </li>
-          );
-        })}
-      </ol>
+      <section id={EARLIER_WORK_ANCHOR} aria-labelledby="earlier-work-heading" className="scroll-mt-6">
+        <div className="container flex flex-wrap gap-x-10 gap-y-6 pb-16">
+          <div className="flex min-w-0 flex-[1_1_16rem] flex-col gap-2">
+            <h2 id="earlier-work-heading" className="text-xl font-semibold tracking-tight">
+              {t.earlierHeading}
+            </h2>
+            <p className="text-sm text-muted-foreground">{t.earlierLine}</p>
+          </div>
+          <ul className="m-0 flex min-w-0 flex-[999_1_32rem] list-none flex-col border-b border-border p-0">
+            {earlierWork.map((e) => (
+              <li key={e.id} id={e.id} className="scroll-mt-6 border-t border-border py-3.5 text-foreground/90">
+                <strong className="font-semibold text-foreground">{e.lead}</strong>
+                {e.rest}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-      <p className="mt-8 max-w-2xl text-sm text-muted-foreground">{t.workHonesty}</p>
-    </div>
+      <section aria-labelledby="also-built-heading" className="border-t border-border bg-muted/40">
+        <div className="container flex flex-wrap gap-x-10 gap-y-6 py-12">
+          <div className="flex min-w-0 flex-[1_1_16rem] flex-col gap-2">
+            <h2 id="also-built-heading" className="text-xl font-semibold tracking-tight">
+              {t.alsoHeading}
+            </h2>
+            <p className="text-sm text-muted-foreground">{t.alsoLine}</p>
+          </div>
+          <ul className="m-0 flex min-w-0 flex-[999_1_32rem] list-none flex-col border-b border-border p-0">
+            {alsoBuilt.map((r) => (
+              <li key={r.name} className="flex flex-wrap gap-x-6 gap-y-1 border-t border-border py-3.5">
+                <a
+                  href={r.href}
+                  rel="noopener"
+                  target="_blank"
+                  className="flex-[0_0_15rem] py-1 font-semibold underline-offset-4 hover:underline"
+                >
+                  {r.name}
+                </a>
+                <span className="min-w-0 flex-[1_1_18rem] text-foreground/90">{r.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }

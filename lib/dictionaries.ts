@@ -67,11 +67,12 @@ export interface Dictionary {
   };
   indexes: {
     workTitle: string;
-    workLede: string;
-    workHonesty: string;
-    disagreementLabel: string;
-    evidenceLabel: string;
-    readMore: string;
+    workIntro: string;
+    whereItStands: string;
+    earlierHeading: string;
+    earlierLine: string;
+    alsoHeading: string;
+    alsoLine: string;
     backToIndex: { work: string };
   };
   /** The Practice section (FS-0013): the filterable list, and an entry's page furniture. */
@@ -187,12 +188,14 @@ const en: Dictionary = {
     contactCta: 'References',
   },
   indexes: {
-    workTitle: 'Selected work',
-    workLede: 'Five client engagements, with numbers. Clients are abstracted where confidentiality requires; the metrics are as delivered. Each one carries the disagreement it had to survive, because that is usually what decided whether it shipped.',
-    workHonesty: 'These are the engagements I can describe accurately and defend under questioning, including what each one cost the teams it landed on. Self-built demos live on the portfolio, labelled as demos.',
-    disagreementLabel: 'The disagreement',
-    evidenceLabel: 'Evidenced by',
-    readMore: 'Read more',
+    // art-vvzsw9ap9e: verbatim from the approved site copy, section "Work" and "Work · list".
+    workTitle: 'Work',
+    workIntro: 'Two platform products that I built from the first version, and earlier work in data platforms. Each case is a two-minute read: where it started, what I did, and where it stands today.',
+    whereItStands: 'Where it stands:',
+    earlierHeading: 'Earlier work, short',
+    earlierLine: 'No case page for these.',
+    alsoHeading: 'Also built',
+    alsoLine: 'My own labs, outside client work. Only repositories that are public on GitHub are listed.',
     backToIndex: { work: 'All selected work' },
   },
   practice: {

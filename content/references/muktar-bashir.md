@@ -3,7 +3,7 @@ name: Muktar Bashir
 role: AI & Data Product Lead, Accenture
 years: 2018–2020
 linkedin: https://www.linkedin.com/in/muktar-bashir-82069943/
-work: cloudera-kafka
+work: earlier-security-data-lake
 date: 2026-09-19
 lang: en
 featured: false
