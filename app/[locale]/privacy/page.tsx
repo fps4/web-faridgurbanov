@@ -6,6 +6,7 @@ import { courseVideosLive } from '@/lib/learning';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Privacy/GDPR (FS-0007/US-0015). Minimal and honest, reflecting the actual data flow: a static
 // site with mailto-only contact collects nothing, sets no non-essential cookies, runs no
@@ -23,7 +24,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).privacy;
-  return { title: `${t.title} — ${site.name}` };
+  return { title: `${t.title} — ${site.name}`, ...fallbackCanonical(locale, '/privacy') };
 }
 
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -36,7 +37,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
       <PageIntro title={t.title} />
       <p className="mt-2 text-sm text-muted-foreground">{t.lastUpdated}</p>
       <div className="mt-8">
-        <Markdown>{courseVideosLive() ? `${t.body}\n\n${t.youtube}` : t.body}</Markdown>
+        <Markdown locale={raw as Locale}>{courseVideosLive() ? `${t.body}\n\n${t.youtube}` : t.body}</Markdown>
       </div>
     </div>
   );

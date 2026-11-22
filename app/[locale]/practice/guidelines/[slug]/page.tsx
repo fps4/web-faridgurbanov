@@ -4,6 +4,7 @@ import { PracticeEntry } from '@/components/practice-entry';
 import { entrySlugs, getPracticeEntry } from '@/lib/practice';
 import { site } from '@/lib/site';
 import { isLocale } from '@/lib/i18n';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Guideline detail (FS-0013); the page itself is components/practice-entry.tsx, shared with patterns.
 export const dynamicParams = false;
@@ -17,7 +18,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!isLocale(locale)) return {};
   const e = await getPracticeEntry('guideline', slug, locale);
   if (!e) return {};
-  return { title: `${e.id}: ${e.title} — ${site.name}`, description: e.summary };
+  return {
+    title: `${e.id}: ${e.title} — ${site.name}`,
+    description: e.summary,
+    ...fallbackCanonical(locale, `/practice/guidelines/${slug}`),
+  };
 }
 
 export default async function GuidelinePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {

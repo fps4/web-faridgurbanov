@@ -10,6 +10,7 @@ import { ARTICLES_SECTION, entriesCiting, entryHref, listEntries, toTags } from 
 import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { isLocale, type Locale } from '@/lib/i18n';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Article detail (FS-0006/US-0014; under Practice since FS-0013). Markdown body via the FS-0001 pipeline with prose
 // typography; date and tags from frontmatter, and the guidelines and patterns drawn from it (the
@@ -29,7 +30,11 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const entry = await getEntry(ARTICLES_SECTION, slug, locale);
   if (!entry) return {};
-  return { title: `${title(entry.data)} — ${site.name}`, description: summary(entry.data) };
+  return {
+    title: `${title(entry.data)} — ${site.name}`,
+    description: summary(entry.data),
+    ...fallbackCanonical(locale, `/practice/articles/${slug}`),
+  };
 }
 
 export default async function ArticlePage({
@@ -50,6 +55,7 @@ export default async function ArticlePage({
   return (
     <ContentArticle
       entry={entry}
+      locale={locale}
       fallbackMessage={t.fallback.notice}
       backHref={hrefFor(locale, '/practice')}
       backLabel={p.backToIndex}

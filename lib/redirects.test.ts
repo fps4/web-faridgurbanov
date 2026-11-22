@@ -22,7 +22,7 @@ function redirect(path: string): string | null {
   return null;
 }
 
-// A locale with no file of its own shows the English one (ADR-0002, US-0002: Dutch has none for
+// A locale with no file of its own shows the English one (ADR-0002; maestro story art-bf5tq4788n: Dutch has none for
 // now), so its articles are the English slugs.
 const articles = (locale: string) =>
   readdirSync(

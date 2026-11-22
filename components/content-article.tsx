@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Markdown } from '@/components/markdown';
 import { FallbackNotice } from '@/components/fallback-notice';
 import { title as fmTitle, type ContentEntry } from '@/lib/content';
+import type { Locale } from '@/lib/i18n';
 import { splitBeforeLastSection } from '@/lib/sections';
 
 // Shared detail-page renderer for the markdown-driven sections (expertise, work, practice). Shows
@@ -16,6 +17,7 @@ import { splitBeforeLastSection } from '@/lib/sections';
 // is a self-contained block sequence, so nothing in the prose styling changes.
 export function ContentArticle({
   entry,
+  locale,
   fallbackMessage,
   backHref,
   backLabel,
@@ -25,6 +27,7 @@ export function ContentArticle({
   after,
 }: {
   entry: ContentEntry;
+  locale: Locale;
   fallbackMessage: string;
   backHref: string;
   backLabel: string;
@@ -43,13 +46,13 @@ export function ContentArticle({
       <div className="mt-8">
         {split && split.tail ? (
           <>
-            <Markdown>{split.head}</Markdown>
+            <Markdown locale={locale}>{split.head}</Markdown>
             <div className="my-10">{beforeLastSection}</div>
-            <Markdown>{split.tail}</Markdown>
+            <Markdown locale={locale}>{split.tail}</Markdown>
           </>
         ) : (
           <>
-            <Markdown>{entry.body}</Markdown>
+            <Markdown locale={locale}>{entry.body}</Markdown>
             {beforeLastSection ? <div className="mt-10">{beforeLastSection}</div> : null}
           </>
         )}

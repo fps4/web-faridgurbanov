@@ -5,6 +5,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { REPO_LINKS_ENABLED, pillars, repos, site } from '@/lib/site';
 import { copyLocale, locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Portfolio (FS-0005/US-0013, restructured by ADR-0006). Build proof grouped by pillar —
 // integration, data & modernization first, then AI & applied ML — each card carrying an honest
@@ -24,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).portfolio;
-  return { title: `${t.title} — ${site.name}`, description: t.lede };
+  return { title: `${t.title} — ${site.name}`, description: t.lede, ...fallbackCanonical(locale, '/portfolio') };
 }
 
 export default async function PortfolioPage({ params }: { params: Promise<{ locale: string }> }) {

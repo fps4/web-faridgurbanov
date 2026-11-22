@@ -171,7 +171,7 @@ describe('filtering', () => {
   });
 });
 
-// Dutch has no files while it shows the English page under the fallback notice (US-0002), so only
+// Dutch has no files while it shows the English page under the fallback notice (maestro story art-bf5tq4788n), so only
 // the locales that have a practice folder are read; the Dutch story brings its folder back.
 const localesWithFiles = ['en', 'nl'].filter((l) => existsSync(join(process.cwd(), 'content', l, 'practice')));
 

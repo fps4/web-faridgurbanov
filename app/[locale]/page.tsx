@@ -12,6 +12,7 @@ import { featuredReferences, loadReferences } from '@/lib/references';
 import { HOME_VARIANT, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Home page (FS-0002/US-0010). M0 leads with the credibility hero; the M1 training-forward flip is
 // the single HOME_VARIANT switch (ADR-0003) — the section set and CTAs stay, only the lead changes,
@@ -37,7 +38,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).home;
-  return { title: 'Farid Gurbanov', description: t.heroLede };
+  return { title: 'Farid Gurbanov', description: t.heroLede, ...fallbackCanonical(locale, '') };
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {

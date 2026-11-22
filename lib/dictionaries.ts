@@ -372,7 +372,7 @@ If that sounds useful to your team, book a short taster.`,
   },
 };
 
-// Dutch shows the English copy under the fallback notice until the owner approves the Dutch (US-0002).
+// Dutch shows the English copy under the fallback notice until the owner approves the Dutch (maestro story art-bf5tq4788n).
 // Only the notice is Dutch; everything else is the English dictionary, so an English-only change
 // reaches both languages. The Dutch story replaces this with the approved copy.
 const nl: Dictionary = {
