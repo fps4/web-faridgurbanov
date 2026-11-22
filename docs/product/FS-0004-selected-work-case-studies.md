@@ -15,14 +15,15 @@ maestro:
     Work is two case studies of platform products the owner built, each a two-minute read on one
     page shape: where it started, what he did, what is in it, and where it stands today, with a facts
     column and a bar at the foot. Every text on a case study is the owner's approved copy, taken as
-    it stands. The Cloud gateway is the first on this shape; the Integration adapter follows it.
+    it stands. The Cloud gateway and the Integration adapter are on this shape.
 ---
 
 # FS-0004 — Work / case studies
 
 - **Status:** draft
 - **Decision:** [ADR-0010](../design/decisions/0010-the-site-has-one-job.md) §5, §7, §12, §13
-- **Story:** `art-13yb9kshaw` (the Cloud gateway on the new page shape)
+- **Stories:** `art-13yb9kshaw` (the Cloud gateway on the new page shape), `art-dgsmfy8yb8` (the
+  Integration adapter on it)
 
 ## Why
 
@@ -44,10 +45,10 @@ frontmatter has an `intro`; `app/[locale]/work/[slug]/page.tsx` then draws it wi
 | Small line | `small` |
 | Back link | the same on every case study: *← All work*, leading to the Work index |
 | Row of facts | `facts`, an inline list of pairs, each written as the large text, a space, a vertical bar, a space and the small text, and drawn as a large text over a small one |
-| Article parts, in order | the markdown body: *Where it started*, *What I did*, *What is in it*, *Where it stands* |
+| Article parts, in order | the markdown body: *Where it started*, *What I did*, *What is in it* (Cloud gateway) or *What it gave* (Integration adapter), *Where it stands* |
 | Facts column | `role` (My role), `client` (Client), `built_with` (Built with) |
 | Bar at the foot | the question and *Start a conversation*, which leads to Contact; the same on every case study |
-| Next link | `next` (a slug) and `next_label`, set only once the next case study is on this shape |
+| Next link | `next` (a slug) and `next_label`; the two case studies lead to each other (*Next: Integration adapter*, *Next: Cloud gateway*) |
 | Reference | a published reference about this work (FS-0009), under the facts column |
 
 The template holds no copy of its own. An element whose text the entry does not carry is not
@@ -63,9 +64,17 @@ in the rounder words of the approved copy, and the case study says the same as t
 
 ## Case studies still on the earlier shape
 
-The Integration platform, the Cloudera Kafka platform, the SAP to Snowflake migration and the SAP
-event backbone have no `intro` and keep the earlier template, until the Work stories rewrite or
+The Cloudera Kafka platform, the SAP to Snowflake migration and the SAP event backbone have no
+`intro` and keep the earlier template, until the Work stories rewrite or
 remove them. The earlier shape (ADR-0005, ADR-0008) is superseded by ADR-0010 and is not extended.
+
+## The Integration adapter's address
+
+The Integration platform case study is the Integration adapter, and its address follows its name:
+`/work/integration-adapter`. `infra/docker/nginx.conf` answers 301 from `/<locale>/work/integration-platform`
+(bare, with a trailing slash and with `.html`) to the new address in the same locale, and
+`lib/redirects.test.ts` checks it. The adapter has no diagram: the earlier one carried a claim the
+approved copy does not make. The link at its end to the article *Simple first* waits for that article.
 
 ## Acceptance criteria (EARS)
 
@@ -85,6 +94,7 @@ remove them. The earlier shape (ADR-0005, ADR-0008) is superseded by ADR-0010 an
 
 ## Definition of done
 
-- The Cloud gateway case study is on the page shape, from the approved copy.
+- The Cloud gateway and the Integration adapter case studies are on the page shape, from the
+  approved copy.
 - The exported page's text matches the approved copy, element by element.
 - The earlier case studies still build.
