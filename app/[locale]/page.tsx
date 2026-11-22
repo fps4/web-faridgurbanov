@@ -146,7 +146,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </h2>
             <p className="max-w-xl text-lg">{tc.lede}</p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <ObfuscatedEmail className={buttonVariants({ size: 'lg' })}>{tc.email}</ObfuscatedEmail>
+              <ObfuscatedEmail className={buttonVariants({ size: 'lg' })} fallbackClassName="self-center text-muted-foreground">
+                {tc.email}
+              </ObfuscatedEmail>
               <WhatsAppButton label={tc.whatsapp} />
               <Button asChild size="lg" variant="outline">
                 <a href={site.linkedin} rel="me noopener" target="_blank">

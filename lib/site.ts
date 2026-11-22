@@ -23,7 +23,7 @@ export function emailAddress(): string {
 }
 
 /**
- * WhatsApp click-to-chat (FS-0007/US-0016). Stored split so the full number never appears as one
+ * WhatsApp click-to-chat (FS-0007/US-0016; the button of maestro story art-r903t1r2tp). Stored split so the full number never appears as one
  * string in the exported HTML — same reasoning as the obfuscated email: the affordance is for
  * visitors, not for scrapers. Assembled in the browser by `whatsappHref()`.
  *
@@ -41,11 +41,10 @@ export function emailAddress(): string {
  */
 export const whatsapp: { cc: string; rest: string } | null = { cc: '31', rest: '302072959' };
 
-/** Build a wa.me click-to-chat URL. Call from the browser only (see the note on `whatsapp`). */
-export function whatsappHref(message?: string): string | undefined {
+/** Build the wa.me click-to-chat URL. Call from the browser only (see the note on `whatsapp`). */
+export function whatsappHref(): string | undefined {
   if (!whatsapp) return undefined;
-  const query = message?.trim() ? `?text=${encodeURIComponent(message.trim())}` : '';
-  return `https://wa.me/${whatsapp.cc}${whatsapp.rest}${query}`;
+  return `https://wa.me/${whatsapp.cc}${whatsapp.rest}`;
 }
 
 /**

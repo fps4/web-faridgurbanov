@@ -60,9 +60,6 @@ export interface Dictionary {
     collectedHeading: string;
     collectedBody: string;
     collectedLinkedin: string;
-    contactHeading: string;
-    contactBody: string;
-    contactCta: string;
   };
   indexes: {
     workTitle: string;
@@ -182,9 +179,6 @@ const en: Dictionary = {
     collectedHeading: 'How these were collected',
     collectedBody: 'Each person read this page before it went live and agreed to their name, photo, role and words being on it, with the link to their profile. Quotes are verbatim; where I shortened one, the cut is marked. Anyone here can have theirs taken down with one email.',
     collectedLinkedin: 'Some of them are also recommendations on my LinkedIn profile, where you can read them at the source.',
-    contactHeading: 'Ask someone I worked with',
-    contactBody: 'If you would rather hear it from someone else first, the people quoted on the references page were on these engagements, and each links to their profile. For a live conversation, ask me and I will make an introduction.',
-    contactCta: 'References',
   },
   indexes: {
     workTitle: 'Selected work',

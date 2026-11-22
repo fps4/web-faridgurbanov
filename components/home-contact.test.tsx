@@ -9,6 +9,9 @@ import { site } from '@/lib/site';
 // site copy ("Contact", and "Texts shown in the design that were missing above") and nothing else.
 // The list below is the whole section: a text that is not in it fails, so a row or a line added
 // without approval cannot get in.
+// What a visitor without JavaScript sees for email: the existing `user [at] domain` fallback of
+// ObfuscatedEmail, in a <noscript>. The address itself is never in the markup in clear.
+const emailFallback = `${site.email.user} [at] ${site.email.domain}`;
 const lede =
   'Write to me about an integration platform, an API platform, or a move off legacy middleware. A short message about what you are trying to get done is enough. I answer myself.';
 
@@ -31,6 +34,7 @@ describe.each(locales)('the Contact part of the home page, in %s', (l) => {
       'Contact',
       lede,
       'Send an email',
+      emailFallback,
       'WhatsApp',
       'LinkedIn',
       'How I contract',
@@ -40,6 +44,12 @@ describe.each(locales)('the Contact part of the home page, in %s', (l) => {
       'Languages',
       'English, Dutch (B1)',
     ]);
+  });
+
+  it('keeps the email fallback for a visitor without JavaScript, in a noscript', async () => {
+    const section = await contactSection(l);
+    expect(section).toMatch(/<noscript><span[^>]*>[^<]*\[at\][^<]*<\/span><\/noscript>/);
+    expect(section).toContain(emailFallback);
   });
 
   it('puts the address and the number together in the browser, and links LinkedIn', async () => {

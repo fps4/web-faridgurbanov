@@ -17,7 +17,7 @@ const rules = [...conf.matchAll(/location ~ (\S+) \{\s*return 301 (\S+?)(?:\$is_
 function redirect(path: string): string | null {
   for (const { re, to } of rules) {
     const m = re.exec(path);
-    if (m) return to.replace(/\$(\d)/g, (_, i) => m[Number(i)]);
+    if (m) return to.replace(/\$is_args\$args/g, '').replace(/\$(\d)/g, (_, i) => m[Number(i)]);
   }
   return null;
 }
@@ -149,7 +149,11 @@ describe('the removed Contact page', () => {
       expect(redirect(old), old).toBe(`/${l}#contact`);
       expect(pageExists(redirect(old)!.split('#')[0]), old).toBe(true);
     }
-    expect(conf).toMatch(/return 301 \/\$1#contact;/);
+    expect(conf).toMatch(/return 301 \/\$1\$is_args\$args#contact;/);
+  });
+
+  it('keeps the query string, before the fragment', () => {
+    expect(conf).toMatch(/location ~ \^\/\(en\|nl\)\/contact\S+ \{\s*return 301 \/\$1\$is_args\$args#contact;/);
   });
 
   it.each(locales)('leaves other addresses starting with contact alone, in %s', (l) => {
