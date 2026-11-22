@@ -105,7 +105,7 @@ describe('the removed sections', () => {
   });
 
   it.each(locales)('never redirects a page it keeps, or a target of its own', (l) => {
-    for (const kept of ['', '/work', '/work/cloud-gateway', '/practice', '/contact', '/privacy', '/references']) {
+    for (const kept of ['', '/work', '/work/cloud-gateway', '/work/integration-adapter', '/practice', '/contact', '/privacy', '/references']) {
       expect(redirect(`/${l}${kept}`), kept).toBeNull();
     }
     expect(redirect(`/${l}/learning-notes`)).toBeNull();
@@ -114,5 +114,28 @@ describe('the removed sections', () => {
 
   it('has no route left for a removed section', () => {
     for (const gone of ['learning', 'portfolio', 'training', 'expertise']) expect(routeExists(`/${gone}`), gone).toBe(false);
+  });
+});
+
+// The Integration platform case study became the Integration adapter (decision art-896t5kxfka,
+// maestro story art-dgsmfy8yb8): the old address in every form and locale goes to the new one in
+// the same locale, and the new one is a page the export has (the entry's file is its slug).
+describe('the renamed Integration adapter case study', () => {
+  it.each(locales)('sends /%s/work/integration-platform, in every form, to /work/integration-adapter', (l) => {
+    for (const old of forms(`/${l}/work/integration-platform`)) {
+      expect(redirect(old), old).toBe(`/${l}/work/integration-adapter`);
+    }
+    expect(existsSync(join(process.cwd(), 'content', 'en', 'work', 'integration-adapter.md'))).toBe(true);
+    expect(existsSync(join(process.cwd(), 'content', 'en', 'work', 'integration-platform.md'))).toBe(false);
+  });
+
+  it('keeps the query string', () => {
+    expect(conf).toMatch(/return 301 \/\$1\/work\/integration-adapter\$is_args\$args;/);
+  });
+
+  it.each(locales)('leaves the other Work addresses alone', (l) => {
+    for (const kept of ['/work', '/work/cloud-gateway', '/work/integration-adapter', '/work/integration-platform-notes']) {
+      expect(redirect(`/${l}${kept}`), kept).toBeNull();
+    }
   });
 });

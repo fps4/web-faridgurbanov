@@ -8,6 +8,8 @@ role: Built the first version. Tech lead of the team that expands it now.
 client: A large Dutch grocery retailer
 built_with: AWS API Gateway, Azure API Management, Terraform, OAuth 2 / OIDC, Okta, Auth0, GitHub, Datadog
 order: 1
+next: integration-adapter
+next_label: Next: Integration adapter
 ---
 
 ## Where it started
