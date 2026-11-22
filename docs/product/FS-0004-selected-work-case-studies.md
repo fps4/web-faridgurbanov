@@ -1,111 +1,90 @@
 ---
-title: "FS-0004 — Selected work / case studies"
+title: "FS-0004 — Work / case studies"
 status: draft
-last_updated: 2026-09-17
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
   - docs/product/FS-0001-site-shell-and-content-pipeline.md
-  - docs/product/FS-0005-portfolio-repos.md
   - docs/product/FS-0009-references.md
-  - docs/design/decisions/0005-stakeholder-forward-positioning.md
+  - docs/design/decisions/0010-the-site-has-one-job.md
 maestro:
   feature: selected-work-case-studies
   kind: functional_spec
   summary: |
-    The biggest gap and the highest-converting section: 3–4 anonymized case studies that turn a
-    visitor into a call. The set mirrors the proof points actually used across the owner's job
-    applications — the Cloud Gateway API platform, the SAP→Snowflake finance migration, the
-    Kafka-on-Cloudera data-product platform, and the AI trio — each with the problem, what was
-    built, and quantified impact. They evidence the home-page positioning and make the training
-    credible.
+    Work is two case studies of platform products the owner built, each a two-minute read on one
+    page shape: where it started, what he did, what is in it, and where it stands today, with a facts
+    column and a bar at the foot. Every text on a case study is the owner's approved copy, taken as
+    it stands. The Cloud gateway is the first on this shape; the Integration adapter follows it.
 ---
 
-# FS-0004 — Selected work / case studies
+# FS-0004 — Work / case studies
 
 - **Status:** draft
-- **Raised:** 2026-06-07
-- **Owner:** @farid (architect)
+- **Decision:** [ADR-0010](../design/decisions/0010-the-site-has-one-job.md) §5, §7, §12, §13
+- **Story:** `art-13yb9kshaw` (the Cloud gateway on the new page shape)
 
 ## Why
 
-Across 15 job applications the same proof points recur; the case studies should mirror them, not
-the original placeholder four. This is the section that converts a cold visitor into a
-conversation, and it is what makes the training offer credible ("taught by someone who ships").
+A hiring manager opens the case study closest to their situation and decides in two minutes
+whether to call. The case study says what was built, by whom, and where it stands today, including
+what is not finished. It does not tell a story about who had to say yes, and it carries no figure
+the owner has not confirmed.
 
-## Scope
+## The page shape
 
-1. **A case-study index** listing the studies with a one-line hook and impact metric each.
-2. **Case-study detail pages**, anonymized where required by client confidentiality:
-   - **Integration platform** — a configuration-driven integration platform on AWS: one Lambda
-     runtime serving twelve interfaces that differ only in a Terraform block, a mapping file and a
-     schema; a self-service operations API (replay, pause, inspect) behind JWT; and a measured
-     runtime-fitness study that established serverless was sufficient. Pairs with the SAP event
-     backbone, which publishes into it. *(Added 2026-08-21.)*
-   - **SAP event backbone → cloud integration layer** — SAP Advanced Event Mesh (Solace) over
-     AMQP 1.0 into the AWS-native platform; three teams and three estates (cloud, legacy IBM ESB,
-     SAP) with no shared tooling; the envelope and subscription contract agreed before either
-     side wrote code. *(Added under ADR-0005 as the strongest available evidence of working
-     across an organisation.)*
-   - **Cloud Gateway** — federated cross-cloud API platform; replaced IBM API Connect;
-     consolidated 20+ gateways; ~1.5B+ req/month with server-side errors under 0.03% (Datadog,
-     September 2026 — refreshed from ~500M+); 18–20 teams; ~€250–300k/yr saved; onboarding
-     days→minutes. *(The canonical proof point — present in all applications.)*
-   - **SAP S/4HANA Finance → Snowflake** — GL/AR/AP/CO/AA; ~30+ company codes; multi-TB backfill
-     + 10–30 GB daily delta; data contracts at the SAP↔lakehouse seam.
-   - **Kafka data-product platform on Cloudera** — 20+ productized streams; 30+ source systems;
-     domain-oriented ownership.
-   - **The AI trio** (`sovereign-copilot`, `maestro`, `sovereign-llm-gateway`) — the
-     govern→build→deliver story; cross-links to the portfolio (FS-0005).
-3. **Consistent structure** per study: context / problem → what was built → quantified impact →
-   the pattern behind it (the decision and its trade-off) → who had to say yes (the stakeholders,
-   the disagreement, what resolved it, what it cost) → role & stack. The section order is fixed;
-   the prose inside each section is not templated (no shared openers, no fixed "two decisions",
-   no shared closer). See the Voice section of `AGENTS.md`. *(Clarified 2026-09-15.)* WHERE a
-   published reference names the study, an **"In their words"** section is rendered between "who
-   had to say yes" and "role & stack" from `content/references/` (FS-0009); the markdown body
-   carries no placeholder for it. *(Added 2026-09-17.)*
-4. **Anonymization** — client names omitted/abstracted where confidentiality requires; metrics
-   kept.
-5. **Bilingual** — EN now; NL may lag (ADR-0002).
+A case study is one markdown file under `content/<locale>/work/`. It is on this shape when its
+frontmatter has an `intro`; `app/[locale]/work/[slug]/page.tsx` then draws it with
+`components/case-study.tsx`, and `lib/case-study.ts` reads the frontmatter.
 
-## Out of scope
+| Part | Where the text is |
+|---|---|
+| Title | `title` |
+| Intro line | `intro` |
+| Small line | `small` |
+| Back link | the same on every case study: *← All work*, leading to the Work index |
+| Row of facts | `facts`, an inline list of pairs, each written as the large text, a space, a vertical bar, a space and the small text, and drawn as a large text over a small one |
+| Article parts, in order | the markdown body: *Where it started*, *What I did*, *What is in it*, *Where it stands* |
+| Facts column | `role` (My role), `client` (Client), `built_with` (Built with) |
+| Bar at the foot | the question and *Start a conversation*, which leads to Contact; the same on every case study |
+| Next link | `next` (a slug) and `next_label`, set only once the next case study is on this shape |
+| Reference | a published reference about this work (FS-0009), under the facts column |
 
-- The repo cards themselves (FS-0005) — case studies *link* to them.
-- Workshop write-ups (`/cases` for training is M1, FS-0008). Client references are FS-0009.
+The template holds no copy of its own. An element whose text the entry does not carry is not
+drawn: there is no empty place for a reference, no Next link, and no diagram that says more than
+the copy says.
+
+## Where the text comes from
+
+Every text on a case study is taken verbatim from the approved review document of the site copy
+(AGENTS.md, *Where copy comes from*). A builder adds, rewrites, shortens or generalizes nothing.
+No client is named; the client is described by its kind. Figures of the owner's current work stand
+in the rounder words of the approved copy, and the case study says the same as the résumé.
+
+## Case studies still on the earlier shape
+
+The Integration platform, the Cloudera Kafka platform, the SAP to Snowflake migration and the SAP
+event backbone have no `intro` and keep the earlier template, until the Work stories rewrite or
+remove them. The earlier shape (ADR-0005, ADR-0008) is superseded by ADR-0010 and is not extended.
 
 ## Acceptance criteria (EARS)
 
-- THE SYSTEM SHALL present a case-study index linking to the case-study detail pages, each with a
-  one-line hook and a headline impact metric.
-- EACH index entry SHALL display its headline metric as the most prominent element of the row, the
-  abstracted client identity, and one line stating the disagreement the engagement had to survive
-  (ADR-0008), all sourced from frontmatter.
-- EACH case-study detail page SHALL follow a consistent structure: context/problem, what was
-  built, quantified impact, the pattern behind it, and the owner's role + stack.
-- WHERE a case study describes client work, IT SHALL carry a "who had to say yes" section naming
-  the stakeholders, the disagreement, what resolved it, and what it cost — stated at the same
-  level of honesty as the technical trade-off, including the price of the decision.
-- WHERE a case study describes a self-built demo or portfolio repository rather than client work,
-  IT SHALL NOT carry a "who had to say yes" section, because it has no client stakeholders and a
-  fabricated one would breach the honesty rule.
-- WHERE a published reference names a case study, THE detail page SHALL render an "In their words"
-  section between the "who had to say yes" section and the role-and-stack section, sourced from
-  `content/references/` (FS-0009), and SHALL render no such section otherwise.
-- THE case-study set SHALL include the Cloud Gateway API platform with its scale and cost-saving
-  metrics.
-- WHERE a case study references the owner's repositories, IT SHALL link to the portfolio section
-  (FS-0005) and SHALL respect the honesty rule (runnable vs reference; ADR-0004).
-- WHERE client confidentiality requires, A case study SHALL omit or abstract the client identity
-  while retaining the quantified impact.
-- THE case studies SHALL render via the FS-0001 content pipeline in English, with Dutch provided
-  or falling back per ADR-0002.
+- WHEN a visitor opens a case study on the page shape, THE SYSTEM SHALL show its title, intro line
+  and small line, its row of facts, its article parts in the order of the markdown body, its facts
+  column and the bar at the foot.
+- THE SYSTEM SHALL show on a case study only text that is in the entry's frontmatter or body, and
+  the labels and bar texts of `lib/case-study.ts`, which are approved copy.
+- WHERE an element's text is not in the entry, THE SYSTEM SHALL NOT draw the element.
+- THE bar at the foot SHALL show the question and the *Start a conversation* link to Contact, and
+  SHALL show the Next link only WHERE the entry sets both `next` and `next_label`.
+- WHERE a published reference names the case study, THE SYSTEM SHALL show it under the facts
+  column, and WHERE there is none, SHALL hold no place for one.
+- THE case studies still on the earlier shape SHALL keep building and rendering.
+- THE case studies SHALL render in English, and the Dutch page SHALL show the English text under
+  the notice of FS-0001 until the Dutch copy is approved.
 
 ## Definition of done
 
-- The case studies + an index live via the content pipeline, each with a quantified impact metric
-  and consistent structure.
-- Every client-work case study carries its stakeholder section in EN and NL; demo studies
-  deliberately carry none.
-- The Cloud Gateway study is present and accurate to the application proof points.
-- AI-trio study cross-links the portfolio and carries no "three production systems" claim.
+- The Cloud gateway case study is on the page shape, from the approved copy.
+- The exported page's text matches the approved copy, element by element.
+- The earlier case studies still build.
