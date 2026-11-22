@@ -66,7 +66,8 @@ across pages and across languages.
   name/logo and primary navigation, and a footer with contact and social links.
 - THE SYSTEM SHALL carry in the footer of every page, in both locales, the approved statement on
   how AI is used, and SHALL carry that statement nowhere else.
-- THE SYSTEM SHALL NOT carry a footer tagline or a built-with line.
+- THE SYSTEM SHALL carry in the footer only the approved statement and link labels: no tagline,
+  built-with line, name or column heading, and no copyright line.
 - THE SYSTEM SHALL serve content under locale-segmented routes for English and Dutch, with a
   single configured default locale.
 - WHEN a visitor uses the language switcher on any page, THE SYSTEM SHALL navigate to the

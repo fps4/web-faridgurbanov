@@ -11,10 +11,7 @@ export interface Dictionary {
     nav: { home: string };
     themeToggle: string;
     footerAiStatement: string;
-    footerNavHeading: string;
-    footerConnectHeading: string;
     privacy: string;
-    rights: string;
   };
   fallback: { notice: string };
   home: {
@@ -122,10 +119,7 @@ const en: Dictionary = {
     themeToggle: 'Toggle theme',
     // art-4fzvp6bqm0: the one statement on how AI is used, verbatim from the approved copy (Footer).
     footerAiStatement: 'How AI is used here. The code and some notes on this site are built with AI assistance. The decisions and the client work are mine.',
-    footerNavHeading: 'Site',
-    footerConnectHeading: 'Connect',
     privacy: 'Privacy',
-    rights: 'All rights reserved.',
   },
   fallback: {
     notice: 'This page is not yet translated — showing the English version.',
