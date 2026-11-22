@@ -17,24 +17,13 @@ export interface Dictionary {
   home: {
     heroEyebrow: string;
     heroTitle: string;
-    heroLede: string;
-    primaryWork: string;
+    heroIntro: string[];
     primaryContact: string;
-    introHeading: string;
-    introBody: string;
-    introDuration: string;
-    proofHeading: string;
-    proofLede: string;
-    proofPoints: { metric: string; label: string; href: string }[];
-    buildHeading: string;
-    buildLede: string;
-    buildPoints: { title: string; body: string; href: string }[];
-    buildCta: string;
-    buildCtaBody: string;
-    practiceHeading: string;
-    practiceLede: string;
-    practicePoints: { title: string; body: string; href: string }[];
-    practiceCta: string;
+    primaryWork: string;
+    howHeading: string;
+    howLine: string;
+    howBody: string[];
+    howCta: string;
   };
   contact: {
     title: string;
@@ -124,80 +113,24 @@ const en: Dictionary = {
   fallback: {
     notice: 'This page is not yet translated — showing the English version.',
   },
+  // Every text of the home page is verbatim from the approved site copy, section "Home" (maestro story art-9947n0hg99).
   home: {
-    heroEyebrow: 'Senior Solution Architect — Data & Integration',
-    heroTitle: 'I design the data and integration backbone, build what runs on it, and get the organisation to adopt both.',
-    heroLede:
-      'Twenty-odd years designing the data, integration and streaming platforms that enterprises run on, almost never with a mandate behind me: 18–20 product teams onto one platform, three estates onto one event contract, a finance function that had to trust a number before it would use it. Systems in production, with the decisions written down where people could argue with them.',
-    primaryWork: 'See selected work',
+    heroEyebrow: 'Hands-on · AWS and Azure · Eindhoven',
+    heroTitle: 'Platform and Integration Architect',
+    heroIntro: [
+      'I have worked with a range of infrastructure, cloud and on-prem, mostly AWS and Azure, in retail, telecom and manufacturing.',
+      'Since October 2023 I am in the integration platform team of a large Dutch grocery retailer. I was in charge of building two new platform products that are now rolled out across the company and replace IBM products. They are based on AWS and Azure native services, with the governance and self-service that I initially built and that we now expand with the team.',
+    ],
     primaryContact: 'Start a conversation',
-    introHeading: 'Start here',
-    introBody:
-      'A short introduction: who I am, the kind of estate I work in, and how I run an architecture across teams that do not report to me.',
-    introDuration: 'Running time',
-    proofHeading: 'Track record',
-    proofLede:
-      'Four numbers from work that shipped. Each links to the case study behind it, including the argument.',
-    proofPoints: [
-      { metric: '18–20 teams, no mandate', label: 'Product teams consolidated onto one API platform by making the platform cheaper than staying put. ~€250–300k a year saved.', href: '/work/cloud-gateway' },
-      { metric: '20+ data products, 30+ sources', label: 'Streaming data from 30+ source systems turned into 20+ domain-owned data products on Kafka. Schema rules let producers ship without a change board.', href: '/work/cloudera-kafka' },
-      { metric: '~30+ company codes', label: 'SAP Finance ledgers into Snowflake, adopted because Finance could reconcile the numbers itself.', href: '/work/sap-snowflake' },
-      { metric: '~1.5B+ req/month', label: 'Federated cross-cloud API platform across AWS and Azure (Cloud Gateway), server-side errors under 0.03%', href: '/work/cloud-gateway' },
+    primaryWork: 'See the work',
+    howHeading: 'How I work',
+    howLine: 'In my own words.',
+    howBody: [
+      'I break and structure a complex problem, and then guide or drive its implementation.',
+      'I work in the middle of design, delivery and engineering. I love engineering, and I keep one hand in the low level of engineering on the solutions I work with.',
+      'Usually the successful solution is not based on technical brilliance. It is based on the combination of what the technology can do, what the organization is currently running, where it is ultimately trying to be, and the organizational capacity in terms of people and processes that are in place.',
     ],
-    practiceHeading: 'How I get it adopted',
-    practiceLede:
-      'The design is usually the easier half. Whether anything ships is decided by the teams who each already have something that works, the function that has to trust a number, and the contract somebody signed four years ago. Three situations.',
-    practicePoints: [
-      {
-        title: 'Twenty teams, no authority to move any of them',
-        body: 'Asking for a mandate would have produced twenty exceptions. So the platform had to be cheaper for a team than staying put, and the first teams to move were the ones with the worst existing setup.',
-        href: '/work/cloud-gateway',
-      },
-      {
-        title: 'Three teams, three definitions of “done”',
-        body: 'For SAP the job ended at “the events are on the broker”; for the cloud team it started at “we consume what is there”. Everything that mattered sat in the gap. I wrote the boundary down and took the unglamorous half myself.',
-        href: '/work/sap-event-backbone',
-      },
-      {
-        title: 'A finance organisation with no reason to believe me',
-        body: 'Explaining the pipeline changed nothing. A reconciliation Finance could run themselves against their own ledger did. Adoption followed the check.',
-        href: '/work/sap-snowflake',
-      },
-    ],
-    practiceCta: 'How I work across an organisation',
-    buildHeading: 'What I build',
-    buildLede:
-      'Five areas, in the order I am usually hired for.',
-    buildPoints: [
-      {
-        title: 'Data & lakehouse',
-        body: 'Medallion lakehouses, contracts where the source hands off, and CDC pipelines that stay reliable, built so the numbers reconcile against the system people already believe.',
-        href: '/expertise/data-and-lakehouse',
-      },
-      {
-        title: 'Integration architecture',
-        body: 'The backbone that lets enterprise systems talk: legacy ESB estates decommissioned wave by wave onto event-driven, API-led, domain-owned platforms.',
-        href: '/expertise/integration-architecture',
-      },
-      {
-        title: 'Event-driven & streaming',
-        body: 'Kafka and broker-based integration as the backbone of the estate, with schema evolution governed in the registry so producers can ship without a change board.',
-        href: '/expertise/event-driven-streaming',
-      },
-      {
-        title: 'APIs & gateways',
-        body: 'API platforms that scale across dozens of teams: gateway strategy, one security model, and the developer experience that gets them adopted.',
-        href: '/expertise/apis-and-gateways',
-      },
-      {
-        title: 'AI & automation',
-        body: 'AI integrated the way any other supplier system is: behind a contract, with an evaluation gate before release, and the model kept outside the runtime so it stays replaceable.',
-        href: '/expertise/ai-and-automation',
-      },
-    ],
-    buildCta: 'See the code behind it',
-    buildCtaBody:
-      'Public repositories you can clone and run: the “active customer” question, the SAP↔Snowflake decision, the Fabric-or-Databricks decision, the modernization lab, the streaming platform and the identity service.',
+    howCta: 'Read more in Practice',
   },
   contact: {
     title: 'Contact',

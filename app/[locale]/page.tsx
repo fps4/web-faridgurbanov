@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { HeroBackdrop } from '@/components/hero-backdrop';
 import { IntroVideo } from '@/components/intro-video';
 import { ReferenceQuote } from '@/components/reference-quote';
 import { listSection, title } from '@/lib/content';
@@ -13,16 +12,11 @@ import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
 
-// Home page (FS-0002/US-0010): the credibility hero. Authored fully in EN + NL (highest-traffic page).
-//
-// Restructured by ADR-0007 into three bands under the hero, in the order a doubting buyer needs
-// them: what has been delivered (track record), how it got adopted (the half that was doubted), and
-// only then what I build (technical depth, which is the half nobody questions). The optional intro
-// video sits directly under the hero and renders nothing until INTRO_VIDEO is configured.
-//
-// Between the adoption band and the technical one sits "In their words" (FS-0009): the adoption
-// band is the owner's account, and this is other people confirming it. It renders nothing WHILE no
-// reference is marked `featured`, the same ships-dark pattern as the video.
+// Home page (FS-0002; maestro story art-9947n0hg99, following the decision art-896t5kxfka): the hero
+// (line above the title, title, introduction, two buttons), the optional intro video and How I work,
+// every text verbatim from the approved site copy, section "Home". The references band stays as it
+// was until its own story: it renders nothing WHILE no reference is marked `featured` (FS-0009).
+// The track record and What I do bands come back when their text is approved, not before.
 export const dynamicParams = false;
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -35,7 +29,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).home;
-  return { title: 'Farid Gurbanov', description: t.heroLede, ...fallbackCanonical(locale, '') };
+  return { title: 'Farid Gurbanov', description: t.heroIntro[0], ...fallbackCanonical(locale, '') };
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -53,90 +47,53 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      <section className="relative overflow-hidden">
-        <HeroBackdrop />
+      <section>
         <div className="container py-16 sm:py-24">
-          <div className="relative max-w-3xl">
+          <div className="max-w-3xl">
             <LocaleNotice locale={locale} />
-            <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-              {t.heroEyebrow}
-            </p>
+            <p className="text-sm font-medium text-muted-foreground">{t.heroEyebrow}</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t.heroTitle}</h1>
-            <p className="mt-6 text-lg text-muted-foreground">{t.heroLede}</p>
+            <div className="mt-6 space-y-4 text-lg">
+              {t.heroIntro.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link href={hrefFor(locale, '/work')}>
-                  {t.primaryWork}
-                  <ArrowRight />
-                </Link>
+                <Link href={hrefFor(locale, '/contact')}>{t.primaryContact}</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href={hrefFor(locale, '/contact')}>{t.primaryContact}</Link>
+                <Link href={hrefFor(locale, '/work')}>{t.primaryWork}</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 0 — the person. Renders only once a video exists (lib/site.ts → INTRO_VIDEO). */}
-      <IntroVideo
-        locale={locale}
-        heading={t.introHeading}
-        body={t.introBody}
-        durationLabel={t.introDuration}
-      />
+      {/* The place of the intro video (art-9947n0hg99, AC-5): nothing at all, no frame, WHILE
+          INTRO_VIDEO in lib/site.ts is null. */}
+      <IntroVideo locale={locale} />
 
-      {/* 1 — experience. The numbers first, because they are what makes the rest credible. */}
-      <section className="border-y border-border bg-muted/40">
-        <div className="container py-12">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {t.proofHeading}
-          </h2>
-          <p className="mt-4 max-w-3xl text-muted-foreground">{t.proofLede}</p>
-          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {t.proofPoints.map((p) => (
-              <li key={p.label}>
-                <Link href={hrefFor(locale, p.href)} className="group block">
-                  <p className="text-2xl font-semibold tracking-tight">{p.metric}</p>
-                  <p className="mt-2 text-sm text-muted-foreground group-hover:text-foreground">
-                    {p.label}
-                  </p>
-                </Link>
-              </li>
+      <section aria-labelledby="how-i-work" className="border-t border-border">
+        <div className="container grid gap-10 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)]">
+          <div>
+            <h2 id="how-i-work" className="text-2xl font-semibold tracking-tight">
+              {t.howHeading}
+            </h2>
+            <p className="mt-2 text-muted-foreground">{t.howLine}</p>
+          </div>
+          <div className="space-y-5 text-lg">
+            {t.howBody.map((p) => (
+              <p key={p}>{p}</p>
             ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 2 — stakeholder management. The track record above answers "has he built it"; this band
-          answers "can he get an organisation to adopt it" — the question a metric cannot. Each card
-          opens the case study carrying the full "Who had to say yes" section. */}
-      <section className="container py-16">
-        <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-          {t.practiceHeading}
-        </h2>
-        <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{t.practiceLede}</p>
-        <ul className="mt-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-3">
-          {t.practicePoints.map((p) => (
-            <li key={p.title} className="bg-background">
-              <Link href={hrefFor(locale, p.href)} className="group block h-full p-6">
-                <h3 className="flex items-start justify-between gap-2 text-base font-medium">
-                  {p.title}
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{p.body}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-6">
-          <Button asChild variant="outline">
-            <Link href={hrefFor(locale, '/expertise/stakeholder-alignment')}>
-              {t.practiceCta}
-              <ArrowRight />
+            <Link
+              href={hrefFor(locale, '/practice')}
+              className="inline-block py-2 text-base font-medium underline underline-offset-4"
+            >
+              {t.howCta}
             </Link>
-          </Button>
+          </div>
         </div>
       </section>
 
@@ -174,40 +131,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
-      {/* 3 — technical expertise. Last on purpose: it is the half nobody doubts, so it does not need
-          to be the half that argues first. */}
-      <section className="border-t border-border bg-muted/30">
-        <div className="container py-16">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            {t.buildHeading}
-          </h2>
-          <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{t.buildLede}</p>
-          {/* Five areas plus the portfolio, so the 1px-gap grid fills exactly — an empty sixth cell
-              in this pattern renders as a stray grey block. The portfolio tile doubles as the CTA. */}
-          <ul className="mt-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {t.buildPoints.map((b) => (
-              <li key={b.title} className="bg-background">
-                <Link href={hrefFor(locale, b.href)} className="group block h-full p-6">
-                  <h3 className="flex items-start justify-between gap-2 text-base font-medium">
-                    {b.title}
-                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground">{b.body}</p>
-                </Link>
-              </li>
-            ))}
-            <li className="bg-muted/60">
-              <Link href={hrefFor(locale, '/portfolio')} className="group block h-full p-6">
-                <h3 className="flex items-start justify-between gap-2 text-base font-medium">
-                  {t.buildCta}
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{t.buildCtaBody}</p>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </section>
     </>
   );
 }
