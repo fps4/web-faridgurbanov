@@ -1,5 +1,6 @@
 import { getEntry, listSection, sectionSlugs, summary as fmSummary, title as fmTitle } from '@/lib/content';
 import type { Locale } from '@/lib/i18n';
+import { earlierWork, earlierWorkTitle } from '@/lib/site';
 import {
   ARTICLES_SECTION,
   ENTRY_KINDS,
@@ -90,6 +91,11 @@ export async function resolveRelated(e: EntryMeta, all: EntryMeta[], locale: Loc
         const other = all.find((o) => o.id === ref);
         if (!other) throw new Error(`${e.slug}: related ${ref} does not exist`);
         return { href: entryHref(other), label: `${other.id} · ${other.title}` };
+      }
+      if (ref.startsWith('work#')) {
+        const earlier = earlierWork.find((x) => x.id === ref.slice('work#'.length));
+        if (!earlier) throw new Error(`${e.slug}: related ${ref} does not exist`);
+        return { href: `/work#${earlier.id}`, label: earlierWorkTitle(earlier) };
       }
       const cut = ref.lastIndexOf('/');
       const page = await getEntry(ref.slice(0, cut), ref.slice(cut + 1), locale);

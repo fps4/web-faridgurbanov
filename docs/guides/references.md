@@ -41,7 +41,7 @@ remove `draft: true`. One person per file. The fields:
 | `role_nl` | The same in Dutch. Optional; falls back to `role`. |
 | `years` | The years worked together, as written: `2021–2023`. |
 | `linkedin` | Their public profile: `https://www.linkedin.com/in/<handle>/`. The build rejects anything else. |
-| `work` | The case-study slug (`cloud-gateway`, `sap-snowflake`, …). The build checks it exists. |
+| `work` | The case-study slug (`cloud-gateway`, `integration-adapter`) or the id of an Earlier work entry on `/work` (`earlier-security-data-lake`, …, in `lib/site.ts`). The build checks it exists. |
 | `date` | When they wrote it, `YYYY-MM-DD`. Rendered as month and year. |
 | `lang` | The language the quote is shown in: `en`, `nl`, `de`, … A quote in another language than the page's gets an "In English." note. |
 | `translated_from` | Only when the quote shown is a translation they approved; the original's language. Renders "Translated from German, with their approval." |

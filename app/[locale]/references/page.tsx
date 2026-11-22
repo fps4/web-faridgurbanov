@@ -8,7 +8,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { listSection, title } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
 import { loadReferences, referencesFor } from '@/lib/references';
-import { site } from '@/lib/site';
+import { earlierWork, earlierWorkTitle, site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
@@ -44,6 +44,11 @@ export default async function ReferencesPage({ params }: { params: Promise<{ loc
   const groups = work
     .map((study) => ({ study, refs: referencesFor(refs, study.slug) }))
     .filter((g) => g.refs.length > 0);
+  // A reference can be about an Earlier work entry, which has no case page: its group has the entry's
+  // name and no link (art-vvzsw9ap9e).
+  const earlierGroups = earlierWork
+    .map((entry) => ({ entry, refs: referencesFor(refs, entry.id) }))
+    .filter((g) => g.refs.length > 0);
   const anyVerified = refs.some((r) => r.verified);
 
   return (
@@ -75,6 +80,17 @@ export default async function ReferencesPage({ params }: { params: Promise<{ loc
           </section>
         );
       })}
+
+      {earlierGroups.map(({ entry, refs: entries }) => (
+        <section key={entry.id} className="mt-14">
+          <div className="border-b border-border pb-3">
+            <h2 className="text-base font-medium">{earlierWorkTitle(entry)}</h2>
+          </div>
+          {entries.map((ref) => (
+            <ReferenceQuote key={ref.slug} reference={ref} locale={locale} variant="page" />
+          ))}
+        </section>
+      ))}
 
       <section className="mt-12 max-w-2xl">
         <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">

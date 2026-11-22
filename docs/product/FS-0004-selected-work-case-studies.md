@@ -23,7 +23,8 @@ maestro:
 - **Status:** draft
 - **Decision:** [ADR-0010](../design/decisions/0010-the-site-has-one-job.md) §5, §7, §12, §13
 - **Stories:** `art-13yb9kshaw` (the Cloud gateway on the new page shape), `art-dgsmfy8yb8` (the
-  Integration adapter on it)
+  Integration adapter on it), `art-vvzsw9ap9e` (the Work page, Earlier work, Also built, and the
+  three earlier case studies removed)
 
 ## Why
 
@@ -62,11 +63,39 @@ Every text on a case study is taken verbatim from the approved review document o
 No client is named; the client is described by its kind. Figures of the owner's current work stand
 in the rounder words of the approved copy, and the case study says the same as the résumé.
 
-## Case studies still on the earlier shape
+## The Work page
 
-The Cloudera Kafka platform, the SAP to Snowflake migration and the SAP event backbone have no
-`intro` and keep the earlier template, until the Work stories rewrite or
-remove them. The earlier shape (ADR-0005, ADR-0008) is superseded by ADR-0010 and is not extended.
+`app/[locale]/work/page.tsx` draws, in the order of the approved design, the page introduction, the
+two case studies as rows, Earlier work and Also built. Every text is verbatim from the approved
+review document of the site copy; where a text is not there, the element is not drawn.
+
+| Part | Where the text is |
+|---|---|
+| Heading and introduction | `indexes.workTitle`, `indexes.workIntro` in `lib/dictionaries.ts` |
+| A case study's row | its title, and `large` (the large text at the left), `listed` (the line) and `stands` (Where it stands) in its frontmatter; the label *Where it stands:* is `indexes.whereItStands`; the row leads to its case study |
+| Earlier work | `indexes.earlierHeading`, `indexes.earlierLine`, and `earlierWork` in `lib/site.ts`: four entries of one or two lines, no case page behind them |
+| Also built | `indexes.alsoHeading`, `indexes.alsoLine`, and `alsoBuilt` in `lib/site.ts`: a repository name linked to its public GitHub repository, and its one line |
+
+The design's dashed placeholder row in Also built is not drawn.
+
+**Anchors.** The Earlier work list is `/work#earlier-work` (`EARLIER_WORK_ANCHOR`), and each entry has
+a stable id of its own: `earlier-sap-events`, `earlier-databricks-review`,
+`earlier-security-data-lake` (the UK telecom operator) and `earlier-sap-finance-snowflake`. Another
+page links to an entry as `/work#<id>`; a reference names it in `work:`, and a Practice piece in
+`related:` as `work#<id>`. An id is not renamed without redirecting what links to it.
+
+**Also built** lists a repository only when the owner has chosen it, it is public under
+`github.com/fps4/`, and ADR-0004's prerequisites hold for it. `lib/work.test.ts` checks the list
+against the repositories the copy names.
+
+## The removed case studies
+
+The Cloudera Kafka platform, the SAP to Snowflake migration and the SAP event backbone are removed,
+with their diagrams: they carried claims the owner withdrew in the interview. Their addresses
+(`/<locale>/work/cloudera-kafka`, `/sap-snowflake`, `/sap-event-backbone`, bare, with a trailing
+slash and with `.html`) answer 301 from `infra/docker/nginx.conf` to `/<locale>/work#earlier-work`,
+the Location header carrying the fragment (a request never carries one, so nginx cannot test it), and
+`lib/redirects.test.ts` checks it. A reference that named one of them names its Earlier work entry.
 
 ## The Integration adapter's address
 
@@ -88,7 +117,12 @@ approved copy does not make. The link at its end to the article *Simple first* w
   SHALL show the Next link only WHERE the entry sets both `next` and `next_label`.
 - WHERE a published reference names the case study, THE SYSTEM SHALL show it under the facts
   column, and WHERE there is none, SHALL hold no place for one.
-- THE case studies still on the earlier shape SHALL keep building and rendering.
+- WHEN a visitor opens `/work`, THE SYSTEM SHALL show the introduction, the two case studies, Earlier
+  work with its four entries and Also built, each text verbatim from the approved copy.
+- THE Also built strip SHALL list only repositories the approved copy lists, each linked to its
+  public repository under `github.com/fps4/`.
+- WHEN a visitor opens one of the three removed case-study addresses in either locale, THE SYSTEM
+  SHALL answer 301 to the Earlier work list on `/work` in the same locale.
 - THE case studies SHALL render in English, and the Dutch page SHALL show the English text under
   the notice of FS-0001 until the Dutch copy is approved.
 
@@ -97,4 +131,5 @@ approved copy does not make. The link at its end to the article *Simple first* w
 - The Cloud gateway and the Integration adapter case studies are on the page shape, from the
   approved copy.
 - The exported page's text matches the approved copy, element by element.
-- The earlier case studies still build.
+- The earlier case studies, their diagrams and every link to them are gone; each old address leads to
+  the Earlier work list.

@@ -3,12 +3,14 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   FEATURED_MAX,
+  earlierWorkOf,
   languageName,
   parseReference,
   sortReferences,
   validateReference,
   validateReferenceSet,
   wordCount,
+  workPath,
 } from '@/lib/references';
 
 // A reference is another person's words and face on a public page, so a malformed one must fail
@@ -131,6 +133,25 @@ describe('helpers', () => {
   });
 });
 
+describe('a reference about an Earlier work entry', () => {
+  it('finds the entry by its id and leaves a case-study slug alone', () => {
+    expect(earlierWorkOf('earlier-security-data-lake')?.id).toBe('earlier-security-data-lake');
+    expect(earlierWorkOf('cloud-gateway')).toBeUndefined();
+    expect(earlierWorkOf('cloudera-kafka')).toBeUndefined();
+  });
+
+  it('leads to its entry on /work, and a case study to its page', () => {
+    expect(workPath('earlier-security-data-lake')).toBe('/work#earlier-security-data-lake');
+    expect(workPath('cloud-gateway')).toBe('/work/cloud-gateway');
+  });
+
+  it('passes the checks like one about a case study', () => {
+    const ref = parseReference('first-last', valid.replace('work: cloud-gateway', 'work: earlier-security-data-lake'))!;
+    expect(ref.work).toBe('earlier-security-data-lake');
+    expect(validateReference(ref)).toEqual([]);
+  });
+});
+
 describe('content/references/', () => {
   const dir = join(process.cwd(), 'content', 'references');
   const files = existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith('.md')) : [];
@@ -145,7 +166,10 @@ describe('content/references/', () => {
 
   it.each(refs.map((r) => [r.slug, r] as const))('%s is fit to publish', (_slug, ref) => {
     expect(validateReference(ref)).toEqual([]);
-    expect(existsSync(join(process.cwd(), 'content', 'en', 'work', `${ref.work}.md`))).toBe(true);
+    // A case study (content/en/work/<slug>.md) or an Earlier work entry on /work (art-vvzsw9ap9e).
+    expect(
+      earlierWorkOf(ref.work) !== undefined || existsSync(join(process.cwd(), 'content', 'en', 'work', `${ref.work}.md`)),
+    ).toBe(true);
     if (ref.photo) expect(existsSync(join(process.cwd(), 'public', ref.photo))).toBe(true);
   });
 
