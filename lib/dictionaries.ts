@@ -12,6 +12,7 @@ export interface Dictionary {
     themeToggle: string;
     footerAiStatement: string;
     privacy: string;
+    privacyLine: string;
   };
   fallback: { notice: string };
   home: {
@@ -28,17 +29,15 @@ export interface Dictionary {
   contact: {
     title: string;
     lede: string;
-    emailHeading: string;
-    emailHint: string;
-    whatsappHeading: string;
-    whatsappHint: string;
-    whatsappPlaceholder: string;
-    whatsappCta: string;
-    whatsappDefault: string;
-    elsewhereHeading: string;
-    locationHeading: string;
+    contractLabel: string;
+    contractValue: string;
+    basedLabel: string;
+    basedValue: string;
+    languagesLabel: string;
+    languagesValue: string;
+    email: string;
+    whatsapp: string;
     linkedin: string;
-    github: string;
   };
   privacy: {
     title: string;
@@ -109,6 +108,8 @@ const en: Dictionary = {
     // art-4fzvp6bqm0: the one statement on how AI is used, verbatim from the approved copy (Footer).
     footerAiStatement: 'How AI is used here. The code and some notes on this site are built with AI assistance. The decisions and the client work are mine.',
     privacy: 'Privacy',
+    // art-r903t1r2tp: the rest of the footer's privacy line, "Privacy · Nothing about you is collected".
+    privacyLine: 'Nothing about you is collected',
   },
   fallback: {
     notice: 'This page is not yet translated — showing the English version.',
@@ -132,21 +133,20 @@ const en: Dictionary = {
     ],
     howCta: 'Read more in Practice',
   },
+  // art-r903t1r2tp: the Contact part of the home page, verbatim from the approved site copy, section
+  // "Contact" (the text) and "Texts shown in the design that were missing above" (rows, buttons).
   contact: {
     title: 'Contact',
-    lede: 'The fastest way to start a conversation.',
-    emailHeading: 'Email',
-    emailHint: 'The best first step. I reply to specifics faster than to “let’s connect”.',
-    whatsappHeading: 'WhatsApp',
-    whatsappHint:
-      'Quicker than email if you just want to ask something. Your own WhatsApp opens with the text below already typed. You press send, so I get your number and can reply in the same thread. Nothing is sent from this page.',
-    whatsappPlaceholder: 'What would you like to ask?',
-    whatsappCta: 'Open WhatsApp',
-    whatsappDefault: 'Hi Farid, I found you via faridgurbanov.com. I would like to ask about ',
-    elsewhereHeading: 'Elsewhere',
-    locationHeading: 'Based in',
+    lede: 'Write to me about an integration platform, an API platform, or a move off legacy middleware. A short message about what you are trying to get done is enough. I answer myself.',
+    contractLabel: 'How I contract',
+    contractValue: 'Freelance, through my own company',
+    basedLabel: 'Based',
+    basedValue: 'Eindhoven, Netherlands',
+    languagesLabel: 'Languages',
+    languagesValue: 'English, Dutch (B1)',
+    email: 'Send an email',
+    whatsapp: 'WhatsApp',
     linkedin: 'LinkedIn',
-    github: 'GitHub',
   },
   privacy: {
     title: 'Privacy',

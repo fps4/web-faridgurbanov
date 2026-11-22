@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { ObfuscatedEmail } from '@/components/obfuscated-email';
+import { WhatsAppButton } from '@/components/whatsapp-contact';
 import { IntroVideo } from '@/components/intro-video';
 import { ReferenceQuote } from '@/components/reference-quote';
 import { listSection, title } from '@/lib/content';
 import { getDictionary } from '@/lib/dictionaries';
-import { hrefFor } from '@/lib/nav';
+import { CONTACT_HREF, hrefFor } from '@/lib/nav';
 import { featuredReferences, loadReferences } from '@/lib/references';
 import { locales, type Locale } from '@/lib/i18n';
+import { site } from '@/lib/site';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
 
@@ -36,6 +39,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale: raw } = await params;
   const locale = raw as Locale;
   const t = getDictionary(locale).home;
+  const tc = getDictionary(locale).contact;
   const tr = getDictionary(locale).references;
   const featured = featuredReferences(await loadReferences());
   const work = featured.length ? await listSection('work', locale) : [];
@@ -61,7 +65,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link href={hrefFor(locale, '/contact')}>{t.primaryContact}</Link>
+                <Link href={hrefFor(locale, CONTACT_HREF)}>{t.primaryContact}</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href={hrefFor(locale, '/work')}>{t.primaryWork}</Link>
@@ -131,6 +135,40 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
+      {/* Contact (maestro story art-r903t1r2tp, AC-1 to AC-3, AC-7): the id is the anchor the header,
+          the footer and /contact lead to. The address and the number are put together in the
+          browser. No Available and Résumé rows until the résumé story brings their text. */}
+      <section id="contact" aria-labelledby="contact-h" className="border-t border-border">
+        <div className="container grid gap-10 py-16 lg:grid-cols-2">
+          <div className="space-y-4">
+            <h2 id="contact-h" className="text-2xl font-semibold tracking-tight">
+              {tc.title}
+            </h2>
+            <p className="max-w-xl text-lg">{tc.lede}</p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <ObfuscatedEmail className={buttonVariants({ size: 'lg' })}>{tc.email}</ObfuscatedEmail>
+              <WhatsAppButton label={tc.whatsapp} />
+              <Button asChild size="lg" variant="outline">
+                <a href={site.linkedin} rel="me noopener" target="_blank">
+                  {tc.linkedin}
+                </a>
+              </Button>
+            </div>
+          </div>
+          <dl className="border-b border-border">
+            {[
+              [tc.contractLabel, tc.contractValue],
+              [tc.basedLabel, tc.basedValue],
+              [tc.languagesLabel, tc.languagesValue],
+            ].map(([label, value]) => (
+              <div key={label} className="flex flex-wrap gap-x-6 gap-y-1 border-t border-border py-3.5">
+                <dt className="basis-36 text-muted-foreground">{label}</dt>
+                <dd className="min-w-0 flex-1 basis-48 font-medium">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
     </>
   );
 }

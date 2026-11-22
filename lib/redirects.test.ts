@@ -105,7 +105,7 @@ describe('the removed sections', () => {
   });
 
   it.each(locales)('never redirects a page it keeps, or a target of its own', (l) => {
-    for (const kept of ['', '/work', '/work/cloud-gateway', '/work/integration-adapter', '/practice', '/contact', '/privacy', '/references']) {
+    for (const kept of ['', '/work', '/work/cloud-gateway', '/work/integration-adapter', '/practice', '/privacy', '/references']) {
       expect(redirect(`/${l}${kept}`), kept).toBeNull();
     }
     expect(redirect(`/${l}/learning-notes`)).toBeNull();
@@ -137,5 +137,27 @@ describe('the renamed Integration adapter case study', () => {
     for (const kept of ['/work', '/work/cloud-gateway', '/work/integration-adapter', '/work/integration-platform-notes']) {
       expect(redirect(`/${l}${kept}`), kept).toBeNull();
     }
+  });
+});
+
+// Contact is a part of the home page, not a page (maestro story art-r903t1r2tp): /contact in every
+// form and locale answers 301 to the Contact part of the home page in the same locale, and that
+// target is a page the export has. The old page's route is gone and the sitemap no longer lists it.
+describe('the removed Contact page', () => {
+  it.each(locales)('sends /%s/contact, in every form, to the Contact part of /%s', (l) => {
+    for (const old of forms(`/${l}/contact`)) {
+      expect(redirect(old), old).toBe(`/${l}#contact`);
+      expect(pageExists(redirect(old)!.split('#')[0]), old).toBe(true);
+    }
+    expect(conf).toMatch(/return 301 \/\$1#contact;/);
+  });
+
+  it.each(locales)('leaves other addresses starting with contact alone, in %s', (l) => {
+    for (const kept of ['/contact-us', '/contacts', '/privacy']) expect(redirect(`/${l}${kept}`), kept).toBeNull();
+  });
+
+  it('has no route left for the page, and no sitemap entry', () => {
+    expect(routeExists('/contact')).toBe(false);
+    expect(readFileSync(join(process.cwd(), 'app', 'sitemap.ts'), 'utf8')).not.toContain("'/contact'");
   });
 });

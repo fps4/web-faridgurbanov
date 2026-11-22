@@ -40,15 +40,17 @@ call. The page says who he is in his own words and sends the reader to Contact o
    `featured`. It has its own story.
 5. **Copy.** Every text is taken verbatim from the approved copy (`lib/dictionaries.ts`, `home`).
    No text is written for the page. The meta description is the first sentence of the introduction.
-6. **Not on the page now:** the track record, What I do, the references as cards, contact and the
+6. **Contact** (maestro story `art-r903t1r2tp`, [FS-0007](./FS-0007-contact-and-privacy.md)) is
+   the last part of the page, `id="contact"`; the hero's first button leads to it.
+7. **Not on the page now:** the track record, What I do, the references as cards and the
    résumé button. Each returns in its own story when its text is approved.
-7. **Languages.** The Dutch addresses show the English page under the fallback notice until the
+8. **Languages.** The Dutch addresses show the English page under the fallback notice until the
    Dutch copy is approved.
 
 ## Acceptance criteria (EARS)
 
 - THE home page's first screen SHALL show the line above the title, the title, the introduction and
-  two buttons, exactly as in the approved copy, leading to Contact and to Work.
+  two buttons, exactly as in the approved copy, leading to the Contact part of the page and to Work.
 - THE home page SHALL show How I work: its three statements verbatim and a link to Practice.
 - THE home page SHALL carry no band with a figure, and no text that is not in the approved copy.
 - THE home page's meta description SHALL be the first sentence of the approved introduction.

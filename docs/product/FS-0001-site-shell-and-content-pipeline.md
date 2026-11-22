@@ -47,6 +47,8 @@ across pages and across languages.
    reads Work, Practice, Contact, in that order, besides the name, the language switcher and the
    theme toggle ([ADR-0010](../design/decisions/0010-the-site-has-one-job.md) §5; maestro story
    `art-y97cjsakwq`). The footer lists the same three, and References while one is published.
+   Contact leads to the Contact part of the home page, `/<locale>#contact` (maestro story
+   `art-r903t1r2tp`).
    The footer carries the one statement on how AI is used, verbatim from the approved copy
    (ADR-0010 §6; maestro story `art-4fzvp6bqm0`), and stands nowhere else on the site.
 5. **Static export** — `output: 'export'`; the production build emits static HTML/CSS/JS with no
