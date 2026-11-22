@@ -1,6 +1,7 @@
 ---
 title: "0007: Front page as three bands; portfolio narrowed to five repos in three areas"
 status: accepted
+note: "Partly superseded by 0010: the portfolio parts (the five repositories in three areas) no longer apply. Rest unchanged."
 last_updated: 2026-08-20
 owners: [architect]
 related:

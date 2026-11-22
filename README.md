@@ -1,15 +1,15 @@
 # faridgurbanov.com
 
-*A bilingual (EN/NL) personal site and single credibility surface — the architect who builds AI and teaches teams to direct it.*
+*A bilingual (EN/NL) personal site with one job: a visitor who can hire or recommend the owner decides to get in touch. He is a Platform and Integration Architect.*
 
-One URL for three buyer journeys — **training** (L&D / EA leads), **hiring/contract**
-(recruiters, hiring managers), and **build-service** clients — under one brand. It is a
+The site serves three readers (hiring manager, peer, recruiter) and has no courses, no labs and
+no portfolio section ([ADR-0010](docs/design/decisions/0010-the-site-has-one-job.md)). It is a
 **static-exported** Next.js 15 site: no application server, no database; markdown content is
 rendered to HTML at build time and served by nginx on the ds1 Docker host (ADR-0001).
 
-The **target** home is training-forward; the **first ship (M0)** leads with credibility
-(selected work + portfolio) and carries training as a CTA stub, with the training-forward home
-and full Training section landing in **M1** (ADR-0003).
+The code still holds pages from the earlier, training-forward positioning (ADR-0003, superseded).
+Later stories cut them, each when its copy is approved. The repository is public: read
+[`AGENTS.md`](AGENTS.md) before changing any text.
 
 ## Stack
 

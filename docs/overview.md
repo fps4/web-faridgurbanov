@@ -1,7 +1,7 @@
 ---
 title: faridgurbanov.com overview
 status: draft
-last_updated: 2026-06-08
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/README.md
@@ -12,15 +12,14 @@ related:
 
 # faridgurbanov.com
 
-A bilingual (EN/NL) personal site and single credibility surface for three buyer journeys —
-**training buyers** (L&D / EA leads), **hiring/contract** (recruiters, hiring managers), and
-**build-service clients** — under one brand: *the architect who builds AI and teaches teams to
-direct it*. It is a **static-exported** Next.js 15 site (no application server, no database;
-markdown content rendered at build time, served by nginx on the ds1 Docker host). The **target** home is training-forward, but
-the **first ship (M0)** leads with credibility (selected work + portfolio) and carries training
-as a CTA stub; the training-forward home and full Training section land in **M1**.
+A bilingual (EN/NL) personal site with one job: a visitor who can hire or recommend the owner
+decides to get in touch. He presents himself as a Platform and Integration Architect. The site
+serves three readers (hiring manager, peer, recruiter), is Home, Work, Practice and Contact, and
+carries no courses, no labs and no portfolio section ([ADR-0010](design/decisions/0010-the-site-has-one-job.md)).
+It is a **static-exported** Next.js 15 site (no application server, no database; markdown content
+rendered at build time, served by nginx on the ds1 Docker host). The pages are being cut to this
+shape story by story, each when its copy is approved.
 
 Start with the [product intent](product/00-product-intent.md) for the *what & why*, the
-[ADRs](design/decisions/) for the locked technical decisions, or the
-[roadmap](delivery/roadmap/README.md) for the M0/M1 plan — see the
-[docs index](README.md) for the full map.
+[ADRs](design/decisions/) for the locked decisions, or the [docs index](README.md) for the full
+map.

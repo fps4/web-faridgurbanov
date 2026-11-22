@@ -1,7 +1,7 @@
 ---
 title: "FS-0008 — Training section & EU AI Act page"
-status: draft
-last_updated: 2026-06-09
+status: superseded by ADR-0010
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -19,6 +19,8 @@ maestro:
 ---
 
 # FS-0008 — Training section & EU AI Act page
+
+> **Superseded** by [ADR-0010](../design/decisions/0010-the-site-has-one-job.md), the decision that the site has one job and carries no courses or labs: <https://maestro.fps4.nl/artifacts/art-896t5kxfka>. Kept as history; do not build from it.
 
 - **Status:** draft
 - **Raised:** 2026-06-07
