@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { CaseStudy } from '@/components/case-study';
 import { ContentArticle } from '@/components/content-article';
 import { ReferenceQuote } from '@/components/reference-quote';
+import { caseStudyFrontmatter } from '@/lib/case-study';
 import { getDictionary } from '@/lib/dictionaries';
 import { getEntry, sectionSlugs, summary, title } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
@@ -10,7 +12,11 @@ import { site } from '@/lib/site';
 import { isLocale, type Locale } from '@/lib/i18n';
 import { fallbackCanonical } from '@/lib/canonical';
 
-// Case-study detail (FS-0004/US-0011). Consistent structure (context → built → impact → role/stack)
+// Case-study detail (FS-0004). An entry whose frontmatter has an `intro` is on the case-study page
+// shape (components/case-study.tsx, art-13yb9kshaw); the others are still on the earlier shape below
+// until the Work stories rewrite or remove them.
+//
+// Earlier shape (US-0011). Consistent structure (context → built → impact → role/stack)
 // lives in the markdown body; clients abstracted where confidentiality requires, metrics kept.
 //
 // WHERE a published reference names this study, an "In their words" section is rendered between
@@ -51,6 +57,30 @@ export default async function WorkPage({
   if (!entry) notFound();
   const t = getDictionary(locale);
   const refs = referencesFor(await loadReferences(), slug);
+
+  const study = caseStudyFrontmatter(entry.data);
+  if (study) {
+    return (
+      <CaseStudy
+        entry={entry}
+        locale={locale}
+        study={study}
+        fallbackMessage={t.fallback.notice}
+        reference={
+          refs.length ? (
+            <div className="flex flex-col gap-6">
+              {refs.map((ref) => (
+                <ReferenceQuote key={ref.slug} reference={ref} locale={locale} variant="article" />
+              ))}
+            </div>
+          ) : undefined
+        }
+        backHref={hrefFor(locale, '/work')}
+        contactHref={hrefFor(locale, '/contact')}
+        nextHref={study.next ? hrefFor(locale, `/work/${study.next.slug}`) : null}
+      />
+    );
+  }
 
   return (
     <ContentArticle
