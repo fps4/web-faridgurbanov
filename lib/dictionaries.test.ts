@@ -40,3 +40,30 @@ describe('links written for the English pages', () => {
     }
   });
 });
+
+// Maestro story art-9947n0hg99: the home page shows approved copy only. A text added here has to be
+// approved in the site copy first, so a new key fails this test until the list is changed on purpose.
+describe('home dictionary', () => {
+  it('holds only the texts the home page shows', () => {
+    expect(Object.keys(getDictionary('en').home).sort()).toEqual(
+      [
+        'heroEyebrow',
+        'heroTitle',
+        'heroIntro',
+        'primaryContact',
+        'primaryWork',
+        'howHeading',
+        'howLine',
+        'howBody',
+        'howCta',
+      ].sort(),
+    );
+  });
+
+  it('carries none of the withdrawn figures', () => {
+    const text = JSON.stringify(getDictionary('en').home);
+    for (const withdrawn of ['18–20', '250', '1.5B', '0.03', 'IBM API Connect']) {
+      expect(text).not.toContain(withdrawn);
+    }
+  });
+});
