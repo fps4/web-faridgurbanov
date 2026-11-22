@@ -10,12 +10,8 @@ export interface Dictionary {
     skipToContent: string;
     nav: { home: string };
     themeToggle: string;
-    footerTagline: string;
-    footerNavHeading: string;
-    footerConnectHeading: string;
+    footerAiStatement: string;
     privacy: string;
-    rights: string;
-    builtWith: string;
   };
   fallback: { notice: string };
   home: {
@@ -110,12 +106,9 @@ const en: Dictionary = {
     skipToContent: 'Skip to content',
     nav: { home: 'Home' },
     themeToggle: 'Toggle theme',
-    footerTagline: 'Senior Solution Architect — Data & Integration. I design the backbone, build what runs on it, and get the organisation to adopt both.',
-    footerNavHeading: 'Site',
-    footerConnectHeading: 'Connect',
+    // art-4fzvp6bqm0: the one statement on how AI is used, verbatim from the approved copy (Footer).
+    footerAiStatement: 'How AI is used here. The code and some notes on this site are built with AI assistance. The decisions and the client work are mine.',
     privacy: 'Privacy',
-    rights: 'All rights reserved.',
-    builtWith: 'Built as a static site: Next.js, exported and served by nginx.',
   },
   fallback: {
     notice: 'This page is not yet translated — showing the English version.',
