@@ -85,3 +85,5 @@ FS-0008, FS-0012 and FS-0013 are superseded by ADR-0010.
 - **Bilingual EN/NL** with i18n routing (ADR-0002). The Dutch text is made from the approved
   English and approved the same way.
 - **Static export**: every feature must work with `output: 'export'` (ADR-0001).
+- **Public-surface prerequisites** gate the repository links (ADR-0004, which stands): a repository
+  is linked only when it is licensed, neutral and described as what it is (runnable or reference).

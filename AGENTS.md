@@ -26,6 +26,10 @@ and the ADRs it cites.
   the [documentation standard](../maestro/docs/guides/documentation-standards.md).
 - **Commit what the owner has not cleared for publishing**, or link a private repository. See
   [Public repository](#public-repository).
+- **Publish a gated surface** before its prerequisite clears. A repository link goes on the site
+  only once the prerequisites of
+  [ADR-0004](docs/design/decisions/0004-public-surface-prerequisites.md) are met for it: licensed,
+  neutral, and described as what it is (runnable or reference).
 - **Add, rewrite or generalize site text.** See [Where copy comes from](#where-copy-comes-from).
 
 ## How to run
@@ -90,8 +94,11 @@ This repository is public. Anything committed here, in a file or in git history,
   for its moment, a quote the person has not agreed to, a translation he has not approved.
 - A **private repository is never linked**, in copy, config or docs. Only the owner's public
   repositories may be linked.
-- Do not write into the repository the name of the owner's current or an earlier client, his
-  private projects, or any figure that is not in the approved copy.
+- Do not write into the repository the name of the owner's current or an earlier client, or his
+  private projects.
+- Exact internal figures of the owner's current work are not written on any page or in any
+  document in the repository; and a builder adds no number to site text (§12.2 and §13.3 of the
+  decision).
 
 ## Voice
 
@@ -113,8 +120,8 @@ text as it stands:
 - **Facts stay facts.** Years, team words ("we"), admissions and outcomes come from the owner's
   résumé or the approved copy, never added to give texture. Work that is not finished is told as
   in progress, and a proof of concept is called a proof of concept.
-- Every page opens in words a reader who does not build can follow, and articles carry the date
-  they were written.
+- Every page opens in words a reader who does not build can follow, and explains a term where it
+  first uses it. Articles carry the date they were written.
 
 Quotes in `content/references/` are other people's words, verbatim and only with the agreement of
 the person quoted. The voice check skips that folder.
