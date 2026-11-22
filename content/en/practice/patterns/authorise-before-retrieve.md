@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [practice/articles/knowledge-layer-a-lawyer-can-act-on, P-03]
 topics: [ai, governance]
 tech: [knowledge-graphs]
+draft: true
 ---
 
 ## Problem

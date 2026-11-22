@@ -1,245 +1,95 @@
 import type { Frontmatter } from '@/lib/frontmatter';
-import type { Locale } from '@/lib/i18n';
 
-// The Practice section's model (FS-0013), framework-free and safe to import from a client island:
-// the three kinds, the tag vocabularies, the entry validators, the list order and the filter.
-// lib/practice.ts loads the files and re-exports all of this.
+// The Practice section's model (art-gdp0zjj9fd, ADR-0010 §11): a short list of the owner's own
+// articles. Framework-free; lib/practice.ts loads the files and checks them with these validators.
 //
-// - Guidelines (G-NN): the standing rules, under content/<locale>/practice/guidelines/.
-// - Patterns (P-NN): reusable solutions to a recurring problem, under …/practice/patterns/.
-// - Articles: the dated pieces, under …/practice/articles/ (FS-0006).
+// An article is one markdown file under content/<locale>/practice/articles/. Every text it shows
+// is in the file or in lib/dictionaries.ts, taken verbatim from the approved copy:
 //
-// Guidelines and patterns are "entries": numbered, ordered by an explicit `order`, revised in
-// place. Every item carries `topics` (one or more) and `tech` (zero or more) from the vocabularies
-// below, so a typo fails `npm run test` and the build instead of adding a filter chip of its own.
+//   title, summary (the first line of the article, taken unchanged from its own text), date (the
+//   day it was written), order, read (the reading-time label) and from ("Where it comes from").
+//
+// `from` is an inline list, and the frontmatter parser splits an inline list on every comma, so an
+// item carries its link after a ` | ` and holds no comma itself: `Integration adapter |
+// /en/work/integration-adapter`. An item with no ` | ` is plain text. The guidelines, patterns and
+// earlier articles are unpublished (`draft: true`) and are not part of this model.
 
 export const ARTICLES_SECTION = 'practice/articles';
 
-export const ENTRY_KINDS = {
-  guideline: { section: 'practice/guidelines', prefix: 'G', route: 'guidelines' },
-  pattern: { section: 'practice/patterns', prefix: 'P', route: 'patterns' },
-} as const;
-export type EntryKind = keyof typeof ENTRY_KINDS;
-export const KINDS = ['guideline', 'pattern', 'article'] as const;
-export type Kind = (typeof KINDS)[number];
-
-/** What an item is about. Labels per locale; the key is what frontmatter and the URL carry. */
-export const TOPICS = {
-  architecture: { en: 'Architecture practice', nl: 'Architectuurpraktijk' },
-  adoption: { en: 'Adoption & delivery', nl: 'Adoptie en delivery' },
-  'data-platforms': { en: 'Data platforms', nl: 'Dataplatforms' },
-  integration: { en: 'Integration', nl: 'Integratie' },
-  governance: { en: 'Governance & compliance', nl: 'Governance en compliance' },
-  ai: { en: 'AI', nl: 'AI' },
-  cost: { en: 'Cost', nl: 'Kosten' },
-} as const satisfies Record<string, Record<Locale, string>>;
-export type Topic = keyof typeof TOPICS;
-
-/** The technology an item works with in substance (a passing mention does not earn a tag). */
-export const TECH = {
-  sap: 'SAP',
-  snowflake: 'Snowflake',
-  databricks: 'Databricks',
-  fabric: 'Microsoft Fabric',
-  azure: 'Azure',
-  'knowledge-graphs': 'Knowledge graphs',
-  mcp: 'MCP',
-} as const;
-export type Tech = keyof typeof TECH;
-
-export const ENTRY_STATUSES = ['current', 'revised', 'retired'] as const;
-export type EntryStatus = (typeof ENTRY_STATUSES)[number];
-
-/** Listing card and meta description share it, so it stays short enough for both. */
-export const SUMMARY_MAX = 140;
-
-const ID_RE = /^[GP]-\d{2,}$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-/**
- * A related entry is another entry's id, a page of the site by section and slug, or an Earlier
- * work entry on /work as `work#<id>` (art-vvzsw9ap9e: the entries have no page of their own).
- */
-const RELATED_PAGE_RE = /^((work|practice\/articles)\/[a-z0-9-]+|work#earlier-[a-z0-9-]+)$/;
+/** A link of `from`: a case study, or an entry of the Earlier work list, written with the /en prefix. */
+const FROM_HREF_RE = /^\/en\/work(\/[a-z0-9-]+|#earlier-[a-z0-9-]+)$/;
 
-export interface Tags {
-  topics: Topic[];
-  tech: Tech[];
-}
-
-export interface EntryMeta extends Tags {
-  kind: EntryKind;
-  slug: string;
-  id: string;
-  order: number;
-  title: string;
-  summary: string;
-  status: EntryStatus;
-  revised: string;
-  supersedes?: string;
-  related: string[];
-}
-
-export interface Entry extends EntryMeta {
-  body: string;
-  isFallback: boolean;
-}
-
-/** One row of the Practice list, whatever its kind. Serialisable: it is handed to a client island. */
-export interface PracticeItem extends Tags {
-  kind: Kind;
-  /** Path under the locale, e.g. /practice/patterns/policy-compiler. */
-  href: string;
-  /** G-01 / P-03 for entries; absent for articles. */
-  id?: string;
-  /** ISO date: `date` for an article, `revised` for an entry. */
-  date: string;
-  title: string;
-  summary: string;
-}
-
-export interface RelatedLink {
-  href: string;
+export interface FromItem {
   label: string;
+  /** Path as written in the file (`/en/…`, localized when shown); null for plain text. */
+  href: string | null;
+}
+
+export interface ArticleMeta {
+  slug: string;
+  title: string;
+  /** The first line of the article, taken unchanged from its own text. */
+  summary: string;
+  /** ISO date the article was written. */
+  date: string;
+  order: number;
+  /** The reading-time label, e.g. "Three-minute read". */
+  read: string;
+  from: FromItem[];
 }
 
 const str = (v: unknown) => (typeof v === 'string' ? v : '');
-const list = (v: unknown) => (Array.isArray(v) ? v : []);
 
-/** Read an item's tags off its frontmatter. Validation is separate (validateTags). */
-export function toTags(data: Frontmatter): Tags {
-  return { topics: list(data.topics) as Topic[], tech: list(data.tech) as Tech[] };
+/** Read the `from` list: `Label | /en/work/slug` is a link, `Label` is plain text. */
+export function parseFrom(v: unknown): FromItem[] {
+  const items = Array.isArray(v) ? v : typeof v === 'string' && v ? [v] : [];
+  return items.map((raw) => {
+    const [label, ...rest] = String(raw).split(' | ');
+    const href = rest.join(' | ').trim();
+    return { label: label.trim(), href: href || null };
+  });
 }
 
-/** The problems with an item's tags: at least one topic, and every tag from the vocabularies. */
-export function validateTags(where: string, tags: Tags): string[] {
-  const errors: string[] = [];
-  if (tags.topics.length === 0) errors.push('needs at least one topic');
-  for (const t of tags.topics) if (!(t in TOPICS)) errors.push(`topic "${t}" is not one of ${Object.keys(TOPICS).join(', ')}`);
-  for (const t of tags.tech) if (!(t in TECH)) errors.push(`tech "${t}" is not one of ${Object.keys(TECH).join(', ')}`);
-  return errors.map((e) => `${where}: ${e}`);
-}
-
-/** Read an entry's fields off its frontmatter. Validation is separate (validateEntry). */
-export function toEntryMeta(kind: EntryKind, slug: string, data: Frontmatter): EntryMeta {
+/** Read an article's fields off its frontmatter. Validation is separate (validateArticle). */
+export function toArticleMeta(slug: string, data: Frontmatter): ArticleMeta {
   return {
-    kind,
     slug,
-    id: str(data.id),
-    order: typeof data.order === 'number' ? data.order : Number.NaN,
     title: str(data.title),
     summary: str(data.summary),
-    status: str(data.status) as EntryStatus,
-    revised: str(data.revised),
-    supersedes: str(data.supersedes) || undefined,
-    related: list(data.related),
-    ...toTags(data),
+    date: str(data.date),
+    order: typeof data.order === 'number' ? data.order : Number.NaN,
+    read: str(data.read),
+    from: parseFrom(data.from),
   };
 }
 
-/** The problems with one entry's fields; empty when it is publishable. */
-export function validateEntry(e: EntryMeta): string[] {
+/** The problems with one article's fields, and with its first line against its body; empty when publishable. */
+export function validateArticle(a: ArticleMeta, body?: string): string[] {
   const errors: string[] = [];
-  const prefix = ENTRY_KINDS[e.kind].prefix;
-  if (!ID_RE.test(e.id) || !e.id.startsWith(`${prefix}-`)) errors.push(`id "${e.id}" is not of the form ${prefix}-01`);
-  if (!Number.isInteger(e.order) || e.order < 1) errors.push('order must be a positive whole number');
-  if (!e.title) errors.push('title is missing');
-  if (!e.summary) errors.push('summary is missing');
-  if (e.summary.length > SUMMARY_MAX) errors.push(`summary is ${e.summary.length} characters (max ${SUMMARY_MAX})`);
-  if (!ENTRY_STATUSES.includes(e.status)) errors.push(`status "${e.status}" is not one of ${ENTRY_STATUSES.join(', ')}`);
-  if (!DATE_RE.test(e.revised)) errors.push(`revised "${e.revised}" is not a YYYY-MM-DD date`);
-  if (e.supersedes !== undefined && !e.supersedes.startsWith(`${prefix}-`)) errors.push(`supersedes "${e.supersedes}" is not a ${e.kind} id`);
-  for (const r of e.related) {
-    if (!ID_RE.test(r) && !RELATED_PAGE_RE.test(r)) errors.push(`related "${r}" is neither an entry id nor work/<slug>, work#<earlier-work id> or practice/articles/<slug>`);
+  if (!a.title) errors.push('title is missing');
+  if (!a.summary) errors.push('summary (the first line of the article) is missing');
+  if (!DATE_RE.test(a.date)) errors.push(`date "${a.date}" is not a YYYY-MM-DD date`);
+  if (!Number.isInteger(a.order) || a.order < 1) errors.push('order must be a positive whole number');
+  if (!a.read) errors.push('read (the reading-time label) is missing');
+  if (a.from.length === 0) errors.push('from (Where it comes from) is missing');
+  for (const f of a.from) {
+    if (!f.label) errors.push('from has an item with no label');
+    if (f.href !== null && !FROM_HREF_RE.test(f.href)) errors.push(`from link "${f.href}" is not /en/work/<slug> or /en/work#earlier-<id>`);
   }
-  return [...errors.map((x) => `${e.slug}: ${x}`), ...validateTags(e.slug, e)];
+  if (body !== undefined && a.summary && !body.trimStart().startsWith(a.summary)) {
+    errors.push('summary is not the first line of the body, taken unchanged');
+  }
+  return errors.map((e) => `${a.slug}: ${e}`);
 }
 
-/** The problems across all entries: ids unique, orders unique per kind, every id pointed at exists. */
-export function validateEntrySet(entries: EntryMeta[]): string[] {
-  const errors = entries.flatMap(validateEntry);
-  const ids = new Set<string>();
-  const orders = new Set<string>();
-  for (const e of entries) {
-    if (ids.has(e.id)) errors.push(`${e.slug}: id ${e.id} is used twice`);
-    if (orders.has(`${e.kind}:${e.order}`)) errors.push(`${e.slug}: ${e.kind} order ${e.order} is used twice`);
-    ids.add(e.id);
-    orders.add(`${e.kind}:${e.order}`);
-  }
-  for (const e of entries) {
-    for (const ref of [...(e.supersedes ? [e.supersedes] : []), ...e.related.filter((r) => ID_RE.test(r))]) {
-      if (ref === e.id) errors.push(`${e.slug}: points at itself`);
-      else if (!ids.has(ref)) errors.push(`${e.slug}: ${ref} does not exist`);
-    }
+/** The problems across all articles: each order used once. */
+export function validateArticleSet(articles: ArticleMeta[]): string[] {
+  const orders = new Set<number>();
+  const errors: string[] = [];
+  for (const a of articles) {
+    if (orders.has(a.order)) errors.push(`${a.slug}: order ${a.order} is used twice`);
+    orders.add(a.order);
   }
   return errors;
-}
-
-export function entryHref(e: Pick<EntryMeta, 'kind' | 'slug'>): string {
-  return `/practice/${ENTRY_KINDS[e.kind].route}/${e.slug}`;
-}
-
-/** The entries either side of `slug` in reading order. */
-export function neighbours<T extends { slug: string }>(entries: T[], slug: string): { prev?: T; next?: T } {
-  const i = entries.findIndex((e) => e.slug === slug);
-  if (i === -1) return {};
-  return { prev: entries[i - 1], next: entries[i + 1] };
-}
-
-/** The list order: guidelines, then patterns, each by `order`; then articles, newest first. */
-export function buildList(entries: EntryMeta[], articles: PracticeItem[]): PracticeItem[] {
-  const rank = (k: Kind) => KINDS.indexOf(k);
-  const sorted = [...entries].sort((a, b) => rank(a.kind) - rank(b.kind) || a.order - b.order);
-  return [
-    ...sorted.map((e) => ({ kind: e.kind, href: entryHref(e), id: e.id, date: e.revised, title: e.title, summary: e.summary, topics: e.topics, tech: e.tech })),
-    ...[...articles].sort((a, b) => b.date.localeCompare(a.date)),
-  ];
-}
-
-export interface Filter {
-  kind?: Kind;
-  topic?: Topic;
-  tech?: Tech;
-}
-
-/** Items matching every set facet (one value per facet; an unset facet matches everything). */
-export function filterItems(items: PracticeItem[], f: Filter): PracticeItem[] {
-  return items.filter(
-    (i) => (!f.kind || i.kind === f.kind) && (!f.topic || i.topics.includes(f.topic)) && (!f.tech || i.tech.includes(f.tech)),
-  );
-}
-
-/** Read a filter from a query string, dropping anything that is not a known value. */
-export function parseFilter(search: string): Filter {
-  const q = new URLSearchParams(search);
-  const kind = q.get('kind');
-  const topic = q.get('topic');
-  const tech = q.get('tech');
-  return {
-    ...(kind && (KINDS as readonly string[]).includes(kind) ? { kind: kind as Kind } : {}),
-    ...(topic && topic in TOPICS ? { topic: topic as Topic } : {}),
-    ...(tech && tech in TECH ? { tech: tech as Tech } : {}),
-  };
-}
-
-/** The query string for a filter ('' when nothing is set), in a fixed key order. */
-export function filterQuery(f: Filter): string {
-  const q = new URLSearchParams();
-  if (f.kind) q.set('kind', f.kind);
-  if (f.topic) q.set('topic', f.topic);
-  if (f.tech) q.set('tech', f.tech);
-  const s = q.toString();
-  return s ? `?${s}` : '';
-}
-
-/** The topics and technologies the items use, in vocabulary order: the chips worth showing. */
-export function usedTags(items: PracticeItem[]): Tags {
-  return {
-    topics: (Object.keys(TOPICS) as Topic[]).filter((t) => items.some((i) => i.topics.includes(t))),
-    tech: (Object.keys(TECH) as Tech[]).filter((t) => items.some((i) => i.tech.includes(t))),
-  };
-}
-
-/** Entries that name `ref` (e.g. practice/articles/<slug>) in their `related`: what was drawn from it. */
-export function entriesCiting(entries: EntryMeta[], ref: string): EntryMeta[] {
-  return entries.filter((e) => e.related.includes(ref));
 }

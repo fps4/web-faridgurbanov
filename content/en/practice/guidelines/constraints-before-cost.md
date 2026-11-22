@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [practice/articles/sap-snowflake-seam-decision, practice/articles/synapse-platform-decision, P-01]
 topics: [architecture, cost]
 tech: []
+draft: true
 ---
 
 ## The rule

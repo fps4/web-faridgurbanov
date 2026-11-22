@@ -5,6 +5,7 @@ date: 2026-06-23
 order: 1
 topics: [ai, governance]
 tech: []
+draft: true
 ---
 
 # Synthetic users you're allowed to test with — Nemotron-Personas

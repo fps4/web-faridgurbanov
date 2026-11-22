@@ -5,6 +5,7 @@ date: 2026-03-07
 order: 1
 topics: [ai, cost]
 tech: []
+draft: true
 ---
 
 # The case for one-engineer economics

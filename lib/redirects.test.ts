@@ -1,13 +1,17 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { parseFrontmatter } from '@/lib/frontmatter';
 import { locales } from '@/lib/i18n';
 import { EARLIER_WORK_ANCHOR } from '@/lib/site';
 
-// Writing moved under Practice (FS-0013). The 301s live in infra/docker/nginx.conf; this reads the
-// regex locations out of it and checks that every old /writing URL, the index and each published
-// article in both locales, lands on a page the export has. The slugs are the article files under
-// content/<locale>/practice/articles/, which moved there from content/<locale>/writing/ unchanged.
+// The earlier Practice pieces are unpublished (decision art-896t5kxfka §11, maestro story
+// art-gdp0zjj9fd). The 301s live in infra/docker/nginx.conf; this reads the regex locations out of
+// it and checks that every address of an unpublished piece, and every old /writing address (Practice
+// was Writing before FS-0013), in both locales and in its trailing-slash and .html forms, lands on
+// Practice in the same locale, and that none of the four published articles is redirected. The
+// pieces are the files under content/en/practice/ marked `draft: true`, so a file marked draft
+// later, or published later, has to be reflected in nginx.conf for this to pass.
 
 const conf = readFileSync(join(process.cwd(), 'infra/docker/nginx.conf'), 'utf8');
 const rules = [...conf.matchAll(/location ~ (\S+) \{\s*return 301 (\S+?);/g)].map(([, re, to]) => ({
@@ -24,35 +28,76 @@ function redirect(path: string): string | null {
   return null;
 }
 
-// A locale with no file of its own shows the English one (ADR-0002; maestro story art-bf5tq4788n: Dutch has none for
-// now), so its articles are the English slugs.
-const articles = (locale: string) =>
-  readdirSync(
-    join(process.cwd(), 'content', existsSync(join(process.cwd(), 'content', locale)) ? locale : 'en', 'practice', 'articles'),
-  )
+const practiceDir = (kind: string) => join(process.cwd(), 'content', 'en', 'practice', kind);
+const slugsIn = (kind: string, draft: boolean) =>
+  readdirSync(practiceDir(kind))
     .filter((f) => f.endsWith('.md'))
+    .filter((f) => (parseFrontmatter(readFileSync(join(practiceDir(kind), f), 'utf8')).data.draft === true) === draft)
     .map((f) => f.replace(/\.md$/, ''));
+const forms = (base: string) => [base, `${base}/`, `${base}.html`];
 
-describe('the /writing redirects', () => {
+describe('the unpublished Practice pieces and the old /writing addresses', () => {
   it('finds the rules', () => {
-    expect(rules.length).toBeGreaterThanOrEqual(2);
+    expect(rules.length).toBeGreaterThanOrEqual(3);
   });
 
-  it.each(locales)('sends /%s/writing (and its trailing-slash and .html forms) to the Practice landing', (l) => {
-    for (const old of [`/${l}/writing`, `/${l}/writing/`, `/${l}/writing.html`]) expect(redirect(old)).toBe(`/${l}/practice`);
+  it('has the four published articles and the ten unpublished earlier ones', () => {
+    expect(slugsIn('articles', false)).toHaveLength(4);
+    expect(slugsIn('articles', true)).toHaveLength(10);
+    expect(slugsIn('guidelines', true)).toHaveLength(3);
+    expect(slugsIn('patterns', true)).toHaveLength(5);
+    expect(slugsIn('guidelines', false).concat(slugsIn('patterns', false))).toEqual([]);
   });
 
-  it.each(locales)('sends every /%s/writing/<slug> to /practice/articles/<slug>', (l) => {
-    const slugs = articles(l);
-    expect(slugs.length).toBeGreaterThan(0);
-    for (const slug of slugs) {
-      expect(redirect(`/${l}/writing/${slug}`)).toBe(`/${l}/practice/articles/${slug}`);
+  it.each(locales)('sends every unpublished article, in every form, to /%s/practice', (l) => {
+    for (const slug of slugsIn('articles', true)) {
+      for (const old of forms(`/${l}/practice/articles/${slug}`)) expect(redirect(old), old).toBe(`/${l}/practice`);
     }
   });
 
-  it('leaves the new URLs alone', () => {
-    expect(redirect('/en/practice')).toBeNull();
-    expect(redirect('/en/practice/articles/who-had-to-say-yes')).toBeNull();
+  it.each(locales)('sends every guideline and pattern, and their old index addresses, in every form, to /%s/practice', (l) => {
+    const olds = [
+      ...slugsIn('guidelines', true).flatMap((s) => forms(`/${l}/practice/guidelines/${s}`)),
+      ...slugsIn('patterns', true).flatMap((s) => forms(`/${l}/practice/patterns/${s}`)),
+      ...forms(`/${l}/practice/guidelines`),
+      ...forms(`/${l}/practice/patterns`),
+    ];
+    for (const old of olds) expect(redirect(old), old).toBe(`/${l}/practice`);
+  });
+
+  it.each(locales)('sends /%s/writing and every old /writing/<slug>, in every form, to /%s/practice', (l) => {
+    const slugs = [...slugsIn('articles', true), ...slugsIn('articles', false)];
+    const olds = [...forms(`/${l}/writing`), ...slugs.flatMap((s) => forms(`/${l}/writing/${s}`))];
+    for (const old of olds) {
+      expect(redirect(old), old).toBe(`/${l}/practice`);
+      expect(pageExists(redirect(old)!), old).toBe(true);
+    }
+  });
+
+  it('lists in nginx.conf exactly the unpublished articles, no more and no fewer', () => {
+    const m = /practice\/articles\/\(\?:([a-z0-9|-]+)\)/.exec(conf);
+    expect(m, 'the article rule').not.toBeNull();
+    expect(m![1].split('|').sort()).toEqual(slugsIn('articles', true).sort());
+  });
+
+  it.each(locales)('leaves Practice and the four published articles alone, in %s', (l) => {
+    expect(redirect(`/${l}/practice`)).toBeNull();
+    for (const slug of slugsIn('articles', false)) {
+      for (const kept of forms(`/${l}/practice/articles/${slug}`)) {
+        expect(redirect(kept), kept).toBeNull();
+        expect(
+          existsSync(join(process.cwd(), 'app', '[locale]', 'practice', 'articles', '[slug]', 'page.tsx')),
+          kept,
+        ).toBe(true);
+      }
+    }
+    for (const kept of ['/practice/guidelines-notes', '/practice/patternsx', '/writing-notes', '/practice/articles/who-had-to-say-yes-too']) {
+      expect(redirect(`/${l}${kept}`), kept).toBeNull();
+    }
+  });
+
+  it('keeps the query string', () => {
+    expect(conf).toMatch(/return 301 \/\$1\/practice\$is_args\$args;/);
   });
 });
 
@@ -78,8 +123,6 @@ const expertiseSlugs = [
   'integration-architecture',
   'stakeholder-alignment',
 ];
-const forms = (base: string) => [base, `${base}/`, `${base}.html`];
-
 describe('the removed sections', () => {
   it.each(locales)('sends /%s/learning, /portfolio and /training, in every form, to Work', (l) => {
     const olds = [

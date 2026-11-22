@@ -1,0 +1,1 @@
+Diagrams of the unpublished Practice pieces (maestro story art-gdp0zjj9fd). They are kept here, outside public/, so the build does not export them. The draft files still point at /diagrams/<name>.svg: when a piece is published again, move its diagram back to public/diagrams/.

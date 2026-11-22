@@ -5,6 +5,7 @@ date: 2026-08-20
 order: 1
 topics: [adoption, architecture]
 tech: []
+draft: true
 ---
 
 # Who had to say yes

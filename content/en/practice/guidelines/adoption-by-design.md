@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [practice/articles/who-had-to-say-yes, work/cloud-gateway, work#earlier-sap-finance-snowflake, work#earlier-sap-events]
 topics: [adoption, architecture]
 tech: []
+draft: true
 ---
 
 ## The rule

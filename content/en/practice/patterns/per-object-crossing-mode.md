@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [practice/articles/sap-snowflake-seam-decision, work#earlier-sap-finance-snowflake, G-03]
 topics: [integration, data-platforms]
 tech: [sap, snowflake]
+draft: true
 ---
 
 ## Problem

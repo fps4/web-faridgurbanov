@@ -8,6 +8,7 @@ revised: 2026-11-08
 related: [practice/articles/export-control-who-sees-what, P-03]
 topics: [governance, ai]
 tech: [fabric]
+draft: true
 ---
 
 ## Problem

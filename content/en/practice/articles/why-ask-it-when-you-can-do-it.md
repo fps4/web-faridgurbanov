@@ -5,6 +5,7 @@ date: 2026-03-14
 order: 1
 topics: [ai, adoption]
 tech: []
+draft: true
 ---
 
 # Why ask IT when you can do it yourself?

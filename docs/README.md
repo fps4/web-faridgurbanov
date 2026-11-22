@@ -35,7 +35,7 @@ Intent + functional specs (`kind: functional_spec`). Start with the
 | [FS-0003](./product/FS-0003-expertise.md) | Expertise pages | superseded by ADR-0010 |
 | [FS-0004](./product/FS-0004-selected-work-case-studies.md) | Selected work / case studies | M0 |
 | [FS-0005](./product/FS-0005-portfolio-repos.md) | Portfolio / repositories | superseded by ADR-0010 |
-| [FS-0006](./product/FS-0006-writing-blog.md) | Writing / blog | M0 |
+| [FS-0006](./product/FS-0006-writing-blog.md) | Practice: the owner's articles (was Writing / blog) | M0 |
 | [FS-0007](./product/FS-0007-contact-and-privacy.md) | Contact & privacy/GDPR | M0 |
 | [FS-0008](./product/FS-0008-training-and-eu-ai-act.md) | Training section & EU AI Act page | superseded by ADR-0010 |
 | [FS-0009](./product/FS-0009-references.md) | References | ships dark; on with the first file |

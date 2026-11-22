@@ -9,7 +9,7 @@ describe('siteOrigin', () => {
   });
 });
 
-const paths = ['', '/practice/guidelines/architecture-documentation'];
+const paths = ['', '/practice/articles/simple-first'];
 
 describe('sitemapEntries while Dutch shows the English page', () => {
   const entries = sitemapEntries('https://x.test', paths);
@@ -17,7 +17,7 @@ describe('sitemapEntries while Dutch shows the English page', () => {
   it('lists the English addresses only, with no alternates', () => {
     expect(entries).toEqual([
       { url: 'https://x.test/en' },
-      { url: 'https://x.test/en/practice/guidelines/architecture-documentation' },
+      { url: 'https://x.test/en/practice/articles/simple-first' },
     ]);
   });
 });
@@ -29,16 +29,16 @@ describe('sitemapEntries when both locales have their own copy', () => {
     expect(entries.map((e) => e.url)).toEqual([
       'https://x.test/en',
       'https://x.test/nl',
-      'https://x.test/en/practice/guidelines/architecture-documentation',
-      'https://x.test/nl/practice/guidelines/architecture-documentation',
+      'https://x.test/en/practice/articles/simple-first',
+      'https://x.test/nl/practice/articles/simple-first',
     ]);
   });
 
   it('pairs each URL with its other-language version and an English x-default', () => {
     expect(entries[3].alternates?.languages).toEqual({
-      en: 'https://x.test/en/practice/guidelines/architecture-documentation',
-      nl: 'https://x.test/nl/practice/guidelines/architecture-documentation',
-      'x-default': 'https://x.test/en/practice/guidelines/architecture-documentation',
+      en: 'https://x.test/en/practice/articles/simple-first',
+      nl: 'https://x.test/nl/practice/articles/simple-first',
+      'x-default': 'https://x.test/en/practice/articles/simple-first',
     });
   });
 });

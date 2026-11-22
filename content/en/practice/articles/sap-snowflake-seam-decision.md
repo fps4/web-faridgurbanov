@@ -5,6 +5,7 @@ date: 2026-08-10
 order: 1
 topics: [data-platforms, integration, cost]
 tech: [sap, snowflake]
+draft: true
 ---
 
 # Deciding what crosses the SAP↔Snowflake seam
