@@ -1,9 +1,7 @@
 import type { Locale } from '@/lib/i18n';
-import { learningVisible } from '@/lib/site';
 
-// A single nav definition driving the header in both languages (FS-0001, US-0002). The set is
-// milestone-aware: in M0 Training is a CTA stub (rendered as a button, not a nav link); in M1 it
-// becomes a full nav item — flip TRAINING_IN_NAV with no shell code change.
+// A single nav definition driving the header in both languages (FS-0001). The header is Work,
+// Practice, Contact, in that order (decision art-896t5kxfka §5, maestro story art-y97cjsakwq).
 
 export interface NavItem {
   /** Path under the locale segment, e.g. '/work' → /en/work. '' is the home root. */
@@ -11,20 +9,12 @@ export interface NavItem {
   label: Record<Locale, string>;
 }
 
-/** Primary header navigation (excludes Training — see TRAINING_IN_NAV / the taster CTA). */
+/** Primary header navigation. */
 export const primaryNav: NavItem[] = [
-  { href: '/expertise', label: { en: 'Expertise', nl: 'Expertise' } },
-  { href: '/work', label: { en: 'Selected work', nl: 'Geselecteerd werk' } },
-  { href: '/portfolio', label: { en: 'Portfolio', nl: 'Portfolio' } },
+  { href: '/work', label: { en: 'Work', nl: 'Werk' } },
   { href: '/practice', label: { en: 'Practice', nl: 'Werkwijze' } },
   { href: '/contact', label: { en: 'Contact', nl: 'Contact' } },
 ];
-
-/** The training entry. M0: CTA stub only (TRAINING_IN_NAV = false). M1: also a nav item. */
-export const trainingNav: NavItem = {
-  href: '/training',
-  label: { en: 'Training', nl: 'Training' },
-};
 
 /**
  * The references page (FS-0009). Footer-only while the set is small: it is reached from the home
@@ -36,21 +26,8 @@ export const referencesNav: NavItem = {
   label: { en: 'References', nl: 'Referenties' },
 };
 
-/**
- * The Learning section (FS-0012): free video courses. It leads the header once published, and shows
- * only WHILE the section renders (LEARNING_PUBLISHED, or `next dev`).
- */
-export const learningNav: NavItem = {
-  href: '/learning',
-  label: { en: 'Learning', nl: 'Leren' },
-};
-
-/** M0 renders Training as a CTA button; M1 promotes it into primaryNav. */
-export const TRAINING_IN_NAV = false;
-
-export function headerNav(showLearning: boolean = learningVisible()): NavItem[] {
-  const items = TRAINING_IN_NAV ? [...primaryNav, trainingNav] : primaryNav;
-  return showLearning ? [learningNav, ...items] : items;
+export function headerNav(): NavItem[] {
+  return primaryNav;
 }
 
 /** Build a locale-prefixed href: hrefFor('en', '/work') → '/en/work'; home → '/en'. */

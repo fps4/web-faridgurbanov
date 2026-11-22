@@ -5,7 +5,7 @@ title: "Documentation in three layers"
 summary: "One map (HLD), one logbook (ADRs), and code for the rest."
 status: current
 revised: 2026-11-08
-related: [expertise/architecture-decisions, G-03]
+related: [G-03]
 topics: [architecture]
 tech: []
 ---

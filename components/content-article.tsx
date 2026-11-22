@@ -6,7 +6,7 @@ import { title as fmTitle, type ContentEntry } from '@/lib/content';
 import type { Locale } from '@/lib/i18n';
 import { splitBeforeLastSection } from '@/lib/sections';
 
-// Shared detail-page renderer for the markdown-driven sections (expertise, work, practice). Shows
+// Shared detail-page renderer for the markdown-driven sections (work, practice). Shows
 // the frontmatter title, an optional date/meta line, the EN-fallback notice when the requested
 // locale fell back (ADR-0002), the prose body, and a back-link to the section index.
 //

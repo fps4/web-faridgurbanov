@@ -8,14 +8,14 @@ import { Button } from '@/components/ui/button';
 import { getDictionary } from '@/lib/dictionaries';
 import { hrefFor } from '@/lib/nav';
 import { loadReferences } from '@/lib/references';
-import { site, TRAINING_PUBLISHED } from '@/lib/site';
+import { site } from '@/lib/site';
 import { copyLocale, locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
 
 // Contact (FS-0007/US-0015, US-0016). Works on the static export with no backend: an obfuscated
-// mailto, a WhatsApp click-to-chat affordance, the profile links, location, and (in M1) the "book a
-// taster" path. Still no form and no backend — the WhatsApp textarea only pre-fills a wa.me link in
+// mailto, a WhatsApp click-to-chat affordance, the profile links and location. Still no
+// form and no backend — the WhatsApp textarea only pre-fills a wa.me link in
 // the visitor's own browser, so the privacy page can keep saying nothing is collected here, while
 // disclosing that choosing WhatsApp makes Meta a processor. WHILE references are published
 // (FS-0009) the page also offers them, and an introduction to one of them on request — the one
@@ -64,21 +64,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             cta={t.whatsappCta}
             defaultText={t.whatsappDefault}
           />
-
-          {/* Training taster path — hidden until M1 (TRAINING_PUBLISHED). */}
-          {TRAINING_PUBLISHED && (
-            <>
-              <h2 className="mt-10 text-sm font-medium uppercase tracking-wide text-muted-foreground">
-                {t.tasterHeading}
-              </h2>
-              <p className="mt-3 max-w-sm text-sm text-muted-foreground">{t.tasterBody}</p>
-              <div className="mt-4">
-                <Button asChild variant="secondary">
-                  <ObfuscatedEmail subject="Taster">{t.tasterCta}</ObfuscatedEmail>
-                </Button>
-              </div>
-            </>
-          )}
         </section>
 
         <section>
