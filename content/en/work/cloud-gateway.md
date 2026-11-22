@@ -3,7 +3,7 @@ title: Cloud gateway: one API platform on two clouds
 summary: A platform product that teams use by themselves to put an API behind a gateway. An API gateway is the front door that one system uses to call another system.
 intro: A platform product that teams use by themselves to put an API behind a gateway. An API gateway is the front door that one system uses to call another system.
 small: A large Dutch grocery retailer, since October 2023. Client not named. Two-minute read.
-facts: [Many gateways into one platform, around 10 teams, more than a billion requests a month, days to minutes to publish an API]
+facts: [Many → one | gateways into one platform, Around 10 | teams use it today, Over a billion | requests a month, Days → minutes | to publish an API]
 role: Built the first version. Tech lead of the team that expands it now.
 client: A large Dutch grocery retailer
 built_with: AWS API Gateway, Azure API Management, Terraform, OAuth 2 / OIDC, Okta, Auth0, GitHub, Datadog

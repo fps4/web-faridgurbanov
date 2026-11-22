@@ -75,6 +75,7 @@ export default async function WorkPage({
             </div>
           ) : undefined
         }
+        backHref={hrefFor(locale, '/work')}
         contactHref={hrefFor(locale, '/contact')}
         nextHref={study.next ? hrefFor(locale, `/work/${study.next.slug}`) : null}
       />

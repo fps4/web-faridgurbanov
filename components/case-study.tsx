@@ -14,7 +14,7 @@ import type { Locale } from '@/lib/i18n';
 //
 // `reference` is the published reference about this work, if there is one, drawn under the facts.
 // `fallbackMessage` is the notice shown when the requested locale fell back to English (ADR-0002).
-// `contactHref` and `nextHref` are already localized. The labels of the facts column and the texts
+// `backHref`, `contactHref` and `nextHref` are already localized. The labels of the facts column and the texts
 // of the bar are `caseStudyLabels`.
 export function CaseStudy({
   entry,
@@ -22,6 +22,7 @@ export function CaseStudy({
   study,
   fallbackMessage,
   reference,
+  backHref,
   contactHref,
   nextHref,
 }: {
@@ -30,6 +31,7 @@ export function CaseStudy({
   study: CaseStudyFrontmatter;
   fallbackMessage: string;
   reference?: React.ReactNode;
+  backHref: string;
   contactHref: string;
   nextHref: string | null;
 }) {
@@ -42,6 +44,12 @@ export function CaseStudy({
     <>
       <div className="container max-w-5xl pt-16">
         {entry.isFallback ? <FallbackNotice message={fallbackMessage} /> : null}
+        <Link
+          href={backHref}
+          className="mb-4 inline-block py-2 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+        >
+          {caseStudyLabels.back}
+        </Link>
         <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
           {fmTitle(entry.data)}
         </h1>
@@ -53,8 +61,9 @@ export function CaseStudy({
         <div className="mt-10 border-y border-border bg-muted/40">
           <ul className="container grid max-w-5xl gap-x-10 gap-y-4 py-7 sm:grid-cols-2 lg:grid-cols-4">
             {study.facts.map((fact) => (
-              <li key={fact} className="text-lg font-semibold leading-snug tracking-tight">
-                {fact}
+              <li key={fact.large} className="flex flex-col gap-0.5">
+                <span className="text-2xl font-semibold leading-snug tracking-tight">{fact.large}</span>
+                {fact.small ? <span className="text-sm text-foreground/90">{fact.small}</span> : null}
               </li>
             ))}
           </ul>

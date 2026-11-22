@@ -9,12 +9,16 @@ describe('caseStudyFrontmatter', () => {
 
   it('reads the fields of an entry on the case-study shape', () => {
     const { data } = parseFrontmatter(
-      '---\ntitle: A: b\nintro: Intro line.\nsmall: Small line.\nfacts: [one, two words, three]\nrole: R.\nclient: C\nbuilt_with: X, Y, Z\n---\nbody',
+      '---\ntitle: A: b\nintro: Intro line.\nsmall: Small line.\nfacts: [One | small one, Two words | small two, Three]\nrole: R.\nclient: C\nbuilt_with: X, Y, Z\n---\nbody',
     );
     expect(caseStudyFrontmatter(data)).toEqual({
       intro: 'Intro line.',
       small: 'Small line.',
-      facts: ['one', 'two words', 'three'],
+      facts: [
+        { large: 'One', small: 'small one' },
+        { large: 'Two words', small: 'small two' },
+        { large: 'Three', small: '' },
+      ],
       role: 'R.',
       client: 'C',
       builtWith: 'X, Y, Z',

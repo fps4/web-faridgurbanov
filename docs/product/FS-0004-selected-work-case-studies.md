@@ -42,7 +42,8 @@ frontmatter has an `intro`; `app/[locale]/work/[slug]/page.tsx` then draws it wi
 | Title | `title` |
 | Intro line | `intro` |
 | Small line | `small` |
-| Row of facts | `facts`, an inline list |
+| Back link | the same on every case study: *← All work*, leading to the Work index |
+| Row of facts | `facts`, an inline list of pairs, each written as the large text, a space, a vertical bar, a space and the small text, and drawn as a large text over a small one |
 | Article parts, in order | the markdown body: *Where it started*, *What I did*, *What is in it*, *Where it stands* |
 | Facts column | `role` (My role), `client` (Client), `built_with` (Built with) |
 | Bar at the foot | the question and *Start a conversation*, which leads to Contact; the same on every case study |

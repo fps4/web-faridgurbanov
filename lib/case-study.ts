@@ -14,6 +14,7 @@ import type { Frontmatter } from '@/lib/frontmatter';
 export const caseStudyLabels = {
   role: 'My role',
   client: 'Client',
+  back: '← All work',
   builtWith: 'Built with',
   barQuestion: 'Does this look like your situation?',
   barAction: 'Start a conversation',
@@ -23,8 +24,8 @@ export interface CaseStudyFrontmatter {
   intro: string;
   /** The small line under the intro; absent when the entry has none. */
   small: string | null;
-  /** The row of facts, each one a text as it stands. Empty when the entry has none. */
-  facts: string[];
+  /** The row of facts, each a large text over a small one. Empty when the entry has none. */
+  facts: { large: string; small: string }[];
   role: string | null;
   client: string | null;
   builtWith: string | null;
@@ -37,11 +38,19 @@ function text(data: Frontmatter, key: string): string | null {
   return typeof v === 'string' && v.trim() !== '' ? v : null;
 }
 
+// A fact is written `large | small` in the frontmatter list, e.g. `Around 10 | teams use it today`.
+// A fact with no ` | ` has no small text and is shown as the large one alone.
+function parseFact(raw: string): { large: string; small: string } | null {
+  const [large, ...rest] = raw.split(' | ');
+  if (large.trim() === '') return null;
+  return { large: large.trim(), small: rest.join(' | ').trim() };
+}
+
 /** The case-study fields of an entry, or null when the entry is not on the case-study shape. */
 export function caseStudyFrontmatter(data: Frontmatter): CaseStudyFrontmatter | null {
   const intro = text(data, 'intro');
   if (!intro) return null;
-  const facts = Array.isArray(data.facts) ? data.facts.filter((f) => f.trim() !== '') : [];
+  const facts = Array.isArray(data.facts) ? data.facts.map(parseFact).filter((f) => f !== null) : [];
   const nextSlug = text(data, 'next');
   const nextLabel = text(data, 'next_label');
   return {
