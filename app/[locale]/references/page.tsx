@@ -10,6 +10,8 @@ import { hrefFor } from '@/lib/nav';
 import { loadReferences, referencesFor } from '@/lib/references';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // References (FS-0009). Every published reference, grouped by the case study it is about, in the
 // case-study order, so the page reads as the work with the people who were there beside it. WHILE
@@ -29,7 +31,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).references;
-  return { title: `${t.title} — ${site.name}`, description: t.lede };
+  return { title: `${t.title} — ${site.name}`, description: t.lede, ...fallbackCanonical(locale, '/references') };
 }
 
 export default async function ReferencesPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -46,6 +48,7 @@ export default async function ReferencesPage({ params }: { params: Promise<{ loc
 
   return (
     <div className="container py-16">
+      <LocaleNotice locale={locale} />
       <PageIntro title={t.title} lede={t.lede} />
 
       {groups.map(({ study, refs: entries }) => {

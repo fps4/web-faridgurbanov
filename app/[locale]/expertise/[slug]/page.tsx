@@ -6,6 +6,7 @@ import { getEntry, sectionSlugs, summary, title } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { isLocale, type Locale } from '@/lib/i18n';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Expertise area detail (FS-0003/US-0012). Body is markdown under content/{locale}/expertise/.
 export const dynamicParams = false;
@@ -23,7 +24,11 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const entry = await getEntry('expertise', slug, locale);
   if (!entry) return {};
-  return { title: `${title(entry.data)} — ${site.name}`, description: summary(entry.data) };
+  return {
+    title: `${title(entry.data)} — ${site.name}`,
+    description: summary(entry.data),
+    ...fallbackCanonical(locale, `/expertise/${slug}`),
+  };
 }
 
 export default async function ExpertisePage({
@@ -41,6 +46,7 @@ export default async function ExpertisePage({
   return (
     <ContentArticle
       entry={entry}
+      locale={locale}
       fallbackMessage={t.fallback.notice}
       backHref={hrefFor(locale, '/expertise')}
       backLabel={t.indexes.backToIndex.expertise}

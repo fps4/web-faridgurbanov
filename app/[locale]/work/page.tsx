@@ -7,6 +7,8 @@ import { listSection, summary, title, type ContentMeta } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Selected-work index (FS-0004/US-0011, redesigned by ADR-0008). Four case studies, all client
 // engagements — few enough that the index can carry them rather than list them. Each row shows the
@@ -26,7 +28,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).indexes;
-  return { title: `${t.workTitle} — ${site.name}`, description: t.workLede };
+  return { title: `${t.workTitle} — ${site.name}`, description: t.workLede, ...fallbackCanonical(locale, '/work') };
 }
 
 const str = (e: ContentMeta, key: string) =>
@@ -43,6 +45,7 @@ export default async function WorkIndex({ params }: { params: Promise<{ locale: 
 
   return (
     <div className="container py-16">
+      <LocaleNotice locale={locale} />
       <PageIntro title={t.workTitle} lede={t.workLede} />
 
       <ol className="mt-12 flex flex-col gap-px overflow-hidden rounded-lg border border-border bg-border">

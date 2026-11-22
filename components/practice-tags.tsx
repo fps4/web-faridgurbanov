@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 import { hrefFor } from '@/lib/nav';
 import { TECH, TOPICS, filterQuery, type Tags } from '@/lib/practice-model';
 
@@ -13,7 +13,7 @@ export function PracticeTags({ tags, locale, label }: { tags: Tags; locale: Loca
       {tags.topics.map((tp) => (
         <li key={tp}>
           <Link href={`${hrefFor(locale, '/practice')}${filterQuery({ topic: tp })}`} className={link}>
-            {TOPICS[tp][locale]}
+            {TOPICS[tp][copyLocale(locale)]}
           </Link>
         </li>
       ))}

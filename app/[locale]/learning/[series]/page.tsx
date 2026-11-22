@@ -21,6 +21,7 @@ import {
 import { hrefFor } from '@/lib/nav';
 import { site, learningVisible } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // A course page (FS-0012): its words from content/<locale>/learning/<course>.md, then every planned
 // episode in order. A switched-on episode links to its page; the others are muted and marked
@@ -46,7 +47,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const s = find(series);
   if (!s) return {};
   const words = await getEntry(LEARNING_SECTION, s.slug, locale as Locale);
-  return { title: `${s.title} — ${site.name}`, description: words ? summary(words.data) : s.line };
+  return {
+    title: `${s.title} — ${site.name}`,
+    description: words ? summary(words.data) : s.line,
+    ...fallbackCanonical(locale, `/learning/${series}`),
+  };
 }
 
 export default async function SeriesPage({ params }: { params: Params }) {
@@ -121,7 +126,7 @@ export default async function SeriesPage({ params }: { params: Params }) {
 
       {words?.body.trim() ? (
         <section className="mt-14 max-w-3xl">
-          <Markdown>{words.body}</Markdown>
+          <Markdown locale={locale}>{words.body}</Markdown>
         </section>
       ) : null}
     </div>

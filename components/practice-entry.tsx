@@ -108,6 +108,7 @@ export async function PracticeEntry({ entry: e, locale }: { entry: Entry; locale
 
   return (
     <ContentArticle
+      locale={locale}
       entry={{ slug: e.slug, data: { title: e.title }, body: e.body, isFallback: e.isFallback }}
       fallbackMessage={t.fallback.notice}
       backHref={hrefFor(locale, '/practice')}

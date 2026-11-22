@@ -3,7 +3,9 @@ import { ArrowUpRight } from 'lucide-react';
 import { PageIntro } from '@/components/page-intro';
 import { getDictionary } from '@/lib/dictionaries';
 import { REPO_LINKS_ENABLED, pillars, repos, site } from '@/lib/site';
-import { locales, type Locale } from '@/lib/i18n';
+import { copyLocale, locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Portfolio (FS-0005/US-0013, restructured by ADR-0006). Build proof grouped by pillar —
 // integration, data & modernization first, then AI & applied ML — each card carrying an honest
@@ -23,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).portfolio;
-  return { title: `${t.title} — ${site.name}`, description: t.lede };
+  return { title: `${t.title} — ${site.name}`, description: t.lede, ...fallbackCanonical(locale, '/portfolio') };
 }
 
 export default async function PortfolioPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -33,6 +35,7 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
 
   return (
     <div className="container py-16">
+      <LocaleNotice locale={locale} />
       <PageIntro title={t.title} lede={t.lede} />
       <p className="mt-6 text-sm font-medium uppercase tracking-wide text-muted-foreground">
         {t.narrative}
@@ -44,9 +47,9 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
         return (
           <section key={pillar.id} className="mt-12 first:mt-8">
             <h2 className="text-sm font-medium uppercase tracking-wide text-foreground">
-              {pillar.label[locale]}
+              {pillar.label[copyLocale(locale)]}
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{pillar.lede[locale]}</p>
+            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{pillar.lede[copyLocale(locale)]}</p>
             <ol className="mt-5 grid gap-6 lg:grid-cols-3">
               {items.map((repo, i) => {
                 const maturityLabel =
@@ -59,7 +62,7 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
                   <li key={repo.slug} className="flex flex-col rounded-lg border border-border p-6">
                     <div className="flex items-center gap-3 text-sm text-muted-foreground">
                       <span className="font-mono text-xs">{i + 1}</span>
-                      <span>{repo.role[locale]}</span>
+                      <span>{repo.role[copyLocale(locale)]}</span>
                     </div>
                     <h3 className="mt-3 font-mono text-lg font-semibold tracking-tight">{repo.name}</h3>
 
@@ -82,7 +85,7 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
                     <p className="mt-4 text-sm font-medium uppercase tracking-wide text-muted-foreground">
                       {t.provesHeading}
                     </p>
-                    <p className="mt-2 flex-1 text-sm text-muted-foreground">{repo.proves[locale]}</p>
+                    <p className="mt-2 flex-1 text-sm text-muted-foreground">{repo.proves[copyLocale(locale)]}</p>
 
                     {/* Per-repo override wins in both directions; `linkLive: false` suppresses a
                         link for a repo that exists but is not public yet, so no card ever carries

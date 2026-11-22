@@ -21,6 +21,8 @@ import { hrefFor } from '@/lib/nav';
 import { site, learningVisible } from '@/lib/site';
 import { siteOrigin } from '@/lib/sitemap';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // The template for every episode page (FS-0012): the video, what the viewer leaves with, the
 // questions to ask the platform team, and the notes and lab for the episode in the course's repo.
@@ -48,12 +50,13 @@ function find(seriesSlug: string, episodeSlug: string): { s: Series; episode: Ep
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   if (!learningVisible()) return {};
-  const { series, episode } = await params;
+  const { locale, series, episode } = await params;
   const found = find(series, episode);
   if (!found) return {};
   return {
     title: `${found.episode.title} — ${found.s.title} — ${site.name}`,
     description: found.episode.line,
+    ...fallbackCanonical(locale, `/learning/${series}/${episode}`),
   };
 }
 
@@ -88,6 +91,7 @@ export default async function EpisodePage({ params }: { params: Params }) {
 
   return (
     <article className="container py-16 sm:py-20">
+      <LocaleNotice locale={locale} />
       {structured ? (
         <script
           type="application/ld+json"
@@ -182,7 +186,7 @@ export default async function EpisodePage({ params }: { params: Params }) {
           </summary>
           <div className="border-t border-border px-5 py-6">
             <div className="max-w-3xl [&_h2:first-child]:mt-0 [&_h2]:text-xl">
-              <Markdown>{transcript.body}</Markdown>
+              <Markdown locale={locale}>{transcript.body}</Markdown>
             </div>
           </div>
         </details>

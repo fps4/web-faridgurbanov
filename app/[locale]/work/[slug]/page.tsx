@@ -8,6 +8,7 @@ import { hrefFor } from '@/lib/nav';
 import { loadReferences, referencesFor } from '@/lib/references';
 import { site } from '@/lib/site';
 import { isLocale, type Locale } from '@/lib/i18n';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Case-study detail (FS-0004/US-0011). Consistent structure (context → built → impact → role/stack)
 // lives in the markdown body; clients abstracted where confidentiality requires, metrics kept.
@@ -31,7 +32,11 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const entry = await getEntry('work', slug, locale);
   if (!entry) return {};
-  return { title: `${title(entry.data)} — ${site.name}`, description: summary(entry.data) };
+  return {
+    title: `${title(entry.data)} — ${site.name}`,
+    description: summary(entry.data),
+    ...fallbackCanonical(locale, `/work/${slug}`),
+  };
 }
 
 export default async function WorkPage({
@@ -50,6 +55,7 @@ export default async function WorkPage({
   return (
     <ContentArticle
       entry={entry}
+      locale={locale}
       fallbackMessage={t.fallback.notice}
       backHref={hrefFor(locale, '/work')}
       backLabel={t.indexes.backToIndex.work}

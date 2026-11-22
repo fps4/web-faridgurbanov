@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { X } from 'lucide-react';
 import type { Dictionary } from '@/lib/dictionaries';
 import { formatDate } from '@/lib/dates';
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 import { hrefFor } from '@/lib/nav';
 import {
   KINDS,
@@ -94,7 +94,7 @@ export function PracticeList({ items, locale, t }: { items: PracticeItem[]; loca
         <FacetRow label={t.filterTopic}>
           {tags.topics.map((tp) => (
             <Chip key={tp} active={filter.topic === tp} onClick={() => toggle('topic', tp)}>
-              {TOPICS[tp][locale]}
+              {TOPICS[tp][copyLocale(locale)]}
             </Chip>
           ))}
         </FacetRow>
@@ -135,7 +135,7 @@ export function PracticeList({ items, locale, t }: { items: PracticeItem[]; loca
                 <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{i.summary}</p>
                 <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
                   {i.topics.map((tp) => (
-                    <span key={tp}>#{TOPICS[tp][locale]}</span>
+                    <span key={tp}>#{TOPICS[tp][copyLocale(locale)]}</span>
                   ))}
                   {i.tech.map((tc) => (
                     <span key={tc} className="font-mono">

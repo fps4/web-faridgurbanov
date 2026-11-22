@@ -1,15 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 
 // The App-Router root layout owns <html> and cannot know the locale (it is below the root in the
 // segment tree), so the statically-served lang attribute is the default. This client island
-// corrects document.documentElement.lang to the active locale after navigation, for assistive tech
-// and the browser's own language handling. Renders nothing.
+// corrects document.documentElement.lang to the language the page text is in after navigation, for
+// assistive tech and the browser's own language handling. Under /nl that is English while the Dutch
+// copy is unapproved (copyLocale); the notice carries its own lang="nl". Renders nothing.
 export function HtmlLang({ locale }: { locale: Locale }) {
   useEffect(() => {
-    document.documentElement.lang = locale;
+    document.documentElement.lang = copyLocale(locale);
   }, [locale]);
   return null;
 }

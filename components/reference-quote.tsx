@@ -5,7 +5,7 @@ import { formatMonth } from '@/lib/dates';
 import { getDictionary } from '@/lib/dictionaries';
 import { languageName, type Reference } from '@/lib/references';
 import { site } from '@/lib/site';
-import type { Locale } from '@/lib/i18n';
+import { copyLocale, type Locale } from '@/lib/i18n';
 
 // One reference (FS-0009): the person's words, then who they are. Three placements share it —
 // `home` (two side by side, no frame), `article` (a framed block inside a case study, so the
@@ -52,11 +52,12 @@ function Avatar({ reference, size }: { reference: Reference; size: number }) {
 /** The "In English." / "Translated from German, with their approval." note, or null when the quote is in the page's language. */
 export function languageNote(reference: Reference, locale: Locale): string | null {
   const t = getDictionary(locale).references;
+  const shown = copyLocale(locale); // the language of the page text, which is English under /nl for now
   if (reference.translatedFrom) {
-    return t.translatedFrom.replace('{language}', languageName(reference.translatedFrom, locale));
+    return t.translatedFrom.replace('{language}', languageName(reference.translatedFrom, shown));
   }
-  if (reference.lang !== locale) {
-    return t.inLanguage.replace('{language}', languageName(reference.lang, locale));
+  if (reference.lang !== shown) {
+    return t.inLanguage.replace('{language}', languageName(reference.lang, shown));
   }
   return null;
 }
@@ -107,7 +108,7 @@ export function ReferenceQuote({
   workHref?: string;
 }) {
   const t = getDictionary(locale).references;
-  const roleLine = `${reference.role[locale]} · ${t.workedTogether} ${reference.years}`;
+  const roleLine = `${reference.role[copyLocale(locale)]} · ${t.workedTogether} ${reference.years}`;
   const note = languageNote(reference, locale);
   // Blank lines in the file are paragraph breaks; the quote marks wrap the whole quote, once.
   const paragraphs = reference.quote.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
@@ -130,7 +131,7 @@ export function ReferenceQuote({
           <Avatar reference={reference} size={56} />
           <span className="flex flex-col gap-1">
             <span className="text-[15px] font-medium leading-5">{reference.name}</span>
-            <span className="text-sm text-muted-foreground">{reference.role[locale]}</span>
+            <span className="text-sm text-muted-foreground">{reference.role[copyLocale(locale)]}</span>
             <span className="text-sm text-muted-foreground">
               {t.workedTogether} {reference.years}
             </span>

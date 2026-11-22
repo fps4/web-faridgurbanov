@@ -18,6 +18,7 @@ import {
 import { hrefFor } from '@/lib/nav';
 import { site, learningVisible } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // The Learning landing page (FS-0012): what the section is, one card per course, and the episodes
 // out now. The words are content/<locale>/learning/index.md. A course with a switched-on episode
@@ -33,7 +34,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const intro = await getEntry(LEARNING_SECTION, 'index', locale as Locale);
   const l = learningCopy[locale as Locale];
-  return { title: `${l.title} — ${site.name}`, description: intro ? summary(intro.data) : undefined };
+  return {
+    title: `${l.title} — ${site.name}`,
+    description: intro ? summary(intro.data) : undefined,
+    ...fallbackCanonical(locale, '/learning'),
+  };
 }
 
 const heading = 'text-sm font-medium uppercase tracking-wide text-muted-foreground';
@@ -60,7 +65,7 @@ export default async function LearningIndex({ params }: { params: Promise<{ loca
           {intro ? <p className="mt-6 text-lg text-muted-foreground">{summary(intro.data)}</p> : null}
           {intro?.body.trim() ? (
             <div className="mt-6">
-              <Markdown>{intro.body}</Markdown>
+              <Markdown locale={locale}>{intro.body}</Markdown>
             </div>
           ) : null}
         </div>

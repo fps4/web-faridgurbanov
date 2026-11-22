@@ -13,3 +13,16 @@ describe('Markdown', () => {
     expect(screen.getByRole('table')).toBeInTheDocument();
   });
 });
+
+describe('Markdown links', () => {
+  it('keeps an /en/ link inside the locale the page is served under', () => {
+    render(<Markdown locale="nl">{'[case](/en/work/cloud-gateway) [out](https://example.com/en/x)'}</Markdown>);
+    expect(screen.getByRole('link', { name: 'case' })).toHaveAttribute('href', '/nl/work/cloud-gateway');
+    expect(screen.getByRole('link', { name: 'out' })).toHaveAttribute('href', 'https://example.com/en/x');
+  });
+
+  it('leaves links alone without a locale or under English', () => {
+    render(<Markdown locale="en">{'[a](/en/work/x)'}</Markdown>);
+    expect(screen.getByRole('link', { name: 'a' })).toHaveAttribute('href', '/en/work/x');
+  });
+});

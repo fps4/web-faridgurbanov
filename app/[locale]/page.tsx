@@ -11,6 +11,8 @@ import { hrefFor } from '@/lib/nav';
 import { featuredReferences, loadReferences } from '@/lib/references';
 import { HOME_VARIANT, TRAINING_PUBLISHED } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Home page (FS-0002/US-0010). M0 leads with the credibility hero; the M1 training-forward flip is
 // the single HOME_VARIANT switch (ADR-0003) — the section set and CTAs stay, only the lead changes,
@@ -36,7 +38,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).home;
-  return { title: 'Farid Gurbanov', description: t.heroLede };
+  return { title: 'Farid Gurbanov', description: t.heroLede, ...fallbackCanonical(locale, '') };
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -58,6 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <HeroBackdrop />
         <div className="container py-16 sm:py-24">
           <div className="relative max-w-3xl">
+            <LocaleNotice locale={locale} />
             {/* M0: credibility-led. M1 (HOME_VARIANT='training') leads with the training offer and
                 moves the architect proof beneath it — same page, configured emphasis (FS-0002). */}
             <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">

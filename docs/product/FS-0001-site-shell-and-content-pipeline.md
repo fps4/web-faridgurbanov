@@ -1,7 +1,7 @@
 ---
 title: "FS-0001 — Bilingual site shell, navigation & content pipeline"
 status: draft
-last_updated: 2026-06-09
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -76,6 +76,17 @@ across pages and across languages.
   server (nginx on the ds1 Docker host) with no server-side application runtime or database.
 - THE navigation SHALL be milestone-configurable so that the Training entry renders as a CTA
   stub in M0 and as a full navigation item in M1 without code changes to the shell.
+
+## Interim state: Dutch shows the English page
+
+Until the owner approves the Dutch copy, every address under `/nl` shows the English page under the
+fallback notice above (maestro story `art-bf5tq4788n`, "Site · Dutch pages show the English page, with
+a notice, until the Dutch copy is approved", which follows [ADR-0010](../design/decisions/0010-the-site-has-one-job.md)). `content/nl` holds no files, the Dutch
+dictionary is the English one except the notice, and `copyLocale` in `lib/i18n.ts` makes the
+locale-keyed copy (navigation labels, topics, portfolio cards) read English under `/nl`. The text
+of the page is marked `lang="en"` and the notice `lang="nl"`. A link written as `/en/…` in
+markdown stays under `/nl`, each `/nl` page has a canonical link to its English twin, and the sitemap
+lists the English addresses only. The routes and the language switcher are unchanged. The Dutch story of the site's cut brings the approved copy back.
 
 ## Definition of done
 

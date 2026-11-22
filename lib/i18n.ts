@@ -16,4 +16,27 @@ export function otherLocale(locale: Locale): Locale {
   return locale === 'en' ? 'nl' : 'en';
 }
 
+/**
+ * The locale whose copy a page shows. Until the owner approves the Dutch copy, every Dutch address
+ * shows the English page under the fallback notice (maestro story art-bf5tq4788n, following decision art-896t5kxfka, ADR-0010 here), so
+ * this maps nl to en. The Dutch story brings the approved copy back by making this the identity.
+ * The URL, the language switcher and the notice keep using the requested locale.
+ */
+export function copyLocale(locale: Locale): Locale {
+  return locale === 'nl' ? defaultLocale : locale;
+}
+
+/**
+ * A page's markdown is written with `/en/…` links. Served under another locale it links within that
+ * locale: `/en/work/x` becomes `/nl/work/x` under /nl. Other links are left alone.
+ */
+export function localizeHref(href: string, locale: Locale): string {
+  if (locale === defaultLocale) return href;
+  const prefix = `/${defaultLocale}`;
+  if (href === prefix || href.startsWith(`${prefix}/`) || href.startsWith(`${prefix}#`) || href.startsWith(`${prefix}?`)) {
+    return `/${locale}${href.slice(prefix.length)}`;
+  }
+  return href;
+}
+
 export const localeName: Record<Locale, string> = { en: 'English', nl: 'Nederlands' };

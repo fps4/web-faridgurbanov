@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { locales } from '@/lib/i18n';
@@ -22,8 +22,12 @@ function redirect(path: string): string | null {
   return null;
 }
 
+// A locale with no file of its own shows the English one (ADR-0002; maestro story art-bf5tq4788n: Dutch has none for
+// now), so its articles are the English slugs.
 const articles = (locale: string) =>
-  readdirSync(join(process.cwd(), 'content', locale, 'practice', 'articles'))
+  readdirSync(
+    join(process.cwd(), 'content', existsSync(join(process.cwd(), 'content', locale)) ? locale : 'en', 'practice', 'articles'),
+  )
     .filter((f) => f.endsWith('.md'))
     .map((f) => f.replace(/\.md$/, ''));
 

@@ -7,6 +7,8 @@ import { listSection, summary, title, type ContentMeta } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
+import { LocaleNotice } from '@/components/locale-notice';
+import { fallbackCanonical } from '@/lib/canonical';
 
 // Expertise index (FS-0003/US-0012, redesigned by ADR-0008). Two groups, deliberately asymmetric.
 //
@@ -30,7 +32,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).indexes;
-  return { title: `${t.expertiseTitle} — ${site.name}`, description: t.expertiseLede };
+  return { title: `${t.expertiseTitle} — ${site.name}`, description: t.expertiseLede, ...fallbackCanonical(locale, '/expertise') };
 }
 
 interface Evidence {
@@ -77,6 +79,7 @@ export default async function ExpertiseIndex({ params }: { params: Promise<{ loc
 
   return (
     <div className="container py-16">
+      <LocaleNotice locale={locale} />
       <PageIntro title={t.expertiseTitle} lede={t.expertiseLede} />
 
       {practice.length > 0 && (
