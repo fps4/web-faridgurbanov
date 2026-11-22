@@ -5,7 +5,13 @@ personal credibility surface that renders filesystem markdown to static HTML at 
 served by nginx on the ds1 Docker host. There is **no application server and no database** — the
 build artifact (`out/`) is the whole product.
 
-> **Status:** the **M0 credibility foundation** has landed. On top of the US-0001 scaffold: the
+> **Status (2026-11-22):** the site's strategy changed. It has one job, and carries no courses,
+> labs or portfolio section ([ADR-0010](docs/design/decisions/0010-the-site-has-one-job.md)); the
+> training-forward positioning no longer applies. The pages below still describe the code as it
+> stands today; later stories cut them to Home, Work, Practice and Contact, each when its copy is
+> approved. Below is the history of what the M0 foundation put in place.
+>
+> The **M0 credibility foundation** has landed. On top of the US-0001 scaffold: the
 > bilingual shell — shared header/nav/footer, language switcher that preserves page identity, and a
 > milestone-aware nav (Training is a CTA stub in M0) over App-Router `[locale]` segments (US-0002);
 > the markdown content pipeline reading `content/{en,nl}/<section>/` with frontmatter parsing and

@@ -1,7 +1,7 @@
 ---
 title: "M1 — Training-forward"
-status: open
-last_updated: 2026-06-07
+status: superseded by ADR-0010
+last_updated: 2026-11-22
 owners: [architect]
 related:
   - docs/delivery/roadmap/README.md
@@ -12,6 +12,8 @@ related:
 ---
 
 # M1 — Training-forward
+
+> **Superseded** by [ADR-0010](../../design/decisions/0010-the-site-has-one-job.md): the site is no longer training-forward and carries no courses. <https://maestro.fps4.nl/artifacts/art-896t5kxfka>. Kept as history.
 
 ## Goal
 

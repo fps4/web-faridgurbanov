@@ -1,6 +1,7 @@
 ---
 title: "0006: Portfolio restructured for the data-architect / lead-architect target"
 status: accepted
+note: "Partly superseded by 0010: the portfolio parts (the repository set, pillars and the portfolio page) no longer apply. Rest unchanged."
 last_updated: 2026-08-20
 owners: [architect]
 related:

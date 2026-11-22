@@ -1,6 +1,6 @@
 ---
 title: "0005: Stakeholder-forward positioning — lead with adoption, not only with build"
-status: accepted
+status: superseded by 0010
 last_updated: 2026-08-20
 owners: [architect]
 related:

@@ -1,7 +1,7 @@
 ---
 title: faridgurbanov.com documentation index
 status: draft
-last_updated: 2026-11-08
+last_updated: 2026-11-22
 owners: [architect]
 ---
 
@@ -29,17 +29,18 @@ Intent + functional specs (`kind: functional_spec`). Start with the
 
 | Spec | Title | Milestone |
 |---|---|---|
-| [00](./product/00-product-intent.md) | Product intent | — |
+| [00](./product/00-product-intent.md) | Product intent: one job, three readers, two goals | — |
 | [FS-0001](./product/FS-0001-site-shell-and-content-pipeline.md) | Bilingual site shell, navigation & content pipeline | M0 |
 | [FS-0002](./product/FS-0002-home.md) | Home page | M0 → M1 |
-| [FS-0003](./product/FS-0003-expertise.md) | Expertise pages | M0 |
+| [FS-0003](./product/FS-0003-expertise.md) | Expertise pages | superseded by ADR-0010 |
 | [FS-0004](./product/FS-0004-selected-work-case-studies.md) | Selected work / case studies | M0 |
-| [FS-0005](./product/FS-0005-portfolio-repos.md) | Portfolio / repositories | M0 (gated, ADR-0004) |
+| [FS-0005](./product/FS-0005-portfolio-repos.md) | Portfolio / repositories | superseded by ADR-0010 |
 | [FS-0006](./product/FS-0006-writing-blog.md) | Writing / blog | M0 |
 | [FS-0007](./product/FS-0007-contact-and-privacy.md) | Contact & privacy/GDPR | M0 |
-| [FS-0008](./product/FS-0008-training-and-eu-ai-act.md) | Training section & EU AI Act page | M0 stub → M1 full |
+| [FS-0008](./product/FS-0008-training-and-eu-ai-act.md) | Training section & EU AI Act page | superseded by ADR-0010 |
 | [FS-0009](./product/FS-0009-references.md) | References | ships dark; on with the first file |
-| [FS-0013](./product/FS-0013-practice-and-guidelines.md) | Practice: guidelines and articles (Writing renamed) | M1 |
+| [FS-0012](./product/FS-0012-learning-section.md) | Learning section | superseded by ADR-0010 |
+| [FS-0013](./product/FS-0013-practice-and-guidelines.md) | Practice: guidelines and articles (Writing renamed) | superseded by ADR-0010 |
 
 ## Design — how it's built
 
@@ -50,13 +51,14 @@ No designs yet; the decisions are locked as ADRs under [`design/decisions/`](./d
 |---|---|
 | [0001](./design/decisions/0001-tech-stack-and-static-export.md) | Tech stack — Next 15 + Tailwind/shadcn + markdown, static export |
 | [0002](./design/decisions/0002-bilingual-en-nl-i18n.md) | Bilingual EN/NL i18n |
-| [0003](./design/decisions/0003-single-site-training-forward-positioning.md) | Single site, training-forward positioning (credibility-first first ship) |
+| [0003](./design/decisions/0003-single-site-training-forward-positioning.md) | Single site, training-forward positioning (credibility-first first ship). Superseded by 0010 |
 | [0004](./design/decisions/0004-public-surface-prerequisites.md) | Public-surface prerequisites (gating the portfolio) |
-| [0005](./design/decisions/0005-stakeholder-forward-positioning.md) | Stakeholder-forward positioning (lead with adoption, not only with build) |
-| [0006](./design/decisions/0006-portfolio-restructure-data-architecture.md) | Portfolio restructured for the data-architect / lead-architect target |
-| [0007](./design/decisions/0007-front-page-three-bands-and-portfolio-focus.md) | Front page as three bands; portfolio narrowed to five repos in three areas |
-| [0008](./design/decisions/0008-work-and-expertise-index-redesign.md) | Selected work and Expertise indexes redesigned; WhatsApp scoped back to Contact |
-| [0009](./design/decisions/0009-references-as-curated-snapshots.md) | References are curated markdown snapshots, not a LinkedIn feed |
+| [0005](./design/decisions/0005-stakeholder-forward-positioning.md) | Stakeholder-forward positioning (lead with adoption, not only with build). Superseded by 0010 |
+| [0006](./design/decisions/0006-portfolio-restructure-data-architecture.md) | Portfolio restructured for the data-architect / lead-architect target. Portfolio parts superseded by 0010 |
+| [0007](./design/decisions/0007-front-page-three-bands-and-portfolio-focus.md) | Front page as three bands; portfolio narrowed to five repos in three areas. Portfolio parts superseded by 0010 |
+| [0008](./design/decisions/0008-work-and-expertise-index-redesign.md) | Selected work and Expertise indexes redesigned; WhatsApp scoped back to Contact. Superseded by 0010 |
+| [0009](./design/decisions/0009-references-as-curated-snapshots.md) | References are curated markdown snapshots, not a LinkedIn feed. The References page is superseded by 0010 |
+| [0010](./design/decisions/0010-the-site-has-one-job.md) | The site has one job, and carries no courses or labs (recorded in [maestro](https://maestro.fps4.nl/artifacts/art-896t5kxfka)) |
 
 ## Reference
 
@@ -73,7 +75,7 @@ How-to, operations, and onboarding live under `guides/` (Diátaxis discipline is
 
 ## Delivery — the work
 
-- [`delivery/roadmap/`](./delivery/roadmap/README.md) — milestones (M0 → M1) and per-milestone scoping docs
+- [`delivery/roadmap/`](./delivery/roadmap/README.md) — milestones (M0 → M1) and per-milestone scoping docs; M1 is superseded by ADR-0010. Stories live in maestro; the backlog folder is history
 - [`delivery/backlog/`](./delivery/backlog) — epics → user stories; per-story status is tracked off-repo, not in a Markdown board
 
 | Epic | Capability | Specs |
