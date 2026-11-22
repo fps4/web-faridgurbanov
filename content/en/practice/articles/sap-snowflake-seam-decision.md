@@ -77,7 +77,7 @@ The durable artifact is the decision procedure. Load a real rate card, re-run, a
 
 ## Why I build this way
 
-This is the loop I run everywhere: intent written down first, trade-offs recorded as ADRs, and the claim demonstrated rather than asserted. I have delivered this seam for real; see the [SAP S/4HANA Finance → Snowflake case study](/en/work/sap-snowflake), where data contracts sit exactly where SAP hands off to the lakehouse. The pattern is the same in both places. Put the design surface on the boundary, and make the decision there explicit enough to review.
+This is the loop I run everywhere: intent written down first, trade-offs recorded as ADRs, and the claim demonstrated rather than asserted. I have delivered this seam for real; see the [SAP S/4HANA Finance → Snowflake case study](/en/work#earlier-sap-finance-snowflake), where data contracts sit exactly where SAP hands off to the lakehouse. The pattern is the same in both places. Put the design surface on the boundary, and make the decision there explicit enough to review.
 
 A reference architecture becomes useful at the moment a team can disagree with it precisely. Attaching the decision engine is what makes that possible.
 

@@ -87,7 +87,7 @@ describe('validateEntry', () => {
   });
 
   it('accepts related entries of either kind and site pages', () => {
-    expect(validateEntry(e({ related: ['G-02', 'P-01', 'work/cloud-gateway', 'practice/articles/who-had-to-say-yes'] }))).toEqual([]);
+    expect(validateEntry(e({ related: ['G-02', 'P-01', 'work/cloud-gateway', 'work#earlier-security-data-lake', 'practice/articles/who-had-to-say-yes'] }))).toEqual([]);
   });
 });
 

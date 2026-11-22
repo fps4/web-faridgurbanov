@@ -61,4 +61,4 @@ I now write a short block into every cross-team design, and into every case stud
 
 It takes about twenty minutes, and it changes the conversation, because it moves the hardest part of the work out of one architect's head and into a document other people can argue with.
 
-→ The case studies on this site each carry that block: [Cloud Gateway](/en/work/cloud-gateway), [the SAP event backbone](/en/work/sap-event-backbone), [SAP Finance → Snowflake](/en/work/sap-snowflake) and [the Cloudera data-product platform](/en/work/cloudera-kafka). The way of working behind them is written up under [working across an organisation](/en/expertise/stakeholder-alignment).
+→ The case studies on this site each carry that block: [Cloud Gateway](/en/work/cloud-gateway), [the SAP event backbone](/en/work#earlier-sap-events), [SAP Finance → Snowflake](/en/work#earlier-sap-finance-snowflake) and [the Cloudera data-product platform](/en/work#earlier-security-data-lake). The way of working behind them is written up under [working across an organisation](/en/expertise/stakeholder-alignment).
