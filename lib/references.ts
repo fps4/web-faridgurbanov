@@ -24,27 +24,30 @@ export interface Reference {
   name: string;
   /**
    * Their position as their LinkedIn headline shows it (first segment), per locale (`role_nl` falls
-   * back to `role`). Refreshed by hand when the file is reviewed; `years` says when the work was.
+   * back to `role`). Refreshed by hand when the file is reviewed.
    */
   role: Record<Locale, string>;
-  /** The years worked together, as written, e.g. '2021–2023'. */
-  years: string;
+  /** How they worked with the owner, as the line under the quote reads: `role · context`. */
+  context: string;
   /** Their public profile: https://www.linkedin.com/in/<handle>/ */
   linkedin: string;
   /**
-   * The work this reference is about: a case-study slug (content/{en,nl}/work/<slug>.md) or the id
-   * of an Earlier work entry on /work (lib/site.ts; art-vvzsw9ap9e), which has no page of its own.
+   * The work this reference is about, when it is about one piece of it: a case-study slug
+   * (content/{en,nl}/work/<slug>.md) or the id of an Earlier work entry on /work (lib/site.ts;
+   * art-vvzsw9ap9e), which has no page of its own. null when it names none.
    */
-  work: string;
+  work: string | null;
   /** ISO date the reference was written. */
   date: string;
   /** Language of the quote as shown (BCP-47: 'en', 'nl', 'de' …). */
   lang: string;
   /** Set when the quote shown is a translation approved by the person; the original's language. */
   translatedFrom: string | null;
-  /** Path under public/, e.g. '/references/first-last.jpg'; null renders initials instead. */
+  /** Path under public/, e.g. '/references/first-last.jpg'; null renders initials instead (case study only). */
   photo: string | null;
-  /** Featured references also appear on the home page (at most FEATURED_MAX). */
+  /** Where it stands among the others: a positive integer, lower first; null sorts after those that have one. */
+  order: number | null;
+  /** Featured references are shown on the home page (at most FEATURED_MAX). */
   featured: boolean;
   /** True when the same text is a recommendation on the owner's LinkedIn profile. */
   verified: boolean;
@@ -54,14 +57,11 @@ export interface Reference {
   quote: string;
 }
 
-// Quote budgets. Every reference reads as a block on the case study and the references page,
-// where a LinkedIn-length recommendation (~100 words, two paragraphs) fits; the featured ones also
-// sit side by side on the home page, so they follow the tile budget from AGENTS.md (35–75 words).
-// Trim only with the person's OK, and mark the cut.
+// One quote budget, for every quote wherever it is shown: a LinkedIn-length recommendation (about
+// 100 words, two paragraphs) fits. A quote is never changed to fit it; trim only with the person's
+// OK, and mark the cut.
 export const QUOTE_MIN_WORDS = 30;
 export const QUOTE_MAX_WORDS = 120;
-export const FEATURED_MIN_WORDS = 35;
-export const FEATURED_MAX_WORDS = 75;
 /** The home band is two columns; a third featured card would wrap onto a row of its own. */
 export const FEATURED_MAX = 2;
 
@@ -85,13 +85,14 @@ export function parseReference(slug: string, raw: string): Reference | null {
     slug,
     name: str(data, 'name'),
     role: { en: role, nl: str(data, 'role_nl') || role },
-    years: str(data, 'years'),
+    context: str(data, 'context'),
     linkedin: str(data, 'linkedin'),
-    work: str(data, 'work'),
+    work: str(data, 'work') || null,
     date: str(data, 'date'),
     lang: str(data, 'lang') || 'en',
     translatedFrom: str(data, 'translated_from') || null,
     photo: str(data, 'photo') || null,
+    order: data.order === undefined ? null : typeof data.order === 'number' ? data.order : NaN,
     featured: data.featured === true,
     verified: data.verified === true,
     reviewed: str(data, 'reviewed'),
@@ -104,11 +105,13 @@ export function validateReference(ref: Reference): string[] {
   const problems: string[] = [];
   if (!ref.name) problems.push('name is required');
   if (!ref.role.en) problems.push('role is required');
-  if (!ref.years) problems.push('years is required');
+  if (!ref.context) problems.push('context is required');
   if (!LINKEDIN_PROFILE.test(ref.linkedin)) {
     problems.push('linkedin must be a public profile URL (https://www.linkedin.com/in/<handle>/)');
   }
-  if (!ref.work) problems.push('work must name a case-study slug or an earlier-work entry');
+  if (ref.order !== null && !(Number.isInteger(ref.order) && ref.order >= 1)) {
+    problems.push('order must be a positive integer');
+  }
   if (!ISO_DATE.test(ref.date)) problems.push('date must be YYYY-MM-DD');
   if (!ISO_DATE.test(ref.reviewed)) problems.push('reviewed must be YYYY-MM-DD');
   if (!LANG_TAG.test(ref.lang)) problems.push('lang must be a language tag such as en, nl or de');
@@ -119,11 +122,8 @@ export function validateReference(ref: Reference): string[] {
     problems.push('photo must be a file under public/references/, e.g. /references/first-last.jpg');
   }
   const words = wordCount(ref.quote);
-  const [min, max] = ref.featured
-    ? [FEATURED_MIN_WORDS, FEATURED_MAX_WORDS]
-    : [QUOTE_MIN_WORDS, QUOTE_MAX_WORDS];
-  if (words < min || words > max) {
-    problems.push(`quote is ${words} words; ${ref.featured ? 'a featured' : 'a'} reference needs ${min}–${max}`);
+  if (words < QUOTE_MIN_WORDS || words > QUOTE_MAX_WORDS) {
+    problems.push(`quote is ${words} words; a reference needs ${QUOTE_MIN_WORDS}–${QUOTE_MAX_WORDS}`);
   }
   return problems;
 }
@@ -140,9 +140,18 @@ export function validateReferenceSet(refs: Reference[]): string[] {
   return problems;
 }
 
-/** Sort newest first, then by name, so the order is stable and needs no `order:` field. */
+/**
+ * Sort by `order` (lower first; a reference without one comes after those with one), then newest
+ * first, then by name, so the order is stable.
+ */
 export function sortReferences(refs: Reference[]): Reference[] {
-  return [...refs].sort((a, b) => b.date.localeCompare(a.date) || a.name.localeCompare(b.name));
+  const rank = (r: Reference) => r.order ?? Infinity;
+  return [...refs].sort(
+    (a, b) =>
+      (rank(a) === rank(b) ? 0 : rank(a) < rank(b) ? -1 : 1) ||
+      b.date.localeCompare(a.date) ||
+      a.name.localeCompare(b.name),
+  );
 }
 
 /**
@@ -191,6 +200,7 @@ export async function loadReferences(): Promise<Reference[]> {
     }
     // EN is the required locale; NL may fall back to it (ADR-0002), so only EN is checked.
     if (
+      ref.work &&
       !earlierWorkOf(ref.work) &&
       !(await exists(path.join(process.cwd(), 'content', defaultLocale, 'work', `${ref.work}.md`)))
     ) {
@@ -207,9 +217,6 @@ export async function loadReferences(): Promise<Reference[]> {
 /** The Earlier work entry a reference's `work` names, or undefined when it names a case study. */
 export const earlierWorkOf = (work: string): EarlierWorkEntry | undefined =>
   earlierWork.find((e) => e.id === work);
-
-/** Where the work of a reference lives, without the locale: a case page, or an entry on /work. */
-export const workPath = (work: string): string => (earlierWorkOf(work) ? `/work#${work}` : `/work/${work}`);
 
 export const featuredReferences = (refs: Reference[]) => refs.filter((r) => r.featured);
 export const referencesFor = (refs: Reference[], work: string) => refs.filter((r) => r.work === work);

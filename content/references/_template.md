@@ -3,20 +3,22 @@
 # See docs/guides/references.md for the ask, the photo, and what the build checks.
 name: First Last
 # `role` mirrors the headline on their LinkedIn profile (first segment, before the first "|"),
-# refreshed whenever `reviewed` is bumped. `years` is when you worked together.
+# refreshed whenever `reviewed` is bumped. `context` is how you worked together, written as the
+# line under the quote reads: "role · context".
 role: Product owner, API platform
 role_nl: Product owner, API-platform
-years: 2021–2023
+context: worked together on an API platform for a retailer
 linkedin: https://www.linkedin.com/in/handle/
-work: cloud-gateway
+# work: cloud-gateway   (optional: the case study or Earlier work entry the quote is about)
 date: 2026-03-01
 lang: en
 # translated_from: de
 # photo: /references/first-last.jpg
+# order: 1   (optional: a positive integer, lower shows first; without it, newest first)
 featured: false
 verified: false
 reviewed: 2026-09-17
 draft: true
 ---
 
-Their words, verbatim; paragraphs are kept. 30–120 words (35–75 when featured). Ask for one situation, what I did, and what happened.
+Their words, verbatim; paragraphs are kept. 30–120 words. A cut is marked […], an editorial fix is in [square brackets].

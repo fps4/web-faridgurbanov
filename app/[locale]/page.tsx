@@ -1,26 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { ObfuscatedEmail } from '@/components/obfuscated-email';
 import { WhatsAppButton } from '@/components/whatsapp-contact';
 import { IntroVideo } from '@/components/intro-video';
 import { HeroPhoto, heroPhotoShown } from '@/components/hero-photo';
 import { ReferenceQuote } from '@/components/reference-quote';
-import { listSection, title } from '@/lib/content';
+import { listSection } from '@/lib/content';
 import { getDictionary } from '@/lib/dictionaries';
 import { CONTACT_HREF, hrefFor } from '@/lib/nav';
-import { earlierWorkOf, featuredReferences, loadReferences, workPath } from '@/lib/references';
+import { featuredReferences, loadReferences } from '@/lib/references';
 import { locales, type Locale } from '@/lib/i18n';
-import { earlierWorkTitle, site } from '@/lib/site';
+import { site } from '@/lib/site';
 import { LocaleNotice } from '@/components/locale-notice';
 import { fallbackCanonical } from '@/lib/canonical';
 import { trackRecordCards, whatIDoHrefs } from '@/lib/home';
 
 // Home page (FS-0002; maestro story art-9947n0hg99, following the decision art-896t5kxfka): the hero
 // (line above the title, title, introduction, two buttons), the optional intro video and How I work,
-// every text verbatim from the approved site copy, section "Home". The references band stays as it
-// was until its own story: it renders nothing WHILE no reference is marked `featured` (FS-0009).
+// every text verbatim from the approved site copy, section "Home". The references band (art-2ya5at7k1q)
+// sits after How I work and before Contact; it renders nothing WHILE no reference is marked
+// `featured` (FS-0009), and its id is where /references leads.
 // Track record and What I do (art-spqwxpsqc3, following art-896t5kxfka §5): two bands between the
 // introduction and How I work, as the design orders them, texts verbatim from the approved copy
 // ("Home · track record", "Home · What I do"); where each card and line leads is in lib/home.ts.
@@ -52,13 +52,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const largeOf = (slug: string) => {
     const v = work.find((w) => w.slug === slug)?.data.large;
     return typeof v === 'string' && v.trim() !== '' ? v : undefined;
-  };
-  const workLabel = (slug: string) => {
-    const earlier = earlierWorkOf(slug);
-    if (earlier) return earlierWorkTitle(earlier);
-    const study = work.find((w) => w.slug === slug);
-    if (!study) return undefined;
-    return typeof study.data.short === 'string' ? study.data.short : title(study.data);
   };
 
   return (
@@ -179,35 +172,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* 2b — references. People who were on those engagements, in their own words, each linked to
-          their public profile. Two at most: the band is two columns, and two voices from different
-          sides (product and engineering, say) carry more than three from the same one. */}
+      {/* References (art-2ya5at7k1q): what people who worked with him say, in their own words, each name
+          linked to the person's public profile. Two at most: two cards side by side on a wide screen,
+          stacked on a narrow one. */}
       {featured.length > 0 && (
-        <section className="border-t border-border">
-          <div className="container py-16">
-            <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+        <section id="references" aria-labelledby="references-h" className="border-t border-border bg-muted/40">
+          <div className="container flex flex-col gap-7 py-16">
+            <h2 id="references-h" className="text-2xl font-semibold tracking-tight">
               {tr.heading}
             </h2>
-            <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{tr.homeLede}</p>
-            <div className="mt-10 grid gap-12 md:grid-cols-2 md:gap-16">
+            <div className="grid gap-5 md:grid-cols-2">
               {featured.map((ref) => (
-                <ReferenceQuote
-                  key={ref.slug}
-                  reference={ref}
-                  locale={locale}
-                  variant="home"
-                  workLabel={workLabel(ref.work)}
-                  workHref={hrefFor(locale, workPath(ref.work))}
-                />
+                <ReferenceQuote key={ref.slug} reference={ref} locale={locale} variant="home" />
               ))}
-            </div>
-            <div className="mt-10">
-              <Button asChild variant="outline">
-                <Link href={hrefFor(locale, '/references')}>
-                  {tr.allCta}
-                  <ArrowRight />
-                </Link>
-              </Button>
             </div>
           </div>
         </section>

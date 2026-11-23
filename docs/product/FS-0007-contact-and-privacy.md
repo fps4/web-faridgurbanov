@@ -1,7 +1,7 @@
 ---
 title: "FS-0007 — Contact & privacy/GDPR"
 status: draft
-last_updated: 2026-11-22
+last_updated: 2026-11-23
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -45,7 +45,9 @@ privacy/GDPR statement, which the earlier "cut privacy entirely" position got wr
    any are added, a minimal consent affordance is required.
 5. **Bilingual** — EN + NL (contact and privacy matter to the NL audience; ADR-0002).
 6. **References (FS-0009)** — WHILE references are published, the privacy page states what a
-   reference publishes about a person and how they have it removed. *(Added 2026-09-17.)*
+   reference publishes about a person and how they have it removed. *(Added 2026-09-17; since
+   2026-11-23 it names the home page, the name, the role and the link to LinkedIn, maestro story
+   `art-2ya5at7k1q`.)*
 
 ## Changed by maestro story `art-r903t1r2tp` (2026-11-22)
 
@@ -95,9 +97,11 @@ Contact page and the taster path above where they differ.
 - IF the site sets non-essential cookies or runs analytics, THEN THE SYSTEM SHALL present a
   minimal consent affordance; OTHERWISE the privacy page SHALL state that no non-essential
   cookies are used.
-- WHILE at least one reference is published (FS-0009), THE privacy page SHALL state that references publish a
-  person's name, photo, role at the time, words and profile link with their agreement, and how they
-  have it removed.
+- WHILE at least one reference is published (FS-0009), THE privacy page SHALL state that the home page
+  quotes people with their name, role and a link to LinkedIn, that the same words are
+  recommendations on the owner's LinkedIn profile, that each agreed before it went live, and how
+  they have it removed. THE privacy page text and its date SHALL be as in the approved copy
+  ("Privacy page", 2026-11-23).
 - THE contact and privacy pages SHALL be available in both English and Dutch.
 
 ## Definition of done
