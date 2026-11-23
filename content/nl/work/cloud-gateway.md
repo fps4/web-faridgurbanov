@@ -2,14 +2,14 @@
 title: Cloud gateway: één API-platform op twee clouds
 summary: Een platformproduct waarmee teams zelf een API achter een gateway zetten. Een API-gateway is de voordeur waardoor het ene systeem het andere aanroept.
 intro: Een platformproduct waarmee teams zelf een API achter een gateway zetten. Een API-gateway is de voordeur waardoor het ene systeem het andere aanroept.
-small: Een grote Nederlandse supermarktketen, sinds oktober 2023. Klant niet genoemd. Twee minuten lezen.
+small: Een grote Nederlandse supermarktketen, sinds oktober 2024. Klant niet genoemd. Twee minuten lezen.
 facts: [Veel → één | gateways in één platform, Ongeveer 10 | teams gebruiken het nu, Meer dan een miljard | verzoeken per maand, Dagen → minuten | om een API te publiceren]
 role: De eerste versie gebouwd. Tech lead van het team dat het nu uitbreidt.
 client: Een grote Nederlandse supermarktketen
 built_with: AWS API Gateway, Azure API Management, Terraform, OAuth 2 / OIDC, Okta, Auth0, GitHub, Datadog
 order: 1
 large: Veel gateways, één platform
-listed: Een grote Nederlandse supermarktketen, sinds oktober 2023. Teams maken zelf een gateway aan, met self-service via pull requests, en OAuth 2 is de standaard in plaats van API-sleutels.
+listed: Een grote Nederlandse supermarktketen, sinds oktober 2024. Teams maken zelf een gateway aan, met self-service via pull requests, en OAuth 2 is de standaard in plaats van API-sleutels.
 stands: ongeveer 10 teams gebruiken het. De oude IBM-gateway is er nog, en de vervanging loopt.
 next: integration-adapter
 next_label: Volgende: Integratie-adapter

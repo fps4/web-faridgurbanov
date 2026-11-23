@@ -2,7 +2,7 @@
 title: Integratie-adapter: een interface via configuratie
 summary: Een platformproduct waarmee teams zelf twee applicaties verbinden. Het team schrijft configuratie, en het platform draait de integratie.
 intro: Een platformproduct waarmee teams zelf twee applicaties verbinden. Het team schrijft configuratie, en het platform draait de integratie.
-small: Een grote Nederlandse supermarktketen, sinds oktober 2023. Klant niet genoemd. Twee minuten lezen.
+small: Een grote Nederlandse supermarktketen, sinds oktober 2024. Klant niet genoemd. Twee minuten lezen.
 facts: [Binnen één werkdag | tot een nieuwe interface live is, De helft van de tijd | om een integratie uit te rollen, 2–3 keer lager | kosten van een integratie, 100+ per seconde | berichten in de belastingtest]
 role: De eerste versie ontworpen en gebouwd. Tech lead van het team dat het nu uitbreidt.
 client: Een grote Nederlandse supermarktketen

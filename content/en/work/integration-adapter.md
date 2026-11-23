@@ -2,7 +2,7 @@
 title: Integration adapter: an interface via configuration
 summary: A platform product that teams use by themselves to connect two applications. The team writes configuration, and the platform runs the integration.
 intro: A platform product that teams use by themselves to connect two applications. The team writes configuration, and the platform runs the integration.
-small: A large Dutch grocery retailer, since October 2023. Client not named. Two-minute read.
+small: A large Dutch grocery retailer, since October 2024. Client not named. Two-minute read.
 facts: [Under a working day | for a new interface to be live, Half the time | to deploy an integration, 2–3 times lower | cost of an integration, 100+ a second | messages held in the load test]
 role: Designed and built the initial version. Tech lead of the team that expands it now.
 client: A large Dutch grocery retailer
