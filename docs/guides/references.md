@@ -37,18 +37,18 @@ remove `draft: true`. One person per file. The fields:
 | Field | What goes in it |
 |---|---|
 | `name` | As they write it. |
-| `role` | Their position as their LinkedIn headline shows it, first segment only (before the first "\|"), in English: "AI & Data Product Lead, Accenture". Refresh it whenever you bump `reviewed`. |
+| `role` | Their position as their LinkedIn headline shows it, first segment only (before the first "\|"), in English: "Product owner, API platform". Refresh it whenever you bump `reviewed`. |
 | `role_nl` | The same in Dutch. Optional; falls back to `role`. |
 | `context` | How they worked with the owner, as the line under the quote reads after the role: `role · context`, e.g. "we work together in the integration platform team". Required. |
 | `linkedin` | Their public profile: `https://www.linkedin.com/in/<handle>/`. The build rejects anything else. |
 | `work` | Optional. The case-study slug (`cloud-gateway`, `integration-adapter`) or the id of an Earlier work entry on `/work` (`earlier-security-data-lake`, …, in `lib/site.ts`). When given, the build checks it exists, and a case-study slug shows the quote on that case study. |
-| `date` | When they wrote it, `YYYY-MM-DD`. Orders the cards, newest first. |
-| `lang` | The language the quote is shown in: `en`, `nl`, `de`, … |
+| `date` | When they wrote it, `YYYY-MM-DD`. Orders the cards after `order` (newest first), and is shown as month and year on a case-study block. |
+| `lang` | The language the quote is shown in: `en`, `nl`, `de`, … A quote in another language than the page's gets an "In English." note on a case-study block. |
 | `translated_from` | Only when the quote shown is a translation they approved; the original's language. |
 | `photo` | `/references/<first-last>.jpg`. Optional, and not shown on Home. |
 | `order` | Optional positive integer, lower shows first; references without one come after those with one, then newest first. |
 | `featured` | `true` puts it on the home page. At most two: the band is two cards side by side. |
-| `verified` | `true` when the same text is a recommendation on the owner's LinkedIn profile. |
+| `verified` | `true` when the same text is a recommendation on the owner's LinkedIn profile; a case-study block then shows an "Also on my LinkedIn" link to the recommendations tab. |
 | `reviewed` | `YYYY-MM-DD`, the last time the role, photo and link were checked with the person. |
 
 The body is the quote, **verbatim**, no quotation marks (the component adds them); blank lines

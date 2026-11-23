@@ -43,8 +43,11 @@ one of the people who were there, speaking.
    (refreshed by hand on review), `context` (how they worked with the owner, as the line under the
    quote reads), a link to their public LinkedIn profile, the date they wrote it, the language it
    is in, and the quote itself, verbatim, paragraphs kept. It may name the work it is about
-   (`work`), and may carry a `photo`. Stored as one markdown file per person under
-   `content/references/`, locale-less, because the quote is never translated.
+   (`work`), may carry a `photo`, a `translated_from`, a `verified` flag (the same words are a
+   recommendation on the owner's LinkedIn profile) and an `order`. Stored as one markdown file per
+   person under `content/references/`, locale-less, because the quote is never translated. The
+   cards are ordered by `order` (a positive integer, lower first); references without one come
+   after those with one, then newest first, then by name.
 2. **Home** — a band after How I work and before Contact (`id="references"`) showing the references
    marked `featured` (at most two): the heading, and a card per quote with the name linked to the
    person's profile, `role · context`, and "Read it on LinkedIn" to the recommendations on the
@@ -81,16 +84,21 @@ one of the people who were there, speaking.
   before Contact, a band with the approved heading and each featured reference as a card: the quote
   as the person wrote it, the name linked to their profile (new tab, `rel="noopener"`), `role ·
   context`, and a link "Read it on LinkedIn" to the owner's LinkedIn recommendations.
+- THE SYSTEM SHALL NOT load any image or script from LinkedIn.
 - THE SYSTEM SHALL fail the build WHEN more than two references are marked `featured`.
 - WHILE no reference is marked `featured`, THE home band SHALL NOT render.
 - WHEN `/en/references` or `/nl/references` is requested, THE server SHALL answer 301 to
   `/en#references` or `/nl#references`, keeping a query string before the fragment.
 - THE header, the footer and the sitemap SHALL NOT name a References page.
 - WHERE a published reference names a case study, THE case-study page SHALL render an "In their
-  words" block containing that reference.
+  words" block containing that reference: the quote, the name linked to their profile, `role ·
+  context`, their `photo` or, without one, their initials, and the date as month and year; WHERE the
+  reference is `verified`, an "Also on my LinkedIn" link to the recommendations; WHEN the quote is in
+  a language other than the page's, or is an approved translation, a note that says so.
 - THE SYSTEM SHALL fail `npm run test` WHEN a quote is outside 30–120 words, when its profile link
-  is not a LinkedIn profile URL, when its photo file is missing, when `context` is missing, or when
-  `work` is given and names no case study or Earlier work entry.
+  is not a LinkedIn profile URL, when its photo file is missing, when `context` is missing, when
+  `order` is given and is not a positive integer, or when `work` is given and names no case study or
+  Earlier work entry.
 - THE voice check SHALL NOT measure `content/references/`, because the words are not the owner's.
 - THE privacy page SHALL state what a reference publishes about a person and how they have it
   removed (FS-0007).
