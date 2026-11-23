@@ -21,16 +21,6 @@ export const primaryNav: NavItem[] = [
   { href: CONTACT_HREF, label: { en: 'Contact', nl: 'Contact' } },
 ];
 
-/**
- * The references page (FS-0009). Footer-only while the set is small: it is reached from the home
- * band, the contact page and the footer, and the footer shows it only WHILE at least one reference
- * is published. Promote it into primaryNav once there are enough to carry a nav slot.
- */
-export const referencesNav: NavItem = {
-  href: '/references',
-  label: { en: 'References', nl: 'Referenties' },
-};
-
 export function headerNav(): NavItem[] {
   return primaryNav;
 }

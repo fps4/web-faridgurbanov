@@ -44,14 +44,15 @@ call. The page says who he is in his own words and sends the reader to Contact o
    gateway, Integration adapter, Both products (`/work`), Cloud gateway, Simple first (the article)
    and Earlier work (`/work#earlier-work`). The addresses are in `lib/home.ts`.
 5. **How I work.** Heading, the line under it, three statements and a link to Practice.
-6. **References band (FS-0009).** Unchanged: renders nothing WHILE no reference is marked
-   `featured`. It has its own story.
+6. **References band (FS-0009, maestro story `art-2ya5at7k1q`).** After How I work and before
+   Contact, `id="references"`: the heading and a card per featured reference, side by side on a wide
+   screen and stacked on a narrow one. It renders nothing WHILE no reference is marked `featured`.
 7. **Copy.** Every text is taken verbatim from the approved copy (`lib/dictionaries.ts`, `home`).
    No text is written for the page. The meta description is the first sentence of the introduction.
 8. **Contact** (maestro story `art-r903t1r2tp`, [FS-0007](./FS-0007-contact-and-privacy.md)) is
    the last part of the page, `id="contact"`; the hero's first button leads to it.
-9. **Not on the page now:** the references as cards and the résumé button. Each returns in its
-   own story when its text is approved.
+9. **Not on the page now:** the résumé button. It returns in its own story when its text is
+   approved.
 10. **Languages.** The Dutch addresses show the English page under the fallback notice until the
    Dutch copy is approved.
 

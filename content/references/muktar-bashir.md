@@ -1,14 +1,14 @@
 ---
 name: Muktar Bashir
-role: AI & Data Product Lead, Accenture
-years: 2018–2020
+role: AI & Data Lead, Accenture
+context: worked together on a data platform for a UK telecom operator
 linkedin: https://www.linkedin.com/in/muktar-bashir-82069943/
 work: earlier-security-data-lake
 date: 2026-09-19
 lang: en
-featured: false
+featured: true
 verified: true
-reviewed: 2026-09-20
+reviewed: 2026-11-23
 ---
 
 I had the pleasure of working with Farid Gurbanov […] on the design and delivery of a large-scale Big Data platform. Farid was instrumental in shaping the platform architecture, producing high-quality technical designs, and ensuring complex data and security monitoring requirements were translated into robust, scalable solutions.

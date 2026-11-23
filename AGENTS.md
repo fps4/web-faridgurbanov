@@ -52,7 +52,9 @@ npm run test     # vitest run
   `content/{en,nl}`; never dump the frontmatter block into rendered prose (`lib/frontmatter.ts`).
 - References live in `content/references/` (locale-less, one person per file, the quote as the
   body, verbatim). Add or update one by editing the file; see `docs/guides/references.md` for the
-  fields and what the build checks. Never change a person's words (cuts and fixes go in square
+  fields and what the build checks. They are shown as a band of the home page; there is no
+  References page. One budget holds for every quote, 30-120 words, and a quote is never changed to
+  fit it. Never change a person's words (cuts and fixes go in square
   brackets); `role` mirrors their LinkedIn headline and is refreshed by hand on review; never fetch
   anything from LinkedIn at build or request time.
 
@@ -61,8 +63,8 @@ npm run test     # vitest run
 Anything that renders as a **card in a grid** is written to a length budget, in every locale:
 
 - **40-70 words** (~250-450 characters) per card, with the cards of one grid close in length.
-  Where a test enforces the budget (`lib/references.test.ts`), it fails the build outside
-  its range.
+  The reference cards on Home are the exception: they hold another person's words, which are never
+  changed to fit, so their one budget is 30-120 words (`lib/references.test.ts`).
 - Cards sit **side by side**. Length is relative: an essay in one tile makes its neighbours look
   thin and gets none of them read.
 - The card is the hook, not the summary. Detail that does not fit goes behind the link.

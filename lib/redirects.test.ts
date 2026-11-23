@@ -150,7 +150,7 @@ describe('the removed sections', () => {
   });
 
   it.each(locales)('never redirects a page it keeps, or a target of its own', (l) => {
-    for (const kept of ['', '/work', '/work/cloud-gateway', '/work/integration-adapter', '/practice', '/privacy', '/references']) {
+    for (const kept of ['', '/work', '/work/cloud-gateway', '/work/integration-adapter', '/practice', '/privacy']) {
       expect(redirect(`/${l}${kept}`), kept).toBeNull();
     }
     expect(redirect(`/${l}/learning-notes`)).toBeNull();
@@ -248,5 +248,35 @@ describe('the removed Cloudera Kafka, SAP to Snowflake and SAP event backbone ca
     const page = readFileSync(join(process.cwd(), 'app', '[locale]', 'work', 'page.tsx'), 'utf8');
     expect(page).toContain('id={EARLIER_WORK_ANCHOR}');
     expect(EARLIER_WORK_ANCHOR).toBe('earlier-work');
+  });
+});
+
+// The References page is removed (maestro story art-2ya5at7k1q): the references are a band of the
+// home page. /references in every form and locale answers 301 to that band in the same locale, and
+// the target is a page the export has.
+describe('the removed References page', () => {
+  it.each(locales)('sends /%s/references, in every form, to the references band of /%s', (l) => {
+    for (const old of forms(`/${l}/references`)) {
+      expect(redirect(old), old).toBe(`/${l}#references`);
+      expect(pageExists(redirect(old)!.split('#')[0]), old).toBe(true);
+    }
+    expect(conf).toMatch(/return 301 \/\$1\$is_args\$args#references;/);
+  });
+
+  it('keeps the query string, before the fragment', () => {
+    expect(conf).toMatch(/location ~ \^\/\(en\|nl\)\/references\S+ \{\s*return 301 \/\$1\$is_args\$args#references;/);
+  });
+
+  it('leads to an id the home page has', () => {
+    const page = readFileSync(join(process.cwd(), 'app', '[locale]', 'page.tsx'), 'utf8');
+    expect(page).toContain('id="references"');
+  });
+
+  it.each(locales)('leaves other addresses starting with references alone, in %s', (l) => {
+    for (const kept of ['/references-list', '/referencesx', '/privacy']) expect(redirect(`/${l}${kept}`), kept).toBeNull();
+  });
+
+  it('has no route left for the page', () => {
+    expect(routeExists('/references')).toBe(false);
   });
 });

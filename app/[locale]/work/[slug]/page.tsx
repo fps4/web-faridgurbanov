@@ -92,7 +92,7 @@ export default async function WorkPage({
       beforeLastSection={
         refs.length ? (
           <section className="flex flex-col gap-6">
-            <h2 className="text-2xl font-semibold tracking-tight">{t.references.heading}</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">{t.references.inTheirWords}</h2>
             {refs.map((ref) => (
               <ReferenceQuote key={ref.slug} reference={ref} locale={locale} variant="article" />
             ))}
