@@ -65,8 +65,10 @@ shows what was done; Practice gives his opinion on it.
 7. **Redirects.** The addresses of the unpublished pieces, and every old `/writing` address, answer
    301 to `/<locale>/practice` (nginx, `infra/docker/nginx.conf`; checked by `lib/redirects.test.ts`).
 8. **Sitemap.** `/sitemap.xml` lists Practice and each published article (`app/sitemap.ts`).
-9. **Bilingual.** English now; Dutch shows the English page under a notice until the approved Dutch
-   copy is in (ADR-0002, `copyLocale`).
+9. **Bilingual.** The four published articles are in English (`content/en/practice/articles/`) and in
+   Dutch (`content/nl/practice/articles/`, same file names and keys; maestro story `art-j9e7z77xy0`).
+   A draft has no Dutch file. The reading time, Where it comes from and the other labels are Dutch
+   under `/nl` (FS-0001).
 
 ## Out of scope
 

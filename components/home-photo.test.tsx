@@ -13,6 +13,11 @@ import { HERO_PHOTO } from '@/lib/site';
 const alt = 'Farid Gurbanov';
 const place = 'Khinalug, Azerbaijan';
 const unesco = { text: 'UNESCO World Heritage site', href: 'https://whc.unesco.org/en/list/1696' };
+// The Dutch line under the photo, from the approved Dutch copy: "Khinalug, Azerbeidzjan · UNESCO-werelderfgoed · Wikipedia".
+const line = {
+  en: [`${place} ·`, unesco.text, '·', 'Wikipedia'],
+  nl: ['Khinalug, Azerbeidzjan ·', 'UNESCO-werelderfgoed', '·', 'Wikipedia'],
+};
 const wikipedia = {
   text: 'Wikipedia',
   href: 'https://en.wikipedia.org/wiki/Khinalug#Addition_to_UNESCO_World_Heritage_List',
@@ -43,12 +48,7 @@ describe.each(locales)('the photo on the home page, in %s', (l) => {
 
   it('has one line under it with the place and the two links, and nothing else', async () => {
     const figure = figureOf(await render(l))!;
-    expect(textOf(figure.replace(/<img[^>]*>/, ''))).toEqual([
-      `${place} ·`,
-      unesco.text,
-      '·',
-      wikipedia.text,
-    ]);
+    expect(textOf(figure.replace(/<img[^>]*>/, ''))).toEqual(line[l]);
     expect(figure).toContain(`<a href="${unesco.href}" target="_blank" rel="noopener"`);
     expect(figure).toContain(`<a href="${wikipedia.href}" target="_blank" rel="noopener"`);
     expect((figure.match(/<a /g) ?? []).length).toBe(2);
@@ -74,7 +74,7 @@ describe('the photo file and its words', () => {
     expect(bytes.includes(Buffer.from('http://ns.adobe.com/xap'))).toBe(false);
   });
 
-  it('holds only the four approved texts, and Dutch shows the English copy', () => {
+  it('holds only the four approved texts, and Dutch has its own', () => {
     const t = getDictionary('en').home;
     expect([t.photoAlt, t.photoPlace, t.photoUnesco, t.photoWikipedia]).toEqual([
       alt,
@@ -82,7 +82,13 @@ describe('the photo file and its words', () => {
       unesco.text,
       wikipedia.text,
     ]);
-    expect(getDictionary('nl').home.photoPlace).toBe(t.photoPlace);
+    const nl = getDictionary('nl').home;
+    expect([nl.photoAlt, nl.photoPlace, nl.photoUnesco, nl.photoWikipedia]).toEqual([
+      'Farid Gurbanov',
+      'Khinalug, Azerbeidzjan',
+      'UNESCO-werelderfgoed',
+      'Wikipedia',
+    ]);
   });
 });
 

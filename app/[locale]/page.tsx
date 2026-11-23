@@ -13,7 +13,7 @@ import { featuredReferences, loadReferences } from '@/lib/references';
 import { locales, type Locale } from '@/lib/i18n';
 import { site } from '@/lib/site';
 import { LocaleNotice } from '@/components/locale-notice';
-import { fallbackCanonical } from '@/lib/canonical';
+import { pageAlternates } from '@/lib/canonical';
 import { trackRecordCards, whatIDoHrefs } from '@/lib/home';
 
 // Home page (FS-0002; maestro story art-9947n0hg99, following the decision art-896t5kxfka): the hero
@@ -36,7 +36,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).home;
-  return { title: 'Farid Gurbanov', description: t.heroIntro[0], ...fallbackCanonical(locale, '') };
+  return { title: 'Farid Gurbanov', description: t.heroIntro[0], ...pageAlternates(locale, '') };
 }
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -63,7 +63,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           }`}
         >
           <div className="max-w-3xl">
-            <LocaleNotice locale={locale} />
+            <LocaleNotice locale={locale} path="" />
             <p className="text-sm font-medium text-muted-foreground">{t.heroEyebrow}</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">{t.heroTitle}</h1>
             <div className="mt-6 space-y-4 text-lg">

@@ -3,9 +3,9 @@ import { PageIntro } from '@/components/page-intro';
 import { Markdown } from '@/components/markdown';
 import { getDictionary } from '@/lib/dictionaries';
 import { site } from '@/lib/site';
-import { locales, type Locale } from '@/lib/i18n';
+import { copyLocale, locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
-import { fallbackCanonical } from '@/lib/canonical';
+import { pageAlternates } from '@/lib/canonical';
 
 // Privacy/GDPR (FS-0007/US-0015). Minimal and honest, reflecting the actual data flow: a static
 // site with mailto-only contact collects nothing, sets no non-essential cookies, runs no
@@ -22,20 +22,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).privacy;
-  return { title: `${t.title} — ${site.name}`, ...fallbackCanonical(locale, '/privacy') };
+  return { title: `${t.title} — ${site.name}`, ...pageAlternates(locale, '/privacy') };
 }
 
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
-  const t = getDictionary(raw as Locale).privacy;
+  const locale = raw as Locale;
+  const t = getDictionary(locale).privacy;
 
+  // The page has no Dutch (pathsWithoutDutch, lib/i18n.ts): under /nl its text is the English page,
+  // marked lang="en", under the Dutch notice, which marks itself lang="nl".
   return (
     <div className="container py-16">
-      <LocaleNotice locale={raw as Locale} />
-      <PageIntro title={t.title} />
-      <p className="mt-2 text-sm text-muted-foreground">{t.lastUpdated}</p>
-      <div className="mt-8">
-        <Markdown locale={raw as Locale}>{t.body}</Markdown>
+      <LocaleNotice locale={locale} path="/privacy" />
+      <div lang={copyLocale(locale, '/privacy')}>
+        <PageIntro title={t.title} />
+        <p className="mt-2 text-sm text-muted-foreground">{t.lastUpdated}</p>
+        <div className="mt-8">
+          <Markdown locale={locale}>{t.body}</Markdown>
+        </div>
       </div>
     </div>
   );

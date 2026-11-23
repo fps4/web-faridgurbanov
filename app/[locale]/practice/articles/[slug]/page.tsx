@@ -11,8 +11,8 @@ import { formatDate } from '@/lib/dates';
 import { ARTICLES_SECTION, getArticle } from '@/lib/practice';
 import { CONTACT_HREF, hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
-import { isLocale, type Locale } from '@/lib/i18n';
-import { fallbackCanonical } from '@/lib/canonical';
+import { defaultLocale, isLocale, type Locale } from '@/lib/i18n';
+import { pageAlternates } from '@/lib/canonical';
 
 // One Practice article (art-gdp0zjj9fd, ADR-0010 §11), in the order of the approved design: the back
 // link, the title, the date it was written and its reading time, the body unchanged, a side column
@@ -34,10 +34,11 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const article = await getArticle(slug, locale);
   if (!article) return {};
+  const dutch = await getArticle(slug, 'nl');
   return {
     title: `${article.title} — ${site.name}`,
     description: article.summary,
-    ...fallbackCanonical(locale, `/practice/articles/${slug}`),
+    ...pageAlternates(locale, `/practice/articles/${slug}`, dutch?.isFallback ?? true),
   };
 }
 
@@ -51,13 +52,15 @@ export default async function ArticlePage({
   const locale = raw as Locale;
   const article = await getArticle(slug, locale);
   if (!article) notFound();
-  const t = getDictionary(locale);
+  // A page that fell back to the English file is English throughout, its labels and date too.
+  const shown = article.isFallback ? defaultLocale : locale;
+  const t = getDictionary(shown);
   const p = t.practice;
 
   return (
-    <>
+    <div lang={article.isFallback ? defaultLocale : undefined}>
       <div className="container max-w-5xl pt-16">
-        {article.isFallback ? <FallbackNotice message={t.fallback.notice} /> : null}
+        {article.isFallback ? <FallbackNotice message={getDictionary(locale).fallback.notice} /> : null}
         <Link
           href={hrefFor(locale, '/practice')}
           className="mb-4 inline-block py-2 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
@@ -66,7 +69,7 @@ export default async function ArticlePage({
         </Link>
         <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">{article.title}</h1>
         <p className="mt-4 text-sm text-muted-foreground">
-          <time dateTime={article.date}>{formatDate(article.date, locale)}</time> · {article.read}
+          <time dateTime={article.date}>{formatDate(article.date, shown)}</time> · {article.read}
         </p>
       </div>
 
@@ -74,7 +77,7 @@ export default async function ArticlePage({
         <div className="min-w-0 max-w-2xl flex-[999_1_32rem] text-lg">
           <Markdown locale={locale}>{article.body}</Markdown>
         </div>
-        <aside aria-label="About this article" className="flex min-w-0 flex-[1_1_16rem] flex-col gap-8">
+        <aside aria-label={t.shell.aria.aboutArticle} className="flex min-w-0 flex-[1_1_16rem] flex-col gap-8">
           <div className="flex flex-col border-b border-border text-sm">
             <div className="flex flex-col gap-0.5 border-t border-border py-3">
               <PracticeFrom label={p.comesFrom} items={article.from} locale={locale} />
@@ -100,6 +103,6 @@ export default async function ArticlePage({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

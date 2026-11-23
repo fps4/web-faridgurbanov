@@ -4,7 +4,7 @@ import { formatMonth } from '@/lib/dates';
 import { getDictionary } from '@/lib/dictionaries';
 import { languageName, type Reference } from '@/lib/references';
 import { site } from '@/lib/site';
-import { copyLocale, type Locale } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
 
 // One reference (FS-0009): the person's words, then who they are. Two placements share it —
 // `home` (a card on the references band: the quote, the name linked to the person's profile,
@@ -53,12 +53,11 @@ function Avatar({ reference, size }: { reference: Reference; size: number }) {
 /** The "In English." / "Translated from German, with their approval." note, or null when the quote is in the page's language. */
 export function languageNote(reference: Reference, locale: Locale): string | null {
   const t = getDictionary(locale).references;
-  const shown = copyLocale(locale); // the language of the page text, which is English under /nl for now
   if (reference.translatedFrom) {
-    return t.translatedFrom.replace('{language}', languageName(reference.translatedFrom, shown));
+    return t.translatedFrom.replace('{language}', languageName(reference.translatedFrom, locale));
   }
-  if (reference.lang !== shown) {
-    return t.inLanguage.replace('{language}', languageName(reference.lang, shown));
+  if (reference.lang !== locale) {
+    return t.inLanguage.replace('{language}', languageName(reference.lang, locale));
   }
   return null;
 }
@@ -104,11 +103,12 @@ export function ReferenceQuote({
   variant: ReferenceVariant;
 }) {
   const t = getDictionary(locale).references;
-  const roleLine = `${reference.role[copyLocale(locale)]} · ${reference.context}`;
+  const roleLine = `${reference.role[locale]} · ${reference.context[locale]}`;
+  // The quote is in the language it was written in, whatever the page's: `lang` says so (AC-3 of art-j9e7z77xy0).
   // Blank lines in the file are paragraph breaks; the quote marks wrap the whole quote, once.
   const paragraphs = reference.quote.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
   const quote = (
-    <blockquote className="m-0 flex flex-col gap-3 text-lg leading-[1.6]">
+    <blockquote lang={reference.lang} className="m-0 flex flex-col gap-3 text-lg leading-[1.6]">
       {paragraphs.map((p, i) => (
         <p key={i} className="m-0">
           {i === 0 ? '“' : ''}

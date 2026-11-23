@@ -10,7 +10,7 @@ import { CONTACT_HREF, hrefFor } from '@/lib/nav';
 import { loadReferences, referencesFor } from '@/lib/references';
 import { site } from '@/lib/site';
 import { isLocale, type Locale } from '@/lib/i18n';
-import { fallbackCanonical } from '@/lib/canonical';
+import { pageAlternates } from '@/lib/canonical';
 
 // Case-study detail (FS-0004). An entry whose frontmatter has an `intro` is on the case-study page
 // shape (components/case-study.tsx, art-13yb9kshaw); the others are still on the earlier shape below
@@ -38,10 +38,11 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const entry = await getEntry('work', slug, locale);
   if (!entry) return {};
+  const dutch = await getEntry('work', slug, 'nl');
   return {
     title: `${title(entry.data)} — ${site.name}`,
     description: summary(entry.data),
-    ...fallbackCanonical(locale, `/work/${slug}`),
+    ...pageAlternates(locale, `/work/${slug}`, dutch?.isFallback ?? true),
   };
 }
 

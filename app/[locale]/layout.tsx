@@ -3,7 +3,7 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { HtmlLang } from '@/components/html-lang';
 import { getDictionary } from '@/lib/dictionaries';
-import { copyLocale, isLocale, locales, type Locale } from '@/lib/i18n';
+import { isLocale, locales, type Locale } from '@/lib/i18n';
 
 // Bilingual shell wrapping every locale route (FS-0001/US-0002). Locales are enumerated at build
 // time so /en and /nl pre-render as static HTML with no server (ADR-0001/0002); any other segment
@@ -25,9 +25,10 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale as Locale).shell;
 
-  // The text of the page is in copyLocale's language (English under /nl until the Dutch copy is
-  // approved), so it is marked with it; the fallback notice marks itself lang="nl".
-  const lang = copyLocale(locale as Locale);
+  // The shell (header, footer, skip link) is in the language of the address. A page without Dutch
+  // (the privacy page) marks its own text lang="en" and its notice lang="nl"; <html lang> follows
+  // the page (components/html-lang.tsx).
+  const lang = locale as Locale;
 
   return (
     <>

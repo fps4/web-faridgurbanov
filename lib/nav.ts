@@ -17,7 +17,7 @@ export interface NavItem {
 /** Primary header navigation. */
 export const primaryNav: NavItem[] = [
   { href: '/work', label: { en: 'Work', nl: 'Werk' } },
-  { href: '/practice', label: { en: 'Practice', nl: 'Werkwijze' } },
+  { href: '/practice', label: { en: 'Practice', nl: 'Praktijk' } },
   { href: CONTACT_HREF, label: { en: 'Contact', nl: 'Contact' } },
 ];
 

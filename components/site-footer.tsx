@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionaries';
 import { CONTACT_HREF, headerNav, hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
-import { copyLocale, type Locale } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
 
 // Shared footer (FS-0001/US-0002): the one statement on how AI is used (art-4fzvp6bqm0), the site
 // nav, the connect links (LinkedIn/GitHub + contact), and the site-wide privacy link required by
@@ -22,7 +22,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <p className="max-w-md text-sm text-muted-foreground">{t.footerAiStatement}</p>
         </div>
 
-        <nav aria-label="Footer" className="text-sm">
+        <nav aria-label={t.aria.footer} className="text-sm">
           <ul className="space-y-2">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -30,7 +30,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                   href={hrefFor(locale, item.href)}
                   className="text-muted-foreground hover:text-foreground"
                 >
-                  {item.label[copyLocale(locale)]}
+                  {item.label[locale]}
                 </Link>
               </li>
             ))}
@@ -51,7 +51,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             </li>
             <li>
               <Link href={hrefFor(locale, CONTACT_HREF)} className="text-muted-foreground hover:text-foreground">
-                {navItems.find((n) => n.href === CONTACT_HREF)?.label[copyLocale(locale)]}
+                {navItems.find((n) => n.href === CONTACT_HREF)?.label[locale]}
               </Link>
             </li>
           </ul>

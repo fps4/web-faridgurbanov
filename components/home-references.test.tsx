@@ -17,7 +17,7 @@ import { site } from '@/lib/site';
 // below are the approved ones: a text changed in the page or in a reference file fails here until
 // the copy changes first.
 
-const heading = 'What people I worked with say';
+const heading = { en: 'What people I worked with say', nl: 'Wat mensen zeggen met wie ik heb gewerkt' };
 const cards = [
   {
     name: 'Muktar Bashir',
@@ -26,7 +26,10 @@ const cards = [
   "“I had the pleasure of working with Farid Gurbanov […] on the design and delivery of a large-scale Big Data platform. Farid was instrumental in shaping the platform architecture, producing high-quality technical designs, and ensuring complex data and security monitoring requirements were translated into robust, scalable solutions.",
   "Farid combines strong technical depth with a pragmatic delivery mindset. He has an exceptional ability to navigate complex architectural challenges, collaborate effectively across teams, and maintain a relentless focus on quality and business outcomes. [A] colleague who consistently leads by example. I would highly recommend him to any organisation looking for a technology leader and architect.”"
 ],
-    line: "AI & Data Lead, Accenture · worked together on a data platform for a UK telecom operator",
+    line: {
+      en: 'AI & Data Lead, Accenture · worked together on a data platform for a UK telecom operator',
+      nl: 'AI & Data Lead, Accenture · we werkten samen aan een dataplatform voor een Britse telecomoperator',
+    },
   },
   {
     name: 'Anup Janardhanan',
@@ -34,10 +37,14 @@ const cards = [
     quote: [
   "“[…] From a technical perspective, he has a very strong understanding of cloud technologies, both AWS and Azure. What stands out to me is not just his technical knowledge, but the depth of his architectural thinking. He is someone who takes the time to understand the bigger picture and think through solutions carefully. Can single-handedly design, develop, test and deploy a product. His recent enthusiasm for an AI-driven world is evident in the effective and thoughtful ways he incorporates AI into his work. […]”"
 ],
-    line: "Enterprise Integration Specialist · we work together in the integration platform team",
+    line: {
+      en: 'Enterprise Integration Specialist · we work together in the integration platform team',
+      nl: 'Enterprise Integration Specialist · we werken samen in het integratieplatformteam',
+    },
   },
 ];
-const readIt = 'Read it on LinkedIn';
+// The quotes stay in the language they were written in under /nl; only the line under each and the label are Dutch.
+const readIt = { en: 'Read it on LinkedIn', nl: 'Lees het op LinkedIn' };
 
 const home = async (locale: string) => renderToStaticMarkup(await HomePage({ params: Promise.resolve({ locale }) }));
 const decode = (s: string) => s.replace(/&amp;/g, '&');
@@ -65,7 +72,7 @@ describe.each(locales)('the references band of the home page, in %s', (l) => {
   it('has the approved heading, no line under it, and no button', async () => {
     const b = band(await home(l));
     const text = textOf(b);
-    expect(text[0]).toBe(heading);
+    expect(text[0]).toBe(heading[l]);
     expect(b).toContain('<h2');
     expect(b).not.toContain('<button');
     // After the heading come the two cards and nothing else.
@@ -80,7 +87,7 @@ describe.each(locales)('the references band of the home page, in %s', (l) => {
     for (const card of cards) {
       const fig = figs.find((f) => f.includes(card.name));
       expect(fig, card.name).toBeDefined();
-      expect(textOf(fig!)).toEqual([...card.quote, card.name, card.line, readIt]);
+      expect(textOf(fig!)).toEqual([...card.quote, card.name, card.line[l], readIt[l]]);
       expect(fig).toContain(`<a href="${card.profile}" rel="noopener" target="_blank"`);
       expect(fig).toContain(`<a href="${site.linkedinRecommendations}" rel="noopener" target="_blank"`);
     }
@@ -149,7 +156,7 @@ describe('the privacy page', () => {
     for (const gone of ['references page', 'photo', 'contact page', 'message box']) expect(p.body).not.toContain(gone);
   });
 
-  it('shows the same English text under /nl until the Dutch is approved', () => {
+  it('has no Dutch (the approved Dutch copy has no text for it), so /nl shows the same English text', () => {
     expect(getDictionary('nl').privacy).toEqual(p);
   });
 });

@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Markdown } from '@/components/markdown';
 import { FallbackNotice } from '@/components/fallback-notice';
 import { title as fmTitle, type ContentEntry } from '@/lib/content';
-import type { Locale } from '@/lib/i18n';
+import { defaultLocale, type Locale } from '@/lib/i18n';
 import { splitBeforeLastSection } from '@/lib/sections';
 
 // Shared detail-page renderer for the markdown-driven sections (work, practice). Shows
@@ -38,7 +38,7 @@ export function ContentArticle({
 }) {
   const split = beforeLastSection ? splitBeforeLastSection(entry.body) : null;
   return (
-    <article className="container max-w-3xl py-16">
+    <article lang={entry.isFallback ? defaultLocale : undefined} className="container max-w-3xl py-16">
       {entry.isFallback ? <FallbackNotice message={fallbackMessage} /> : null}
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{fmTitle(entry.data)}</h1>
       {lede ? <p className="mt-4 text-lg text-muted-foreground">{lede}</p> : null}

@@ -12,8 +12,16 @@ import { site } from '@/lib/site';
 // What a visitor without JavaScript sees for email: the existing `user [at] domain` fallback of
 // ObfuscatedEmail, in a <noscript>. The address itself is never in the markup in clear.
 const emailFallback = `${site.email.user} [at] ${site.email.domain}`;
-const lede =
-  'Write to me about an integration platform, an API platform, or a move off legacy middleware. A short message about what you are trying to get done is enough. I answer myself.';
+const lede = {
+  en: 'Write to me about an integration platform, an API platform, or a move off legacy middleware. A short message about what you are trying to get done is enough. I answer myself.',
+  nl: 'Schrijf me over een integratieplatform, een API-platform of een overstap van legacy middleware. Een kort bericht over wat je wilt bereiken is genoeg. Ik antwoord zelf.',
+};
+// The Dutch is from the approved Dutch copy, "Contact" and "Labels en kleine teksten"; the rows
+// "Beschikbaar" and "Cv" are not on the site.
+const rows = {
+  en: ['Send an email', 'How I contract', 'Freelance, through my own company', 'Based', 'Eindhoven, Netherlands', 'Languages', 'English, Dutch (B1)'],
+  nl: ['Stuur een e-mail', 'Contractvorm', 'Freelance, via mijn eigen bedrijf', 'Standplaats', 'Eindhoven, Nederland', 'Talen', 'Engels, Nederlands (B1)'],
+};
 
 async function contactSection(locale: string): Promise<string> {
   const html = renderToStaticMarkup(await HomePage({ params: Promise.resolve({ locale }) }));
@@ -32,17 +40,12 @@ describe.each(locales)('the Contact part of the home page, in %s', (l) => {
   it('shows the approved text, rows and buttons, and no other text (no Available, Résumé or other row)', async () => {
     expect(textOf(await contactSection(l))).toEqual([
       'Contact',
-      lede,
-      'Send an email',
+      lede[l],
+      rows[l][0],
       emailFallback,
       'WhatsApp',
       'LinkedIn',
-      'How I contract',
-      'Freelance, through my own company',
-      'Based',
-      'Eindhoven, Netherlands',
-      'Languages',
-      'English, Dutch (B1)',
+      ...rows[l].slice(1),
     ]);
   });
 

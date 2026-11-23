@@ -1,28 +1,82 @@
-import { existsSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { getDictionary } from '@/lib/dictionaries';
-import { copyLocale, localizeHref } from '@/lib/i18n';
+import { copyLocale, hasDutch, localelessPath, localizeHref } from '@/lib/i18n';
 
-// Maestro story art-bf5tq4788n: until the Dutch copy is approved, every Dutch address shows the English page under the
-// fallback notice. The Dutch story removes or rewrites these tests when it brings the copy back.
+// Maestro story art-j9e7z77xy0: Dutch is on for every page that has Dutch, and the privacy page stays
+// English under the notice. The Dutch texts are the approved ones; every key of the English
+// dictionary has a Dutch value, and the texts that no page shows today are the only English ones.
+describe('the Dutch dictionary', () => {
+  const en = getDictionary('en');
+  const nl = getDictionary('nl');
 
-describe('Dutch while its copy is unapproved', () => {
-  it('has no Dutch dictionary text but the fallback notice', () => {
-    const en = getDictionary('en');
-    const nl = getDictionary('nl');
-    expect({ ...nl, fallback: en.fallback }).toEqual(en);
+  const keys = (o: unknown, prefix = ''): string[] =>
+    typeof o === 'object' && o !== null
+      ? Object.entries(o).flatMap(([k, v]) => keys(v, `${prefix}${prefix ? '.' : ''}${k}`))
+      : [prefix];
+
+  it('has the same keys as the English one', () => {
+    expect(keys(nl).sort()).toEqual(keys(en).sort());
+  });
+
+  it('carries the approved Dutch for the chrome, the labels and the screen-reader labels', () => {
+    expect(nl.shell.aria).toEqual({
+      primary: 'Hoofdmenu',
+      footer: 'Voettekst',
+      language: 'Taal',
+      articles: 'Artikelen',
+      aboutArticle: 'Over dit artikel',
+    });
+    expect(nl.shell.skipToContent).toBe('Naar de inhoud');
+    expect(nl.shell.themeToggle).toBe('Thema wisselen');
+    expect(nl.home.primaryContact).toBe('Neem contact op');
+    expect(nl.home.primaryWork).toBe('Bekijk het werk');
+    expect(nl.references.readOnLinkedIn).toBe('Lees het op LinkedIn');
+    expect(nl.references.inLanguage).toBe('In het {language}.');
+    expect(nl.references.translatedFrom).toBe('Vertaald uit het {language}, met hun goedkeuring.');
+    expect(nl.practice.back).toBe('← Praktijk');
+    expect(nl.practice.comesFrom).toBe('Waar het vandaan komt');
+    expect(nl.practice.barAll).toBe('Alles in Praktijk');
+  });
+
+  it('names English and Dutch only, with Dutch at the level the copy gives', () => {
+    expect(nl.contact.languagesValue).toBe('Engels, Nederlands (B1)');
+  });
+
+  it('leaves out what the copy lists as not on the site', () => {
+    const text = JSON.stringify(nl);
+    for (const absent of ['INTROVIDEO', 'Download cv', 'Beschikbaar', 'door hem gekozen', 'De citaten blijven', 'vertaald uit het Engels']) {
+      expect(text).not.toContain(absent);
+    }
+  });
+
+  it('keeps the privacy page English, under the Dutch notice', () => {
+    expect(nl.privacy).toEqual(en.privacy);
     expect(nl.fallback.notice).not.toBe(en.fallback.notice);
   });
+});
 
-  it('holds no files under content/nl', () => {
-    const dir = join(process.cwd(), 'content', 'nl');
-    expect(existsSync(dir) ? readdirSync(dir) : []).toEqual([]);
+describe('which pages have Dutch', () => {
+  it('is every page but the privacy page', () => {
+    for (const path of ['', '/work', '/work/cloud-gateway', '/practice', '/practice/articles/simple-first']) {
+      expect(hasDutch(path), path).toBe(true);
+      expect(copyLocale('nl', path), path).toBe('nl');
+    }
+    expect(hasDutch('/privacy')).toBe(false);
+    expect(copyLocale('nl', '/privacy')).toBe('en');
   });
 
-  it('shows English copy under /nl and leaves English alone', () => {
-    expect(copyLocale('nl')).toBe('en');
-    expect(copyLocale('en')).toBe('en');
+  it('shows English under /nl for a content page whose Dutch file is missing, and leaves English alone', () => {
+    expect(copyLocale('nl', '/work/x', true)).toBe('en');
+    expect(copyLocale('en', '/work/x')).toBe('en');
+    expect(copyLocale('en', '/privacy')).toBe('en');
+  });
+
+  it('reads the locale-less path off a pathname', () => {
+    expect(localelessPath('/nl')).toBe('');
+    expect(localelessPath('/nl/')).toBe('');
+    expect(localelessPath('/nl/privacy')).toBe('/privacy');
+    expect(localelessPath('/en/work/cloud-gateway/')).toBe('/work/cloud-gateway');
+    expect(localelessPath('/nl/work.html')).toBe('/work');
   });
 });
 

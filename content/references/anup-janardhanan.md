@@ -1,7 +1,9 @@
 ---
 name: Anup Janardhanan
 role: Enterprise Integration Specialist
+role_nl: Enterprise Integration Specialist
 context: we work together in the integration platform team
+context_nl: we werken samen in het integratieplatformteam
 linkedin: https://www.linkedin.com/in/anup-janardhanan-97b5b6143/
 date: 2026-09-24
 lang: en

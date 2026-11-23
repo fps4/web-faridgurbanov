@@ -62,8 +62,8 @@ one of the people who were there, speaking.
 6. **Checked by the build.** A malformed reference fails `npm run test`: quote length (one budget,
    30 to 120 words, for every quote), profile-link shape, photo presence, `context` present, and
    that `work`, when given, names a case study or an Earlier work entry.
-7. **Bilingual chrome.** The Dutch addresses show the English band under the fallback notice until
-   the Dutch copy is approved; the quote is never translated.
+7. **Bilingual chrome.** On the Dutch addresses the heading of the band, the link to LinkedIn, and the
+   line under each quote (`role_nl`, `context_nl`) are Dutch; the quote is never translated.
 
 ## Out of scope
 

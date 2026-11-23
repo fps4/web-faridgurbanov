@@ -5,10 +5,10 @@ import { PageIntro } from '@/components/page-intro';
 import { getDictionary } from '@/lib/dictionaries';
 import { listSection, title, type ContentMeta } from '@/lib/content';
 import { hrefFor } from '@/lib/nav';
-import { EARLIER_WORK_ANCHOR, alsoBuilt, earlierWork, site } from '@/lib/site';
+import { EARLIER_WORK_ANCHOR, alsoBuiltFor, earlierWorkFor, site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
-import { fallbackCanonical } from '@/lib/canonical';
+import { pageAlternates } from '@/lib/canonical';
 
 // The Work page (art-vvzsw9ap9e, ADR-0010 §3.3, §5), in the order of the approved design: the
 // introduction, the two case studies as rows, Earlier work as a short list with no case pages, and
@@ -29,7 +29,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).indexes;
-  return { title: `${t.workTitle} — ${site.name}`, description: t.workIntro, ...fallbackCanonical(locale, '/work') };
+  return { title: `${t.workTitle} — ${site.name}`, description: t.workIntro, ...pageAlternates(locale, '/work') };
 }
 
 const str = (e: ContentMeta, key: string) =>
@@ -44,7 +44,7 @@ export default async function WorkIndex({ params }: { params: Promise<{ locale: 
   return (
     <>
       <div className="container py-16">
-        <LocaleNotice locale={locale} />
+        <LocaleNotice locale={locale} path="/work" />
         <PageIntro title={t.workTitle} lede={t.workIntro} />
 
         <ol className="mt-12 flex flex-col border-b border-border">
@@ -91,7 +91,7 @@ export default async function WorkIndex({ params }: { params: Promise<{ locale: 
             <p className="text-sm text-muted-foreground">{t.earlierLine}</p>
           </div>
           <ul className="m-0 flex min-w-0 flex-[999_1_32rem] list-none flex-col border-b border-border p-0">
-            {earlierWork.map((e) => (
+            {earlierWorkFor(locale).map((e) => (
               <li key={e.id} id={e.id} className="scroll-mt-6 border-t border-border py-3.5 text-foreground/90">
                 <strong className="font-semibold text-foreground">{e.lead}</strong>
                 {e.rest}
@@ -110,7 +110,7 @@ export default async function WorkIndex({ params }: { params: Promise<{ locale: 
             <p className="text-sm text-muted-foreground">{t.alsoLine}</p>
           </div>
           <ul className="m-0 flex min-w-0 flex-[999_1_32rem] list-none flex-col border-b border-border p-0">
-            {alsoBuilt.map((r) => (
+            {alsoBuiltFor(locale).map((r) => (
               <li key={r.name} className="flex flex-wrap gap-x-6 gap-y-1 border-t border-border py-3.5">
                 <a
                   href={r.href}

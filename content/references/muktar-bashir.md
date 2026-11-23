@@ -1,7 +1,9 @@
 ---
 name: Muktar Bashir
 role: AI & Data Lead, Accenture
+role_nl: AI & Data Lead, Accenture
 context: worked together on a data platform for a UK telecom operator
+context_nl: we werkten samen aan een dataplatform voor een Britse telecomoperator
 linkedin: https://www.linkedin.com/in/muktar-bashir-82069943/
 work: earlier-security-data-lake
 date: 2026-09-19
