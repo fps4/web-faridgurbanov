@@ -53,7 +53,7 @@ across pages and across languages.
    (ADR-0010 §6; maestro story `art-4fzvp6bqm0`), and stands nowhere else on the site.
 5. **Look** — one centred column whose text is 1080px wide, with 32px at each side (the container
    box is at most 1144px; bands run the full width), running text at 17px (the root size, so every
-   rem-based size scales with it) and a line height of 1.55, Inter for
+   rem-based size scales with it, which is why no text size is written in pixels) and a line height of 1.55, Inter for
    text and Space Grotesk for headings and the name in the header, both served by the site itself
    (maestro story `art-26rhtzey62`).
 6. **Static export** — `output: 'export'`; the production build emits static HTML/CSS/JS with no
@@ -86,9 +86,9 @@ across pages and across languages.
   `@fontsource-variable/inter` and `@fontsource-variable/space-grotesk` packages, SIL Open Font
   License), SHALL send no request to another site for them, and SHALL show text at once in a
   fallback font while they load (`font-display: swap`).
-- THE SYSTEM SHALL show in the header, on a wide screen, the name at 19px semibold in the heading
+- THE SYSTEM SHALL show in the header, on a wide screen, the name at about 19px (`text-lg`) semibold in the heading
   typeface, the links Work, Practice and Contact at 17px medium in the colour of the page text with a
-  target at least 44px high, and the language link at 15px; at 360px wide nothing is cut off and the
+  target at least 44px high, and the language link at about 15px (`text-sm`); at 360px wide nothing is cut off and the
   page does not scroll sideways.
 - THE SYSTEM SHALL serve content under locale-segmented routes for English and Dutch, with a
   single configured default locale.
