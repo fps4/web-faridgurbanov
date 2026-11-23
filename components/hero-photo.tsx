@@ -32,11 +32,21 @@ export function HeroPhoto({ locale }: { locale: Locale }) {
       />
       <figcaption className="mt-3 text-sm text-muted-foreground">
         {t.photoPlace} ·{' '}
-        <a href={HERO_PHOTO.unescoHref} rel="noopener" className="underline underline-offset-4">
+        <a
+          href={HERO_PHOTO.unescoHref}
+          target="_blank"
+          rel="noopener"
+          className="underline underline-offset-4"
+        >
           {t.photoUnesco}
         </a>{' '}
         ·{' '}
-        <a href={HERO_PHOTO.wikipediaHref} rel="noopener" className="underline underline-offset-4">
+        <a
+          href={HERO_PHOTO.wikipediaHref}
+          target="_blank"
+          rel="noopener"
+          className="underline underline-offset-4"
+        >
           {t.photoWikipedia}
         </a>
       </figcaption>

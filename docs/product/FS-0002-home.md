@@ -39,7 +39,7 @@ call. The page says who he is in his own words and sends the reader to Contact o
    the hero: upright 4 to 5 frame, rounded corners, up to 420 px wide, with its size given so the
    page does not move when it loads. It is served from the site itself (`public/media/`), has his
    name as alternative text and no metadata, and has one line under it: the place and two links
-   (UNESCO World Heritage, Wikipedia), followed only when the visitor clicks. Texts are in
+   (UNESCO World Heritage, Wikipedia), each opening in a new tab, and followed only when the visitor clicks. Texts are in
    `lib/dictionaries.ts` (`home.photo*`), the file and the two addresses in `lib/site.ts`
    (`HERO_PHOTO`). WHEN `INTRO_VIDEO` is set, the video takes the place (a section under the hero)
    and neither the photo nor its line is rendered. The player carries no text of its own.

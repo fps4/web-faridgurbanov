@@ -49,8 +49,8 @@ describe.each(locales)('the photo on the home page, in %s', (l) => {
       '·',
       wikipedia.text,
     ]);
-    expect(figure).toContain(`<a href="${unesco.href}" rel="noopener"`);
-    expect(figure).toContain(`<a href="${wikipedia.href}" rel="noopener"`);
+    expect(figure).toContain(`<a href="${unesco.href}" target="_blank" rel="noopener"`);
+    expect(figure).toContain(`<a href="${wikipedia.href}" target="_blank" rel="noopener"`);
     expect((figure.match(/<a /g) ?? []).length).toBe(2);
     expect(figure).not.toMatch(/<(script|iframe|embed)/);
   });
@@ -106,7 +106,9 @@ describe('when an intro video is configured', () => {
     const Page = (await import('@/app/[locale]/page')).default;
     const html = renderToStaticMarkup(await Page({ params: Promise.resolve({ locale: 'en' }) }));
     expect(html).toContain('<video');
-    expect(html).not.toContain('<figure');
+    // The hero is the first section; the references band further down has figures of its own.
+    const hero = html.slice(0, html.indexOf('</section>'));
+    expect(hero).not.toContain('<figure');
     expect(html).not.toContain(HERO_PHOTO.src);
     expect(html).not.toContain(unesco.href);
     expect(html).not.toContain(wikipedia.href);
