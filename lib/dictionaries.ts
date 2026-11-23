@@ -58,21 +58,16 @@ export interface Dictionary {
     body: string;
   };
   references: {
-    title: string;
-    lede: string;
+    /** The heading of the references band on the home page. */
     heading: string;
-    homeLede: string;
-    allCta: string;
-    readCaseStudy: string;
+    readOnLinkedIn: string;
+    /** The heading of the block on a case study. */
+    inTheirWords: string;
     linkedin: string;
     alsoOnLinkedIn: string;
-    workedTogether: string;
     /** `{language}` is replaced with the language name in the reader's locale. */
     inLanguage: string;
     translatedFrom: string;
-    collectedHeading: string;
-    collectedBody: string;
-    collectedLinkedin: string;
   };
   indexes: {
     workTitle: string;
@@ -179,38 +174,33 @@ const en: Dictionary = {
   },
   privacy: {
     title: 'Privacy',
-    lastUpdated: 'Last updated: 17 September 2026',
+    lastUpdated: 'Last updated: 23 November 2026',
     body: `This is a static website. It has no backend, no database, no contact form, and no analytics.
 
-**What this site collects:** nothing. There is no form that submits data to me, and no tracking or advertising scripts run on these pages. The message box on the contact page is not a form; it only builds a WhatsApp link in your own browser, and it never sends anything.
+**What this site collects:** nothing. There is no form that submits data to me, and no tracking or advertising scripts run on these pages.
 
 **Cookies:** this site sets no non-essential cookies. The only client-side state is your light/dark theme preference, stored locally in your own browser; it is never sent anywhere.
 
-**If you use the WhatsApp link:** the site has no chat widget and runs no code from Meta. The WhatsApp button is an ordinary link to WhatsApp's official click-to-chat address. Nothing is sent when you type in the message box. The text is only used to pre-fill the chat, and your own WhatsApp app sends it when you press send. If you do choose that channel, **Meta processes your WhatsApp number and your message as a third party**, under their terms and not mine, and I receive your number so I can reply. If you would rather not involve Meta, use email; that path stays between the two of us.
+**If you use the WhatsApp link:** the site has no chat widget and runs no code from Meta. The WhatsApp button is an ordinary link to WhatsApp's official click-to-chat address. If you do choose that channel, **Meta processes your WhatsApp number and your message as a third party**, under their terms and not mine, and I receive your number so I can reply. If you would rather not involve Meta, use email; that path stays between the two of us.
 
-**When you email me:** if you choose to email the address on the contact page, your message and email address reach my personal mailbox. I use that information only to reply to and follow up on your enquiry. The lawful basis is my legitimate interest in responding to people who contact me. I keep correspondence only as long as needed for the conversation and any resulting work, and I do not sell or share it.
+**When you email me:** if you choose to email me, your message and email address reach my personal mailbox. I use that information only to reply to and follow up on your enquiry. The lawful basis is my legitimate interest in responding to people who contact me. I keep correspondence only as long as needed for the conversation and any resulting work, and I do not sell or share it.
 
 **Hosting:** the site is served as static files from my own server. The hosting layer may process technical request data (such as your IP address) in server logs for security and to keep the site running, which is standard for any website.
 
-**References:** the references page and the case studies quote people I have worked with, with their name, photo, role at the time and a link to their public LinkedIn profile. Each of them agreed to that before it went live, and any of them can have it taken down by emailing me.
+**References:** the home page quotes people I have worked with, with their name, their role and a link to LinkedIn. The same words are recommendations on my LinkedIn profile. Each of them agreed to that before it went live, and any of them can have it taken down by emailing me.
 
-**Your rights:** you can ask me what correspondence I hold about you, to correct it, or to delete it. Email the address on the contact page and I will action it.`,
+**Your rights:** you can ask me what correspondence I hold about you, to correct it, or to delete it. Email me and I will action it.`,
   },
+  // art-2ya5at7k1q: the heading of the references band is verbatim from the approved site copy,
+  // "References on Home"; the line under each quote is the person's `role · context` in their file.
   references: {
-    title: 'References',
-    lede: 'People I worked with, on the work in the case studies. Their words, unedited, and a link to each of them so you can check.',
-    heading: 'In their words',
-    homeLede: 'People I worked with, in their own words. Each links to their LinkedIn profile; the full set is on the references page.',
-    allCta: 'All references',
-    readCaseStudy: 'Read the case study',
+    heading: 'What people I worked with say',
+    readOnLinkedIn: 'Read it on LinkedIn',
+    inTheirWords: 'In their words',
     linkedin: 'LinkedIn',
     alsoOnLinkedIn: 'Also on my LinkedIn',
-    workedTogether: 'worked together',
     inLanguage: 'In {language}.',
     translatedFrom: 'Translated from {language}, with their approval.',
-    collectedHeading: 'How these were collected',
-    collectedBody: 'Each person read this page before it went live and agreed to their name, photo, role and words being on it, with the link to their profile. Quotes are verbatim; where I shortened one, the cut is marked. Anyone here can have theirs taken down with one email.',
-    collectedLinkedin: 'Some of them are also recommendations on my LinkedIn profile, where you can read them at the source.',
   },
   indexes: {
     // art-vvzsw9ap9e: verbatim from the approved site copy, section "Work" and "Work · list".

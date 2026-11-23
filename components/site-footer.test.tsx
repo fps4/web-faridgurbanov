@@ -19,13 +19,18 @@ describe('the footer', () => {
       .split('\n')
       .map((t) => t.trim())
       .filter(Boolean);
-    const links = ['Work', 'Practice', 'Contact', 'References', 'LinkedIn', 'GitHub', 'Privacy'];
+    const links = ['Work', 'Practice', 'Contact', 'LinkedIn', 'GitHub', 'Privacy'];
     const approved = [...links, privacyLine, '·'];
     expect(text.filter((t) => t !== statement).every((t) => approved.includes(t))).toBe(true);
     expect(text).toContain(statement);
     for (const gone of ['Farid Gurbanov', 'Site', 'Connect', 'All rights reserved.', '©']) {
       expect(html).not.toContain(gone);
     }
+  });
+
+  it.each(locales)('names no References page, in %s', async (l) => {
+    const html = renderToStaticMarkup(await SiteFooter({ locale: l }));
+    expect(html).not.toMatch(/references/i);
   });
 
   it.each(locales)('reads the approved privacy line and leads it to the privacy page, in %s', async (l) => {

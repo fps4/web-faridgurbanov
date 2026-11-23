@@ -10,7 +10,6 @@ import {
   validateReference,
   validateReferenceSet,
   wordCount,
-  workPath,
 } from '@/lib/references';
 
 // A reference is another person's words and face on a public page, so a malformed one must fail
@@ -23,7 +22,7 @@ const valid = `---
 name: First Last
 role: Product owner, API platform
 role_nl: Product owner, API-platform
-years: 2021–2023
+context: worked together on an API platform for a retailer
 linkedin: https://www.linkedin.com/in/handle/
 work: cloud-gateway
 date: 2026-03-01
@@ -64,14 +63,38 @@ describe('validateReference', () => {
     return { ...ref, featured };
   };
 
-  it('holds a quote to 30–120 words, and a featured one to the tile budget', () => {
-    expect(validateReference(withQuote(29))).toHaveLength(1);
-    expect(validateReference(withQuote(30))).toEqual([]);
-    expect(validateReference(withQuote(120))).toEqual([]);
-    expect(validateReference(withQuote(121))).toHaveLength(1);
-    expect(validateReference(withQuote(34, true))).toHaveLength(1);
-    expect(validateReference(withQuote(75, true))).toEqual([]);
-    expect(validateReference(withQuote(76, true))).toHaveLength(1);
+  it('holds every quote to one budget, 30–120 words, featured or not', () => {
+    for (const featured of [false, true]) {
+      expect(validateReference(withQuote(29, featured))).toHaveLength(1);
+      expect(validateReference(withQuote(30, featured))).toEqual([]);
+      expect(validateReference(withQuote(93, featured))).toEqual([]);
+      expect(validateReference(withQuote(120, featured))).toEqual([]);
+      expect(validateReference(withQuote(121, featured))).toHaveLength(1);
+    }
+  });
+
+  it('requires how they worked together, and no longer asks for years', () => {
+    const ref = parseReference('x', valid)!;
+    expect(ref.context).toBe('worked together on an API platform for a retailer');
+    expect(validateReference({ ...ref, context: '' })).toEqual(['context is required']);
+    expect(ref).not.toHaveProperty('years');
+    expect(validateReference(parseReference('x', valid.replace('context:', 'years: 2021–2023\ncontext:'))!)).toEqual([]);
+  });
+
+  it('takes an optional order that is a positive integer', () => {
+    const withOrder = (v: string) => parseReference('x', valid.replace('lang: en\n', `lang: en\norder: ${v}\n`))!;
+    expect(parseReference('x', valid)!.order).toBeNull();
+    expect(withOrder('1').order).toBe(1);
+    expect(validateReference(withOrder('2'))).toEqual([]);
+    for (const bad of ['0', '-1', '1.5', 'first']) {
+      expect(validateReference(withOrder(bad)), bad).toEqual(['order must be a positive integer']);
+    }
+  });
+
+  it('leaves the work optional', () => {
+    const ref = parseReference('x', valid.replace('work: cloud-gateway\n', ''))!;
+    expect(ref.work).toBeNull();
+    expect(validateReference(ref)).toEqual([]);
   });
 
   it('requires a public LinkedIn profile URL', () => {
@@ -95,7 +118,8 @@ describe('validateReference', () => {
     expect(problems.join('\n')).toMatch(/name/);
     expect(problems.join('\n')).toMatch(/role/);
     expect(problems.join('\n')).toMatch(/linkedin/);
-    expect(problems.join('\n')).toMatch(/work/);
+    expect(problems.join('\n')).toMatch(/context/);
+    expect(problems.join('\n')).not.toMatch(/work|years/);
     expect(problems.join('\n')).toMatch(/date/);
     expect(problems.join('\n')).toMatch(/reviewed/);
     expect(problems.join('\n')).toMatch(/quote/);
@@ -109,6 +133,17 @@ describe('the set', () => {
     expect(validateReferenceSet([featured, { ...featured, slug: 'b' }])).toEqual([]);
     expect(validateReferenceSet([featured, { ...featured, slug: 'b' }, { ...featured, slug: 'c' }])).toHaveLength(1);
     expect(validateReferenceSet([ref, ref])).toHaveLength(1);
+  });
+
+  it('puts a reference with an order first, lower first, then the rest newest first', () => {
+    const ref = parseReference('a', valid)!;
+    const sorted = sortReferences([
+      { ...ref, slug: 'new', name: 'New', date: '2026-09-24', order: null },
+      { ...ref, slug: 'two', name: 'Two', date: '2026-09-24', order: 2 },
+      { ...ref, slug: 'one', name: 'One', date: '2026-01-01', order: 1 },
+      { ...ref, slug: 'old', name: 'Old', date: '2026-01-01', order: null },
+    ]);
+    expect(sorted.map((r) => r.slug)).toEqual(['one', 'two', 'new', 'old']);
   });
 
   it('sorts newest first, then by name', () => {
@@ -140,11 +175,6 @@ describe('a reference about an Earlier work entry', () => {
     expect(earlierWorkOf('cloudera-kafka')).toBeUndefined();
   });
 
-  it('leads to its entry on /work, and a case study to its page', () => {
-    expect(workPath('earlier-security-data-lake')).toBe('/work#earlier-security-data-lake');
-    expect(workPath('cloud-gateway')).toBe('/work/cloud-gateway');
-  });
-
   it('passes the checks like one about a case study', () => {
     const ref = parseReference('first-last', valid.replace('work: cloud-gateway', 'work: earlier-security-data-lake'))!;
     expect(ref.work).toBe('earlier-security-data-lake');
@@ -166,10 +196,13 @@ describe('content/references/', () => {
 
   it.each(refs.map((r) => [r.slug, r] as const))('%s is fit to publish', (_slug, ref) => {
     expect(validateReference(ref)).toEqual([]);
-    // A case study (content/en/work/<slug>.md) or an Earlier work entry on /work (art-vvzsw9ap9e).
-    expect(
-      earlierWorkOf(ref.work) !== undefined || existsSync(join(process.cwd(), 'content', 'en', 'work', `${ref.work}.md`)),
-    ).toBe(true);
+    // The work, when one is named: a case study (content/en/work/<slug>.md) or an Earlier work entry
+    // on /work (art-vvzsw9ap9e).
+    if (ref.work) {
+      expect(
+        earlierWorkOf(ref.work) !== undefined || existsSync(join(process.cwd(), 'content', 'en', 'work', `${ref.work}.md`)),
+      ).toBe(true);
+    }
     if (ref.photo) expect(existsSync(join(process.cwd(), 'public', ref.photo))).toBe(true);
   });
 
