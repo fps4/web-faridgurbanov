@@ -82,6 +82,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* The design's running-text line height; leading-* utilities and prose set their own and win. */
+    line-height: 1.55;
   }
   /* Headings, in pages and in prose (case studies, articles), take the heading typeface. */
   h1,
