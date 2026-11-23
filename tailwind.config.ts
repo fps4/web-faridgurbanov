@@ -1,13 +1,24 @@
 import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 // shadcn/ui token mapping → CSS variables defined in app/globals.css.
 const config: Config = {
   darkMode: ['class'],
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
-    container: { center: true, padding: '2rem', screens: { '2xl': '1400px' } },
+    // One centred column, at most 1080px wide with 32px at each side (the design's column; FS-0001).
+    // Bands wrap a `container`, so their backgrounds still run the full width.
+    container: { center: true, padding: '32px', screens: { '2xl': '1080px' } },
     extend: {
+      // Inter for text and Space Grotesk for headings, self-hosted (@font-face in app/globals.css).
+      // The fallbacks show at once while the files load (font-display: swap).
+      fontFamily: {
+        sans: ['"Inter Variable"', 'Inter', ...defaultTheme.fontFamily.sans],
+        heading: ['"Space Grotesk Variable"', '"Space Grotesk"', '"Inter Variable"', ...defaultTheme.fontFamily.sans],
+      },
+      // Pages that narrow a container with `max-w-5xl` keep the same column as the rest.
+      maxWidth: { '5xl': '1080px' },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

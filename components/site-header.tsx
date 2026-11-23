@@ -12,21 +12,21 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const t = getDictionary(locale).shell;
   return (
     <header className="border-b border-border">
-      <div className="container flex flex-wrap items-center gap-x-6 gap-y-3 py-4">
+      <div className="container flex min-h-[68px] flex-wrap items-center gap-x-2 py-1">
         <Link
           href={hrefFor(locale, '')}
-          className="mr-auto text-base font-semibold tracking-tight"
+          className="mr-auto py-3 font-heading text-[19px] font-semibold tracking-tight"
           aria-label={`${site.name} — ${t.nav.home}`}
         >
           {site.name}
         </Link>
 
-        <nav aria-label="Primary" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+        <nav aria-label="Primary" className="flex flex-wrap items-center text-base">
           {headerNav().map((item) => (
             <Link
               key={item.href}
               href={hrefFor(locale, item.href)}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="px-[14px] py-[11px] font-medium text-foreground underline-offset-4 hover:underline"
             >
               {item.label[copyLocale(locale)]}
             </Link>
