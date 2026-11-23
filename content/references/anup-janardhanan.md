@@ -5,6 +5,7 @@ context: we work together in the integration platform team
 linkedin: https://www.linkedin.com/in/anup-janardhanan-97b5b6143/
 date: 2026-09-24
 lang: en
+order: 2
 featured: true
 verified: true
 reviewed: 2026-11-23

@@ -14,6 +14,7 @@ date: 2026-03-01
 lang: en
 # translated_from: de
 # photo: /references/first-last.jpg
+# order: 1   (optional: a positive integer, lower shows first; without it, newest first)
 featured: false
 verified: false
 reviewed: 2026-09-17

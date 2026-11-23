@@ -46,6 +46,7 @@ remove `draft: true`. One person per file. The fields:
 | `lang` | The language the quote is shown in: `en`, `nl`, `de`, … |
 | `translated_from` | Only when the quote shown is a translation they approved; the original's language. |
 | `photo` | `/references/<first-last>.jpg`. Optional, and not shown on Home. |
+| `order` | Optional positive integer, lower shows first; references without one come after those with one, then newest first. |
 | `featured` | `true` puts it on the home page. At most two: the band is two cards side by side. |
 | `verified` | `true` when the same text is a recommendation on the owner's LinkedIn profile. |
 | `reviewed` | `YYYY-MM-DD`, the last time the role, photo and link were checked with the person. |

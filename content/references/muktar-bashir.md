@@ -6,6 +6,7 @@ linkedin: https://www.linkedin.com/in/muktar-bashir-82069943/
 work: earlier-security-data-lake
 date: 2026-09-19
 lang: en
+order: 1
 featured: true
 verified: true
 reviewed: 2026-11-23

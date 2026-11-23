@@ -86,6 +86,12 @@ describe.each(locales)('the references band of the home page, in %s', (l) => {
     }
   });
 
+  it('shows the first quote before the second, as the approved copy orders them', async () => {
+    const figs = figures(band(await home(l)));
+    expect(figs[0]).toContain(cards[0].name);
+    expect(figs[1]).toContain(cards[1].name);
+  });
+
   it('shows no photo, no initials, no date and no years on a card', async () => {
     const b = band(await home(l));
     expect(b).not.toContain('<img');

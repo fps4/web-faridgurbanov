@@ -45,6 +45,8 @@ export interface Reference {
   translatedFrom: string | null;
   /** Path under public/, e.g. '/references/first-last.jpg'; null renders initials instead (case study only). */
   photo: string | null;
+  /** Where it stands among the others: a positive integer, lower first; null sorts after those that have one. */
+  order: number | null;
   /** Featured references are shown on the home page (at most FEATURED_MAX). */
   featured: boolean;
   /** True when the same text is a recommendation on the owner's LinkedIn profile. */
@@ -90,6 +92,7 @@ export function parseReference(slug: string, raw: string): Reference | null {
     lang: str(data, 'lang') || 'en',
     translatedFrom: str(data, 'translated_from') || null,
     photo: str(data, 'photo') || null,
+    order: data.order === undefined ? null : typeof data.order === 'number' ? data.order : NaN,
     featured: data.featured === true,
     verified: data.verified === true,
     reviewed: str(data, 'reviewed'),
@@ -105,6 +108,9 @@ export function validateReference(ref: Reference): string[] {
   if (!ref.context) problems.push('context is required');
   if (!LINKEDIN_PROFILE.test(ref.linkedin)) {
     problems.push('linkedin must be a public profile URL (https://www.linkedin.com/in/<handle>/)');
+  }
+  if (ref.order !== null && !(Number.isInteger(ref.order) && ref.order >= 1)) {
+    problems.push('order must be a positive integer');
   }
   if (!ISO_DATE.test(ref.date)) problems.push('date must be YYYY-MM-DD');
   if (!ISO_DATE.test(ref.reviewed)) problems.push('reviewed must be YYYY-MM-DD');
@@ -134,9 +140,18 @@ export function validateReferenceSet(refs: Reference[]): string[] {
   return problems;
 }
 
-/** Sort newest first, then by name, so the order is stable and needs no `order:` field. */
+/**
+ * Sort by `order` (lower first; a reference without one comes after those with one), then newest
+ * first, then by name, so the order is stable.
+ */
 export function sortReferences(refs: Reference[]): Reference[] {
-  return [...refs].sort((a, b) => b.date.localeCompare(a.date) || a.name.localeCompare(b.name));
+  const rank = (r: Reference) => r.order ?? Infinity;
+  return [...refs].sort(
+    (a, b) =>
+      (rank(a) === rank(b) ? 0 : rank(a) < rank(b) ? -1 : 1) ||
+      b.date.localeCompare(a.date) ||
+      a.name.localeCompare(b.name),
+  );
 }
 
 /**

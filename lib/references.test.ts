@@ -81,6 +81,16 @@ describe('validateReference', () => {
     expect(validateReference(parseReference('x', valid.replace('context:', 'years: 2021–2023\ncontext:'))!)).toEqual([]);
   });
 
+  it('takes an optional order that is a positive integer', () => {
+    const withOrder = (v: string) => parseReference('x', valid.replace('lang: en\n', `lang: en\norder: ${v}\n`))!;
+    expect(parseReference('x', valid)!.order).toBeNull();
+    expect(withOrder('1').order).toBe(1);
+    expect(validateReference(withOrder('2'))).toEqual([]);
+    for (const bad of ['0', '-1', '1.5', 'first']) {
+      expect(validateReference(withOrder(bad)), bad).toEqual(['order must be a positive integer']);
+    }
+  });
+
   it('leaves the work optional', () => {
     const ref = parseReference('x', valid.replace('work: cloud-gateway\n', ''))!;
     expect(ref.work).toBeNull();
@@ -123,6 +133,17 @@ describe('the set', () => {
     expect(validateReferenceSet([featured, { ...featured, slug: 'b' }])).toEqual([]);
     expect(validateReferenceSet([featured, { ...featured, slug: 'b' }, { ...featured, slug: 'c' }])).toHaveLength(1);
     expect(validateReferenceSet([ref, ref])).toHaveLength(1);
+  });
+
+  it('puts a reference with an order first, lower first, then the rest newest first', () => {
+    const ref = parseReference('a', valid)!;
+    const sorted = sortReferences([
+      { ...ref, slug: 'new', name: 'New', date: '2026-09-24', order: null },
+      { ...ref, slug: 'two', name: 'Two', date: '2026-09-24', order: 2 },
+      { ...ref, slug: 'one', name: 'One', date: '2026-01-01', order: 1 },
+      { ...ref, slug: 'old', name: 'Old', date: '2026-01-01', order: null },
+    ]);
+    expect(sorted.map((r) => r.slug)).toEqual(['one', 'two', 'new', 'old']);
   });
 
   it('sorts newest first, then by name', () => {
