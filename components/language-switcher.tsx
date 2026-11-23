@@ -18,18 +18,18 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
   const href = segments.join('/') || `/${target}`;
 
   return (
-    <nav aria-label="Language" className="flex items-center text-[15px]">
+    <nav aria-label="Language" className="flex items-center text-sm">
       {locales.map((l) => (
         <span key={l} aria-hidden={l === locale ? undefined : true}>
           {l === locale ? (
-            <span className="inline-block px-[10px] py-[11px] font-medium text-foreground" aria-current="true">
+            <span className="inline-block px-[10px] py-[12px] font-medium text-foreground" aria-current="true">
               {l.toUpperCase()}
             </span>
           ) : (
             <Link
               href={href}
               prefetch={false}
-              className="inline-block px-[10px] py-[11px] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              className="inline-block px-[10px] py-[12px] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
               hrefLang={l}
               lang={l}
               aria-label={localeName[l]}

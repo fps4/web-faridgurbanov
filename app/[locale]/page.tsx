@@ -112,7 +112,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     {large ? (
                       <span className="text-2xl font-semibold leading-tight tracking-tight">{large}</span>
                     ) : null}
-                    <span className="text-[15px] text-foreground/90">{copy.text}</span>
+                    <span className="text-[0.9375rem] text-foreground/90">{copy.text}</span>
                   </Link>
                 </li>
               );

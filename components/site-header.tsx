@@ -15,7 +15,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       <div className="container flex min-h-[68px] flex-wrap items-center gap-x-2 py-1">
         <Link
           href={hrefFor(locale, '')}
-          className="mr-auto py-3 font-heading text-[19px] font-semibold tracking-tight"
+          className="mr-auto py-3 font-heading text-lg font-semibold tracking-tight"
           aria-label={`${site.name} — ${t.nav.home}`}
         >
           {site.name}

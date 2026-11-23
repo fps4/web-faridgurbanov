@@ -70,7 +70,7 @@ function ProfileLink({ reference, locale }: { reference: Reference; locale: Loca
       href={reference.linkedin}
       rel="noopener"
       target="_blank"
-      className="inline-flex items-center gap-0.5 text-[13px] font-normal text-muted-foreground underline underline-offset-4 hover:text-foreground"
+      className="inline-flex items-center gap-0.5 text-[0.8125rem] font-normal text-muted-foreground underline underline-offset-4 hover:text-foreground"
       aria-label={`${reference.name} — ${t.linkedin}`}
     >
       {t.linkedin}
@@ -123,7 +123,7 @@ export function ReferenceQuote({
     return (
       <figure className="m-0 flex h-full flex-col gap-5 rounded-lg border border-border bg-background p-7">
         {quote}
-        <figcaption className="mt-auto flex flex-col gap-0.5 text-[15px]">
+        <figcaption className="mt-auto flex flex-col gap-0.5 text-[0.9375rem]">
           <a
             href={reference.linkedin}
             rel="noopener"
@@ -153,13 +153,13 @@ export function ReferenceQuote({
       <figcaption className="flex flex-wrap items-center gap-4">
         <Avatar reference={reference} size={48} />
         <span className="flex min-w-0 flex-grow flex-col gap-0.5">
-          <span className="flex items-baseline gap-2.5 text-[15px] font-medium leading-5">
+          <span className="flex items-baseline gap-2.5 text-[0.9375rem] font-medium leading-5">
             {reference.name}
             <ProfileLink reference={reference} locale={locale} />
           </span>
           <span className="text-sm text-muted-foreground">{roleLine}</span>
         </span>
-        <span className="flex flex-col gap-0.5 text-[13px] text-muted-foreground sm:items-end sm:text-right">
+        <span className="flex flex-col gap-0.5 text-[0.8125rem] text-muted-foreground sm:items-end sm:text-right">
           <span>{formatMonth(reference.date, locale)}</span>
           {reference.verified ? <VerifiedLink locale={locale} /> : null}
           {note ? <span>{note}</span> : null}
