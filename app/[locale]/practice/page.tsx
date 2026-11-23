@@ -53,7 +53,7 @@ export default async function PracticeIndex({ params }: { params: Promise<{ loca
               </h2>
               <p className="max-w-3xl text-foreground/90">{a.summary}</p>
             </div>
-            <div className="flex min-w-0 flex-[1_1_15rem] flex-col gap-0.5 text-[15px]">
+            <div className="flex min-w-0 flex-[1_1_15rem] flex-col gap-0.5 text-[0.9375rem]">
               <PracticeFrom label={t.comesFrom} items={a.from} locale={locale} />
             </div>
           </li>

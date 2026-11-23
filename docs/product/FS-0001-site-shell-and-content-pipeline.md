@@ -1,7 +1,7 @@
 ---
 title: "FS-0001 — Bilingual site shell, navigation & content pipeline"
 status: draft
-last_updated: 2026-11-22
+last_updated: 2026-11-23
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -51,9 +51,14 @@ across pages and across languages.
    `art-r903t1r2tp`).
    The footer carries the one statement on how AI is used, verbatim from the approved copy
    (ADR-0010 §6; maestro story `art-4fzvp6bqm0`), and stands nowhere else on the site.
-5. **Static export** — `output: 'export'`; the production build emits static HTML/CSS/JS with no
+5. **Look** — one centred column whose text is 1080px wide, with 32px at each side (the container
+   box is at most 1144px; bands run the full width), running text at 17px (the root size, so every
+   rem-based size scales with it, which is why no text size is written in pixels) and a line height of 1.55, Inter for
+   text and Space Grotesk for headings and the name in the header, both served by the site itself
+   (maestro story `art-26rhtzey62`).
+6. **Static export** — `output: 'export'`; the production build emits static HTML/CSS/JS with no
    server or database.
-6. **Graceful language fallback** — when a page has no translation in the requested locale, the
+7. **Graceful language fallback** — when a page has no translation in the requested locale, the
    site behaves predictably (see acceptance criteria) rather than 404-ing silently.
 
 ## Out of scope
@@ -70,6 +75,21 @@ across pages and across languages.
   how AI is used, and SHALL carry that statement nowhere else.
 - THE SYSTEM SHALL carry in the footer only the approved statement and link labels: no tagline,
   built-with line, name or column heading, and no copyright line.
+- THE SYSTEM SHALL set the top bar, the content and the footer of every page in one centred column
+  whose text is at most 1080px wide (the box is at most 1144px with 32px at each side), with equal
+  space left and right, while the coloured bands run the full width of
+  the screen.
+- THE SYSTEM SHALL set running text at 17px with a line height of 1.55, with headings, introductions and small text keeping
+  their steps above and below it, in Inter, and headings (including those inside prose) and the name
+  in the header in Space Grotesk.
+- THE SYSTEM SHALL serve the font files from the site itself (the Latin subsets of the
+  `@fontsource-variable/inter` and `@fontsource-variable/space-grotesk` packages, SIL Open Font
+  License), SHALL send no request to another site for them, and SHALL show text at once in a
+  fallback font while they load (`font-display: swap`).
+- THE SYSTEM SHALL show in the header, on a wide screen, the name at about 19px (`text-lg`) semibold in the heading
+  typeface, the links Work, Practice and Contact at 17px medium in the colour of the page text with a
+  target at least 44px high, and the language link at about 15px (`text-sm`); at 360px wide nothing is cut off and the
+  page does not scroll sideways.
 - THE SYSTEM SHALL serve content under locale-segmented routes for English and Dutch, with a
   single configured default locale.
 - WHEN a visitor uses the language switcher on any page, THE SYSTEM SHALL navigate to the
