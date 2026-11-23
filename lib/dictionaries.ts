@@ -127,7 +127,7 @@ const en: Dictionary = {
     heroTitle: 'Platform and Integration Architect',
     heroIntro: [
       'I have worked with a range of infrastructure, cloud and on-prem, mostly AWS and Azure, in retail, telecom and manufacturing.',
-      'Since October 2023 I am in the integration platform team of a large Dutch grocery retailer. I was in charge of building two new platform products that are now rolled out across the company and replace IBM products. They are based on AWS and Azure native services, with the governance and self-service that I initially built and that we now expand with the team.',
+      'Since October 2024 I am in the integration platform team of a large Dutch grocery retailer. I was in charge of building two new platform products that are now rolled out across the company and replace IBM products. They are based on AWS and Azure native services, with the governance and self-service that I initially built and that we now expand with the team.',
     ],
     primaryContact: 'Start a conversation',
     primaryWork: 'See the work',
@@ -266,7 +266,7 @@ const nl: Dictionary = {
     heroTitle: 'Platform- en integratiearchitect',
     heroIntro: [
       'Ik heb gewerkt met veel soorten infrastructuur, cloud en on-premises, vooral AWS en Azure, in retail, telecom en de maakindustrie.',
-      'Sinds oktober 2023 werk ik in het integratieplatformteam van een grote Nederlandse supermarktketen. Ik was verantwoordelijk voor het bouwen van twee nieuwe platformproducten. Ze worden nu in het hele bedrijf uitgerold en vervangen producten van IBM. Ze zijn gebouwd op de eigen diensten van AWS en Azure, met de governance en self-service die ik in het begin heb gebouwd en die we nu met het team uitbreiden.',
+      'Sinds oktober 2024 werk ik in het integratieplatformteam van een grote Nederlandse supermarktketen. Ik was verantwoordelijk voor het bouwen van twee nieuwe platformproducten. Ze worden nu in het hele bedrijf uitgerold en vervangen producten van IBM. Ze zijn gebouwd op de eigen diensten van AWS en Azure, met de governance en self-service die ik in het begin heb gebouwd en die we nu met het team uitbreiden.',
     ],
     primaryContact: 'Neem contact op',
     primaryWork: 'Bekijk het werk',
