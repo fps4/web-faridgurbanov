@@ -38,6 +38,23 @@ const toNl = (href: string) => href.replace(/^\/en(?=$|[/#?])/, '/nl');
 const decode = (s: string) => s.replace(/&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
 const numbers = (h: string) => decode(h.replace(/<[^>]+>/g, ' ')).match(/\d+(?:[.,]\d+)?/g) ?? [];
 
+// The block skeleton of a page: the heading levels h1 to h3 in order, and the counts of sections,
+// paragraphs, list items, figures and links. It says the Dutch page has the same parts as the English one.
+function skeleton(h: string) {
+  const count = (re: RegExp) => (h.match(re) ?? []).length;
+  return {
+    headings: [...h.matchAll(/<h([1-3])[\s>]/g)].map((m) => Number(m[1])),
+    sections: count(/<section[\s>]/g),
+    paragraphs: count(/<p[\s>]/g),
+    listItems: count(/<li[\s>]/g),
+    figures: count(/<figure[\s>]/g),
+    links: count(/<a\s/g),
+  };
+}
+// The one difference the approved copy makes: under "Wat het opleverde" it splits into two
+// paragraphs what the English page has as one ("What it gave").
+const extraDutchParagraphs: Record<string, number> = { 'Integration adapter': 1 };
+
 describe.each(pages)('%s, Dutch against English', (_name, render) => {
   it('has the same links in the same order, `/en` written `/nl`, external links identical', async () => {
     const en = hrefs(await render('en'));
@@ -45,6 +62,13 @@ describe.each(pages)('%s, Dutch against English', (_name, render) => {
     expect(en.length).toBeGreaterThan(0);
     expect(nl).toEqual(en.map(toNl));
     for (const [i, href] of en.entries()) if (/^https?:/.test(href)) expect(nl[i]).toBe(href);
+  });
+
+  it('has the same block skeleton: headings, sections, paragraphs, list items, figures, links', async () => {
+    const en = skeleton(await render('en'));
+    const nl = skeleton(await render('nl'));
+    expect(en.headings.length).toBeGreaterThan(0);
+    expect(nl).toEqual({ ...en, paragraphs: en.paragraphs + (extraDutchParagraphs[_name] ?? 0) });
   });
 
   it('has the same numbers in the same order', async () => {

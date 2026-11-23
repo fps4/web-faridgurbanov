@@ -147,7 +147,10 @@ verbatim from the Dutch copy the owner approved on 2026-11-23).
   the English site does not have (the résumé button and the availability row, the intro-video note,
   the editor's notes and an open proposal of a line) are not built. `npx vitest run
   components/dutch-parity.test.tsx` checks it for each translated page: the Dutch links are the
-  English links with `/en` written `/nl`, and the numbers are the same, in the same order.
+  English links with `/en` written `/nl`, the numbers are the same, in the same order, and the block
+  skeleton is the same (heading levels `h1` to `h3` in order, and the counts of sections, paragraphs,
+  list items, figures and links). One exception, named in the test: the Integration adapter page has
+  one paragraph more in Dutch under "Wat het opleverde", because the approved copy splits it.
 
 ## Definition of done
 

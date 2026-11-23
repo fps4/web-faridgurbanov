@@ -13,6 +13,8 @@ import { copyLocale, localelessPath, type Locale } from '@/lib/i18n';
 export function HtmlLang({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const path = localelessPath(pathname ?? `/${locale}`);
+  // Known gap: this does not know that a content page fell back to English (`fellBack`); such a page marks
+  // its own wrapper lang="en". None exists: lib/content-parity.test.ts requires a Dutch file for every published file.
   useEffect(() => {
     document.documentElement.lang = copyLocale(locale, path);
   }, [locale, path]);
