@@ -33,6 +33,11 @@ export interface Dictionary {
     howLine: string;
     howBody: string[];
     howCta: string;
+    /** The photo in the place of the intro video (art-cxvf6s5t94): alternative text and the line under it. */
+    photoAlt: string;
+    photoPlace: string;
+    photoUnesco: string;
+    photoWikipedia: string;
   };
   contact: {
     title: string;
@@ -146,6 +151,11 @@ const en: Dictionary = {
       'Usually the successful solution is not based on technical brilliance. It is based on the combination of what the technology can do, what the organization is currently running, where it is ultimately trying to be, and the organizational capacity in terms of people and processes that are in place.',
     ],
     howCta: 'Read more in Practice',
+    // art-cxvf6s5t94: verbatim from the approved site copy, "Home · other labels" (the photo line).
+    photoAlt: 'Farid Gurbanov',
+    photoPlace: 'Khinalug, Azerbaijan',
+    photoUnesco: 'UNESCO World Heritage site',
+    photoWikipedia: 'Wikipedia',
   },
   // art-r903t1r2tp: the Contact part of the home page, verbatim from the approved site copy, section
   // "Contact" (the text) and "Texts shown in the design that were missing above" (rows, buttons).

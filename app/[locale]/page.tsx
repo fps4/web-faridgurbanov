@@ -4,6 +4,7 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import { ObfuscatedEmail } from '@/components/obfuscated-email';
 import { WhatsAppButton } from '@/components/whatsapp-contact';
 import { IntroVideo } from '@/components/intro-video';
+import { HeroPhoto, heroPhotoShown } from '@/components/hero-photo';
 import { ReferenceQuote } from '@/components/reference-quote';
 import { listSection } from '@/lib/content';
 import { getDictionary } from '@/lib/dictionaries';
@@ -56,7 +57,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <section>
-        <div className="container py-16 sm:py-24">
+        <div
+          className={`container py-16 sm:py-24 ${
+            heroPhotoShown() ? 'grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]' : ''
+          }`}
+        >
           <div className="max-w-3xl">
             <LocaleNotice locale={locale} />
             <p className="text-sm font-medium text-muted-foreground">{t.heroEyebrow}</p>
@@ -76,11 +81,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Button>
             </div>
           </div>
+          {/* The photo (art-cxvf6s5t94): in this column WHILE INTRO_VIDEO is null; renders nothing
+              once a video is set, and the video takes its place below. */}
+          <HeroPhoto locale={locale} />
         </div>
       </section>
 
-      {/* The place of the intro video (art-9947n0hg99, AC-5): nothing at all, no frame, WHILE
-          INTRO_VIDEO in lib/site.ts is null. */}
+      {/* The place of the intro video (art-9947n0hg99, AC-5): no frame WHILE INTRO_VIDEO in
+          lib/site.ts is null; the photo in the hero stands in its place until then. */}
       <IntroVideo locale={locale} />
 
       <section aria-labelledby="track-record" className="border-t border-border bg-muted/40">
