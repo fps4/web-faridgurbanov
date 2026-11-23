@@ -61,8 +61,9 @@ call. The page says who he is in his own words and sends the reader to Contact o
    the last part of the page, `id="contact"`; the hero's first button leads to it.
 9. **Not on the page now:** the résumé button. It returns in its own story when its text is
    approved.
-10. **Languages.** The Dutch addresses show the English page under the fallback notice until the
-   Dutch copy is approved.
+10. **Languages.** `/nl` shows the Dutch of the approved Dutch copy, with no notice (FS-0001; maestro
+   story `art-j9e7z77xy0`). Under the intro video's place the photo and its line are Dutch too; the
+   quotes stay in the language they were written in, with the line under each in Dutch.
 
 ## Acceptance criteria (EARS)
 

@@ -8,6 +8,7 @@ describe('the header navigation', () => {
   it('is exactly Work, Practice, Contact, in that order', () => {
     expect(headerNav().map((i) => i.href)).toEqual(['/work', '/practice', '#contact']);
     expect(headerNav().map((i) => i.label.en)).toEqual(['Work', 'Practice', 'Contact']);
+    expect(headerNav().map((i) => i.label.nl)).toEqual(['Werk', 'Praktijk', 'Contact']);
   });
 
   // Contact is a part of the home page (maestro story art-r903t1r2tp): one click from any page.

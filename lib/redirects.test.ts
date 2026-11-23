@@ -280,3 +280,26 @@ describe('the removed References page', () => {
     expect(routeExists('/references')).toBe(false);
   });
 });
+
+// Maestro story art-j9e7z77xy0: the Dutch pages are served as they are. nginx.conf has nothing for
+// /nl alone (no redirect of Dutch addresses to /en, no header on them): every location that matches
+// an address names both locales, so the Dutch pages need no change there. The pages that have Dutch
+// are not redirected, and the privacy page is served too, as the English page under the notice.
+describe('the Dutch addresses', () => {
+  const locations = [...conf.matchAll(/location ~\*? (\S+) \{/g)].map(([, re]) => re);
+
+  it('are matched by no location of their own: each regex location names both locales or neither', () => {
+    expect(locations.length).toBeGreaterThan(0);
+    for (const re of locations.filter((l) => l.includes('nl'))) expect(re, re).toMatch(/^\^\/\(en\|nl\)\//);
+    expect(conf).not.toMatch(/location[^{]*\/nl\b(?!\))/);
+    expect(conf).not.toMatch(/\bnl\b[^\n]*add_header|add_header[^\n]*\bnl\b/);
+  });
+
+  it('leave the pages that have Dutch, and the privacy page, unredirected', () => {
+    const published = slugsIn('articles', false).map((s) => `/nl/practice/articles/${s}`);
+    const cases = ['/nl/work/cloud-gateway', '/nl/work/integration-adapter'];
+    for (const path of ['/nl', '/nl/work', '/nl/practice', '/nl/privacy', ...cases, ...published]) {
+      for (const form of forms(path)) expect(redirect(form), form).toBeNull();
+    }
+  });
+});

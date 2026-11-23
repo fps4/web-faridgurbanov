@@ -7,7 +7,7 @@ import { isLocale, localeName, locales, otherLocale, type Locale } from '@/lib/i
 // Language switcher (FS-0001): navigates to the equivalent page in the other locale, preserving
 // page identity (not resetting to home). It swaps the leading `/en|/nl` segment of the current
 // path — pure client-side routing, so it works under static export with no middleware (ADR-0002).
-export function LanguageSwitcher({ locale }: { locale: Locale }) {
+export function LanguageSwitcher({ locale, label }: { locale: Locale; label: string }) {
   const pathname = usePathname() ?? `/${locale}`;
   const target = otherLocale(locale);
 
@@ -18,7 +18,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
   const href = segments.join('/') || `/${target}`;
 
   return (
-    <nav aria-label="Language" className="flex items-center text-sm">
+    <nav aria-label={label} className="flex items-center text-sm">
       {locales.map((l) => (
         <span key={l} aria-hidden={l === locale ? undefined : true}>
           {l === locale ? (

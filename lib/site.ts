@@ -56,6 +56,35 @@ export const earlierWork: readonly EarlierWorkEntry[] = [
   },
 ];
 
+/**
+ * The Dutch of each entry, by `id` (maestro story art-j9e7z77xy0), verbatim from the approved Dutch
+ * copy, "Eerder werk, kort". The ids, and so the anchors, are the English entries'.
+ */
+const earlierWorkNl: Record<string, Pick<EarlierWorkEntry, 'lead' | 'rest'>> = {
+  'earlier-sap-events': {
+    lead: 'SAP-events, proof of concept.',
+    rest: ' SAP Advanced Event Mesh stuurt events naar een REST-endpoint van de adapter, met retry, dead-letter queue en een pauze per eventtype.',
+  },
+  'earlier-databricks-review': {
+    lead: 'Review van Databricks-kosten en pipelines.',
+    rest: ' Samen met een data scientist. De kosten van de bestaande workloads gingen met meer dan een derde omlaag.',
+  },
+  'earlier-security-data-lake': {
+    lead: 'Security data lake voor een Britse telecomoperator',
+    rest: ', bij Accenture. Ik heb het ontworpen vanaf het concept en bewezen met een demo. Een offshore team bracht het naar productie. 5–10 TB per dag.',
+  },
+  'earlier-sap-finance-snowflake': {
+    lead: 'SAP Finance naar Snowflake voor een Duitse fabrikant',
+    rest: ', bij Accenture. Een grote proof of concept die ik zelf heb gebouwd.',
+  },
+};
+
+/** The Earlier work list as the locale's page shows it. */
+export function earlierWorkFor(locale: Locale): readonly EarlierWorkEntry[] {
+  if (locale === 'en') return earlierWork;
+  return earlierWork.map((e) => ({ ...e, ...earlierWorkNl[e.id] }));
+}
+
 /** The entry's name without the full stop that ends a bold lead in the copy. */
 export const earlierWorkTitle = (e: EarlierWorkEntry): string => e.lead.replace(/\.$/, '');
 
@@ -80,6 +109,17 @@ export const alsoBuilt: readonly AlsoBuiltEntry[] = [
     text: 'My own notes and labs from learning hybrid Kafka on Azure, module by module.',
   },
 ];
+
+/** The Dutch line of each repository, by name, verbatim from the approved Dutch copy, "Ook gebouwd". */
+const alsoBuiltNl: Record<string, string> = {
+  'hybrid-kafka-on-azure': 'Mijn eigen aantekeningen en labs van het leren van hybride Kafka op Azure, module voor module.',
+};
+
+/** The Also built list as the locale's page shows it. */
+export function alsoBuiltFor(locale: Locale): readonly AlsoBuiltEntry[] {
+  if (locale === 'en') return alsoBuilt;
+  return alsoBuilt.map((r) => ({ ...r, text: alsoBuiltNl[r.name] ?? r.text }));
+}
 
 export function emailAddress(): string {
   return `${site.email.user}@${site.email.domain}`;

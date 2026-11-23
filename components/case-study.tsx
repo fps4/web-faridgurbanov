@@ -4,7 +4,7 @@ import { FallbackNotice } from '@/components/fallback-notice';
 import { Button } from '@/components/ui/button';
 import { title as fmTitle, type ContentEntry } from '@/lib/content';
 import { caseStudyLabels, type CaseStudyFrontmatter } from '@/lib/case-study';
-import type { Locale } from '@/lib/i18n';
+import { defaultLocale, type Locale } from '@/lib/i18n';
 
 // The case-study page (art-13yb9kshaw, ADR-0010 §5): title, intro line and small line, a row of
 // facts, the article parts in the order the markdown body has them, a facts column and a bar at
@@ -15,7 +15,7 @@ import type { Locale } from '@/lib/i18n';
 // `reference` is the published reference about this work, if there is one, drawn under the facts.
 // `fallbackMessage` is the notice shown when the requested locale fell back to English (ADR-0002).
 // `backHref`, `contactHref` and `nextHref` are already localized. The labels of the facts column and the texts
-// of the bar are `caseStudyLabels`.
+// of the bar are `caseStudyLabels`, in the page's language (English when the entry fell back).
 export function CaseStudy({
   entry,
   locale,
@@ -35,20 +35,21 @@ export function CaseStudy({
   contactHref: string;
   nextHref: string | null;
 }) {
+  const labels = caseStudyLabels[entry.isFallback ? defaultLocale : locale];
   const facts: { label: string; value: string }[] = [];
-  if (study.role) facts.push({ label: caseStudyLabels.role, value: study.role });
-  if (study.client) facts.push({ label: caseStudyLabels.client, value: study.client });
-  if (study.builtWith) facts.push({ label: caseStudyLabels.builtWith, value: study.builtWith });
+  if (study.role) facts.push({ label: labels.role, value: study.role });
+  if (study.client) facts.push({ label: labels.client, value: study.client });
+  if (study.builtWith) facts.push({ label: labels.builtWith, value: study.builtWith });
 
   return (
-    <>
+    <div lang={entry.isFallback ? defaultLocale : undefined}>
       <div className="container max-w-5xl pt-16">
         {entry.isFallback ? <FallbackNotice message={fallbackMessage} /> : null}
         <Link
           href={backHref}
           className="mb-4 inline-block py-2 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
         >
-          {caseStudyLabels.back}
+          {labels.back}
         </Link>
         <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
           {fmTitle(entry.data)}
@@ -93,10 +94,10 @@ export function CaseStudy({
 
       <div className="border-t border-border">
         <div className="container flex max-w-5xl flex-wrap items-center justify-between gap-5 py-10">
-          <p className="m-0 text-lg font-medium">{caseStudyLabels.barQuestion}</p>
+          <p className="m-0 text-lg font-medium">{labels.barQuestion}</p>
           <div className="flex flex-wrap gap-3">
             <Button asChild size="lg">
-              <Link href={contactHref}>{caseStudyLabels.barAction}</Link>
+              <Link href={contactHref}>{labels.barAction}</Link>
             </Button>
             {study.next && nextHref ? (
               <Button asChild size="lg" variant="outline">
@@ -106,6 +107,6 @@ export function CaseStudy({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

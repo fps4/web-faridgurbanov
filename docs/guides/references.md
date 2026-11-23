@@ -40,6 +40,7 @@ remove `draft: true`. One person per file. The fields:
 | `role` | Their position as their LinkedIn headline shows it, first segment only (before the first "\|"), in English: "Product owner, API platform". Refresh it whenever you bump `reviewed`. |
 | `role_nl` | The same in Dutch. Optional; falls back to `role`. |
 | `context` | How they worked with the owner, as the line under the quote reads after the role: `role · context`, e.g. "we work together in the integration platform team". Required. |
+| `context_nl` | The same line in Dutch, as the approved Dutch copy has it. Optional; falls back to `context`. |
 | `linkedin` | Their public profile: `https://www.linkedin.com/in/<handle>/`. The build rejects anything else. |
 | `work` | Optional. The case-study slug (`cloud-gateway`, `integration-adapter`) or the id of an Earlier work entry on `/work` (`earlier-security-data-lake`, …, in `lib/site.ts`). When given, the build checks it exists, and a case-study slug shows the quote on that case study. |
 | `date` | When they wrote it, `YYYY-MM-DD`. Orders the cards after `order` (newest first), and is shown as month and year on a case-study block. |

@@ -17,13 +17,33 @@ export function otherLocale(locale: Locale): Locale {
 }
 
 /**
- * The locale whose copy a page shows. Until the owner approves the Dutch copy, every Dutch address
- * shows the English page under the fallback notice (maestro story art-bf5tq4788n, following decision art-896t5kxfka, ADR-0010 here), so
- * this maps nl to en. The Dutch story brings the approved copy back by making this the identity.
- * The URL, the language switcher and the notice keep using the requested locale.
+ * Pages with no Dutch yet, as locale-less paths ('' is home, '/work/x' a case study). Under /nl each
+ * one shows the English page under the fallback notice, with a canonical link to the English page
+ * and no entry in the sitemap. The privacy page is the one today: the approved Dutch copy has no
+ * text for it (maestro story art-j9e7z77xy0). Giving a page its Dutch is removing it from this
+ * list, and nothing else here changes. A page that is made from a content file has its own check as
+ * well: it falls back when the locale's file is missing (`ContentEntry.isFallback`).
  */
-export function copyLocale(locale: Locale): Locale {
-  return locale === 'nl' ? defaultLocale : locale;
+export const pathsWithoutDutch: readonly string[] = ['/privacy'];
+
+/** True when the page has its own Dutch. `path` is locale-less. */
+export function hasDutch(path: string): boolean {
+  return !pathsWithoutDutch.includes(path);
+}
+
+/**
+ * The locale whose copy a page shows. A Dutch address shows Dutch, except for a page without Dutch
+ * (`pathsWithoutDutch`, or `fellBack` when its content file is missing), which shows the English
+ * page. The URL, the language switcher and the notice keep using the requested locale.
+ */
+export function copyLocale(locale: Locale, path: string, fellBack = false): Locale {
+  return locale !== defaultLocale && (fellBack || !hasDutch(path)) ? defaultLocale : locale;
+}
+
+/** The locale-less path of a pathname served by the site: '/nl/work/x/' gives '/work/x', '/nl' gives ''. */
+export function localelessPath(pathname: string): string {
+  const m = /^\/(?:en|nl)(\/.*)?$/.exec(pathname);
+  return (m?.[1] ?? '').replace(/\/+$/, '').replace(/\.html$/, '');
 }
 
 /**

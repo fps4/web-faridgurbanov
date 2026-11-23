@@ -1,7 +1,7 @@
 ---
 title: "FS-0004 — Work / case studies"
 status: draft
-last_updated: 2026-11-22
+last_updated: 2026-11-23
 owners: [architect]
 related:
   - docs/product/00-product-intent.md
@@ -123,8 +123,8 @@ approved copy does not make. The link at its end to the article *Simple first* w
   public repository under `github.com/fps4/`.
 - WHEN a visitor opens one of the three removed case-study addresses in either locale, THE SYSTEM
   SHALL answer 301 to the Earlier work list on `/work` in the same locale.
-- THE case studies SHALL render in English, and the Dutch page SHALL show the English text under
-  the notice of FS-0001 until the Dutch copy is approved.
+- THE case studies SHALL render in English and in Dutch, from `content/en/work/` and `content/nl/work/`,
+  with the same facts, figures and links in the same order (FS-0001; maestro story `art-j9e7z77xy0`).
 
 ## Definition of done
 

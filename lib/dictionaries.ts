@@ -2,8 +2,9 @@ import type { Locale } from '@/lib/i18n';
 
 // Localized UI copy for the bespoke (non-markdown) surfaces — shell chrome, home, contact,
 // privacy, references, and the index/fallback strings. Content-body pages
-// (work, practice) live as markdown under content/en/; this file is the chrome and
-// the conversion pages. Dutch shows the English values for now (see `nl` below, ADR-0002).
+// (work, practice) live as markdown under content/{en,nl}/; this file is the chrome and
+// the conversion pages. The Dutch is verbatim from the approved Dutch copy (maestro story
+// art-j9e7z77xy0); the privacy page has no Dutch yet and stays English under /nl (`nl` below).
 
 export interface Dictionary {
   shell: {
@@ -13,6 +14,8 @@ export interface Dictionary {
     footerAiStatement: string;
     privacy: string;
     privacyLine: string;
+    /** The labels of the landmarks, read by a screen reader. */
+    aria: { primary: string; footer: string; language: string; articles: string; aboutArticle: string };
   };
   fallback: { notice: string };
   home: {
@@ -107,6 +110,13 @@ const en: Dictionary = {
     privacy: 'Privacy',
     // art-r903t1r2tp: the rest of the footer's privacy line, "Privacy · Nothing about you is collected".
     privacyLine: 'Nothing about you is collected',
+    aria: {
+      primary: 'Primary',
+      footer: 'Footer',
+      language: 'Language',
+      articles: 'Articles',
+      aboutArticle: 'About this article',
+    },
   },
   fallback: {
     notice: 'This page is not yet translated — showing the English version.',
@@ -226,13 +236,117 @@ const en: Dictionary = {
   },
 };
 
-// Dutch shows the English copy under the fallback notice until the owner approves the Dutch (maestro story art-bf5tq4788n).
-// Only the notice is Dutch; everything else is the English dictionary, so an English-only change
-// reaches both languages. The Dutch story replaces this with the approved copy.
+// The Dutch, verbatim from the approved Dutch copy (maestro story art-j9e7z77xy0): the sections Home,
+// Werk, Praktijk, Voettekst and "Labels en kleine teksten". Same keys, same order as the English.
+// The privacy page has no Dutch (it is on `pathsWithoutDutch`, lib/i18n.ts), so its text is the
+// English one. `references.inTheirWords` and `alsoOnLinkedIn`, and `indexes.backToIndex`, are
+// English: no page shows them today (no reference names a case study; no case study is on the
+// earlier shape) and the approved Dutch copy has no text for them.
 const nl: Dictionary = {
-  ...en,
+  shell: {
+    skipToContent: 'Naar de inhoud',
+    nav: { home: 'Home' },
+    themeToggle: 'Thema wisselen',
+    footerAiStatement: 'Hoe AI hier is gebruikt. De code en een deel van de teksten op deze site zijn gemaakt met hulp van AI. De beslissingen en het werk voor klanten zijn van mij.',
+    privacy: 'Privacy',
+    privacyLine: 'Er wordt niets over je verzameld',
+    aria: {
+      primary: 'Hoofdmenu',
+      footer: 'Voettekst',
+      language: 'Taal',
+      articles: 'Artikelen',
+      aboutArticle: 'Over dit artikel',
+    },
+  },
   fallback: {
     notice: 'Deze pagina is nog niet vertaald. Je ziet de Engelse versie.',
+  },
+  home: {
+    heroEyebrow: 'Hands-on · AWS en Azure · Eindhoven',
+    heroTitle: 'Platform- en integratiearchitect',
+    heroIntro: [
+      'Ik heb gewerkt met veel soorten infrastructuur, cloud en on-premises, vooral AWS en Azure, in retail, telecom en de maakindustrie.',
+      'Sinds oktober 2023 werk ik in het integratieplatformteam van een grote Nederlandse supermarktketen. Ik was verantwoordelijk voor het bouwen van twee nieuwe platformproducten. Ze worden nu in het hele bedrijf uitgerold en vervangen producten van IBM. Ze zijn gebouwd op de eigen diensten van AWS en Azure, met de governance en self-service die ik in het begin heb gebouwd en die we nu met het team uitbreiden.',
+    ],
+    primaryContact: 'Neem contact op',
+    primaryWork: 'Bekijk het werk',
+    trackHeading: 'Trackrecord',
+    trackLine: 'Vier getallen uit mijn werk. Elk getal leidt naar het werk erachter.',
+    trackCards: [
+      { text: 'Eén API-platform op AWS en Azure. Ongeveer 10 teams gebruiken het, en ze publiceren een API in minuten in plaats van dagen.' },
+      { large: 'Meer dan een miljard verzoeken per maand', text: 'Wat het API-platform nu verwerkt.' },
+      { text: 'Een nieuwe interface op de integratie-adapter is configuratie. De eerste adapters draaien in productie.' },
+      {
+        large: '5–10 TB per dag',
+        text: 'Een security data lake voor een Britse telecomoperator. Ik heb het ontworpen vanaf het concept en bewezen met een demo.',
+      },
+    ],
+    whatHeading: 'Wat ik doe',
+    whatLine: 'Elke regel leidt naar het werk dat het laat zien.',
+    whatLines: [
+      { name: 'API-platforms', detail: '· één ingang voor elk systeem dat een ander systeem aanroept', link: 'Cloud gateway' },
+      { name: 'Integratieplatforms', detail: '· een interface via configuratie', link: 'Integratie-adapter' },
+      { name: 'Weg van legacy middleware', detail: '· van leverancierspecifieke producten naar cloud-native producten', link: 'Beide producten' },
+      { name: "Beveiliging van API's", detail: '· OAuth 2 als standaard, en geen API-sleutels', link: 'Cloud gateway' },
+      { name: 'Teams laten vertrouwen op een platform', detail: '· als er geen direct mandaat is', link: 'Eerst eenvoudig' },
+      { name: 'Dataplatforms, eerder', detail: '· Kafka, Cloudera, Snowflake', link: 'Eerder werk' },
+    ],
+    howHeading: 'Hoe ik werk',
+    howLine: 'In mijn eigen woorden.',
+    howBody: [
+      'Ik breek een complex probleem op, breng er structuur in, en begeleid of leid daarna de uitvoering.',
+      'Ik werk in het midden tussen ontwerp, oplevering en engineering. Ik houd van engineering, en ik houd één hand in het echte bouwwerk van de oplossingen waar ik aan werk.',
+      'Een oplossing slaagt meestal niet door technische briljantheid. Ze slaagt door de combinatie van wat de technologie kan, wat de organisatie nu draait, waar ze uiteindelijk naartoe wil, en wat de organisatie aankan met de mensen en processen die er zijn.',
+    ],
+    howCta: 'Lees meer in Praktijk',
+    photoAlt: 'Farid Gurbanov',
+    photoPlace: 'Khinalug, Azerbeidzjan',
+    photoUnesco: 'UNESCO-werelderfgoed',
+    photoWikipedia: 'Wikipedia',
+  },
+  contact: {
+    title: 'Contact',
+    lede: 'Schrijf me over een integratieplatform, een API-platform of een overstap van legacy middleware. Een kort bericht over wat je wilt bereiken is genoeg. Ik antwoord zelf.',
+    contractLabel: 'Contractvorm',
+    contractValue: 'Freelance, via mijn eigen bedrijf',
+    basedLabel: 'Standplaats',
+    basedValue: 'Eindhoven, Nederland',
+    languagesLabel: 'Talen',
+    languagesValue: 'Engels, Nederlands (B1)',
+    email: 'Stuur een e-mail',
+    whatsapp: 'WhatsApp',
+    linkedin: 'LinkedIn',
+  },
+  privacy: en.privacy,
+  references: {
+    heading: 'Wat mensen zeggen met wie ik heb gewerkt',
+    readOnLinkedIn: 'Lees het op LinkedIn',
+    inTheirWords: en.references.inTheirWords,
+    linkedin: 'LinkedIn',
+    alsoOnLinkedIn: en.references.alsoOnLinkedIn,
+    inLanguage: 'In het {language}.',
+    translatedFrom: 'Vertaald uit het {language}, met hun goedkeuring.',
+  },
+  indexes: {
+    workTitle: 'Werk',
+    workIntro: 'Twee platformproducten die ik vanaf de eerste versie heb gebouwd, en eerder werk aan dataplatforms. Elke case lees je in twee minuten: waar het begon, wat ik deed, en waar het nu staat.',
+    whereItStands: 'Waar het staat:',
+    earlierHeading: 'Eerder werk, kort',
+    earlierLine: 'Hier is geen casepagina voor.',
+    alsoHeading: 'Ook gebouwd',
+    alsoLine: 'Mijn eigen labs, buiten het werk voor klanten. Alleen repositories die openbaar op GitHub staan.',
+    backToIndex: en.indexes.backToIndex,
+  },
+  practice: {
+    title: 'Praktijk',
+    lede: 'Hoe ik werk en wat ik ervan vind. Geschreven vanuit mijn eigen projecten, in mijn eigen woorden.',
+    comesFrom: 'Waar het vandaan komt',
+    writtenHowLabel: 'Hoe het is geschreven',
+    writtenHow: 'Uit mijn eigen antwoorden in een interview. Geredigeerd, niet gegenereerd.',
+    back: '← Praktijk',
+    barQuestion: 'Zie je het anders, of heb je hetzelfde probleem?',
+    barAction: 'Neem contact op',
+    barAll: 'Alles in Praktijk',
   },
 };
 

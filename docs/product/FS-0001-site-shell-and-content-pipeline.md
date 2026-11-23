@@ -98,6 +98,10 @@ across pages and across languages.
 - WHERE a page exists in the default locale but not in the requested locale, THE SYSTEM SHALL
   fall back to the default-locale content for that page and SHALL indicate the content is shown
   in the fallback language (no silent 404).
+- WHEN a visitor opens a Dutch address of a page that has Dutch, THE SYSTEM SHALL show the Dutch text
+  with no fallback notice and SHALL list the page in the sitemap, paired with its English page.
+- WHEN a visitor opens `/nl/privacy`, THE SYSTEM SHALL show the English page under the fallback
+  notice, point to `/en/privacy` as the original, and SHALL NOT list it in the sitemap under `/nl`.
 - THE SYSTEM SHALL render page bodies from markdown files under `/content/{en,nl}/` using GFM,
   with prose typography styling applied.
 - THE SYSTEM SHALL derive each page's title, ordering, and draft status from the markdown file's
@@ -114,16 +118,39 @@ across pages and across languages.
 - WHEN any internal link on any page of the export is followed, THE SYSTEM SHALL NOT end on a 404;
   a link to a removed address ends on its 301 target.
 
-## Interim state: Dutch shows the English page
+## Dutch, and the pages that have none
 
-Until the owner approves the Dutch copy, every address under `/nl` shows the English page under the
-fallback notice above (maestro story `art-bf5tq4788n`, "Site · Dutch pages show the English page, with
-a notice, until the Dutch copy is approved", which follows [ADR-0010](../design/decisions/0010-the-site-has-one-job.md)). `content/nl` holds no files, the Dutch
-dictionary is the English one except the notice, and `copyLocale` in `lib/i18n.ts` makes the
-locale-keyed copy (navigation labels, topics) read English under `/nl`. The text
-of the page is marked `lang="en"` and the notice `lang="nl"`. A link written as `/en/…` in
-markdown stays under `/nl`, each `/nl` page has a canonical link to its English twin, and the sitemap
-lists the English addresses only. The routes and the language switcher are unchanged. The Dutch story of the site's cut brings the approved copy back.
+Whether a page has Dutch is a fact of the page, not a switch of the site (maestro story
+`art-j9e7z77xy0`, which follows [ADR-0010](../design/decisions/0010-the-site-has-one-job.md); the Dutch is
+verbatim from the Dutch copy the owner approved on 2026-11-23).
+
+- **A page with Dutch** (Home, Work, the two case studies, Practice and the four published articles)
+  shows its Dutch text under `/nl`, with no notice, in the same order, with the same facts, figures
+  and links as its English page. The text is in `content/nl/` (same file names and same frontmatter
+  keys as `content/en/`, checked by `lib/content-parity.test.ts`) and in the Dutch dictionary
+  (`lib/dictionaries.ts`, `lib/site.ts`, `lib/case-study.ts`, `lib/nav.ts`). The labels for screen
+  readers are in the dictionary (`shell.aria`). A link written `/en/…` in markdown stays under `/nl`.
+- **A page without Dutch** shows the English page under `/nl`, under the notice, with the text marked
+  `lang="en"` and the notice `lang="nl"`, a canonical link to the English page and no entry in the
+  sitemap. Today that is the privacy page (the approved Dutch copy has no text for it); it is the
+  one entry of `pathsWithoutDutch` in `lib/i18n.ts`. A content page whose Dutch file is missing falls
+  back the same way (`ContentEntry.isFallback`). Giving the privacy page its Dutch is removing it from
+  that list and writing its text: nothing else changes.
+- **Per page, one rule** (`copyLocale`, `hasDutch` in `lib/i18n.ts`) decides the notice
+  (`components/locale-notice.tsx`), `<html lang>` (`components/html-lang.tsx`), the links in the head
+  (`pageAlternates` in `lib/canonical.ts`: a page with Dutch has a canonical link to itself and the
+  `hreflang` pair; a page without it points `/nl` at the English page) and the sitemap
+  (`lib/sitemap.ts`: a page with Dutch is listed under `/en` and `/nl` as a pair, a page without it
+  under `/en` alone). The shell (top bar, footer, labels for screen readers) is in the language of the
+  address on every page.
+- **The Dutch page shows what the English page shows**, and no more: the parts of the Dutch copy that
+  the English site does not have (the résumé button and the availability row, the intro-video note,
+  the editor's notes and an open proposal of a line) are not built. `npx vitest run
+  components/dutch-parity.test.tsx` checks it for each translated page: the Dutch links are the
+  English links with `/en` written `/nl`, the numbers are the same, in the same order, and the block
+  skeleton is the same (heading levels `h1` to `h3` in order, and the counts of sections, paragraphs,
+  list items, figures and links). One exception, named in the test: the Integration adapter page has
+  one paragraph more in Dutch under "Wat het opleverde", because the approved copy splits it.
 
 ## Definition of done
 

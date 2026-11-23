@@ -23,6 +23,7 @@ name: First Last
 role: Product owner, API platform
 role_nl: Product owner, API-platform
 context: worked together on an API platform for a retailer
+context_nl: we werkten samen aan een API-platform voor een retailer
 linkedin: https://www.linkedin.com/in/handle/
 work: cloud-gateway
 date: 2026-03-01
@@ -52,6 +53,16 @@ describe('parseReference', () => {
     expect(ref!.role.nl).toBe('Product owner, API platform');
   });
 
+  it('falls the Dutch line under the quote back to the English one, as the role does', () => {
+    const ref = parseReference('x', valid)!;
+    expect(ref.context).toEqual({
+      en: 'worked together on an API platform for a retailer',
+      nl: 'we werkten samen aan een API-platform voor een retailer',
+    });
+    const without = parseReference('x', valid.replace(/context_nl: .*\n/, ''))!;
+    expect(without.context.nl).toBe('worked together on an API platform for a retailer');
+  });
+
   it('returns null for a draft', () => {
     expect(parseReference('x', valid.replace('---\n\n', 'draft: true\n---\n\n'))).toBeNull();
   });
@@ -75,8 +86,8 @@ describe('validateReference', () => {
 
   it('requires how they worked together, and no longer asks for years', () => {
     const ref = parseReference('x', valid)!;
-    expect(ref.context).toBe('worked together on an API platform for a retailer');
-    expect(validateReference({ ...ref, context: '' })).toEqual(['context is required']);
+    expect(ref.context.en).toBe('worked together on an API platform for a retailer');
+    expect(validateReference({ ...ref, context: { en: '', nl: '' } })).toEqual(['context is required']);
     expect(ref).not.toHaveProperty('years');
     expect(validateReference(parseReference('x', valid.replace('context:', 'years: 2021–2023\ncontext:'))!)).toEqual([]);
   });

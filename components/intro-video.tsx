@@ -1,5 +1,5 @@
 import { site, INTRO_VIDEO } from '@/lib/site';
-import { copyLocale, type Locale } from '@/lib/i18n';
+import type { Locale } from '@/lib/i18n';
 
 // Home-page intro video (FS-0002/US-0017). Self-hosted <video>, no third-party player: an embedded
 // YouTube/Vimeo frame would place a processor and its cookies on the highest-traffic page and break
@@ -28,9 +28,9 @@ export function IntroVideo({ locale }: { locale: Locale }) {
             <source src={INTRO_VIDEO.src} type="video/mp4" />
             <track
               kind="captions"
-              src={INTRO_VIDEO.captions[copyLocale(locale)]}
-              srcLang={copyLocale(locale)}
-              label={copyLocale(locale) === 'nl' ? 'Nederlands' : 'English'}
+              src={INTRO_VIDEO.captions[locale]}
+              srcLang={locale}
+              label={locale === 'nl' ? 'Nederlands' : 'English'}
               default
             />
             <a href={INTRO_VIDEO.src}>{site.name}</a>

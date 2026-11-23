@@ -27,8 +27,11 @@ export interface Reference {
    * back to `role`). Refreshed by hand when the file is reviewed.
    */
   role: Record<Locale, string>;
-  /** How they worked with the owner, as the line under the quote reads: `role · context`. */
-  context: string;
+  /**
+   * How they worked with the owner, as the line under the quote reads: `role · context`, per
+   * locale (`context_nl` falls back to `context`, as `role_nl` does).
+   */
+  context: Record<Locale, string>;
   /** Their public profile: https://www.linkedin.com/in/<handle>/ */
   linkedin: string;
   /**
@@ -81,11 +84,12 @@ export function parseReference(slug: string, raw: string): Reference | null {
   const { data, body } = parseFrontmatter(raw);
   if (data.draft === true) return null;
   const role = str(data, 'role');
+  const context = str(data, 'context');
   return {
     slug,
     name: str(data, 'name'),
     role: { en: role, nl: str(data, 'role_nl') || role },
-    context: str(data, 'context'),
+    context: { en: context, nl: str(data, 'context_nl') || context },
     linkedin: str(data, 'linkedin'),
     work: str(data, 'work') || null,
     date: str(data, 'date'),
@@ -105,7 +109,7 @@ export function validateReference(ref: Reference): string[] {
   const problems: string[] = [];
   if (!ref.name) problems.push('name is required');
   if (!ref.role.en) problems.push('role is required');
-  if (!ref.context) problems.push('context is required');
+  if (!ref.context.en) problems.push('context is required');
   if (!LINKEDIN_PROFILE.test(ref.linkedin)) {
     problems.push('linkedin must be a public profile URL (https://www.linkedin.com/in/<handle>/)');
   }

@@ -8,7 +8,7 @@ import { hrefFor } from '@/lib/nav';
 import { site } from '@/lib/site';
 import { locales, type Locale } from '@/lib/i18n';
 import { LocaleNotice } from '@/components/locale-notice';
-import { fallbackCanonical } from '@/lib/canonical';
+import { pageAlternates } from '@/lib/canonical';
 
 // The Practice page (art-gdp0zjj9fd, ADR-0010 §11), in the order of the approved design: the
 // introduction, then the published articles as a plain list, each with its reading time, title,
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getDictionary(locale as Locale).practice;
-  return { title: `${t.title} — ${site.name}`, description: t.lede, ...fallbackCanonical(locale, '/practice') };
+  return { title: `${t.title} — ${site.name}`, description: t.lede, ...pageAlternates(locale, '/practice') };
 }
 
 export default async function PracticeIndex({ params }: { params: Promise<{ locale: string }> }) {
@@ -38,10 +38,10 @@ export default async function PracticeIndex({ params }: { params: Promise<{ loca
 
   return (
     <div className="container py-16">
-      <LocaleNotice locale={locale} />
+      <LocaleNotice locale={locale} path="/practice" />
       <PageIntro title={t.title} lede={t.lede} />
 
-      <ol aria-label="Articles" className="mt-12 flex list-none flex-col border-b border-border p-0">
+      <ol aria-label={getDictionary(locale).shell.aria.articles} className="mt-12 flex list-none flex-col border-b border-border p-0">
         {articles.map((a) => (
           <li key={a.slug} className="flex flex-wrap gap-x-10 gap-y-3 border-t border-border py-6">
             <div className="flex min-w-0 flex-[999_1_28rem] flex-col gap-1.5">

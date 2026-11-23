@@ -12,7 +12,7 @@ import { earlierWork } from '@/lib/site';
 // this order, and every link in them leads to a page that exists. The strings below are the
 // approved ones: a text added or changed in the page fails here until the copy changes first.
 
-const trackRecord = [
+const trackRecord: Record<'en' | 'nl', string[]> = { en: [
   'Track record',
   'Four numbers from my work. Each links to the work behind it.',
   'Many gateways, one platform',
@@ -23,10 +23,21 @@ const trackRecord = [
   'A new interface on the integration adapter is configuration. The first adapters run in production.',
   '5–10 TB a day',
   'A security data lake for a UK telecom operator. I designed it from the concept and proved it with a demo.',
-];
+], nl: [
+  'Trackrecord',
+  'Vier getallen uit mijn werk. Elk getal leidt naar het werk erachter.',
+  'Veel gateways, één platform',
+  'Eén API-platform op AWS en Azure. Ongeveer 10 teams gebruiken het, en ze publiceren een API in minuten in plaats van dagen.',
+  'Meer dan een miljard verzoeken per maand',
+  'Wat het API-platform nu verwerkt.',
+  'Binnen één werkdag',
+  'Een nieuwe interface op de integratie-adapter is configuratie. De eerste adapters draaien in productie.',
+  '5–10 TB per dag',
+  'Een security data lake voor een Britse telecomoperator. Ik heb het ontworpen vanaf het concept en bewezen met een demo.',
+] };
 const trackRecordLinks = ['/work/cloud-gateway', '/work/cloud-gateway', '/work/integration-adapter', '/work#earlier-security-data-lake'];
 
-const whatIDo = [
+const whatIDo: Record<'en' | 'nl', string[]> = { en: [
   'What I do',
   'Each line leads to the work that shows it.',
   'API platforms',
@@ -47,7 +58,29 @@ const whatIDo = [
   'Data platforms, earlier',
   '· Kafka, Cloudera, Snowflake',
   'Earlier work',
-];
+], nl: [
+  'Wat ik doe',
+  'Elke regel leidt naar het werk dat het laat zien.',
+  'API-platforms',
+  '· één ingang voor elk systeem dat een ander systeem aanroept',
+  'Cloud gateway',
+  'Integratieplatforms',
+  '· een interface via configuratie',
+  'Integratie-adapter',
+  'Weg van legacy middleware',
+  '· van leverancierspecifieke producten naar cloud-native producten',
+  'Beide producten',
+  "Beveiliging van API's",
+  '· OAuth 2 als standaard, en geen API-sleutels',
+  'Cloud gateway',
+  'Teams laten vertrouwen op een platform',
+  '· als er geen direct mandaat is',
+  'Eerst eenvoudig',
+  'Dataplatforms, eerder',
+  '· Kafka, Cloudera, Snowflake',
+  'Eerder werk',
+] };
+const how = { en: ['In my own words.', 'Read more in Practice'], nl: ['In mijn eigen woorden.', 'Lees meer in Praktijk'] };
 const whatIDoLinks = [
   '/work/cloud-gateway',
   '/work/integration-adapter',
@@ -67,6 +100,7 @@ function section(html: string, id: string): string {
 }
 const textOf = (html: string) =>
   html
+    .replace(/&#x27;/g, "'")
     .replace(/<[^>]+>/g, '\n')
     .split('\n')
     .map((t) => t.trim())
@@ -97,11 +131,11 @@ describe.each(locales)('the home page bands, in %s', (l) => {
   });
 
   it('shows Track record as the approved heading, line and four cards, and no other text', async () => {
-    expect(textOf(section(await home(l), 'track-record'))).toEqual(trackRecord);
+    expect(textOf(section(await home(l), 'track-record'))).toEqual(trackRecord[l]);
   });
 
   it('shows What I do as the approved heading, line and six lines, and no other text', async () => {
-    expect(textOf(section(await home(l), 'what-i-do'))).toEqual(whatIDo);
+    expect(textOf(section(await home(l), 'what-i-do'))).toEqual(whatIDo[l]);
   });
 
   it('leads each card and each line to the work behind it, inside the locale', async () => {
@@ -115,20 +149,22 @@ describe.each(locales)('the home page bands, in %s', (l) => {
   });
 
   it('keeps the How I work line and the label of its link to Practice', async () => {
-    const how = section(await home(l), 'how-i-work');
-    expect(textOf(how)).toContain('In my own words.');
-    expect(textOf(how)).toContain('Read more in Practice');
-    expect(hrefsOf(how)).toEqual([`/${l}/practice`]);
+    const part = section(await home(l), 'how-i-work');
+    expect(textOf(part)).toContain(how[l][0]);
+    expect(textOf(part)).toContain(how[l][1]);
+    expect(hrefsOf(part)).toEqual([`/${l}/practice`]);
   });
 });
 
 describe('the large text of a case study card', () => {
   it('is the same text as the row of that case study on the Work page', () => {
-    for (const [slug, large] of [
-      ['cloud-gateway', 'Many gateways, one platform'],
-      ['integration-adapter', 'Under a working day'],
+    for (const [locale, slug, large] of [
+      ['en', 'cloud-gateway', 'Many gateways, one platform'],
+      ['en', 'integration-adapter', 'Under a working day'],
+      ['nl', 'cloud-gateway', 'Veel gateways, één platform'],
+      ['nl', 'integration-adapter', 'Binnen één werkdag'],
     ]) {
-      const file = join(process.cwd(), 'content', 'en', 'work', `${slug}.md`);
+      const file = join(process.cwd(), 'content', locale, 'work', `${slug}.md`);
       expect(parseFrontmatter(readFileSync(file, 'utf8')).data.large).toBe(large);
     }
   });

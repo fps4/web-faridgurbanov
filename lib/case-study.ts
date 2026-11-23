@@ -1,4 +1,5 @@
 import type { Frontmatter } from '@/lib/frontmatter';
+import type { Locale } from '@/lib/i18n';
 
 // The case-study page shape (art-13yb9kshaw, ADR-0010 §5): a title, an intro line and a small line
 // under it, a row of facts, the article parts in order, a facts column (role, client, built with)
@@ -9,16 +10,35 @@ import type { Frontmatter } from '@/lib/frontmatter';
 
 // The labels of the facts column and the two texts of the bar at the foot are the same on every
 // case study, so they are kept here rather than in each entry. They are taken as they stand from
-// the approved review document of the site copy ("Case pages"). English only for now: the Dutch
-// pages show the English page under a notice until the Dutch copy is approved.
-export const caseStudyLabels = {
-  role: 'My role',
-  client: 'Client',
-  back: '← All work',
-  builtWith: 'Built with',
-  barQuestion: 'Does this look like your situation?',
-  barAction: 'Start a conversation',
-} as const;
+// the approved review document of the site copy ("Case pages"); the Dutch from the approved Dutch
+// copy, "Feiten", "Onderaan" and "Labels en kleine teksten" (maestro story art-j9e7z77xy0).
+export interface CaseStudyLabels {
+  role: string;
+  client: string;
+  back: string;
+  builtWith: string;
+  barQuestion: string;
+  barAction: string;
+}
+
+export const caseStudyLabels: Record<Locale, CaseStudyLabels> = {
+  en: {
+    role: 'My role',
+    client: 'Client',
+    back: '← All work',
+    builtWith: 'Built with',
+    barQuestion: 'Does this look like your situation?',
+    barAction: 'Start a conversation',
+  },
+  nl: {
+    role: 'Mijn rol',
+    client: 'Klant',
+    back: '← Al het werk',
+    builtWith: 'Gebouwd met',
+    barQuestion: 'Lijkt dit op jouw situatie?',
+    barAction: 'Neem contact op',
+  },
+};
 
 export interface CaseStudyFrontmatter {
   intro: string;

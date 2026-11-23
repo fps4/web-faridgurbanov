@@ -1,13 +1,23 @@
 import type { Metadata } from 'next';
-import { copyLocale, defaultLocale, isLocale } from '@/lib/i18n';
+import { copyLocale, defaultLocale, isLocale, locales } from '@/lib/i18n';
 
 /**
- * Metadata for a page whose locale shows another locale's page: `<link rel="canonical">` pointing
- * at that page, so a search engine reads the Dutch address as a copy of the English one. Empty for a
- * locale that has its own copy. `path` is locale-less ('' for home, '/work/x'). It follows
- * copyLocale, the same switch as the fallback itself (maestro story art-bf5tq4788n).
+ * Metadata for a page's links in the head, decided per page (maestro story art-j9e7z77xy0).
+ * - A page that has its own Dutch gets, in both locales, a canonical link to itself and the pair of
+ *   its two versions (`hreflang`, with English as `x-default`), so a search engine reads the Dutch
+ *   and the English page as one page in two languages.
+ * - A page without Dutch (the privacy page, or a content page whose Dutch file is missing) gets, under
+ *   /nl, a canonical link to the English page and no pair, because the Dutch address is a copy; its
+ *   English version gets no alternates.
+ * `path` is locale-less ('' for home, '/work/x'). `dutchFellBack` is true when the page's Dutch
+ * content file is missing (the content loader's `isFallback` for the Dutch entry).
  */
-export function fallbackCanonical(locale: string, path: string): Pick<Metadata, 'alternates'> {
-  if (!isLocale(locale) || copyLocale(locale) === locale) return {};
-  return { alternates: { canonical: `/${defaultLocale}${path}` } };
+export function pageAlternates(locale: string, path: string, dutchFellBack = false): Pick<Metadata, 'alternates'> {
+  if (!isLocale(locale)) return {};
+  if (copyLocale('nl', path, dutchFellBack) !== 'nl') {
+    return locale === defaultLocale ? {} : { alternates: { canonical: `/${defaultLocale}${path}` } };
+  }
+  const languages: Record<string, string> = Object.fromEntries(locales.map((l) => [l, `/${l}${path}`]));
+  languages['x-default'] = languages[defaultLocale];
+  return { alternates: { canonical: `/${locale}${path}`, languages } };
 }
