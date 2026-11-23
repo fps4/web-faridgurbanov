@@ -62,6 +62,11 @@ describe('home dictionary', () => {
         'howLine',
         'howBody',
         'howCta',
+        // art-cxvf6s5t94: the photo's alternative text and the line under it.
+        'photoAlt',
+        'photoPlace',
+        'photoUnesco',
+        'photoWikipedia',
       ].sort(),
     );
   });

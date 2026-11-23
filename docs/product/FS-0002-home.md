@@ -31,10 +31,18 @@ call. The page says who he is in his own words and sends the reader to Contact o
 ## Scope
 
 1. **Hero.** The line above the title, the title, the introduction (two paragraphs) and two
-   buttons: the first leads to Contact, the second to Work.
-2. **Intro video place.** Directly under the hero. WHILE no video is configured
-   (`INTRO_VIDEO` in `lib/site.ts`), nothing is rendered there, no frame either. The player carries
-   no text of its own.
+   buttons: the first leads to Contact, the second to Work. On a wide screen the hero is two
+   columns: these on the left, the photo (item 2) on the right; on a narrow screen the photo
+   stands under the buttons.
+2. **Intro video place** (maestro story `art-cxvf6s5t94`). WHILE no video is configured
+   (`INTRO_VIDEO` in `lib/site.ts`), a photo of him stands in its place, in the right column of
+   the hero: upright 4 to 5 frame, rounded corners, up to 420 px wide, with its size given so the
+   page does not move when it loads. It is served from the site itself (`public/media/`), has his
+   name as alternative text and no metadata, and has one line under it: the place and two links
+   (UNESCO World Heritage, Wikipedia), each opening in a new tab, and followed only when the visitor clicks. Texts are in
+   `lib/dictionaries.ts` (`home.photo*`), the file and the two addresses in `lib/site.ts`
+   (`HERO_PHOTO`). WHEN `INTRO_VIDEO` is set, the video takes the place (a section under the hero)
+   and neither the photo nor its line is rendered. The player carries no text of its own.
 3. **Track record** (maestro story `art-spqwxpsqc3`). Heading, the line under it and four cards,
    each a link: the first two to the Cloud gateway case study, the third to the Integration adapter
    case study, the fourth to the security data lake entry under Earlier work (`/work#earlier-security-data-lake`).

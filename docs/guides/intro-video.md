@@ -1,7 +1,7 @@
 ---
 title: "Guide — recording the home-page intro video"
 status: guide
-last_updated: 2026-08-20
+last_updated: 2026-11-23
 owners: [architect]
 related:
   - docs/product/FS-0002-home.md
@@ -12,7 +12,8 @@ related:
 # Recording the home-page intro video
 
 The player is built and wired (`components/intro-video.tsx`). It renders **nothing** while
-`INTRO_VIDEO` in `lib/site.ts` is `null`, so the site ships safely without a video. This guide is
+`INTRO_VIDEO` in `lib/site.ts` is `null`; until then a photo of him stands in its place in the hero
+(`components/hero-photo.tsx`, see [The photo](#the-photo-until-the-video-is-there)). This guide is
 what to record and how to turn it on.
 
 ## Why it is there
@@ -91,7 +92,24 @@ export const INTRO_VIDEO: IntroVideo | null = {
 };
 ```
 
-Run `npm run build` and the section appears. Nothing else changes.
+Run `npm run build` and the section appears. The photo and its line go in the same build: the hero
+asks `heroPhotoShown()` (`components/hero-photo.tsx`), which is true only while `INTRO_VIDEO` is
+`null`, so there is nothing else to switch off. The photo file can stay in `public/media/`.
+
+## The photo, until the video is there
+
+While `INTRO_VIDEO` is `null`, the home page shows a photo in the right column of the hero, with one
+line under it (the place and two links). To replace it:
+
+1. Prepare an upright 4 to 5 image, 800 by 1000 pixels, sRGB, JPEG, with **all metadata removed**
+   (no camera, date or location; a test reads the file and fails on an Exif or XMP block).
+2. Put it at `public/media/farid-gurbanov.jpg` (or change `HERO_PHOTO.src` in `lib/site.ts`).
+3. If the place changes, the line under the photo and both link addresses change with it: new text
+   goes into the approved site copy first, then into `lib/dictionaries.ts` (`home.photo*`) and
+   `HERO_PHOTO` in `lib/site.ts`.
+
+The photo is self-hosted like the video; the two links open the other sites only when a visitor
+follows them, so the privacy page stays true.
 
 ## Why self-hosted rather than YouTube or Vimeo
 

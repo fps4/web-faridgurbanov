@@ -132,3 +132,17 @@ export interface IntroVideo {
 }
 
 export const INTRO_VIDEO: IntroVideo | null = null;
+
+/**
+ * The photo that stands in the place of the intro video (art-cxvf6s5t94, decision art-896t5kxfka
+ * §4.1) WHILE `INTRO_VIDEO` is null. Served from the site itself (`public/media/`); the file is
+ * 800 by 1000 (4 to 5), with no camera, date or location data. The two links are followed only
+ * when a visitor clicks them; nothing is loaded from either site.
+ */
+export const HERO_PHOTO = {
+  src: '/media/farid-gurbanov.jpg',
+  width: 800,
+  height: 1000,
+  unescoHref: 'https://whc.unesco.org/en/list/1696',
+  wikipediaHref: 'https://en.wikipedia.org/wiki/Khinalug#Addition_to_UNESCO_World_Heritage_List',
+} as const;
