@@ -91,7 +91,7 @@ one of the people who were there, speaking.
   `/en#references` or `/nl#references`, keeping a query string before the fragment.
 - THE header, the footer and the sitemap SHALL NOT name a References page.
 - WHERE a published reference names a case study, THE case-study page SHALL render an "In their
-  words" block containing that reference: the quote, the name linked to their profile, `role ·
+  words" block containing that reference: the quote, the name and a LinkedIn link to their profile, `role ·
   context`, their `photo` or, without one, their initials, and the date as month and year; WHERE the
   reference is `verified`, an "Also on my LinkedIn" link to the recommendations; WHEN the quote is in
   a language other than the page's, or is an approved translation, a note that says so.
